@@ -1,0 +1,1412 @@
+/*******************************************************************************
+ * Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Peter Lachenmaier - Design and initial implementation
+ ******************************************************************************/
+package org.sociotech.communitymashup.source.twitter;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.emf.common.util.EList;
+import org.osgi.service.log.LogService;
+import org.sociotech.communitymashup.application.Source;
+import org.sociotech.communitymashup.data.Content;
+import org.sociotech.communitymashup.data.DataFactory;
+import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.Image;
+import org.sociotech.communitymashup.data.InformationObject;
+import org.sociotech.communitymashup.data.Location;
+import org.sociotech.communitymashup.data.MetaTag;
+import org.sociotech.communitymashup.data.Person;
+import org.sociotech.communitymashup.data.WebAccount;
+import org.sociotech.communitymashup.data.WebSite;
+import org.sociotech.communitymashup.data.impl.DataFactoryImpl;
+import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
+import org.sociotech.communitymashup.source.twitter.meta.TwitterTags;
+import org.sociotech.communitymashup.source.twitter.properties.TwitterProperties;
+
+import twitter4j.DirectMessage;
+import twitter4j.HashtagEntity;
+import twitter4j.IDs;
+import twitter4j.Paging;
+import twitter4j.ProfileImage;
+import twitter4j.Query;
+import twitter4j.QueryResult;
+import twitter4j.ResponseList;
+import twitter4j.Status;
+import twitter4j.Tweet;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.URLEntity;
+import twitter4j.User;
+import twitter4j.UserMentionEntity;
+import twitter4j.auth.AccessToken;
+import twitter4j.auth.RequestToken;
+import twitter4j.conf.ConfigurationBuilder;
+
+/**
+ * @author Peter Lachenmaier, Jennifer Salbego
+ * 
+ *         Main Class of the Twitter Source Service.
+ */
+public class TwitterSourceService extends SourceServiceFacadeImpl {
+
+	public static DataFactory factory = new DataFactoryImpl();
+
+	private Twitter twitterAPI = null;
+	private User accountOwnerUser = null;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#
+	 * createDefaultConfiguration()
+	 */
+	@Override
+	protected void createDefaultConfiguration() {
+
+		// create default configuration
+		super.createDefaultConfiguration();
+
+		// add default properties
+		source.addProperty(TwitterProperties.CONSUMER_KEY_PROPERTY,
+				TwitterProperties.CONSUMER_KEY_DEFAULT);
+		source.addProperty(TwitterProperties.CONSUMER_SECRET_PROPERTY,
+				TwitterProperties.CONSUMER_SECRET_DEFAULT);
+		source.addProperty(TwitterProperties.ACCESS_TOKEN_PROPERTY, "");
+		source.addProperty(TwitterProperties.ACCESS_TOKEN_SECRET_PROPERTY, "");
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize
+	 * (org.osgi.service.log.LogService,
+	 * org.sociotech.communitymashup.application.Source)
+	 */
+	@Override
+	public boolean initialize(LogService logService, Source configuration) {
+
+		boolean initialized = super.initialize(logService, configuration);
+
+		if (initialized) {
+
+			// establish connection
+			initialized = establishConnection();
+
+			if (!initialized) {
+				// try to start the command line authentication if no
+				// initialization is possible
+				startCommandLineAuthentication();
+			}
+
+			// set initialization state
+			setInitialized(initialized);
+		}
+
+		return isInitialized();
+	}
+
+	/**
+	 * Establishes a connection with twitter based on the user information given
+	 * in the configuration.
+	 * 
+	 * @return True if it is possible to use the user information for the
+	 *         connection, false otherwise.
+	 */
+	private boolean establishConnection() {
+
+		// get property values from configuration
+		String consumerKey = source
+				.getPropertyValue(TwitterProperties.CONSUMER_KEY_PROPERTY);
+		String consumerSecret = source
+				.getPropertyValue(TwitterProperties.CONSUMER_SECRET_PROPERTY);
+		String accessTokenValue = source
+				.getPropertyValue(TwitterProperties.ACCESS_TOKEN_PROPERTY);
+		String accessTokenSecret = source
+				.getPropertyValue(TwitterProperties.ACCESS_TOKEN_SECRET_PROPERTY);
+
+		// check properties
+		if (consumerKey == null || consumerKey.isEmpty()) {
+			log("A valid consumer key is needed in the configuration specified by "
+					+ TwitterProperties.CONSUMER_KEY_PROPERTY,
+					LogService.LOG_WARNING);
+			return false;
+		} else if (consumerSecret == null || consumerSecret.isEmpty()) {
+			log("A valid consumer secret is needed in the configuration specified by "
+					+ TwitterProperties.CONSUMER_SECRET_PROPERTY,
+					LogService.LOG_WARNING);
+			return false;
+		} else if (accessTokenValue == null || accessTokenValue.isEmpty()) {
+			log("A valid access token is needed in the configuration specified by "
+					+ TwitterProperties.ACCESS_TOKEN_PROPERTY,
+					LogService.LOG_WARNING);
+			return false;
+		} else if (accessTokenSecret == null || accessTokenSecret.isEmpty()) {
+			log("A valid token secret is needed in the configuration specified by "
+					+ TwitterProperties.ACCESS_TOKEN_SECRET_PROPERTY,
+					LogService.LOG_WARNING);
+			return false;
+		}
+
+		// get access with the provided credencials
+		// TODO disable debug
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setDebugEnabled(true).setOAuthConsumerKey(consumerKey)
+				.setOAuthConsumerSecret(consumerSecret)
+				.setOAuthAccessToken(accessTokenValue)
+				.setOAuthAccessTokenSecret(accessTokenSecret);
+
+		TwitterFactory tf = new TwitterFactory(cb.build());
+
+		twitterAPI = tf.getInstance();
+
+		if (twitterAPI == null) {
+			log("Could not create a connection to the twitter api!",
+					LogService.LOG_ERROR);
+		}
+
+		return true;
+	}
+
+	/**
+	 * Starts a command line authentication with yammer to get the needed access
+	 * token.
+	 */
+	private void startCommandLineAuthentication() {
+
+		if (!source
+				.isPropertyTrue(TwitterProperties.ALLOW_COMMAND_LINE_AUTHENTICATION)) {
+			return;
+		}
+
+		// get property values from configuration
+		String consumerKey = source
+				.getPropertyValue(TwitterProperties.CONSUMER_KEY_PROPERTY);
+		String consumerSecret = source
+				.getPropertyValue(TwitterProperties.CONSUMER_SECRET_PROPERTY);
+
+		// check properties
+		if (consumerKey == null || consumerKey.isEmpty()) {
+			log("A valid consumer key is needed in the configuration specified by "
+					+ TwitterProperties.CONSUMER_KEY_PROPERTY,
+					LogService.LOG_WARNING);
+			return;
+		} else if (consumerSecret == null || consumerSecret.isEmpty()) {
+			log("A valid consumer secret is needed in the configuration specified by "
+					+ TwitterProperties.CONSUMER_SECRET_PROPERTY,
+					LogService.LOG_WARNING);
+			return;
+		}
+
+		log("Starting command line authentication.", LogService.LOG_INFO);
+
+		// Access Token not contained in properties
+		Twitter twitter = new TwitterFactory().getInstance();
+
+		twitter.setOAuthConsumer(consumerKey, consumerSecret);
+		RequestToken requestToken;
+
+		// create new request token
+		try {
+			requestToken = twitter.getOAuthRequestToken();
+		} catch (TwitterException e) {
+			log("Unable to get request token from Twitter. Please check your Consumer Key and Secret.",
+					LogService.LOG_ERROR);
+			return;
+		}
+
+		System.out.println("Request token: " + requestToken.getToken());
+		System.out.println("Token secret: " + requestToken.getTokenSecret());
+
+		String authorizationURL = requestToken.getAuthorizationURL();
+
+		// wait for user confirming the request
+		System.out.println("Now visit:\n" + authorizationURL
+				+ "\n... and grant this app authorization");
+		System.out
+				.println("Enter the PIN code and hit ENTER when you're done:");
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String pin;
+		try {
+			pin = br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+
+		AccessToken accessToken = null;
+		try {
+			accessToken = twitter.getOAuthAccessToken(requestToken, pin);
+		} catch (Exception e) {
+			accessToken = null;
+		}
+
+		if (accessToken == null) {
+			log("Got no Twitter OAuth Access Token for given Request and Pin!",
+					LogService.LOG_ERROR);
+			return;
+		}
+
+		System.out.println("Access token: " + accessToken.getToken());
+		System.out.println("Token secret: " + accessToken.getTokenSecret());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#fillDataSet
+	 * (org.sociotech.communitymashup.data.DataSet)
+	 */
+	@Override
+	public void fillDataSet(DataSet dataSet) {
+		super.fillDataSet(dataSet);
+
+		// check data set
+		if (source.getDataSet() == null) {
+			// nothing to do
+			return;
+		}
+
+		log("Loading personal profile from Twitter.", LogService.LOG_INFO);
+		// adding the user that provided this account
+		addMe();
+
+		if (loadFollowers()) {
+			log("Loading followers from Twitter.", LogService.LOG_INFO);
+			// add Followers
+			addFollower();
+		}
+
+		if (loadFollowing()) {
+			log("Loading following from Twitter.", LogService.LOG_INFO);
+			// add Following
+			addFollowing();
+		}
+
+		if (loadHomeTimeline()) {
+			log("Loading home timeline from Twitter.", LogService.LOG_INFO);
+			// add HomeTimeline
+			addHomeTimeline();
+		}
+
+		if (loadUserTimeline()) {
+			log("Loading user timeline from Twitter.", LogService.LOG_INFO);
+			// add User Timeline
+			addUserTimeline();
+		}
+
+		if (loadDirectMessages() || loadSentDirectMessages()) {
+			log("Loading direct messages from Twitter.", LogService.LOG_INFO);
+			// add DirectMessages
+			addDirectMessages();
+		}
+
+		if (interconnectFollowers() || interconnectFollowing()) {
+			log("Interconnecting people", LogService.LOG_INFO);
+			// interconnect people
+			interconnectPersons();
+		}
+
+		if (shouldSearch()) {
+			log("Searching Twitter.", LogService.LOG_INFO);
+			// search
+			search();
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#
+	 * enrichDataSet()
+	 */
+	@Override
+	public void enrichDataSet() {
+		// TODO Auto-generated method stub
+		super.enrichDataSet();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#
+	 * updateDataSet()
+	 */
+	@Override
+	public void updateDataSet() {
+		super.updateDataSet();
+		
+		// updating search results
+		if (shouldSearch()) {
+			log("Update: Searching Twitter.", LogService.LOG_INFO);
+			// search
+			search();
+		}
+		
+		// TODO do other updates
+	}
+
+	/**
+	 * Looks for users with a twitter web account in the data set, gets their
+	 * followers and following and creates connections
+	 * 
+	 */
+	private void interconnectPersons() {
+
+		MetaTag twitterTag = source.getDataSet()
+				.getMetaTag(TwitterTags.TWITTER);
+		if (twitterTag == null) {
+			// no tag defined, so no accounts
+			return;
+		}
+
+		EList<WebAccount> twitterAccounts = twitterTag.getWebAccounts();
+		if (twitterAccounts == null || twitterAccounts.isEmpty()) {
+			// no accounts defined
+			return;
+		}
+
+		for (WebAccount twitterAccount : twitterAccounts) {
+			// assume screen name in twitter account
+			String screenName = twitterAccount.getUsername();
+
+			if (screenName == null || screenName.equals("")) {
+				// skip this one
+				continue;
+			}
+
+			// get twitter user with this screenname
+			User twitterUser = null;
+			try {
+				twitterUser = twitterAPI.showUser(screenName);
+			} catch (TwitterException e) {
+				log("Could not get User with screename: " + screenName + " ("
+						+ e.getMessage() + ")", LogService.LOG_DEBUG);
+				continue;
+			}
+
+			if (twitterUser == null) {
+				log("Got no User with screename: " + screenName,
+						LogService.LOG_DEBUG);
+				continue;
+			}
+
+			// add connection to extisting followers and following without
+			// creating new users
+			if (interconnectFollowers()) {
+				addFollower(twitterUser, false);
+			}
+			if (interconnectFollowing()) {
+				addFollowing(twitterUser, false);
+			}
+		}
+
+	}
+
+	private void addFollowing() {
+		addFollowing(accountOwnerUser, true);
+	}
+
+	private void addFollowing(User twitterUser, boolean createNewUsers) {
+
+		if (twitterUser == null) {
+			return;
+		}
+
+		IDs following;
+		long cursor = -1;
+
+		// look up person for twitter user and connect
+		Person connectToPerson = getPersonForTwitterUser(twitterUser);
+
+		do {
+			try {
+				following = twitterAPI.getFriendsIDs(twitterUser.getId(),
+						cursor);
+				log("Retrieving following with cursor: " + cursor,
+						LogService.LOG_INFO);
+			} catch (TwitterException e) {
+				log("Could not get more following Users from twitter. (Cursor: "
+						+ cursor + "): " + e.getMessage(), LogService.LOG_DEBUG);
+				break;
+			}
+
+			if (following == null) {
+				return;
+			}
+
+			if (connectToPerson != null) {
+				connectPersonsForTwitterUserIds(following.getIDs(),
+						connectToPerson, true, createNewUsers);
+			}
+
+			// next cursor
+			cursor = following.getNextCursor();
+		} while (following.hasNext());
+	}
+
+	private void addFollower() {
+		addFollower(accountOwnerUser, true);
+	}
+
+	private void addFollower(User twitterUser, boolean createNewUsers) {
+
+		if (twitterUser == null) {
+			return;
+		}
+
+		int followersMax = 1000;
+
+		int followersCount = twitterUser.getFollowersCount();
+		if (followersCount > followersMax) {
+			// ignore users with to much followers
+			log("Ignoring the " + followersCount + " Followers of "
+					+ twitterUser.getName());
+			return;
+		}
+
+		IDs followers;
+		long cursor = -1;
+
+		do {
+			try {
+				followers = twitterAPI.getFollowersIDs(twitterUser.getId(),
+						cursor);
+				log("Retrieving followers with cursor: " + cursor,
+						LogService.LOG_INFO);
+			} catch (TwitterException e) {
+				log("Could not get more followers from twitter. (Cursor: "
+						+ cursor + "): " + e.getMessage(), LogService.LOG_DEBUG);
+				break;
+			}
+
+			if (followers == null) {
+				return;
+			}
+
+			// look up person for twitter user and connect
+			Person connectToPerson = getPersonForTwitterUser(twitterUser);
+			if (connectToPerson != null) {
+				connectPersonsForTwitterUserIds(followers.getIDs(),
+						connectToPerson, false, createNewUsers);
+			}
+			// next cursor
+			cursor = followers.getNextCursor();
+		} while (followers.hasNext());
+	}
+
+	/**
+	 * Lookup all Twitter users for the given array of ids and can create
+	 * persons of them. Connects the persons in the direction of to the given
+	 * person (followers) if set to true. Otherwise from the given person to new
+	 * person (following).
+	 * 
+	 * @param ids
+	 *            Array of user ids
+	 * @param connectToPerson
+	 *            The person to connect to
+	 * @param toPerson
+	 *            direction of connection
+	 * @param createNewUsers
+	 *            If false, only existing users will be linked, otherwise new
+	 *            ones will be created
+	 */
+	private void connectPersonsForTwitterUserIds(long[] ids,
+			Person connectToPerson, boolean toPerson, boolean createNewUsers) {
+		if (connectToPerson == null) {
+			return;
+		}
+
+		int bufferLength = 99;
+
+		int from = 0;
+		int to = bufferLength;
+
+		// finish if no id in array
+		boolean finished = ids.length <= 0;
+
+		while (!finished) {
+			if (to >= ids.length) {
+				to = ids.length;
+				finished = true;
+			}
+
+			long[] buffer = Arrays.copyOfRange(ids, from, to);
+
+			ResponseList<User> users = null;
+			try {
+				users = twitterAPI.lookupUsers(buffer);
+				log("Lookup users at Twitter.", LogService.LOG_DEBUG);
+			} catch (TwitterException e) {
+				log("Could not lookup users at Twitter.", LogService.LOG_ERROR);
+				return;
+			}
+
+			// add all users
+
+			for (User twitterUser : users) {
+				Person person = null;
+
+				if (createNewUsers) {
+					person = createPersonFromTwitterUser(twitterUser);
+				} else {
+					person = getPersonForTwitterUser(twitterUser);
+				}
+
+				if (connectToPerson != null && person != null) {
+
+					if (!toPerson) {
+						EList<Person> persons = person.getPersons();
+						if (!persons.contains(connectToPerson)) {
+							log("Connecting from " + person.getName() + " to "
+									+ connectToPerson.getName(),
+									LogService.LOG_DEBUG);
+							persons.add(connectToPerson);
+						}
+					} else {
+						EList<Person> persons = connectToPerson.getPersons();
+						if (!persons.contains(person)) {
+							log("Connecting from " + connectToPerson.getName()
+									+ " to " + person.getName(),
+									LogService.LOG_DEBUG);
+							persons.add(person);
+						}
+					}
+
+					// TODO: create tagged connection
+				}
+			}
+
+			// increase indeces
+			from += bufferLength;
+			to += bufferLength;
+
+			if (from > ids.length) {
+				finished = true;
+			}
+		}
+	}
+
+	/**
+	 * Creates the user of the mashup and adds him to the dataset
+	 */
+	private void addMe() {
+
+		// get Twitter user
+		User user = null;
+		try {
+			user = twitterAPI.verifyCredentials();
+		} catch (Exception e) {
+			log("Could not get user from twiter (" + e.getMessage() + ")",
+					LogService.LOG_ERROR);
+			return;
+		}
+
+		Person me = createPersonFromTwitterUser(user);
+		me.metaTag(TwitterTags.PROVIDED_PROFILE);
+
+		accountOwnerUser = user;
+
+		// add status
+		Status twitterStatus = user.getStatus();
+
+		createContentFromTwitterStatus(me, twitterStatus);
+	}
+
+	/**
+	 * Looks up the person for this twitter user in the given dataSet and
+	 * returns it. If it does not already exist, the person will be created and
+	 * returned.
+	 * 
+	 * @param user
+	 * @return
+	 */
+	private Person createPersonFromTwitterUser(User user) {
+
+		if (user == null) {
+			return null;
+		}
+
+		Person person = getPersonForTwitterUser(user);
+
+		String personIdent = createPersonIdentForTwitterUser(user);
+
+		if (person == null) {
+			// not previously created
+			person = factory.createPerson();
+
+			// set name
+			person.setName(user.getName());
+
+			// and add the person to the data set
+			person = (Person) this.add(person, personIdent);
+		}
+
+		if (person == null) {
+			// person could not be created
+			return null;
+		}
+
+		// tag person
+		person.metaTag(TwitterTags.TWITTER);
+
+		// add web account
+		String screenName = user.getScreenName();
+
+		if (screenName != null && !screenName.equals("")) {
+			// TODO check for existing web account
+			WebAccount webAccount = factory.createWebAccount();
+			webAccount.setUsername(screenName);
+			webAccount.setCreated(user.getCreatedAt());
+
+			webAccount = (WebAccount) this.add(webAccount, screenName);
+
+			if (webAccount != null) {
+				webAccount.metaTag(TwitterTags.TWITTER);
+				person.extend(webAccount);
+			}
+		}
+
+		// add location
+		String twitterLocation = user.getLocation();
+
+		if (twitterLocation != null && !twitterLocation.equals("")) {
+			// TODO check for existing location
+			Location location = factory.createLocation();
+			location.setStringValue(twitterLocation);
+
+			location = (Location) this.add(location);
+
+			if (location != null) {
+				location.metaTag(TwitterTags.TWITTER);
+				person.extend(location);
+			}
+		}
+
+		// add website
+		URL twitterWebsite = user.getURL();
+
+		if (twitterWebsite != null) {
+			WebSite website = factory.createWebSite();
+			website.setAdress(twitterWebsite.toString());
+
+			website = (WebSite) this.add(website);
+
+			if (website != null) {
+				website.metaTag(TwitterTags.TWITTER);
+				person.extend(website);
+			}
+		}
+
+		// add profile image
+		String profileImageUrl = null;
+
+		// add higher res version if available
+		if (screenName != null && source.isPropertyTrueElseDefault(TwitterProperties.LOAD_HIGHER_RES_PROFILE_IMAGE_PROPERTY, TwitterProperties.LOAD_HIGHER_RES_PROFILE_IMAGE_DEFAULT)) {
+			try {
+				ProfileImage profileImage = twitterAPI.getProfileImage(
+						screenName, ProfileImage.BIGGER);
+				profileImageUrl = profileImage.getURL();
+			} catch (TwitterException e) {
+				log("Could not retrieve profile Image from twitter for user "
+						+ screenName + " (" + e.getMessage() + ")", LogService.LOG_DEBUG);
+			}
+		}
+
+		if (profileImageUrl == null) {
+			// not set in previous step
+			URL url = user.getProfileImageURL();
+			if (url != null) {
+				profileImageUrl = url.toString();
+			}
+		}
+
+		if (profileImageUrl != null) {
+			// create image
+			Image profileImage = person.attachImage(profileImageUrl);
+			profileImage.tag(TwitterTags.TWITTER);
+			profileImage.tag(TwitterTags.PROFILE_IMAGE);
+		}
+
+		// add latest status of user
+		Status status = user.getStatus();
+		if (status != null
+				&& source
+						.isPropertyTrue(TwitterProperties.ADD_STATUS_OF_PEOPLE_PROPERTY)) {
+			createContentFromTwitterStatus(person, status);
+		}
+
+		return person;
+	}
+
+	/**
+	 * Looks up the person for this twitter user in the given dataSet and
+	 * returns it.
+	 * 
+	 * @param user
+	 *            Twitter User to look up coresponding Person.
+	 * @return The looked up person, null if it does not exist.
+	 */
+	private Person getPersonForTwitterUser(User user) {
+		String personIdent = createPersonIdentForTwitterUser(user);
+		return this.getPersonWithSourceIdent(personIdent);
+	}
+
+	private String createPersonIdentForTwitterUser(User user) {
+		return "" + user.getId();
+	}
+
+	/**
+	 * Creates a content for the given status, adds it to the data set and sets
+	 * the author.
+	 * 
+	 * @param author
+	 *            Person corresponding to the twitter user which authored the
+	 *            status
+	 * @param twitterStatus
+	 *            The twitter status
+	 * @return The Content created from the status, null in error case.
+	 */
+	private Content createContentFromTwitterStatus(Person author,
+			Status twitterStatus) {
+		if (twitterStatus == null) {
+			return null;
+		}
+
+		String statusText = twitterStatus.getText();
+		if (statusText == null || statusText.isEmpty()) {
+			return null;
+		}
+		String ident = twitterStatus.getId() + "";
+
+		if (this.getContentWithSourceIdent(ident) != null) {
+			// status already created
+			return null;
+		}
+
+		Content status = factory.createContent();
+		status.setStringValue(statusText);
+		status.setName(createTitleFromTwitterText(statusText));
+
+		status = (Content) this.add(status, ident);
+
+		if (status == null) {
+			return null;
+		}
+
+		status.metaTag(TwitterTags.TWITTER);
+		status.setCreated(twitterStatus.getCreatedAt());
+
+		if (author != null) {
+			status.setAuthor(author);
+		}
+
+		// and tag the status
+		HashtagEntity[] hashtags = twitterStatus.getHashtagEntities();
+
+		tagIOwithHashtags(status, hashtags);
+
+		UserMentionEntity[] mentionedUsers = twitterStatus
+				.getUserMentionEntities();
+		if (mentionedUsers != null
+				&& mentionedUsers.length > 0
+				&& source
+						.isPropertyTrue(TwitterProperties.ADD_MENTIONED_PEOPLE_PROPERTY)) {
+			for (int i = 0; i < mentionedUsers.length; i++) {
+				Person mentionedPerson = getPersonForTwitterUserId(mentionedUsers[i]
+						.getId());
+
+				if (mentionedPerson == null) {
+					continue;
+				}
+
+				status.addContributor(mentionedPerson);
+			}
+		}
+
+		URLEntity[] urlEntities = twitterStatus.getURLEntities();
+		if (urlEntities != null
+				&& urlEntities.length > 0
+				&& source
+						.isPropertyTrue(TwitterProperties.ADD_URL_ENTITIES_PROPERTY)) {
+			for (int i = 0; i < urlEntities.length; i++) {
+				URL url = urlEntities[i].getURL();
+				if (url != null) {
+					// attach url as website
+					status.addWebSite(url.toExternalForm());
+				}
+			}
+		}
+		
+		// TODO check media entities
+		// MediaEntity[] mediaEntities = twitterStatus.getMediaEntities();
+
+		return status;
+	}
+
+	/**
+	 * Looks if the person for the twitter user already exists or otherwise loads it using the api.
+	 * 
+	 * @param id Twitter user id
+	 * @return The Person for the twitter user or null in error case.
+	 */
+	private Person getPersonForTwitterUserId(long id) {
+		Person person = getExistingPersonForTwitterUserId(id);
+
+		if (person == null) {
+			ResponseList<User> twitterUsers = null;
+
+			// put id in an array to lookuup
+			long[] userIdArray = new long[] { id };
+			try {
+				log("Looking up twitter user for id " + id,
+						LogService.LOG_DEBUG);
+				twitterUsers = twitterAPI.lookupUsers(userIdArray);
+			} catch (TwitterException e) {
+				log("Could not lookup single user " + id + " ("
+						+ e.getMessage() + ")", LogService.LOG_WARNING);
+				return null;
+			}
+
+			if (twitterUsers != null && !twitterUsers.isEmpty()) {
+				// only one entry
+				person = createPersonFromTwitterUser(twitterUsers.get(0));
+			}
+		}
+		return person;
+	}
+
+	/**
+	 * If the person for the twitter user already exists than it will be returned.
+	 * 
+	 * @param id Twitter user id
+	 * @return The person for the twitter user or null if it does not yet exist
+	 */
+	private Person getExistingPersonForTwitterUserId(long id) {
+		return this.getPersonWithSourceIdent(id + "");
+	}
+
+	private String createTitleFromTwitterText(String text) {
+		if (text == null) {
+			return null;
+		}
+
+		int titleLength = 4; // number of words
+
+		String[] words = text.split(" ");
+		if (words.length < titleLength) {
+			return text;
+		}
+
+		String title = "";
+		for (int i = 0; i < titleLength; i++) {
+			title += words[i] + " ";
+		}
+
+		title += "...";
+
+		return title;
+	}
+
+	/**
+	 * Creates a content for the given message, adds it to the data set and sets
+	 * the author.
+	 * 
+	 * @param author
+	 *            Person corresponding to the twitter user which authored the
+	 *            message
+	 * @param author
+	 *            Person corresponding to the twitter user which received the
+	 *            message
+	 * @param directMessage
+	 *            The twitter status
+	 * @return The Content created from the status, null in error case.
+	 */
+	private Content createContentFromTwitterDirectMessage(Person author,
+			Person receipient, DirectMessage directMessage) {
+		if (directMessage == null) {
+			return null;
+		}
+
+		String messageText = directMessage.getText();
+		if (messageText == null || messageText.isEmpty()) {
+			return null;
+		}
+
+		String ident = directMessage.getId() + "";
+
+		if (this.getContentWithSourceIdent(ident) != null) {
+			// message already created
+			return null;
+		}
+
+		Content message = factory.createContent();
+		message.setStringValue(messageText);
+		message.setName(createTitleFromTwitterText(messageText));
+		message.metaTag(TwitterTags.TWITTER);
+
+		message = (Content) this.add(message, ident);
+
+		if (message == null) {
+			return null;
+		}
+
+		if (author != null) {
+			message.setAuthor(author);
+		}
+
+		message.setCreated(directMessage.getCreatedAt());
+
+		if (receipient != null) {
+			// set receiver as contributor
+			message.getContributors().add(receipient);
+		}
+
+		message.metaTag(TwitterTags.DIRECT_MESSAGE);
+
+		return message;
+	}
+
+	private void tagIOwithHashtags(InformationObject informationObject,
+			HashtagEntity[] hashTags) {
+		if (hashTags == null) {
+			return;
+		}
+
+		for (HashtagEntity tag : hashTags) {
+			informationObject.tag(tag.getText());
+		}
+	}
+
+	/**
+	 * Searches for the query defined in the configuration and adds the results.
+	 */
+	private void search()
+	{
+		// get query from configuration
+		String query = source.getPropertyValue(TwitterProperties.SEARCH_PROPERTY);
+		
+		if(query == null || query.isEmpty())
+		{
+			return;
+		}
+		
+		QueryResult searchResult = null;
+		
+		try {
+			Query twitterQuery = new Query(query);
+			// set requested number of tweets
+			twitterQuery.setRpp(getNumberOfSearchTweets());
+			// if defined set since id
+			String sinceId = source.getPropertyValue(TwitterProperties.SEARCH_SINCE_ID_PROPERTY);
+			if(sinceId != null && !sinceId.isEmpty())
+			{
+				long sinceIdVal = new Long(sinceId);
+				twitterQuery.setSinceId(sinceIdVal);
+			}
+         	searchResult = twitterAPI.search(twitterQuery);
+		} catch (TwitterException e) {
+			log("Could not search for " + query, LogService.LOG_WARNING);
+			return;
+		}
+		
+		if(searchResult == null)
+		{
+			return;
+		}
+		
+		String sinceId = parseSinceId(searchResult);
+		
+		if(sinceId != null)
+		{
+			// set it in configuration
+			source.addProperty(TwitterProperties.SEARCH_SINCE_ID_PROPERTY, sinceId);
+		}
+		
+		List<Tweet> tweets = searchResult.getTweets();
+		
+		log("Got " + tweets.size() + " tweets for search " + query, LogService.LOG_DEBUG);
+		
+		// add all tweets
+		addTweetList(tweets);
+	}
+
+	private String parseSinceId(QueryResult searchResult) {
+		if (searchResult == null) {
+			return null;
+		}
+
+		return "" + searchResult.getMaxId();
+	}
+
+	/**
+	 * create the hometimeline
+	 */
+	private void addHomeTimeline() {
+
+		List<Status> homeTimeline = null;
+
+		// List of statuses (homeTimeline)
+		try {
+			homeTimeline = twitterAPI.getHomeTimeline();
+		} catch (TwitterException te) {
+			log("Could not get Home Timeline from Twitter. (" + te.getMessage()
+					+ ")", LogService.LOG_ERROR);
+			return;
+		}
+
+		addStatusList(homeTimeline);
+	}
+
+	/**
+	 * Adds the User Timeline
+	 */
+	private void addUserTimeline() {
+
+		List<Status> userTimeline = null;
+
+		// List of statuses
+		try {
+			Paging userTimelineParam = new Paging();
+			userTimelineParam.setCount(getNumberOfUserTimelineTweets());
+			userTimeline = twitterAPI.getUserTimeline(userTimelineParam);
+		} catch (TwitterException te) {
+			log("Could not get User Timeline from Twitter. (" + te.getMessage()
+					+ ")", LogService.LOG_ERROR);
+			return;
+		}
+
+		addStatusList(userTimeline);
+	}
+
+	private void addStatusList(List<Status> userTimeline) {
+		// add all statuses and creates new persons, if they do not exist
+		// already
+		for (Status status : userTimeline) {
+
+			// User who wrotes the status
+			User user = status.getUser();
+			Person author = createPersonFromTwitterUser(user);
+
+			// create content
+			createContentFromTwitterStatus(author, status);
+		}
+	}
+
+	private void addTweetList(List<Tweet> tweetList) {
+		// add all tweets and creates new persons, if they do not exist already
+		
+		// users to lookup
+		Set<Long> lookupUserIds = new HashSet<Long>();
+		
+		// extract all needed users from tweet list
+		for (Tweet tweet : tweetList) {
+			// User who wrote the tweet
+			long userId = tweet.getFromUserId();
+			
+			// look if user already exists
+			if(getExistingPersonForTwitterUserId(userId) == null)
+			{
+				// does not exist, so add it to the lookup set
+				lookupUserIds.add(userId);
+			}
+		}
+		
+		// lookup the needed users
+		if(!lookupUserIds.isEmpty())
+		{
+			int numberOfUsers = lookupUserIds.size();
+			long[] userIdArray = new long[numberOfUsers];
+			int i = 0;
+			// create array of longs
+			for(Long userId : lookupUserIds)
+			{
+				userIdArray[i] = userId;
+				i++;
+			}
+			
+			ResponseList<User> twitterUsers = null;
+
+			// lookup
+			try {
+				 twitterUsers = twitterAPI.lookupUsers(userIdArray);
+			} catch (TwitterException e) {
+				log("Could not lookup users due to exception. (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			}
+			
+			if(twitterUsers != null)
+			{
+				// add them all
+				for(User twitterUser : twitterUsers)
+				{
+					createPersonFromTwitterUser(twitterUser);
+				}
+			}
+		}
+		
+		// now add all tweets, users should already be there
+		for (Tweet tweet : tweetList) {
+
+			long userId = tweet.getFromUserId();
+			Person author = getPersonForTwitterUserId(userId);
+
+			// create content
+			createContentFromTweet(author, tweet);
+		}
+	}
+
+	/**
+	 * Creates a content for the given tweet, adds it to the data set and sets
+	 * the author.
+	 * 
+	 * @param author
+	 *            Person corresponding to the twitter user which authored the
+	 *            tweet
+	 * @param tweet
+	 *            The tweet
+	 * @return The Content created from the tweet, null in error case.
+	 */
+	private Content createContentFromTweet(Person author, Tweet tweet) {
+		if (tweet == null) {
+			return null;
+		}
+
+		String tweetText = tweet.getText();
+		if (tweetText == null || tweetText.isEmpty()) {
+			return null;
+		}
+		String ident = tweet.getId() + "";
+
+		if (this.getContentWithSourceIdent(ident) != null) {
+			// status already created
+			return null;
+		}
+
+		Content tweetContent = factory.createContent();
+		tweetContent.setStringValue(tweetText);
+		tweetContent.setName(createTitleFromTwitterText(tweetText));
+
+		tweetContent = (Content) this.add(tweetContent, ident);
+
+		if (tweetContent == null) {
+			return null;
+		}
+
+		tweetContent.metaTag(TwitterTags.TWITTER);
+		tweetContent.setCreated(tweet.getCreatedAt());
+
+		if (author != null) {
+			tweetContent.setAuthor(author);
+		}
+
+		// and tag the status
+		HashtagEntity[] hashtags = tweet.getHashtagEntities();
+
+		tagIOwithHashtags(tweetContent, hashtags);
+
+		UserMentionEntity[] mentionedUsers = tweet.getUserMentionEntities();
+		if (mentionedUsers != null
+				&& mentionedUsers.length > 0
+				&& source
+						.isPropertyTrue(TwitterProperties.ADD_MENTIONED_PEOPLE_PROPERTY)) {
+			for (int i = 0; i < mentionedUsers.length; i++) {
+				Person mentionedPerson = getPersonForTwitterUserId(mentionedUsers[i]
+						.getId());
+
+				if (mentionedPerson == null) {
+					continue;
+				}
+
+				tweetContent.addContributor(mentionedPerson);
+			}
+		}
+
+		URLEntity[] urlEntities = tweet.getURLEntities();
+		if (urlEntities != null
+				&& urlEntities.length > 0
+				&& source
+						.isPropertyTrue(TwitterProperties.ADD_URL_ENTITIES_PROPERTY)) {
+			for (int i = 0; i < urlEntities.length; i++) {
+				URL url = urlEntities[i].getURL();
+				if (url != null) {
+					// attach url as website
+					tweetContent.addWebSite(url.toExternalForm());
+				}
+			}
+		}
+
+		String language = tweet.getIsoLanguageCode();
+		if(language != null && !language.isEmpty())
+		{
+			// set in content
+			tweetContent.setLocale(language);
+			// set as meta tag
+			tweetContent.metaTag(language);
+		}
+		
+		// TODO check media entities
+		// MediaEntity[] mediaEntities = twitterStatus.getMediaEntities();
+
+		return tweetContent;
+	}
+
+	/**
+	 * Adds all direct messages sent from other users to the owner of this
+	 * account and the ones sent from this user to others.
+	 */
+	private void addDirectMessages() {
+
+		// add DirectMessages
+		ResponseList<DirectMessage> directMessages = null;
+
+		if (loadDirectMessages()) {
+			try {
+				directMessages = twitterAPI.getDirectMessages();
+			} catch (TwitterException e) {
+				log("Could not get received Direct Messages from Twitter. ("
+						+ e.getMessage() + ")", LogService.LOG_ERROR);
+				directMessages = null;
+			}
+
+			if (directMessages != null) {
+				addDirectMessages(directMessages);
+			}
+		}
+
+		if (loadSentDirectMessages()) {
+			try {
+				directMessages = twitterAPI.getSentDirectMessages();
+			} catch (TwitterException e) {
+				log("Could not get sent Direct Messages from Twitter. ("
+						+ e.getMessage() + ")", LogService.LOG_ERROR);
+				directMessages = null;
+			}
+
+			if (directMessages != null) {
+				addDirectMessages(directMessages);
+			}
+		}
+
+	}
+
+	private void addDirectMessages(ResponseList<DirectMessage> directMessages) {
+		for (DirectMessage message : directMessages) {
+
+			// User who wrotes the message
+			User twitterSender = message.getSender();
+			Person sender = createPersonFromTwitterUser(twitterSender);
+
+			User twitterRecipient = message.getRecipient();
+			Person recipient = createPersonFromTwitterUser(twitterRecipient);
+
+			createContentFromTwitterDirectMessage(sender, recipient, message);
+		}
+	}
+
+	private boolean shouldSearch() {
+		String searchValue = source
+				.getPropertyValue(TwitterProperties.SEARCH_PROPERTY);
+
+		// chech if search query is defined
+		if (searchValue == null || searchValue.isEmpty()) {
+			return false;
+		}
+
+		return true;
+	}
+
+	private boolean interconnectFollowing() {
+		return source
+				.isPropertyTrue(TwitterProperties.INTERCONNECT_FOLLOWING_PROPERTY);
+	}
+
+	private boolean interconnectFollowers() {
+		return source
+				.isPropertyTrue(TwitterProperties.INTERCONNECT_FOLLOWERS_PROPERTY);
+	}
+
+	private boolean loadFollowing() {
+		return source.isPropertyTrue(TwitterProperties.LOAD_FOLLOWING_PROPERTY);
+	}
+
+	private boolean loadFollowers() {
+		return source.isPropertyTrue(TwitterProperties.LOAD_FOLLOWERS_PROPERTY);
+	}
+
+	private boolean loadSentDirectMessages() {
+		// currently not supported due to restrictions of public applications
+		return false; // return
+						// source.getPropertyValue(LOAD_SENT_DIRECT_MESSAGES_PROPERTY)
+						// != null &&
+						// source.getPropertyValue(LOAD_SENT_DIRECT_MESSAGES_PROPERTY).equalsIgnoreCase("true");
+	}
+
+	private boolean loadDirectMessages() {
+		// currently not supported due to restrictions of public applications
+		return false; // return
+						// source.getPropertyValue(LOAD_DIRECT_MESSAGES_PROPERTY)
+						// != null &&
+						// source.getPropertyValue(LOAD_DIRECT_MESSAGES_PROPERTY).equalsIgnoreCase("true");
+	}
+
+	private boolean loadUserTimeline() {
+		return source
+				.isPropertyTrue(TwitterProperties.LOAD_USER_TIMELINE_PROPERTY);
+	}
+
+	private boolean loadHomeTimeline() {
+		return source
+				.isPropertyTrue(TwitterProperties.LOAD_HOME_TIMELINE_PROPERTY);
+	}
+
+	private int getNumberOfUserTimelineTweets() {
+		String property = source.getPropertyValueElseDefault(
+				TwitterProperties.NUMBER_OF_USER_TIMELINE_TWEETS_PROPERTY,
+				TwitterProperties.NUMBER_OF_USER_TIMELINE_TWEETS_DEFAULT);
+
+		int numberOfTweets = 1;
+
+		try {
+			numberOfTweets = new Integer(property);
+		} catch (Exception e) {
+			log("Could not parse configured number of user timeline tweets, setting it to "
+					+ numberOfTweets, LogService.LOG_WARNING);
+		}
+
+		return numberOfTweets;
+	}
+
+	private int getNumberOfSearchTweets() {
+		String property = source.getPropertyValueElseDefault(
+				TwitterProperties.NUMBER_OF_SEARCH_TWEETS_PROPERTY,
+				TwitterProperties.NUMBER_OF_SEARCH_TWEETS_DEFAULT);
+
+		int numberOfTweets = 1;
+
+		try {
+			numberOfTweets = new Integer(property);
+		} catch (Exception e) {
+			log("Could not parse configured number of user search tweets, setting it to "
+					+ numberOfTweets, LogService.LOG_WARNING);
+		}
+
+		return numberOfTweets;
+	}
+}
