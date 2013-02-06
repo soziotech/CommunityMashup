@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<application:MashupContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:application="http://application.cscm.communitymashup.de">
+	<mashups name="GangWayMirror">
+		<configuration>
+			<properties Key="updateIntervall" Value="60000" />
+		</configuration>
+		<sources bundleId="org.sociotech.communitymashup.source.FeedSourceService"
+			name="Sociotech_Artikel">
+			<configuration>
+				<properties Key="categorizeInformationObjectsWith" Value="Artikel auf Sociotech" />
+				<properties Key="removeHtml" Value="false" />
+				<properties Key="removeNonHtmlAnd" Value="false" />
+				<properties Key="feedUrl" Value="http://feeds.feedburner.com/soziotech" />
+				<properties Key="addOnlyFirstImage" Value="true" />
+			</configuration>
+		</sources>
+		<sources bundleId="org.sociotech.communitymashup.source.FeedSourceService"
+			name="CSCM_News">
+			<configuration>
+				<properties Key="removeHtml" Value="false" />
+				<properties Key="removeNonHtmlAnd" Value="false" />
+				<properties Key="categorizeInformationObjectsWith" Value="Neuigkeiten von CSCM" />
+				<properties Key="feedUrl" Value="http://www.kooperationssysteme.de/feed/" />
+				<properties Key="addOnlyFirstImage" Value="false" />
+			</configuration>
+		</sources>
+		<sources bundleId="org.sociotech.communitymashup.source.CleanUpSourceService"
+			name="Gardener">
+			<configuration>
+				<properties Key="useCreationDate" Value="true" />
+				<properties Key="maxNumberOfInformationObjects" Value="99" />
+				<properties Key="processPersons" Value="false" />
+				<properties Key="processOrganisations" Value="false" />
+			</configuration>
+		</sources>
+		<interfaces xsi:type="application:RESTInterface" urlSuffix="" />
+	</mashups>
+</application:MashupContainer>

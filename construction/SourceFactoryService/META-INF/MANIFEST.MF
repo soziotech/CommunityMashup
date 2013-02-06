@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SourceFactoryService
+Bundle-SymbolicName: org.sociotech.communitymashup.source.SourceFactoryService;singleton:=true
+Bundle-Version: 0.0.1
+Bundle-Activator: org.sociotech.communitymashup.source.factory.SourceFactoryActivator
+Import-Package: org.osgi.framework;version="1.3.0",
+ org.osgi.service.log;version="1.3.0",
+ org.osgi.util.tracker;version="1.4.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: org.sociotech.communitymashup
+Require-Bundle: org.sociotech.communitymashup.source.SourceServiceFacade;bundle-version="0.0.1"
+Export-Package: org.sociotech.communitymashup.source.factory.facade,
+ org.sociotech.communitymashup.source.factory.facade.callback
