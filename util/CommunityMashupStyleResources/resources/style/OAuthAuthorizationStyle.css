@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+/*******************************************************************************
+ * Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Peter Lachenmaier - Design and initial implementation
+ ******************************************************************************/
+
+/*
+	Stylesheet for the authorization servlets.
+	 
+	@author Peter Lachenmaier
+*/
+
+*{
+	margin: 0;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+}
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: left;
+	background-color: #cccccc;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	letter-spacing: 0.4pt;
+}
+
+div#authorization_container {
+	margin: 10px;
+}
+
+div#authorization_container li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+div.notification {
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 10px;
+	border: 1px solid;
+}
+
+div#error_notification {
+	background-color: #ff6565;
+}
+
+div#success_notification {
+	background-color: #CCFFCC;
+}
+
+div#already_authorized_notification {
+	background-color: #fedd59;
+}

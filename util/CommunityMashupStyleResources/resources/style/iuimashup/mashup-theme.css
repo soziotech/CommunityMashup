@@ -1,0 +1,78 @@
+/*******************************************************************************
+ * Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Peter Lachenmaier - Design and initial implementation
+ ******************************************************************************/
+
+/* 
+	@author: Peter Lachenmaier 
+	
+	This style sheet is supposed to be used in combination with the default-theme.css of iui.
+*/
+
+.toolbar {
+	height: 0px !important;
+	border: 0px !important;
+	visibility: hidden !important;
+}
+
+.panel {
+	top: 0px !important;
+}
+
+.titel {
+	font-weight: bold;
+}
+
+.row > p {
+	margin: 14px;
+	min-height: 0px !important;
+}
+
+.panel > ul > li {
+    position: relative;
+    margin: 0;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 8px 0 0px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    list-style: none;
+}
+
+.panel ul > li.group {
+	opacity:0.7;
+    background: url(/style/iuicomplete/t/default/listGroup.png) repeat-x;
+}
+
+.panel ul > li.group:first-child {
+    top: 0;
+    border-top: none;
+}
+
+.panel ul > li {
+	padding: 0px !important:
+}
+
+.panel ul > li > a {
+	display: block;
+    margin: -8px 0 -8px -10px;
+    padding: 8px 32px 8px 10px;
+    text-decoration: none;
+    color: inherit;background: url(/style/iuicomplete/t/default/listArrow.png) no-repeat right center !important;
+}
+.panel ul > li > a[selected], .panel ul > li > a:active {
+	background-color: #194fdb !important;
+    background-repeat: no-repeat, repeat-x !important;	/* TG: !important */
+    background-position: right center, left top !important;	/* TG: !important */
+    color: #FFFFFF !important;
+    background-image: url(/style/iuicomplete/t/default/listArrowSel.png), url(/style/iuicomplete/t/default/selection.png) !important;
+}
+
+.panel ul > li > a[selected="progress"] {
+    background-image: url(loading.gif), url(selection.png) !important;
+}
