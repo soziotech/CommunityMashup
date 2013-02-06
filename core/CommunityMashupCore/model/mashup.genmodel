@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA; &#x9;Peter Lachenmaier - Design and initial implementation"
+    modelDirectory="/CommunityMashupCore/src" editDirectory="/CommunityMashupConfigurator/src"
+    editorDirectory="/CommunityMashupConfigurator/src" modelPluginID="CommunityMashupCore"
+    templateDirectory="CommunityMashupCore/templates" dynamicTemplates="true" modelName="Mashup"
+    editPluginClass="org.sociotech.communitymashup.application.configurator.edit"
+    editorPluginClass="org.sociotech.communitymashup.application.configurator.ediorplugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" editPluginID="CommunityMashupConfigurator"
+    editorPluginID="CommunityMashupConfigurator" language="en">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+    <genAnnotations source="selectedPackages">
+      <details key="http://data.cscm.communitymashup.de" value="data.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="file:/Users/lachenma/Documents/workspace_community_mashup/CommunityMashupCore/model/"/>
+  </genAnnotations>
+  <foreignModel>collection.ecore</foreignModel>
+  <genPackages prefix="Collection" basePackage="org.sociotech.communitymashup" disposableProviderFactory="true"
+      ecorePackage="collection.ecore#/">
+    <genClasses image="false" ecoreClass="collection.ecore#//ItemsCollection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//ItemsCollection/items"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//ItemsCollection/dataSet"/>
+    </genClasses>
+    <genClasses ecoreClass="collection.ecore#//SmartInformationObjectCollection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/positiveTags"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/negativeTags"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/positiveMetaTags"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/positiveCategories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/positivePersons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/negativeMetaTags"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/negativeCategories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/negativePersons"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/positiveOrganisations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference collection.ecore#//SmartInformationObjectCollection/negativeOrganisations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute collection.ecore#//SmartInformationObjectCollection/includePersons"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute collection.ecore#//SmartInformationObjectCollection/includeOrganisations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute collection.ecore#//SmartInformationObjectCollection/includeContents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute collection.ecore#//SmartInformationObjectCollection/minimumAge"/>
+      <genOperations ecoreOperation="collection.ecore#//SmartInformationObjectCollection/addPositive">
+        <genParameters ecoreParameter="collection.ecore#//SmartInformationObjectCollection/addPositive/item"/>
+      </genOperations>
+      <genOperations ecoreOperation="collection.ecore#//SmartInformationObjectCollection/addNegative">
+        <genParameters ecoreParameter="collection.ecore#//SmartInformationObjectCollection/addNegative/item"/>
+      </genOperations>
+      <genOperations ecoreOperation="collection.ecore#//SmartInformationObjectCollection/remove">
+        <genParameters ecoreParameter="collection.ecore#//SmartInformationObjectCollection/remove/item"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="collection.ecore#//ManualCollection">
+      <genOperations ecoreOperation="collection.ecore#//ManualCollection/addItem">
+        <genParameters ecoreParameter="collection.ecore#//ManualCollection/addItem/item"/>
+      </genOperations>
+      <genOperations ecoreOperation="collection.ecore#//ManualCollection/removeItem">
+        <genParameters ecoreParameter="collection.ecore#//ManualCollection/removeItem/item"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="collection.ecore#//RemoteCollection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute collection.ecore#//RemoteCollection/remoteURL"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Data" basePackage="org.sociotech.communitymashup" disposableProviderFactory="true"
+      dataTypeConverters="true" contentTypeIdentifier="" ecorePackage="data.ecore#/">
+    <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+      <genAnnotations source="data.xsd"/>
+      <genAnnotations source="data2.xsd"/>
+      <genAnnotations source="file:/Users/lachenma/Documents/workspace_community_mashup/CommunityMashupCore/model/data2.xsd"/>
+      <genAnnotations source="file:/Users/lachenma/Documents/workspace_community_mashup/CommunityMashupCore/model/data.xsd"/>
+    </genAnnotations>
+    <genClasses ecoreClass="data.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Person/lastname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Person/firstname"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Person/leaderOf"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Person/participates"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Person/authored"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Person/contributed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Person/dateOfBirth"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Person/persons"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Person/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Person/ranked"/>
+      <genOperations ecoreOperation="data.ecore#//Person/getContents"/>
+      <genOperations ecoreOperation="data.ecore#//Person/getOrganisations"/>
+      <genOperations ecoreOperation="data.ecore#//Person/addContributedContent">
+        <genParameters ecoreParameter="data.ecore#//Person/addContributedContent/contributedContent"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Person/addAuthoredContent">
+        <genParameters ecoreParameter="data.ecore#//Person/addAuthoredContent/authoredContent"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//InformationObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/categories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/tags"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/images"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/starRankings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/thumbRankings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/viewRankings"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//InformationObject/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/connectedTo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/connectedBy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/binaries"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/mainCategory"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/metaInformations"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/tag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/tag/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/categorize">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/categorize/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/attachImage">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/attachImage/imageUrl"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachments"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/starRank">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/starRank/stars"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/starRank/ofStars"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/view"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/thumbsUp"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/thumbsDown"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getThumbsUp"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getThumbsDown"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getThumbsUpCount"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getThumbsDownCount"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getThumbsCount"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getViewsCount"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getStarRanking"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/extend">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/extend/metaInformation"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getWebAccounts"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getWebSites"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getPhones"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getLocations"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getEmails"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getInstantMessengers"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/addEmailAddress">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/addEmailAddress/emailAdress"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/addWebSite">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/addWebSite/url"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getInformationObjectsWithCommonTags"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/addWebAccount">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/addWebAccount/username"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/hasImages"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getInformationObjectsConnectedTo"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getInformationObjectsConnectedFrom"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getInformationObjectsConnected"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/connectTo">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/connectTo/informationObject"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/connectToWithMetaTag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/connectToWithMetaTag/informationObject"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/connectToWithMetaTag/metaTag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getInformationObjectsConnectedToWithMetaTag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getInformationObjectsConnectedToWithMetaTag/metaTag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getInformationObjectsConnectedFromWithMetaTag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getInformationObjectsConnectedFromWithMetaTag/metaTag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getInformationObjectsConnectedWithMetaTag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getInformationObjectsConnectedWithMetaTag/metaTag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getConnectionsFrom">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getConnectionsFrom/informationObject"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getConnectionsTo">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getConnectionsTo/informationObject"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/connectToWithValueAndMetaTag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/connectToWithValueAndMetaTag/informationObject"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/connectToWithValueAndMetaTag/value"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/connectToWithValueAndMetaTag/metaTag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getConnectionTo">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getConnectionTo/informationObject"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getConnectionTo/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getConnectionFrom">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getConnectionFrom/informationObject"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getConnectionFrom/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachmentWithUrl">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getAttachmentWithUrl/url"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachedImageWithUrl">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getAttachedImageWithUrl/url"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Content">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/contents"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/contributors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/author"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/documents"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/parentContent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Content/locale"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/transformations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/videos"/>
+      <genOperations ecoreOperation="data.ecore#//Content/getOrganisations"/>
+      <genOperations ecoreOperation="data.ecore#//Content/getPersons"/>
+      <genOperations ecoreOperation="data.ecore#//Content/comment">
+        <genParameters ecoreParameter="data.ecore#//Content/comment/comment"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Content/addContributor">
+        <genParameters ecoreParameter="data.ecore#//Content/addContributor/contributor"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Content/attachDocument">
+        <genParameters ecoreParameter="data.ecore#//Content/attachDocument/fileUrl"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//DataSet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference data.ecore#//DataSet/items"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/cacheFolder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/cacheFileAttachements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//DataSet/setUp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/lastModified"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/logLevel"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/add">
+        <genParameters ecoreParameter="data.ecore#//DataSet/add/item"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsWithStringValue">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsWithStringValue/stringValue"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonsWithName">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonsWithName/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonsWithLastname">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonsWithLastname/lastname"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonsWithFirstName">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonsWithFirstName/firstname"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getTag">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getTag/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getMetaTag">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getMetaTag/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAllPersons"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAllContents"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAllOrganisations"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAllCategories"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getCategory">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getCategory/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAllTags"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsModifiedSince">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsModifiedSince/date"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAllMetaTags"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAllConnections"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/log">
+        <genParameters ecoreParameter="data.ecore#//DataSet/log/message"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/log.1">
+        <genParameters ecoreParameter="data.ecore#//DataSet/log.1/message"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/log.1/level"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContentWithIdent">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentWithIdent/ident"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonWithIdent">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonWithIdent/ident"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisationWithIdent">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationWithIdent/ident"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAttachmentWithIdent">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getAttachmentWithIdent/ident"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjectsWithAllCategories">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getInformationObjectsWithAllCategories/categories"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjectsWithOneOfCategories">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getInformationObjectsWithOneOfCategories/categories"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContentsWithAllCategories">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentsWithAllCategories/categories"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContentsWithOneOfCategories">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentsWithOneOfCategories/categories"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonsWithAllCategories">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonsWithAllCategories/categories"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonsWithOneOfCategories">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonsWithOneOfCategories/categories"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisationsWithAllCategories">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationsWithAllCategories/categories"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisationsWithOneOfCategories">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationsWithOneOfCategories/categories"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjectsWithAllTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getInformationObjectsWithAllTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjectsWithOneOfTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getInformationObjectsWithOneOfTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisationsWithAllTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationsWithAllTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisationsWithOneOfTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationsWithOneOfTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonsWithAllTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonsWithAllTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonsWithOneOfTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonsWithOneOfTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContentsWithAllTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentsWithAllTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContentsWithOneOfTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentsWithOneOfTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContentsWithName">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentsWithName/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisationsWithName">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationsWithName/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsWithAllMetaTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsWithAllMetaTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsWithOneOfMetaTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsWithOneOfMetaTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersons"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisations"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContents"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjects"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getTags"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getMetaTags"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAttachments"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getBinaries"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getCategories"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getClassifications"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getConnections"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getDocuments"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getEmails"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getExtensions"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getImages"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInstantMessengers"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getLocations"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getMetaInformations"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPhones"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getRankings"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getStarRankings"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getThumbRankings"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getTransformations"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getVideos"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getViewRankings"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getWebAccounts"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getWebSites"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjectsWithAllMetaTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getInformationObjectsWithAllMetaTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjectsWithOneOfMetaTags">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getInformationObjectsWithOneOfMetaTags/tags"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getIdentifiers"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getIdentifiersWithKey">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getIdentifiersWithKey/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getIdentifierWithKeyValue">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getIdentifierWithKeyValue/key"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getIdentifierWithKeyValue/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemWithIdentifier">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemWithIdentifier/key"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemWithIdentifier/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonWithIdentifier">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonWithIdentifier/key"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonWithIdentifier/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContentWithIdentifier">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentWithIdentifier/key"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentWithIdentifier/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisationWithIdentifier">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationWithIdentifier/key"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationWithIdentifier/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getLocationWithIdentifier">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getLocationWithIdentifier/key"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getLocationWithIdentifier/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getIndoorLocationWithIdentifier">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getIndoorLocationWithIdentifier/key"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getIndoorLocationWithIdentifier/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getImageWithIdentifier">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getImageWithIdentifier/key"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getImageWithIdentifier/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getEmptyItemWithIdent">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getEmptyItemWithIdent/ident"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getTagsWithMoreThanXInformationObjects">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getTagsWithMoreThanXInformationObjects/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsCreatedSince">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsCreatedSince/date"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/searchItems">
+        <genParameters ecoreParameter="data.ecore#//DataSet/searchItems/term"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/searchInformationObjects">
+        <genParameters ecoreParameter="data.ecore#//DataSet/searchInformationObjects/term"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjectsWithAttachment">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getInformationObjectsWithAttachment/attachment"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getPersonsWithAttachment">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getPersonsWithAttachment/attachment"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getOrganisationsWithAttachment">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getOrganisationsWithAttachment/attachment"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getContentsWithAttachment">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getContentsWithAttachment/attachment"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getEqualItem">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getEqualItem/item"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/hasEqualItem">
+        <genParameters ecoreParameter="data.ecore#//DataSet/hasEqualItem/item"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsWithIdent">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsWithIdent/ident"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getAttachmentsWithCachedFileName">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getAttachmentsWithCachedFileName/cachedFileName"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getEventsAfter">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getEventsAfter/date"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getEventsBefore">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getEventsBefore/date"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getEventsBetweenDates">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getEventsBetweenDates/after"/>
+        <genParameters ecoreParameter="data.ecore#//DataSet/getEventsBetweenDates/before"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getSpicynodesRepresentation"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getConnectionsBetweenInformationObjectsOfDifferentCategories"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Item">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference data.ecore#//Item/dataSet"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/ident"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/uri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/stringValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/lastModified"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/created"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/metaTags"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/identifiedBy"/>
+      <genOperations ecoreOperation="data.ecore#//Item/toAttributeMapString"/>
+      <genOperations ecoreOperation="data.ecore#//Item/log">
+        <genParameters ecoreParameter="data.ecore#//Item/log/message"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/log.1">
+        <genParameters ecoreParameter="data.ecore#//Item/log.1/message"/>
+        <genParameters ecoreParameter="data.ecore#//Item/log.1/level"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/metaTag">
+        <genParameters ecoreParameter="data.ecore#//Item/metaTag/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/identifyBy">
+        <genParameters ecoreParameter="data.ecore#//Item/identifyBy/key"/>
+        <genParameters ecoreParameter="data.ecore#//Item/identifyBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/getIdentifier">
+        <genParameters ecoreParameter="data.ecore#//Item/getIdentifier/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/hasMetaTag">
+        <genParameters ecoreParameter="data.ecore#//Item/hasMetaTag/tag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/matchesSearch">
+        <genParameters ecoreParameter="data.ecore#//Item/matchesSearch/term"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/delete"/>
+      <genOperations ecoreOperation="data.ecore#//Item/isEqualItem">
+        <genParameters ecoreParameter="data.ecore#//Item/isEqualItem/item"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/getCreatedPrettyInLanguage">
+        <genParameters ecoreParameter="data.ecore#//Item/getCreatedPrettyInLanguage/language"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/getCreatedPretty"/>
+      <genOperations ecoreOperation="data.ecore#//Item/getLastModifiedPrettyInLanguage">
+        <genParameters ecoreParameter="data.ecore#//Item/getLastModifiedPrettyInLanguage/language"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/getLastModifiedPretty"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Extension">
+      <genOperations ecoreOperation="data.ecore#//Extension/tag">
+        <genParameters ecoreParameter="data.ecore#//Extension/tag/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Classification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Classification/name"/>
+      <genOperations ecoreOperation="data.ecore#//Classification/getPersons"/>
+      <genOperations ecoreOperation="data.ecore#//Classification/getContents"/>
+      <genOperations ecoreOperation="data.ecore#//Classification/getOrganisations"/>
+      <genOperations ecoreOperation="data.ecore#//Classification/getCount"/>
+      <genOperations ecoreOperation="data.ecore#//Classification/getPersonsCount"/>
+      <genOperations ecoreOperation="data.ecore#//Classification/getContentsCount"/>
+      <genOperations ecoreOperation="data.ecore#//Classification/getOrganisationsCount"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Category">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Category/categorized"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Category/parentCategory"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Category/categories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Category/mainCategorized"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Tag">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Tag/tagged"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Organisation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/parentOrganisation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/leader"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/participants"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/phones"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/emails"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/webAccounts"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/locations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/organisations"/>
+      <genOperations ecoreOperation="data.ecore#//Organisation/getPersons"/>
+      <genOperations ecoreOperation="data.ecore#//Organisation/getContents"/>
+      <genOperations ecoreOperation="data.ecore#//Organisation/addParticipant">
+        <genParameters ecoreParameter="data.ecore#//Organisation/addParticipant/participant"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//MetaTag">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//MetaTag/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//MetaTag/metaTagged"/>
+      <genOperations ecoreOperation="data.ecore#//MetaTag/getWebAccounts"/>
+      <genOperations ecoreOperation="data.ecore#//MetaTag/getInformationObjects"/>
+      <genOperations ecoreOperation="data.ecore#//MetaTag/getExtensions"/>
+      <genOperations ecoreOperation="data.ecore#//MetaTag/getCount"/>
+      <genOperations ecoreOperation="data.ecore#//MetaTag/getInformationObjectsCount"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Phone">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Phone/areaCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Phone/countryCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Phone/number"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//InstantMessenger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//InstantMessenger/username"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Email">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Email/adress"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//WebAccount">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//WebAccount/username"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//WebSite">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//WebSite/adress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//WebSite/title"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Ranking">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Ranking/date"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Ranking/ranker"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Attachment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/fileUrl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/cachedFileUrl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/cachedOnly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/fileExtension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/fileIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/cachedFileName"/>
+      <genOperations ecoreOperation="data.ecore#//Attachment/getOriginalFileUrl"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/street"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/houseNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/zipCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/country"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/longitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/latitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/city"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Location/indoorLocations"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Image"/>
+    <genClasses ecoreClass="data.ecore#//Document"/>
+    <genClasses ecoreClass="data.ecore#//StarRanking">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//StarRanking/rankedInformationObject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//StarRanking/normalizedValue"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//ViewRanking">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//ViewRanking/rankedInformationObject"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//ThumbRanking">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//ThumbRanking/rankedInformationObject"/>
+      <genOperations ecoreOperation="data.ecore#//ThumbRanking/isThumbUp"/>
+      <genOperations ecoreOperation="data.ecore#//ThumbRanking/isThumbDown"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Transformation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Transformation/transformed"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Video"/>
+    <genClasses ecoreClass="data.ecore#//Connection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Connection/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Connection/to"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Binary">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Binary/bytes"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//MetaInformation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//MetaInformation/informationObjects"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//IndoorLocation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//IndoorLocation/location"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//IndoorLocation/parentIndoorLocation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//IndoorLocation/indoorLocations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//IndoorLocation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Identifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Identifier/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Identifier/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Identifier/identified"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Event/date"/>
+      <genOperations ecoreOperation="data.ecore#//Event/getDatePrettyInLanguage">
+        <genParameters ecoreParameter="data.ecore#//Event/getDatePrettyInLanguage/language"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Event/getDatePretty"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Application" basePackage="org.sociotech.communitymashup" disposableProviderFactory="true"
+      ecorePackage="application.ecore#/">
+    <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+      <genAnnotations source="application.xsd"/>
+    </genAnnotations>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="application.ecore#//SourceState">
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceState/Active"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceState/Paused"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceState/Error"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceState/Stoped"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="application.ecore#//SourceActiveStates">
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceActiveStates/Initializing"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceActiveStates/Initialized"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceActiveStates/Filling"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceActiveStates/Filled"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceActiveStates/WaitingForUpdate"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceActiveStates/Updating"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceActiveStates/Enriching"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//SourceActiveStates/Unknown"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="application.ecore#//PropertyTypes">
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//PropertyTypes/String"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//PropertyTypes/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//PropertyTypes/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//PropertyTypes/Date"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//PropertyTypes/Authorization"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//PropertyTypes/UploadZipFile"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//PropertyTypes/UploadFile"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//PropertyTypes/Boolean"/>
+    </genEnums>
+    <genClasses ecoreClass="application.ecore#//Source">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Source/persistency"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Source/dataSet"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/bundleId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/useModificationAdapter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/activeState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/logLevel"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference application.ecore#//Source/mashup"/>
+      <genOperations ecoreOperation="application.ecore#//Source/getLogLevelIntValue"/>
+      <genOperations ecoreOperation="application.ecore#//Source/start"/>
+      <genOperations ecoreOperation="application.ecore#//Source/stop"/>
+      <genOperations ecoreOperation="application.ecore#//Source/pause"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//Mashup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Mashup/mappingRules"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Mashup/sources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Mashup/interfaces"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Mashup/mashupAdmins"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/workingDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/cacheAttachments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/cacheDataSet"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/backupDataSet"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/backupIntervall"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//MappingRule"/>
+    <genClasses ecoreClass="application.ecore#//Configuration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Configuration/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//Persistency"/>
+    <genClasses ecoreClass="application.ecore#//XMLFile"/>
+    <genClasses ecoreClass="application.ecore#//Database"/>
+    <genClasses ecoreClass="application.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Property/Key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Property/Value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Property/hidden"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Property/changeable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Property/possibleValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Property/helpText"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Property/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Property/propertyType"/>
+      <genOperations ecoreOperation="application.ecore#//Property/isValueList"/>
+      <genOperations ecoreOperation="application.ecore#//Property/isValueRange"/>
+      <genOperations ecoreOperation="application.ecore#//Property/getListOfValues"/>
+      <genOperations ecoreOperation="application.ecore#//Property/getMinValue"/>
+      <genOperations ecoreOperation="application.ecore#//Property/getMaxValue"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//OCLRestrictedProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OCLRestrictedProperty/OCLRestriction"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//MashupContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/mashups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/allMashupAdmins"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupContainer/backupConfiguration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupContainer/backupIntervall"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/defaultMashups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/sourceConfigurations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/interfaceConfigurations"/>
+      <genOperations ecoreOperation="application.ecore#//MashupContainer/getConfigurationAdmins"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//Interface">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Interface/security"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Interface/urlSuffix"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference application.ecore#//Interface/mashup"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//RESTInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//RESTInterface/type"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//FEEDInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/allowPersonFiltering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/allowOrganisationFiltering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/allowTypeFiltering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/allowTagFiltering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/allowMetaTagFiltering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/allowCategoryFiltering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/feedType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//FEEDInterface/feedTitle"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="application.ecore#//Security">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference application.ecore#//Security/interface"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//OAuthConfig">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//OAuthConfig/clients"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//OAuthConfig/admins"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthConfig/useScopeInterfaceOnRedirect"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//ApplicationKeyConfig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//ApplicationKeyConfig/applicationKeys"/>
+      <genOperations ecoreOperation="application.ecore#//ApplicationKeyConfig/hasApplicationKey">
+        <genParameters ecoreParameter="application.ecore#//ApplicationKeyConfig/hasApplicationKey/applicationKey"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//OAuthClientConfig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/redirectionURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/clientID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/clientSecret"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/grantType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/refreshToken"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/accessToken"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/accessTokenCreationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/accessTokenExpirationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/forbiddenMetaTags"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/allowedMetaTags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//OAuthClientConfig/clientScope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientConfig/oAuthScopeLevel"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//OAuthAdmin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthAdmin/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthAdmin/passwordHash"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//OAuthClientScope">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/positiveTag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/negativeTag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/positiveMetaTag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/negativeMetaTag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/positiveCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/negativeCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/positivePerson"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/negativePerson"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/positiveOrganisation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/negativeOrganisation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/identSpecification"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/allowPersons"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/allowContents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/allowOrganisations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//OAuthClientScope/maximumAge"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//MashupAdmin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupAdmin/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupAdmin/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//MashupAdmin/configurableMashups"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupAdmin/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupAdmin/localIdent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupAdmin/isConfigurationAdmin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupAdmin/profileImage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupAdmin/email"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="application.ecore#//ConfigurableElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//ConfigurableElement/configuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//ConfigurableElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//ConfigurableElement/configurationImage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//ConfigurableElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//ConfigurableElement/changeable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//ConfigurableElement/hidden"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//ConfigurableElement/ident"/>
+      <genOperations ecoreOperation="application.ecore#//ConfigurableElement/getProperty">
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/getProperty/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="application.ecore#//ConfigurableElement/addProperty">
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/addProperty/key"/>
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/addProperty/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="application.ecore#//ConfigurableElement/addProperty.1">
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/addProperty.1/property"/>
+      </genOperations>
+      <genOperations ecoreOperation="application.ecore#//ConfigurableElement/getPropertyValue">
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/getPropertyValue/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="application.ecore#//ConfigurableElement/isPropertyTrue">
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/isPropertyTrue/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="application.ecore#//ConfigurableElement/getPropertyValueElseDefault">
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/getPropertyValueElseDefault/key"/>
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/getPropertyValueElseDefault/defaultValue"/>
+      </genOperations>
+      <genOperations ecoreOperation="application.ecore#//ConfigurableElement/isPropertyTrueElseDefault">
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/isPropertyTrueElseDefault/key"/>
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/isPropertyTrueElseDefault/defaultValue"/>
+      </genOperations>
+      <genOperations ecoreOperation="application.ecore#//ConfigurableElement/removeProperty">
+        <genParameters ecoreParameter="application.ecore#//ConfigurableElement/removeProperty/key"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
