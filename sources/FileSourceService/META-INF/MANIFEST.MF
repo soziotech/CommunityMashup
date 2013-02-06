@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FileSourceService
+Bundle-SymbolicName: org.sociotech.communitymashup.source.FileSourceService
+Bundle-Version: 0.0.1
+Bundle-Activator: org.sociotech.communitymashup.source.file.FileSourceBundleActivator
+Bundle-Vendor: org.sociotech.communitymashup
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.ecore.xmi.impl,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.service.log;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1",
+ org.sociotech.communitymashup.source.SourceServiceFacade;bundle-version="0.0.1"
