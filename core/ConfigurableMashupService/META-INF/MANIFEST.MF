@@ -15,5 +15,7 @@ Import-Package: org.osgi.framework;version="1.3.0",
 Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1",
  org.sociotech.communitymashup.mashup.MashupServiceFacade;bundle-version="0.0.1",
  org.sociotech.communitymashup.source.SourceServiceFacade;bundle-version="0.0.1",
- org.sociotech.communitymashup.interfaceprovider.InterfaceServiceFacade;bundle-version="0.0.1"
+ org.sociotech.communitymashup.interfaceprovider.InterfaceServiceFacade;bundle-version="0.0.1",
+ org.eclipse.equinox.console;bundle-version="1.0.0";resolution:=optional,
+ org.apache.felix.gogo.shell;bundle-version="0.8.0";resolution:=optional
 Bundle-Vendor: org.sociotech.communitymashup
