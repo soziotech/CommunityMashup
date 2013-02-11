@@ -23,7 +23,7 @@ import org.sociotech.communitymashup.mashup.instantiation.facade.MashupInstantia
  * @author Peter Lachenmaier
  *
  */
-public class MashupInstantiationServiceTracker extends ServiceTracker {
+public class MashupInstantiationServiceTracker extends ServiceTracker<MashupInstantiationFacade, MashupInstantiationFacade> {
 
 		/**
 		 * The mashup factory that needs the instantiation service.
@@ -45,17 +45,12 @@ public class MashupInstantiationServiceTracker extends ServiceTracker {
 		 * @see org.osgi.util.tracker.ServiceTracker#addingService(org.osgi.framework.ServiceReference)
 		 */
 		@Override
-		public Object addingService(ServiceReference reference) {
+		public MashupInstantiationFacade addingService(ServiceReference<MashupInstantiationFacade> reference) {
 			
-			Object service = context.getService(reference);
+			MashupInstantiationFacade service = context.getService(reference);
 			
-			if(service instanceof MashupInstantiationFacade)
-			{
-				// there should only be a mashup instantiation service but be nice in case of misconfiguration
-				
-				// set the instantiation service
-				this.mashupFactory.setMashupInstantiationService((MashupInstantiationFacade) service);
-			}
+			// set the instantiation service
+			this.mashupFactory.setMashupInstantiationService((MashupInstantiationFacade) service);
 			
 			return service;
 		}		
@@ -64,13 +59,10 @@ public class MashupInstantiationServiceTracker extends ServiceTracker {
 		 * @see org.osgi.util.tracker.ServiceTracker#removedService(org.osgi.framework.ServiceReference, java.lang.Object)
 		 */
 		@Override
-		public void removedService(ServiceReference reference, Object service) {
+		public void removedService(ServiceReference<MashupInstantiationFacade> reference, MashupInstantiationFacade service) {
 			
-			if(service instanceof MashupInstantiationFacade)
-			{
-				// there should only be a mashup instantiation service but be nice in case of misconfiguration
-				this.mashupFactory.unsetInstantiationService();
-			}
+			// there should only be a mashup instantiation service but be nice in case of misconfiguration
+			this.mashupFactory.unsetInstantiationService();
 			
 			super.removedService(reference, service);
 		}
