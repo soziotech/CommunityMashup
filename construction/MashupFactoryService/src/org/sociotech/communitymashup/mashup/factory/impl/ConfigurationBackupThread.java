@@ -53,7 +53,6 @@ public class ConfigurationBackupThread extends Thread {
 			
 			// backup the configuration
 			mashupFactory.backupConfiguration();
-			
 		}
 	}
 
@@ -63,7 +62,10 @@ public class ConfigurationBackupThread extends Thread {
 	@Override
 	public synchronized void start() {
 		this.active = true;
-		super.start();
+		if(!this.isAlive() || this.isInterrupted())
+		{
+			super.start();
+		}
 	}
 
 	/**

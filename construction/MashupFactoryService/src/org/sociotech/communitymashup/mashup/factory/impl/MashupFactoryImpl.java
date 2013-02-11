@@ -13,6 +13,8 @@ package org.sociotech.communitymashup.mashup.factory.impl;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.application.ApplicationFactory;
@@ -98,6 +101,11 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	private boolean shouldSave = false;
 	
 	/**
+	 * Indicates if configuration changes should be saved immediately instead of in the backup task
+	 */
+	private boolean saveImmediately = false;
+	
+	/**
 	 * Time interval for backing up configuration
 	 */
 	long backupInterval = 0; 
@@ -108,10 +116,13 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	private ContainerChangeObserver containerChangeObserver;
 
 	/**
-	 * This indicates that there is a pending change that could be backuped.
+	 * Reference to the backup thread.
 	 */
-	private boolean couldBackup;
-	
+	private ConfigurationBackupThread backupThread;
+
+	private String configurationFileName;
+
+	private Resource configurationResource;
 	
 	/**
 	 * Creates a new mashup factory.
@@ -121,7 +132,7 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		openMashups 	= new LinkedList<Mashup>();
 		producedMashups = new HashMap<Mashup, MashupServiceFacade>();
 		
-		// load configuration from bundled configuration file if available
+		// load configuration from bundled or external configuration file if available
 		loadConfigurationIfAvailable();	
 	}
 	
@@ -145,12 +156,9 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 			
 			// working directory is valid, so we can save
 			canSave = true;
-			// set should save to true
-			// TODO this should be defined in configuration
-			shouldSave = true;
 		}
 		
-		String configurationFileName = System.getProperty("org.sociotech.communitymashup.configuration.file");
+		configurationFileName = System.getProperty("org.sociotech.communitymashup.configuration.file");
 		
 		// check if a configuration was set as system property
 		if(configurationFileName == null)
@@ -435,6 +443,10 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		// save this configuration as local mashup container
 		mashupContainer = mashupConfigurations;
 		
+		// interpret the container attributes
+		interpretContainerAttributes();
+		
+		// create observer to react on configuration changes
 		containerChangeObserver = new ContainerChangeObserver(mashupContainer, this);
 		
 		// get all mashup configurations
@@ -455,6 +467,54 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		// return all produced
 		return producedMashups;
 	}
+
+
+	/**
+	 * Interprets the attributes of the set mashup container
+	 */
+	private void interpretContainerAttributes() {
+		
+		// interpret attributes
+		this.shouldSave 	 = mashupContainer.getBackupConfiguration();
+		this.backupInterval  = mashupContainer.getBackupIntervall();
+		this.saveImmediately = mashupContainer.getImmediateSave();
+		
+		// transform s to ms
+		this.backupInterval *= 1000;
+		
+		if(this.shouldSave && this.canSave)
+		{
+			createBackupThread();
+		}
+		else if(backupThread != null)
+		{
+			// stop thread
+			backupThread.interrupt();
+			backupThread = null;
+		}
+	}
+
+	/**
+	 * Creates and starts a thread to create backups in a configured time interval
+	 */
+	private void createBackupThread() {
+		
+		if(this.backupThread == null)
+		{
+			// create thread
+			this.backupThread = new ConfigurationBackupThread(this);
+		}
+		
+		// set backup interval
+		this.backupThread.setBackupInterval(this.backupInterval);
+		
+		if(this.canSave && this.shouldSave)
+		{
+			// start thread
+			this.backupThread.start();
+		}
+	}
+
 
 	/**
 	 * Sets a reference to a mashup instantiation service which will be used for the creation of mashups.
@@ -527,7 +587,7 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
         // Register XML resource factory
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml",  new XMLResourceFactoryImpl());
 
-        Resource resource = resourceSet.createResource(configurationURI);
+        configurationResource = resourceSet.createResource(configurationURI);
 		
 		// register package in local resource registry
         String nsURI = ApplicationPackage.eINSTANCE.getNsURI();
@@ -536,7 +596,7 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		// load resource 
 		try 
 		{
-			resource.load(null);
+			configurationResource.load(null);
 		} 
 		catch (IOException e)
 		{
@@ -544,7 +604,7 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 			log("No valid configuration available at: " + configurationURI, LogService.LOG_ERROR);
 		}
 		
-		TreeIterator<EObject> dataIterator = resource.getAllContents();
+		TreeIterator<EObject> dataIterator = configurationResource.getAllContents();
 		
 		// Mashup application XML need to contain exactly one mashup container or one mashup 
 		if(dataIterator.hasNext())
@@ -604,6 +664,12 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		
 		// disconnect observer
 		containerChangeObserver.disconnect();
+		
+		// save configuration
+		if(this.canSave && this.needSave)
+		{
+			saveConfiguration(null);
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -613,13 +679,25 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	public void configurationChanged(Notification notification) {
 		log("Got configuration change notification " + notification, LogService.LOG_DEBUG);
 		
+		Object notifier = notification.getNotifier();
+		
 		// TODO handle new or deleted mashups
 		
-		// TODO handle changes to container attributes 
+		// handle changes to container attributes 
+		if(notifier instanceof MashupContainer && notifier == this.mashupContainer)
+		{
+			// change to container attributes -> interpret it
+			interpretContainerAttributes();	
+		}
 		
 		// configuration changed so we can save something
 		this.needSave = true;
-		this.couldBackup = true;
+		
+		if(saveImmediately && this.canSave)
+		{
+			// directly save the change
+			saveConfiguration(null);
+		}
 	}
 
 
@@ -628,14 +706,91 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	 */
 	public void backupConfiguration() {
 		
-		if(!couldBackup)
+		if(!needSave || !this.canSave || !this.shouldSave)
 		{
 			// nothing changed
 			return;
 		}
 		
 		log("Creating backup of configuration", LogService.LOG_DEBUG);
-		// TODO save backup
 		
+		Date now = new Date();
+		SimpleDateFormat suffix = new SimpleDateFormat("_yyyyMMddHHmmssZ");
+		// create file name with date as suffix
+		String backupFileName = configurationFileName.replace(".xml", suffix.format(now) + ".xml");
+		
+		// save backup
+		saveConfiguration(configurationBackupDirectory + fileSeparator + backupFileName);
+		
+		// save configuration
+		saveConfiguration(null);
+	}
+
+
+	/**
+	 * Saves the configuration at the given path. If path is null the original loaded resource
+	 * will be saved.
+	 * 
+	 * @param configurationPath Path where the configuration will be saved
+	 */
+	private void saveConfiguration(String configurationPath) {
+		String savePath = configurationPath;
+		
+		if(savePath == null && configurationResource != null)
+		{
+			log("Saving configuration.", LogService.LOG_DEBUG);
+			try {
+				configurationResource.save(null);
+			} catch (IOException e) {
+				log("Could not save configuration due to exception (" + e.getMessage() + ")", LogService.LOG_WARNING);
+				return;
+			}
+		}
+		else
+		{
+			// create resource set and resource 
+	        ResourceSet resourceSet = new ResourceSetImpl();
+
+	        // Register XML resource factory
+	        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml",  new XMLResourceFactoryImpl());
+
+	        // configuration directory set, so create URI for external configuration file
+ 			File configurationFile = new File(configurationPath);
+ 			
+ 			if(configurationFile.exists())
+ 			{
+ 				log("Configuration file already exist, could not backup.", LogService.LOG_WARNING);
+ 				return;
+ 			}
+ 			
+ 			URI configurationURI;
+ 			
+ 			try
+ 			{
+ 				configurationURI = URI.createFileURI(configurationFile.getAbsolutePath());
+ 			}
+ 			catch (Exception e) {
+ 				log("Could not load external configuration from " + configurationFile.getAbsolutePath(), LogService.LOG_ERROR);
+ 				return;
+ 			}
+	        Resource saveResource = resourceSet.createResource(configurationURI);
+			
+			// register package in local resource registry
+	        String nsURI = ApplicationPackage.eINSTANCE.getNsURI();
+			resourceSet.getPackageRegistry().put(nsURI, ApplicationPackage.eINSTANCE);
+			
+			// add configuration copy to resource
+			saveResource.getContents().add(EcoreUtil.copy(mashupContainer));
+			
+			// save resource
+			try {
+				saveResource.save(null);
+			} catch (IOException e) {
+				log("Could not save configuration to " + configurationPath + " due to exception (" + e.getMessage() + ")", LogService.LOG_WARNING);
+				return;
+			}
+			
+			log("Saved configuration to " + configurationPath, LogService.LOG_DEBUG);
+		}
 	}
 }
