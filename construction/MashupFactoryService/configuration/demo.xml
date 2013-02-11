@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:MashupContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:application="http://application.cscm.communitymashup.de">
-	<mashups name="GangWayMirror">
+	<mashups name="DemoMashup" logLevel="ERROR">
 		<configuration>
 			<properties Key="updateIntervall" Value="60000" />
 		</configuration>
