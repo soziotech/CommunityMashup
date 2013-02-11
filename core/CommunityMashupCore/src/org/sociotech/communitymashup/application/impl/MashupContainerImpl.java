@@ -70,6 +70,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getDefaultMashups <em>Default Mashups</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getSourceConfigurations <em>Source Configurations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getInterfaceConfigurations <em>Interface Configurations</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getImmediateSave <em>Immediate Save</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,7 +129,7 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer BACKUP_INTERVALL_EDEFAULT = new Integer(60);
+	protected static final Integer BACKUP_INTERVALL_EDEFAULT = new Integer(600);
 	/**
 	 * The cached value of the '{@link #getBackupIntervall() <em>Backup Intervall</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -166,6 +167,25 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 	 * @ordered
 	 */
 	protected EList<Interface> interfaceConfigurations;
+
+	/**
+	 * The default value of the '{@link #getImmediateSave() <em>Immediate Save</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImmediateSave()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean IMMEDIATE_SAVE_EDEFAULT = Boolean.FALSE;
+	/**
+	 * The cached value of the '{@link #getImmediateSave() <em>Immediate Save</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImmediateSave()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean immediateSave = IMMEDIATE_SAVE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -291,6 +311,27 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getImmediateSave() {
+		return immediateSave;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImmediateSave(Boolean newImmediateSave) {
+		Boolean oldImmediateSave = immediateSave;
+		immediateSave = newImmediateSave;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE, oldImmediateSave, immediateSave));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public EList<MashupAdmin> getConfigurationAdmins() {
 		EList<MashupAdmin> configurationAdmins = new BasicEList<MashupAdmin>();
@@ -352,6 +393,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 				return getSourceConfigurations();
 			case ApplicationPackage.MASHUP_CONTAINER__INTERFACE_CONFIGURATIONS:
 				return getInterfaceConfigurations();
+			case ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE:
+				return getImmediateSave();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -391,6 +434,9 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 				getInterfaceConfigurations().clear();
 				getInterfaceConfigurations().addAll((Collection<? extends Interface>)newValue);
 				return;
+			case ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE:
+				setImmediateSave((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -424,6 +470,9 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 			case ApplicationPackage.MASHUP_CONTAINER__INTERFACE_CONFIGURATIONS:
 				getInterfaceConfigurations().clear();
 				return;
+			case ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE:
+				setImmediateSave(IMMEDIATE_SAVE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -450,6 +499,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 				return sourceConfigurations != null && !sourceConfigurations.isEmpty();
 			case ApplicationPackage.MASHUP_CONTAINER__INTERFACE_CONFIGURATIONS:
 				return interfaceConfigurations != null && !interfaceConfigurations.isEmpty();
+			case ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE:
+				return IMMEDIATE_SAVE_EDEFAULT == null ? immediateSave != null : !IMMEDIATE_SAVE_EDEFAULT.equals(immediateSave);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -469,6 +520,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 		result.append(backupConfiguration);
 		result.append(", backupIntervall: ");
 		result.append(backupIntervall);
+		result.append(", immediateSave: ");
+		result.append(immediateSave);
 		result.append(')');
 		return result.toString();
 	}
@@ -507,6 +560,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 			return this.getSourceConfigurations();		
 		if ( featureName.equalsIgnoreCase("interfaceConfigurations") )
 			return this.getInterfaceConfigurations();		
+		if ( featureName.equalsIgnoreCase("immediateSave") )
+			return this.getImmediateSave();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 	
@@ -548,6 +603,20 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 					throw new WrongArgException("MashupContainer.setFeature", "java.lang.Integer",value.getClass().getName());
 				}
 				this.setBackupIntervall(fbackupIntervall);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("immediateSave") ) {
+				java.lang.Boolean fimmediateSave = null;
+				try {
+					try {
+						fimmediateSave = (java.lang.Boolean)(RestUtil.fromInput(value));
+					} catch (ClassNotFoundException e) {
+						fimmediateSave = (java.lang.Boolean)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("MashupContainer.setFeature", "java.lang.Boolean",value.getClass().getName());
+				}
+				this.setImmediateSave(fimmediateSave);
 			return this;
 			}		
 	throw new UnknownOperationException(this, new RestCommand("set" + featureName).addArg("value",value));

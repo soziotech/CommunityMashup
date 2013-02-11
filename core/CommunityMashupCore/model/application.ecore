@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="application"
-    nsURI="http://application.cscm.communitymashup.de" nsPrefix="application">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="application" nsURI="http://application.cscm.communitymashup.de"
+    nsPrefix="application">
   <eClassifiers xsi:type="ecore:EClass" name="Source" eSuperTypes="#//ConfigurableElement">
     <eOperations name="getLogLevelIntValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eOperations name="start"/>
@@ -81,13 +80,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="backupConfiguration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="backupIntervall" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
-        defaultValueLiteral="60"/>
+        defaultValueLiteral="600"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="defaultMashups" upperBound="-1"
         eType="#//Mashup" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceConfigurations" upperBound="-1"
         eType="#//Mashup" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceConfigurations"
         upperBound="-1" eType="#//Interface" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="immediateSave" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="#//ConfigurableElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="security" eType="#//Security"

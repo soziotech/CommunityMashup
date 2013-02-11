@@ -37,6 +37,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getDefaultMashups <em>Default Mashups</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getSourceConfigurations <em>Source Configurations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getInterfaceConfigurations <em>Interface Configurations</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getImmediateSave <em>Immediate Save</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,7 +123,7 @@ public interface MashupContainer extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Backup Intervall</b></em>' attribute.
-	 * The default value is <code>"60"</code>.
+	 * The default value is <code>"600"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Backup Intervall</em>' attribute isn't clear,
@@ -132,7 +133,7 @@ public interface MashupContainer extends EObject {
 	 * @return the value of the '<em>Backup Intervall</em>' attribute.
 	 * @see #setBackupIntervall(Integer)
 	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getMashupContainer_BackupIntervall()
-	 * @model default="60"
+	 * @model default="600"
 	 * @generated
 	 */
 	Integer getBackupIntervall();
@@ -202,6 +203,37 @@ public interface MashupContainer extends EObject {
 	 * @generated
 	 */
 	EList<Interface> getInterfaceConfigurations();
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Immediate Save</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Immediate Save</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Immediate Save</em>' attribute.
+	 * @see #setImmediateSave(Boolean)
+	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getMashupContainer_ImmediateSave()
+	 * @model default="false"
+	 * @generated
+	 */
+	Boolean getImmediateSave();
+
+
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.application.MashupContainer#getImmediateSave <em>Immediate Save</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Immediate Save</em>' attribute.
+	 * @see #getImmediateSave()
+	 * @generated
+	 */
+	void setImmediateSave(Boolean value);
 
 
 

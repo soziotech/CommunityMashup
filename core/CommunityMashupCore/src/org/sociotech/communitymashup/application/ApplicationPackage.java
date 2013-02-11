@@ -912,13 +912,22 @@ public interface ApplicationPackage extends EPackage {
 	int MASHUP_CONTAINER__INTERFACE_CONFIGURATIONS = 6;
 
 	/**
+	 * The feature id for the '<em><b>Immediate Save</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER__IMMEDIATE_SAVE = 7;
+
+	/**
 	 * The number of structural features of the '<em>Mashup Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MASHUP_CONTAINER_FEATURE_COUNT = 7;
+	int MASHUP_CONTAINER_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -2411,6 +2420,17 @@ public interface ApplicationPackage extends EPackage {
 	EReference getMashupContainer_InterfaceConfigurations();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.MashupContainer#getImmediateSave <em>Immediate Save</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Immediate Save</em>'.
+	 * @see org.sociotech.communitymashup.application.MashupContainer#getImmediateSave()
+	 * @see #getMashupContainer()
+	 * @generated
+	 */
+	EAttribute getMashupContainer_ImmediateSave();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.Interface <em>Interface</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3669,6 +3689,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MASHUP_CONTAINER__INTERFACE_CONFIGURATIONS = eINSTANCE.getMashupContainer_InterfaceConfigurations();
+
+		/**
+		 * The meta object literal for the '<em><b>Immediate Save</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MASHUP_CONTAINER__IMMEDIATE_SAVE = eINSTANCE.getMashupContainer_ImmediateSave();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.InterfaceImpl <em>Interface</em>}' class.

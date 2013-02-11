@@ -701,6 +701,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMashupContainer_ImmediateSave() {
+		return (EAttribute)mashupContainerEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInterface() {
 		return interfaceEClass;
 	}
@@ -1497,6 +1506,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(mashupContainerEClass, MASHUP_CONTAINER__DEFAULT_MASHUPS);
 		createEReference(mashupContainerEClass, MASHUP_CONTAINER__SOURCE_CONFIGURATIONS);
 		createEReference(mashupContainerEClass, MASHUP_CONTAINER__INTERFACE_CONFIGURATIONS);
+		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__IMMEDIATE_SAVE);
 
 		interfaceEClass = createEClass(INTERFACE);
 		createEReference(interfaceEClass, INTERFACE__SECURITY);
@@ -1703,10 +1713,11 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getMashupContainer_Mashups(), this.getMashup(), null, "mashups", null, 0, -1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMashupContainer_AllMashupAdmins(), this.getMashupAdmin(), null, "allMashupAdmins", null, 0, -1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashupContainer_BackupConfiguration(), ecorePackage.getEBooleanObject(), "backupConfiguration", "false", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMashupContainer_BackupIntervall(), ecorePackage.getEIntegerObject(), "backupIntervall", "60", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMashupContainer_BackupIntervall(), ecorePackage.getEIntegerObject(), "backupIntervall", "600", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMashupContainer_DefaultMashups(), this.getMashup(), null, "defaultMashups", null, 0, -1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMashupContainer_SourceConfigurations(), this.getMashup(), null, "sourceConfigurations", null, 0, -1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMashupContainer_InterfaceConfigurations(), this.getInterface(), null, "interfaceConfigurations", null, 0, -1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMashupContainer_ImmediateSave(), ecorePackage.getEBooleanObject(), "immediateSave", "false", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(mashupContainerEClass, this.getMashupAdmin(), "getConfigurationAdmins", 0, -1, IS_UNIQUE, IS_ORDERED);
 
