@@ -96,6 +96,11 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	private boolean needSave = false;
 	
 	/**
+	 * This indicates if there is a pending change that need to be backuped.
+	 */
+	private boolean needBackup;
+	
+	/**
 	 * Indicates if configuration changes should be saved. This is derived from the configuration.
 	 */
 	private boolean shouldSave = false;
@@ -120,8 +125,14 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	 */
 	private ConfigurationBackupThread backupThread;
 
+	/**
+	 * The file name used for the configuration
+	 */
 	private String configurationFileName;
 
+	/**
+	 * Reference to the loaded configuration resource
+	 */
 	private Resource configurationResource;
 	
 	/**
@@ -367,6 +378,13 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		{
 			// illegal configuration
 			return null;
+		}
+		
+		if(producedMashups.containsKey(mashupConfiguration))
+		{
+			// already produced
+			log("Already produce mashup " + mashupConfiguration, LogService.LOG_WARNING);
+			return producedMashups.get(mashupConfiguration);
 		}
 		
 		if(instantiationService == null)
@@ -681,23 +699,78 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		
 		Object notifier = notification.getNotifier();
 		
-		// TODO handle new or deleted mashups
-		
 		// handle changes to container attributes 
 		if(notifier instanceof MashupContainer && notifier == this.mashupContainer)
 		{
-			// change to container attributes -> interpret it
-			interpretContainerAttributes();	
+			// possible change to container attributes -> interpret it
+			interpretContainerAttributes();
+			
+			// handle new or deleted mashups
+			if(notification.getEventType() == Notification.ADD && 
+			   notification.getFeatureID(MashupContainer.class) == ApplicationPackage.MASHUP_CONTAINER__MASHUPS &&
+			   notification.getNewValue() instanceof Mashup)
+				
+			{
+				// new mashup added
+				log("Mashup added.", LogService.LOG_DEBUG);
+				
+				// produce the new mashup
+				produceMashup((Mashup) notification.getNewValue());
+			}
+			else if(notification.getEventType() == Notification.REMOVE && 
+					notification.getFeatureID(MashupContainer.class) == ApplicationPackage.MASHUP_CONTAINER__MASHUPS &&
+					notification.getOldValue() instanceof Mashup)
+			{
+				// mashup deleted
+				log("Mashup removed.", LogService.LOG_DEBUG);
+				
+				// destroy mashup
+				destroyMashup((Mashup) notification.getOldValue());
+			}	
 		}
 		
 		// configuration changed so we can save something
 		this.needSave = true;
+		this.needBackup = true;
 		
 		if(saveImmediately && this.canSave)
 		{
 			// directly save the change
 			saveConfiguration(null);
+			this.needSave = false;
 		}
+	}
+
+
+	/**
+	 * Stops and destroys the mashup service for the given mashup configuration.
+	 * 
+	 * @param mashupConfiguration
+	 */
+	private void destroyMashup(Mashup mashupConfiguration) {
+		if(mashupConfiguration == null)
+		{
+			return;
+		}
+		
+		MashupServiceFacade mashupService = producedMashups.get(mashupConfiguration);
+		
+		if(mashupService == null)
+		{
+			// not produced before
+			if(openMashups.contains(mashupConfiguration))
+			{
+				// dont produce in future
+				openMashups.remove(mashupConfiguration);
+			}
+			return;
+		}
+		
+		// stop the service
+		mashupService.stopMashupService();
+		
+		// remove from produced list
+		producedMashups.remove(mashupConfiguration);
 	}
 
 
@@ -706,7 +779,7 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	 */
 	public void backupConfiguration() {
 		
-		if(!needSave || !this.canSave || !this.shouldSave)
+		if(!needBackup || !this.canSave || !this.shouldSave)
 		{
 			// nothing changed
 			return;
@@ -722,8 +795,18 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		// save backup
 		saveConfiguration(configurationBackupDirectory + fileSeparator + backupFileName);
 		
-		// save configuration
-		saveConfiguration(null);
+		// backuped, so set need backup to false
+		this.needBackup = false;
+		
+		if(this.needSave)
+		{
+			// no immediate save
+			// save configuration
+			saveConfiguration(null);
+			
+			// saved, so set need save to false
+			this.needSave = false;
+		}
 	}
 
 
