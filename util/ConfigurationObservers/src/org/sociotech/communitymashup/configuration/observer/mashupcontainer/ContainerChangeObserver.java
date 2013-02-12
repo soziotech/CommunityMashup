@@ -56,17 +56,7 @@ public class ContainerChangeObserver extends ApplicationAdapterFactory {
 		this.mashupContainerToObserve = mashupContainer;
 		
 		if (mashupContainer != null && objectToNotify != null) {
-			createDeleteAdapter = new AdapterImpl() {
-				
-				public void notifyChanged(Notification notification) {
-					// the configuration changed method on changes
-					observerToNotify.configurationChanged(notification);
-					super.notifyChanged(notification);
-				}
-			};
-			// add adapter
-			mashupContainer.eAdapters().add(createDeleteAdapter);
-
+			
 			changeAdapter = new EContentAdapter() {
 				public void notifyChanged(Notification notification) {
 					// the configuration changed method on changes
