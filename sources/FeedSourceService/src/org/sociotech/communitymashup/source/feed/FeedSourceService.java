@@ -61,7 +61,7 @@ public class FeedSourceService extends SourceServiceFacadeImpl {
 			String feedUrl = source.getPropertyValue(FeedProperties.FEED_URL_PROPERTY);
 			
 			// check url property
-			initialized &= (feedUrl != null & !feedUrl.isEmpty());
+			initialized &= (feedUrl != null && !feedUrl.isEmpty());
 		}
 		
 		if(!initialized)
