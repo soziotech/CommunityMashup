@@ -587,7 +587,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 	/**
 	 * Stops this mashup service.
 	 */
-	public void stop()
+	private void stop()
 	{
 		// TODO maybe stop or pause all instantiated sources
 		// TODO stop all instantiated interfaces
@@ -782,5 +782,14 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			}
 		}
 		return directory;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.mashup.facade.MashupServiceFacade#stopMashupService()
+	 */
+	@Override
+	public void stopMashupService() {
+		this.stop();
 	}
 }

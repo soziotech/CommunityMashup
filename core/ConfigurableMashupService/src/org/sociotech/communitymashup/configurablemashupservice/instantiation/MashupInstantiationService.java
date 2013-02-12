@@ -90,7 +90,7 @@ public class MashupInstantiationService implements MashupInstantiationFacade{
 		// stop all instantiated mashup services
 		for(ConfigurableMashupService service : instantiatedMashupServices)
 		{
-			service.stop();
+			service.stopMashupService();
 		}
 	}
 
