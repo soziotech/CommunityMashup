@@ -17,6 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -31,6 +32,8 @@ import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.configurablemashupservice.instantiation.servicetrackers.InterfaceFactoryTracker;
 import org.sociotech.communitymashup.configurablemashupservice.instantiation.servicetrackers.SourceFactoryTracker;
 import org.sociotech.communitymashup.configurablemashupservice.update.UpdateThread;
+import org.sociotech.communitymashup.configuration.observer.mashup.MashupChangeObserver;
+import org.sociotech.communitymashup.configuration.observer.mashup.MashupChangedInterface;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.interfaceprovider.factory.facade.InterfaceFactoryFacade;
@@ -44,7 +47,7 @@ import org.sociotech.communitymashup.source.factory.facade.callback.Asynchronous
  * 
  * This is a configurable implementation of a mashup service. 
  */
-public class ConfigurableMashupService extends MashupServiceFacadeImpl implements AsynchronousSourceInstantiationCallback {
+public class ConfigurableMashupService extends MashupServiceFacadeImpl implements AsynchronousSourceInstantiationCallback, MashupChangedInterface {
 
 	/**
 	 * The system specific file separator 
@@ -149,6 +152,11 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 	 * Directory used as attachments cache
 	 */
 	private File attachmentsCacheDirectory = null;
+
+	/**
+	 * Reference to the observer of the mashup configuration
+	 */
+	private MashupChangeObserver mashupConfigurationObserver = null;
 	
 	/**
 	 * Default constructor that is just initializing local lists.
@@ -299,7 +307,8 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			createInterfaceService(currentInterface);
 		}
 
-		// TODO track changes of configuration
+		// track changes of configuration
+		mashupConfigurationObserver = new MashupChangeObserver(configuration, this);
 
 		return mashup;
 	}
@@ -594,6 +603,12 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 
 		// TODO cache data
 
+		// disconnect observer
+		if(mashupConfigurationObserver != null)
+		{
+			mashupConfigurationObserver.disconnect();
+		}
+		
 		// stop update thread
 		if(updateThread != null)
 		{
@@ -791,5 +806,14 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 	@Override
 	public void stopMashupService() {
 		this.stop();
+	}
+
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.configuration.observer.mashup.MashupChangedInterface#mashupConfigurationChanged(org.eclipse.emf.common.notify.Notification)
+	 */
+	@Override
+	public void mashupConfigurationChanged(Notification notification) {
+		log("Got change notification at mashup " + mashup.getName(), LogService.LOG_DEBUG);
 	}
 }
