@@ -12,7 +12,6 @@ package org.sociotech.communitymashup.configuration.observer.mashupcontainer;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sociotech.communitymashup.application.MashupContainer;
 import org.sociotech.communitymashup.application.util.ApplicationAdapterFactory;
