@@ -56,4 +56,9 @@ public interface MashupServiceFacade {
      * Unregisters the mashup service if it was previously registered with {@link #register()}.
      */
     public void unregister();
+    
+    /**
+     * Stops the mashup service. 
+     */
+    public void stopMashupService();
 }
