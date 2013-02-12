@@ -72,6 +72,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getCacheDataSet <em>Cache Data Set</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getBackupDataSet <em>Backup Data Set</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getBackupIntervall <em>Backup Intervall</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getCacheDelay <em>Cache Delay</em>}</li>
  * </ul>
  * </p>
  *
@@ -224,6 +225,26 @@ public class MashupImpl extends SourceImpl implements Mashup {
 	 * @ordered
 	 */
 	protected Integer backupIntervall = BACKUP_INTERVALL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCacheDelay() <em>Cache Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCacheDelay()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer CACHE_DELAY_EDEFAULT = new Integer(300);
+
+	/**
+	 * The cached value of the '{@link #getCacheDelay() <em>Cache Delay</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCacheDelay()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer cacheDelay = CACHE_DELAY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -402,6 +423,27 @@ public class MashupImpl extends SourceImpl implements Mashup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Integer getCacheDelay() {
+		return cacheDelay;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCacheDelay(Integer newCacheDelay) {
+		Integer oldCacheDelay = cacheDelay;
+		cacheDelay = newCacheDelay;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.MASHUP__CACHE_DELAY, oldCacheDelay, cacheDelay));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -462,6 +504,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 				return getBackupDataSet();
 			case ApplicationPackage.MASHUP__BACKUP_INTERVALL:
 				return getBackupIntervall();
+			case ApplicationPackage.MASHUP__CACHE_DELAY:
+				return getCacheDelay();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -506,6 +550,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 			case ApplicationPackage.MASHUP__BACKUP_INTERVALL:
 				setBackupIntervall((Integer)newValue);
 				return;
+			case ApplicationPackage.MASHUP__CACHE_DELAY:
+				setCacheDelay((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -545,6 +592,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 			case ApplicationPackage.MASHUP__BACKUP_INTERVALL:
 				setBackupIntervall(BACKUP_INTERVALL_EDEFAULT);
 				return;
+			case ApplicationPackage.MASHUP__CACHE_DELAY:
+				setCacheDelay(CACHE_DELAY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -575,6 +625,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 				return BACKUP_DATA_SET_EDEFAULT == null ? backupDataSet != null : !BACKUP_DATA_SET_EDEFAULT.equals(backupDataSet);
 			case ApplicationPackage.MASHUP__BACKUP_INTERVALL:
 				return BACKUP_INTERVALL_EDEFAULT == null ? backupIntervall != null : !BACKUP_INTERVALL_EDEFAULT.equals(backupIntervall);
+			case ApplicationPackage.MASHUP__CACHE_DELAY:
+				return CACHE_DELAY_EDEFAULT == null ? cacheDelay != null : !CACHE_DELAY_EDEFAULT.equals(cacheDelay);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -601,6 +653,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 		result.append(backupDataSet);
 		result.append(", backupIntervall: ");
 		result.append(backupIntervall);
+		result.append(", cacheDelay: ");
+		result.append(cacheDelay);
 		result.append(')');
 		return result.toString();
 	}
@@ -642,7 +696,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 		if ( featureName.equalsIgnoreCase("backupDataSet") )
 			return this.getBackupDataSet();		
 		if ( featureName.equalsIgnoreCase("backupIntervall") )
-			return this.getBackupIntervall();			
+			return this.getBackupIntervall();		
+		if ( featureName.equalsIgnoreCase("cacheDelay") )
+			return this.getCacheDelay();			
 		return super.getFeature(featureName); 
 	}
 	
@@ -722,6 +778,23 @@ public class MashupImpl extends SourceImpl implements Mashup {
 					throw new WrongArgException("Mashup.setFeature", "java.lang.Integer",value.getClass().getName());
 				}
 				this.setBackupIntervall(fbackupIntervall);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("cacheDelay") ) {
+				java.lang.Integer fcacheDelay = null;
+				try {
+				try {
+					fcacheDelay = RestUtil.fromIntegerString((String) value);
+					if(fcacheDelay == null) {
+						fcacheDelay = (java.lang.Integer)(RestUtil.fromInput(value));
+					}
+				} catch (ClassNotFoundException e) {
+					fcacheDelay = (java.lang.Integer)value;
+				}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Mashup.setFeature", "java.lang.Integer",value.getClass().getName());
+				}
+				this.setCacheDelay(fcacheDelay);
 			return this;
 			}			
 		super.setFeature(featureName, value);

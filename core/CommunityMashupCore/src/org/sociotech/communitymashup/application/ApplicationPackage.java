@@ -534,13 +534,22 @@ public interface ApplicationPackage extends EPackage {
 	int MASHUP__BACKUP_INTERVALL = SOURCE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Cache Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP__CACHE_DELAY = SOURCE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Mashup</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MASHUP_FEATURE_COUNT = SOURCE_FEATURE_COUNT + 9;
+	int MASHUP_FEATURE_COUNT = SOURCE_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.MappingRuleImpl <em>Mapping Rule</em>}' class.
@@ -2153,6 +2162,17 @@ public interface ApplicationPackage extends EPackage {
 	EAttribute getMashup_BackupIntervall();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.Mashup#getCacheDelay <em>Cache Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cache Delay</em>'.
+	 * @see org.sociotech.communitymashup.application.Mashup#getCacheDelay()
+	 * @see #getMashup()
+	 * @generated
+	 */
+	EAttribute getMashup_CacheDelay();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.MappingRule <em>Mapping Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3473,6 +3493,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MASHUP__BACKUP_INTERVALL = eINSTANCE.getMashup_BackupIntervall();
+
+		/**
+		 * The meta object literal for the '<em><b>Cache Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MASHUP__CACHE_DELAY = eINSTANCE.getMashup_CacheDelay();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.MappingRuleImpl <em>Mapping Rule</em>}' class.

@@ -476,6 +476,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMashup_CacheDelay() {
+		return (EAttribute)mashupEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMappingRule() {
 		return mappingRuleEClass;
 	}
@@ -1473,6 +1482,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(mashupEClass, MASHUP__CACHE_DATA_SET);
 		createEAttribute(mashupEClass, MASHUP__BACKUP_DATA_SET);
 		createEAttribute(mashupEClass, MASHUP__BACKUP_INTERVALL);
+		createEAttribute(mashupEClass, MASHUP__CACHE_DELAY);
 
 		mappingRuleEClass = createEClass(MAPPING_RULE);
 
@@ -1673,6 +1683,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getMashup_CacheDataSet(), ecorePackage.getEBooleanObject(), "cacheDataSet", "false", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashup_BackupDataSet(), ecorePackage.getEBooleanObject(), "backupDataSet", "false", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashup_BackupIntervall(), ecorePackage.getEIntegerObject(), "backupIntervall", "600", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMashup_CacheDelay(), ecorePackage.getEIntegerObject(), "cacheDelay", "300", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mappingRuleEClass, MappingRule.class, "MappingRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

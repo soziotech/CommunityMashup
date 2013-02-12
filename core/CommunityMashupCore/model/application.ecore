@@ -40,6 +40,8 @@
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="backupIntervall" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         defaultValueLiteral="600"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheDelay" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="300"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MappingRule"/>
   <eClassifiers xsi:type="ecore:EClass" name="Configuration">
