@@ -10,14 +10,13 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.configuration.observer.mashup;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sociotech.communitymashup.application.Mashup;
 import org.sociotech.communitymashup.application.util.ApplicationAdapterFactory;
 
 /**
- * Observer for changes to mashup container configurations.
+ * Observer for changes to mashup configurations.
  * 
  * @author Peter Lachenmaier
  */
@@ -39,7 +38,7 @@ public class MashupChangeObserver extends ApplicationAdapterFactory {
 	private EContentAdapter changeAdapter;
 
 	/**
-	 * Creates a new observer that observes changes on the given mashup mashup and notifies the given objectToNotify.
+	 * Creates a new observer that observes changes on the given mashup and notifies the given objectToNotify.
 	 * 
 	 * @param mashup Mashup to observe.
 	 * @param objectToNotify Object to notify on changes

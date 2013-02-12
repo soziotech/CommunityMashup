@@ -10,7 +10,6 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.configuration.observer.mashupcontainer;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sociotech.communitymashup.application.MashupContainer;
