@@ -34,11 +34,6 @@ public class ContainerChangeObserver extends ApplicationAdapterFactory {
 	private MashupContainer mashupContainerToObserve;
 
 	/**
-	 * Reference to the create delete adapter.
-	 */
-	private Adapter createDeleteAdapter;
-
-	/**
 	 * Reference to the change adapter.
 	 */
 	private EContentAdapter changeAdapter;
@@ -80,7 +75,6 @@ public class ContainerChangeObserver extends ApplicationAdapterFactory {
 		}
 		
 		// remove adapters for the mashup container
-		mashupContainerToObserve.eAdapters().remove(createDeleteAdapter);
 		mashupContainerToObserve.eAdapters().remove(changeAdapter);
 	}
 }
