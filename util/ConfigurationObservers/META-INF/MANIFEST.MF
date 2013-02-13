@@ -7,4 +7,5 @@ Bundle-Vendor: org.sociotech.communitymashup
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1"
 Export-Package: org.sociotech.communitymashup.configuration.observer.mashup,
- org.sociotech.communitymashup.configuration.observer.mashupcontainer
+ org.sociotech.communitymashup.configuration.observer.mashupcontainer,
+ org.sociotech.communitymashup.configuration.observer.source
