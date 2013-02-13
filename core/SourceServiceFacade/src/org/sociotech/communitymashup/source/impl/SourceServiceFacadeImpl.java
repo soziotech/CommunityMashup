@@ -24,11 +24,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.compare.diff.merge.service.MergeService;
-import org.eclipse.emf.compare.diff.metamodel.DiffModel;
-import org.eclipse.emf.compare.diff.service.DiffService;
-import org.eclipse.emf.compare.match.metamodel.MatchModel;
-import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -43,6 +38,8 @@ import org.sociotech.communitymashup.application.ApplicationPackage;
 import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.application.SourceActiveStates;
 import org.sociotech.communitymashup.application.SourceState;
+import org.sociotech.communitymashup.configuration.observer.source.SourceChangeObserver;
+import org.sociotech.communitymashup.configuration.observer.source.SourceChangedInterface;
 import org.sociotech.communitymashup.data.Category;
 import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
@@ -59,7 +56,6 @@ import org.sociotech.communitymashup.data.MetaTag;
 import org.sociotech.communitymashup.data.Organisation;
 import org.sociotech.communitymashup.data.Person;
 import org.sociotech.communitymashup.data.Tag;
-import org.sociotech.communitymashup.source.Adapter.ConfigurationChangeObserver;
 import org.sociotech.communitymashup.source.facade.AsynchronousSourceInitialization;
 import org.sociotech.communitymashup.source.facade.SourceServiceFacade;
 import org.sociotech.communitymashup.source.properties.SourceServiceProperties;
@@ -70,7 +66,7 @@ import org.sociotech.communitymashup.source.properties.SourceServiceProperties;
  * @author Peter Lachenmaier
  * 
  */
-public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
+public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, SourceChangedInterface {
 
 	private static final String DEFAULT_CONFIGURATION_PATH = "/configuration/configuration.xml";
 	private static final String HASHTAG_REGEX = "[##]+([A-Za-z0-9-_]+)";
@@ -112,7 +108,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	/**
 	 * Observer for configuration changes. 
 	 */
-	private ConfigurationChangeObserver configurationObserver;
+	private SourceChangeObserver configurationObserver;
 
 	
 	/**
@@ -233,7 +229,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 			
 			// add adapter to observe configuration changes
 			// this on calls configurationChanged
-			configurationObserver = new ConfigurationChangeObserver(this, source);
+			configurationObserver = new SourceChangeObserver(source, this);
 			
 			// load cached content if caching is enabled
 			if (cachingEnabled()) {
@@ -551,78 +547,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 
 		// add default value for caching
 		source.addProperty(SourceServiceProperties.CACHING_ENABLED_PROPERTY, "false");
-	}
-
-	/**
-	 * The given data set must represent an updated version of the sources data
-	 * set. The two data sets will be compared and all updates/differences will
-	 * be integrated in the sources data set.
-	 * 
-	 * @param dataSet
-	 *            Updated version of the sources data set.
-	 */
-	private void updateDataSet(DataSet dataSet) {
-		DataSet thisDataSet = this.getDataSet();
-
-		if (dataSet == null || thisDataSet == null) {
-			// data sets must be set
-			return;
-		}
-
-		// remember settings of delivering notifiations
-		boolean delivering = thisDataSet.eDeliver();
-		boolean thisCaching = thisDataSet.getCacheFileAttachements();
-		boolean updateCaching = dataSet.getCacheFileAttachements();
-
-		// switch off caching for compare to not get in trouble with cached urls
-		// also switch of delivering of notifications for this change
-		thisDataSet.eSetDeliver(false);
-
-		thisDataSet.setCacheFileAttachements(false);
-		dataSet.setCacheFileAttachements(false);
-
-		thisDataSet.eSetDeliver(delivering);
-
-		// create match model
-		MatchModel match;
-
-		try {
-			// TODO check compare options
-			match = MatchService.doMatch(thisDataSet, dataSet, null);
-			// match = MatchService.doContentMatch(thisDataSet, dataSet, null);
-		} catch (InterruptedException e) {
-			this.log("Error at creating match to update dataSet",
-					LogService.LOG_ERROR);
-			return;
-		}
-
-		// get differences between data sets
-		DiffModel diff = DiffService.doDiff(match, false);
-
-		// Prints the results
-		// try {
-		//		 	System.out.println("MatchModel :\n"); //$NON-NLS-1$
-		// System.out.println(ModelUtils.serialize(match));
-		//		 	System.out.println("DiffModel :\n"); //$NON-NLS-1$
-		// System.out.println(ModelUtils.serialize(diff));
-		// }
-		// catch (final IOException e)
-		// {
-		// e.printStackTrace();
-		// }
-
-		// Merge differences, from updated data set to data set of this source
-		MergeService.merge(diff.getDifferences(), false);
-
-		// restore cache state
-		// switch of delivering of notifications for this change
-		thisDataSet.eSetDeliver(false);
-
-		thisDataSet.setCacheFileAttachements(thisCaching);
-		dataSet.setCacheFileAttachements(updateCaching);
-
-		// restore delivering state
-		thisDataSet.eSetDeliver(delivering);
 	}
 
 	/**
@@ -2069,8 +1993,8 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	 * 
 	 * @param notification The notification containing the change details.
 	 */
-	public void configurationChanged(Notification notification) {
-		
+	@Override
+	public void sourceConfigurationChanged(Notification notification) {
 		if(notification == null)
 		{
 			// nothing to do
@@ -2083,5 +2007,25 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 			this.logLevel = source.getLogLevelIntValue();
 			log("Set log level to " + this.logLevel, LogService.LOG_DEBUG);
 		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#stopSourceService()
+	 */
+	@Override
+	public void stopSourceService() {
+		this.stop();
+	}
+	
+	/**
+	 * Stop everything, should be overwritten in concrete source implementations with call to super.stop().
+	 */
+	protected void stop() {
+		// disconnect source configuration observer
+		configurationObserver.disconnect();
+		
+		// TODO remove added data
+		
+		source.setState(SourceState.STOPED);
 	}
 }

@@ -9,10 +9,8 @@ Export-Package: org.sociotech.communitymashup.source.authorization,
  org.sociotech.communitymashup.source.instantiation.facade,
  org.sociotech.communitymashup.source.instantiation.impl,
  org.sociotech.communitymashup.source.properties
-Require-Bundle: org.eclipse.emf.compare;bundle-version="1.1.2",
- org.eclipse.emf.compare.match,
- org.eclipse.emf.compare.diff,
- org.sociotech.communitymashup.core;bundle-version="0.0.1"
+Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1",
+ org.sociotech.communitymashup.configuration.ConfigurationObservers;bundle-version="0.0.1";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: org.sociotech.communitymashup
 Import-Package: javax.servlet;version="2.5.0",

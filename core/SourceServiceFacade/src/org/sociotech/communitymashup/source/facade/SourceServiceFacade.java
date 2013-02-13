@@ -106,5 +106,10 @@ public interface SourceServiceFacade {
 	 * @return The configuration of this source service.
 	 */
 	public Source getConfiguration();
+	
+	/**
+	 * Stops the source service
+	 */
+	public void stopSourceService();
 
 }
