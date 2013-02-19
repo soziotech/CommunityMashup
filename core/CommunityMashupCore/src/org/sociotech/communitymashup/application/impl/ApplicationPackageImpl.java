@@ -341,7 +341,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSource_UseModificationAdapter() {
+	public EAttribute getSource_State() {
 		return (EAttribute)sourceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -350,7 +350,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSource_State() {
+	public EAttribute getSource_ActiveState() {
 		return (EAttribute)sourceEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -359,7 +359,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSource_ActiveState() {
+	public EAttribute getSource_LogLevel() {
 		return (EAttribute)sourceEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -368,8 +368,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSource_LogLevel() {
-		return (EAttribute)sourceEClass.getEStructuralFeatures().get(6);
+	public EReference getSource_Mashup() {
+		return (EReference)sourceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -377,8 +377,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSource_Mashup() {
-		return (EReference)sourceEClass.getEStructuralFeatures().get(7);
+	public EAttribute getSource_RemoveDataOnStop() {
+		return (EAttribute)sourceEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -478,6 +478,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 */
 	public EAttribute getMashup_CacheDelay() {
 		return (EAttribute)mashupEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMashup_SourceIdentCounter() {
+		return (EAttribute)mashupEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -1466,11 +1475,11 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(sourceEClass, SOURCE__PERSISTENCY);
 		createEReference(sourceEClass, SOURCE__DATA_SET);
 		createEAttribute(sourceEClass, SOURCE__BUNDLE_ID);
-		createEAttribute(sourceEClass, SOURCE__USE_MODIFICATION_ADAPTER);
 		createEAttribute(sourceEClass, SOURCE__STATE);
 		createEAttribute(sourceEClass, SOURCE__ACTIVE_STATE);
 		createEAttribute(sourceEClass, SOURCE__LOG_LEVEL);
 		createEReference(sourceEClass, SOURCE__MASHUP);
+		createEAttribute(sourceEClass, SOURCE__REMOVE_DATA_ON_STOP);
 
 		mashupEClass = createEClass(MASHUP);
 		createEReference(mashupEClass, MASHUP__MAPPING_RULES);
@@ -1483,6 +1492,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(mashupEClass, MASHUP__BACKUP_DATA_SET);
 		createEAttribute(mashupEClass, MASHUP__BACKUP_INTERVALL);
 		createEAttribute(mashupEClass, MASHUP__CACHE_DELAY);
+		createEAttribute(mashupEClass, MASHUP__SOURCE_IDENT_COUNTER);
 
 		mappingRuleEClass = createEClass(MAPPING_RULE);
 
@@ -1659,11 +1669,11 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getSource_Persistency(), this.getPersistency(), null, "persistency", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSource_DataSet(), theDataPackage.getDataSet(), null, "dataSet", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSource_BundleId(), ecorePackage.getEString(), "bundleId", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSource_UseModificationAdapter(), ecorePackage.getEBooleanObject(), "useModificationAdapter", "true", 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSource_State(), this.getSourceState(), "state", "0", 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSource_ActiveState(), this.getSourceActiveStates(), "activeState", "7", 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSource_LogLevel(), ecorePackage.getEString(), "logLevel", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSource_Mashup(), this.getMashup(), this.getMashup_Sources(), "mashup", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_RemoveDataOnStop(), ecorePackage.getEBooleanObject(), "removeDataOnStop", "false", 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(sourceEClass, ecorePackage.getEIntegerObject(), "getLogLevelIntValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1682,8 +1692,11 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getMashup_CacheAttachments(), ecorePackage.getEBooleanObject(), "cacheAttachments", "true", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashup_CacheDataSet(), ecorePackage.getEBooleanObject(), "cacheDataSet", "false", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashup_BackupDataSet(), ecorePackage.getEBooleanObject(), "backupDataSet", "false", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMashup_BackupIntervall(), ecorePackage.getEIntegerObject(), "backupIntervall", "600", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMashup_BackupIntervall(), ecorePackage.getEIntegerObject(), "backupIntervall", "3600", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashup_CacheDelay(), ecorePackage.getEIntegerObject(), "cacheDelay", "300", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMashup_SourceIdentCounter(), ecorePackage.getEIntegerObject(), "sourceIdentCounter", "1", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(mashupEClass, ecorePackage.getEIntegerObject(), "getNewSourceIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(mappingRuleEClass, MappingRule.class, "MappingRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

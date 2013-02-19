@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA; &#x9;Peter Lachenmaier - Design and initial implementation"
     modelDirectory="/CommunityMashupCore/src" editDirectory="/CommunityMashupConfigurator/src"
     editorDirectory="/CommunityMashupConfigurator/src" modelPluginID="CommunityMashupCore"
@@ -460,6 +459,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/created"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/metaTags"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/identifiedBy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/deleteOnDelete"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/deletedIfDeleted"/>
       <genOperations ecoreOperation="data.ecore#//Item/toAttributeMapString"/>
       <genOperations ecoreOperation="data.ecore#//Item/log">
         <genParameters ecoreParameter="data.ecore#//Item/log/message"/>
@@ -496,6 +497,10 @@
         <genParameters ecoreParameter="data.ecore#//Item/getLastModifiedPrettyInLanguage/language"/>
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//Item/getLastModifiedPretty"/>
+      <genOperations ecoreOperation="data.ecore#//Item/deleteOnDeleteOf">
+        <genParameters ecoreParameter="data.ecore#//Item/deleteOnDeleteOf/item"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/deleteIfEmptyOnDelete"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Extension">
       <genOperations ecoreOperation="data.ecore#//Extension/tag">
@@ -668,11 +673,11 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Source/persistency"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Source/dataSet"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/bundleId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/useModificationAdapter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/state"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/activeState"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/logLevel"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference application.ecore#//Source/mashup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/removeDataOnStop"/>
       <genOperations ecoreOperation="application.ecore#//Source/getLogLevelIntValue"/>
       <genOperations ecoreOperation="application.ecore#//Source/start"/>
       <genOperations ecoreOperation="application.ecore#//Source/stop"/>
@@ -688,6 +693,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/cacheDataSet"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/backupDataSet"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/backupIntervall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/cacheDelay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/sourceIdentCounter"/>
+      <genOperations ecoreOperation="application.ecore#//Mashup/getNewSourceIdent"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//MappingRule"/>
     <genClasses ecoreClass="application.ecore#//Configuration">
@@ -722,6 +730,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/defaultMashups"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/sourceConfigurations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/interfaceConfigurations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupContainer/immediateSave"/>
       <genOperations ecoreOperation="application.ecore#//MashupContainer/getConfigurationAdmins"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//Interface">

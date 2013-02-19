@@ -153,13 +153,31 @@ public interface DataPackage extends EPackage {
 	int ITEM__IDENTIFIED_BY = 7;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__DELETE_ON_DELETE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__DELETED_IF_DELETED = 9;
+
+	/**
 	 * The number of structural features of the '<em>Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_FEATURE_COUNT = 8;
+	int ITEM_FEATURE_COUNT = 10;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl <em>Information Object</em>}' class.
@@ -242,6 +260,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int INFORMATION_OBJECT__IDENTIFIED_BY = ITEM__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT__DELETE_ON_DELETE = ITEM__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' reference list.
@@ -441,6 +477,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSON__IDENTIFIED_BY = INFORMATION_OBJECT__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__DELETE_ON_DELETE = INFORMATION_OBJECT__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__DELETED_IF_DELETED = INFORMATION_OBJECT__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' reference list.
@@ -730,6 +784,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT__IDENTIFIED_BY = INFORMATION_OBJECT__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT__DELETE_ON_DELETE = INFORMATION_OBJECT__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT__DELETED_IF_DELETED = INFORMATION_OBJECT__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' reference list.
@@ -1076,6 +1148,24 @@ public interface DataPackage extends EPackage {
 	int EXTENSION__IDENTIFIED_BY = ITEM__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__DELETE_ON_DELETE = ITEM__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
+
+	/**
 	 * The number of structural features of the '<em>Extension</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1165,6 +1255,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASSIFICATION__IDENTIFIED_BY = ITEM__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION__DELETE_ON_DELETE = ITEM__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1265,6 +1373,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CATEGORY__IDENTIFIED_BY = CLASSIFICATION__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__DELETE_ON_DELETE = CLASSIFICATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__DELETED_IF_DELETED = CLASSIFICATION__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1403,6 +1529,24 @@ public interface DataPackage extends EPackage {
 	int TAG__IDENTIFIED_BY = CLASSIFICATION__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__DELETE_ON_DELETE = CLASSIFICATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__DELETED_IF_DELETED = CLASSIFICATION__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1510,6 +1654,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANISATION__IDENTIFIED_BY = INFORMATION_OBJECT__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION__DELETE_ON_DELETE = INFORMATION_OBJECT__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION__DELETED_IF_DELETED = INFORMATION_OBJECT__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' reference list.
@@ -1783,6 +1945,24 @@ public interface DataPackage extends EPackage {
 	int META_TAG__IDENTIFIED_BY = ITEM__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG__DELETE_ON_DELETE = ITEM__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1892,6 +2072,24 @@ public interface DataPackage extends EPackage {
 	int META_INFORMATION__IDENTIFIED_BY = EXTENSION__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION__DELETE_ON_DELETE = EXTENSION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION__DELETED_IF_DELETED = EXTENSION__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1990,6 +2188,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PHONE__IDENTIFIED_BY = META_INFORMATION__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE__DELETE_ON_DELETE = META_INFORMATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -2119,6 +2335,24 @@ public interface DataPackage extends EPackage {
 	int INSTANT_MESSENGER__IDENTIFIED_BY = META_INFORMATION__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER__DELETE_ON_DELETE = META_INFORMATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2226,6 +2460,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMAIL__IDENTIFIED_BY = META_INFORMATION__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL__DELETE_ON_DELETE = META_INFORMATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -2337,6 +2589,24 @@ public interface DataPackage extends EPackage {
 	int WEB_ACCOUNT__IDENTIFIED_BY = META_INFORMATION__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT__DELETE_ON_DELETE = META_INFORMATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2444,6 +2714,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int WEB_SITE__IDENTIFIED_BY = META_INFORMATION__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE__DELETE_ON_DELETE = META_INFORMATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -2564,6 +2852,24 @@ public interface DataPackage extends EPackage {
 	int RANKING__IDENTIFIED_BY = EXTENSION__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING__DELETE_ON_DELETE = EXTENSION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING__DELETED_IF_DELETED = EXTENSION__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2671,6 +2977,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTACHMENT__IDENTIFIED_BY = EXTENSION__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT__DELETE_ON_DELETE = EXTENSION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT__DELETED_IF_DELETED = EXTENSION__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -2816,6 +3140,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOCATION__IDENTIFIED_BY = META_INFORMATION__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION__DELETE_ON_DELETE = META_INFORMATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -2990,6 +3332,24 @@ public interface DataPackage extends EPackage {
 	int IMAGE__IDENTIFIED_BY = ATTACHMENT__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__DELETE_ON_DELETE = ATTACHMENT__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3133,6 +3493,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENT__IDENTIFIED_BY = ATTACHMENT__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__DELETE_ON_DELETE = ATTACHMENT__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -3280,6 +3658,24 @@ public interface DataPackage extends EPackage {
 	int STAR_RANKING__IDENTIFIED_BY = RANKING__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING__DELETE_ON_DELETE = RANKING__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING__DELETED_IF_DELETED = RANKING__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3407,6 +3803,24 @@ public interface DataPackage extends EPackage {
 	int VIEW_RANKING__IDENTIFIED_BY = RANKING__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING__DELETE_ON_DELETE = RANKING__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING__DELETED_IF_DELETED = RANKING__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3523,6 +3937,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int THUMB_RANKING__IDENTIFIED_BY = RANKING__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING__DELETE_ON_DELETE = RANKING__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING__DELETED_IF_DELETED = RANKING__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -3642,6 +4074,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSFORMATION__IDENTIFIED_BY = ATTACHMENT__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__DELETE_ON_DELETE = ATTACHMENT__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -3799,6 +4249,24 @@ public interface DataPackage extends EPackage {
 	int VIDEO__IDENTIFIED_BY = ATTACHMENT__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO__DELETE_ON_DELETE = ATTACHMENT__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3945,6 +4413,24 @@ public interface DataPackage extends EPackage {
 	int CONNECTION__IDENTIFIED_BY = EXTENSION__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__DELETE_ON_DELETE = EXTENSION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__DELETED_IF_DELETED = EXTENSION__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>From</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4053,6 +4539,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY__IDENTIFIED_BY = ATTACHMENT__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY__DELETE_ON_DELETE = ATTACHMENT__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -4210,6 +4714,24 @@ public interface DataPackage extends EPackage {
 	int INDOOR_LOCATION__IDENTIFIED_BY = META_INFORMATION__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION__DELETE_ON_DELETE = META_INFORMATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4347,6 +4869,24 @@ public interface DataPackage extends EPackage {
 	int IDENTIFIER__IDENTIFIED_BY = ITEM__IDENTIFIED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER__DELETE_ON_DELETE = ITEM__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4464,6 +5004,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__IDENTIFIED_BY = META_INFORMATION__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__DELETE_ON_DELETE = META_INFORMATION__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -5026,6 +5584,28 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getItem_IdentifiedBy();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Item#getDeleteOnDelete <em>Delete On Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Delete On Delete</em>'.
+	 * @see org.sociotech.communitymashup.data.Item#getDeleteOnDelete()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EReference getItem_DeleteOnDelete();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Item#getDeletedIfDeleted <em>Deleted If Deleted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Deleted If Deleted</em>'.
+	 * @see org.sociotech.communitymashup.data.Item#getDeletedIfDeleted()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EReference getItem_DeletedIfDeleted();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Extension <em>Extension</em>}'.
@@ -6347,6 +6927,22 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ITEM__IDENTIFIED_BY = eINSTANCE.getItem_IdentifiedBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Delete On Delete</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ITEM__DELETE_ON_DELETE = eINSTANCE.getItem_DeleteOnDelete();
+
+		/**
+		 * The meta object literal for the '<em><b>Deleted If Deleted</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ITEM__DELETED_IF_DELETED = eINSTANCE.getItem_DeletedIfDeleted();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.

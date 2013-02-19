@@ -28,6 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
@@ -1082,6 +1083,9 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 				fos.write(tmp_buffer, 0, n);
 				fos.flush();
 			}
+			
+			fos.close();
+			
 		} catch (Exception e) {
 			log("Could not create output file " + targetFile.getAbsolutePath()  + " (" + e.getMessage() + ")", LogService.LOG_WARNING);
 			// need to delete file before returning
@@ -1091,6 +1095,55 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	
 		log("Finished download from " + sourceUrl + " to " + targetFile.getAbsolutePath(), LogService.LOG_DEBUG);
 		
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Boolean isEqualItem(Item item) {
+		
+		if(super.isEqualItem(item))
+		{
+			return true;
+		}
+		
+		if(this == item)
+		{
+			return true;
+		}
+		else if (item == null)
+		{
+			return false;
+		}
+		else if (this.eClass() != item.eClass())
+		{
+			return false;
+		}
+		
+		// cast
+		Attachment attachment = (Attachment) item;
+		
+		if(attachment.getFileUrl() != null && !attachment.getFileUrl().isEmpty() && attachment.getOriginalFileUrl().equals(this.getOriginalFileUrl()))
+		{
+			// attachments are equal if they have the same url and are attached to the same information object(s)
+			// TODO maintain bidirectional reference
+			try
+			{
+				EList<InformationObject> myIOs    = this.getDataSet().getInformationObjectsWithAttachment(this);
+				EList<InformationObject> otherIOs = this.getDataSet().getInformationObjectsWithAttachment(attachment);
+				
+				return myIOs.containsAll(otherIOs);
+			}
+			catch (Exception e)
+			{
+				// if not all accesses work, they are not equal
+				return false;
+			}
+		}
+		
+		// not equal
+		return false;
 	}
 	
 } //AttachmentImpl

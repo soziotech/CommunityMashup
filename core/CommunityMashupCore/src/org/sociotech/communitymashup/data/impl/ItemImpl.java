@@ -19,6 +19,7 @@ import java.util.Locale;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -251,6 +252,26 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	protected EList<Identifier> identifiedBy;
 
 	/**
+	 * The cached value of the '{@link #getDeleteOnDelete() <em>Delete On Delete</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeleteOnDelete()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Item> deleteOnDelete;
+
+	/**
+	 * The cached value of the '{@link #getDeletedIfDeleted() <em>Deleted If Deleted</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeletedIfDeleted()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Item> deletedIfDeleted;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -453,6 +474,30 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Item> getDeleteOnDelete() {
+		if (deleteOnDelete == null) {
+			deleteOnDelete = new EObjectWithInverseResolvingEList.ManyInverse<Item>(Item.class, this, DataPackage.ITEM__DELETE_ON_DELETE, DataPackage.ITEM__DELETED_IF_DELETED);
+		}
+		return deleteOnDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Item> getDeletedIfDeleted() {
+		if (deletedIfDeleted == null) {
+			deletedIfDeleted = new EObjectWithInverseResolvingEList.ManyInverse<Item>(Item.class, this, DataPackage.ITEM__DELETED_IF_DELETED, DataPackage.ITEM__DELETE_ON_DELETE);
+		}
+		return deletedIfDeleted;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * Returns this.toString() as default.
 	 * <!-- end-user-doc -->
 	 */
@@ -628,6 +673,19 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		
 		log("Deleting " + this.eClass().getInstanceTypeName() + ": " + this.getIdent(), LogService.LOG_DEBUG);
 		
+		// delete all items that need to be deleted when this item will be deleted
+		// create copy of list
+		EList<Item> deletionList = new UniqueEList<Item>(this.getDeleteOnDelete());
+		
+		// clear original deletion list
+		this.getDeleteOnDelete().clear();
+		
+		for(Item itemToDelete : deletionList)
+		{
+			// delete only if the clear has removed the last delete on delete item
+			itemToDelete.deleteIfEmptyOnDelete();
+		}
+		
 		// use ecore util to delete
 		try
 		{
@@ -718,6 +776,34 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Item deleteOnDeleteOf(Item item) {
+		if(item == null)
+		{
+			return null;
+		}
+		
+		item.getDeleteOnDelete().add(this);
+		
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void deleteIfEmptyOnDelete() {
+		// delete if this item is in no other on delete list
+		// means that the deleted if deleted list is empty
+		if(this.getDeletedIfDeleted().isEmpty())
+		{
+			this.delete();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -732,6 +818,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMetaTags()).basicAdd(otherEnd, msgs);
 			case DataPackage.ITEM__IDENTIFIED_BY:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getIdentifiedBy()).basicAdd(otherEnd, msgs);
+			case DataPackage.ITEM__DELETE_ON_DELETE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeleteOnDelete()).basicAdd(otherEnd, msgs);
+			case DataPackage.ITEM__DELETED_IF_DELETED:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeletedIfDeleted()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -750,6 +840,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return ((InternalEList<?>)getMetaTags()).basicRemove(otherEnd, msgs);
 			case DataPackage.ITEM__IDENTIFIED_BY:
 				return ((InternalEList<?>)getIdentifiedBy()).basicRemove(otherEnd, msgs);
+			case DataPackage.ITEM__DELETE_ON_DELETE:
+				return ((InternalEList<?>)getDeleteOnDelete()).basicRemove(otherEnd, msgs);
+			case DataPackage.ITEM__DELETED_IF_DELETED:
+				return ((InternalEList<?>)getDeletedIfDeleted()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -792,6 +886,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return getMetaTags();
 			case DataPackage.ITEM__IDENTIFIED_BY:
 				return getIdentifiedBy();
+			case DataPackage.ITEM__DELETE_ON_DELETE:
+				return getDeleteOnDelete();
+			case DataPackage.ITEM__DELETED_IF_DELETED:
+				return getDeletedIfDeleted();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -831,6 +929,14 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				getIdentifiedBy().clear();
 				getIdentifiedBy().addAll((Collection<? extends Identifier>)newValue);
 				return;
+			case DataPackage.ITEM__DELETE_ON_DELETE:
+				getDeleteOnDelete().clear();
+				getDeleteOnDelete().addAll((Collection<? extends Item>)newValue);
+				return;
+			case DataPackage.ITEM__DELETED_IF_DELETED:
+				getDeletedIfDeleted().clear();
+				getDeletedIfDeleted().addAll((Collection<? extends Item>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -867,6 +973,12 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			case DataPackage.ITEM__IDENTIFIED_BY:
 				getIdentifiedBy().clear();
 				return;
+			case DataPackage.ITEM__DELETE_ON_DELETE:
+				getDeleteOnDelete().clear();
+				return;
+			case DataPackage.ITEM__DELETED_IF_DELETED:
+				getDeletedIfDeleted().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -895,6 +1007,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return metaTags != null && !metaTags.isEmpty();
 			case DataPackage.ITEM__IDENTIFIED_BY:
 				return identifiedBy != null && !identifiedBy.isEmpty();
+			case DataPackage.ITEM__DELETE_ON_DELETE:
+				return deleteOnDelete != null && !deleteOnDelete.isEmpty();
+			case DataPackage.ITEM__DELETED_IF_DELETED:
+				return deletedIfDeleted != null && !deletedIfDeleted.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -960,6 +1076,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			return this.getMetaTags();		
 		if ( featureName.equalsIgnoreCase("identifiedBy") )
 			return this.getIdentifiedBy();		
+		if ( featureName.equalsIgnoreCase("deleteOnDelete") )
+			return this.getDeleteOnDelete();		
+		if ( featureName.equalsIgnoreCase("deletedIfDeleted") )
+			return this.getDeletedIfDeleted();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 
@@ -1167,6 +1287,25 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			if (command.getArgCount() != 0) throw new WrongArgCountException("Item.doOperation", 0, command.getArgCount()); 
 			return this.getLastModifiedPretty();
 		}
+		if ( command.getCommand().equalsIgnoreCase("deleteOnDeleteOf")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("Item.doOperation", 1, command.getArgCount()); 
+			Item item = null;
+			try {
+				try {
+					item = (Item)(RestUtil.fromInput(command.getArg("item")));
+				} catch (ClassNotFoundException e) {
+					item = (Item)command.getArg("item");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Item.doOperation", "Item", command.getArg("item").getClass().getName());
+			}
+			return this.deleteOnDeleteOf(item);
+		}
+		if ( command.getCommand().equalsIgnoreCase("deleteIfEmptyOnDelete")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("Item.doOperation", 0, command.getArgCount()); 
+				this.deleteIfEmptyOnDelete();
+				return this;
+				}
 		throw new UnknownOperationException(this, command);
 	}
 
@@ -1351,11 +1490,33 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	@Override
 	public void eNotify(Notification notification) {
 		
-		if(notification.getEventType() == Notification.REMOVE)
+		// update the modification date
+		updateLastModified();
+		
+		if(notification.getEventType() == Notification.REMOVE) 
 		{
 			this.deleteIfUnused();
 		}
 		super.eNotify(notification);
+	}
+
+	/**
+	 * Updates the last modified date to now
+	 */
+	private void updateLastModified() {
+		// directly set to avoid additional notifications
+		this.lastModified = new Date();
+		// also update data sets last modified
+		if(this.getDataSet() != null)
+		{
+			// must be the same object otherwise the time differs in ms
+			this.getDataSet().setLastModified(this.lastModified);
+		}
+		if(this.created == null)
+		{
+			// set also creation date if not set before
+			this.created = this.lastModified;
+		}
 	}
 
 	/* (non-Javadoc)

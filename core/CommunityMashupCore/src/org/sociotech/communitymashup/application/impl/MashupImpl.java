@@ -73,6 +73,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getBackupDataSet <em>Backup Data Set</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getBackupIntervall <em>Backup Intervall</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getCacheDelay <em>Cache Delay</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getSourceIdentCounter <em>Source Ident Counter</em>}</li>
  * </ul>
  * </p>
  *
@@ -214,7 +215,7 @@ public class MashupImpl extends SourceImpl implements Mashup {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer BACKUP_INTERVALL_EDEFAULT = new Integer(600);
+	protected static final Integer BACKUP_INTERVALL_EDEFAULT = new Integer(3600);
 
 	/**
 	 * The cached value of the '{@link #getBackupIntervall() <em>Backup Intervall</em>}' attribute.
@@ -245,6 +246,26 @@ public class MashupImpl extends SourceImpl implements Mashup {
 	 * @ordered
 	 */
 	protected Integer cacheDelay = CACHE_DELAY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSourceIdentCounter() <em>Source Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSourceIdentCounter()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer SOURCE_IDENT_COUNTER_EDEFAULT = new Integer(1);
+
+	/**
+	 * The cached value of the '{@link #getSourceIdentCounter() <em>Source Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSourceIdentCounter()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer sourceIdentCounter = SOURCE_IDENT_COUNTER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -444,6 +465,36 @@ public class MashupImpl extends SourceImpl implements Mashup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Integer getSourceIdentCounter() {
+		return sourceIdentCounter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSourceIdentCounter(Integer newSourceIdentCounter) {
+		Integer oldSourceIdentCounter = sourceIdentCounter;
+		sourceIdentCounter = newSourceIdentCounter;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER, oldSourceIdentCounter, sourceIdentCounter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Integer getNewSourceIdent() {
+		
+		return sourceIdentCounter++;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -506,6 +557,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 				return getBackupIntervall();
 			case ApplicationPackage.MASHUP__CACHE_DELAY:
 				return getCacheDelay();
+			case ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER:
+				return getSourceIdentCounter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -553,6 +606,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 			case ApplicationPackage.MASHUP__CACHE_DELAY:
 				setCacheDelay((Integer)newValue);
 				return;
+			case ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER:
+				setSourceIdentCounter((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -595,6 +651,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 			case ApplicationPackage.MASHUP__CACHE_DELAY:
 				setCacheDelay(CACHE_DELAY_EDEFAULT);
 				return;
+			case ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER:
+				setSourceIdentCounter(SOURCE_IDENT_COUNTER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -627,6 +686,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 				return BACKUP_INTERVALL_EDEFAULT == null ? backupIntervall != null : !BACKUP_INTERVALL_EDEFAULT.equals(backupIntervall);
 			case ApplicationPackage.MASHUP__CACHE_DELAY:
 				return CACHE_DELAY_EDEFAULT == null ? cacheDelay != null : !CACHE_DELAY_EDEFAULT.equals(cacheDelay);
+			case ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER:
+				return SOURCE_IDENT_COUNTER_EDEFAULT == null ? sourceIdentCounter != null : !SOURCE_IDENT_COUNTER_EDEFAULT.equals(sourceIdentCounter);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -655,6 +716,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 		result.append(backupIntervall);
 		result.append(", cacheDelay: ");
 		result.append(cacheDelay);
+		result.append(", sourceIdentCounter: ");
+		result.append(sourceIdentCounter);
 		result.append(')');
 		return result.toString();
 	}
@@ -698,7 +761,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 		if ( featureName.equalsIgnoreCase("backupIntervall") )
 			return this.getBackupIntervall();		
 		if ( featureName.equalsIgnoreCase("cacheDelay") )
-			return this.getCacheDelay();			
+			return this.getCacheDelay();		
+		if ( featureName.equalsIgnoreCase("sourceIdentCounter") )
+			return this.getSourceIdentCounter();			
 		return super.getFeature(featureName); 
 	}
 	
@@ -796,6 +861,23 @@ public class MashupImpl extends SourceImpl implements Mashup {
 				}
 				this.setCacheDelay(fcacheDelay);
 			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("sourceIdentCounter") ) {
+				java.lang.Integer fsourceIdentCounter = null;
+				try {
+				try {
+					fsourceIdentCounter = RestUtil.fromIntegerString((String) value);
+					if(fsourceIdentCounter == null) {
+						fsourceIdentCounter = (java.lang.Integer)(RestUtil.fromInput(value));
+					}
+				} catch (ClassNotFoundException e) {
+					fsourceIdentCounter = (java.lang.Integer)value;
+				}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Mashup.setFeature", "java.lang.Integer",value.getClass().getName());
+				}
+				this.setSourceIdentCounter(fsourceIdentCounter);
+			return this;
 			}			
 		super.setFeature(featureName, value);
 		return this; 
@@ -811,7 +893,11 @@ public class MashupImpl extends SourceImpl implements Mashup {
  	 * 
 	 * @generated
 	 */
-	protected Object doOperation(RestCommand command) throws ArgNotFoundException, WrongArgException, WrongArgCountException, UnknownOperationException {	
+	protected Object doOperation(RestCommand command) throws ArgNotFoundException, WrongArgException, WrongArgCountException, UnknownOperationException {
+		if ( command.getCommand().equalsIgnoreCase("getNewSourceIdent")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("Mashup.doOperation", 0, command.getArgCount()); 
+			return this.getNewSourceIdent();
+		}	
 		return super.doOperation(command);
 	}
 

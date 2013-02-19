@@ -32,11 +32,11 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.Source#getPersistency <em>Persistency</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Source#getDataSet <em>Data Set</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Source#getBundleId <em>Bundle Id</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.application.Source#getUseModificationAdapter <em>Use Modification Adapter</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Source#getState <em>State</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Source#getActiveState <em>Active State</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Source#getLogLevel <em>Log Level</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Source#getMashup <em>Mashup</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.Source#getRemoveDataOnStop <em>Remove Data On Stop</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,33 +129,6 @@ public interface Source extends ConfigurableElement {
 	 * @generated
 	 */
 	void setBundleId(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Use Modification Adapter</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Use Modification Adapter</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Use Modification Adapter</em>' attribute.
-	 * @see #setUseModificationAdapter(Boolean)
-	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getSource_UseModificationAdapter()
-	 * @model default="true"
-	 * @generated
-	 */
-	Boolean getUseModificationAdapter();
-
-	/**
-	 * Sets the value of the '{@link org.sociotech.communitymashup.application.Source#getUseModificationAdapter <em>Use Modification Adapter</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Use Modification Adapter</em>' attribute.
-	 * @see #getUseModificationAdapter()
-	 * @generated
-	 */
-	void setUseModificationAdapter(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
@@ -270,6 +243,33 @@ public interface Source extends ConfigurableElement {
 	 * @generated
 	 */
 	void setMashup(Mashup value);
+
+	/**
+	 * Returns the value of the '<em><b>Remove Data On Stop</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Remove Data On Stop</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Remove Data On Stop</em>' attribute.
+	 * @see #setRemoveDataOnStop(Boolean)
+	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getSource_RemoveDataOnStop()
+	 * @model default="false"
+	 * @generated
+	 */
+	Boolean getRemoveDataOnStop();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.application.Source#getRemoveDataOnStop <em>Remove Data On Stop</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Remove Data On Stop</em>' attribute.
+	 * @see #getRemoveDataOnStop()
+	 * @generated
+	 */
+	void setRemoveDataOnStop(Boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

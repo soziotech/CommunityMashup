@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="collection"
-    nsURI="http://collection.communitmashup.sociotech.org" nsPrefix="collection">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="collection" nsURI="http://collection.communitmashup.sociotech.org"
+    nsPrefix="collection">
   <eClassifiers xsi:type="ecore:EClass" name="ItemsCollection" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An Item Collection is the abstract superclass of concrete collections. Every collection has a number of @link Item Items@endlink that will be maintained. All items in a collection must be contained in the same data set."/>

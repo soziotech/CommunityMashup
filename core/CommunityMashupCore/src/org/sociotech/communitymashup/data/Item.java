@@ -43,6 +43,8 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.Item#getCreated <em>Created</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getMetaTags <em>Meta Tags</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getIdentifiedBy <em>Identified By</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.Item#getDeleteOnDelete <em>Delete On Delete</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.Item#getDeletedIfDeleted <em>Deleted If Deleted</em>}</li>
  * </ul>
  * </p>
  *
@@ -254,6 +256,40 @@ public interface Item extends EObject {
 	EList<Identifier> getIdentifiedBy();
 
 	/**
+	 * Returns the value of the '<em><b>Delete On Delete</b></em>' reference list.
+	 * The list contents are of type {@link org.sociotech.communitymashup.data.Item}.
+	 * It is bidirectional and its opposite is '{@link org.sociotech.communitymashup.data.Item#getDeletedIfDeleted <em>Deleted If Deleted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References items will be deleted when this item will be deleted
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Delete On Delete</em>' reference list.
+	 * @see org.sociotech.communitymashup.data.DataPackage#getItem_DeleteOnDelete()
+	 * @see org.sociotech.communitymashup.data.Item#getDeletedIfDeleted
+	 * @model opposite="deletedIfDeleted"
+	 * @generated
+	 */
+	EList<Item> getDeleteOnDelete();
+
+	/**
+	 * Returns the value of the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * The list contents are of type {@link org.sociotech.communitymashup.data.Item}.
+	 * It is bidirectional and its opposite is '{@link org.sociotech.communitymashup.data.Item#getDeleteOnDelete <em>Delete On Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This item will be deleted if one of the referenced items will be deleted.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Deleted If Deleted</em>' reference list.
+	 * @see org.sociotech.communitymashup.data.DataPackage#getItem_DeletedIfDeleted()
+	 * @see org.sociotech.communitymashup.data.Item#getDeleteOnDelete
+	 * @model opposite="deleteOnDelete"
+	 * @generated
+	 */
+	EList<Item> getDeletedIfDeleted();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
@@ -397,6 +433,28 @@ public interface Item extends EObject {
 	 * @generated
 	 */
 	String getLastModifiedPretty();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Activates the deletion of this item when the given item will be deleted.
+	 * <!-- end-model-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	Item deleteOnDeleteOf(Item item);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Deletes this item from the data set if the on delete list is empty.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	void deleteIfEmptyOnDelete();
 
 	/**
 	 * An EObjectCondition to check whether an Object is of the type Item.

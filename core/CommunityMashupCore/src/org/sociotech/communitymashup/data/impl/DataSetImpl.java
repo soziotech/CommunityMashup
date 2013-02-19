@@ -1873,7 +1873,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		// TODO room for efficiency
 		for(Item currentItem : allItems)
 		{
-			if(item.isEqualItem(currentItem))
+			if(currentItem.isEqualItem(item))
 			{
 				return currentItem;
 			}
@@ -6053,5 +6053,4 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		
 		return resultingConnections;
 	}
-
 } //DataSetImpl

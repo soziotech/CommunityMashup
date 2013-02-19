@@ -1006,6 +1006,17 @@
         <details key="documentation" value="Returns the modified date with pretty formatting like &quot;Two days ago&quot;."/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="deleteOnDeleteOf" lowerBound="1" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Activates the deletion of this item when the given item will be deleted."/>
+      </eAnnotations>
+      <eParameters name="item" eType="#//Item"/>
+    </eOperations>
+    <eOperations name="deleteIfEmptyOnDelete">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Deletes this item from the data set if the on delete list is empty."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="#//DataSet"
         transient="true" resolveProxies="false" eOpposite="#//DataSet/items"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ident" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -1019,6 +1030,18 @@
         eType="#//MetaTag" eOpposite="#//MetaTag/metaTagged"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="identifiedBy" upperBound="-1"
         eType="#//Identifier" eOpposite="#//Identifier/identified"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deleteOnDelete" upperBound="-1"
+        eType="#//Item" eOpposite="#//Item/deletedIfDeleted">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="References items will be deleted when this item will be deleted"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deletedIfDeleted" upperBound="-1"
+        eType="#//Item" eOpposite="#//Item/deleteOnDelete">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This item will be deleted if one of the referenced items will be deleted."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Extension" abstract="true" eSuperTypes="#//Item">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

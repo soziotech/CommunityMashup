@@ -254,22 +254,13 @@ public interface ApplicationPackage extends EPackage {
 	int SOURCE__BUNDLE_ID = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Use Modification Adapter</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOURCE__USE_MODIFICATION_ADAPTER = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__STATE = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 4;
+	int SOURCE__STATE = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Active State</b></em>' attribute.
@@ -278,7 +269,7 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__ACTIVE_STATE = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 5;
+	int SOURCE__ACTIVE_STATE = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Log Level</b></em>' attribute.
@@ -287,7 +278,7 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__LOG_LEVEL = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 6;
+	int SOURCE__LOG_LEVEL = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Mashup</b></em>' container reference.
@@ -296,7 +287,16 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE__MASHUP = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 7;
+	int SOURCE__MASHUP = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Remove Data On Stop</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE__REMOVE_DATA_ON_STOP = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Source</em>' class.
@@ -408,15 +408,6 @@ public interface ApplicationPackage extends EPackage {
 	int MASHUP__BUNDLE_ID = SOURCE__BUNDLE_ID;
 
 	/**
-	 * The feature id for the '<em><b>Use Modification Adapter</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MASHUP__USE_MODIFICATION_ADAPTER = SOURCE__USE_MODIFICATION_ADAPTER;
-
-	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -451,6 +442,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MASHUP__MASHUP = SOURCE__MASHUP;
+
+	/**
+	 * The feature id for the '<em><b>Remove Data On Stop</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP__REMOVE_DATA_ON_STOP = SOURCE__REMOVE_DATA_ON_STOP;
 
 	/**
 	 * The feature id for the '<em><b>Mapping Rules</b></em>' containment reference list.
@@ -543,13 +543,22 @@ public interface ApplicationPackage extends EPackage {
 	int MASHUP__CACHE_DELAY = SOURCE_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Source Ident Counter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP__SOURCE_IDENT_COUNTER = SOURCE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Mashup</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MASHUP_FEATURE_COUNT = SOURCE_FEATURE_COUNT + 10;
+	int MASHUP_FEATURE_COUNT = SOURCE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.MappingRuleImpl <em>Mapping Rule</em>}' class.
@@ -1998,17 +2007,6 @@ public interface ApplicationPackage extends EPackage {
 	EAttribute getSource_BundleId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.Source#getUseModificationAdapter <em>Use Modification Adapter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Use Modification Adapter</em>'.
-	 * @see org.sociotech.communitymashup.application.Source#getUseModificationAdapter()
-	 * @see #getSource()
-	 * @generated
-	 */
-	EAttribute getSource_UseModificationAdapter();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.Source#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2051,6 +2049,17 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSource_Mashup();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.Source#getRemoveDataOnStop <em>Remove Data On Stop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remove Data On Stop</em>'.
+	 * @see org.sociotech.communitymashup.application.Source#getRemoveDataOnStop()
+	 * @see #getSource()
+	 * @generated
+	 */
+	EAttribute getSource_RemoveDataOnStop();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.Mashup <em>Mashup</em>}'.
@@ -2171,6 +2180,17 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMashup_CacheDelay();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.Mashup#getSourceIdentCounter <em>Source Ident Counter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Source Ident Counter</em>'.
+	 * @see org.sociotech.communitymashup.application.Mashup#getSourceIdentCounter()
+	 * @see #getMashup()
+	 * @generated
+	 */
+	EAttribute getMashup_SourceIdentCounter();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.MappingRule <em>Mapping Rule</em>}'.
@@ -3373,14 +3393,6 @@ public interface ApplicationPackage extends EPackage {
 		EAttribute SOURCE__BUNDLE_ID = eINSTANCE.getSource_BundleId();
 
 		/**
-		 * The meta object literal for the '<em><b>Use Modification Adapter</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SOURCE__USE_MODIFICATION_ADAPTER = eINSTANCE.getSource_UseModificationAdapter();
-
-		/**
 		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3411,6 +3423,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SOURCE__MASHUP = eINSTANCE.getSource_Mashup();
+
+		/**
+		 * The meta object literal for the '<em><b>Remove Data On Stop</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOURCE__REMOVE_DATA_ON_STOP = eINSTANCE.getSource_RemoveDataOnStop();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.MashupImpl <em>Mashup</em>}' class.
@@ -3501,6 +3521,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MASHUP__CACHE_DELAY = eINSTANCE.getMashup_CacheDelay();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Ident Counter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MASHUP__SOURCE_IDENT_COUNTER = eINSTANCE.getMashup_SourceIdentCounter();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.MappingRuleImpl <em>Mapping Rule</em>}' class.

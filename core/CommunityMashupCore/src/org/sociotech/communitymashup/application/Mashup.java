@@ -39,6 +39,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.Mashup#getBackupDataSet <em>Backup Data Set</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Mashup#getBackupIntervall <em>Backup Intervall</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Mashup#getCacheDelay <em>Cache Delay</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.Mashup#getSourceIdentCounter <em>Source Ident Counter</em>}</li>
  * </ul>
  * </p>
  *
@@ -241,7 +242,7 @@ public interface Mashup extends Source {
 
 	/**
 	 * Returns the value of the '<em><b>Backup Intervall</b></em>' attribute.
-	 * The default value is <code>"600"</code>.
+	 * The default value is <code>"3600"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Backup Intervall</em>' attribute isn't clear,
@@ -251,7 +252,7 @@ public interface Mashup extends Source {
 	 * @return the value of the '<em>Backup Intervall</em>' attribute.
 	 * @see #setBackupIntervall(Integer)
 	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getMashup_BackupIntervall()
-	 * @model default="600"
+	 * @model default="3600"
 	 * @generated
 	 */
 	Integer getBackupIntervall();
@@ -294,6 +295,43 @@ public interface Mashup extends Source {
 	 * @generated
 	 */
 	void setCacheDelay(Integer value);
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Source Ident Counter</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Source Ident Counter</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Source Ident Counter</em>' attribute.
+	 * @see #setSourceIdentCounter(Integer)
+	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getMashup_SourceIdentCounter()
+	 * @model default="1"
+	 * @generated
+	 */
+	Integer getSourceIdentCounter();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.application.Mashup#getSourceIdentCounter <em>Source Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Source Ident Counter</em>' attribute.
+	 * @see #getSourceIdentCounter()
+	 * @generated
+	 */
+	void setSourceIdentCounter(Integer value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	Integer getNewSourceIdent();
 
 
 

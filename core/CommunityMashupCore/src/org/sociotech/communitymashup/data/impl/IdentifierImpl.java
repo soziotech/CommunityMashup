@@ -239,9 +239,9 @@ public class IdentifierImpl extends ItemImpl implements Identifier {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setIdentified(Item newIdentified) {
+		
 		if (newIdentified != identified) {
 			NotificationChain msgs = null;
 			if (identified != null)
@@ -253,6 +253,11 @@ public class IdentifierImpl extends ItemImpl implements Identifier {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.IDENTIFIER__IDENTIFIED, newIdentified, newIdentified));
+		
+		// delete if unused currently works only on list removment but identifiers should disapear also if the 
+		// identified object is removed
+		this.deleteIfUnused();
+				
 	}
 
 	/**
@@ -660,5 +665,17 @@ public class IdentifierImpl extends ItemImpl implements Identifier {
 		}
 		
 		return equal;
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#deleteIfUnused()
+	 */
+	@Override
+	protected void deleteIfUnused() {
+		// check if no objects is identified by this identifier
+		if(this.getIdentified() == null)
+		{
+			this.delete();
+		}
 	}
 } //IdentifierImpl

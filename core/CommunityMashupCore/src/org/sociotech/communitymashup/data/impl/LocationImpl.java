@@ -906,5 +906,76 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 			this.delete();
 		}
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Boolean isEqualItem(Item item) {
+		
+		if(super.isEqualItem(item))
+		{
+			return true;
+		}
+		
+		if(this == item)
+		{
+			return true;
+		}
+		else if (item == null)
+		{
+			return false;
+		}
+		else if (this.eClass() != item.eClass())
+		{
+			return false;
+		}
+		
+		// cast
+		Location location = (Location) item;
+		
+		try
+		{
+			EList<InformationObject> myIOs    = this.getDataSet().getInformationObjects();
+			EList<InformationObject> otherIOs = this.getDataSet().getInformationObjects();
+			
+			if(!myIOs.containsAll(otherIOs))
+			{
+				// must belong to the same ios
+				return false;
+			}
+		}
+		catch (Exception e)
+		{
+			// if not all accesses work, they are not equal
+			return false;
+		}
+		
+		// two locations are equal if they are on the same position
+		if(location.getLatitude()  != null && !location.getLatitude().isEmpty()  && location.getLatitude().equals(this.getLatitude()) &&
+		   location.getLongitude() != null && !location.getLongitude().isEmpty() && location.getLongitude().equals(this.getLongitude()))
+		{
+			return true;
+		}
+		
+		// or when they have the same non empty string value
+		if(location.getStringValue() != null && !location.getStringValue().isEmpty() && location.getStringValue().equals(this.getStringValue()))
+		{
+			return true;
+		}
+		
+		// or when they have the same address and all is set
+		if(location.getCity()        != null && !location.getCity().isEmpty()        && location.getCity().equals(this.getCity()) &&
+		   location.getZipCode()     != null && !location.getZipCode().isEmpty()     && location.getZipCode().equals(this.getZipCode()) &&
+		   location.getStreet()      != null && !location.getStreet().isEmpty()      && location.getStreet().equals(this.getStreet()) &&
+		   location.getHouseNumber() != null && !location.getHouseNumber().isEmpty() && location.getHouseNumber().equals(this.getHouseNumber()))
+			
+		{
+			return true;
+		}
+		// not equal
+		return false;
+	}
+	
 
 } //LocationImpl

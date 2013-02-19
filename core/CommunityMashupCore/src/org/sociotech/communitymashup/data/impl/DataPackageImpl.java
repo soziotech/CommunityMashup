@@ -816,6 +816,24 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getItem_DeleteOnDelete() {
+		return (EReference)itemEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getItem_DeletedIfDeleted() {
+		return (EReference)itemEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getExtension() {
 		return extensionEClass;
 	}
@@ -1648,6 +1666,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(itemEClass, ITEM__CREATED);
 		createEReference(itemEClass, ITEM__META_TAGS);
 		createEReference(itemEClass, ITEM__IDENTIFIED_BY);
+		createEReference(itemEClass, ITEM__DELETE_ON_DELETE);
+		createEReference(itemEClass, ITEM__DELETED_IF_DELETED);
 
 		extensionEClass = createEClass(EXTENSION);
 
@@ -2280,6 +2300,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getItem_Created(), ecorePackage.getEDate(), "created", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_MetaTags(), this.getMetaTag(), this.getMetaTag_MetaTagged(), "metaTags", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_IdentifiedBy(), this.getIdentifier(), this.getIdentifier_Identified(), "identifiedBy", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItem_DeleteOnDelete(), this.getItem(), this.getItem_DeletedIfDeleted(), "deleteOnDelete", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItem_DeletedIfDeleted(), this.getItem(), this.getItem_DeleteOnDelete(), "deletedIfDeleted", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(itemEClass, ecorePackage.getEString(), "toAttributeMapString", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2320,6 +2342,11 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		addEParameter(op, ecorePackage.getEString(), "language", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(itemEClass, ecorePackage.getEString(), "getLastModifiedPretty", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(itemEClass, this.getItem(), "deleteOnDeleteOf", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(itemEClass, null, "deleteIfEmptyOnDelete", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(extensionEClass, Extension.class, "Extension", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

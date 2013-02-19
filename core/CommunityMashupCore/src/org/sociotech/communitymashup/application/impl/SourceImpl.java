@@ -49,7 +49,6 @@ import org.sociotech.communitymashup.application.SourceState;
 import org.sociotech.communitymashup.application.XMLFile;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
-import org.sociotech.communitymashup.rest.ModificationAdapter;
 import org.sociotech.communitymashup.rest.RequestType;
 import org.sociotech.communitymashup.rest.RestCommand;
 import org.sociotech.communitymashup.rest.RestUtil;
@@ -67,11 +66,11 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getPersistency <em>Persistency</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getDataSet <em>Data Set</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getBundleId <em>Bundle Id</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getUseModificationAdapter <em>Use Modification Adapter</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getState <em>State</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getActiveState <em>Active State</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getLogLevel <em>Log Level</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getMashup <em>Mashup</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getRemoveDataOnStop <em>Remove Data On Stop</em>}</li>
  * </ul>
  * </p>
  *
@@ -124,26 +123,6 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 	 * @ordered
 	 */
 	protected String bundleId = BUNDLE_ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getUseModificationAdapter() <em>Use Modification Adapter</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUseModificationAdapter()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Boolean USE_MODIFICATION_ADAPTER_EDEFAULT = Boolean.TRUE;
-
-	/**
-	 * The cached value of the '{@link #getUseModificationAdapter() <em>Use Modification Adapter</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUseModificationAdapter()
-	 * @generated
-	 * @ordered
-	 */
-	protected Boolean useModificationAdapter = USE_MODIFICATION_ADAPTER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
@@ -204,6 +183,26 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 	 * @ordered
 	 */
 	protected String logLevel = LOG_LEVEL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRemoveDataOnStop() <em>Remove Data On Stop</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemoveDataOnStop()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean REMOVE_DATA_ON_STOP_EDEFAULT = Boolean.FALSE;
+
+	/**
+	 * The cached value of the '{@link #getRemoveDataOnStop() <em>Remove Data On Stop</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemoveDataOnStop()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean removeDataOnStop = REMOVE_DATA_ON_STOP_EDEFAULT;
 
 	/**
 	 * Default log level
@@ -317,18 +316,13 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public void setDataSet(DataSet newDataSet) {
 		DataSet oldDataSet = dataSet;
 		dataSet = newDataSet;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SOURCE__DATA_SET, oldDataSet, dataSet));
-		ModificationAdapter modificationAdapter = new ModificationAdapter();
-		// add ModificationAdapter if required
-		if ((useModificationAdapter) && (dataSet.eResource() != null) && (!dataSet.eResource().eAdapters().contains(modificationAdapter))) {
-			dataSet.eResource().eAdapters().add(modificationAdapter);
-		}
 	}
 
 	/**
@@ -350,39 +344,6 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 		bundleId = newBundleId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SOURCE__BUNDLE_ID, oldBundleId, bundleId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Boolean getUseModificationAdapter() {
-		return useModificationAdapter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void setUseModificationAdapter(Boolean newUseModificationAdapter) {
-		Boolean oldUseModificationAdapter = useModificationAdapter;
-		useModificationAdapter = newUseModificationAdapter;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SOURCE__USE_MODIFICATION_ADAPTER, oldUseModificationAdapter, useModificationAdapter));
-		ModificationAdapter modificationAdapter = new ModificationAdapter();
-		if (newUseModificationAdapter) {
-			// add ModificationAdapter if not yet present
-			if ((dataSet != null) && (dataSet.eResource() != null) &&(!dataSet.eResource().eAdapters().contains(modificationAdapter))) {
-				dataSet.eResource().eAdapters().add(modificationAdapter);
-			}
-		} else {
-			// remove ModificationAdapter
-			if (dataSet != null && dataSet.eResource() != null) {
-				dataSet.eResource().eAdapters().remove(modificationAdapter);
-			}
-		}
 	}
 
 	/**
@@ -493,6 +454,27 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SOURCE__MASHUP, newMashup, newMashup));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getRemoveDataOnStop() {
+		return removeDataOnStop;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRemoveDataOnStop(Boolean newRemoveDataOnStop) {
+		Boolean oldRemoveDataOnStop = removeDataOnStop;
+		removeDataOnStop = newRemoveDataOnStop;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP, oldRemoveDataOnStop, removeDataOnStop));
 	}
 
 	/**
@@ -642,8 +624,6 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return basicGetDataSet();
 			case ApplicationPackage.SOURCE__BUNDLE_ID:
 				return getBundleId();
-			case ApplicationPackage.SOURCE__USE_MODIFICATION_ADAPTER:
-				return getUseModificationAdapter();
 			case ApplicationPackage.SOURCE__STATE:
 				return getState();
 			case ApplicationPackage.SOURCE__ACTIVE_STATE:
@@ -652,6 +632,8 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return getLogLevel();
 			case ApplicationPackage.SOURCE__MASHUP:
 				return getMashup();
+			case ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP:
+				return getRemoveDataOnStop();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -673,9 +655,6 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 			case ApplicationPackage.SOURCE__BUNDLE_ID:
 				setBundleId((String)newValue);
 				return;
-			case ApplicationPackage.SOURCE__USE_MODIFICATION_ADAPTER:
-				setUseModificationAdapter((Boolean)newValue);
-				return;
 			case ApplicationPackage.SOURCE__STATE:
 				setState((SourceState)newValue);
 				return;
@@ -687,6 +666,9 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return;
 			case ApplicationPackage.SOURCE__MASHUP:
 				setMashup((Mashup)newValue);
+				return;
+			case ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP:
+				setRemoveDataOnStop((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -709,9 +691,6 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 			case ApplicationPackage.SOURCE__BUNDLE_ID:
 				setBundleId(BUNDLE_ID_EDEFAULT);
 				return;
-			case ApplicationPackage.SOURCE__USE_MODIFICATION_ADAPTER:
-				setUseModificationAdapter(USE_MODIFICATION_ADAPTER_EDEFAULT);
-				return;
 			case ApplicationPackage.SOURCE__STATE:
 				setState(STATE_EDEFAULT);
 				return;
@@ -723,6 +702,9 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return;
 			case ApplicationPackage.SOURCE__MASHUP:
 				setMashup((Mashup)null);
+				return;
+			case ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP:
+				setRemoveDataOnStop(REMOVE_DATA_ON_STOP_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -742,8 +724,6 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return dataSet != null;
 			case ApplicationPackage.SOURCE__BUNDLE_ID:
 				return BUNDLE_ID_EDEFAULT == null ? bundleId != null : !BUNDLE_ID_EDEFAULT.equals(bundleId);
-			case ApplicationPackage.SOURCE__USE_MODIFICATION_ADAPTER:
-				return USE_MODIFICATION_ADAPTER_EDEFAULT == null ? useModificationAdapter != null : !USE_MODIFICATION_ADAPTER_EDEFAULT.equals(useModificationAdapter);
 			case ApplicationPackage.SOURCE__STATE:
 				return state != STATE_EDEFAULT;
 			case ApplicationPackage.SOURCE__ACTIVE_STATE:
@@ -752,6 +732,8 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return LOG_LEVEL_EDEFAULT == null ? logLevel != null : !LOG_LEVEL_EDEFAULT.equals(logLevel);
 			case ApplicationPackage.SOURCE__MASHUP:
 				return getMashup() != null;
+			case ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP:
+				return REMOVE_DATA_ON_STOP_EDEFAULT == null ? removeDataOnStop != null : !REMOVE_DATA_ON_STOP_EDEFAULT.equals(removeDataOnStop);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -768,14 +750,14 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (bundleId: ");
 		result.append(bundleId);
-		result.append(", useModificationAdapter: ");
-		result.append(useModificationAdapter);
 		result.append(", state: ");
 		result.append(state);
 		result.append(", activeState: ");
 		result.append(activeState);
 		result.append(", logLevel: ");
 		result.append(logLevel);
+		result.append(", removeDataOnStop: ");
+		result.append(removeDataOnStop);
 		result.append(')');
 		return result.toString();
 	}
@@ -804,8 +786,6 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 			return this.getDataSet();		
 		if ( featureName.equalsIgnoreCase("bundleId") )
 			return this.getBundleId();		
-		if ( featureName.equalsIgnoreCase("useModificationAdapter") )
-			return this.getUseModificationAdapter();		
 		if ( featureName.equalsIgnoreCase("state") )
 			return this.getState();		
 		if ( featureName.equalsIgnoreCase("activeState") )
@@ -813,7 +793,9 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 		if ( featureName.equalsIgnoreCase("logLevel") )
 			return this.getLogLevel();		
 		if ( featureName.equalsIgnoreCase("mashup") )
-			return this.getMashup();			
+			return this.getMashup();		
+		if ( featureName.equalsIgnoreCase("removeDataOnStop") )
+			return this.getRemoveDataOnStop();			
 		return super.getFeature(featureName); 
 	}
 
@@ -860,20 +842,6 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 					throw new WrongArgException("Source.setFeature", "java.lang.String",value.getClass().getName());
 				}
 				this.setBundleId(fbundleId);
-			return this;
-			}		
-		if ( featureName.equalsIgnoreCase("useModificationAdapter") ) {
-				java.lang.Boolean fuseModificationAdapter = null;
-				try {
-					try {
-						fuseModificationAdapter = (java.lang.Boolean)(RestUtil.fromInput(value));
-					} catch (ClassNotFoundException e) {
-						fuseModificationAdapter = (java.lang.Boolean)value;
-					}
-				} catch (ClassCastException e) {
-					throw new WrongArgException("Source.setFeature", "java.lang.Boolean",value.getClass().getName());
-				}
-				this.setUseModificationAdapter(fuseModificationAdapter);
 			return this;
 			}		
 		if ( featureName.equalsIgnoreCase("state") ) {
@@ -926,6 +894,20 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 					throw new WrongArgException("Source.setFeature", "org.sociotech.communitymashup.application.Mashup",value.getClass().getName());
 				}
 				this.setMashup(fmashup);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("removeDataOnStop") ) {
+				java.lang.Boolean fremoveDataOnStop = null;
+				try {
+					try {
+						fremoveDataOnStop = (java.lang.Boolean)(RestUtil.fromInput(value));
+					} catch (ClassNotFoundException e) {
+						fremoveDataOnStop = (java.lang.Boolean)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Source.setFeature", "java.lang.Boolean",value.getClass().getName());
+				}
+				this.setRemoveDataOnStop(fremoveDataOnStop);
 			return this;
 			}			
 		super.setFeature(featureName, value);
@@ -1075,6 +1057,23 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 			}
 		}
 		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.application.impl.ConfigurableElementImpl#getIdent()
+	 */
+	@Override
+	public String getIdent() {
+		if(super.getIdent() == null && this.getMashup() != null)
+		{
+			// create new source ident
+			String newSourceIdent = "source_" + this.getMashup().getNewSourceIdent();
+			
+			// and save it
+			this.setIdent(newSourceIdent);
+		}
+	
+		return super.getIdent();
 	}
 
 } //SourceImpl
