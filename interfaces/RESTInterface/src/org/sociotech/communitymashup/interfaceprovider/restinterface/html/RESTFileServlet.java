@@ -148,6 +148,8 @@ public class RESTFileServlet extends HttpServlet {
 			}
 			os.flush();
 			os.close();
+			// close input stream
+			fis.close();
 		} catch (IOException e) {
 				resp.sendError(404, "File not found.");
 		}

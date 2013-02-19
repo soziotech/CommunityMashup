@@ -76,7 +76,7 @@ public class RESTInterfaceInstantiationService extends InterfaceInstantiationFac
 		// stop all rest interface services
 		for(RESTInterfaceService service : restInterfaceServices)
 		{
-			service.stop();
+			service.stopInterfaceService();
 		}
 	}
 

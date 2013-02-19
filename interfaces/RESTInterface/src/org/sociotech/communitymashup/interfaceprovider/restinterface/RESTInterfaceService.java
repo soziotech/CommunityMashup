@@ -42,11 +42,15 @@ public class RESTInterfaceService extends InterfaceServiceFacadeImpl
 		resourceRegistrator.open();
 	}
 
-	/**
-	 * Stops this rest interface service and deregisters all of its resources.
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.interfaceprovider.impl.InterfaceServiceFacadeImpl#stop()
 	 */
-	public void stop()
+	@Override
+	protected void stop()
 	{
+		// call super stop to maintain state
+		super.stop();
+		
 		if(resourceRegistrator != null)
 		{
 			// close resource registrator

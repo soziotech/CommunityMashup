@@ -67,9 +67,20 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 	 */
 	private SecurityFactoryServiceTracker securityFactoryTracker;
 	
+	/**
+	 * Reference to the rest servlet
+	 */
 	private RESTServlet restServlet;
 
+	/**
+	 * Reference to the file servlet
+	 */
 	private RESTFileServlet fileServlet;
+
+	/**
+	 * Path where the servlets are registered.
+	 */
+	private String path;
 
 	/**
 	 * Creates a new resource registrator that creates and registers the needed servlets and resources.
@@ -98,8 +109,7 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 		// first unregister everything
 		unregisterAll();
 
-		// get path from configuration
-		String path = configuration.getUrlSuffix();
+		path = configuration.getUrlSuffix();
 
 		// ensure to create correct urls
 		if(!path.startsWith("/"))
@@ -150,7 +160,6 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 
 		} catch (ServletException e) {
 			log("Servlet-Exception at registering REST servlets. (" + e.getMessage() +")", LogService.LOG_ERROR);
-			e.printStackTrace();
 		} catch (NamespaceException e) {
 			log("Namespace-Exception at registering REST servlets. (" + e.getMessage() +")", LogService.LOG_ERROR);
 		}
@@ -160,7 +169,9 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 			// create servlet for HTML-based REST-interface
 			RESTHtmlServlet htmlServlet = new RESTHtmlServlet();
 			httpService.registerServlet(path + "inc", htmlServlet, null, null);
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			log("Exception at registering Html servlet resources. (" + e.getMessage() +")", LogService.LOG_ERROR);
+		}
 
 		// keep reference
 		usedHttpService = httpService;
@@ -248,11 +259,14 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 		}
 
 		// unregister all servlets
-
-		usedHttpService.unregister("mashup");
-		usedHttpService.unregister("files");
+		try {
+			usedHttpService.unregister(path + "mashup");
+			usedHttpService.unregister(path + "files");
 		
-		usedHttpService.unregister("/inc");
+			usedHttpService.unregister(path + "inc");
+		} catch(Exception e) {
+			log("Exception at unregistering REST servlets. (" + e.getMessage() +")", LogService.LOG_ERROR);
+		}
 
 		// set it to null when everything is unregistered
 		usedHttpService = null;
