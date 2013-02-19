@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.interfaceprovider.facade;
 
+import org.eclipse.emf.common.notify.Notification;
+
 /**
  * (Java) Interface that must be provided by every CommunityMashup interface service.
  *  
@@ -17,5 +19,19 @@ package org.sociotech.communitymashup.interfaceprovider.facade;
  */
 public interface InterfaceServiceFacade
 {
-    // currently nothing special
+
+	/**
+	 * Stops this interface service
+	 */
+	public void stopInterfaceService();
+
+	/**
+	 * If the change defined by the given notification can be handled automatically, it will be handled
+	 * and confirmed by returning true. If it can not be handled or an error occurs, false will be returned. 
+	 * 
+	 * @param notification Notification indicating the change.
+	 * @return True if the change is successfully handled, false otherwise.
+	 */
+	public boolean handleChange(Notification notification);
+    
 }
