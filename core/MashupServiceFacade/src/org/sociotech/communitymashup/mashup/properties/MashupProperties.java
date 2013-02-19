@@ -21,5 +21,5 @@ public class MashupProperties {
 	 * Update interval in seconds.
 	 */
 	public static final String UPDATE_CYCLE_TIME_PROPERTY = "updateIntervall";
-
+	public static final String UPDATE_CYCLE_TIME_PROPERTY_DEFAULT = "60";
 }
