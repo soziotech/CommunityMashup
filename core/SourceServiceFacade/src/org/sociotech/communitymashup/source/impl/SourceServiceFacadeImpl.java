@@ -38,8 +38,6 @@ import org.sociotech.communitymashup.application.ApplicationPackage;
 import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.application.SourceActiveStates;
 import org.sociotech.communitymashup.application.SourceState;
-import org.sociotech.communitymashup.configuration.observer.source.SourceChangeObserver;
-import org.sociotech.communitymashup.configuration.observer.source.SourceChangedInterface;
 import org.sociotech.communitymashup.data.Category;
 import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
@@ -66,7 +64,7 @@ import org.sociotech.communitymashup.source.properties.SourceServiceProperties;
  * @author Peter Lachenmaier
  * 
  */
-public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, SourceChangedInterface {
+public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 
 	private static final String DEFAULT_CONFIGURATION_PATH = "/configuration/configuration.xml";
 	private static final String HASHTAG_REGEX = "[##]+([A-Za-z0-9-_]+)";
@@ -104,12 +102,10 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 	 * TODO: get default value from Source
 	 */
 	protected int logLevel = LogService.LOG_DEBUG;
-	
 	/**
-	 * Observer for configuration changes. 
+	 * MetaTag for all items added by this source 
 	 */
-	private SourceChangeObserver configurationObserver;
-
+	private MetaTag sourceInstanceMetaTag;
 	
 	/**
 	 * Wait that number of tries for the source service to be in the state for update.
@@ -226,10 +222,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 
 			// get log level
 			logLevel = source.getLogLevelIntValue();
-			
-			// add adapter to observe configuration changes
-			// this on calls configurationChanged
-			configurationObserver = new SourceChangeObserver(source, this);
 			
 			// load cached content if caching is enabled
 			if (cachingEnabled()) {
@@ -1244,6 +1236,18 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 			return;
 		}
 		
+		// get source instance specific meta tag
+		MetaTag sourceMetaTag = getSourceInstanceMetaTag();
+		// meta tag item with
+		sourceMetaTag.getMetaTagged().add(item);
+		
+		// if removing is on the item should be deleted when this source stops
+		// so add it to the on delete list of the meta tag
+		if(source.getRemoveDataOnStop())
+		{
+			item.deleteOnDeleteOf(sourceMetaTag);
+		}
+		
 		// TODO this methods have a really bad performance
 		
 		addSourceSpecificTags(item);
@@ -1251,6 +1255,31 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 		addSourceSpecificCategories(item);
 		
 		// TODO add addition source specific ids in this method 
+	}
+
+	/**
+	 * Returns the meta tag that is used to tag all items added by this source instance. It will be
+	 * created if not used before.
+	 * 
+	 * @return The source instance specific meta tag
+	 */
+	private MetaTag getSourceInstanceMetaTag() {
+		
+		if(sourceInstanceMetaTag == null)
+		{
+			sourceInstanceMetaTag = source.getDataSet().getMetaTag(source.getIdent());
+		}
+		
+		if(sourceInstanceMetaTag == null)
+		{
+			// not created before
+			sourceInstanceMetaTag = DataFactory.eINSTANCE.createMetaTag();
+			sourceInstanceMetaTag.setName(source.getIdent());
+			//add it to the data set
+			source.getDataSet().add(sourceInstanceMetaTag);
+		}
+		
+		return sourceInstanceMetaTag;
 	}
 
 	/**
@@ -1838,9 +1867,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 				continue;
 			}
 			
-			log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
-			log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
-			
 			if(referencedObject1 instanceof EList<?> && referencedObject2 instanceof EList<?>)
 			{
 				EList<Item> list2 = null;
@@ -1858,6 +1884,9 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 					// no new references
 					continue;
 				}
+				
+				log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
+				log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
 				
 				EList<Item> list1 = (EList<Item>) referencedObject1;
 				
@@ -1882,12 +1911,13 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 			
 			if(referencedObject1 == null && referencedObject2 instanceof Item)
 			{
+				log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
+				log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
+				
 				// reference is no list an not previously set
 				Item addedItem = this.add((Item) referencedObject2);
 				io1.eSet(reference, addedItem);
 			}
-			
-			
 		}
 		
 		return io1;
@@ -1987,27 +2017,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 			matcher.find();
 		}		
 	}
-
-	/**
-	 * This method will be called after the configuration of this source service has changed.
-	 * 
-	 * @param notification The notification containing the change details.
-	 */
-	@Override
-	public void sourceConfigurationChanged(Notification notification) {
-		if(notification == null)
-		{
-			// nothing to do
-			return;
-		}
-		
-		if(notification.getEventType() == Notification.SET && notification.getFeatureID(Source.class) == ApplicationPackage.SOURCE__LOG_LEVEL)
-		{
-			// log level has changed, so set it
-			this.logLevel = source.getLogLevelIntValue();
-			log("Set log level to " + this.logLevel, LogService.LOG_DEBUG);
-		}
-	}
 	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#stopSourceService()
@@ -2021,11 +2030,161 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, So
 	 * Stop everything, should be overwritten in concrete source implementations with call to super.stop().
 	 */
 	protected void stop() {
-		// disconnect source configuration observer
-		configurationObserver.disconnect();
-		
-		// TODO remove added data
+	
+		// remove added data if set
+		if(source.getRemoveDataOnStop())
+		{
+			// simply delete source secific meta tag
+			getSourceInstanceMetaTag().delete();
+		}
 		
 		source.setState(SourceState.STOPED);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#handleChange(org.eclipse.emf.common.notify.Notification)
+	 */
+	@Override
+	public boolean handleChange(Notification notification) {
+		if(notification == null)
+		{
+			return false;
+		}
+		
+		if(notification.getNotifier() != this.source)
+		{
+			// no change at the configuration of this source
+			return false;
+		}
+		
+		return this.handle(notification);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#handlePropertyChange(org.eclipse.emf.common.notify.Notification)
+	 */
+	@Override
+	public boolean handlePropertyChange(Notification notification) {
+		if(notification == null)
+		{
+			return false;
+		}
+		
+		if(notification.getNotifier() != this.source.getConfiguration())
+		{
+			// no property of this source
+			return false;
+		}
+			
+		return this.handleProperty(notification);
+	}
+
+	/**
+	 * This method should be overwritten in concrete interface implementations with call to super.handleProperty();
+	 * 
+	 * @param notification Notification indicating a change to a source configuration property
+	 * @return True if the change is handled, false otherwise.
+	 */
+	protected boolean handleProperty(Notification notification) {
+		// handle source service facade specific properties
+		
+		// currently all of them need a restart, so return false
+		
+		return false;
+	}
+	
+	/**
+	 * This method should be overwritten in concrete interface implementations with call to super.handle();
+	 * 
+	 * @param notification Notification indicating a change to the source configuration
+	 * @return True if the change is handled, false otherwise.
+	 */
+	protected boolean handle(Notification notification) {
+		int featureID = notification.getFeatureID(Source.class);
+		if(featureID == ApplicationPackage.SOURCE__CHANGEABLE ||
+		   featureID == ApplicationPackage.SOURCE__HIDDEN ||
+		   featureID == ApplicationPackage.SOURCE__DESCRIPTION ||
+		   featureID == ApplicationPackage.SOURCE__NAME ||
+		   featureID == ApplicationPackage.SOURCE__CONFIGURATION_IMAGE ||
+		   featureID == ApplicationPackage.SOURCE__IDENT)
+		{
+			// basic attributes that only influence the gui don't need to be handled
+			return true;
+		}
+		
+		// handle remove data switch
+		if(featureID == ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP)
+		{
+			// switched on
+			if(source.getRemoveDataOnStop())
+			{
+				setAllRemoveOn();
+			}
+			// switched off
+			else if(!source.getRemoveDataOnStop())
+			{
+				setAllRemoveOff();
+			}
+			return true;
+		}
+				
+		// handle state changes
+		if(featureID == ApplicationPackage.SOURCE__STATE && notification.getEventType() == Notification.SET)
+		{
+			// Setting to stop must be handled by mashup cause this needs to destroy the service instantiated by the mashup
+			// TODO handle other state transitions
+			return true;
+		}	
+		// handle active state changes
+		else if(featureID == ApplicationPackage.SOURCE__ACTIVE_STATE && notification.getEventType() == Notification.SET)
+		{
+			// nothing to do
+			return true;
+		}	
+		// handle log level change
+		else if(featureID == ApplicationPackage.SOURCE__LOG_LEVEL && notification.getEventType() == Notification.SET)
+		{
+			// log level has changed, so set it
+			this.logLevel = source.getLogLevelIntValue();
+			log("Set log level to " + this.logLevel, LogService.LOG_DEBUG);
+			
+			return true;
+		}
+		// handle data set change, appears on source initialization
+		else if(featureID == ApplicationPackage.SOURCE__DATA_SET && notification.getEventType() == Notification.SET)
+		{
+			// nothing to do for the service
+			return true;
+		}
+		
+		return false;
+	}
+
+	/**
+	 * Removes all items added by this source instance from the delete on delete list of
+	 * the source specific meta tag
+	 */
+	private void setAllRemoveOff() {
+		MetaTag metaTag = getSourceInstanceMetaTag();
+		
+		// all added items are meta tagged with the source specific meta tag
+		EList<Item> addedItems = metaTag.getMetaTagged();
+		
+		// remove them from the delete on delete list
+		metaTag.getDeleteOnDelete().removeAll(addedItems);
+	}
+
+	/**
+	 * Adds all items added by this source instance to the delete on delete list of
+	 * the source specific meta tag
+	 */
+	private void setAllRemoveOn() {
+		MetaTag metaTag = getSourceInstanceMetaTag();
+		
+		// all added items are meta tagged with the source specific meta tag
+		EList<Item> addedItems = metaTag.getMetaTagged();
+		
+		// remove them from the delete on delete list
+		metaTag.getDeleteOnDelete().addAll(addedItems);
 	}
 }

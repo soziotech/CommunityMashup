@@ -9,8 +9,7 @@ Export-Package: org.sociotech.communitymashup.source.authorization,
  org.sociotech.communitymashup.source.instantiation.facade,
  org.sociotech.communitymashup.source.instantiation.impl,
  org.sociotech.communitymashup.source.properties
-Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1",
- org.sociotech.communitymashup.configuration.ConfigurationObservers;bundle-version="0.0.1";visibility:=reexport
+Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: org.sociotech.communitymashup
 Import-Package: javax.servlet;version="2.5.0",

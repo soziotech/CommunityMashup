@@ -13,6 +13,7 @@
  */
 package org.sociotech.communitymashup.source.facade;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.data.DataSet;
 
@@ -111,5 +112,23 @@ public interface SourceServiceFacade {
 	 * Stops the source service
 	 */
 	public void stopSourceService();
+	
+	/**
+	 * If the change defined by the given notification can be handled automatically, it will be handled
+	 * and confirmed by returning true. If it can not be handled or an error occurs, false will be returned. 
+	 * 
+	 * @param notification Notification indicating the change.
+	 * @return True if the change is successfully handled, false otherwise.
+	 */
+	public boolean handleChange(Notification notification);
+
+	/**
+	 * If the change defined by the given notification can be handled automatically, it will be handled
+	 * and confirmed by returning true. If it can not be handled or an error occurs, false will be returned. 
+	 * 
+	 * @param notification Notification indicating the change.
+	 * @return True if the change is successfully handled, false otherwise.
+	 */
+	public boolean handlePropertyChange(Notification notification);
 
 }
