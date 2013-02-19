@@ -35,6 +35,7 @@ import org.sociotech.communitymashup.application.ApplicationFactory;
 import org.sociotech.communitymashup.application.ApplicationPackage;
 import org.sociotech.communitymashup.application.Mashup;
 import org.sociotech.communitymashup.application.MashupContainer;
+import org.sociotech.communitymashup.application.SourceState;
 import org.sociotech.communitymashup.configuration.observer.mashupcontainer.ContainerChangeObserver;
 import org.sociotech.communitymashup.configuration.observer.mashupcontainer.ContainerChangedInterface;
 import org.sociotech.communitymashup.mashup.facade.MashupServiceFacade;
@@ -728,6 +729,34 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 				destroyMashup((Mashup) notification.getOldValue());
 			}	
 		}
+		// destroy stoped mashups
+		else if(notifier instanceof Mashup &&
+				notification.getEventType() == Notification.SET && 
+				notification.getFeatureID(Mashup.class) == ApplicationPackage.MASHUP__STATE &&
+				notification.getOldValue() != SourceState.STOPED &&
+				notification.getNewValue() == SourceState.STOPED)
+		{
+			// state switched to stoped, so destroy mashup
+			destroyMashup((Mashup) notifier);
+		}
+		// produce newly activated mashups wich where not produced before
+		else if(notifier instanceof Mashup &&
+				notification.getEventType() == Notification.SET && 
+				notification.getFeatureID(Mashup.class) == ApplicationPackage.MASHUP__STATE &&
+				notification.getOldValue() != SourceState.ACTIVE &&
+				notification.getNewValue() == SourceState.ACTIVE)
+		{
+			Mashup mashupConfiguration = (Mashup) notifier;
+			// mashup must be contained in real (not templates) mashups list
+			if(mashupConfiguration != null && 
+			   mashupContainer.getMashups() != null &&
+			   mashupContainer.getMashups().contains(mashupConfiguration) &&
+			   !producedMashups.containsKey(mashupConfiguration))
+			{
+				// not produced before or destroyed
+				produceMashup(mashupConfiguration);
+			}
+		}
 		
 		// configuration changed so we can save something
 		this.needSave = true;
@@ -853,7 +882,7 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
  				configurationURI = URI.createFileURI(configurationFile.getAbsolutePath());
  			}
  			catch (Exception e) {
- 				log("Could not load external configuration from " + configurationFile.getAbsolutePath(), LogService.LOG_ERROR);
+ 				log("Could not create uri for configuration backup file " + configurationFile.getAbsolutePath(), LogService.LOG_ERROR);
  				return;
  			}
 	        Resource saveResource = resourceSet.createResource(configurationURI);

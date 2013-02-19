@@ -9,8 +9,8 @@
 			name="Sociotech_Artikel">
 			<configuration>
 				<properties Key="categorizeInformationObjectsWith" Value="Artikel auf Sociotech" />
-				<properties Key="removeHtml" Value="false" />
-				<properties Key="removeNonHtmlAnd" Value="false" />
+				<properties Key="removeHtml" Value="true" />
+				<properties Key="removeNonHtmlAnd" Value="true" />
 				<properties Key="feedUrl" Value="http://feeds.feedburner.com/soziotech" />
 				<properties Key="addOnlyFirstImage" Value="true" />
 			</configuration>
@@ -18,8 +18,8 @@
 		<sources bundleId="org.sociotech.communitymashup.source.FeedSourceService"
 			name="CSCM_News">
 			<configuration>
-				<properties Key="removeHtml" Value="false" />
-				<properties Key="removeNonHtmlAnd" Value="false" />
+				<properties Key="removeHtml" Value="true" />
+				<properties Key="removeNonHtmlAnd" Value="true" />
 				<properties Key="categorizeInformationObjectsWith" Value="Neuigkeiten von CSCM" />
 				<properties Key="feedUrl" Value="http://www.kooperationssysteme.de/feed/" />
 				<properties Key="addOnlyFirstImage" Value="false" />

@@ -48,7 +48,11 @@ public class ConfigurationBackupThread extends Thread {
 			try {
 				Thread.sleep(backupInterval);
 			} catch (InterruptedException e) {
-				mashupFactory.log("Could not sleep in thread, this causes to much backups.", LogService.LOG_ERROR);
+				// an exception will be raise when interupting the thread while it sleeps (in this case active is false)
+				if(active)
+				{
+					mashupFactory.log("Could not sleep in thread, this causes to much backups.", LogService.LOG_ERROR);
+				}
 			}
 			
 			// backup the configuration
