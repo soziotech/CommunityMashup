@@ -30,7 +30,7 @@ public class ConfigurableMashupBundleActivator implements BundleActivator {
 
 	private ServiceRegistration<MashupInstantiationFacade> instantiationServiceRegistration;
 	
-	static BundleContext getContext() {
+	public static BundleContext getContext() {
 		return context;
 	}
 

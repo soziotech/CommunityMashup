@@ -14,7 +14,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
-import org.sociotech.communitymashup.configurablemashupservice.ConfigurableMashupService;
+import org.sociotech.communitymashup.configurablemashupservice.impl.ConfigurableMashupService;
 import org.sociotech.communitymashup.source.factory.facade.SourceFactoryServiceFacade;
 
 

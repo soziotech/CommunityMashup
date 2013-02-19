@@ -8,24 +8,22 @@
  * Contributors:
  *     Peter Lachenmaier - Design and initial implementation
  ******************************************************************************/
-package org.sociotech.communitymashup.configurablemashupservice.update;
+package org.sociotech.communitymashup.configurablemashupservice.impl;
 
 import org.osgi.service.log.LogService;
-import org.sociotech.communitymashup.configurablemashupservice.impl.ConfigurableMashupService;
-import org.sociotech.communitymashup.mashup.impl.MashupServiceFacadeImpl;
 
 /**
- * Thread that cyclic calls {@link MashupServiceFacadeImpl#update()}. 
+ * Thread to cyclicly backup the data set
  * 
  * @author Peter Lachenmaier
  */
-public class UpdateThread extends Thread {
+public class DataSetBackupThread extends Thread {
 
 	private boolean active = false;
 	private ConfigurableMashupService mashupService;
-	private long updateInterval = -1;
+	private long backupInterval = -1;
 	
-	public UpdateThread(ConfigurableMashupService mashupService) {
+	public DataSetBackupThread(ConfigurableMashupService mashupService) {
 		this.mashupService = mashupService;
 	}
 	
@@ -46,9 +44,9 @@ public class UpdateThread extends Thread {
 	public void run() {
 		while(active)
 		{
-			// wait the update interval
+			// wait the backup interval
 			try {
-				Thread.sleep(updateInterval);
+				Thread.sleep(backupInterval);
 			} catch (InterruptedException e) {
 				// an exception will be raise when interupting the thread while it sleeps (in this case active is false)
 				if(active)
@@ -57,13 +55,8 @@ public class UpdateThread extends Thread {
 				}
 			}
 			
-			// call update method of mashup service
-			try {
-				mashupService.update();
-			} catch (Exception e) {
-				mashupService.log("Exception occurred while updating: " + e.getMessage(), LogService.LOG_WARNING);
-				//e.printStackTrace();
-			}
+			// backup the data set
+			mashupService.backupDataSet();
 		}
 	}
 
@@ -80,33 +73,22 @@ public class UpdateThread extends Thread {
 	}
 
 	/**
-	 * Returns the update interval in ms.
+	 * Returns the backup interval in ms.
 	 * 
-	 * @return The update interval in ms
+	 * @return The backup interval in ms
 	 */
-	public long getUpdateInterval() {
-		return updateInterval;
+	public long getBackupInterval() {
+		return backupInterval;
 	}
 
 	/**
-	 * Set the update interval. Must be at least 1000 ms.
+	 * Set the backup interval.
 	 * 
-	 * @param updateInterval Update interval in ms.
+	 * @param backupInterval Backup interval in ms.
 	 */
-	public void setUpdateInterval(long updateInterval) {
-		this.updateInterval = updateInterval;
-		
-		// interrupt if interval is to low (< 1 second)
-		if(updateInterval <= 999 && !this.isInterrupted())
-		{
-			// important to interrupt super to keep active state
-			super.interrupt();
-		}
-		
-		// restart if valid interval is set and thread should be active
-		if(this.isInterrupted() && updateInterval >= 999 && active)
-		{
-			this.start();
-		}
+	public void setBackupInterval(long backupInterval) {
+		this.backupInterval = backupInterval;
 	}
+	
+	
 }

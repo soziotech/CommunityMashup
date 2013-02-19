@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.sociotech.communitymashup.application.Mashup;
-import org.sociotech.communitymashup.configurablemashupservice.ConfigurableMashupService;
+import org.sociotech.communitymashup.configurablemashupservice.impl.ConfigurableMashupService;
 import org.sociotech.communitymashup.mashup.facade.MashupServiceFacade;
 import org.sociotech.communitymashup.mashup.instantiation.facade.MashupInstantiationFacade;
 
