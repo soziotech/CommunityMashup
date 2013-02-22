@@ -1067,26 +1067,21 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			return;
 		}
 		
-		// get all created source services
-		Collection<SourceServiceFacade> services = sourceServices.values();
-
-		if(services == null)
-		{
-			log("No valid services created by mashup configuration, could not enrich", LogService.LOG_ERROR);
-			return;
-		}
-
 		// set active state to updating
 		mashup.setActiveState(SourceActiveStates.UPDATING);
 				
 		// update all source services
-		for(SourceServiceFacade service : services)
+		for(Source source : sourceServices.keySet())
 		{
-			log("Updating data with source service " + service.getConfiguration().getName(), LogService.LOG_INFO);
+			SourceServiceFacade service = sourceServices.get(source);
+			
+			log("Updating data with source service " + source.getName(), LogService.LOG_INFO);
 			try {
 				service.update();
 			} catch (Exception e) {
-				log("Exception while updating data with source service " + service, LogService.LOG_ERROR);
+				log("Exception (" + e.getMessage() + ") while updating data with source service " + service, LogService.LOG_ERROR);
+				// set source to error state
+				source.setState(SourceState.ERROR);
 			}
 		}		
 		
