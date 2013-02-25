@@ -121,23 +121,6 @@ public class RESTHtmlServlet extends HttpServlet {
 			// tidy up
 			br.close();
 		}	
-		else if(pathInfo.endsWith(".css")) {
-			resp.setContentType("text/css");
-			
-			// Create buffered input reader
-			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-			BufferedReader br = new BufferedReader(inputStreamReader);
-			
-			// Return text
-			PrintWriter out = resp.getWriter();
-			
-			String text;
-			while( (text = br.readLine()) != null)
-				out.println(text);
-			
-			// tidy up
-			br.close();
-		}	
 		else {
 			
 			// resource exists but not supported, yet. 
