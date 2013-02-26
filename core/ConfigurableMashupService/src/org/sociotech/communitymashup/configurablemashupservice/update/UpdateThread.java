@@ -44,7 +44,7 @@ public class UpdateThread extends Thread {
 	 */
 	@Override
 	public void run() {
-		while(active)
+		while(active && this.updateInterval > 0)
 		{
 			// wait the update interval
 			try {
@@ -73,7 +73,7 @@ public class UpdateThread extends Thread {
 	@Override
 	public synchronized void start() {
 		this.active = true;
-		if(!this.isAlive() || this.isInterrupted())
+		if((!this.isAlive() || this.isInterrupted()) && this.updateInterval > 0)
 		{
 			super.start();
 		}
@@ -94,7 +94,6 @@ public class UpdateThread extends Thread {
 	 * @param updateInterval Update interval in ms.
 	 */
 	public void setUpdateInterval(long updateInterval) {
-		this.updateInterval = updateInterval;
 		
 		// interrupt if interval is to low (< 1 second)
 		if(updateInterval <= 999 && !this.isInterrupted())
@@ -103,10 +102,10 @@ public class UpdateThread extends Thread {
 			super.interrupt();
 		}
 		
+		// keep update interval
+		this.updateInterval = updateInterval;
+		
 		// restart if valid interval is set and thread should be active
-		if(this.isInterrupted() && updateInterval >= 999 && active)
-		{
-			this.start();
-		}
+		this.start();
 	}
 }

@@ -700,14 +700,21 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 	 * @param interfaceConfiguration Configuration of the interface service to create.
 	 */
 	private void createInterfaceService(Interface interfaceConfiguration) {
-		if(interfaceFactory != null)
+		// only produce when interface factory available and mashup active
+		if(interfaceFactory != null && mashup.getState() == SourceState.ACTIVE)
 		{
 			log("Starting production of interface", LogService.LOG_DEBUG);
 
 			// directly produce if interface factory available
 
+			InterfaceServiceFacade interfaceService = null;
 			// instantiate interface service
-			InterfaceServiceFacade interfaceService = interfaceFactory.produceInterface(interfaceConfiguration, this.getDataSet());
+			try {
+				interfaceService = interfaceFactory.produceInterface(interfaceConfiguration, this.getDataSet());
+			} catch (Exception e) {
+				log("Error (" + e.getMessage() + ") while producing interface " + interfaceConfiguration.getName(), LogService.LOG_ERROR);
+				return;
+			}
 			// keep reference
 			interfaceServices.put(interfaceConfiguration, interfaceService);
 		}
@@ -884,19 +891,8 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 	 * Starts a thread that cyclic call the update method of this mashup service
 	 */
 	private void startUpdateLoop() {
-		if(updateThread != null)
-		{
-			// already created
-			return;
-		}
-		
-		// create new update thread
-		updateThread = new UpdateThread(this);
-		
+		// refresh interval causes the creation of a new thread
 		refreshUpdateInterval();
-		
-		// and start it
-		updateThread.start();
 	}
 
 
@@ -904,6 +900,17 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 	 * Gets the update interval from the configuration and sets it at the update thread
 	 */
 	private void refreshUpdateInterval() {
+		
+		if(updateThread != null)
+		{
+			// stop existing thread
+			updateThread.interrupt();
+			updateThread = null;
+		}
+		
+		// create new thread
+		updateThread = new UpdateThread(this);
+		
 		// get update interval
 		String updateIntervalString = mashup.getPropertyValueElseDefault(MashupProperties.UPDATE_CYCLE_TIME_PROPERTY, MashupProperties.UPDATE_CYCLE_TIME_PROPERTY_DEFAULT);
 		
@@ -917,7 +924,11 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			updateThread.setUpdateInterval(updateInterval);
 		} catch (Exception e) {
 			log("Error while refreshing update intervall (" + e.getMessage() + ")", LogService.LOG_WARNING);
+			return;
 		}
+		
+		// start thread
+		updateThread.start();
 	}
 
 
@@ -1310,7 +1321,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			Source changedSource = (Source) notifier;
 			if(asynchronousInstantionStarted.contains(changedSource))
 			{
-				log("### ignoring notification!", LogService.LOG_DEBUG);
+				log("ignoring notification!", LogService.LOG_DEBUG);
 				
 				// currently instantiating this source, so do not handle changes
 				return;

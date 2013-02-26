@@ -89,6 +89,4 @@ public class DataSetCacheThread extends Thread {
 	public void setCacheInterval(long cacheInterval) {
 		this.cacheInterval = cacheInterval;
 	}
-	
-	
 }
