@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DataObservers
+Bundle-SymbolicName: org.sociotech.communitymashup.data.DataObservers
+Bundle-Version: 0.0.1
+Bundle-Vendor: org.sociotech.communitymashup
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1"
+Export-Package: org.sociotech.communitymashup.data.observer.dataset
