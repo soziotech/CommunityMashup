@@ -791,22 +791,22 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 			return;
 		}
 		
-		int counter = UPDATE_TRY_COUNT;
-		while(source.getActiveState() != SourceActiveStates.WAITING_FOR_UPDATE && counter > 0)
-		{
-			counter--;
-			try {
-				wait(WAITING_INTERVALL);
-			} catch (InterruptedException e) {
-				continue;
-			}
-		}
+//		int counter = UPDATE_TRY_COUNT;
+//		while(source.getActiveState() != SourceActiveStates.WAITING_FOR_UPDATE && counter > 0)
+//		{
+//			counter--;
+//			try {
+//				wait(WAITING_INTERVALL);
+//			} catch (InterruptedException e) {
+//				continue;
+//			}
+//		}
 		
-		if(counter == 0)
-		{
-			log("Could not get token for updating in source " + this, LogService.LOG_WARNING);
-			return;
-		}
+//		if(counter == 0)
+//		{
+//			log("Could not get token for updating in source " + this, LogService.LOG_WARNING);
+//			return;
+//		}
 		
 		source.setActiveState(SourceActiveStates.UPDATING);
 		
