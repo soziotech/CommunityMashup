@@ -40,16 +40,6 @@ import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
 public class CleanUpSourceService extends SourceServiceFacadeImpl {
 
 	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration() {
-
-		super.createDefaultConfiguration();
-	}
-
-
-	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
 	 */
 	@Override

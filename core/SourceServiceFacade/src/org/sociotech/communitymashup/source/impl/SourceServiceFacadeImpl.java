@@ -13,25 +13,15 @@
  */
 package org.sociotech.communitymashup.source.impl;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.jsoup.Jsoup;
 import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.application.ApplicationPackage;
@@ -66,7 +56,6 @@ import org.sociotech.communitymashup.source.properties.SourceServiceProperties;
  */
 public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 
-	private static final String DEFAULT_CONFIGURATION_PATH = "/configuration/configuration.xml";
 	private static final String HASHTAG_REGEX = "[##]+([A-Za-z0-9-_]+)";
 	
 	private static final String NON_HTML_AND_REGEX = "&(?!([\\w\\n]{2,7}|#[\\d]{1,4});)";
@@ -79,29 +68,29 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 															 + "]+";
 																
 	
-	private static final Pattern TAG_PATTERN = 
-			Pattern.compile(HASHTAG_REGEX);
+	/**
+	 * Pattern to parse hash tags
+	 */
+	private static final Pattern TAG_PATTERN = Pattern.compile(HASHTAG_REGEX);
 
-	// TODO: configurations should be managed by the mashup service
-	private static final String configurationFileNamePrefix = "source_configuration_";
-
+	/**
+	 * Indicaties if the source service is initialized
+	 */
 	private boolean initialized = false;
+	
+	/**
+	 * Reference to the source configuration 
+	 */
 	protected Source source;
 
-	private boolean cachingEnabled = true;
-	private Resource cachingResource;
-
-	private boolean saveConfigurationEnabled = true;
-
 	private LogService logService;
-
-	private boolean cachingInitialized = false;
 
 	/**
 	 * Locally stored log level
 	 * TODO: get default value from Source
 	 */
 	protected int logLevel = LogService.LOG_DEBUG;
+	
 	/**
 	 * MetaTag for all items added by this source 
 	 */
@@ -110,39 +99,13 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	/**
 	 * Wait that number of tries for the source service to be in the state for update.
 	 */
-	private static int UPDATE_TRY_COUNT = 5;
+	//private static int UPDATE_TRY_COUNT = 5;
+	
 	/**
 	 * Wait that number of tries for the source service to be in the state for enriching.
 	 */
 	private static int ENRICH_TRY_COUNT = 5;
 	private static long WAITING_INTERVALL = 500;
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.sociotech.communitymashup.source.SourceServiceFacade#initialize()
-	 */
-	@Override
-	public boolean initialize() {
-		// initialize without log service
-		// TODO: do initialization in this method, will be overwritten by real
-		// source services
-		return initialize(null);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.sociotech.communitymashup.source.facade.SourceServiceFacade#initialize
-	 * (org.sociotech.communitymashup.application.Source)
-	 */
-	public boolean initialize(Source configuration) {
-		// initialize without log service
-		return initialize(null, configuration);
-	}
-
 	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#initializeAsynchronous(org.sociotech.communitymashup.source.facade.AsynchronousSourceInitialization)
@@ -165,80 +128,32 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 		initializationThread.start();
 	}
 
-	/**
-	 * Initializes the source service with a log service and a configuration.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param logService
-	 *            The log service that should be used by this source
-	 * @param configuration
-	 *            The source configuration.
-	 * @return True if initialization was successful.
+	 * @see
+	 * org.sociotech.communitymashup.source.facade.SourceServiceFacade#initialize
+	 * (org.sociotech.communitymashup.application.Source)
 	 */
-	public boolean initialize(LogService logService, Source configuration) {
-		// TODO handle configuration
+	public boolean initialize(Source configuration) {
+		
+		if(isInitialized())
+		{
+			// already initialized
+			return true;
+		}
+		
+		// set configuration
+		source = configuration;
 
-		if (!isInitialized()) {
-			// set log service
-			this.setLogService(logService);
-
-			// set configuration
-			source = configuration;
-
-			// first: try to load from default path if it was null
-			if (source == null) {
-				URL defaultConfigurationUrl = getClass().getResource(
-						DEFAULT_CONFIGURATION_PATH);
-
-				URI configurationURI = null;
-				try {
-					configurationURI = URI.createURI((defaultConfigurationUrl
-							.toURI().toString()));
-				} catch (Exception e) {
-					// nothing to do
-				}
-
-				source = loadSourceConfiguration(configurationURI);
-
-				// disable saving, configurations inside the bundle are read
-				// only
-				if (source != null) {
-					saveConfigurationEnabled = false;
-				}
-			}
-
-			// second: try to load existing configuration form temporary path
-			if (source == null) {
-				source = loadSourceConfiguration(createConfigurationFilePath());
-			}
-
-			// third: create default configuration if no previously existing
-			// configuration could be loaded
-			if (source == null) {
-				createDefaultConfiguration();
-
-				// save created configuration
-				saveSourceConfiguration();
-			}
-
+		if(source != null)
+		{
 			// get log level
 			logLevel = source.getLogLevelIntValue();
-			
-			// load cached content if caching is enabled
-			if (cachingEnabled()) {
-				loadCachedResource();
-
-				DataSet dataSet = getDataSet();
-
-				if (dataSet != null) {
-					// create adapter to save after data set changes
-					// TODO
-
-				}
-
-			}
+		
 			setInitialized(true);
 		}
-
+	
 		return isInitialized();
 	}
 
@@ -252,231 +167,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	public Source getConfiguration() {
 		// return the source object
 		return source;
-	}
-
-	/**
-	 * Create a source specific configuration file path.
-	 * 
-	 * @return A source specific configuration file path.
-	 */
-	private String createConfigurationFilePath() {
-		String tmpDir = System.getProperty("java.io.tmpdir");
-
-		if (!tmpDir.endsWith(System.getProperty("file.separator", "/"))) {
-			// folder should always end with a slash
-			tmpDir += System.getProperty("file.separator", "/");
-		}
-
-		return tmpDir + configurationFileNamePrefix
-				+ this.getClass().getCanonicalName().replaceAll("\\.", "_")
-				+ ".xml";
-	}
-
-	protected void saveSourceConfiguration() {
-
-		if (!saveConfigurationEnabled) {
-			// saving disabled
-			return;
-		}
-
-		URI configurationURI = createResourceURI(createConfigurationFilePath());
-
-		if (configurationURI == null) {
-			log("Could not save source configuration.", LogService.LOG_ERROR);
-			return;
-		}
-
-		// create resource set and resource
-		ResourceSet resourceSet = new ResourceSetImpl();
-
-		// Register XML resource factory
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("xml", new XMLResourceFactoryImpl());
-
-		Resource resource = resourceSet.createResource(configurationURI);
-
-		// add the configuration to the resource
-		resource.getContents().add(source);
-
-		// serialize resource you can specify also serialization
-		// options which defined on org.eclipse.emf.ecore.xmi.XMIResource
-		try {
-			resource.save(null);
-		} catch (IOException e) {
-			e.printStackTrace();
-			log("Could not write source configuration file.",
-					LogService.LOG_ERROR);
-			return;
-		}
-
-		log("Succesfully generated configuration file at: " + configurationURI,
-				LogService.LOG_INFO);
-	}
-
-	private Source loadSourceConfiguration(String configurationPath) {
-
-		File file = new File(configurationPath);
-
-		if (!file.exists()) {
-			// configuration does not exist
-			return null;
-		}
-
-		URI configurationURI = createResourceURI(configurationPath);
-
-		return loadSourceConfiguration(configurationURI);
-	}
-
-	private Source loadSourceConfiguration(URI configurationURI) {
-		if (configurationURI == null) {
-			return null;
-		}
-
-		// create resource set and resource
-		ResourceSet resourceSet = new ResourceSetImpl();
-
-		// Register XML resource factory
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("xml", new XMLResourceFactoryImpl());
-
-		Resource resource = resourceSet.createResource(configurationURI);
-
-		// register package in local resource registry
-		String nsURI = DataPackage.eINSTANCE.getNsURI();
-		resourceSet.getPackageRegistry().put(nsURI, DataPackage.eINSTANCE);
-
-		// load resource
-		try {
-			resource.load(null);
-		} catch (IOException e) {
-			log("IO Exception when trying to load source configuration from file. ("
-					+ e.getMessage() + ")", LogService.LOG_ERROR);
-			return null;
-		}
-
-		TreeIterator<EObject> dataIterator = resource.getAllContents();
-
-		// A valid source configuration contains exactly one Source
-		if (dataIterator.hasNext()) {
-			EObject workingObject = dataIterator.next();
-
-			if (workingObject instanceof Source) {
-				log("Loaded source configuration from "
-						+ configurationURI.path(), LogService.LOG_INFO);
-				return (Source) workingObject;
-			}
-		} else {
-			log("No source configuration found in file: "
-					+ configurationURI.path(), LogService.LOG_ERROR);
-		}
-
-		return null;
-	}
-
-	/**
-	 * Creates an URI for a resource specified by the given path.
-	 * 
-	 * @param resourcePath
-	 *            Path of the resource
-	 * @return The URI of the resource, null in error case
-	 */
-	private URI createResourceURI(String resourcePath) {
-
-		File file = new File(resourcePath);
-		if (!file.exists()) {
-			try {
-				file.createNewFile();
-			} catch (IOException e) {
-				log("Could not create configuration file at: " + resourcePath,
-						LogService.LOG_ERROR);
-				return null;
-			}
-		}
-
-		return URI.createFileURI(resourcePath);
-	}
-
-	private void initializeCaching() {
-		if (!cachingEnabled || cachingInitialized) {
-			return;
-		}
-
-		String cacheFilePath = this.getCacheFilePath();
-
-		if (cacheFilePath == null) {
-			return;
-		}
-
-		// create cache file uri
-		URI cacheFileURI = URI.createFileURI(cacheFilePath);
-
-		// create resource set and resource
-		ResourceSet resourceSet = new ResourceSetImpl();
-
-		// Register XML resource factory
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("xml", new XMLResourceFactoryImpl());
-
-		cachingResource = resourceSet.createResource(cacheFileURI);
-
-		// register package in local resource registry
-		String nsURI = DataPackage.eINSTANCE.getNsURI();
-		resourceSet.getPackageRegistry().put(nsURI, DataPackage.eINSTANCE);
-
-		if (cachingResource != null) {
-			// save initialization state
-			cachingInitialized = true;
-		}
-	}
-
-	/**
-	 * Loads data set from cached file.
-	 */
-	private void loadCachedResource() {
-
-		if (!cachingEnabled) {
-			return;
-		}
-
-		initializeCaching();
-
-		if (!cachingInitialized) {
-			log("Caching could not be initialized or is disabled.");
-			return;
-		}
-		URI cacheFileURI = cachingResource.getURI();
-
-		// load resource
-		try {
-			cachingResource.load(null);
-		} catch (IOException e) {
-			log("Could not load cached resource: " + cacheFileURI.path(),
-					LogService.LOG_ERROR);
-		}
-
-		if (this.source != null) {
-			TreeIterator<EObject> dataIterator = cachingResource
-					.getAllContents();
-
-			DataSet dataSet = null;
-
-			// Mashup Data XML contains exactly one DataSet
-			if (dataIterator.hasNext()) {
-				EObject workingObject = dataIterator.next();
-
-				if (workingObject instanceof DataSet) {
-					dataSet = (DataSet) workingObject;
-					log("loaded dataset from " + cacheFileURI.path(),
-							LogService.LOG_INFO);
-				}
-
-				this.source.setDataSet(dataSet);
-			} else {
-				log("no data Set found in file: " + cacheFileURI.path(),
-						LogService.LOG_DEBUG);
-			}
-		}
-
 	}
 
 	/*
@@ -521,59 +211,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	 */
 	public synchronized boolean isInitialized() {
 		return initialized;
-	}
-
-	/**
-	 * Creates the default configuration for this source service and saves it as
-	 * {@link SourceServiceFacadeImpl#source}.
-	 */
-	protected void createDefaultConfiguration() {
-		// create empty Source
-		source = ApplicationPackage.eINSTANCE.getApplicationFactory()
-				.createSource();
-
-		// default properties for all sources
-
-		// create a system specific cache file path
-		source.addProperty(SourceServiceProperties.CACHE_FILE_PATH_PROPERTY, getCacheFilePath());
-
-		// add default value for caching
-		source.addProperty(SourceServiceProperties.CACHING_ENABLED_PROPERTY, "false");
-	}
-
-	/**
-	 * Creates a source service specific local cache file
-	 * 
-	 * @return The created file URI, null in error case.
-	 */
-	private String getCacheFilePath() {
-
-		// check for file path in configuration first
-		if (source != null
-				&& source.getPropertyValue(SourceServiceProperties.CACHE_FILE_PATH_PROPERTY) != null) {
-			return source.getPropertyValue(SourceServiceProperties.CACHE_FILE_PATH_PROPERTY);
-		}
-
-		// create unique name for cache file
-		String cacheFileName = "source_cache_"
-				+ this.getClass().getCanonicalName().replaceAll("\\.", "_")
-				+ "_" + System.currentTimeMillis() + ".xml";
-
-		String cacheFolder = System.getProperty("java.io.tmpdir");
-
-		if (!cacheFolder.endsWith("/")) {
-			// folder should always end with a slash
-			cacheFolder += "/";
-		}
-
-		String cacheFilePath = cacheFolder + cacheFileName;
-
-		if (source != null) {
-			// save file path to configuration
-			source.addProperty(SourceServiceProperties.CACHE_FILE_PATH_PROPERTY, cacheFilePath);
-		}
-
-		return cacheFilePath;
 	}
 
 	/**
@@ -632,36 +269,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 		{
 			System.out.println(message);
 		}
-	}
-
-	/**
-	 * Starts the caching process of this source
-	 */
-	public void cache() {
-		if (!cachingEnabled()) {
-			return;
-		}
-
-		initializeCaching();
-
-		if (!cachingInitialized) {
-			log("Caching could not be initialized or is disabled.");
-			return;
-		}
-
-		URI cacheFileURI = cachingResource.getURI();
-
-		try {
-			cachingResource.save(null);
-			log("Cached source content to " + cacheFileURI.path(),
-					LogService.LOG_DEBUG);
-		} catch (IOException e) {
-			log("Could not write cache content to " + cacheFileURI.path(),
-					LogService.LOG_ERROR);
-		}
-	}
-
-	
+	}	
 	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#fill(org.sociotech.communitymashup.data.DataSet)

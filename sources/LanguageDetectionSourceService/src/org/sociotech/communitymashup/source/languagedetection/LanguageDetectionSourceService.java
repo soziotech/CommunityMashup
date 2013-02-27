@@ -34,26 +34,11 @@ public class LanguageDetectionSourceService extends SourceServiceFacadeImpl {
 	 */
 	private String apiKey = null;
 	
-
 	/**
 	 * API instance 
 	 */
 	private DetectLanguageAPIWrapper api = null;
 	
-	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration() {
-
-		super.createDefaultConfiguration();
-
-		// default values
-		source.addProperty(LanguageDetectionProperties.DETECTLANGUAGE_API_KEY_PROPERTY, LanguageDetectionProperties.DETECTLANGUAGE_API_KEY_DEFAULT);
-		
-	}
-
-
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
 	 */

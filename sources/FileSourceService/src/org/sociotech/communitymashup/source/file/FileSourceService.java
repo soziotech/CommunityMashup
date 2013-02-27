@@ -37,25 +37,13 @@ public class FileSourceService extends SourceServiceFacadeImpl
 {
 
 	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.osgi.service.log.LogService, org.sociotech.communitymashup.application.Source)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
 	 */
 	@Override
-	public boolean initialize(LogService logService, Source configuration)
+	public boolean initialize(Source configuration)
 	{
 		// currently no additional initialization stuff
-		return super.initialize(logService, configuration);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration()
-	{
-		super.createDefaultConfiguration();
-
-		// default file
-		source.addProperty(FileProperties.FILE_NAME_PROPERTY, "cscmData.xml");
+		return super.initialize(configuration);
 	}
 
 	/* (non-Javadoc)

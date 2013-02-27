@@ -69,39 +69,13 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 	private Twitter twitterAPI = null;
 	private User accountOwnerUser = null;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#
-	 * createDefaultConfiguration()
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
 	 */
 	@Override
-	protected void createDefaultConfiguration() {
+	public boolean initialize(Source configuration) {
 
-		// create default configuration
-		super.createDefaultConfiguration();
-
-		// add default properties
-		source.addProperty(TwitterProperties.CONSUMER_KEY_PROPERTY,
-				TwitterProperties.CONSUMER_KEY_DEFAULT);
-		source.addProperty(TwitterProperties.CONSUMER_SECRET_PROPERTY,
-				TwitterProperties.CONSUMER_SECRET_DEFAULT);
-		source.addProperty(TwitterProperties.ACCESS_TOKEN_PROPERTY, "");
-		source.addProperty(TwitterProperties.ACCESS_TOKEN_SECRET_PROPERTY, "");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize
-	 * (org.osgi.service.log.LogService,
-	 * org.sociotech.communitymashup.application.Source)
-	 */
-	@Override
-	public boolean initialize(LogService logService, Source configuration) {
-
-		boolean initialized = super.initialize(logService, configuration);
+		boolean initialized = super.initialize(configuration);
 
 		if (initialized) {
 

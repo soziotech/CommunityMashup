@@ -275,32 +275,6 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		sourceFactoryTracker.open();
 	}
 
-
-	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.mashup.impl.MashupServiceFacadeImpl#initialize()
-	 */
-	@Override
-	public boolean initialize()
-	{
-		if(this.mashup == null)
-		{
-			log("Could not initialize the mashup service without a previously loaded configuration" , LogService.LOG_ERROR);
-			this.setInitialized(false);
-			return this.isInitialized();
-		}
-
-		if(this.mashup.getDataSet() == null)
-		{
-			// not previously created or loaded from cache
-			prepareDataSet();  
-		}
-
-		this.setInitialized(true);
-
-		return this.isInitialized();
-	}
-
-
 	/**
 	 * Creates a new and empty data set and returns it
 	 * 

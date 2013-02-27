@@ -36,19 +36,6 @@ public class FeedSourceService extends SourceServiceFacadeImpl {
 	private FeedTransformation transformation;
 
 	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration() {
-
-		super.createDefaultConfiguration();
-
-		// default feed
-		source.addProperty(FeedProperties.FEED_URL_PROPERTY, FeedProperties.FEED_URL_DEFAULT);
-	}
-
-
-	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
 	 */
 	@Override

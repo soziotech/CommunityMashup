@@ -41,9 +41,7 @@ import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
  *
  */
 public abstract class MashupServiceFacadeImpl extends SourceServiceFacadeImpl implements MashupServiceFacade {
-
-	private boolean initialized = false;
-
+	
 	/**
 	 * Represents the configuration of the Mashup
 	 */
@@ -53,17 +51,6 @@ public abstract class MashupServiceFacadeImpl extends SourceServiceFacadeImpl im
 	 * Keeps a reference to the registration created by {@link #register()}.
 	 */
 	private ServiceRegistration<MashupServiceFacade> mashupRegistration;
-
-	@Override
-	public boolean initialize() {
-		if(!initialized)
-		{
-			// initialization goes here
-			initialized = super.initialize();
-		}
-
-		return initialized;
-	}
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.mashup.MashupServiceFacade#loadConfiguration(org.sociotech.communitymashup.application.Mashup)

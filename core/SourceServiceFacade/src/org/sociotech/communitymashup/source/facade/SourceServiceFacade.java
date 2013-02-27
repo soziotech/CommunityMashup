@@ -34,14 +34,6 @@ public interface SourceServiceFacade {
 	public boolean isInitialized();
 	
 	/**
-	 * Needs to be called first to initialize the Source. Uses the default
-	 * configuration to start the source.
-	 * 
-	 * @return true if successful, false otherwise.
-	 */
-	public boolean initialize();
-
-	/**
 	 * Call this method to start {@link #initialize()} asynchronously. After finished
 	 * initialization {@link AsynchronousSourceInitialization#sourceInitializationFinished(SourceServiceFacade)}
 	 * will be called at the initializer.

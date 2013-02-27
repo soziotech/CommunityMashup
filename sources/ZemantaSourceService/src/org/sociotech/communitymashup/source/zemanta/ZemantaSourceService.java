@@ -54,20 +54,6 @@ public class ZemantaSourceService extends SourceServiceFacadeImpl {
 	 * Reference to the zemanta api instance.
 	 */
 	private Zemanta zemantaAPI = null;
-	
-	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration() {
-
-		super.createDefaultConfiguration();
-
-		// default values
-		source.addProperty(ZemantaProperties.ZEMANTA_API_KEY_PROPERTY, ZemantaProperties.ZEMANTA_API_KEY_DEFAULT);
-		
-	}
-
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)

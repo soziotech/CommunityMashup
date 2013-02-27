@@ -39,22 +39,6 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 	private NewEmailConnectionAdapter newEmailConnectionAdapter;
 
 	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration() {
-		
-		// inherit default properties
-		super.createDefaultConfiguration();
-		
-		// add own properties
-		source.addProperty(GravatarProperties.IMAGE_SIZE_PROPERTY,	 GravatarProperties.IMAGE_SIZE_DEFAULT);
-		source.addProperty(GravatarProperties.RATING_PROPERTY,		 GravatarProperties.RATING_DEFAULT);
-		source.addProperty(GravatarProperties.DEFAULTIMAGE_PROPERTY, GravatarProperties.DEFAULTIMAGE_DEFAULT);
-		
-	}
-
-	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrichDataSet()
 	 */
 	@Override

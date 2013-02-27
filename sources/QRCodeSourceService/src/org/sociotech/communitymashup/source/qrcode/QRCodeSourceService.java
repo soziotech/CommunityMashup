@@ -42,20 +42,6 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl {
 	private NewWebSiteConnectionAdapter newWebSiteConnectionAdapter;
 
 	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration() {
-		
-		// inherit default properties
-		super.createDefaultConfiguration();
-		
-		// add own properties
-		source.addProperty(QRCodeProperties.MARKER_SIZE_PROPERTY, 		 QRCodeProperties.MARKER_SIZE_DEFAULT);
-		source.addProperty(QRCodeProperties.USE_LOAD_BALANCING_PROPERTY, QRCodeProperties.USE_LOAD_BALANCING_DEFAULT);
-	}
-
-	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrichDataSet()
 	 */
 	@Override

@@ -48,26 +48,6 @@ public class YammerSourceService extends SourceServiceFacadeImpl {
 	private YammerAPIWrapper yammerAPI = null;
 	
 	private YammerTransformation transformation = null;
-	
-	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration() {
-		
-		// inherit default properties
-		super.createDefaultConfiguration();
-		
-		// add own properties
-		source.addProperty(YammerProperties.CONSUMER_KEY_PROPERTY,	 			YammerProperties.CONSUMER_KEY_DEFAULT);
-		source.addProperty(YammerProperties.CONSUMER_SECRET_PROPERTY,	 		YammerProperties.CONSUMER_SECRET_DEFAULT);
-		source.addProperty(YammerProperties.ACCESS_TOKEN_PROPERTY,	 			YammerProperties.ACCESS_TOKEN_DEFAULT);
-		source.addProperty(YammerProperties.ACCESS_TOKEN_SECRET_PROPERTY, 		YammerProperties.ACCESS_TOKEN_SECRET_DEFAULT);
-		source.addProperty(YammerProperties.MESSAGE_BODDY_TYPE_PROPERTY, 		YammerProperties.MESSAGE_BODDY_TYPE_DEFAULT);
-		source.addProperty(YammerProperties.LOAD_ALL_USERS_PROPERTY, 			YammerProperties.LOAD_ALL_USERS_DEFAULT);
-		source.addProperty(YammerProperties.INITIAL_NUMBER_OF_MESSAGES_PROPETY, YammerProperties.INITIAL_NUMBER_OF_MESSAGES_DEFAULT);
-		source.addProperty(YammerProperties.WAIT_BETWEEN_API_REQUESTS_PROPERTY, YammerProperties.WAIT_BETWEEN_API_REQUESTS_DEFAULT);
-	}
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)

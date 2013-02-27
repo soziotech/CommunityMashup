@@ -81,22 +81,6 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 	 */
 	private OAuthAuthorizationRegistrator authenticationRegistrator = null;
 	private HttpServiceTracker httpServiceTracker;
-	
-	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#createDefaultConfiguration()
-	 */
-	@Override
-	protected void createDefaultConfiguration() {
-		
-		// inherit default properties
-		super.createDefaultConfiguration();
-		
-		// add own properties
-		source.addProperty(MendeleyProperties.CONSUMER_KEY_PROPERTY,	 	MendeleyProperties.CONSUMER_KEY_DEFAULT);
-		source.addProperty(MendeleyProperties.CONSUMER_SECRET_PROPERTY,	 	MendeleyProperties.CONSUMER_SECRET_DEFAULT);
-		source.addProperty(MendeleyProperties.ACCESS_TOKEN_PROPERTY,	 	MendeleyProperties.ACCESS_TOKEN_DEFAULT);
-		source.addProperty(MendeleyProperties.ACCESS_TOKEN_SECRET_PROPERTY, MendeleyProperties.ACCESS_TOKEN_SECRET_DEFAULT);
-	}
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
