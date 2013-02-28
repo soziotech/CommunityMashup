@@ -138,7 +138,7 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 		int type =  parseRestType(typeString);
 			
 		// create rest and file servlet
-		restServlet = new RESTServlet(dataSet, path, securityNeeded, type, configuration);
+		restServlet = new RESTServlet(restInterfaceService, dataSet, path, securityNeeded, type, configuration);
 		fileServlet = new RESTFileServlet(dataSet, securityNeeded);
 
 		// if security is needed open up a tracker and security services will be added to the servlets

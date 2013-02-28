@@ -27,12 +27,17 @@ public class SecurityFactoryBundleActivator implements BundleActivator {
 
 	private static BundleContext context;
 
-	static BundleContext getContext() {
+	/**
+	 * Returns the bundle context.
+	 * @return The bundle context.
+	 */
+	public static BundleContext getContext() {
 		return context;
 	}
 
 	private ServiceRegistration<SecurityFactoryServiceFacade> registeredSecurityFactory;
 	private SecurityInstantiationServiceTracker securityInstantiationServiceTracker;
+	private SecurityFactoryImpl securityFactory;
 
 	/*
 	 * (non-Javadoc)
@@ -41,11 +46,10 @@ public class SecurityFactoryBundleActivator implements BundleActivator {
 	public void start(BundleContext bundleContext) throws Exception {
 		SecurityFactoryBundleActivator.context = bundleContext;
 		
-		// Create and register security factory
-		SecurityFactoryImpl securityFactory = new SecurityFactoryImpl();
+		securityFactory = new SecurityFactoryImpl();
 		registeredSecurityFactory = context.registerService(SecurityFactoryServiceFacade.class, securityFactory, null);
 		
-		log("Registered security factory service.", LogService.LOG_INFO);
+		securityFactory.log("Registered security factory service.", LogService.LOG_INFO);
 		
 		// register security instantiation service tracker
 		securityInstantiationServiceTracker = new SecurityInstantiationServiceTracker(bundleContext, securityFactory);
@@ -64,20 +68,12 @@ public class SecurityFactoryBundleActivator implements BundleActivator {
 			securityInstantiationServiceTracker.close();
 		}
 		
+		// stop factory
+		securityFactory.stop();
+		
 		// unregister factory
 		registeredSecurityFactory.unregister();
 		
 		SecurityFactoryBundleActivator.context = null;
-	}
-
-	/**
-	 * Logs the given message with at the given log level.
-	 * 
-	 * @param message Message to log
-	 * @param logLevel Level of the message
-	 */
-	public void log(String message, int logLevel) {
-		//TODO: Use logging service
-		System.out.println(message);
 	}
 }

@@ -39,7 +39,7 @@ public abstract class InterfaceServiceActivator implements BundleActivator {
 	 * 
 	 * @return The bundle context.
 	 */
-	protected static BundleContext getContext() {
+	public static BundleContext getContext() {
 		return context;
 	}
 

@@ -168,6 +168,8 @@ public class RESTServlet extends HttpServlet {
 	private String stylePath = "";
 	private String defaultCustomHtmlTemplate = "";
 
+	private RESTInterfaceService restInterfaceService;
+
 	// Serialize Dates in ISO 8601
 	private static SimpleDateFormat sdf = new SimpleDateFormat(
 			"yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -181,7 +183,8 @@ public class RESTServlet extends HttpServlet {
 	 * @param type Serialization type {@link RESTServlet#TYPE_JSON}, {@link RESTServlet#TYPE_JSON_P} or {@link RESTServlet#TYPE_XML}
 	 * @param configuration The configuration with additional type specific properties
 	 */
-	public RESTServlet(DataSet dataSet, String urlSuffix, boolean securityServiceNeeded, int type, RESTInterface configuration) {
+	public RESTServlet(RESTInterfaceService interfaceService, DataSet dataSet, String urlSuffix, boolean securityServiceNeeded, int type, RESTInterface configuration) {
+		this.restInterfaceService = interfaceService;
 		this.dataSet = dataSet;
 		this.securityServiceNeeded = securityServiceNeeded;
 		this.configuration  = configuration;
@@ -1216,8 +1219,8 @@ public class RESTServlet extends HttpServlet {
 
 	private void log(String message, int level) {
 		
-		// TODO replace
-		System.out.println(message);
+		// use restinterface service to log
+		this.restInterfaceService.log(message, level);
 	}
 
 	/**

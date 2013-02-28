@@ -357,14 +357,21 @@ public abstract class ItemsCollectionImpl extends EObjectImpl implements ItemsCo
 	}
 	
 	/**
-	 * Logs a message with the given level. Currently prints to console.
+	 * Logs a message with the given level.
 	 * 
 	 * @param message Message to log
 	 * @param level Level of the message
 	 */
 	public void log(String message, int level)
 	{
-		// TODO replace
-		System.out.println(message);
+		if(dataSet != null)
+		{
+			dataSet.log(message, level);
+		}
+		else
+		{
+			// fallback
+			System.out.println(message);
+		}
 	}
 } //ItemsCollectionImpl

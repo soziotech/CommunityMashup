@@ -13,6 +13,7 @@
  */
 package org.sociotech.communitymashup.source.instantiation.facade;
 
+import org.osgi.framework.BundleContext;
 import org.sociotech.communitymashup.source.facade.SourceServiceFacade;
 
 /**
@@ -25,6 +26,18 @@ import org.sociotech.communitymashup.source.facade.SourceServiceFacade;
  */
 public interface SourceInstantiationFacade {
 
+	/**
+	 * Instantiates a new source service and returns the instantiated service.
+	 * 
+	 * @return The instantiated source service.
+	 */
 	public SourceServiceFacade instantiate();
+
+	/**
+	 * Sets the given bundle context for internal usage.
+	 * 
+	 * @param context Bundle context.
+	 */
+	public void setContext(BundleContext context);
 
 }

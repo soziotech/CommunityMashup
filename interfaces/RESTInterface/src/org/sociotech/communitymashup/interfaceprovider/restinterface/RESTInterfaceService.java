@@ -57,16 +57,7 @@ public class RESTInterfaceService extends InterfaceServiceFacadeImpl
 			resourceRegistrator.close();
 		}
 	}
-
-	/**
-	 * Logs the given message with at the given log level.
-	 * 
-	 * @param message Message to log
-	 * @param logLevel Level of the message
-	 */
-	public void log(String message, int logLevel) {
-		//TODO: Use logging service
-		System.out.println(message);
-	}
+	
+	
 }
 

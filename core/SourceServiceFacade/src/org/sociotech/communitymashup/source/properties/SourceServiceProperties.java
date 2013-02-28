@@ -17,17 +17,7 @@ package org.sociotech.communitymashup.source.properties;
  */
 public class SourceServiceProperties {
 
-    /**
-	 * Key for cache file path.
-	 */
-	public static final String CACHE_FILE_PATH_PROPERTY = "cacheFilePath";
-	
-	/**
-	 * Key for enabling caching.
-	 */
-	public static final String CACHING_ENABLED_PROPERTY = "cachingEnabled";
-	
-	/**
+ /**
 	 * This Property determines if html is stripped from content objects or not
 	 */
 	public static final String REMOVE_HTML_PROPERTY = "removeHtml";

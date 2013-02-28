@@ -19,6 +19,8 @@ public class InterfaceFactoryBundleActivator implements BundleActivator {
 
 	private InterfaceInstantiationServiceTracker instantiationServiceTracker;
 
+	private InterfaceFactoryImpl interfaceFactory;
+
 	static BundleContext getContext() {
 		return context;
 	}
@@ -30,8 +32,7 @@ public class InterfaceFactoryBundleActivator implements BundleActivator {
 	public void start(BundleContext bundleContext) throws Exception {
 		context = bundleContext;
 
-		// Create and register interface factory
-		InterfaceFactoryImpl interfaceFactory = new InterfaceFactoryImpl();
+		interfaceFactory = new InterfaceFactoryImpl();
 		registeredInterfaceFactory = context.registerService(InterfaceFactoryFacade.class, interfaceFactory, null);
 		
 		// register instantiation service tracker
@@ -52,11 +53,11 @@ public class InterfaceFactoryBundleActivator implements BundleActivator {
 			instantiationServiceTracker.close();
 		}
 
+		// stop interface factory
+		interfaceFactory.stop();
+		
 		// unregister interface factory service
 		registeredInterfaceFactory.unregister();
-
-		// Stop interface factory
-		// currently nothing to do
 	}
 
 

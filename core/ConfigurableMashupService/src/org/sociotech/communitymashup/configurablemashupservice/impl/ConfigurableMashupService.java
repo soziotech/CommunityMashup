@@ -328,6 +328,12 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			return null;
 		}
 
+		// set bundle context
+		this.setContext(ConfigurableMashupBundleActivator.getContext());
+		
+		// initialize with "source" configuration (opens up log tracker etc.)
+		super.initialize(mashup);
+				
 		// track changes of configuration
 		mashupConfigurationObserver = new MashupChangeObserver(mashup, this);
 
@@ -534,6 +540,9 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			// set it in the data set to cache attachments in this directory
 			mashup.getDataSet().setCacheFolder(attachmentsCacheDirectory.getAbsolutePath());
 		}
+		
+		// set same log service
+		mashup.getDataSet().setLogService(this.getLogService());
 		
 	}
 

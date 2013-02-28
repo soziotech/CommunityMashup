@@ -13,6 +13,8 @@ import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.interfaceprovider.facade.InterfaceServiceFacade;
 import org.sociotech.communitymashup.interfaceprovider.factory.facade.InterfaceFactoryFacade;
 import org.sociotech.communitymashup.interfaceprovider.instantiation.facade.InterfaceInstantiationServiceFacade;
+import org.sociotech.communitymashup.util.servicetracker.LogServiceTracker;
+import org.sociotech.communitymashup.util.servicetracker.callback.LogServiceTracked;
 
 /**
  * @author Peter Lachenmaier
@@ -20,7 +22,7 @@ import org.sociotech.communitymashup.interfaceprovider.instantiation.facade.Inte
  * The interface factory produces interfaces. It looks for a interface Instantiation Service and uses this
  * Service to create instances based on a given configuration.
  */
-public class InterfaceFactoryImpl implements InterfaceFactoryFacade {
+public class InterfaceFactoryImpl implements InterfaceFactoryFacade, LogServiceTracked {
 
 	// TODO create map to support future interfaces
 	/**
@@ -49,6 +51,9 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade {
 	{
 		// create empty list
 		openInterfaces = new HashMap<Interface, DataSet>();
+		
+		// open log service tracker
+		openLogServiceTracker();
 	}
 
 	/**
@@ -62,10 +67,10 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade {
 		{
 			return;
 		}
-		
+
 		// get the interface the service is capable to instantiate
 		EClass instantiatableClass = interfaceInstantiationService.getInstantiatableInterfaceClass();
-		
+
 		if(instantiatableClass == ApplicationPackage.eINSTANCE.getFEEDInterface())
 		{
 			// remove previously used one
@@ -118,7 +123,7 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade {
 			// nothing to do
 			return;
 		}
-		
+
 		if(feedInstantiationService == instantiationService)
 		{
 			// add cleanup code here
@@ -133,13 +138,6 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade {
 			log("Lost rest interface instantiation service", LogService.LOG_DEBUG);
 		}
 	}
-
-
-	private void log(String message, int level) {
-		// TODO replace
-		System.out.println(message);
-	}
-
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.interfaceprovider.factory.facade.InterfaceFactoryFacade#produceInterface(org.sociotech.communitymashup.application.Interface, org.sociotech.communitymashup.data.DataSet)
@@ -187,7 +185,7 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade {
 
 		// remove it from open interfaces
 		openInterfaces.remove(interfaceConfiguration);
-				
+
 		// and return it
 		return newInterfaceService;
 	}
@@ -209,10 +207,93 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade {
 
 		// remove it from open interfaces
 		openInterfaces.remove(interfaceConfiguration);
-		
+
 		log("Produced feed interface.", LogService.LOG_DEBUG);
 
 		// and return it
 		return newInterfaceService;
+	}
+
+	/**
+	 * Tracker for log services.
+	 */
+	private LogServiceTracker logServiceTracker = null;
+
+	/**
+	 * The used log service
+	 */
+	private LogService logService = null;
+
+	/**
+	 * Logs a message with the given log level using the OSGi log service.
+	 * 
+	 * @param message
+	 *            Message to log
+	 * @param logLevel
+	 *            log level: {@link LogService#LOG_DEBUG},
+	 *            {@link LogService#LOG_ERROR}, {@link LogService#LOG_INFO} or
+	 *            {@link LogService#LOG_WARNING}
+	 */
+	public void log(String message, int logLevel) {
+
+		if (logService != null)
+		{
+			logService.log(logLevel, message);
+		} 
+		else
+		{
+			System.out.println(message);
+		}
+	}	
+
+	/**
+	 * Opens a tracker to get noticed on appearing or disappearing log services
+	 */
+	private void openLogServiceTracker() {
+
+		// create new service tracker and keep reference
+		this.logServiceTracker  = new LogServiceTracker(InterfaceFactoryBundleActivator.getContext(), this);
+
+		// open it
+		this.logServiceTracker.open();		
+	}
+
+	/**
+	 * Uses the given log service for logging.
+	 * 
+	 * @param logService Log service to use for logging.
+	 */
+	@Override
+	public void gotLogService(LogService logService) {
+		
+		this.logService = logService;
+		// log first message with new log service
+		log("Set new log service.", LogService.LOG_DEBUG);
+	}
+
+	/**
+	 * @param logService
+	 */
+	@Override
+	public void lostLogService(LogService logService) {
+
+		if(logService != null && logService == this.logService)
+		{
+			log("Lost log service.", LogService.LOG_WARNING);
+			// set to null if it is the used log service
+			this.logService = null;
+		}
+	}
+	
+	/**
+	 * Stops the interface factory
+	 */
+	public void stop()
+	{
+		// stop log service tracker
+		if(logServiceTracker != null)
+		{
+			logServiceTracker.close();
+		}
 	}
 }

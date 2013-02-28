@@ -34,7 +34,7 @@ public class MashupFactoryBundleActivator implements BundleActivator {
 
 	private MashupFactoryImpl mashupFactory = null;
 	
-	static BundleContext getContext() {
+	public static BundleContext getContext() {
 		return context;
 	}
 

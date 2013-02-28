@@ -17,6 +17,7 @@ Import-Package: javax.servlet;version="2.5.0",
  org.sociotech.communitymashup.configuration.observer.mashupcontainer
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1",
- org.sociotech.communitymashup.mashup.MashupServiceFacade;bundle-version="0.0.1"
+ org.sociotech.communitymashup.mashup.MashupServiceFacade;bundle-version="0.0.1",
+ org.sociotech.communitymashup.util.ServiceTracker;bundle-version="0.0.1"
 Bundle-ClassPath: .
 Export-Package: org.sociotech.communitymashup.mashup.factory.facade

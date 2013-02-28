@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.jsoup.Jsoup;
+import org.osgi.framework.BundleContext;
 import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.application.ApplicationPackage;
 import org.sociotech.communitymashup.application.Source;
@@ -47,6 +48,8 @@ import org.sociotech.communitymashup.data.Tag;
 import org.sociotech.communitymashup.source.facade.AsynchronousSourceInitialization;
 import org.sociotech.communitymashup.source.facade.SourceServiceFacade;
 import org.sociotech.communitymashup.source.properties.SourceServiceProperties;
+import org.sociotech.communitymashup.util.servicetracker.LogServiceTracker;
+import org.sociotech.communitymashup.util.servicetracker.callback.LogServiceTracked;
 
 /**
  * Implementation of methods needed by all Source services.
@@ -54,7 +57,7 @@ import org.sociotech.communitymashup.source.properties.SourceServiceProperties;
  * @author Peter Lachenmaier
  * 
  */
-public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
+public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, LogServiceTracked {
 
 	private static final String HASHTAG_REGEX = "[##]+([A-Za-z0-9-_]+)";
 	
@@ -83,7 +86,10 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	 */
 	protected Source source;
 
-	private LogService logService;
+	/**
+	 * The used log service
+	 */
+	private LogService logService = null;
 
 	/**
 	 * Locally stored log level
@@ -95,6 +101,16 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	 * MetaTag for all items added by this source 
 	 */
 	private MetaTag sourceInstanceMetaTag;
+
+	/**
+	 * Local reference to the bundle context.
+	 */
+	private BundleContext context;
+
+	/**
+	 * Tracker for log services.
+	 */
+	private LogServiceTracker logServiceTracker = null;
 	
 	/**
 	 * Wait that number of tries for the source service to be in the state for update.
@@ -146,6 +162,9 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 		// set configuration
 		source = configuration;
 
+		// open log service tracker
+		openLogServiceTracker();
+		
 		if(source != null)
 		{
 			// get log level
@@ -155,6 +174,53 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 		}
 	
 		return isInitialized();
+	}
+
+	/**
+	 * Opens a tracker to get noticed on appearing or disappearing log services
+	 */
+	private void openLogServiceTracker() {
+		
+		// create new service tracker and keep reference
+		this.logServiceTracker  = new LogServiceTracker(context, this);
+		
+		// open it
+		this.logServiceTracker.open();
+		
+	}
+
+	/**
+	 * Uses the given log service for logging.
+	 * 
+	 * @param logService Log service to use for logging.
+	 */
+	@Override
+	public void gotLogService(LogService logService) {
+		this.setLogService(logService);
+		// log first message with new log service
+		log("Set new log service.", LogService.LOG_DEBUG);
+	}
+
+	/**
+	 * @param logService
+	 */
+	@Override
+	public void lostLogService(LogService logService) {
+		
+		if(logService != null && logService == this.logService)
+		{
+			log("Lost log service.", LogService.LOG_WARNING);
+			// set to null if it is the used log service
+			this.setLogService(null);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#setContext(org.osgi.framework.BundleContext)
+	 */
+	@Override
+	public void setContext(BundleContext context) {
+		this.context = context;
 	}
 
 	/*
@@ -1532,19 +1598,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	}
 	
 	/**
-	 * Determines if caching is enabled
-	 * 
-	 * @return true if caching is enabled, false otherwise
-	 */
-	protected boolean cachingEnabled() {
-		if (source.getProperty(SourceServiceProperties.CACHING_ENABLED_PROPERTY) != null
-				&& source.getProperty(SourceServiceProperties.CACHING_ENABLED_PROPERTY).equals("true")) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * Checks if a given belongs to this source.
 	 * 
 	 * @param item Item to be checked
@@ -1639,6 +1692,12 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade {
 	 */
 	protected void stop() {
 	
+		// stop log service tracker
+		if(logServiceTracker != null)
+		{
+			logServiceTracker.close();
+		}
+		
 		// remove added data if set
 		if(source.getRemoveDataOnStop())
 		{

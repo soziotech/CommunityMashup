@@ -14,6 +14,7 @@
 package org.sociotech.communitymashup.source.facade;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.osgi.framework.BundleContext;
 import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.data.DataSet;
 
@@ -122,5 +123,12 @@ public interface SourceServiceFacade {
 	 * @return True if the change is successfully handled, false otherwise.
 	 */
 	public boolean handlePropertyChange(Notification notification);
+
+	/**
+	 * Sets the bundle context for internal usage.
+	 * 
+	 * @param context Bundle context
+	 */
+	public void setContext(BundleContext context);
 
 }

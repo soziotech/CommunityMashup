@@ -218,10 +218,16 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @ordered
 	 */
 	protected static final Integer LOG_LEVEL_EDEFAULT = null;
+	
 	/**
-	 * True means that file attachement caching is on.
+	 * True means that file attachment caching is on.
 	 */
-	protected boolean cacheFileAttachements = CACHE_FILE_ATTACHEMENTS_EDEFAULT; 
+	protected boolean cacheFileAttachments = CACHE_FILE_ATTACHEMENTS_EDEFAULT;
+	
+	/**
+	 * Log service to be used for logging
+	 */
+	private LogService logService; 
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -277,7 +283,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * 
 	 */
 	public Boolean getCacheFileAttachements() {
-		return cacheFileAttachements;
+		return cacheFileAttachments;
 	}
 
 	/**
@@ -286,7 +292,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * 
 	 */
 	public void setCacheFileAttachements(Boolean newCacheFileAttachements) {
-		cacheFileAttachements = newCacheFileAttachements;
+		cacheFileAttachments = newCacheFileAttachements;
 	}
 
 	/**
@@ -5515,10 +5521,19 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated NOT
 	 */
 	public void log(String message, Integer level) {
-		// TODO add log mechanism
-		if(level <= this.logLevel)
+		if(logLevel > this.logLevel)
 		{
-			System.out.println(level + ":" + message);
+			// dont log
+			return;
+		}
+		
+		if (logService != null)
+		{
+			logService.log(logLevel, message);
+		} 
+		else
+		{
+			System.out.println(message);
 		}
 	}
 
@@ -6053,4 +6068,13 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		
 		return resultingConnections;
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.DataSet#setLogService(org.osgi.service.log.LogService)
+	 */
+	public void setLogService(LogService logService)
+	{
+		this.logService = logService;
+	}
+	
 } //DataSetImpl

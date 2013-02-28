@@ -13,6 +13,7 @@
  */
 package org.sociotech.communitymashup.source.instantiation.impl;
 
+import org.osgi.framework.BundleContext;
 import org.sociotech.communitymashup.source.facade.SourceServiceFacade;
 import org.sociotech.communitymashup.source.instantiation.facade.SourceInstantiationFacade;
 
@@ -26,6 +27,20 @@ public abstract class SourceInstantiationFacadeImpl implements
 		SourceInstantiationFacade {
 
 	/**
+	 * Local reference to the bundle context
+	 */
+	private BundleContext context;
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.instantiation.facade.SourceInstantiationFacade#setContext(org.osgi.framework.BundleContext)
+	 */
+	@Override
+	public void setContext(BundleContext context) {
+		// keep context
+		this.context = context;
+	}
+
+	/**
 	 * Call this to show that a new source service was instantiated.
 	 * 
 	 * @param newSourceService
@@ -35,6 +50,10 @@ public abstract class SourceInstantiationFacadeImpl implements
 	protected SourceServiceFacade instantiated(
 			SourceServiceFacade newSourceService) {
 		// TODO maybe register source service
+		
+		// set context
+		newSourceService.setContext(context);
+		
 		return newSourceService;
 	}
 }

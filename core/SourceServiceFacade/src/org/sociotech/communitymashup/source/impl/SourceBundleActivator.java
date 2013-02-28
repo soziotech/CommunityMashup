@@ -28,7 +28,7 @@ public abstract class SourceBundleActivator implements BundleActivator {
 	private static BundleContext context;
 	protected SourceInstantiationFacade sourceInstantiationService;
 	// private ServiceTracker logServiceTracker;
-	private ServiceRegistration sourceInstantiationServiceRegistration;
+	private ServiceRegistration<SourceInstantiationFacade> sourceInstantiationServiceRegistration;
 
 	/**
 	 * Returns the context of the bundle of this activator.
@@ -81,6 +81,9 @@ public abstract class SourceBundleActivator implements BundleActivator {
 
 		// keep link to source instantiation service
 		this.sourceInstantiationService = sourceInstantiationService;
+		
+		// set context to source instantiation service
+		this.sourceInstantiationService.setContext(context);
 
 		// create log service tracker
 		// LogTrackerCustomizer logTrackerCustomizer = new
@@ -92,7 +95,7 @@ public abstract class SourceBundleActivator implements BundleActivator {
 
 		// register it
 		sourceInstantiationServiceRegistration = context.registerService(
-				SourceInstantiationFacade.class.getName(),
+				SourceInstantiationFacade.class,
 				sourceInstantiationService, null);
 	}
 }

@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
+import org.osgi.framework.BundleContext;
 import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.application.ApplicationFactory;
 import org.sociotech.communitymashup.application.ApplicationPackage;
@@ -39,8 +40,11 @@ import org.sociotech.communitymashup.application.SourceState;
 import org.sociotech.communitymashup.configuration.observer.mashupcontainer.ContainerChangeObserver;
 import org.sociotech.communitymashup.configuration.observer.mashupcontainer.ContainerChangedInterface;
 import org.sociotech.communitymashup.mashup.facade.MashupServiceFacade;
+import org.sociotech.communitymashup.mashup.factory.MashupFactoryBundleActivator;
 import org.sociotech.communitymashup.mashup.factory.facade.MashupFactoryFacade;
 import org.sociotech.communitymashup.mashup.instantiation.facade.MashupInstantiationFacade;
+import org.sociotech.communitymashup.util.servicetracker.LogServiceTracker;
+import org.sociotech.communitymashup.util.servicetracker.callback.LogServiceTracked;
 
 /**
  * @author Peter Lachenmaier
@@ -49,7 +53,7 @@ import org.sociotech.communitymashup.mashup.instantiation.facade.MashupInstantia
  * Service to create instances based on a given configuration. The Mashup Factory maintains a 
  * {@link MashupContainer} for all produced mashups.
  */
-public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedInterface {
+public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedInterface, LogServiceTracked {
 	
 	/**
 	 * Local reference to an mashup instantiation service. This one will be used to produce mashups.
@@ -73,6 +77,9 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	 */
 	private Map<Mashup, MashupServiceFacade> producedMashups;
 	
+	/**
+	 * System specific file separator
+	 */
 	private static String fileSeparator = System.getProperty("file.separator");
 	
 	private static final String DEFAULT_CONFIGURATION_FOLDER = "configuration" + fileSeparator;
@@ -135,6 +142,27 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	 * Reference to the loaded configuration resource
 	 */
 	private Resource configurationResource;
+
+	/**
+	 * Log level of this mashup factory
+	 * TODO: possibility to set in configuration
+	 */
+	private int logLevel = LogService.LOG_ERROR;
+
+	/**
+	 * Tracker of log services
+	 */
+	private LogServiceTracker logServiceTracker;
+
+	/**
+	 * Local reference to the used log service
+	 */
+	private LogService logService = null;
+
+	/**
+	 * The bundle context
+	 */
+	private BundleContext context;
 	
 	/**
 	 * Creates a new mashup factory.
@@ -143,6 +171,12 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		// create empty collections
 		openMashups 	= new LinkedList<Mashup>();
 		producedMashups = new HashMap<Mashup, MashupServiceFacade>();
+		
+		// set bundle context
+		context = MashupFactoryBundleActivator.getContext();
+	
+		// open log service tracker
+		openLogServiceTracker();
 		
 		// load configuration from bundled or external configuration file if available
 		loadConfigurationIfAvailable();	
@@ -655,11 +689,23 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 	 * Logs the given message with the given log level.
 	 * 
 	 * @param message Message to log
-	 * @param level Level of the message
+	 * @param logLevel Level of the message
 	 */
-	public void log(String message, int level) {
-		// TODO replace
-		System.out.println(message);
+	public void log(String message, int logLevel) {
+		if(logLevel > this.logLevel)
+		{
+			// dont log
+			return;
+		}
+		
+		if (logService != null)
+		{
+			logService.log(logLevel, message);
+		} 
+		else
+		{
+			System.out.println(message);
+		}
 	}
 
 
@@ -688,6 +734,13 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 		if(this.canSave && this.needSave)
 		{
 			saveConfiguration(null);
+		}
+		
+		// stop log service tracker
+		if(logServiceTracker != null)
+		{
+			logServiceTracker.close();
+			logServiceTracker = null;
 		}
 	}
 	
@@ -904,5 +957,46 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 			
 			log("Saved configuration to " + configurationPath, LogService.LOG_DEBUG);
 		}
+	}
+
+
+	/**
+	 * Uses the given log service for logging.
+	 * 
+	 * @param logService Log service to use for logging.
+	 */
+	@Override
+	public void gotLogService(LogService logService) {
+		
+		this.logService = logService;
+		// log first message with new log service
+		log("Set new log service.", LogService.LOG_DEBUG);
+	}
+
+	/**
+	 * @param logService
+	 */
+	@Override
+	public void lostLogService(LogService logService) {
+		
+		if(logService != null && logService == this.logService)
+		{
+			log("Lost log service.", LogService.LOG_WARNING);
+			// set to null if it is the used log service
+			this.logService = null;
+		}
+	}
+	
+	/**
+	 * Opens a tracker to get noticed on appearing or disapearing log services
+	 */
+	private void openLogServiceTracker() {
+		
+		// create new service tracker and keep reference
+		this.logServiceTracker  = new LogServiceTracker(context, this);
+		
+		// open it
+		this.logServiceTracker.open();
+		
 	}
 }

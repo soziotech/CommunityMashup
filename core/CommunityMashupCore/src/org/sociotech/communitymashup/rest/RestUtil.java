@@ -269,10 +269,4 @@ public class RestUtil {
 		
 		return o;
 	}
-	
-	public static void updateDataSet(DataSet source, DataSet target) {
-		//TODO enter some code here to modify the target DataSet to match the sourceDataSet
-		System.out.println("modified " + target + " to match " + source + ".");
-	}
-	
 }

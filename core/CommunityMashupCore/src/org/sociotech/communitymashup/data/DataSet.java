@@ -16,6 +16,7 @@ import java.util.LinkedList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
+import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.application.Mashup;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
 import org.sociotech.communitymashup.rest.RequestType;
@@ -1353,5 +1354,12 @@ public interface DataSet extends EObject {
 	 * @model kind="operation"
 	 */
 	EList<Content> getContents();
+	
+	/**
+	 * Sets the log service to be used for data logging.
+	 * 
+	 * @param logService LogService to be used for logging
+	 */
+	public void setLogService(LogService logService);
 	
 } // DataSet
