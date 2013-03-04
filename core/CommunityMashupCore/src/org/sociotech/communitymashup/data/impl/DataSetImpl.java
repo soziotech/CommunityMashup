@@ -5531,7 +5531,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated NOT
 	 */
 	public void log(String message, Integer level) {
-		if(logLevel > this.logLevel)
+		if(level > this.logLevel)
 		{
 			// dont log
 			return;
@@ -5539,7 +5539,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		
 		if (logService != null)
 		{
-			logService.log(logLevel, message);
+			logService.log(level, message);
 		} 
 		else
 		{
