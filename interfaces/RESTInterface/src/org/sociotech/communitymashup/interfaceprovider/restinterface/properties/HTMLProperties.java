@@ -32,5 +32,9 @@ public class HTMLProperties {
 	 * The property for the usage of custom templates
 	 */
 	public static final String DEFAULT_CUSTOM_TEMPLATE_PROPERTY = "defaultCustomTemplate";
+	/**
+	 * The property for default wrapping
+	 */
+	public static final String DEFAULT_WRAP_PROPERTY = "defaultWrap";
 	
 }

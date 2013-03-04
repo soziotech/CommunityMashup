@@ -167,6 +167,7 @@ public class RESTServlet extends HttpServlet {
 	private String templatePath = "";
 	private String stylePath = "";
 	private String defaultCustomHtmlTemplate = "";
+	private Boolean defaultWrap = true;
 
 	private RESTInterfaceService restInterfaceService;
 
@@ -217,12 +218,19 @@ public class RESTServlet extends HttpServlet {
 			templatePath = configuration.getPropertyValue(HTMLProperties.TEMPLATE_PATH_PROPERTY);
 			stylePath = configuration.getPropertyValue(HTMLProperties.STYLE_PATH_PROPERTY);
 			defaultCustomHtmlTemplate = configuration.getPropertyValue(HTMLProperties.DEFAULT_CUSTOM_TEMPLATE_PROPERTY) == null ? "" : configuration.getPropertyValue(HTMLProperties.DEFAULT_CUSTOM_TEMPLATE_PROPERTY);
+			if(configuration.getPropertyValue(HTMLProperties.CUSTOM_TEMPLATES_PROPERTY) != null) {
+				if(configuration.getPropertyValue(HTMLProperties.DEFAULT_WRAP_PROPERTY).toLowerCase().equals("true"))
+					defaultWrap = true;
+				else if(configuration.getPropertyValue(HTMLProperties.DEFAULT_WRAP_PROPERTY).toLowerCase().equals("false"))
+					defaultWrap = false;
+			}
 			if(templatePath != null) {
 				fmParser.setTplPath(templatePath);
 			}
 			if(stylePath != null) {
 				fmParser.setStylePath(stylePath);
 			}
+			fmParser.setDefaultWrap(defaultWrap);
 			
 		}
 	}

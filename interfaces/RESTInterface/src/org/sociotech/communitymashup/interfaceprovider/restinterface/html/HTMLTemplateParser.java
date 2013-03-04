@@ -51,7 +51,8 @@ public class HTMLTemplateParser {
 	private Configuration cfg = new Configuration();
 	private String customTemplateDirectory = "";
 	private String templateDirectory = "";
-	private Boolean wrap = true;
+	private Boolean wrap = null;
+	private Boolean defaultWrap = true;
 	
 	public HTMLTemplateParser() {}
 	
@@ -166,12 +167,15 @@ public class HTMLTemplateParser {
 		}
 		
 		root.put("templateName", tplname);
-		if(wrap) {
-			tplname = "tpl_Wrapper.html";
+		if(wrap != null) {
+			if(wrap) {
+				tplname = "tpl_Wrapper.html";
+			}
 		}
-		else {
-			wrap = true;
+		else if(defaultWrap) {
+			tplname = "tpl_Wrapper.html";	
 		}
+		wrap = null;
 		
 		Template temp = null;
 		String customTemplate = customTemplateDirectory;
@@ -240,5 +244,9 @@ public class HTMLTemplateParser {
 
 	public void setWrapping(Boolean wrapBoolean) {
 		wrap = wrapBoolean;
+	}
+
+	public void setDefaultWrap(Boolean defaultWrap) {
+		this.defaultWrap = defaultWrap;		
 	}
 }
