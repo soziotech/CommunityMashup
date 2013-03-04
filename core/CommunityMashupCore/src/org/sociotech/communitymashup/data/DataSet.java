@@ -975,6 +975,18 @@ public interface DataSet extends EObject {
 	EList<Connection> getConnectionsBetweenInformationObjectsOfDifferentCategories();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link InformationObject Information Objects@endlink modified since the given date.
+	 * <!-- end-model-doc -->
+	 * @model dateRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getItemsModifiedSince(date)'"
+	 * @generated
+	 */
+	EList<InformationObject> getInformationObjectsModifiedSince(Date date);
+
+	/**
 	 * Returns all Attachments.
 	 *
 	 * @return All Attachments of this DataSet.

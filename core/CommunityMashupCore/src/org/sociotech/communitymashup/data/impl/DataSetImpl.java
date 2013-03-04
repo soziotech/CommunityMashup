@@ -4116,6 +4116,16 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
 			return this.getConnectionsBetweenInformationObjectsOfDifferentCategories();
 		}
+		if ( command.getCommand().equalsIgnoreCase("getInformationObjectsModifiedSince")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.util.Date date = null;
+			try {
+				date = (java.util.Date)(RestUtil.fromDateString((String)command.getArg("date")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.util.Date", command.getArg("date").getClass().getName());
+			}
+			return this.getInformationObjectsModifiedSince(date);
+		}
 		throw new UnknownOperationException(this, command);
 	}
 
@@ -6069,6 +6079,43 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		return resultingConnections;
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<InformationObject> getInformationObjectsModifiedSince(Date date) {
+		// Check if input is defined
+		if(getItemsModifiedSince(date) == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getInformationObject());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItemsModifiedSince(date), oclCondition.AND(InformationObject.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<InformationObject>();
+		}
+		
+		// results are only InformationObjects
+		@SuppressWarnings("unchecked")
+		EList<InformationObject> objects = new BasicEList<InformationObject>((Collection<? extends InformationObject>) result.getEObjects());
+		
+		return objects;	
+	
+	}
+
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.data.DataSet#setLogService(org.osgi.service.log.LogService)
 	 */

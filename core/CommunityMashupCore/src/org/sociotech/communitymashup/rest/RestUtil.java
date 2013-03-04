@@ -22,7 +22,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Item;
 
 
