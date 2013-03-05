@@ -217,13 +217,9 @@ public class RESTServlet extends HttpServlet {
 			// set path variables for HTML-Requests and update Template Parser
 			templatePath = configuration.getPropertyValue(HTMLProperties.TEMPLATE_PATH_PROPERTY);
 			stylePath = configuration.getPropertyValue(HTMLProperties.STYLE_PATH_PROPERTY);
-			defaultCustomHtmlTemplate = configuration.getPropertyValue(HTMLProperties.DEFAULT_CUSTOM_TEMPLATE_PROPERTY) == null ? "" : configuration.getPropertyValue(HTMLProperties.DEFAULT_CUSTOM_TEMPLATE_PROPERTY);
-			if(configuration.getPropertyValue(HTMLProperties.CUSTOM_TEMPLATES_PROPERTY) != null) {
-				if(configuration.getPropertyValue(HTMLProperties.DEFAULT_WRAP_PROPERTY).toLowerCase().equals("true"))
-					defaultWrap = true;
-				else if(configuration.getPropertyValue(HTMLProperties.DEFAULT_WRAP_PROPERTY).toLowerCase().equals("false"))
-					defaultWrap = false;
-			}
+			defaultCustomHtmlTemplate = configuration.getPropertyValueElseDefault(HTMLProperties.DEFAULT_CUSTOM_TEMPLATE_PROPERTY, HTMLProperties.DEFAULT_CUSTOM_TEMPLATE_PROPERTY);
+			defaultWrap = configuration.isPropertyTrue(HTMLProperties.DEFAULT_WRAP_PROPERTY);
+			
 			if(templatePath != null) {
 				fmParser.setTplPath(templatePath);
 			}
@@ -1089,6 +1085,13 @@ public class RESTServlet extends HttpServlet {
 		return fmParser.generate(dataSet2, baseurl);
 	}
 
+	/**
+	 * Serializes the complete data set to json.
+	 * 
+	 * @param dataSet2 Data set to serialize
+	 * @param respEncoding Encoding
+	 * @return The serialized data set as json string, null in error case.
+	 */
 	private String jsonDataSet(DataSet dataSet2, String respEncoding) {
 		if (dataSet == null) {
 			return null;
@@ -1225,6 +1228,12 @@ public class RESTServlet extends HttpServlet {
 		return postProcessJSON(sw.toString());
 	}
 
+	/**
+	 * Logs the given message using the rest interface service.
+	 * 
+	 * @param message Message to log
+	 * @param level log level
+	 */
 	private void log(String message, int level) {
 		
 		// use restinterface service to log
