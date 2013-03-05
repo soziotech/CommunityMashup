@@ -102,7 +102,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * <ul>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getItems <em>Items</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getCacheFolder <em>Cache Folder</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getCacheFileAttachements <em>Cache File Attachements</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getCacheFileAttachements <em>Cache File Attachments</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getSetUp <em>Set Up</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLastModified <em>Last Modified</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLogLevel <em>Log Level</em>}</li>
@@ -121,7 +121,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * Reference to singleton ocl environment. 
 	 */
-	private static EcoreEnvironment oclEnvironment = null;
+	private EcoreEnvironment oclEnvironment = null;
+	// TODO make ident counter as instance variable
 	private static long identCounter = 0;
 	private static final String idPrefix = "a_";
 	
@@ -135,7 +136,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * 
 	 * @return The OCL singleton instance, null in error case.
 	 */
-	public static Environment<EPackage, EClassifier, EOperation, EStructuralFeature, EEnumLiteral, EParameter, EObject, CallOperationAction, SendSignalAction, Constraint, EClass, EObject> getOclEnvironment() {
+	public Environment<EPackage, EClassifier, EOperation, EStructuralFeature, EEnumLiteral, EParameter, EObject, CallOperationAction, SendSignalAction, Constraint, EClass, EObject> getOclEnvironment() {
 		if(oclEnvironment == null)
 		{
 			oclEnvironment = (EcoreEnvironment) EcoreEnvironmentFactory.INSTANCE.createEnvironment();
