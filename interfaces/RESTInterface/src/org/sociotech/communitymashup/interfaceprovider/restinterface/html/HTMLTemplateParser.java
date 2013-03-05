@@ -28,16 +28,15 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Item;
+import org.sociotech.communitymashup.interfaceprovider.restinterface.RESTInterfaceService;
 
-import freemarker.core.Environment;
-import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import freemarker.template.TemplateExceptionHandler;
 
 /**
  * @author Christopher Rohde
@@ -45,7 +44,6 @@ import freemarker.template.TemplateExceptionHandler;
  */
 public class HTMLTemplateParser {
 	
-	private String tplPath = "";
 	private String stylePath = "";
 	private Boolean useCustomTemplates = false;
 	private Configuration cfg = new Configuration();
@@ -54,49 +52,17 @@ public class HTMLTemplateParser {
 	private Boolean wrap = null;
 	private Boolean defaultWrap = true;
 	
-	public HTMLTemplateParser() {}
+	/**
+	 * Rest interface service used for logging 
+	 */
+	private RESTInterfaceService logger;
 	
-	public HTMLTemplateParser(String tplPath) {
-		this.tplPath = tplPath;
-		try {
-			cfg.setDirectoryForTemplateLoading(new File(tplPath));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		// we want to make all properties and methods of dataItems available to
-		// the template, so we use a freemarker BeansWrapper and set the
-		// exposure level to all
-		BeansWrapper beansWrapper = new BeansWrapper();
-//				beansWrapper.setExposureLevel(BeansWrapper.EXPOSE_ALL);
-//				beansWrapper.setSimpleMapWrapper(true); 
-
-		// tell the configuration that it should use the BeansWrapper instead of
-		// the DefaultObjectWrapper
-		cfg.setObjectWrapper(beansWrapper);
-
-		// by default the parsing will fail and not generate valid HTML output
-		// if a exception within a marker occurs. With this own exception
-		// handler, we tell freemarker to instead write an empty strin in the
-		// output, the exception to the console and finish its generation.
-		class MyTemplateExceptionHandler implements TemplateExceptionHandler {
-			public void handleTemplateException(TemplateException te,
-					Environment env, java.io.Writer out)
-					throws TemplateException {
-				try {
-					/*logger.warning("Invalid marker in "
-							+ env.getTemplate().getName() + ": "
-							+ te.getMessage());*/
-					out.write("");
-				} catch (IOException e) {
-					throw new TemplateException(
-							"Failed to print error message. Cause: " + e, env);
-				}
-			}
-		}
-		cfg.setTemplateExceptionHandler(new MyTemplateExceptionHandler());
-		//cfg.setObjectWrapper(new DefaultObjectWrapper());
+	/**
+	 * TODO
+	 * @param restInterfaceService
+	 */
+	public HTMLTemplateParser(RESTInterfaceService restInterfaceService) {
+		this.logger = restInterfaceService;
 	}
 	
 	public String generate(Object obj, String baseurl) {
@@ -155,8 +121,10 @@ public class HTMLTemplateParser {
 			}
 			else if(ctype != null)
 				tplname = "tpl_" + ctype.getName() + "_list.html";
-			else
+			else {
+				//TODO constants
 				return "Keine Objekte.";
+			}
 		}
 		else if(obj instanceof EObject) {
 			root.put("item", ((EObject) obj));
@@ -216,11 +184,12 @@ public class HTMLTemplateParser {
 	}
 
 	public void setTplPath(String tplPath) {
-		this.tplPath = tplPath;
 		try {
 			cfg.setDirectoryForTemplateLoading(new File(tplPath));
 		} catch (IOException e) {
+			// TODO logging
 			// TODO Auto-generated catch block
+			logger.log("TODO", LogService.LOG_WARNING);
 			e.printStackTrace();
 		}
 		cfg.setObjectWrapper(new DefaultObjectWrapper());

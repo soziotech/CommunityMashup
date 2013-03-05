@@ -36,5 +36,6 @@ public class HTMLProperties {
 	 * The property for default wrapping
 	 */
 	public static final String DEFAULT_WRAP_PROPERTY = "defaultWrap";
+	public static final String DEFAULT_WRAP_PROPERTY_DEFAULT = "true";
 	
 }

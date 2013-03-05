@@ -160,7 +160,7 @@ public class RESTServlet extends HttpServlet {
 	/**
 	 * FreeMarker Template Parser for HTML-Requests
 	 */
-	private HTMLTemplateParser fmParser = new HTMLTemplateParser();
+	private HTMLTemplateParser fmParser = null;
 	/**
 	 * Variables for HTML-Requests, will be set in constructor from configuration
 	 */
@@ -209,7 +209,8 @@ public class RESTServlet extends HttpServlet {
 		emfCacheList = new ArrayList<Object>();
 		
 		if(type == TYPE_HTML)
-		{			
+		{	
+			fmParser = new HTMLTemplateParser(restInterfaceService);
 			if(configuration.getPropertyValue(HTMLProperties.CUSTOM_TEMPLATES_PROPERTY) != null)
 				fmParser.setUseCustomTemplates(configuration.getPropertyValue(HTMLProperties.CUSTOM_TEMPLATES_PROPERTY).toLowerCase().equals("true"));
 			
@@ -218,7 +219,7 @@ public class RESTServlet extends HttpServlet {
 			templatePath = configuration.getPropertyValue(HTMLProperties.TEMPLATE_PATH_PROPERTY);
 			stylePath = configuration.getPropertyValue(HTMLProperties.STYLE_PATH_PROPERTY);
 			defaultCustomHtmlTemplate = configuration.getPropertyValueElseDefault(HTMLProperties.DEFAULT_CUSTOM_TEMPLATE_PROPERTY, HTMLProperties.DEFAULT_CUSTOM_TEMPLATE_PROPERTY);
-			defaultWrap = configuration.isPropertyTrue(HTMLProperties.DEFAULT_WRAP_PROPERTY);
+			defaultWrap = configuration.isPropertyTrueElseDefault(HTMLProperties.DEFAULT_WRAP_PROPERTY, HTMLProperties.DEFAULT_WRAP_PROPERTY_DEFAULT);
 			
 			if(templatePath != null) {
 				fmParser.setTplPath(templatePath);
@@ -741,27 +742,6 @@ public class RESTServlet extends HttpServlet {
 			//  remove from request url
 			requestUrl = removeJsonpAttribute(requestUrl);
 		}
-		
-		String htmlTemplate = extractHtmlTemplate(request);
-		String wrap = extractHtmlWrap(request);
-
-		fmParser.setCustomTemplate(defaultCustomHtmlTemplate);
-		if(htmlTemplate != null || wrap != null)
-		{
-			requestUrl = removeHtmlAttributes(requestUrl);
-
-			if(htmlTemplate != null)
-			{
-				//  remove from request url
-				
-				fmParser.setCustomTemplate(htmlTemplate);
-			}
-			
-			if(wrap != null) {
-				Boolean wrapBoolean = wrap.toLowerCase().equals("false") ? false : true;
-				fmParser.setWrapping(wrapBoolean);
-			}
-		}
 			
 		String contentType = null;
 		String result = null;
@@ -782,6 +762,27 @@ public class RESTServlet extends HttpServlet {
 		else if(type == TYPE_HTML)
 		{
 			contentType = "text/html";
+			
+			String htmlTemplate = extractHtmlTemplate(request);
+			String wrap = extractHtmlWrap(request);
+			
+			fmParser.setCustomTemplate(defaultCustomHtmlTemplate);
+			if(htmlTemplate != null || wrap != null)
+			{
+				requestUrl = removeHtmlAttributes(requestUrl);
+
+				if(htmlTemplate != null)
+				{
+					//  remove from request url
+					
+					fmParser.setCustomTemplate(htmlTemplate);
+				}
+				
+				if(wrap != null) {
+					Boolean wrapBoolean = wrap.toLowerCase().equals("false") ? false : true;
+					fmParser.setWrapping(wrapBoolean);
+				}
+			}
 		}
 		
 		// remove possible security parameters
@@ -1076,13 +1077,20 @@ public class RESTServlet extends HttpServlet {
 		return postProcessHtml(fmParser.generate(object, baseurl));
 	}
 	
-	private String htmlDataSet(DataSet dataSet2, String respEncoding) {
+	/**
+	 * TODO document
+	 * 
+	 * @param dataSet
+	 * @param respEncoding
+	 * @return
+	 */
+	private String htmlDataSet(DataSet dataSet, String respEncoding) {
 		//DataSetTemplate tpl = new DataSetTemplate();
 		//return tpl.generate(dataSet2);
 		String baseurl = "http://" + serverName + ":" + serverPort + urlSuffix + serverAlias;
 		if(!baseurl.endsWith("/"))
 			baseurl += "/";
-		return fmParser.generate(dataSet2, baseurl);
+		return fmParser.generate(dataSet, baseurl);
 	}
 
 	/**
