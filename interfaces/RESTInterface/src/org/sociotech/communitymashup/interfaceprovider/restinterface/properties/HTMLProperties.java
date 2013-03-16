@@ -38,4 +38,14 @@ public class HTMLProperties {
 	public static final String DEFAULT_WRAP_PROPERTY = "defaultWrap";
 	public static final String DEFAULT_WRAP_PROPERTY_DEFAULT = "true";
 	
+	/**
+	 * Default string properties for output messages in html.
+	 */
+	public static final String STRING_NO_OBJECTS = "No Objects.";
+	public static final String STRING_UNSUPPORTED = "Unsupported type.";
+	
+	/**
+	 * Relative path for getting url related resources (see CommunityMashupStyleResources)
+	 */
+	public static final String HTML_RESOURCE_PATH = "../../style/htmlrest";
 }

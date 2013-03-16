@@ -717,8 +717,12 @@ public class RESTServlet extends HttpServlet {
 			reqUrl = request.getRequestURL().toString();
 		if(request.getQueryString() != null && (!(request.getQueryString().equals(""))))
 			reqUrl += "?" + request.getQueryString();
-		if(!reqUrl.endsWith("/"))
-				reqUrl += "/";
+		if(!reqUrl.endsWith("/")) {
+			reqUrl += "/";
+			if(type == TYPE_HTML && request.getQueryString() == null)
+				resp.sendRedirect(resp.encodeRedirectURL(reqUrl));
+		}
+				
 
 		// reconstruct requested url
 		String requestUrl = request.getPathInfo();
@@ -763,18 +767,18 @@ public class RESTServlet extends HttpServlet {
 		{
 			contentType = "text/html";
 			
+			// extract template and wrap parameters from url
 			String htmlTemplate = extractHtmlTemplate(request);
 			String wrap = extractHtmlWrap(request);
 			
 			fmParser.setCustomTemplate(defaultCustomHtmlTemplate);
 			if(htmlTemplate != null || wrap != null)
 			{
+				// remove html parameters from url
 				requestUrl = removeHtmlAttributes(requestUrl);
 
 				if(htmlTemplate != null)
 				{
-					//  remove from request url
-					
 					fmParser.setCustomTemplate(htmlTemplate);
 				}
 				
@@ -1048,6 +1052,12 @@ public class RESTServlet extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * Post-process html-code by replacing local / file references
+	 * 
+	 * @param htmlInput The Input to post-process
+	 * @return The post-processed input
+	 */
 	private String postProcessHtml(String htmlInput) {
 
 		// replace references to local items
@@ -1059,38 +1069,35 @@ public class RESTServlet extends HttpServlet {
 		return result;
 	}
 	
+	/**
+	 * Serializes the given object to html output.
+	 * 
+	 * @param object Object to generate html for
+	 * @param respEncoding needed encoding
+	 * @return The html output
+	 */
 	private String html(Object object, String respEncoding) {
-//		ItemTemplate tpl = new ItemTemplate();
-//		return tpl.generate(object);
+		
 		String baseurl = "http://" + serverName + ":" + serverPort + urlSuffix + serverAlias;
 		if(!baseurl.endsWith("/"))
 			baseurl += "/";
-		
-		/**
-		 * Replaces references and cleanes up xml.
-		 * 
-		 * @param xmlInput
-		 *            Input in xml format
-		 * @return Cleaned XML
-		 */
 		
 		return postProcessHtml(fmParser.generate(object, baseurl));
 	}
 	
 	/**
-	 * TODO document
+	 * Serializes the given DataSet to html output.
 	 * 
-	 * @param dataSet
-	 * @param respEncoding
-	 * @return
+	 * @param dataSet DataSet to generate html for.
+	 * @param respEncoding needed encoding
+	 * @return The html output.
 	 */
 	private String htmlDataSet(DataSet dataSet, String respEncoding) {
-		//DataSetTemplate tpl = new DataSetTemplate();
-		//return tpl.generate(dataSet2);
 		String baseurl = "http://" + serverName + ":" + serverPort + urlSuffix + serverAlias;
 		if(!baseurl.endsWith("/"))
 			baseurl += "/";
-		return fmParser.generate(dataSet, baseurl);
+		
+		return postProcessHtml(fmParser.generate(dataSet, baseurl));
 	}
 
 	/**
@@ -1280,6 +1287,12 @@ public class RESTServlet extends HttpServlet {
 		return result;
 	}
 	
+	/**
+	 * Removes html parameters from a url
+	 * 
+	 * @param requestURL The target url
+	 * @return The url without html parameters
+	 */
 	private String removeHtmlAttributes(String requestURL) {
 		System.out.println(requestURL);
 		if(requestURL == null)

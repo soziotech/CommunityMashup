@@ -32,6 +32,7 @@ import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Item;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.RESTInterfaceService;
+import org.sociotech.communitymashup.interfaceprovider.restinterface.properties.HTMLProperties;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -39,17 +40,41 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 /**
+ * A Template Parser for generating html-output for objects of the CommunityMashup.
+ * 
  * @author Christopher Rohde
  *
  */
 public class HTMLTemplateParser {
 	
+	/**
+	 * Custom style path
+	 */
 	private String stylePath = "";
+	
+	/**
+	 * Set to true if the usage of custom templates is allowed
+	 */
 	private Boolean useCustomTemplates = false;
+	
+	/**
+	 * Configuration for the Freemarker-Parser
+	 */
 	private Configuration cfg = new Configuration();
+	
+	/**
+	 * Standard directory for a custom template
+	 */
 	private String customTemplateDirectory = "";
-	private String templateDirectory = "";
-	private Boolean wrap = null;
+	
+	/**
+	 * Root template directory
+	 */
+	private String templateDirectory = "";	
+	
+	/**
+	 * Set to true to activate wrapping per default
+	 */
 	private Boolean defaultWrap = true;
 	
 	/**
@@ -57,22 +82,36 @@ public class HTMLTemplateParser {
 	 */
 	private RESTInterfaceService logger;
 	
+	private Boolean wrap = null;
+	
+	
 	/**
-	 * TODO
-	 * @param restInterfaceService
+	 * Instantiates a new html template parser
+	 *  
+	 * @param restInterfaceService The RestInterfaceService-Instance needed for logging
 	 */
 	public HTMLTemplateParser(RESTInterfaceService restInterfaceService) {
 		this.logger = restInterfaceService;
 	}
 	
+	/**
+	 * Generates the html output for an object
+	 * 
+	 * @param obj The target object
+	 * @param baseurl The baseurl of the request
+	 * @return The html output
+	 */
+	@SuppressWarnings("unchecked")
 	public String generate(Object obj, String baseurl) {
 		String tplname = "";
 		
-		/* Create a data-model */
+		// Create a data-model for the freemarker-template
         Map<String, Object> root = new HashMap<String, Object>();
         root.put("stylepath", stylePath);
         root.put("baseurl", baseurl);
+        root.put("resourcepath", HTMLProperties.HTML_RESOURCE_PATH);
         
+        // dataset
         if(obj instanceof DataSet) {
         	root.put("dataset",obj);
         	EList<Item> elist = ((DataSet)obj).getItems();
@@ -86,11 +125,16 @@ public class HTMLTemplateParser {
 			root.put("classes", subclasses);
         	
         }
+        
+        // elist
 		if(obj instanceof EList) {
 			List<EObject> items = new ArrayList<EObject>();
+			// put items into freemarker-object
 			root.put("items",items);
 			EList<? extends EObject> elist = (EList<? extends EObject>) obj;
 			
+			
+			// collect classes within the items
 			EClass ctype = null;
 			Boolean multi = false;
 			EList<EClass> classes = new BasicEList<EClass>();
@@ -111,6 +155,7 @@ public class HTMLTemplateParser {
 				classes.retainAll(e.eClass().getEAllSuperTypes());
 			}
 			
+			// select the correct template file (typ related)
 			if(elist.size() == 1) {
 				tplname = "tpl_" + ctype.getName() + ".html";
 				root.put("item", elist.get(0));
@@ -122,16 +167,16 @@ public class HTMLTemplateParser {
 			else if(ctype != null)
 				tplname = "tpl_" + ctype.getName() + "_list.html";
 			else {
-				//TODO constants
-				return "Keine Objekte.";
+				return HTMLProperties.STRING_NO_OBJECTS;
 			}
-		}
+		} // normal object
 		else if(obj instanceof EObject) {
 			root.put("item", ((EObject) obj));
 			tplname = "tpl_" + ((EObject)obj).eClass().getName() + ".html";
 		}
 		else {
-			return "Unsupported Type";
+			logger.log("[HTMLTemplateParser]: Unsupported type, can not serialize to html", LogService.LOG_WARNING);
+			return HTMLProperties.STRING_UNSUPPORTED;
 		}
 		
 		root.put("templateName", tplname);
@@ -147,7 +192,7 @@ public class HTMLTemplateParser {
 		
 		Template temp = null;
 		String customTemplate = customTemplateDirectory;
-		System.out.println("### " + customTemplate);
+
 		try {
 			if(useCustomTemplates) {
 				temp = cfg.getTemplate("./custom/" + customTemplateDirectory + "/" + tplname);
@@ -160,61 +205,90 @@ public class HTMLTemplateParser {
 			try {
 				temp = cfg.getTemplate(templateDirectory + tplname);
 			} catch (IOException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
+				logger.log("[HTMLTemplateParser]: Template directory may be wrong - check the configuration", LogService.LOG_ERROR);
 			}
 		}
 		
 		
 		root.put("customTemplate", customTemplate);
 
-        /* Merge data-model with template */
+        // Merge data-model with template
         Writer out = new StringWriter();
         try {
 			temp.process(root, out);
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log("[HTMLTemplateParser]: TemplateException ("+e.getMessage()+")", LogService.LOG_ERROR);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log("[HTMLTemplateParser]: IOException ("+e.getMessage()+")", LogService.LOG_ERROR);
 		}
         
         return out.toString();
 	}
 
+	/**
+	 * Sets a new template-path
+	 * 
+	 * @param tplPath The new template-path
+	 */
 	public void setTplPath(String tplPath) {
 		try {
 			cfg.setDirectoryForTemplateLoading(new File(tplPath));
 		} catch (IOException e) {
-			// TODO logging
-			// TODO Auto-generated catch block
-			logger.log("TODO", LogService.LOG_WARNING);
-			e.printStackTrace();
+			logger.log("[HTMLTemplateParser]: IOException ("+e.getMessage()+")", LogService.LOG_ERROR);
 		}
 		cfg.setObjectWrapper(new DefaultObjectWrapper());
 	}
 
+	/**
+	 * Sets a new style-path
+	 * 
+	 * @param stylePath The new style-path
+	 */
 	public void setStylePath(String stylePath) {
 		this.stylePath = stylePath;
 	}
 
+	/**
+	 * Getter for the activation status of custom template usage
+	 * 
+	 * @return True if custom templates are activated
+	 */
 	public Boolean getUseCustomTemplates() {
 		return useCustomTemplates;
 	}
 
+	/**
+	 * Sets the usage of custom templates to a new status (true | false)
+	 * 
+	 * @param useCustomTemplates The new status
+	 */
 	public void setUseCustomTemplates(Boolean useCustomTemplates) {
 		this.useCustomTemplates = useCustomTemplates;
 	}
 
+	/**
+	 * Sets a new custom template
+	 * 
+	 * @param string The new custom template name
+	 */
 	public void setCustomTemplate(String string) {
 		customTemplateDirectory = string;
 	}
 
+	/**
+	 * Enables (true) or disables (false) wrapping for templates
+	 * 
+	 * @param wrapBoolean The new status for wrapping
+	 */
 	public void setWrapping(Boolean wrapBoolean) {
 		wrap = wrapBoolean;
 	}
 
+	/**
+	 * Enables (true) or disables (false) default wrapping for templates
+	 * 
+	 * @param defaultWrap The new status for default wrapping
+	 */
 	public void setDefaultWrap(Boolean defaultWrap) {
 		this.defaultWrap = defaultWrap;		
 	}

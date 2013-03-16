@@ -26,7 +26,6 @@ import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.RESTInterfaceService;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.RESTServlet;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.html.RESTFileServlet;
-import org.sociotech.communitymashup.interfaceprovider.restinterface.html.RESTHtmlServlet;
 import org.sociotech.communitymashup.security.facade.SecurityServiceFacade;
 import org.sociotech.communitymashup.security.factory.facade.SecurityFactoryServiceFacade;
 import org.sociotech.communitymashup.security.factory.facade.callback.AsynchronousSecurityInstantiationCallback;
@@ -162,15 +161,6 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 			log("Servlet-Exception at registering REST servlets. (" + e.getMessage() +")", LogService.LOG_ERROR);
 		} catch (NamespaceException e) {
 			log("Namespace-Exception at registering REST servlets. (" + e.getMessage() +")", LogService.LOG_ERROR);
-		}
-		
-		try
-		{
-			// create servlet for HTML-based REST-interface
-			RESTHtmlServlet htmlServlet = new RESTHtmlServlet();
-			httpService.registerServlet(path + "inc", htmlServlet, null, null);
-		} catch (Exception e) {
-			log("Exception at registering Html servlet resources. (" + e.getMessage() +")", LogService.LOG_ERROR);
 		}
 
 		// keep reference
