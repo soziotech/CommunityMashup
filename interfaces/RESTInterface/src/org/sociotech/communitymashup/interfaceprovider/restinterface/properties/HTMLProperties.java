@@ -47,5 +47,5 @@ public class HTMLProperties {
 	/**
 	 * Relative path for getting url related resources (see CommunityMashupStyleResources)
 	 */
-	public static final String HTML_RESOURCE_PATH = "../../style/htmlrest";
+	public static final String HTML_RESOURCE_PATH = "/style/htmlrest/";
 }

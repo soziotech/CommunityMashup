@@ -98,17 +98,19 @@ public class HTMLTemplateParser {
 	 * Generates the html output for an object
 	 * 
 	 * @param obj The target object
+	 * @param rooturl The host and the urlsuffix of the restinterface of the request
 	 * @param baseurl The baseurl of the request
 	 * @return The html output
 	 */
 	@SuppressWarnings("unchecked")
-	public String generate(Object obj, String baseurl) {
+	public String generate(Object obj, String rooturl, String baseurl) {
 		String tplname = "";
 		
 		// Create a data-model for the freemarker-template
         Map<String, Object> root = new HashMap<String, Object>();
         root.put("stylepath", stylePath);
         root.put("baseurl", baseurl);
+        root.put("rooturl", rooturl);
         root.put("resourcepath", HTMLProperties.HTML_RESOURCE_PATH);
         
         // dataset

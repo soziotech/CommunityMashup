@@ -1077,12 +1077,12 @@ public class RESTServlet extends HttpServlet {
 	 * @return The html output
 	 */
 	private String html(Object object, String respEncoding) {
-		
-		String baseurl = "http://" + serverName + ":" + serverPort + urlSuffix + serverAlias;
+		String rooturl = "http://" + serverName + ":" + serverPort;
+		String baseurl = rooturl + urlSuffix + serverAlias;
 		if(!baseurl.endsWith("/"))
 			baseurl += "/";
 		
-		return postProcessHtml(fmParser.generate(object, baseurl));
+		return postProcessHtml(fmParser.generate(object, rooturl, baseurl));
 	}
 	
 	/**
@@ -1093,11 +1093,12 @@ public class RESTServlet extends HttpServlet {
 	 * @return The html output.
 	 */
 	private String htmlDataSet(DataSet dataSet, String respEncoding) {
-		String baseurl = "http://" + serverName + ":" + serverPort + urlSuffix + serverAlias;
+		String rooturl = "http://" + serverName + ":" + serverPort;
+		String baseurl = rooturl + urlSuffix + serverAlias;
 		if(!baseurl.endsWith("/"))
 			baseurl += "/";
 		
-		return postProcessHtml(fmParser.generate(dataSet, baseurl));
+		return postProcessHtml(fmParser.generate(dataSet, rooturl, baseurl));
 	}
 
 	/**
