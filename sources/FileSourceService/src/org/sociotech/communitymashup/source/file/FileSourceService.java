@@ -36,6 +36,8 @@ import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
 public class FileSourceService extends SourceServiceFacadeImpl
 {
 
+	public static String WORKINGDIRECTORY_FOLDER_PLACEHOLDER = "{workingDirectory}";
+	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
 	 */
@@ -106,43 +108,58 @@ public class FileSourceService extends SourceServiceFacadeImpl
 	 * Creates an URI for the resource and uses {@link ItemsLoader#loadItems(URI)}
 	 * to load the items.
 	 * 
-	 * @param resourceName Name of the resource contained in the local resource folder.
+	 * @param resourceNameOrPath Name of the resource contained in the local resource folder or
+	 * 			defined by full path.
 	 * @return A list of items. Null in error case.
 	 */
-	private EList<Item> loadItemsFromResource(String resourceName)
+	private EList<Item> loadItemsFromResource(String resourceNameOrPath)
 	{
-		if(resourceName == null)
+		if(resourceNameOrPath == null)
 		{
 			return null;
 		}
 
-		URL fileURL = getClass().getResource("/resources/" + resourceName);
+		URI resourceURI = null;
+		URL fileURL = getClass().getResource("/resources/" + resourceNameOrPath);
 
 		if(fileURL == null)
 		{
-			log("File " + resourceName + " does not exist in resource folder", LogService.LOG_ERROR);
+			// not contained in resources so try to load from external path
+			// replace possible working dir placeholder
+			String workingDirectory = System.getProperty("org.sociotech.communitymashup.configuration.workingdirectory");
+			String filePath = resourceNameOrPath.replace(WORKINGDIRECTORY_FOLDER_PLACEHOLDER, workingDirectory);
+			
+			resourceURI = URI.createFileURI(filePath);
+		}
+		else
+		{
+			try {
+				resourceURI = URI.createURI((fileURL.toURI().toString()));
+			}
+			catch (URISyntaxException e)
+			{
+				log("Could not create uri for bundled resource file " + resourceNameOrPath, LogService.LOG_ERROR);
+				// return null in error case
+				return null;
+			}
+		}
+		
+		if(resourceURI == null)
+		{
+			log("File " + resourceNameOrPath + " does not exist", LogService.LOG_ERROR);
 			return null;
 		}
 
-		try
+		EList<Item> items = ItemsLoader.loadItems(resourceURI);
+		if(items == null)
 		{
-			EList<Item> items = ItemsLoader.loadItems(URI.createURI((fileURL.toURI().toString())));
-			if(items == null)
-			{
-				log("Items could not be loaded from file " + resourceName, LogService.LOG_ERROR);
-			}
-			else
-			{
-				log("Loaded items from " + resourceName, LogService.LOG_DEBUG);
-			}
+			log("Items could not be loaded from file " + resourceNameOrPath, LogService.LOG_ERROR);
+		}
+		else
+		{
+			log("Loaded items from " + resourceNameOrPath, LogService.LOG_DEBUG);
+		}
 
-			return items;
-		}
-		catch (URISyntaxException e)
-		{
-			log("Could not create uri for file " + resourceName, LogService.LOG_ERROR);
-			// return null in error case
-			return null;
-		}
+		return items;
 	}
 }
