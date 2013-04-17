@@ -42,6 +42,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.Location#getLatitude <em>Latitude</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Location#getCity <em>City</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Location#getIndoorLocations <em>Indoor Locations</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.Location#getState <em>State</em>}</li>
  * </ul>
  * </p>
  *
@@ -257,6 +258,32 @@ public interface Location extends MetaInformation {
 	 * @generated
 	 */
 	EList<IndoorLocation> getIndoorLocations();
+
+	/**
+	 * Returns the value of the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>State</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>State</em>' attribute.
+	 * @see #setState(String)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getLocation_State()
+	 * @model
+	 * @generated
+	 */
+	String getState();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.Location#getState <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>State</em>' attribute.
+	 * @see #getState()
+	 * @generated
+	 */
+	void setState(String value);
 
 	/**
 	 * An EObjectCondition to check whether an Object is of the type Location.

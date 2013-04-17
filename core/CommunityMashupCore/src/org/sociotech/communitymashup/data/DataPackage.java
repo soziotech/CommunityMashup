@@ -3241,13 +3241,22 @@ public interface DataPackage extends EPackage {
 	int LOCATION__INDOOR_LOCATIONS = META_INFORMATION_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION__STATE = META_INFORMATION_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Location</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATION_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 8;
+	int LOCATION_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ImageImpl <em>Image</em>}' class.
@@ -6188,6 +6197,17 @@ public interface DataPackage extends EPackage {
 	EReference getLocation_IndoorLocations();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.Location#getState <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>State</em>'.
+	 * @see org.sociotech.communitymashup.data.Location#getState()
+	 * @see #getLocation()
+	 * @generated
+	 */
+	EAttribute getLocation_State();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Image <em>Image</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7403,6 +7423,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LOCATION__INDOOR_LOCATIONS = eINSTANCE.getLocation_IndoorLocations();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOCATION__STATE = eINSTANCE.getLocation_State();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ImageImpl <em>Image</em>}' class.

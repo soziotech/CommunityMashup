@@ -1320,6 +1320,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLocation_State() {
+		return (EAttribute)locationEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getImage() {
 		return imageEClass;
 	}
@@ -1736,6 +1745,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(locationEClass, LOCATION__LATITUDE);
 		createEAttribute(locationEClass, LOCATION__CITY);
 		createEReference(locationEClass, LOCATION__INDOOR_LOCATIONS);
+		createEAttribute(locationEClass, LOCATION__STATE);
 
 		imageEClass = createEClass(IMAGE);
 
@@ -2454,6 +2464,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getLocation_Latitude(), ecorePackage.getEString(), "latitude", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLocation_City(), ecorePackage.getEString(), "city", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLocation_IndoorLocations(), this.getIndoorLocation(), this.getIndoorLocation_Location(), "indoorLocations", null, 0, -1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLocation_State(), ecorePackage.getEString(), "state", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(imageEClass, Image.class, "Image", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

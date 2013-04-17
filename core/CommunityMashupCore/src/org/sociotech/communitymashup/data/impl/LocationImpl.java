@@ -80,6 +80,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.LocationImpl#getLatitude <em>Latitude</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.LocationImpl#getCity <em>City</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.LocationImpl#getIndoorLocations <em>Indoor Locations</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.LocationImpl#getState <em>State</em>}</li>
  * </ul>
  * </p>
  *
@@ -228,6 +229,25 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 	 * @ordered
 	 */
 	protected EList<IndoorLocation> indoorLocations;
+
+	/**
+	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getState()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STATE_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getState()
+	 * @generated
+	 * @ordered
+	 */
+	protected String state = STATE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -412,6 +432,27 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getState() {
+		return state;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setState(String newState) {
+		String oldState = state;
+		state = newState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.LOCATION__STATE, oldState, state));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -460,6 +501,8 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 				return getCity();
 			case DataPackage.LOCATION__INDOOR_LOCATIONS:
 				return getIndoorLocations();
+			case DataPackage.LOCATION__STATE:
+				return getState();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -498,6 +541,9 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 				getIndoorLocations().clear();
 				getIndoorLocations().addAll((Collection<? extends IndoorLocation>)newValue);
 				return;
+			case DataPackage.LOCATION__STATE:
+				setState((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -534,6 +580,9 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 			case DataPackage.LOCATION__INDOOR_LOCATIONS:
 				getIndoorLocations().clear();
 				return;
+			case DataPackage.LOCATION__STATE:
+				setState(STATE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -562,6 +611,8 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 				return CITY_EDEFAULT == null ? city != null : !CITY_EDEFAULT.equals(city);
 			case DataPackage.LOCATION__INDOOR_LOCATIONS:
 				return indoorLocations != null && !indoorLocations.isEmpty();
+			case DataPackage.LOCATION__STATE:
+				return STATE_EDEFAULT == null ? state != null : !STATE_EDEFAULT.equals(state);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -590,6 +641,8 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 		result.append(latitude);
 		result.append(", city: ");
 		result.append(city);
+		result.append(", state: ");
+		result.append(state);
 		result.append(')');
 		return result.toString();
 	}
@@ -643,7 +696,9 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 		if ( featureName.equalsIgnoreCase("city") )
 			return this.getCity();		
 		if ( featureName.equalsIgnoreCase("indoorLocations") )
-			return this.getIndoorLocations();			
+			return this.getIndoorLocations();		
+		if ( featureName.equalsIgnoreCase("state") )
+			return this.getState();			
 		return super.getFeature(featureName); 
 	}
 
@@ -724,6 +779,16 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 					throw new WrongArgException("Location.setFeature", "java.lang.String",value.getClass().getName());
 				}
 				this.setCity(fcity);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("state") ) {
+				java.lang.String fstate = null;
+				try {
+					fstate = (java.lang.String)value;
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Location.setFeature", "java.lang.String",value.getClass().getName());
+				}
+				this.setState(fstate);
 			return this;
 			}			
 		super.setFeature(featureName, value);
