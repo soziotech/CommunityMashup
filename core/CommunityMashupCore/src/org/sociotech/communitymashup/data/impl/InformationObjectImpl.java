@@ -1468,6 +1468,37 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Phone addPhone(String phoneNumber) {
+		if(phoneNumber == null || phoneNumber.equals(""))
+		{
+			return null;
+		}
+		
+		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
+		
+		// create phone object
+		Phone phone = dataFactory.createPhone();
+		
+		// set the phonenumber
+		phone.setNumber(phoneNumber);
+				
+		// add it to the data set
+		DataSet dataSet = this.getDataSet();
+		if(dataSet != null)
+		{
+			dataSet.add(phone);
+		}
+		
+		// attach it to this information object
+		phone = (Phone) this.extend(phone);
+		
+		return phone;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -2175,6 +2206,16 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("url").getClass().getName());
 			}
 			return this.getAttachedImageWithUrl(url);
+		}
+		if ( command.getCommand().equalsIgnoreCase("addPhone")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("InformationObject.doOperation", 1, command.getArgCount()); 
+			java.lang.String phoneNumber = null;
+			try {
+				phoneNumber = (java.lang.String)command.getArg("phoneNumber");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("phoneNumber").getClass().getName());
+			}
+			return this.addPhone(phoneNumber);
 		}	
 		return super.doOperation(command);
 	}

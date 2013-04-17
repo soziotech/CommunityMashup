@@ -2000,6 +2000,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		op = addEOperation(informationObjectEClass, this.getImage(), "getAttachedImageWithUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "url", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(informationObjectEClass, this.getPhone(), "addPhone", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "phoneNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContent_Contents(), this.getContent(), this.getContent_ParentContent(), "contents", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContent_Contributors(), this.getPerson(), this.getPerson_Contributed(), "contributors", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

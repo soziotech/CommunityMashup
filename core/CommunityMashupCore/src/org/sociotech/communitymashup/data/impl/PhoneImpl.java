@@ -553,4 +553,32 @@ public class PhoneImpl extends MetaInformationImpl implements Phone {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#isEqualItem(org.sociotech.communitymashup.data.Item)
+	 */
+	@Override
+	public Boolean isEqualItem(Item item) {
+
+		if(!(item instanceof WebSiteImpl))
+		{
+			return false;
+		}
+		
+		Phone comparePhone = (Phone) item;
+		
+		if(this.number == null && comparePhone.getNumber() == null)
+		{
+			// both are null
+			return true;
+		}
+		
+		if(this.number == null || comparePhone.getNumber() == null)
+		{
+			// only one of them is null
+			return false;
+		}
+		
+		// compare numbers ignoring case
+		return this.number.equalsIgnoreCase(comparePhone.getNumber());
+	}
 } //PhoneImpl

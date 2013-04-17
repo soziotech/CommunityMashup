@@ -752,6 +752,14 @@ public interface InformationObject extends Item {
 	Image getAttachedImageWithUrl(String url);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" phoneNumberRequired="true"
+	 * @generated
+	 */
+	Phone addPhone(String phoneNumber);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type InformationObject.
 	 * 
 	 * @generated
