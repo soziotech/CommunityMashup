@@ -148,7 +148,7 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 			securityFactoryTracker.open();
 		}
 		
-		// register servlets and doc-resources
+		// register servlets 
 		try {
 
 			httpService.registerServlet(path + "mashup",restServlet, null, null);

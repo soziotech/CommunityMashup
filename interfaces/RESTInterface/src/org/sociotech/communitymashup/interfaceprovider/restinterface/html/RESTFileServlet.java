@@ -130,7 +130,7 @@ public class RESTFileServlet extends HttpServlet {
 			String filePath = getFilePathForAttachment(attachments.get(0));
 			
 			//TODO: Mac+Linux workaround
-			if(filePath.startsWith("var/") || filePath.startsWith("tmp/"))
+			if(!filePath.contains(":"))
 			{
 				filePath = "/"+filePath;
 			}
