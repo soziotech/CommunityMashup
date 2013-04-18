@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +40,7 @@ import org.sociotech.communitymashup.source.mendeley.properties.MendeleyProperti
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedPrivateGroupServiceImpl;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedProfile;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedProfileServiceImpl;
+import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedPublicGroupServiceImpl;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.Author;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.Editor;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.FileAttachement;
@@ -68,6 +70,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 
 	private AdaptedProfileServiceImpl profileService;
 	private AdaptedPrivateGroupServiceImpl privateGroupService;
+	private AdaptedPublicGroupServiceImpl publicGroupService;
 	
 	/**
 	 * Temporary keeps created persons identified by their mendeley profile id to avoid duplicated calls. 
@@ -305,6 +308,15 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 			return false;
 		}
 		
+		// try to access private group data
+		try {
+			publicGroupService = new AdaptedPublicGroupServiceImpl(apiConsumer); 
+		}
+		catch (Exception e) {
+			log("Could not create mendeley public group service (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return false;
+		}
+				
 		return true;
 	}
 
@@ -316,20 +328,18 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		
 		super.fillDataSet(dataSet);
 		
-		// check data set
-		if (source.getDataSet() == null)
-		{
-			// nothing to do
-			return;
-		}
+		Person accountOwner = null;
 		
 		// create own profile
-		Person accountOwner = createOwnProfile();
-		
-		if(accountOwner == null)
+		if(source.isPropertyTrueElseDefault(MendeleyProperties.CREATE_ACCOUNT_OWNER_PROPERTY, MendeleyProperties.CREATE_ACCOUNT_OWNER_DEFAULT))
 		{
-			log("Error while creating account owner.", LogService.LOG_WARNING);
-			return;
+			accountOwner = createOwnProfile();
+		
+			if(accountOwner == null)
+			{
+				log("Error while creating account owner.", LogService.LOG_WARNING);
+				return;
+			}
 		}
 		
 		if(source.isPropertyTrue(MendeleyProperties.ADD_CONTACTS_PROPERTY))
@@ -340,6 +350,50 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		if(source.isPropertyTrue(MendeleyProperties.ADD_PRIVATE_GROUPS_PROPERTY))
 		{
 			createPrivateGroups();
+		}
+		
+		if(source.isPropertyTrue(MendeleyProperties.ADD_PUBLIC_GROUPS_PROPERTY))
+		{
+			createPublicGroups();
+		}
+	}
+
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#updateDataSet()
+	 */
+	@Override
+	protected void updateDataSet() {
+		super.updateDataSet();
+		
+		// do the same as in fill (mashup merges based on source idents)
+		Person accountOwner = null;
+		
+		// create own profile
+		if(source.isPropertyTrueElseDefault(MendeleyProperties.CREATE_ACCOUNT_OWNER_PROPERTY, MendeleyProperties.CREATE_ACCOUNT_OWNER_DEFAULT))
+		{
+			accountOwner = createOwnProfile();
+		
+			if(accountOwner == null)
+			{
+				log("Error while creating account owner.", LogService.LOG_WARNING);
+				return;
+			}
+		}
+		
+		if(source.isPropertyTrue(MendeleyProperties.ADD_CONTACTS_PROPERTY))
+		{
+			createContacts(accountOwner);
+		}
+		
+		if(source.isPropertyTrue(MendeleyProperties.ADD_PRIVATE_GROUPS_PROPERTY))
+		{
+			createPrivateGroups();
+		}
+		
+		if(source.isPropertyTrue(MendeleyProperties.ADD_PUBLIC_GROUPS_PROPERTY))
+		{
+			createPublicGroups();
 		}
 	}
 
@@ -382,10 +436,55 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		
 		for(Group group : groups)
 		{
+			String groupName = group.getName();
+			if(!isPrivateGroupAllowed(groupName))
+			{
+				log("Skipping private group " + groupName, LogService.LOG_DEBUG);
+				continue;
+			}
 			createGroup(group);
 		}
 	}
 	
+	/**
+	 * 
+	 */
+	private void createPublicGroups() {
+		
+		List<Group> groups = new LinkedList<Group>();
+		
+		String publicGroupIds = source.getPropertyValue(MendeleyProperties.PUBLIC_GROUP_IDS_PROPERTY);
+		
+		if(publicGroupIds == null || publicGroupIds.isEmpty())
+		{
+			log("No ids for public groups specified. Use property " + MendeleyProperties.PUBLIC_GROUP_IDS_PROPERTY + " to specify a list of group ids", LogService.LOG_WARNING);
+			return;
+		}
+		
+		String[] groupIds = publicGroupIds.split(",");
+		
+		// get group for every group id
+		for(String groupId : groupIds)
+		{
+			groupId = groupId.trim();
+			try{
+				log("Getting details for public group with id: " + groupId, LogService.LOG_DEBUG);
+				Group group = publicGroupService.getGroupDetails(groupId);
+				groups.add(group);
+			}
+			catch (Exception e)
+			{
+				log("Could not get details for public group with id: " + groupId, LogService.LOG_WARNING);
+			}
+		}
+		
+		// create CommunityMashup representation for every group
+		for(Group group : groups)
+		{
+			createGroup(group);
+		}
+	}
+
 	/**
 	 * Creates an organisation repsenting the given mendeley group. Will be skipped if set in source properties.
 	 * 
@@ -406,36 +505,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 			return null;
 		}
 		
-		if(!isPrivateGroupAllowed(groupName))
-		{
-			log("Skipping group " + groupName, LogService.LOG_DEBUG);
-			return null;
-		}
-		
 		DataFactory factory = DataFactory.eINSTANCE;
-		
-		// create new organisation as mapping for a group
-		Organisation organisation = factory.createOrganisation();
-		
-		organisation.setName(groupName);
-		
-		organisation = (Organisation) this.add(organisation);
-		
-		if(organisation == null)
-		{
-			log("Could not add organisation for group " + groupName, LogService.LOG_WARNING);
-			return null;
-		}
-		
-		// tag the organisation
-		Type type = group.getType();
-		if(type != null && !type.value().isEmpty())
-		{
-			organisation.tag(type.value());
-		}
-		
-		organisation.metaTag(MendeleyTags.MENDELEY);
-		organisation.metaTag(MendeleyTags.MENDELEY_GROUP);
 		
 		Group details = null;
 		
@@ -444,16 +514,46 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		}
 		catch (Exception e) {
 			log("Could not get group details for group " + groupName + " due to " + e.getMessage(), LogService.LOG_WARNING);
-			return organisation;
+			return null;
 		}
 		
-		// now add group details
-		Discipline discipline = details.getDisciplines();
-		if(discipline != null && !discipline.getName().isEmpty())
+		Organisation organisation = null;
+		
+		if(source.isPropertyTrueElseDefault(MendeleyProperties.CREATE_GROUP_ORGANISATIONS_PROPERTY, MendeleyProperties.CREATE_GROUP_ORGANISATIONS_DEFAULT))
 		{
-			// tag the organisation with the discipline
-			organisation.tag(discipline.getName());
+			// create new organisation as mapping for a group
+			organisation = factory.createOrganisation();
+			
+			organisation.setName(groupName);
+			
+			organisation = this.add(organisation, group.getId());
+			
+			if(organisation == null)
+			{
+				log("Could not add organisation for group " + groupName, LogService.LOG_WARNING);
+				return null;
+			}
+			
+			// tag the organisation
+			Type type = group.getType();
+			if(type != null && !type.value().isEmpty())
+			{
+				organisation.tag(type.value());
+			}
+			
+			organisation.metaTag(MendeleyTags.MENDELEY);
+			organisation.metaTag(MendeleyTags.MENDELEY_GROUP);
+		
+			// now add group details
+			Discipline discipline = details.getDisciplines();
+			if(discipline != null && !discipline.getName().isEmpty())
+			{
+				// tag the organisation with the discipline
+				organisation.tag(discipline.getName());
+			}
 		}
+		
+		// create persons in group
 		
 		Map<MembershipType, List<User>> people = null; 
 		try {
@@ -469,8 +569,8 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		{
 			// there regularly is only one owner so set him as organisation leader
 			Person ownerPerson = createPerson(owner);
-			log("Created leader " + ownerPerson.getName() + " of " + organisation.getName() + " from " + owner, LogService.LOG_DEBUG);
-			if(ownerPerson != null)
+			log("Created leader " + ownerPerson.getName() + " of " + group.getName() + " from " + owner, LogService.LOG_DEBUG);
+			if(organisation != null && ownerPerson != null)
 			{
 				organisation.setLeader(ownerPerson);
 			}
@@ -481,8 +581,8 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		for(User member : members)
 		{
 			Person memberPerson = createPerson(member);
-			log("Created member " + memberPerson.getName() + " of " + organisation.getName() + " from " + member, LogService.LOG_DEBUG);
-			if(memberPerson != null && !organisation.getParticipants().contains(member) && organisation.getLeader() != memberPerson)
+			log("Created member " + memberPerson.getName() + " of " + group.getName() + " from " + member, LogService.LOG_DEBUG);
+			if(organisation != null && memberPerson != null && !organisation.getParticipants().contains(member) && organisation.getLeader() != memberPerson)
 			{
 				organisation.getParticipants().add(memberPerson);
 			}
@@ -493,8 +593,8 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		for(User follower : followers)
 		{
 			Person followerPerson = createPerson(follower);
-			log("Created follower " + followerPerson.getName() + " of " + organisation.getName() + " from " + follower, LogService.LOG_DEBUG);
-			if(followerPerson != null && !organisation.getParticipants().contains(follower) && organisation.getLeader() != followerPerson)
+			log("Created follower " + followerPerson.getName() + " of " + group.getName() + " from " + follower, LogService.LOG_DEBUG);
+			if(organisation != null && followerPerson != null && !organisation.getParticipants().contains(follower) && organisation.getLeader() != followerPerson)
 			{
 				organisation.getParticipants().add(followerPerson);
 			}
@@ -561,8 +661,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		}
 		
 		// add it
-		// TODO add with id and check
-		docContent = (Content) this.add(docContent);
+		docContent = this.add(docContent, document.getId());
 		
 		if(docContent == null)
 		{
@@ -611,7 +710,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		if(url != null && !url.isEmpty())
 		{
 			WebSite docWebsite = docContent.addWebSite(url);
-			docWebsite = (WebSite) this.add(docWebsite);
+			docWebsite = this.add(docWebsite, "ws_" + document.getId());
 			if(docWebsite != null)
 			{
 				docWebsite.metaTag(MendeleyTags.MENDELEY);
@@ -636,7 +735,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 					String fileUrl = privateGroupService.getFileUrl(file, groupId, document.getId());
 					Document attachedFile = docContent.attachDocument(fileUrl);
 					// mark as added by this source
-					attachedFile = (Document) this.add(attachedFile);
+					attachedFile = this.add(attachedFile);
 					
 					if(attachedFile != null)
 					{
@@ -802,7 +901,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		person.setLastname(lastname);
 		
 		// and add it
-		person = (Person) this.add(person);
+		person = this.add(person);
 		
 		if(person == null)
 		{
@@ -904,7 +1003,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 			}
 			
 			Person contactPerson = createPerson(completeUser);
-			if(contactPerson != null)
+			if(profilePerson != null && contactPerson != null)
 			{
 				makeContacts(profilePerson, contactPerson);
 			}
@@ -984,7 +1083,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		profilePerson.setName(name);
 		
 		// and add it
-		profilePerson = (Person) this.add(profilePerson);
+		profilePerson = this.add(profilePerson, id);
 		
 		if(profilePerson == null)
 		{
@@ -1017,7 +1116,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		if(imageUrl != null && !imageUrl.isEmpty() && !imageUrl.contains("awaiting.png"))
 		{
 			Image profileImage = profilePerson.attachImage(imageUrl);
-			profileImage = (Image) this.add(profileImage);
+			profileImage = this.add(profileImage, "profimg_" + id);
 			if(profileImage != null)
 			{
 				profileImage.tag(MendeleyTags.MENDELEY);
@@ -1029,7 +1128,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		if(profileUrl != null && !profileUrl.isEmpty())
 		{
 			WebSite webProfile = profilePerson.addWebSite(profileUrl);
-			webProfile = (WebSite) this.add(webProfile);
+			webProfile = this.add(webProfile, "profweb_" + id);
 			if(webProfile != null)
 			{
 				webProfile.tag(MendeleyTags.MENDELEY);
@@ -1085,7 +1184,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		if(emailAddress != null && !emailAddress.isEmpty())
 		{
 			Email email = profilePerson.addEmailAddress(emailAddress);
-			email = (Email) this.add(email);
+			email = this.add(email);
 			if(email != null)
 			{
 				email.tag(MendeleyTags.MENDELEY);
@@ -1097,7 +1196,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		if(url != null && !url.isEmpty())
 		{
 			WebSite webProfile = profilePerson.addWebSite(url);
-			webProfile = (WebSite) this.add(webProfile);
+			webProfile = this.add(webProfile);
 			if(webProfile != null)
 			{
 				webProfile.tag(MendeleyTags.MENDELEY);

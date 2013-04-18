@@ -573,7 +573,8 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 * @return An existing item if it already exists otherwise the added item.
 	 *         Null in error case.
 	 */
-	public Item add(Item item) {
+	@SuppressWarnings("unchecked")
+	public <T extends Item> T add(T item) {
 		
 		if(item == null)
 		{
@@ -597,7 +598,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			// add tags, categories etc. defined in the configuration
 			addSourceSpecificInformations(existingItem);
 			// just return it
-			return existingItem;
+			return (T)existingItem;
 		}
 		
 		// check if an item with this ident already exists
@@ -655,7 +656,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		// check to add all referenced objects
 		addReferencedObjects(addedItem);
 				
-		return addedItem;
+		return (T)addedItem;
 	}
 	
 	private void addReferencedObjects(Item item) {
@@ -749,15 +750,16 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 * @return An existing item if it already exists otherwise the added item.
 	 *         Null in error case.
 	 */
-	public Item add(Item item, String sourceIdent) {
+	@SuppressWarnings("unchecked")
+	public <T extends Item> T add(T item, String sourceIdent) {
 		// TODO merge all items based on source specific identifiers
-		
+	
 		Item existingItem = this.getItemWithSourceIdent(sourceIdent);
 		
 		if(existingItem != null)
 		{
 			// merge information object with their previous added version -> update
-			return this.mergeItems(existingItem, item);
+			return (T) this.mergeItems(existingItem, item);
 		}
 		
 		Item addedItem = this.add(item);
@@ -767,7 +769,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			addedItem.identifyBy(getLocalIdentifierKey(), sourceIdent);
 		}
 		
-		return addedItem;
+		return (T) addedItem;
 	}
 	
 	/**

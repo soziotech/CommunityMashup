@@ -58,6 +58,16 @@ public class MendeleyProperties {
 	public static final String ADD_PRIVATE_GROUPS_PROPERTY 		= "addPrivateGroups";
 	
 	/**
+	 * If this property is set to true all public groups of the account owner will be added.
+	 */
+	public static final String ADD_PUBLIC_GROUPS_PROPERTY 		= "addPublicGroups";
+	
+	/**
+	 * This property is used to specify the ids of the included public groups. Comma separated list. 
+	 */
+	public static final String PUBLIC_GROUP_IDS_PROPERTY = "publicGroupIds";
+	
+	/**
 	 * This property can be used to restrict the included private groups to a defined set. A comma separated list of group names is expected. 
 	 */
 	public static final String RESTRICT_PRIVATE_GROUPS_PROPERTY = "restrictPrivateGroupsTo";
@@ -72,6 +82,18 @@ public class MendeleyProperties {
 	 */
 	public static final String CREATE_AUTHOR_PERSONS_PROPERTY 	= "createAuthorPersons";
 	public static final String CREATE_AUTHOR_PERSONS_DEFAULT 	= "true";
+	
+	/**
+	 * If this property is set to true organisations for groups will be created. 
+	 */
+	public static final String CREATE_GROUP_ORGANISATIONS_PROPERTY 	= "createGroupOrganisations";
+	public static final String CREATE_GROUP_ORGANISATIONS_DEFAULT 	= "true";
+	
+	/**
+	 * If this property is set to true a person for the account owner will be created.
+	 */
+	public static final String CREATE_ACCOUNT_OWNER_PROPERTY 	= "createAccountOwner";
+	public static final String CREATE_ACCOUNT_OWNER_DEFAULT 	= "true";
 	
 	/**
 	 * If this property is set to true persons for document editors will be created. 
