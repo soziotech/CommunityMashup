@@ -74,13 +74,13 @@ public class AdaptedProfileServiceImpl extends ProfileServiceImpl {
 	 */
 	@Override
 	protected <T> T unmarshall(Class<T> type, JsonElement response) {
-		System.out.println("Unmarshalling " + response);
+		//System.out.println("Unmarshalling " + response);
 		
 		return super.unmarshall(type, response);
 	}
 	
 	protected <T> T unmarshall(TypeToken<T> typeToken, JsonElement response) {
-		System.out.println("Unmarshalling token " + response);
+		//System.out.println("Unmarshalling token " + response);
 		return super.unmarshall(typeToken, response);
 	}
 
@@ -89,7 +89,7 @@ public class AdaptedProfileServiceImpl extends ProfileServiceImpl {
 	 */
 	@Override
 	protected <T> List<T> unmarshallList(Class<T> clazz, JsonElement response) {
-		System.out.println("Unmarshalling list " + response);
+		//System.out.println("Unmarshalling list " + response);
 		return super.unmarshallList(clazz, response);
 	}
 
@@ -99,7 +99,7 @@ public class AdaptedProfileServiceImpl extends ProfileServiceImpl {
 	@Override
 	protected <T> PagedList<T> unmarshallList(Class<T> clazz,
 			JsonElement response, String listName) {
-		System.out.println("Unmarshalling list with name " + listName + " from " + response);
+		//System.out.println("Unmarshalling list with name " + listName + " from " + response);
 		
 		return super.unmarshallList(clazz, response, listName);
 	}
