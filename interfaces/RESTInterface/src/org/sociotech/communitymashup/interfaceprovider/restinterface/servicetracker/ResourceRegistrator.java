@@ -252,8 +252,6 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 		try {
 			usedHttpService.unregister(path + "mashup");
 			usedHttpService.unregister(path + "files");
-		
-			usedHttpService.unregister(path + "inc");
 		} catch(Exception e) {
 			log("Exception at unregistering REST servlets. (" + e.getMessage() +")", LogService.LOG_ERROR);
 		}
