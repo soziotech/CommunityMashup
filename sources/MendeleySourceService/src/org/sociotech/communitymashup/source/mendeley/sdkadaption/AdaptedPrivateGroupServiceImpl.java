@@ -109,7 +109,7 @@ public class AdaptedPrivateGroupServiceImpl extends PrivateGroupServiceImpl {
         	}
         	catch (Exception e) {
 				// do nothing
-        		System.out.println("Error while geting group document details: " + e.getMessage());
+        		//System.out.println("Error while geting group document details: " + e.getMessage());
         		doc = null;
 			}
         	if(doc != null)
@@ -139,10 +139,10 @@ public class AdaptedPrivateGroupServiceImpl extends PrivateGroupServiceImpl {
         	catch (Exception e) {
 				// nothing to do
 			}
-        	System.out.println("Unmarshalled " + json);
+        	//System.out.println("Unmarshalled " + json);
         }
         catch (Exception e) {
-			System.out.println(e.getMessage() + " Could not unmarshall " + json);
+			//System.out.println(e.getMessage() + " Could not unmarshall " + json);
 		}
         
         return unmarshalled;
