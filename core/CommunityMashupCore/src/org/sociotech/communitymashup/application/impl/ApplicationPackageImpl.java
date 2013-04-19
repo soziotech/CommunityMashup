@@ -386,6 +386,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSource_UpdateRound() {
+		return (EAttribute)sourceEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMashup() {
 		return mashupEClass;
 	}
@@ -721,6 +730,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 */
 	public EAttribute getMashupContainer_ImmediateSave() {
 		return (EAttribute)mashupContainerEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMashupContainer_CreateAccountsAtLoginTry() {
+		return (EAttribute)mashupContainerEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1480,6 +1498,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(sourceEClass, SOURCE__LOG_LEVEL);
 		createEReference(sourceEClass, SOURCE__MASHUP);
 		createEAttribute(sourceEClass, SOURCE__REMOVE_DATA_ON_STOP);
+		createEAttribute(sourceEClass, SOURCE__UPDATE_ROUND);
 
 		mashupEClass = createEClass(MASHUP);
 		createEReference(mashupEClass, MASHUP__MAPPING_RULES);
@@ -1527,6 +1546,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(mashupContainerEClass, MASHUP_CONTAINER__SOURCE_CONFIGURATIONS);
 		createEReference(mashupContainerEClass, MASHUP_CONTAINER__INTERFACE_CONFIGURATIONS);
 		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__IMMEDIATE_SAVE);
+		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY);
 
 		interfaceEClass = createEClass(INTERFACE);
 		createEReference(interfaceEClass, INTERFACE__SECURITY);
@@ -1674,6 +1694,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getSource_LogLevel(), ecorePackage.getEString(), "logLevel", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSource_Mashup(), this.getMashup(), this.getMashup_Sources(), "mashup", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSource_RemoveDataOnStop(), ecorePackage.getEBooleanObject(), "removeDataOnStop", "false", 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSource_UpdateRound(), ecorePackage.getEIntegerObject(), "updateRound", "1", 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(sourceEClass, ecorePackage.getEIntegerObject(), "getLogLevelIntValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1742,6 +1763,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getMashupContainer_SourceConfigurations(), this.getMashup(), null, "sourceConfigurations", null, 0, -1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMashupContainer_InterfaceConfigurations(), this.getInterface(), null, "interfaceConfigurations", null, 0, -1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashupContainer_ImmediateSave(), ecorePackage.getEBooleanObject(), "immediateSave", "false", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMashupContainer_CreateAccountsAtLoginTry(), ecorePackage.getEBooleanObject(), "createAccountsAtLoginTry", "false", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(mashupContainerEClass, this.getMashupAdmin(), "getConfigurationAdmins", 0, -1, IS_UNIQUE, IS_ORDERED);
 

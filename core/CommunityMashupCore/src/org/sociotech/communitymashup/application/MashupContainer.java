@@ -38,6 +38,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getSourceConfigurations <em>Source Configurations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getInterfaceConfigurations <em>Interface Configurations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getImmediateSave <em>Immediate Save</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getCreateAccountsAtLoginTry <em>Create Accounts At Login Try</em>}</li>
  * </ul>
  * </p>
  *
@@ -234,6 +235,37 @@ public interface MashupContainer extends EObject {
 	 * @generated
 	 */
 	void setImmediateSave(Boolean value);
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Create Accounts At Login Try</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Create Accounts At Login Try</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Create Accounts At Login Try</em>' attribute.
+	 * @see #setCreateAccountsAtLoginTry(Boolean)
+	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getMashupContainer_CreateAccountsAtLoginTry()
+	 * @model default="false"
+	 * @generated
+	 */
+	Boolean getCreateAccountsAtLoginTry();
+
+
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.application.MashupContainer#getCreateAccountsAtLoginTry <em>Create Accounts At Login Try</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Create Accounts At Login Try</em>' attribute.
+	 * @see #getCreateAccountsAtLoginTry()
+	 * @generated
+	 */
+	void setCreateAccountsAtLoginTry(Boolean value);
 
 
 

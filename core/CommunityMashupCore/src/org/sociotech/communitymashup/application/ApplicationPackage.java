@@ -299,13 +299,22 @@ public interface ApplicationPackage extends EPackage {
 	int SOURCE__REMOVE_DATA_ON_STOP = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Update Round</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE__UPDATE_ROUND = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FEATURE_COUNT = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 8;
+	int SOURCE_FEATURE_COUNT = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.MashupImpl <em>Mashup</em>}' class.
@@ -451,6 +460,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MASHUP__REMOVE_DATA_ON_STOP = SOURCE__REMOVE_DATA_ON_STOP;
+
+	/**
+	 * The feature id for the '<em><b>Update Round</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP__UPDATE_ROUND = SOURCE__UPDATE_ROUND;
 
 	/**
 	 * The feature id for the '<em><b>Mapping Rules</b></em>' containment reference list.
@@ -939,13 +957,22 @@ public interface ApplicationPackage extends EPackage {
 	int MASHUP_CONTAINER__IMMEDIATE_SAVE = 7;
 
 	/**
+	 * The feature id for the '<em><b>Create Accounts At Login Try</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY = 8;
+
+	/**
 	 * The number of structural features of the '<em>Mashup Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MASHUP_CONTAINER_FEATURE_COUNT = 8;
+	int MASHUP_CONTAINER_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -2062,6 +2089,17 @@ public interface ApplicationPackage extends EPackage {
 	EAttribute getSource_RemoveDataOnStop();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.Source#getUpdateRound <em>Update Round</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Update Round</em>'.
+	 * @see org.sociotech.communitymashup.application.Source#getUpdateRound()
+	 * @see #getSource()
+	 * @generated
+	 */
+	EAttribute getSource_UpdateRound();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.Mashup <em>Mashup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2469,6 +2507,17 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMashupContainer_ImmediateSave();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.MashupContainer#getCreateAccountsAtLoginTry <em>Create Accounts At Login Try</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Create Accounts At Login Try</em>'.
+	 * @see org.sociotech.communitymashup.application.MashupContainer#getCreateAccountsAtLoginTry()
+	 * @see #getMashupContainer()
+	 * @generated
+	 */
+	EAttribute getMashupContainer_CreateAccountsAtLoginTry();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.Interface <em>Interface</em>}'.
@@ -3433,6 +3482,14 @@ public interface ApplicationPackage extends EPackage {
 		EAttribute SOURCE__REMOVE_DATA_ON_STOP = eINSTANCE.getSource_RemoveDataOnStop();
 
 		/**
+		 * The meta object literal for the '<em><b>Update Round</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOURCE__UPDATE_ROUND = eINSTANCE.getSource_UpdateRound();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.MashupImpl <em>Mashup</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3753,6 +3810,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MASHUP_CONTAINER__IMMEDIATE_SAVE = eINSTANCE.getMashupContainer_ImmediateSave();
+
+		/**
+		 * The meta object literal for the '<em><b>Create Accounts At Login Try</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY = eINSTANCE.getMashupContainer_CreateAccountsAtLoginTry();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.InterfaceImpl <em>Interface</em>}' class.

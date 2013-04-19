@@ -37,6 +37,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.Source#getLogLevel <em>Log Level</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Source#getMashup <em>Mashup</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Source#getRemoveDataOnStop <em>Remove Data On Stop</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.Source#getUpdateRound <em>Update Round</em>}</li>
  * </ul>
  * </p>
  *
@@ -270,6 +271,33 @@ public interface Source extends ConfigurableElement {
 	 * @generated
 	 */
 	void setRemoveDataOnStop(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Update Round</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Update Round</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Update Round</em>' attribute.
+	 * @see #setUpdateRound(Integer)
+	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getSource_UpdateRound()
+	 * @model default="1"
+	 * @generated
+	 */
+	Integer getUpdateRound();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.application.Source#getUpdateRound <em>Update Round</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Update Round</em>' attribute.
+	 * @see #getUpdateRound()
+	 * @generated
+	 */
+	void setUpdateRound(Integer value);
 
 	/**
 	 * <!-- begin-user-doc -->

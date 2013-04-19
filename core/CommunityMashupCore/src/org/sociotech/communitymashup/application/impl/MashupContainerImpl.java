@@ -71,6 +71,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getSourceConfigurations <em>Source Configurations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getInterfaceConfigurations <em>Interface Configurations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getImmediateSave <em>Immediate Save</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getCreateAccountsAtLoginTry <em>Create Accounts At Login Try</em>}</li>
  * </ul>
  * </p>
  *
@@ -186,6 +187,25 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 	 * @ordered
 	 */
 	protected Boolean immediateSave = IMMEDIATE_SAVE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCreateAccountsAtLoginTry() <em>Create Accounts At Login Try</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreateAccountsAtLoginTry()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT = Boolean.FALSE;
+	/**
+	 * The cached value of the '{@link #getCreateAccountsAtLoginTry() <em>Create Accounts At Login Try</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreateAccountsAtLoginTry()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean createAccountsAtLoginTry = CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -332,6 +352,27 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getCreateAccountsAtLoginTry() {
+		return createAccountsAtLoginTry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCreateAccountsAtLoginTry(Boolean newCreateAccountsAtLoginTry) {
+		Boolean oldCreateAccountsAtLoginTry = createAccountsAtLoginTry;
+		createAccountsAtLoginTry = newCreateAccountsAtLoginTry;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY, oldCreateAccountsAtLoginTry, createAccountsAtLoginTry));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public EList<MashupAdmin> getConfigurationAdmins() {
 		EList<MashupAdmin> configurationAdmins = new BasicEList<MashupAdmin>();
@@ -395,6 +436,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 				return getInterfaceConfigurations();
 			case ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE:
 				return getImmediateSave();
+			case ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY:
+				return getCreateAccountsAtLoginTry();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -437,6 +480,9 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 			case ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE:
 				setImmediateSave((Boolean)newValue);
 				return;
+			case ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY:
+				setCreateAccountsAtLoginTry((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -473,6 +519,9 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 			case ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE:
 				setImmediateSave(IMMEDIATE_SAVE_EDEFAULT);
 				return;
+			case ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY:
+				setCreateAccountsAtLoginTry(CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -501,6 +550,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 				return interfaceConfigurations != null && !interfaceConfigurations.isEmpty();
 			case ApplicationPackage.MASHUP_CONTAINER__IMMEDIATE_SAVE:
 				return IMMEDIATE_SAVE_EDEFAULT == null ? immediateSave != null : !IMMEDIATE_SAVE_EDEFAULT.equals(immediateSave);
+			case ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY:
+				return CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT == null ? createAccountsAtLoginTry != null : !CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT.equals(createAccountsAtLoginTry);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -522,6 +573,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 		result.append(backupIntervall);
 		result.append(", immediateSave: ");
 		result.append(immediateSave);
+		result.append(", createAccountsAtLoginTry: ");
+		result.append(createAccountsAtLoginTry);
 		result.append(')');
 		return result.toString();
 	}
@@ -562,6 +615,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 			return this.getInterfaceConfigurations();		
 		if ( featureName.equalsIgnoreCase("immediateSave") )
 			return this.getImmediateSave();		
+		if ( featureName.equalsIgnoreCase("createAccountsAtLoginTry") )
+			return this.getCreateAccountsAtLoginTry();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 	
@@ -617,6 +672,20 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 					throw new WrongArgException("MashupContainer.setFeature", "java.lang.Boolean",value.getClass().getName());
 				}
 				this.setImmediateSave(fimmediateSave);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("createAccountsAtLoginTry") ) {
+				java.lang.Boolean fcreateAccountsAtLoginTry = null;
+				try {
+					try {
+						fcreateAccountsAtLoginTry = (java.lang.Boolean)(RestUtil.fromInput(value));
+					} catch (ClassNotFoundException e) {
+						fcreateAccountsAtLoginTry = (java.lang.Boolean)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("MashupContainer.setFeature", "java.lang.Boolean",value.getClass().getName());
+				}
+				this.setCreateAccountsAtLoginTry(fcreateAccountsAtLoginTry);
 			return this;
 			}		
 	throw new UnknownOperationException(this, new RestCommand("set" + featureName).addArg("value",value));

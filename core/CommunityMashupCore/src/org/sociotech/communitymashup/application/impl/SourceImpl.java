@@ -71,6 +71,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getLogLevel <em>Log Level</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getMashup <em>Mashup</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getRemoveDataOnStop <em>Remove Data On Stop</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.SourceImpl#getUpdateRound <em>Update Round</em>}</li>
  * </ul>
  * </p>
  *
@@ -203,6 +204,26 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 	 * @ordered
 	 */
 	protected Boolean removeDataOnStop = REMOVE_DATA_ON_STOP_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUpdateRound() <em>Update Round</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpdateRound()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer UPDATE_ROUND_EDEFAULT = new Integer(1);
+
+	/**
+	 * The cached value of the '{@link #getUpdateRound() <em>Update Round</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpdateRound()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer updateRound = UPDATE_ROUND_EDEFAULT;
 
 	/**
 	 * Default log level
@@ -480,6 +501,27 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getUpdateRound() {
+		return updateRound;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUpdateRound(Integer newUpdateRound) {
+		Integer oldUpdateRound = updateRound;
+		updateRound = newUpdateRound;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SOURCE__UPDATE_ROUND, oldUpdateRound, updateRound));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public Integer getLogLevelIntValue() {
 		String stringLogLevel = this.getLogLevel();
@@ -634,6 +676,8 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return getMashup();
 			case ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP:
 				return getRemoveDataOnStop();
+			case ApplicationPackage.SOURCE__UPDATE_ROUND:
+				return getUpdateRound();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -669,6 +713,9 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return;
 			case ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP:
 				setRemoveDataOnStop((Boolean)newValue);
+				return;
+			case ApplicationPackage.SOURCE__UPDATE_ROUND:
+				setUpdateRound((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -706,6 +753,9 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 			case ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP:
 				setRemoveDataOnStop(REMOVE_DATA_ON_STOP_EDEFAULT);
 				return;
+			case ApplicationPackage.SOURCE__UPDATE_ROUND:
+				setUpdateRound(UPDATE_ROUND_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -734,6 +784,8 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return getMashup() != null;
 			case ApplicationPackage.SOURCE__REMOVE_DATA_ON_STOP:
 				return REMOVE_DATA_ON_STOP_EDEFAULT == null ? removeDataOnStop != null : !REMOVE_DATA_ON_STOP_EDEFAULT.equals(removeDataOnStop);
+			case ApplicationPackage.SOURCE__UPDATE_ROUND:
+				return UPDATE_ROUND_EDEFAULT == null ? updateRound != null : !UPDATE_ROUND_EDEFAULT.equals(updateRound);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -758,6 +810,8 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 		result.append(logLevel);
 		result.append(", removeDataOnStop: ");
 		result.append(removeDataOnStop);
+		result.append(", updateRound: ");
+		result.append(updateRound);
 		result.append(')');
 		return result.toString();
 	}
@@ -795,7 +849,9 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 		if ( featureName.equalsIgnoreCase("mashup") )
 			return this.getMashup();		
 		if ( featureName.equalsIgnoreCase("removeDataOnStop") )
-			return this.getRemoveDataOnStop();			
+			return this.getRemoveDataOnStop();		
+		if ( featureName.equalsIgnoreCase("updateRound") )
+			return this.getUpdateRound();			
 		return super.getFeature(featureName); 
 	}
 
@@ -908,6 +964,23 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 					throw new WrongArgException("Source.setFeature", "java.lang.Boolean",value.getClass().getName());
 				}
 				this.setRemoveDataOnStop(fremoveDataOnStop);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("updateRound") ) {
+				java.lang.Integer fupdateRound = null;
+				try {
+				try {
+					fupdateRound = RestUtil.fromIntegerString((String) value);
+					if(fupdateRound == null) {
+						fupdateRound = (java.lang.Integer)(RestUtil.fromInput(value));
+					}
+				} catch (ClassNotFoundException e) {
+					fupdateRound = (java.lang.Integer)value;
+				}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Source.setFeature", "java.lang.Integer",value.getClass().getName());
+				}
+				this.setUpdateRound(fupdateRound);
 			return this;
 			}			
 		super.setFeature(featureName, value);
