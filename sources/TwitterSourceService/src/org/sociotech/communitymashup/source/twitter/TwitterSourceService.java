@@ -19,8 +19,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.osgi.service.log.LogService;
+import org.sociotech.communitymashup.application.Property;
 import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
@@ -241,6 +243,14 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		System.out.println("Token secret: " + accessToken.getTokenSecret());
 	}
 
+	@Override
+	protected void stop() {
+		super.stop();
+		
+		// reset since id
+		source.addProperty(TwitterProperties.SEARCH_SINCE_ID_PROPERTY, "");
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -258,10 +268,13 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			return;
 		}
 
-		log("Loading personal profile from Twitter.", LogService.LOG_INFO);
-		// adding the user that provided this account
-		addMe();
-
+		if(source.isPropertyTrueElseDefault(TwitterProperties.LOAD_ACCOUNTOWNER_PROFILE_PROPERTY, TwitterProperties.LOAD_ACCOUNTOWNER_PROFILE_DEFAULT))
+		{
+			log("Loading personal profile from Twitter.", LogService.LOG_INFO);
+			// adding the user that provided this account
+			addMe();
+		}
+		
 		if (loadFollowers()) {
 			log("Loading followers from Twitter.", LogService.LOG_INFO);
 			// add Followers
@@ -300,6 +313,8 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 
 		if (shouldSearch()) {
 			log("Searching Twitter.", LogService.LOG_INFO);
+			// reseting since date when filling
+			source.addProperty(TwitterProperties.SEARCH_SINCE_ID_PROPERTY, "");
 			// search
 			search();
 		}
@@ -1383,4 +1398,27 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 
 		return numberOfTweets;
 	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#handleProperty(org.eclipse.emf.common.notify.Notification)
+	 */
+	@Override
+	protected boolean handleProperty(Notification notification) {
+		if(super.handleProperty(notification))
+		{
+			return true;
+		}
+		
+		if(notification.getNotifier() instanceof Property)
+		{
+			Property property = (Property) notification.getNotifier();
+			if(property.getKey().equals(TwitterProperties.SEARCH_SINCE_ID_PROPERTY))
+			{
+				// since id property will be retrieved before every call so accept change
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

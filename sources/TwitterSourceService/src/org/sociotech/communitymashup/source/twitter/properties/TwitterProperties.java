@@ -119,6 +119,12 @@ public class TwitterProperties {
 	public static final String LOAD_HIGHER_RES_PROFILE_IMAGE_DEFAULT  = "false";
 	
 	/**
+	 * Whether the profile of the account owner should be loaded or not
+	 */
+	public static final String LOAD_ACCOUNTOWNER_PROFILE_PROPERTY = "loadAccountOwner";
+	public static final String LOAD_ACCOUNTOWNER_PROFILE_DEFAULT  = "true";
+	
+	/**
 	 * Key for the load direct messages property.
 	 */
 	// currently not supported due to restrictions of public applications
