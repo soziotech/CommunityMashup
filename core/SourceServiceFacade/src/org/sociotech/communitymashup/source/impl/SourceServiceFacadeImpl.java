@@ -26,6 +26,7 @@ import org.jsoup.Jsoup;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.application.ApplicationPackage;
+import org.sociotech.communitymashup.application.Property;
 import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.application.SourceActiveStates;
 import org.sociotech.communitymashup.application.SourceState;
@@ -113,6 +114,11 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	private LogServiceTracker logServiceTracker = null;
 	
 	/**
+	 * Counts down to the next needed updated round.
+	 */
+	private int updateRoundCounter = 1;
+	
+	/**
 	 * Wait that number of tries for the source service to be in the state for update.
 	 */
 	//private static int UPDATE_TRY_COUNT = 5;
@@ -162,6 +168,9 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		// set configuration
 		source = configuration;
 
+		// initialize update round
+		updateRoundCounter = source.getUpdateRound();
+		
 		// open log service tracker
 		openLogServiceTracker();
 		
@@ -465,6 +474,23 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			return;
 		}
 		
+		if(updateRoundCounter < 1)
+		{
+			// no updates
+			return;
+		}
+		
+		if(updateRoundCounter > 1)
+		{
+			log("Skipping update round, waiting " + updateRoundCounter + " rounds.", LogService.LOG_DEBUG);
+			// decrement
+			updateRoundCounter--;
+			return;
+		}
+		
+		// reset update counter
+		updateRoundCounter = source.getUpdateRound();
+		
 //		int counter = UPDATE_TRY_COUNT;
 //		while(source.getActiveState() != SourceActiveStates.WAITING_FOR_UPDATE && counter > 0)
 //		{
@@ -752,8 +778,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends Item> T add(T item, String sourceIdent) {
-		// TODO merge all items based on source specific identifiers
-	
+		
 		Item existingItem = this.getItemWithSourceIdent(sourceIdent);
 		
 		if(existingItem != null)
@@ -1739,7 +1764,14 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			return false;
 		}
 		
-		if(notification.getNotifier() != this.source.getConfiguration())
+		if(!(notification.getNotifier() instanceof Property))
+		{
+			return false;
+		}
+		
+		Property changedProperty = (Property) notification.getNotifier();
+		
+		if(!this.source.getConfiguration().getProperties().contains(changedProperty))
 		{
 			// no property of this source
 			return false;
@@ -1778,6 +1810,13 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		   featureID == ApplicationPackage.SOURCE__IDENT)
 		{
 			// basic attributes that only influence the gui don't need to be handled
+			return true;
+		}
+		
+		if(featureID == ApplicationPackage.SOURCE__UPDATE_ROUND)
+		{
+			// reset counter
+			updateRoundCounter = source.getUpdateRound();
 			return true;
 		}
 		
