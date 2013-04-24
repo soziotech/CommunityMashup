@@ -44,6 +44,7 @@ public class FileSourceService extends SourceServiceFacadeImpl
 	@Override
 	public boolean initialize(Source configuration)
 	{
+		// TODO check if file exists
 		// currently no additional initialization stuff
 		return super.initialize(configuration);
 	}
@@ -150,7 +151,14 @@ public class FileSourceService extends SourceServiceFacadeImpl
 			return null;
 		}
 
-		EList<Item> items = ItemsLoader.loadItems(resourceURI);
+		EList<Item> items = null;
+		try {
+			items = ItemsLoader.loadItems(resourceURI);
+		} catch (Exception e) {
+			log("Items could not be loaded (" + e.getMessage() + ") from file " + resourceNameOrPath, LogService.LOG_ERROR);
+			return null;
+		}
+		 
 		if(items == null)
 		{
 			log("Items could not be loaded from file " + resourceNameOrPath, LogService.LOG_ERROR);
