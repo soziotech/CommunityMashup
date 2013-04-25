@@ -766,13 +766,13 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		// set authors
 		if(shouldCreateAuthors())
 		{
-			addMendeleyAuthors(docContent, document.getAuthors());
+			addMendeleyAuthors(docContent, document.getAuthors(), addedDate);
 		}
 		
 		// set editors as contributers
 		if(shouldCreateEditors())
 		{
-			addMendeleyEditors(docContent, document.getEditors());			
+			addMendeleyEditors(docContent, document.getEditors(), addedDate);			
 		}
 	}
 
@@ -781,8 +781,9 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 	 * 
 	 * @param docContent Content object
 	 * @param authors List of mendeley authors
+	 * @param addedDate Creation date of the authors
 	 */
-	private void addMendeleyAuthors(Content docContent, List<Author> authors) {
+	private void addMendeleyAuthors(Content docContent, List<Author> authors, Date addedDate) {
 		if(authors == null || authors.isEmpty())
 		{
 			return;
@@ -790,7 +791,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		
 		for(int i = 0; i < authors.size(); i++)
 		{
-			Person authorPerson = createPerson(authors.get(i));
+			Person authorPerson = createPerson(authors.get(i), addedDate);
 			
 			if(i == 0 && authorPerson != null)
 			{
@@ -813,9 +814,10 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 	 * Adds a list of mendeley editors as contributers to the given content.
 	 * 
 	 * @param docContent Content object
-	 * @param editors List of mendeley authors
+	 * @param editors List of mendeley editors
+	 * @param creationDate Creation date of the editor
 	 */
-	private void addMendeleyEditors(Content docContent, List<Editor> editors) {
+	private void addMendeleyEditors(Content docContent, List<Editor> editors, Date creationDate) {
 		if(editors == null || editors.isEmpty())
 		{
 			return;
@@ -823,7 +825,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		
 		for(int i = 0; i < editors.size(); i++)
 		{
-			Person editorPerson = createPerson(editors.get(i));
+			Person editorPerson = createPerson(editors.get(i), creationDate);
 	
 			if(!docContent.getContributors().contains(editorPerson))
 			{
@@ -839,9 +841,10 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 	 * Creates a person from an given mendeley author.
 	 * 
 	 * @param author Mendeley author
+	 * @param creationDate The creation date of the author
 	 * @return The person representing the given mendeley author.
 	 */
-	private Person createPerson(Author author) {
+	private Person createPerson(Author author, Date creationDate) {
 		if(author == null)
 		{
 			return null;
@@ -850,16 +853,17 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		String firstname = author.getForename();
 		String lastname = author.getSurname();
 		
-		return createPerson(firstname, lastname);
+		return createPerson(firstname, lastname, creationDate);
 	}
 
 	/**
 	 * Creates a person from an given mendeley editor.
 	 * 
 	 * @param editor Mendeley editor
-	 * @return The person representing the given mendeley editor.
+	 * @param creationDate Creation date of the editor
+ 	 * @return The person representing the given mendeley editor.
 	 */
-	private Person createPerson(Editor editor) {
+	private Person createPerson(Editor editor, Date creationDate) {
 		if(editor == null)
 		{
 			return null;
@@ -868,7 +872,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		String firstname = editor.getForename();
 		String lastname = editor.getSurname();
 		
-		return createPerson(firstname, lastname);
+		return createPerson(firstname, lastname, creationDate);
 	}
 	
 	/**
@@ -876,9 +880,10 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 	 * 
 	 * @param firstname Firstname of the person
 	 * @param lastname Lastname of the person
+	 * @param creationDate The creation date of the author
 	 * @return Person object with the given first and lastname
 	 */
-	private Person createPerson(String firstname, String lastname) {
+	private Person createPerson(String firstname, String lastname, Date creationDate) {
 		if(firstname == null || firstname.isEmpty())
 		{
 			// at least a firstname is required
@@ -895,6 +900,10 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		
 		// create new person
 		Person person = factory.createPerson();
+		if(creationDate != null)
+		{
+			person.setCreated(creationDate);
+		}
 		
 		// set the name
 		person.setFirstname(firstname);
