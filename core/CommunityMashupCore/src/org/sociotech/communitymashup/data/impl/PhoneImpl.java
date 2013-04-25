@@ -559,7 +559,7 @@ public class PhoneImpl extends MetaInformationImpl implements Phone {
 	@Override
 	public Boolean isEqualItem(Item item) {
 
-		if(!(item instanceof WebSiteImpl))
+		if(!(item instanceof Phone))
 		{
 			return false;
 		}

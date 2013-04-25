@@ -436,6 +436,11 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	 */
 	public void setCreated(Date newCreated) {
 		Date oldCreated = created;
+		if(newCreated != null && oldCreated != null && !newCreated.before(oldCreated))
+		{
+			// same date or newer
+			return;
+		}
 		created = newCreated;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.ITEM__CREATED, oldCreated, created));

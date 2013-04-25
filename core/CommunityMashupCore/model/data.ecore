@@ -13,6 +13,8 @@
     <eOperations name="addAuthoredContent" lowerBound="1" eType="#//Content">
       <eParameters name="authoredContent" lowerBound="1" eType="#//Content"/>
     </eOperations>
+    <eOperations name="parseFirstName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="parseLastName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastname" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstname" unique="false"
@@ -917,6 +919,30 @@
         <details key="input" value="getItemsModifiedSince(date)"/>
       </eAnnotations>
       <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eOperations>
+    <eOperations name="getRandomXInformationObjects" upperBound="-1" eType="#//InformationObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns x random information objects."/>
+      </eAnnotations>
+      <eParameters name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eOperations>
+    <eOperations name="getRandomXContents" upperBound="-1" eType="#//Content">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns x random contents."/>
+      </eAnnotations>
+      <eParameters name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eOperations>
+    <eOperations name="getRandomXPersons" upperBound="-1" eType="#//Person">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns x random persons."/>
+      </eAnnotations>
+      <eParameters name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eOperations>
+    <eOperations name="getRandomXOrganisations" upperBound="-1" eType="#//Organisation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns x random organisations."/>
+      </eAnnotations>
+      <eParameters name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" resolveProxies="false" eOpposite="#//Item/dataSet"/>

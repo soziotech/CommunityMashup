@@ -987,6 +987,50 @@ public interface DataSet extends EObject {
 	EList<InformationObject> getInformationObjectsModifiedSince(Date date);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns x random information objects.
+	 * <!-- end-model-doc -->
+	 * @model xRequired="true"
+	 * @generated
+	 */
+	EList<InformationObject> getRandomXInformationObjects(Integer x);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns x random contents.
+	 * <!-- end-model-doc -->
+	 * @model xRequired="true"
+	 * @generated
+	 */
+	EList<Content> getRandomXContents(Integer x);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns x random persons.
+	 * <!-- end-model-doc -->
+	 * @model xRequired="true"
+	 * @generated
+	 */
+	EList<Person> getRandomXPersons(Integer x);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns x random organisations.
+	 * <!-- end-model-doc -->
+	 * @model xRequired="true"
+	 * @generated
+	 */
+	EList<Organisation> getRandomXOrganisations(Integer x);
+
+	/**
 	 * Returns all Attachments.
 	 *
 	 * @return All Attachments of this DataSet.

@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -102,7 +103,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * <ul>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getItems <em>Items</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getCacheFolder <em>Cache Folder</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getCacheFileAttachements <em>Cache File Attachments</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getCacheFileAttachements <em>Cache File Attachements</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getSetUp <em>Set Up</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLastModified <em>Last Modified</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLogLevel <em>Log Level</em>}</li>
@@ -121,7 +122,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * Reference to singleton ocl environment. 
 	 */
-	private EcoreEnvironment oclEnvironment = null;
+	//private EcoreEnvironment oclEnvironment = null;
 	// TODO make ident counter as instance variable
 	private static long identCounter = 0;
 	private static final String idPrefix = "a_";
@@ -137,11 +138,15 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @return The OCL singleton instance, null in error case.
 	 */
 	public Environment<EPackage, EClassifier, EOperation, EStructuralFeature, EEnumLiteral, EParameter, EObject, CallOperationAction, SendSignalAction, Constraint, EClass, EObject> getOclEnvironment() {
-		if(oclEnvironment == null)
-		{
-			oclEnvironment = (EcoreEnvironment) EcoreEnvironmentFactory.INSTANCE.createEnvironment();
-		}
-		return oclEnvironment;
+//		if(oclEnvironment == null)
+//		{
+//			oclEnvironment = (EcoreEnvironment) EcoreEnvironmentFactory.INSTANCE.createEnvironment();
+//		}
+//		return oclEnvironment;
+		
+		// currently always returning a new environement
+		// TODO check performance
+		return 	(EcoreEnvironment) EcoreEnvironmentFactory.INSTANCE.createEnvironment();
 	}
 	
 	/**
@@ -4127,6 +4132,46 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			}
 			return this.getInformationObjectsModifiedSince(date);
 		}
+		if ( command.getCommand().equalsIgnoreCase("getRandomXInformationObjects")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.lang.Integer x = null;
+			try {
+				x = (java.lang.Integer)(RestUtil.fromIntegerString((String)command.getArg("x")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.lang.Integer", command.getArg("x").getClass().getName());
+			}
+			return this.getRandomXInformationObjects(x);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getRandomXContents")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.lang.Integer x = null;
+			try {
+				x = (java.lang.Integer)(RestUtil.fromIntegerString((String)command.getArg("x")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.lang.Integer", command.getArg("x").getClass().getName());
+			}
+			return this.getRandomXContents(x);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getRandomXPersons")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.lang.Integer x = null;
+			try {
+				x = (java.lang.Integer)(RestUtil.fromIntegerString((String)command.getArg("x")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.lang.Integer", command.getArg("x").getClass().getName());
+			}
+			return this.getRandomXPersons(x);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getRandomXOrganisations")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.lang.Integer x = null;
+			try {
+				x = (java.lang.Integer)(RestUtil.fromIntegerString((String)command.getArg("x")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.lang.Integer", command.getArg("x").getClass().getName());
+			}
+			return this.getRandomXOrganisations(x);
+		}
 		throw new UnknownOperationException(this, command);
 	}
 
@@ -6115,6 +6160,81 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		
 		return objects;	
 	
+	}
+
+	/**
+	 * Chooses random x unique elements from the given list and returns it a new list
+	 * @param list List to choose from
+	 * @param x Number of result list
+	 * @return Unique list of elements
+	 */
+	private static <T> EList<T> getRandomXItemsFromList(EList<T> list, int x)
+	{
+		// get Random initialized with current time
+		Random rand = new Random(new Date().getTime());
+		
+		EList<T> uniqueResultList = new UniqueEList<T>();
+		
+		if(list == null)
+		{
+			return uniqueResultList;
+		}
+		
+		if(list.size() <= x)
+		{
+			// simply add and return all
+			uniqueResultList.addAll(list);
+			return uniqueResultList;
+		}
+		
+		for(int i = 0; i < x; i++)
+		{
+			int index = rand.nextInt(x);
+			// add random object to
+			T randomObject = list.get(index);
+			if(uniqueResultList.contains(randomObject))
+			{
+				// try again
+				i--;
+				continue;
+			}
+			uniqueResultList.add(randomObject);
+		}
+		
+		return uniqueResultList;
+		
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<InformationObject> getRandomXInformationObjects(Integer x) {
+		return getRandomXItemsFromList(getInformationObjects(), x);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Content> getRandomXContents(Integer x) {
+		return getRandomXItemsFromList(getContents(), x);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Person> getRandomXPersons(Integer x) {
+		return getRandomXItemsFromList(getPersons(), x);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Organisation> getRandomXOrganisations(Integer x) {
+		return getRandomXItemsFromList(getOrganisations(), x);
 	}
 
 	/* (non-Javadoc)

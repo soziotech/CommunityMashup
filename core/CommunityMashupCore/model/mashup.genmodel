@@ -85,6 +85,8 @@
       <genOperations ecoreOperation="data.ecore#//Person/addAuthoredContent">
         <genParameters ecoreParameter="data.ecore#//Person/addAuthoredContent/authoredContent"/>
       </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Person/parseFirstName"/>
+      <genOperations ecoreOperation="data.ecore#//Person/parseLastName"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//InformationObject">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/categories"/>
@@ -186,6 +188,9 @@
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachedImageWithUrl">
         <genParameters ecoreParameter="data.ecore#//InformationObject/getAttachedImageWithUrl/url"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/addPhone">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/addPhone/phoneNumber"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Content">
@@ -449,6 +454,21 @@
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//DataSet/getSpicynodesRepresentation"/>
       <genOperations ecoreOperation="data.ecore#//DataSet/getConnectionsBetweenInformationObjectsOfDifferentCategories"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getInformationObjectsModifiedSince">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getInformationObjectsModifiedSince/date"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getRandomXInformationObjects">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getRandomXInformationObjects/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getRandomXContents">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getRandomXContents/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getRandomXPersons">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getRandomXPersons/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getRandomXOrganisations">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getRandomXOrganisations/x"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Item">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference data.ecore#//Item/dataSet"/>
@@ -590,6 +610,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/latitude"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/city"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Location/indoorLocations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/state"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Image"/>
     <genClasses ecoreClass="data.ecore#//Document"/>
@@ -678,6 +699,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/logLevel"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference application.ecore#//Source/mashup"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/removeDataOnStop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Source/updateRound"/>
       <genOperations ecoreOperation="application.ecore#//Source/getLogLevelIntValue"/>
       <genOperations ecoreOperation="application.ecore#//Source/start"/>
       <genOperations ecoreOperation="application.ecore#//Source/stop"/>
@@ -731,6 +753,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/sourceConfigurations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/interfaceConfigurations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupContainer/immediateSave"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupContainer/createAccountsAtLoginTry"/>
       <genOperations ecoreOperation="application.ecore#//MashupContainer/getConfigurationAdmins"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//Interface">

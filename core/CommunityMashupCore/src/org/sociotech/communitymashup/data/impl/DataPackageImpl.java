@@ -1876,6 +1876,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		op = addEOperation(personEClass, this.getContent(), "addAuthoredContent", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContent(), "authoredContent", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(personEClass, ecorePackage.getEString(), "parseFirstName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(personEClass, ecorePackage.getEString(), "parseLastName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(informationObjectEClass, InformationObject.class, "InformationObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInformationObject_Categories(), this.getCategory(), this.getCategory_Categorized(), "categories", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInformationObject_Tags(), this.getTag(), this.getTag_Tagged(), "tags", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2306,6 +2310,18 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsModifiedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataSetEClass, this.getInformationObject(), "getRandomXInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataSetEClass, this.getContent(), "getRandomXContents", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataSetEClass, this.getPerson(), "getRandomXPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataSetEClass, this.getOrganisation(), "getRandomXOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_DataSet(), this.getDataSet(), this.getDataSet_Items(), "dataSet", null, 0, 1, Item.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -274,18 +274,9 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	  */
+	 * @generated
+	 */
 	public String getLastname() {
-		if(lastname == null && name != null)
-		{
-			// try to parse it
-			String[] nameparts = name.split(" ");
-			if(nameparts.length >= 2)
-			{
-				// asume "firstname1 firstname2 firstname n lastname"
-				return nameparts[nameparts.length -1];
-			}
-		}
 		return lastname;
 	}
 
@@ -304,24 +295,9 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public String getFirstname() {
-		if(firstname == null && name != null)
-		{
-			// try to parse it
-			if(name.contains(" "))
-			{
-				// asume "firstname1 firstname2 firstname n lastname"
-				
-				// get last space
-				int lastSpaceIndex = name.lastIndexOf(" ");
-				return name.substring(0, lastSpaceIndex);
-			}
-			else
-			{
-				return name;
-			}
-		}
 		return firstname;
 	}
 
@@ -519,6 +495,48 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 		authoredContent.setAuthor(this);
 		
 		return authoredContent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public String parseFirstName() {
+		if(firstname == null && name != null)
+		{
+			// try to parse it
+			if(name.contains(" "))
+			{
+				// asume "firstname1 firstname2 firstname n lastname"
+				
+				// get last space
+				int lastSpaceIndex = name.lastIndexOf(" ");
+				return name.substring(0, lastSpaceIndex);
+			}
+			else
+			{
+				return name;
+			}
+		}
+		return firstname;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public String parseLastName() {
+		if(lastname == null && name != null)
+		{
+			// try to parse it
+			String[] nameparts = name.split(" ");
+			if(nameparts.length >= 2)
+			{
+				// asume "firstname1 firstname2 firstname n lastname"
+				return nameparts[nameparts.length -1];
+			}
+		}
+		return lastname;
 	}
 
 	/**
@@ -893,6 +911,14 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 				throw new WrongArgException("Person.doOperation", "Content", command.getArg("authoredContent").getClass().getName());
 			}
 			return this.addAuthoredContent(authoredContent);
+		}
+		if ( command.getCommand().equalsIgnoreCase("parseFirstName")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("Person.doOperation", 0, command.getArgCount()); 
+			return this.parseFirstName();
+		}
+		if ( command.getCommand().equalsIgnoreCase("parseLastName")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("Person.doOperation", 0, command.getArgCount()); 
+			return this.parseLastName();
 		}	
 		return super.doOperation(command);
 	}

@@ -304,6 +304,23 @@ public interface Person extends InformationObject {
 
 
 /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	String parseFirstName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	String parseLastName();
+
+
+/**
 	 * An EObjectCondition to check whether an Object is of the type Person.
 	 * 
 	 * @generated
