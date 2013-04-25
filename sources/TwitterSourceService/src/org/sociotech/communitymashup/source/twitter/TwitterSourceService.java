@@ -13,11 +13,8 @@ package org.sociotech.communitymashup.source.twitter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -40,15 +37,15 @@ import org.sociotech.communitymashup.source.twitter.meta.TwitterTags;
 import org.sociotech.communitymashup.source.twitter.properties.TwitterProperties;
 
 import twitter4j.DirectMessage;
+import twitter4j.GeoLocation;
 import twitter4j.HashtagEntity;
 import twitter4j.IDs;
 import twitter4j.Paging;
-import twitter4j.ProfileImage;
+import twitter4j.Place;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.ResponseList;
 import twitter4j.Status;
-import twitter4j.Tweet;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -616,7 +613,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		// add status
 		Status twitterStatus = user.getStatus();
 
-		createContentFromTwitterStatus(me, twitterStatus);
+		createContentFromTweet(me, twitterStatus);
 	}
 
 	/**
@@ -677,11 +674,10 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		String twitterLocation = user.getLocation();
 
 		if (twitterLocation != null && !twitterLocation.equals("")) {
-			// TODO check for existing location
 			Location location = factory.createLocation();
 			location.setStringValue(twitterLocation);
 
-			location = (Location) this.add(location);
+			location = (Location) this.add(location, "uloc_" + user.getId());
 
 			if (location != null) {
 				location.metaTag(TwitterTags.TWITTER);
@@ -690,7 +686,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		}
 
 		// add website
-		URL twitterWebsite = user.getURL();
+		String twitterWebsite = user.getURL();
 
 		if (twitterWebsite != null) {
 			WebSite website = factory.createWebSite();
@@ -705,25 +701,13 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		}
 
 		// add profile image
-		String profileImageUrl = null;
-
-		// add higher res version if available
+		String profileImageUrl = user.getBiggerProfileImageURL();
+	
+		// add original res version if available
 		if (screenName != null && source.isPropertyTrueElseDefault(TwitterProperties.LOAD_HIGHER_RES_PROFILE_IMAGE_PROPERTY, TwitterProperties.LOAD_HIGHER_RES_PROFILE_IMAGE_DEFAULT)) {
-			try {
-				ProfileImage profileImage = twitterAPI.getProfileImage(
-						screenName, ProfileImage.BIGGER);
-				profileImageUrl = profileImage.getURL();
-			} catch (TwitterException e) {
-				log("Could not retrieve profile Image from twitter for user "
-						+ screenName + " (" + e.getMessage() + ")", LogService.LOG_DEBUG);
-			}
-		}
-
-		if (profileImageUrl == null) {
-			// not set in previous step
-			URL url = user.getProfileImageURL();
-			if (url != null) {
-				profileImageUrl = url.toString();
+			if(user.getOriginalProfileImageURL() != null)
+			{
+				profileImageUrl = user.getOriginalProfileImageURL();
 			}
 		}
 
@@ -739,7 +723,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		if (status != null
 				&& source
 						.isPropertyTrue(TwitterProperties.ADD_STATUS_OF_PEOPLE_PROPERTY)) {
-			createContentFromTwitterStatus(person, status);
+			createContentFromTweet(person, status);
 		}
 
 		return person;
@@ -760,94 +744,6 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 
 	private String createPersonIdentForTwitterUser(User user) {
 		return "" + user.getId();
-	}
-
-	/**
-	 * Creates a content for the given status, adds it to the data set and sets
-	 * the author.
-	 * 
-	 * @param author
-	 *            Person corresponding to the twitter user which authored the
-	 *            status
-	 * @param twitterStatus
-	 *            The twitter status
-	 * @return The Content created from the status, null in error case.
-	 */
-	private Content createContentFromTwitterStatus(Person author,
-			Status twitterStatus) {
-		if (twitterStatus == null) {
-			return null;
-		}
-
-		String statusText = twitterStatus.getText();
-		if (statusText == null || statusText.isEmpty()) {
-			return null;
-		}
-		String ident = twitterStatus.getId() + "";
-
-		if (this.getContentWithSourceIdent(ident) != null) {
-			// status already created
-			return null;
-		}
-
-		Content status = factory.createContent();
-		status.setStringValue(statusText);
-		status.setName(createTitleFromTwitterText(statusText));
-
-		status = (Content) this.add(status, ident);
-
-		if (status == null) {
-			return null;
-		}
-
-		status.metaTag(TwitterTags.TWITTER);
-		status.setCreated(twitterStatus.getCreatedAt());
-
-		if (author != null) {
-			status.setAuthor(author);
-		}
-
-		// and tag the status
-		HashtagEntity[] hashtags = twitterStatus.getHashtagEntities();
-
-		tagIOwithHashtags(status, hashtags);
-
-		UserMentionEntity[] mentionedUsers = twitterStatus
-				.getUserMentionEntities();
-		if (mentionedUsers != null
-				&& mentionedUsers.length > 0
-				&& source
-						.isPropertyTrue(TwitterProperties.ADD_MENTIONED_PEOPLE_PROPERTY)) {
-			for (int i = 0; i < mentionedUsers.length; i++) {
-				Person mentionedPerson = getPersonForTwitterUserId(mentionedUsers[i]
-						.getId());
-
-				if (mentionedPerson == null) {
-					continue;
-				}
-
-				status.addContributor(mentionedPerson);
-			}
-		}
-
-		URLEntity[] urlEntities = twitterStatus.getURLEntities();
-		if (urlEntities != null
-				&& urlEntities.length > 0
-				&& source
-						.isPropertyTrue(TwitterProperties.ADD_URL_ENTITIES_PROPERTY)) {
-			for (int i = 0; i < urlEntities.length; i++) {
-				URL url = urlEntities[i].getURL();
-				if (url != null) {
-					// attach url as website
-					status.addWebSite(url.toExternalForm());
-				}
-			}
-		}
-		
-		// TODO check media entities
-		// MediaEntity[] mediaEntities = twitterStatus.getMediaEntities();
-
-		return status;
 	}
 
 	/**
@@ -969,7 +865,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		}
 
 		message.metaTag(TwitterTags.DIRECT_MESSAGE);
-
+				
 		return message;
 	}
 
@@ -1002,7 +898,8 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		try {
 			Query twitterQuery = new Query(query);
 			// set requested number of tweets
-			twitterQuery.setRpp(getNumberOfSearchTweets());
+			twitterQuery.setCount(getNumberOfSearchTweets());
+			
 			// if defined set since id
 			String sinceId = source.getPropertyValue(TwitterProperties.SEARCH_SINCE_ID_PROPERTY);
 			if(sinceId != null && !sinceId.isEmpty())
@@ -1012,7 +909,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			}
          	searchResult = twitterAPI.search(twitterQuery);
 		} catch (TwitterException e) {
-			log("Could not search for " + query, LogService.LOG_WARNING);
+			log("Could not search for " + query + "(" + e.getMessage() + ")", LogService.LOG_WARNING);
 			return;
 		}
 		
@@ -1029,7 +926,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			source.addProperty(TwitterProperties.SEARCH_SINCE_ID_PROPERTY, sinceId);
 		}
 		
-		List<Tweet> tweets = searchResult.getTweets();
+		List<Status> tweets = searchResult.getTweets();
 		
 		log("Got " + tweets.size() + " tweets for search " + query, LogService.LOG_DEBUG);
 		
@@ -1061,7 +958,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			return;
 		}
 
-		addStatusList(homeTimeline);
+		addTweetList(homeTimeline);
 	}
 
 	/**
@@ -1082,79 +979,76 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			return;
 		}
 
-		addStatusList(userTimeline);
+		addTweetList(userTimeline);
 	}
 
-	private void addStatusList(List<Status> userTimeline) {
-		// add all statuses and creates new persons, if they do not exist
-		// already
-		for (Status status : userTimeline) {
-
-			// User who wrotes the status
-			User user = status.getUser();
-			Person author = createPersonFromTwitterUser(user);
-
-			// create content
-			createContentFromTwitterStatus(author, status);
-		}
-	}
-
-	private void addTweetList(List<Tweet> tweetList) {
+	private void addTweetList(List<Status> tweetList) {
 		// add all tweets and creates new persons, if they do not exist already
 		
-		// users to lookup
-		Set<Long> lookupUserIds = new HashSet<Long>();
+//		// users to lookup
+//		Set<Long> lookupUserIds = new HashSet<Long>();
+//		
+//		// extract all needed users from tweet list
+//		for (Tweet tweet : tweetList) {
+//			// User who wrote the tweet
+//			long userId = tweet.getFromUserId();
+//			
+//			// look if user already exists
+//			if(getExistingPersonForTwitterUserId(userId) == null)
+//			{
+//				// does not exist, so add it to the lookup set
+//				lookupUserIds.add(userId);
+//			}
+//		}
+//		
+//		// lookup the needed users
+//		if(!lookupUserIds.isEmpty())
+//		{
+//			int numberOfUsers = lookupUserIds.size();
+//			long[] userIdArray = new long[numberOfUsers];
+//			int i = 0;
+//			// create array of longs
+//			for(Long userId : lookupUserIds)
+//			{
+//				userIdArray[i] = userId;
+//				i++;
+//			}
+//			
+//			ResponseList<User> twitterUsers = null;
+//
+//			// lookup
+//			try {
+//				 twitterUsers = twitterAPI.lookupUsers(userIdArray);
+//			} catch (TwitterException e) {
+//				log("Could not lookup users due to exception. (" + e.getMessage() + ")", LogService.LOG_ERROR);
+//			}
+//			
+//			if(twitterUsers != null)
+//			{
+//				// add them all
+//				for(User twitterUser : twitterUsers)
+//				{
+//					createPersonFromTwitterUser(twitterUser);
+//				}
+//			}
+//		}
 		
-		// extract all needed users from tweet list
-		for (Tweet tweet : tweetList) {
-			// User who wrote the tweet
-			long userId = tweet.getFromUserId();
-			
-			// look if user already exists
-			if(getExistingPersonForTwitterUserId(userId) == null)
-			{
-				// does not exist, so add it to the lookup set
-				lookupUserIds.add(userId);
-			}
-		}
-		
-		// lookup the needed users
-		if(!lookupUserIds.isEmpty())
-		{
-			int numberOfUsers = lookupUserIds.size();
-			long[] userIdArray = new long[numberOfUsers];
-			int i = 0;
-			// create array of longs
-			for(Long userId : lookupUserIds)
-			{
-				userIdArray[i] = userId;
-				i++;
-			}
-			
-			ResponseList<User> twitterUsers = null;
-
-			// lookup
-			try {
-				 twitterUsers = twitterAPI.lookupUsers(userIdArray);
-			} catch (TwitterException e) {
-				log("Could not lookup users due to exception. (" + e.getMessage() + ")", LogService.LOG_ERROR);
-			}
-			
-			if(twitterUsers != null)
-			{
-				// add them all
-				for(User twitterUser : twitterUsers)
-				{
-					createPersonFromTwitterUser(twitterUser);
-				}
-			}
-		}
+//		// now add all tweets, users should already be there
+//		for (Tweet tweet : tweetList) {
+//
+//			long userId = tweet.getFromUserId();
+//			Person author = getPersonForTwitterUserId(userId);
+//
+//			// create content
+//			createContentFromTweet(author, tweet);
+//		}
 		
 		// now add all tweets, users should already be there
-		for (Tweet tweet : tweetList) {
+		for (Status tweet : tweetList) {
 
-			long userId = tweet.getFromUserId();
-			Person author = getPersonForTwitterUserId(userId);
+			User user = tweet.getUser();
+			
+			Person author = createPersonFromTwitterUser(user);
 
 			// create content
 			createContentFromTweet(author, tweet);
@@ -1172,7 +1066,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 	 *            The tweet
 	 * @return The Content created from the tweet, null in error case.
 	 */
-	private Content createContentFromTweet(Person author, Tweet tweet) {
+	private Content createContentFromTweet(Person author, Status tweet) {
 		if (tweet == null) {
 			return null;
 		}
@@ -1233,26 +1127,57 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 				&& source
 						.isPropertyTrue(TwitterProperties.ADD_URL_ENTITIES_PROPERTY)) {
 			for (int i = 0; i < urlEntities.length; i++) {
-				URL url = urlEntities[i].getURL();
+				String url = urlEntities[i].getURL();
 				if (url != null) {
 					// attach url as website
-					tweetContent.addWebSite(url.toExternalForm());
+					tweetContent.addWebSite(url);
 				}
 			}
 		}
 
-		String language = tweet.getIsoLanguageCode();
-		if(language != null && !language.isEmpty())
-		{
-			// set in content
-			tweetContent.setLocale(language);
-			// set as meta tag
-			tweetContent.metaTag(language);
-		}
+		// no more available
+//		String language = tweet.getIsoLanguageCode();
+//		if(language != null && !language.isEmpty())
+//		{
+//			// set in content
+//			tweetContent.setLocale(language);
+//			// set as meta tag
+//			tweetContent.metaTag(language);
+//		}
 		
 		// TODO check media entities
 		// MediaEntity[] mediaEntities = twitterStatus.getMediaEntities();
 
+		// add location
+		GeoLocation tweetLocation = tweet.getGeoLocation();
+		Place place = tweet.getPlace();
+		
+		if (tweetLocation != null || place != null) {
+			Location location = factory.createLocation();
+			if(place != null)
+			{
+				location.setStreet(place.getStreetAddress());
+				location.setCountry(place.getCountry());
+				location.setStringValue(place.getFullName());				
+			}
+			if(tweetLocation != null)
+			{
+				location.setLatitude(tweetLocation.getLatitude() + "");
+				location.setLongitude(tweetLocation.getLongitude() + "");
+			}
+			location = (Location) this.add(location,"tloc_" + tweet.getId());
+
+			if (location != null) {
+				location.metaTag(TwitterTags.TWITTER);
+				tweetContent.extend(location);
+				if(place != null)
+				{
+					location.metaTag(place.getCountryCode());
+					location.metaTag(place.getPlaceType());
+				}
+			}
+		}
+		
 		return tweetContent;
 	}
 
