@@ -616,7 +616,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 
 		// check if item is already contained
 		Item existingItem = dataSet.getEqualItem(item);
-		if(existingItem != null)
+		if(existingItem != null && (existingItem.eClass() == item.eClass()))
 		{
 			// merge the items
 			this.mergeItems(existingItem, item);
@@ -781,7 +781,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		
 		Item existingItem = this.getItemWithSourceIdent(sourceIdent);
 		
-		if(existingItem != null)
+		if(existingItem != null && item != null && (existingItem.eClass() == item.eClass()))
 		{
 			// merge information object with their previous added version -> update
 			return (T) this.mergeItems(existingItem, item);
