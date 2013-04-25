@@ -441,6 +441,13 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	 * <!-- end-user-doc -->
 	 */
 	public String getCachedFileName() {
+		if(this.getDataSet().getCacheFileAttachements() == false)
+		{
+			// caching disabled
+			// reset cached file name
+			this.cachedFileName = null;
+			return null;
+		}
 		// starting caching
 		cacheFile();
 		
