@@ -644,9 +644,9 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		// get bundle id from configuration
 		String bundleId = sourceConfiguration.getBundleId();
 
-		if(sourceFactory != null)
+		if(sourceFactory != null && mashup.getState() == SourceState.ACTIVE)
 		{
-			// directly produce if source factory available
+			// directly produce if source factory available and mashup active
 
 			// note it as open asynchronous instantiation
 			asynchronousInstantionStarted.add(sourceConfiguration);
