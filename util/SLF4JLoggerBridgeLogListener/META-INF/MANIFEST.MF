@@ -10,5 +10,4 @@ Import-Package: org.eclipse.equinox.log;version="1.0.0",
  org.osgi.framework;version="1.3.0",
  org.osgi.service.log;version="1.3.0",
  org.slf4j;version="1.6.4"
-Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sociotech.communitymashup.util.ServiceTracker;bundle-version="0.0.1"
