@@ -760,6 +760,39 @@ public interface InformationObject extends Item {
 	Phone addPhone(String phoneNumber);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all Persons that have at least one tag in common.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<Person> getPersonsWithCommonTags();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all Organisations that have at least one tag in common.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<Organisation> getOrganisationsWithCommonTags();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all Contents that have at least one tag in common.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<Content> getContentsWithCommonTags();
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type InformationObject.
 	 * 
 	 * @generated

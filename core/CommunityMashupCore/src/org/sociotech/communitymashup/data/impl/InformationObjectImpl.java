@@ -1499,6 +1499,78 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public EList<Person> getPersonsWithCommonTags() {
+		DataSet dataSet = this.getDataSet();
+		
+		if(dataSet == null)
+		{
+			return null;
+		}
+		
+		EList<Tag> allTags = this.getTags();
+		
+		if(allTags == null || allTags.isEmpty())
+		{
+			// stop if no tags attached
+			return null;
+		}
+		
+		// return all persons that have at least one tag in common
+		return dataSet.getPersonsWithOneOfTags(allTags);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Organisation> getOrganisationsWithCommonTags() {
+		DataSet dataSet = this.getDataSet();
+		
+		if(dataSet == null)
+		{
+			return null;
+		}
+		
+		EList<Tag> allTags = this.getTags();
+		
+		if(allTags == null || allTags.isEmpty())
+		{
+			// stop if no tags attached
+			return null;
+		}
+		
+		// return all organisations that have at least one tag in common
+		return dataSet.getOrganisationsWithOneOfTags(allTags);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Content> getContentsWithCommonTags() {
+		DataSet dataSet = this.getDataSet();
+		
+		if(dataSet == null)
+		{
+			return null;
+		}
+		
+		EList<Tag> allTags = this.getTags();
+		
+		if(allTags == null || allTags.isEmpty())
+		{
+			// stop if no tags attached
+			return null;
+		}
+		
+		// return all contents that have at least one tag in common
+		return dataSet.getContentsWithOneOfTags(allTags);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -2216,6 +2288,18 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("phoneNumber").getClass().getName());
 			}
 			return this.addPhone(phoneNumber);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getPersonsWithCommonTags")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("InformationObject.doOperation", 0, command.getArgCount()); 
+			return this.getPersonsWithCommonTags();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getOrganisationsWithCommonTags")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("InformationObject.doOperation", 0, command.getArgCount()); 
+			return this.getOrganisationsWithCommonTags();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getContentsWithCommonTags")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("InformationObject.doOperation", 0, command.getArgCount()); 
+			return this.getContentsWithCommonTags();
 		}	
 		return super.doOperation(command);
 	}
