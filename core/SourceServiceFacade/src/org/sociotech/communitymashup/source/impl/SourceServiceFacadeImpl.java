@@ -720,7 +720,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 				
 				if(!origReferenceL.isEmpty())
 				{
-					log("Adding " + origReferenceL.size() + " referenced items.", LogService.LOG_DEBUG);
+					log("Adding " + origReferenceL.size() + " referenced items of " + item.getIdent() + " through " + reference.getName(), LogService.LOG_DEBUG);
 				}
 				
 				EList<Item> referencedList = new BasicEList<Item>();
@@ -738,7 +738,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 						continue;
 					}
 					
-					log("Adding referenced: " + tmpItem, LogService.LOG_DEBUG);
+					log("Adding referenced: " + tmpItem.getIdent(), LogService.LOG_DEBUG);
 					Item addedItem = this.add(tmpItem);
 					// check if the item (object reference) has changed and replace
 					if(addedItem != null && tmpItem != addedItem)
@@ -754,7 +754,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			}
 			else
 			{
-				log("Adding referenced object: " + referencedObject, LogService.LOG_DEBUG);
+				log("Adding referenced object: " + ((Item)referencedObject).getIdent(), LogService.LOG_DEBUG);
 				
 				if(!dataSet.getItems().contains(item))
 				{
@@ -1730,6 +1730,8 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		{
 			// simply delete source secific meta tag
 			getSourceInstanceMetaTag().delete();
+			// reset active state
+			source.setActiveState(SourceActiveStates.INITIALIZING);
 		}
 		
 		source.setState(SourceState.STOPED);
