@@ -128,6 +128,12 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	private static final String idPrefix = "a_";
 	
 	/**
+	 * If set to true the modification date of the data set and all contained items will
+	 * be updated automatically on changes. 
+	 */
+	private boolean automaticModificationDateUpdate = false;
+	
+	/**
 	 * Log level, by default only warnings will be logged 
 	 */
 	private int logLevel = LogService.LOG_WARNING;
@@ -6243,6 +6249,22 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	public void setLogService(LogService logService)
 	{
 		this.logService = logService;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.DataSet#setUpdateModificationDate(boolean)
+	 */
+	@Override
+	public void setUpdateModificationDate(boolean automaticUpdate) {
+		this.automaticModificationDateUpdate = automaticUpdate;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.DataSet#isUpdateModificationDate()
+	 */
+	@Override
+	public boolean isUpdateModificationDate() {
+		return this.automaticModificationDateUpdate;
 	}
 	
 } //DataSetImpl

@@ -1509,14 +1509,19 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	 * Updates the last modified date to now
 	 */
 	private void updateLastModified() {
+		
+		if(this.getDataSet() == null || !this.getDataSet().isUpdateModificationDate())
+		{
+			// switched of
+			return;
+		}
+		
 		// directly set to avoid additional notifications
 		this.lastModified = new Date();
 		// also update data sets last modified
-		if(this.getDataSet() != null)
-		{
-			// must be the same object otherwise the time differs in ms
-			this.getDataSet().setLastModified(this.lastModified);
-		}
+		// must be the same object otherwise the time differs in ms
+		this.getDataSet().setLastModified(this.lastModified);
+		
 		if(this.created == null)
 		{
 			// set also creation date if not set before

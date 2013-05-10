@@ -522,6 +522,9 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			existingDataSet = initializeNewDataSet();
 		}
 		
+		// set automatic update of last modification date
+		existingDataSet.setUpdateModificationDate(true);
+		
 		// set it for usage
 		mashup.setDataSet(existingDataSet);
 				
