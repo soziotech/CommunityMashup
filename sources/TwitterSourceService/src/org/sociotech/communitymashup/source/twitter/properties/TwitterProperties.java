@@ -83,6 +83,29 @@ public class TwitterProperties {
 	public static final String NUMBER_OF_SEARCH_TWEETS_DEFAULT = "20";
 	
 	/**
+	 * Geolocation latitude to search for tweets.
+	 */
+	public static final String SEARCH_GEO_LATITUDE_PROPERTY = "searchLatitude";
+	
+	/**
+	 * Geolocation longitude to search for tweets.
+	 */
+	public static final String SEARCH_GEO_LONGITUDE_PROPERTY = "searchLongitude";
+	
+	/**
+	 * Radius around the geolocation to search for tweets.
+	 */
+	public static final String SEARCH_GEO_RADIUS_PROPERTY = "searchRadius";
+	public static final String SEARCH_GEO_RADIUS_DEFAULT = "100";
+	
+	/**
+	 * Unit of the search radius.
+	 */
+	public static final String SEARCH_GEO_RADIUS_UNIT_PROPERTY = "searchRadiusUnit";
+	public static final String SEARCH_GEO_RADIUS_UNIT_DEFAULT = "km";
+	
+	
+	/**
 	 * Key for the load following property.
 	 */
 	public static final String LOAD_FOLLOWING_PROPERTY = "loadFollowing";

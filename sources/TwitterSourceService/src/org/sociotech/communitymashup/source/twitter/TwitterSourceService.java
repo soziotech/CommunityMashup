@@ -900,6 +900,9 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			// set requested number of tweets
 			twitterQuery.setCount(getNumberOfSearchTweets());
 			
+			// add possible geo location parameter
+			addSearchGeoLocation(twitterQuery);
+			
 			// if defined set since id
 			String sinceId = source.getPropertyValue(TwitterProperties.SEARCH_SINCE_ID_PROPERTY);
 			if(sinceId != null && !sinceId.isEmpty())
@@ -932,6 +935,42 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		
 		// add all tweets
 		addTweetList(tweets);
+	}
+
+	/**
+	 * Adds geolocation parameters to the given twitter query if they are defined in the
+	 * configuration.
+	 * 
+	 * @param twitterQuery Twitter query
+	 */
+	private void addSearchGeoLocation(Query twitterQuery) {
+		String lat = source.getPropertyValue(TwitterProperties.SEARCH_GEO_LATITUDE_PROPERTY);
+		String lon = source.getPropertyValue(TwitterProperties.SEARCH_GEO_LONGITUDE_PROPERTY);
+		
+		if(lat == null || lon == null)
+		{
+			// no geo location set
+			return;
+		}
+		
+		String radius = source.getPropertyValueElseDefault(TwitterProperties.SEARCH_GEO_RADIUS_PROPERTY, TwitterProperties.SEARCH_GEO_RADIUS_DEFAULT);
+		String unit = source.getPropertyValueElseDefault(TwitterProperties.SEARCH_GEO_RADIUS_UNIT_PROPERTY, TwitterProperties.SEARCH_GEO_RADIUS_UNIT_DEFAULT);
+		
+		double latVal = 0.0;
+		double lonVal = 0.0;
+		double radiusVal = 0.0;
+		
+		// try to parse the set properties
+		try {
+			latVal = new Double(lat);
+			lonVal = new Double(lon);
+			radiusVal = new Double(radius);
+		} catch (Exception e) {
+			log("Could not parse configured search geo coordinates. (" + e.getMessage() + ")", LogService.LOG_WARNING);
+		}
+		
+		// add geo location to twitter query
+		twitterQuery.setGeoCode(new GeoLocation(latVal, lonVal), radiusVal, unit);
 	}
 
 	private String parseSinceId(QueryResult searchResult) {
