@@ -966,13 +966,22 @@ public interface ApplicationPackage extends EPackage {
 	int MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY = 8;
 
 	/**
+	 * The feature id for the '<em><b>Ident Counter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER__IDENT_COUNTER = 9;
+
+	/**
 	 * The number of structural features of the '<em>Mashup Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MASHUP_CONTAINER_FEATURE_COUNT = 9;
+	int MASHUP_CONTAINER_FEATURE_COUNT = 10;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -2520,6 +2529,17 @@ public interface ApplicationPackage extends EPackage {
 	EAttribute getMashupContainer_CreateAccountsAtLoginTry();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.MashupContainer#getIdentCounter <em>Ident Counter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ident Counter</em>'.
+	 * @see org.sociotech.communitymashup.application.MashupContainer#getIdentCounter()
+	 * @see #getMashupContainer()
+	 * @generated
+	 */
+	EAttribute getMashupContainer_IdentCounter();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.Interface <em>Interface</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3818,6 +3838,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY = eINSTANCE.getMashupContainer_CreateAccountsAtLoginTry();
+
+		/**
+		 * The meta object literal for the '<em><b>Ident Counter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MASHUP_CONTAINER__IDENT_COUNTER = eINSTANCE.getMashupContainer_IdentCounter();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.InterfaceImpl <em>Interface</em>}' class.

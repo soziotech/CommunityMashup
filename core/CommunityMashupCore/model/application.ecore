@@ -79,6 +79,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MashupContainer">
     <eOperations name="getConfigurationAdmins" upperBound="-1" eType="#//MashupAdmin"/>
+    <eOperations name="setNewIdentFor">
+      <eParameters name="configurableElement" eType="#//ConfigurableElement"/>
+    </eOperations>
+    <eOperations name="getNewIdentNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mashups" upperBound="-1"
         eType="#//Mashup" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allMashupAdmins" upperBound="-1"
@@ -98,6 +102,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="createAccountsAtLoginTry"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identCounter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="#//ConfigurableElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="security" eType="#//Security"

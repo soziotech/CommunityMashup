@@ -746,6 +746,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMashupContainer_IdentCounter() {
+		return (EAttribute)mashupContainerEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInterface() {
 		return interfaceEClass;
 	}
@@ -1547,6 +1556,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(mashupContainerEClass, MASHUP_CONTAINER__INTERFACE_CONFIGURATIONS);
 		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__IMMEDIATE_SAVE);
 		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY);
+		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__IDENT_COUNTER);
 
 		interfaceEClass = createEClass(INTERFACE);
 		createEReference(interfaceEClass, INTERFACE__SECURITY);
@@ -1764,8 +1774,14 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getMashupContainer_InterfaceConfigurations(), this.getInterface(), null, "interfaceConfigurations", null, 0, -1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashupContainer_ImmediateSave(), ecorePackage.getEBooleanObject(), "immediateSave", "false", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashupContainer_CreateAccountsAtLoginTry(), ecorePackage.getEBooleanObject(), "createAccountsAtLoginTry", "false", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMashupContainer_IdentCounter(), ecorePackage.getEIntegerObject(), "identCounter", "1", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(mashupContainerEClass, this.getMashupAdmin(), "getConfigurationAdmins", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		EOperation op = addEOperation(mashupContainerEClass, null, "setNewIdentFor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getConfigurableElement(), "configurableElement", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(mashupContainerEClass, ecorePackage.getEIntegerObject(), "getNewIdentNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterface_Security(), this.getSecurity(), this.getSecurity_Interface(), "security", null, 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1797,7 +1813,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEClass(applicationKeyConfigEClass, ApplicationKeyConfig.class, "ApplicationKeyConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getApplicationKeyConfig_ApplicationKeys(), ecorePackage.getEString(), "applicationKeys", null, 0, -1, ApplicationKeyConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(applicationKeyConfigEClass, ecorePackage.getEBooleanObject(), "hasApplicationKey", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(applicationKeyConfigEClass, ecorePackage.getEBooleanObject(), "hasApplicationKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "applicationKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(oAuthClientConfigEClass, OAuthClientConfig.class, "OAuthClientConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

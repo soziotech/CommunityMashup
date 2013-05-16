@@ -39,6 +39,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getInterfaceConfigurations <em>Interface Configurations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getImmediateSave <em>Immediate Save</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getCreateAccountsAtLoginTry <em>Create Accounts At Login Try</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.MashupContainer#getIdentCounter <em>Ident Counter</em>}</li>
  * </ul>
  * </p>
  *
@@ -270,12 +271,63 @@ public interface MashupContainer extends EObject {
 
 
 	/**
+	 * Returns the value of the '<em><b>Ident Counter</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ident Counter</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ident Counter</em>' attribute.
+	 * @see #setIdentCounter(Integer)
+	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getMashupContainer_IdentCounter()
+	 * @model default="1"
+	 * @generated
+	 */
+	Integer getIdentCounter();
+
+
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.application.MashupContainer#getIdentCounter <em>Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ident Counter</em>' attribute.
+	 * @see #getIdentCounter()
+	 * @generated
+	 */
+	void setIdentCounter(Integer value);
+
+
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
 	EList<MashupAdmin> getConfigurationAdmins();
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void setNewIdentFor(ConfigurableElement configurableElement);
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	Integer getNewIdentNumber();
 
 
 

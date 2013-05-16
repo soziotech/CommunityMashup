@@ -72,6 +72,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getInterfaceConfigurations <em>Interface Configurations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getImmediateSave <em>Immediate Save</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getCreateAccountsAtLoginTry <em>Create Accounts At Login Try</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl#getIdentCounter <em>Ident Counter</em>}</li>
  * </ul>
  * </p>
  *
@@ -206,6 +207,25 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 	 * @ordered
 	 */
 	protected Boolean createAccountsAtLoginTry = CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIdentCounter() <em>Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentCounter()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer IDENT_COUNTER_EDEFAULT = new Integer(1);
+	/**
+	 * The cached value of the '{@link #getIdentCounter() <em>Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentCounter()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer identCounter = IDENT_COUNTER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -373,6 +393,27 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getIdentCounter() {
+		return identCounter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIdentCounter(Integer newIdentCounter) {
+		Integer oldIdentCounter = identCounter;
+		identCounter = newIdentCounter;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.MASHUP_CONTAINER__IDENT_COUNTER, oldIdentCounter, identCounter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public EList<MashupAdmin> getConfigurationAdmins() {
 		EList<MashupAdmin> configurationAdmins = new BasicEList<MashupAdmin>();
@@ -388,6 +429,27 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 		}
 		
 		return configurationAdmins;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void setNewIdentFor(ConfigurableElement configurableElement) {
+		if(configurableElement == null)
+		{
+			return;
+		}
+		
+		configurableElement.setIdent(configurableElement.eClass().getName().toLowerCase() + "_" + getNewIdentNumber());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Integer getNewIdentNumber() {
+		return identCounter++;
 	}
 
 	/**
@@ -438,6 +500,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 				return getImmediateSave();
 			case ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY:
 				return getCreateAccountsAtLoginTry();
+			case ApplicationPackage.MASHUP_CONTAINER__IDENT_COUNTER:
+				return getIdentCounter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -483,6 +547,9 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 			case ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY:
 				setCreateAccountsAtLoginTry((Boolean)newValue);
 				return;
+			case ApplicationPackage.MASHUP_CONTAINER__IDENT_COUNTER:
+				setIdentCounter((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -522,6 +589,9 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 			case ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY:
 				setCreateAccountsAtLoginTry(CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT);
 				return;
+			case ApplicationPackage.MASHUP_CONTAINER__IDENT_COUNTER:
+				setIdentCounter(IDENT_COUNTER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -552,6 +622,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 				return IMMEDIATE_SAVE_EDEFAULT == null ? immediateSave != null : !IMMEDIATE_SAVE_EDEFAULT.equals(immediateSave);
 			case ApplicationPackage.MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY:
 				return CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT == null ? createAccountsAtLoginTry != null : !CREATE_ACCOUNTS_AT_LOGIN_TRY_EDEFAULT.equals(createAccountsAtLoginTry);
+			case ApplicationPackage.MASHUP_CONTAINER__IDENT_COUNTER:
+				return IDENT_COUNTER_EDEFAULT == null ? identCounter != null : !IDENT_COUNTER_EDEFAULT.equals(identCounter);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -575,6 +647,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 		result.append(immediateSave);
 		result.append(", createAccountsAtLoginTry: ");
 		result.append(createAccountsAtLoginTry);
+		result.append(", identCounter: ");
+		result.append(identCounter);
 		result.append(')');
 		return result.toString();
 	}
@@ -617,6 +691,8 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 			return this.getImmediateSave();		
 		if ( featureName.equalsIgnoreCase("createAccountsAtLoginTry") )
 			return this.getCreateAccountsAtLoginTry();		
+		if ( featureName.equalsIgnoreCase("identCounter") )
+			return this.getIdentCounter();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 	
@@ -688,6 +764,23 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 				this.setCreateAccountsAtLoginTry(fcreateAccountsAtLoginTry);
 			return this;
 			}		
+		if ( featureName.equalsIgnoreCase("identCounter") ) {
+				java.lang.Integer fidentCounter = null;
+				try {
+				try {
+					fidentCounter = RestUtil.fromIntegerString((String) value);
+					if(fidentCounter == null) {
+						fidentCounter = (java.lang.Integer)(RestUtil.fromInput(value));
+					}
+				} catch (ClassNotFoundException e) {
+					fidentCounter = (java.lang.Integer)value;
+				}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("MashupContainer.setFeature", "java.lang.Integer",value.getClass().getName());
+				}
+				this.setIdentCounter(fidentCounter);
+			return this;
+			}		
 	throw new UnknownOperationException(this, new RestCommand("set" + featureName).addArg("value",value));
 	}
 	
@@ -705,6 +798,25 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 		if ( command.getCommand().equalsIgnoreCase("getConfigurationAdmins")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("MashupContainer.doOperation", 0, command.getArgCount()); 
 			return this.getConfigurationAdmins();
+		}
+		if ( command.getCommand().equalsIgnoreCase("setNewIdentFor")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("MashupContainer.doOperation", 1, command.getArgCount()); 
+			ConfigurableElement configurableElement = null;
+			try {
+				try {
+					configurableElement = (ConfigurableElement)(RestUtil.fromInput(command.getArg("configurableElement")));
+				} catch (ClassNotFoundException e) {
+					configurableElement = (ConfigurableElement)command.getArg("configurableElement");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("MashupContainer.doOperation", "ConfigurableElement", command.getArg("configurableElement").getClass().getName());
+			}
+				this.setNewIdentFor(configurableElement);
+				return this;
+				}
+		if ( command.getCommand().equalsIgnoreCase("getNewIdentNumber")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("MashupContainer.doOperation", 0, command.getArgCount()); 
+			return this.getNewIdentNumber();
 		}
 		throw new UnknownOperationException(this, command);
 	}
