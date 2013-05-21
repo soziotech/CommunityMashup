@@ -19,7 +19,7 @@ package org.sociotech.communitymashup.source.readability.properties;
 public class ReadabilityProperties {
 
 	/**
-	 * The url of the participants service.
+	 * The url of the readability parser api service.
 	 */
 	public static final String API_URL_PROPERTY = "apiUrl";
 	public static final String API_URL_PROPERTY_DEFAULT = "https://www.readability.com/api/content/v1/parser";
