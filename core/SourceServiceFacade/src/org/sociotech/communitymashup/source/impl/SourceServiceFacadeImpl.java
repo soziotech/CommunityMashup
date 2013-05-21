@@ -425,7 +425,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			return;
 		}
 		
-		if(source.getActiveState() != SourceActiveStates.FILLED)
+		if(source.getActiveState().getValue() < SourceActiveStates.FILLED.getValue())
 		{
 			log("Data set must be filled before enriching.", LogService.LOG_WARNING);
 			return;
