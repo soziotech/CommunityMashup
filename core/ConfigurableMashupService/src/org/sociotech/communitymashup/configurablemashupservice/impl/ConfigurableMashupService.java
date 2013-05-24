@@ -372,9 +372,14 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			return mashup;
 		}
 
-		// first put all source on waiting list
-		sourcesWaitingForInstantiation.addAll(sources);
-		
+		// first put all active sources on waiting list
+		for(Source currentSource : sources)
+		{
+			if(currentSource.getState() == SourceState.ACTIVE)
+			{
+				sourcesWaitingForInstantiation.add(currentSource);
+			}
+		}
 		// instantiate and initalize all needed source services
 		for(Source currentSource : sources)
 		{
@@ -549,6 +554,24 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#setLogService(org.osgi.service.log.LogService)
+	 */
+	@Override
+	public void setLogService(LogService logService) {
+		super.setLogService(logService);
+		
+		// set log service also for logging in data set
+		DataSet dataSet = mashup.getDataSet();
+		if(dataSet != null)
+		{
+			dataSet.setLogService(logService);
+		}
+	}
+
+	/**
+	 * Prepares the emf resource for data set saving.
+	 */
 	private void prepareDataSetResource() {
 		// create resource set and resource 
 		ResourceSet resourceSet = new ResourceSetImpl();
@@ -776,7 +799,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 
 		if(asynchronousInstantionStarted.contains(configuration))
 		{
-			log("Production of source " + configuration.getName() + " finished.");
+			log("Production of source " + configuration.getName() + " finished.", LogService.LOG_INFO);
 
 			// TODO maintain a global(mashup service) initialization state
 			// now initialize the source service with the configuration
@@ -807,6 +830,11 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 				log("Exception (" + e.getMessage() + ") while filling dataset by source " + sourceService, LogService.LOG_ERROR);
 			}
 			
+			if(startedEnrichment)
+			{
+				// if enrichment already started, let this source enrich
+				enrichSource(configuration);
+			}
 			// start update loop after first source is instantiated and filled
 			this.startUpdateLoop();
 		}
