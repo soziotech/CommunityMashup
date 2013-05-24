@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.sociotech.communitymashup.source.ReadabilitySourceServi
 Bundle-Version: 0.0.1
 Bundle-Activator: org.sociotech.communitymashup.source.readability.ReadabilitySourceBundleActivator
 Bundle-Vendor: org.sociotech.communitymashup
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.commons.logging,
  org.osgi.framework;version="1.3.0",
  org.osgi.service.log;version="1.3.0"
