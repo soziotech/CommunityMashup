@@ -1159,8 +1159,6 @@
         eType="#//Email"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="webAccounts" upperBound="-1"
         eType="#//WebAccount"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" upperBound="-1"
-        eType="#//Location"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="organisations" upperBound="-1"
         eType="#//Organisation" eOpposite="#//Organisation/parentOrganisation"/>
   </eClassifiers>

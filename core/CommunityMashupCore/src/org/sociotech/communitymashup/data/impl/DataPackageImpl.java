@@ -987,17 +987,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOrganisation_Locations() {
-		return (EReference)organisationEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOrganisation_Organisations() {
-		return (EReference)organisationEClass.getEStructuralFeatures().get(7);
+		return (EReference)organisationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1699,7 +1690,6 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(organisationEClass, ORGANISATION__PHONES);
 		createEReference(organisationEClass, ORGANISATION__EMAILS);
 		createEReference(organisationEClass, ORGANISATION__WEB_ACCOUNTS);
-		createEReference(organisationEClass, ORGANISATION__LOCATIONS);
 		createEReference(organisationEClass, ORGANISATION__ORGANISATIONS);
 
 		metaTagEClass = createEClass(META_TAG);
@@ -2424,7 +2414,6 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getOrganisation_Phones(), this.getPhone(), null, "phones", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrganisation_Emails(), this.getEmail(), null, "emails", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrganisation_WebAccounts(), this.getWebAccount(), null, "webAccounts", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrganisation_Locations(), this.getLocation(), null, "locations", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrganisation_Organisations(), this.getOrganisation(), this.getOrganisation_ParentOrganisation(), "organisations", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(organisationEClass, this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);

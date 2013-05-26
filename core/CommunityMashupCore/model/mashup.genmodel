@@ -192,6 +192,9 @@
       <genOperations ecoreOperation="data.ecore#//InformationObject/addPhone">
         <genParameters ecoreParameter="data.ecore#//InformationObject/addPhone/phoneNumber"/>
       </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getPersonsWithCommonTags"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getOrganisationsWithCommonTags"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getContentsWithCommonTags"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Content">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/contents"/>
@@ -553,7 +556,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/phones"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/emails"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/webAccounts"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/locations"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Organisation/organisations"/>
       <genOperations ecoreOperation="data.ecore#//Organisation/getPersons"/>
       <genOperations ecoreOperation="data.ecore#//Organisation/getContents"/>
@@ -754,7 +756,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//MashupContainer/interfaceConfigurations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupContainer/immediateSave"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupContainer/createAccountsAtLoginTry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//MashupContainer/identCounter"/>
       <genOperations ecoreOperation="application.ecore#//MashupContainer/getConfigurationAdmins"/>
+      <genOperations ecoreOperation="application.ecore#//MashupContainer/setNewIdentFor">
+        <genParameters ecoreParameter="application.ecore#//MashupContainer/setNewIdentFor/configurableElement"/>
+      </genOperations>
+      <genOperations ecoreOperation="application.ecore#//MashupContainer/getNewIdentNumber"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//Interface">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Interface/security"/>

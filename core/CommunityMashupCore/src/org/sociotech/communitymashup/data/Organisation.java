@@ -39,7 +39,6 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.Organisation#getPhones <em>Phones</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Organisation#getEmails <em>Emails</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Organisation#getWebAccounts <em>Web Accounts</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.Organisation#getLocations <em>Locations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Organisation#getOrganisations <em>Organisations</em>}</li>
  * </ul>
  * </p>
@@ -177,22 +176,6 @@ public interface Organisation extends InformationObject {
 	 * @generated
 	 */
 	EList<WebAccount> getWebAccounts();
-
-	/**
-	 * Returns the value of the '<em><b>Locations</b></em>' reference list.
-	 * The list contents are of type {@link org.sociotech.communitymashup.data.Location}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Locations</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Locations</em>' reference list.
-	 * @see org.sociotech.communitymashup.data.DataPackage#getOrganisation_Locations()
-	 * @model
-	 * @generated
-	 */
-	EList<Location> getLocations();
 
 	/**
 	 * <!-- begin-user-doc -->

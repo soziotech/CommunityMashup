@@ -87,7 +87,6 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getPhones <em>Phones</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getEmails <em>Emails</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getWebAccounts <em>Web Accounts</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getLocations <em>Locations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getOrganisations <em>Organisations</em>}</li>
  * </ul>
  * </p>
@@ -161,16 +160,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 	 * @ordered
 	 */
 	protected EList<WebAccount> webAccounts;
-
-	/**
-	 * The cached value of the '{@link #getLocations() <em>Locations</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLocations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Location> locations;
 
 	/**
 	 * The cached value of the '{@link #getOrganisations() <em>Organisations</em>}' reference list.
@@ -371,18 +360,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Location> getLocations() {
-		if (locations == null) {
-			locations = new EObjectResolvingEList<Location>(Location.class, this, DataPackage.ORGANISATION__LOCATIONS);
-		}
-		return locations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * Creates a new list with the leaders and all participants.
 	 * 
 	 * @return List of Persons with the leader and all participants of this organisation.
@@ -525,8 +502,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 				return getEmails();
 			case DataPackage.ORGANISATION__WEB_ACCOUNTS:
 				return getWebAccounts();
-			case DataPackage.ORGANISATION__LOCATIONS:
-				return getLocations();
 			case DataPackage.ORGANISATION__ORGANISATIONS:
 				return getOrganisations();
 		}
@@ -564,10 +539,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 				getWebAccounts().clear();
 				getWebAccounts().addAll((Collection<? extends WebAccount>)newValue);
 				return;
-			case DataPackage.ORGANISATION__LOCATIONS:
-				getLocations().clear();
-				getLocations().addAll((Collection<? extends Location>)newValue);
-				return;
 			case DataPackage.ORGANISATION__ORGANISATIONS:
 				getOrganisations().clear();
 				getOrganisations().addAll((Collection<? extends Organisation>)newValue);
@@ -602,9 +573,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 			case DataPackage.ORGANISATION__WEB_ACCOUNTS:
 				getWebAccounts().clear();
 				return;
-			case DataPackage.ORGANISATION__LOCATIONS:
-				getLocations().clear();
-				return;
 			case DataPackage.ORGANISATION__ORGANISATIONS:
 				getOrganisations().clear();
 				return;
@@ -632,8 +600,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 				return emails != null && !emails.isEmpty();
 			case DataPackage.ORGANISATION__WEB_ACCOUNTS:
 				return webAccounts != null && !webAccounts.isEmpty();
-			case DataPackage.ORGANISATION__LOCATIONS:
-				return locations != null && !locations.isEmpty();
 			case DataPackage.ORGANISATION__ORGANISATIONS:
 				return organisations != null && !organisations.isEmpty();
 		}
@@ -672,8 +638,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 			return this.getEmails();		
 		if ( featureName.equalsIgnoreCase("webAccounts") )
 			return this.getWebAccounts();		
-		if ( featureName.equalsIgnoreCase("locations") )
-			return this.getLocations();		
 		if ( featureName.equalsIgnoreCase("organisations") )
 			return this.getOrganisations();			
 		return super.getFeature(featureName); 

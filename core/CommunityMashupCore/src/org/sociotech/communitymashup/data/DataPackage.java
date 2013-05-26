@@ -1836,22 +1836,13 @@ public interface DataPackage extends EPackage {
 	int ORGANISATION__WEB_ACCOUNTS = INFORMATION_OBJECT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Locations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANISATION__LOCATIONS = INFORMATION_OBJECT_FEATURE_COUNT + 6;
-
-	/**
 	 * The feature id for the '<em><b>Organisations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANISATION__ORGANISATIONS = INFORMATION_OBJECT_FEATURE_COUNT + 7;
+	int ORGANISATION__ORGANISATIONS = INFORMATION_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Organisation</em>' class.
@@ -1860,7 +1851,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANISATION_FEATURE_COUNT = INFORMATION_OBJECT_FEATURE_COUNT + 8;
+	int ORGANISATION_FEATURE_COUNT = INFORMATION_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.MetaTagImpl <em>Meta Tag</em>}' class.
@@ -5799,17 +5790,6 @@ public interface DataPackage extends EPackage {
 	EReference getOrganisation_WebAccounts();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Organisation#getLocations <em>Locations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Locations</em>'.
-	 * @see org.sociotech.communitymashup.data.Organisation#getLocations()
-	 * @see #getOrganisation()
-	 * @generated
-	 */
-	EReference getOrganisation_Locations();
-
-	/**
 	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Organisation#getOrganisations <em>Organisations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7109,14 +7089,6 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ORGANISATION__WEB_ACCOUNTS = eINSTANCE.getOrganisation_WebAccounts();
-
-		/**
-		 * The meta object literal for the '<em><b>Locations</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ORGANISATION__LOCATIONS = eINSTANCE.getOrganisation_Locations();
 
 		/**
 		 * The meta object literal for the '<em><b>Organisations</b></em>' reference list feature.
