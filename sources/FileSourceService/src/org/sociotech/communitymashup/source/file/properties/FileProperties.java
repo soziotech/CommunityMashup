@@ -21,4 +21,8 @@ public class FileProperties {
      * This property is used to set the name of the file contained in the resources folder. 
      */
     public static final String FILE_NAME_PROPERTY = "fileName";
+    
+    public static final String SPEED_UP_PROPERTY = "speedUp";
+    public static final String SPEED_UP_DEFAULT = "true";
+    
 }

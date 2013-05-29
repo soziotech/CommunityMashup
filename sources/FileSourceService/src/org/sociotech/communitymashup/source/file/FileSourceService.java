@@ -15,8 +15,10 @@ package org.sociotech.communitymashup.source.file;
 
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -38,6 +40,13 @@ public class FileSourceService extends SourceServiceFacadeImpl
 
 	public static String WORKINGDIRECTORY_FOLDER_PLACEHOLDER = "{workingDirectory}";
 	
+	/**
+	 * Local map to look up added items to speed up loading
+	 */
+	private Map<String, Item> addedItems = new HashMap<String, Item>();
+	
+	private boolean speedUp;
+	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
 	 */
@@ -45,7 +54,10 @@ public class FileSourceService extends SourceServiceFacadeImpl
 	public boolean initialize(Source configuration)
 	{
 		// TODO check if file exists
-		// currently no additional initialization stuff
+		
+		// get speed up property
+		speedUp = configuration.isPropertyTrueElseDefault(FileProperties.SPEED_UP_PROPERTY, FileProperties.SPEED_UP_DEFAULT);
+		
 		return super.initialize(configuration);
 	}
 
@@ -57,6 +69,9 @@ public class FileSourceService extends SourceServiceFacadeImpl
 	{
 		super.fillDataSet(dataSet);
 
+		// clear temporary lookup list
+		addedItems.clear();
+		
 		// load items from file
 		String resourceName = source.getPropertyValue(FileProperties.FILE_NAME_PROPERTY);
 
@@ -67,14 +82,19 @@ public class FileSourceService extends SourceServiceFacadeImpl
 			return;
 		}
 
+		log("Loading items from resource", LogService.LOG_DEBUG);
+		
 		EList<Item> items = loadItemsFromResource(resourceName);
 
 		if(items == null || items.isEmpty())
 		{
 			// nothing to do
+			log("No items contained in resource", LogService.LOG_DEBUG);
 			return;
 		}
 
+		log("Loaded " + items.size() + " items from resource", LogService.LOG_DEBUG);
+		
 		// duplicate list to avoid concurrent modifications
 		List<Item> tmpList = new LinkedList<Item>(items);
 
@@ -83,6 +103,9 @@ public class FileSourceService extends SourceServiceFacadeImpl
 		{
 			add(item);
 		}
+		
+		// clear temporary lookup list
+		addedItems.clear();		
 	}
 
 	/* (non-Javadoc)
@@ -169,5 +192,39 @@ public class FileSourceService extends SourceServiceFacadeImpl
 		}
 
 		return items;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#add(org.sociotech.communitymashup.data.Item)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends Item> T add(T item) {
+		if(item.getDataSet() == source.getDataSet())
+		{
+			// merged item -> dont use in lookup table
+			return super.add(item);
+		}
+		
+		String originalIdent = item.getIdent();
+		if(speedUp && originalIdent != null && addedItems.containsKey(originalIdent))
+		{
+			log("Item " + originalIdent + " already added.", LogService.LOG_DEBUG);
+			// must be of type T
+			return (T)addedItems.get(item.getIdent());
+		}
+		
+		log("Adding item " + originalIdent, LogService.LOG_DEBUG);
+		
+		
+		// add it to the temporary list
+		T addedItem = super.add(item);
+		if(addedItem != null)
+		{
+			// put it in list with ident of original item
+			addedItems.put(originalIdent, addedItem);
+		}
+		
+		return addedItem;
 	}
 }
