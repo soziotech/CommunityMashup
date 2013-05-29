@@ -82,6 +82,16 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 	private String path;
 
 	/**
+	 * Indicates if the file servlet was registered
+	 */
+	private boolean registeredFileServlet = false;
+
+	/**
+	 * Indicates if the main servlet was registered
+	 */
+	private boolean registeredMainServlet = false;
+
+	/**
 	 * Creates a new resource registrator that creates and registers the needed servlets and resources.
 	 * 
 	 * @param context The bundle context
@@ -153,9 +163,11 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 
 			httpService.registerServlet(path + "mashup",restServlet, null, null);
 			log("Registered RESTinterface at " + path + "mashup", LogService.LOG_DEBUG);
-
+			registeredMainServlet = true;
+			
 			httpService.registerServlet(path + "files", fileServlet, null, null);
 			log("Registered REST file servlet at " + path + "files", LogService.LOG_DEBUG);
+			registeredFileServlet = true;
 
 		} catch (ServletException e) {
 			log("Servlet-Exception at registering REST servlets. (" + e.getMessage() +")", LogService.LOG_ERROR);
@@ -250,8 +262,14 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 
 		// unregister all servlets
 		try {
-			usedHttpService.unregister(path + "mashup");
-			usedHttpService.unregister(path + "files");
+			if(registeredMainServlet)
+			{
+				usedHttpService.unregister(path + "mashup");
+			}
+			if(registeredFileServlet)
+			{
+				usedHttpService.unregister(path + "files");
+			}
 		} catch(Exception e) {
 			log("Exception at unregistering REST servlets. (" + e.getMessage() +")", LogService.LOG_ERROR);
 		}

@@ -34,8 +34,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.emf.common.util.AbstractEList;
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -53,6 +55,7 @@ import org.sociotech.communitymashup.application.RESTInterface;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Item;
+import org.sociotech.communitymashup.data.impl.ItemImpl;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.html.HTMLTemplateParser;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.properties.HTMLProperties;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
@@ -155,6 +158,7 @@ public class RESTServlet extends HttpServlet {
 	/**
 	 * Reference to the rest services configuration 
 	 */
+	@SuppressWarnings("unused")
 	private RESTInterface configuration = null;
 	
 	/**
@@ -484,6 +488,8 @@ public class RESTServlet extends HttpServlet {
 	 * @return A list containing the deserialized EObjects.
 	 */
 	public List<EObject> load(String s) {
+		// TODO extend to hanlde json payload
+		
 		// create resource set and resource
 		ResourceSet resourceSet = new ResourceSetImpl();
 		// Register XML resource factory
@@ -530,14 +536,18 @@ public class RESTServlet extends HttpServlet {
 
 		String nsURI = DataPackage.eINSTANCE.getNsURI();
 		resourceSet.getPackageRegistry().put(nsURI, DataPackage.eINSTANCE);
-
+		
+		List<EObject> result = new LinkedList<EObject>();
+		
 		// load resource
 		try {
 			resource.load(is, null);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log("Could not parse payload due to exception (" + e.getMessage() + ")", LogService.LOG_WARNING);
+			//e.printStackTrace();
+			// return empty result
+			return result;
 		}
-		List<EObject> result = new LinkedList<EObject>();
 		for (EObject c : resource.getContents()) {
 			result.add(c);
 		}
@@ -563,50 +573,260 @@ public class RESTServlet extends HttpServlet {
 
 		RestCommand command = new RestCommand(splitted[0]);
 
-		if (splitted.length > 1) {
-			List<String> c = Arrays.asList(splitted[1].split("&"));
-			String[] a;
-			Object obj;
-			for (String s : c) {
-				a = s.split("=", 2);
-				obj = a[1];
-				if (a[1].equalsIgnoreCase("@dataset")) {
-					for (EObject eo : eObjects) {
-						if (eo instanceof DataSet) {
-							obj = eo;
-						}
-					}
-				} else if (a[1].startsWith("@")) {
-					// try resolve Object
-					for (EObject eo : eObjects) {
-						if (eo instanceof Item) {
-							if (((Item) eo).getIdent()
-									.equals(a[1].substring(1))) {
-								obj = eo;
-								break;
-							}
-						}
-					}
-				} else if (a[1].startsWith("$")) {
-					// try resolve Object-list
-					List<String> al = Arrays.asList(a[1].substring(1)
-							.split(" "));
+		if (splitted.length <= 1) {
+			// no parameters
+			return command;
+		}
+			
+		
+		List<String> commandParts = Arrays.asList(splitted[1].split("&"));
+		String[] a;
+		Object attribute;
+		for (String s : commandParts) {
+			a = s.split("=", 2);
+			attribute = a[1];
+			if (a[1].startsWith("@")) {
+				// @ indicates an ident of the data set
+				attribute = resolveDataSetItem(a[1]);
+			} else if (a[1].startsWith("*")) {
+				// # indicates the index of a object in the post payload (eObjects parameter)
+				attribute = resolvePostPayloadItem(a[1], eObjects);
 
-					BasicEList<Item> el = new BasicEList<Item>(al.size());
+			} else if (a[1].startsWith("$")) {
+				// comma separated list of idents or post payload inexes
+				List<String> refList = Arrays.asList(a[1].substring(1)
+						.split(","));
 
-					for (EObject eo : eObjects) {
-						if (eo instanceof Item) {
-							if (al.contains(((Item) eo).getIdent())) {
-								el.add((Item) eo);
-							}
-						}
+				// create parameter list
+				BasicEList<Item> listParameter = new BasicEList<Item>();
+
+				// resolve every single item in the payload
+				for(String ref : refList)
+				{
+					Item singleItem = null;
+					if(ref.startsWith("*"))
+					{
+						singleItem = resolvePostPayloadItem(ref, eObjects);
 					}
-					obj = el;
+					else if(ref.startsWith("@"))
+					{
+						singleItem = resolveDataSetItem(ref);
+					}
+
+					if (singleItem != null)
+					{
+						// successfully resolved
+						listParameter.add(singleItem);
+					}
 				}
-				command.addArg(a[0], obj);
+
+				attribute = listParameter;
+			}
+
+			// add the resolved paramters to the command
+			command.addArg(a[0], attribute);
+		}
+
+		return command;
+	}
+
+	/**
+	 * Returns the item in the server side data set reference by the given reference.
+	 * 
+	 * @param ref Reference to a server side item
+	 * 
+	 * @return The item referenced by ref
+	 */
+	private Item resolveDataSetItem(String ref) {
+		return dataSet.getItemsWithIdent(ref.substring(1));
+	}
+
+	/**
+	 * Gets the item from the given eObjects list referenced by ref.
+	 * 
+	 * @param ref Reference to an item in the given list of eObjects
+	 * @param eObjects List of eObjects representing the deserialized post payload
+	 * @return The referenced item or null in error case.
+	 */
+	private Item resolvePostPayloadItem(String ref, List<EObject> eObjects) {
+
+		int index;
+		try {
+			index = new Integer(ref.substring(1));
+		} catch (Exception e) {
+			log("Could not parse index parameter: " + ref, LogService.LOG_DEBUG);
+			return null;
+		}
+		
+		Item item = null;
+		
+		if(index < eObjects.size())
+		{
+			// get the object at the index position
+			Object obj = eObjects.get(index);
+			if(!(obj instanceof Item))
+			{
+				// no item
+				return null;
+			}
+			item = (Item) obj;
+		}
+		
+		Item resolvedItem = resolveProxies(item);
+		
+		// add the resolved item to the data set
+		resolvedItem = dataSet.add(resolvedItem);
+		
+		return resolvedItem;
+	}
+
+	/**
+	 * Resolves all referenced proxy items and replaces them with items from the server side
+	 * data set.
+	 * 
+	 * @param item Item to resolve proxies for
+	 * 
+	 * @return The item with resolved proxies or null in error case
+	 */
+	private Item resolveProxies(Item item) {
+		if(item == null)
+		{
+			return null;
+		}
+		
+		EList<EReference> references = item.eClass().getEAllReferences();
+		
+		for(EReference reference : references)
+		{
+			Object referencedObject = item.eGet(reference);
+			
+			if(referencedObject == null)
+			{
+				// nothing to do
+				continue;
+			}
+			
+			if(referencedObject instanceof DataSet)
+			{
+				// dont use the data set reference
+				continue;
+			}
+			
+			if(referencedObject instanceof EList<?>)
+			{
+				// There can only be item lists
+				@SuppressWarnings("unchecked")
+				EList<Object> referenceList = (EList<Object>) referencedObject;
+				
+				if(!referenceList.isEmpty())
+				{
+					log("Resolving " + referenceList.size() + " referenced items of " + item.getIdent() + " through " + reference.getName(), LogService.LOG_DEBUG);
+				}
+				else
+				{
+					continue;
+				}
+				
+				// create new list for the resolved items
+				EList<Object> resolvedList = new BasicEList<Object>();
+				
+				
+				// step over all items resolve the and add them to the new list
+				for(Object refObject : referenceList)
+				{
+					
+					Item newItem = resolveProxyItem(refObject);
+					
+					if(newItem != null)
+					{
+						resolvedList.add(newItem);
+					}
+				}
+				
+				// clear old list and add all new objects
+				referenceList.clear();
+				referenceList.addAll(resolvedList);
+			}
+			else
+			{
+				Item newItem = resolveProxyItem(referencedObject);
+				
+				// replace referenced object with new object
+				item.eSet(reference, newItem);
 			}
 		}
-		return command;
+		
+		return item;
+	}
+
+	/**
+	 * Returns the item from the server side data set that is represented by the given
+	 * proxy object.
+	 * 
+	 * @param proxyObject Proxy object for an item from the server side data set
+	 * @return The resolved item.
+	 */
+	private Item resolveProxyItem(Object proxyObject) {
+		if(!(proxyObject instanceof ItemImpl))
+		{
+			// could only use items
+			return null;
+		}
+		
+		ItemImpl proxyItem = (ItemImpl) proxyObject;
+		
+		if(!proxyItem.eIsProxy())
+		{
+			// could only resolve proxies
+			return null;
+		}
+		
+		URI proxyUri = proxyItem.eProxyURI();
+		
+		if(proxyUri == null)
+		{
+			return null;
+		}
+		
+		Item resolvedItem = getItemForProxyUri(proxyUri.toString());
+		
+		// check type to avoid wrong casts in error case
+		if(resolvedItem == null || resolvedItem.eClass() != proxyItem.eClass())
+		{
+			return null;
+		}
+		
+		return resolvedItem;
+	}
+
+	/**
+	 * Looks up the item for the given uri in the server side data set.
+	 * 
+	 * @param proxyUri Uri for the item.
+	 * 
+	 * @return The item represented by the given proxy uri or null if not found.
+	 */
+	private Item getItemForProxyUri(String proxyUri) {
+		if(proxyUri == null || proxyUri.isEmpty())
+		{
+			return null;
+		}
+		
+		// extract the ident
+		String[] uriParts = proxyUri.split("getItemsWithIdent\\?ident=");
+		
+		if(uriParts.length > 1)
+		{
+			String ident = uriParts[1].trim();
+			while(ident.endsWith("/"))
+			{
+				ident = ident.replace("/", "");
+			}
+			
+			return dataSet.getItemsWithIdent(ident);
+		}
+		
+		return null;
 	}
 
 	/*
@@ -829,6 +1049,7 @@ public class RESTServlet extends HttpServlet {
 
 			// get payload if any
 			List<EObject> eos = null;
+			
 			// reconstruct list of submitted EObjects
 			if ((requestType != RequestType.rtGet)
 					&& (request.getInputStream() != null)
