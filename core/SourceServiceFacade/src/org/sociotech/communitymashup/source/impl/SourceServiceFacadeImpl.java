@@ -30,7 +30,6 @@ import org.sociotech.communitymashup.application.Property;
 import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.application.SourceActiveStates;
 import org.sociotech.communitymashup.application.SourceState;
-import org.sociotech.communitymashup.data.Category;
 import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
 import org.sociotech.communitymashup.data.DataPackage;
@@ -364,7 +363,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		}
 		catch (Exception e) {
 			log("Error while filling data set in source ." + this + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
-			//e.printStackTrace();
+			e.printStackTrace();
 			source.setState(SourceState.ERROR);
 			return;
 		}
@@ -613,13 +612,16 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		if (source == null || dataSet == null) {
 			return null;
 		}
+		
+		// preprocess every item before adding it
+		preprocessItem(item);
 
 		// check if item is already contained
 		Item existingItem = dataSet.getEqualItem(item);
-		if(existingItem != null && (existingItem.eClass() == item.eClass()))
+		if(existingItem != null)
 		{
 			// merge the items
-			this.mergeItems(existingItem, item);
+			existingItem.update(item);
 			
 			// add tags, categories etc. defined in the configuration
 			addSourceSpecificInformations(existingItem);
@@ -627,65 +629,106 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			return (T)existingItem;
 		}
 		
-		// check if an item with this ident already exists
-		if(item.getIdent() != null && !item.getIdent().isEmpty())
-		{
-			if(dataSet.getItemsWithIdent(item.getIdent()) != null)
-			{
-				log("Resetting ident of " + item, LogService.LOG_DEBUG);
-				// reset the ident
-				item.setIdent(null);
-			}
-		}
-		
-		Item addedItem = null;
-		
-		if(item instanceof Person)
-		{
-			// special case for persons
-			addedItem = addPerson((Person) item);
-		}
-		else if(item instanceof Organisation)
-		{
-			// special case for organisations
-			addedItem = addOrganisation((Organisation) item);
-		}
-		else if(item instanceof Content)
-		{
-			// special case for contents
-			addedItem = addContent((Content) item);
-		}
-		else if(item instanceof Tag)
-		{
-			// special case for tags
-			addedItem = addTag((Tag) item);
-		}
-		else if(item instanceof Category)
-		{
-			// special case for categories
-			addedItem = addCategory((Category) item);
-		}
-		else if(item instanceof MetaTag)
-		{
-			// special case for meta tags
-			addedItem = addMetaTag((MetaTag) item);
-		}
-		
-		if(addedItem == null)
-		{
-			addedItem = dataSet.add(item);
-		}
+		Item addedItem = dataSet.add(item);
 		
 		// add tags, categories etc. defined in the configuration
 		addSourceSpecificInformations(addedItem);
 		
 		// check to add all referenced objects
-		addReferencedObjects(addedItem);
+		addReferencedItems(addedItem);
 				
 		return (T)addedItem;
 	}
 	
-	private void addReferencedObjects(Item item) {
+	/**
+	 * Preprocess the item. Removes e. g. html if configured.
+	 * 
+	 * @param item Item to preprocess.
+	 */
+	private void preprocessItem(Item item)
+	{
+		if(item == null)
+		{
+			return;
+		}
+		
+		// preprocess all attributes
+		// get possible attributes and references
+		EList<EAttribute> attributes = item.eClass().getEAllAttributes();
+		
+		// step through all attributes and update them
+		for(EAttribute attribute : attributes)
+		{
+			Object attributeValue = item.eGet(attribute);
+			if(attribute.getFeatureID() == DataPackage.ITEM__IDENT)
+			{
+				// dont change the ident
+				continue;
+			}	
+
+			if(attributeValue instanceof String)
+			{
+				String stringValue = (String) attributeValue;
+				
+				stringValue = preProcessString(stringValue);
+				
+				if(stringValue != null)
+				{
+					item.eSet(attribute, stringValue);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Removes html and invalid characters from string.
+	 * 
+	 * @param stringValue String to preprocess.
+	 * 
+	 * @return The process String, or null if no processing configured.
+	 */
+	private String preProcessString(String stringValue) {
+		if(stringValue == null || stringValue.isEmpty())
+		{
+			// nothing to do
+			return null;
+		}
+		
+		String newStringValue = stringValue;
+		boolean change = false;
+		
+		if(source.isPropertyTrueElseDefault(SourceServiceProperties.REMOVE_HTML_PROPERTY, SourceServiceProperties.REMOVE_HTML_DEFAULT))
+		{
+			newStringValue = removeHtml(newStringValue);
+			change = true;
+		}
+		
+		if(source.isPropertyTrueElseDefault(SourceServiceProperties.REMOVE_NON_HTML_AND_PROPERTY, SourceServiceProperties.REMOVE_NON_HTML_AND_DEFAULT))
+		{
+			newStringValue = removeNonHtmlAnd(newStringValue);
+			change = true;
+		}
+		
+		if(source.isPropertyTrueElseDefault(SourceServiceProperties.REMOVE_INVALID_XML_CHARACTER_PROPERTY, SourceServiceProperties.REMOVE_INVALID_XML_CHARACTER_DEFAULT))
+		{
+			newStringValue = removeInvalidXMLCharacters(newStringValue);
+			change = true;
+		}
+		
+		if(!change)
+		{
+			return null;
+		}
+
+		return newStringValue;
+	}
+
+	/**
+	 * Adds all items referenced by the given item.
+	 * 
+	 * @param item Item to add referenced items.
+	 */
+	private void addReferencedItems(Item item) {
 		
 		if(item == null)
 		{
@@ -732,7 +775,8 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 				// step over all object and add them to list 1
 				for(Item tmpItem : referencedList)
 				{
-					if(dataSet.getItems().contains(tmpItem))
+					//if(dataSet.getItems().contains(tmpItem))
+					if(tmpItem.getDataSet() == dataSet)
 					{
 						// already contained
 						continue;
@@ -754,11 +798,12 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			}
 			else
 			{
-				log("Adding referenced object: " + ((Item)referencedObject).getIdent(), LogService.LOG_DEBUG);
+				Item referencedItem = (Item)referencedObject;
+				log("Adding referenced object: " + referencedItem.getIdent(), LogService.LOG_DEBUG);
 				
-				if(!dataSet.getItems().contains(item))
+				if(referencedItem.getDataSet() != dataSet)
 				{
-					this.add((Item)referencedObject);
+					this.add(referencedItem);
 				}
 			}
 		}
@@ -784,7 +829,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		if(existingItem != null && item != null && (existingItem.eClass() == item.eClass()))
 		{
 			// merge information object with their previous added version -> update
-			return (T) this.mergeItems(existingItem, item);
+			return (T) existingItem.update(item);
 		}
 		
 		Item addedItem = this.add(item);
@@ -1101,238 +1146,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	}
 
 	/**
-	 * Looks up if the category is already contained in the data set. If this is
-	 * true, the two categories will be merged and the already existing one will be
-	 * returned.
-	 * 
-	 * @param category Category to be added to the data set
-	 * @return The merged category if it already exist or the newly added one.
-	 *         Null in error case.
-	 */
-	private Category addCategory(Category category) {
-
-		DataSet dataSet = source.getDataSet();
-
-		// look up existing category with the same name
-		Category existingCategory = dataSet.getCategory(category.getName());
-		
-		if(existingCategory == null)
-		{
-			// new category
-			return (Category) dataSet.add(category);
-		}
-		
-		// add all categorized objects
-		EList<InformationObject> categorized = category.getCategorized();
-		
-		// temporary store them
-		EList<InformationObject> tmpList = new BasicEList<InformationObject>(categorized);
-		
-		// clear categorized list
-		categorized.clear();
-		
-		// and add all to existing category
-		for(InformationObject categorizedObject : tmpList)
-		{
-			// add also the categorized object to this data set
-			Item addedItem = this.add(categorizedObject);
-			
-			EList<InformationObject> alreadyCategorized = existingCategory.getCategorized();
-			
-			if(addedItem != null && !alreadyCategorized.contains(addedItem))
-			{
-				// successfully added now categorize it
-				existingCategory.getCategorized().add((InformationObject) addedItem);
-			}
-		}
-		
-		// do the same with main categories
-		
-		// add all categorized objects
-		EList<InformationObject> mainCategorized = category.getMainCategorized();
-
-		// temporary store them
-		EList<InformationObject> tmpListMain = new BasicEList<InformationObject>(mainCategorized);
-
-		// clear categorized list
-		mainCategorized.clear();
-
-		// and add all to existing category
-		for(InformationObject categorizedObject : tmpListMain)
-		{
-			// add also the categorized object to this data set
-			Item addedItem = this.add(categorizedObject);
-
-			if(addedItem != null)
-			{
-				// successfully added now categorize it
-				existingCategory.getMainCategorized().add((InformationObject) addedItem);
-			}
-		}
-		
-		// create category hierarchy
-		if(category.getParentCategory() != null && existingCategory.getParentCategory() == null)
-		{
-			Category newParentCategory = (Category)this.add(category.getParentCategory());
-			
-			if(newParentCategory != null)
-			{	
-				// set parent if not previously set
-				existingCategory.setParentCategory(newParentCategory);
-			}
-		}
-		
-		return existingCategory;
-	}
-
-	/**
-	 * Looks up if the tag is already contained in the data set. If this is
-	 * true, the two tags will be merged and the already existing one will be
-	 * returned.
-	 * 
-	 * @param tag Tag to be added to the data set
-	 * @return The merged tag if it already exist or the newly added one.
-	 *         Null in error case.
-	 */
-	private Tag addTag(Tag tag) {
-		
-		DataSet dataSet = source.getDataSet();
-
-		// look up existing tag with the same name
-		Tag existingTag = dataSet.getTag(tag.getName());
-		
-		if(existingTag == null)
-		{
-			// new tag
-			return (Tag) dataSet.add(tag);
-		}
-		
-		// add all tagged objects
-		EList<InformationObject> tagged = tag.getTagged();
-		
-		// temporary store them
-		EList<InformationObject> tmpList = new BasicEList<InformationObject>(tagged);
-		
-		// clear tagged list
-		tagged.clear();
-		
-		// and add all to existing tag
-		for(InformationObject taggedObject : tmpList)
-		{
-			// add also the tagged object to this data set
-			Item addedItem = this.add(taggedObject);
-			
-			EList<InformationObject> alreadyTagged = existingTag.getTagged();
-			if(addedItem != null && !alreadyTagged.contains(addedItem))
-			{
-				// successfully added and not already tagged so tag it
-				alreadyTagged.add((InformationObject) addedItem);
-			}
-		}
-		
-		return existingTag;
-	}
-
-	/**
-	 * Looks up if the meta tag is already contained in the data set. If this is
-	 * true, the two tags will be merged and the already existing one will be
-	 * returned.
-	 * 
-	 * @param tag Meta tag to be added to the data set
-	 * @return The merged meta tag if it already exist or the newly added one.
-	 *         Null in error case.
-	 */
-	private MetaTag addMetaTag(MetaTag tag) {
-		
-		DataSet dataSet = source.getDataSet();
-
-		// look up existing tag with the same name
-		MetaTag existingTag = dataSet.getMetaTag(tag.getName());
-		
-		if(existingTag == null)
-		{
-			// new tag
-			return (MetaTag) dataSet.add(tag);
-		}
-		
-		// add all tagged objects
-		EList<Item> tagged = tag.getMetaTagged();
-		
-		// temporary store them
-		EList<Item> tmpList = new BasicEList<Item>(tagged);
-		
-		// clear tagged list
-		tagged.clear();
-		
-		// and add all to existing tag
-		for(Item taggedObject : tmpList)
-		{
-			// add also the tagged object to this data set
-			Item addedItem = this.add(taggedObject);
-			
-			EList<Item> alreadyTagged = existingTag.getMetaTagged();
-			if(addedItem != null && !alreadyTagged.contains(addedItem))
-			{
-				// successfully added and not already tagged so tag it
-				alreadyTagged.add((Item) addedItem);
-			}
-		}
-		
-		return existingTag;
-	}
-	/**
-	 * Looks up if the person is already contained in the data set. If this is
-	 * true, the two persons will be merged and the already existing one will be
-	 * returned.
-	 * 
-	 * @param person
-	 *            Person to be added to the data set
-	 * @return The merged person if it already exist or the newly added one.
-	 *         Null in error case.
-	 */
-	private Item addPerson(Person person) {
-		DataSet dataSet = source.getDataSet();
-
-		// look up existing person with the same name
-		String personName = person.getName();
-		
-		if(source.isPropertyTrue(SourceServiceProperties.REMOVE_NON_HTML_AND_PROPERTY))
-		{
-			personName = removeNonHtmlAnd(personName);
-			person.setName(personName);
-		}
-		
-		EList<Person> existingPersons = dataSet.getPersonsWithName(personName);
-
-		if (existingPersons == null || existingPersons.isEmpty()) {
-			// simply add it if the person does not exist yet
-			return dataSet.add(person);
-		}
-
-		// if there already exists one than merge it
-
-		// take the first one, of course their should only be one
-		Person original = existingPersons.get(0);
-
-		Item merged = null;
-		try {
-			merged = mergeItems(original, person);
-		} catch (Exception e) {
-			log("Exception while merging two persons: " + e.getMessage(),
-					LogService.LOG_DEBUG);
-		}
-
-		if (merged == null) {
-			log("Could not merge " + original + " and " + person,
-					LogService.LOG_ERROR);
-			log("Adding the duplicated person.", LogService.LOG_ERROR);
-			return dataSet.add(person);
-		}
-
-		return (Person) merged;
-	}
-
-	/**
 	 * Removes all non html and characters from the given String
 	 * 
 	 * @param value String to remove non html ands from
@@ -1365,38 +1178,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		// replace all invalid xml characters
 		return value.replaceAll(INVALID_XML_CHARACTERS_REGEX, " "); 		
 	}
-	
-	/**
-	 * Preprocesses the content and adds it to the dataset.
-	 * 
-	 * @param content The content to be added.
-	 * 
-	 * @return The added content or null in error case.
-	 */
-	private Content addContent(Content content) {
-		
-		if(source.isPropertyTrueElseDefault(SourceServiceProperties.REMOVE_HTML_PROPERTY, SourceServiceProperties.REMOVE_HTML_DEFAULT))
-		{
-			content.setStringValue(removeHtml(content.getStringValue()));
-			content.setName(removeHtml(content.getName()));
-		}
-		
-		if(source.isPropertyTrueElseDefault(SourceServiceProperties.REMOVE_NON_HTML_AND_PROPERTY, SourceServiceProperties.REMOVE_NON_HTML_AND_DEFAULT))
-		{
-			content.setStringValue(removeNonHtmlAnd(content.getStringValue()));
-			content.setName(removeNonHtmlAnd(content.getName()));
-		}
-		
-		if(source.isPropertyTrueElseDefault(SourceServiceProperties.REMOVE_INVALID_XML_CHARACTER_PROPERTY, SourceServiceProperties.REMOVE_INVALID_XML_CHARACTER_DEFAULT))
-		{
-			content.setStringValue(removeInvalidXMLCharacters(content.getStringValue()));
-			content.setName(removeInvalidXMLCharacters(content.getName()));
-		}
-		
-		content = (Content) source.getDataSet().add(content);
-		
-		return (Content) content;
-	}
 
 	/**
 	 * Removes all html from the given value and returns it. Also replaces all &.
@@ -1416,214 +1197,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		return Jsoup.parse(value).text();
 	}
 
-	/**
-	 * Looks up if the organisation is already contained in the data set. If this is
-	 * true, the two organisations will be merged and the already existing one will be
-	 * returned.
-	 * 
-	 * @param organisation
-	 *            Organisation to be added to the data set
-	 * @return The merged organisation if it already exist or the newly added one.
-	 *         Null in error case.
-	 */
-	private Organisation addOrganisation(Organisation organisation) {
-		DataSet dataSet = source.getDataSet();
-
-		String organisationName = organisation.getName();
-		
-		if(source.isPropertyTrue(SourceServiceProperties.REMOVE_NON_HTML_AND_PROPERTY))
-		{
-			organisationName = removeNonHtmlAnd(organisationName);
-			organisation.setName(organisationName);
-		}
-		
-		// look up existing organisation with the same name
-		EList<Organisation> existingOrganisations = dataSet.getOrganisationsWithName(organisationName);
-
-		if (existingOrganisations == null || existingOrganisations.isEmpty()) {
-			// simply add it if the person does not exist yet
-			return (Organisation) dataSet.add(organisation);
-		}
-
-		// if there already exists one than merge it
-
-		// take the first one, of course their should only be one
-		Organisation original = existingOrganisations.get(0);
-
-		Item merged = null;
-		try {
-			merged = mergeItems(original, organisation);
-		} catch (Exception e) {
-			log("Exception while merging two organisations: " + e.getMessage(),
-					LogService.LOG_DEBUG);
-		}
-
-		if (merged == null) {
-			log("Could not merge " + original + " and " + organisation,
-					LogService.LOG_ERROR);
-			log("Adding the duplicated organisation.", LogService.LOG_ERROR);
-			return (Organisation) dataSet.add(organisation);
-		}
-
-		return (Organisation) merged;
-	}
-	
-	/**
-	 * Merges the references and attributes from information object 2 into information object 1.
-	 * The two information objects must be of the same type.
-	 * 
-	 * @param io1 Target information object
-	 * @param io2 Information object with new values
-	 * @return The merged information object or null in error case.
-	 */
-	@SuppressWarnings("unchecked")
-	protected Item mergeItems(Item io1, Item io2)
-	{
-		if(io1 == io2)
-		{
-			// no merge needed on same objects
-			return io1;
-		}
-		
-		// TODO refactor this method to an update method of information object (or item)
-		if(io1 == null)
-		{
-			return null;
-		}
-		
-		if(io2 == null)
-		{
-			return io1;
-		}
-		
-		if(io1.eClass() != io2.eClass())
-		{
-			log("Item " + io1 + " and Item " + io2 + " are from different types and can not be merged", LogService.LOG_WARNING);
-			return io1;
-		}	
-		
-		log("Merging " + io1.getIdent() + " and " + io2.getIdent(), LogService.LOG_DEBUG);
-		
-		// get possible attributes and references
-		EList<EAttribute> attributes = io1.eClass().getEAllAttributes();
-		EList<EReference> references = io1.eClass().getEAllReferences();
-		
-		// step through all attributes and update them
-		for(EAttribute attribute : attributes)
-		{
-			Object attributeValue1 = io1.eGet(attribute);
-			Object attributeValue2 = io2.eGet(attribute);
-			if(attribute.getFeatureID() == DataPackage.ITEM__IDENT)
-			{
-				// dont change the ident
-				continue;
-			}	
-			
-			if(attributeValue2 == null || (attributeValue2.equals(attributeValue1)))
-			{
-				// nothing to do
-				log("No new value for attribute " + attribute + " for information object " + io1, LogService.LOG_DEBUG);
-				continue;
-			}
-			else 
-			{
-				if(attributeValue2 instanceof String)
-				{
-					String stringValue = (String) attributeValue2;
-					if(stringValue.isEmpty())
-					{
-						// dont overwrite with empty values
-						continue;
-					}
-				}
-						
-					
-				// TODO check if new value is newer
-				log("Setting attribute " + attribute + " for information object " + io1 + " to " + attributeValue2, LogService.LOG_DEBUG);
-				io1.eSet(attribute, attributeValue2);
-			}
-			
-		}
-		
-		for(EReference reference : references)
-		{
-			Object referencedObject1 = io1.eGet(reference);
-			Object referencedObject2 = io2.eGet(reference);
-			
-			if(referencedObject1 == null && referencedObject2 == null)
-			{
-				// nothing to do
-				continue;
-			}
-			
-			if(referencedObject2 == null)
-			{
-				// no new references
-				continue;
-			}
-			
-			if(referencedObject1 instanceof DataSet)
-			{
-				// dont change the data set reference
-				continue;
-			}
-			
-			if(referencedObject1 instanceof EList<?> && referencedObject2 instanceof EList<?>)
-			{
-				EList<Item> list2 = null;
-				try {
-					// try to cast, there should only be list of items
-					list2 = (EList<Item>) referencedObject2;
-				} catch (Exception e) {
-					// merge only list of items
-					log("References contain a list of non Item!", LogService.LOG_WARNING);
-					continue;
-				}
-				
-				if(list2.isEmpty())
-				{
-					// no new references
-					continue;
-				}
-				
-				log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
-				log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
-				
-				EList<Item> list1 = (EList<Item>) referencedObject1;
-				
-				// temporary keep all items from list2
-				EList<Item> tmpList = new BasicEList<Item>(list2);
-				
-				// clear list 2
-				list2.clear();
-				
-				// step over all object and add them to list 1
-				for(Item tmpItem : tmpList)
-				{
-					log("Adding: " + tmpItem);
-					Item addedItem = this.add(tmpItem);
-					// add it to list if not already contained
-					if(addedItem != null && !list1.contains(addedItem))
-					{
-						list1.add(addedItem);
-					}
-				}
-			}
-			
-			if(referencedObject1 == null && referencedObject2 instanceof Item)
-			{
-				log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
-				log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
-				
-				// reference is no list an not previously set
-				Item addedItem = this.add((Item) referencedObject2);
-				io1.eSet(reference, addedItem);
-			}
-		}
-		
-		return io1;
-	}
-	
 	/**
 	 * Checks if a given belongs to this source.
 	 * 
