@@ -28,56 +28,44 @@ import org.sociotech.communitymashup.rest.WrongArgException;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Set</b></em>'. <!-- end-user-doc -->
- * 
- * <!-- begin-model-doc --> A @link DataSet Data Set@endlink acts as container
- * for all data elements contained in an CommunityMashup configuration. The @link
- * DataSet Data Set@endlink can be queried to retrieve special items. It is the
- * main entry point for all access to mashed up data. <!-- end-model-doc -->
- * 
+ *
+ * <!-- begin-model-doc -->
+ * A @link DataSet Data Set@endlink acts as container for all data elements contained in an CommunityMashup configuration. The @link DataSet Data Set@endlink can be queried to retrieve special items. It is the main entry point for all access to mashed up data.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.sociotech.communitymashup.data.DataSet#getItems <em>Items
- * </em>}</li>
- * <li>{@link org.sociotech.communitymashup.data.DataSet#getCacheFolder <em>
- * Cache Folder</em>}</li>
- * <li>
- * {@link org.sociotech.communitymashup.data.DataSet#getCacheFileAttachements
- * <em>Cache File Attachements</em>}</li>
- * <li>{@link org.sociotech.communitymashup.data.DataSet#getSetUp <em>Set Up
- * </em>}</li>
- * <li>{@link org.sociotech.communitymashup.data.DataSet#getLastModified <em>
- * Last Modified</em>}</li>
- * <li>{@link org.sociotech.communitymashup.data.DataSet#getLogLevel <em>Log
- * Level</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getItems <em>Items</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getCacheFolder <em>Cache Folder</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getCacheFileAttachements <em>Cache File Attachements</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getSetUp <em>Set Up</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getLastModified <em>Last Modified</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getLogLevel <em>Log Level</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getIdentCounter <em>Ident Counter</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.sociotech.communitymashup.data.DataPackage#getDataSet()
- * @model 
- *        annotation="http://www.eclipse.org/emf/2002/GenModel restSuperClass='true'"
+ * @model annotation="http://www.eclipse.org/emf/2002/GenModel restSuperClass='true'"
  * @generated
  */
 public interface DataSet extends EObject {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	String copyright = "Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n \tPeter Lachenmaier - Design and initial implementation";
 
 	/**
-	 * Returns the value of the '<em><b>Items</b></em>' containment reference
-	 * list. The list contents are of type
-	 * {@link org.sociotech.communitymashup.data.Item}. It is bidirectional and
-	 * its opposite is '
-	 * {@link org.sociotech.communitymashup.data.Item#getDataSet
-	 * <em>Data Set</em>}'. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
+	 * The list contents are of type {@link org.sociotech.communitymashup.data.Item}.
+	 * It is bidirectional and its opposite is '{@link org.sociotech.communitymashup.data.Item#getDataSet <em>Data Set</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * Returns all Items contained in this data set.
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Items</em>' containment reference list.
 	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_Items()
 	 * @see org.sociotech.communitymashup.data.Item#getDataSet
@@ -105,30 +93,27 @@ public interface DataSet extends EObject {
 	String getCacheFolder();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.sociotech.communitymashup.data.DataSet#getCacheFolder
-	 * <em>Cache Folder</em>}' attribute. <!-- begin-user-doc --> Sets the cache
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.DataSet#getCacheFolder <em>Cache Folder</em>}' attribute.
+	 * <!-- begin-user-doc --> Sets the cache
 	 * folder, which is used for caching the attachment files. If the cache
 	 * folder is not set, the Systems directors for temporary files will be
 	 * used. <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Cache Folder</em>' attribute.
+	 * @param value the new value of the '<em>Cache Folder</em>' attribute.
 	 * @see #getCacheFolder()
 	 * @generated
 	 */
 	void setCacheFolder(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Cache File Attachements</b></em>'
-	 * attribute. The default value is <code>"false"</code>. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Cache File Attachements</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Cache File Attachements</em>' attribute isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Cache File Attachements</em>' attribute.
 	 * @see #setCacheFileAttachements(Boolean)
 	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_CacheFileAttachements()
@@ -138,14 +123,10 @@ public interface DataSet extends EObject {
 	Boolean getCacheFileAttachements();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.sociotech.communitymashup.data.DataSet#getCacheFileAttachements
-	 * <em>Cache File Attachements</em>}' attribute. <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.DataSet#getCacheFileAttachements <em>Cache File Attachements</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Cache File Attachements</em>'
-	 *            attribute.
+	 * @param value the new value of the '<em>Cache File Attachements</em>' attribute.
 	 * @see #getCacheFileAttachements()
 	 * @generated
 	 */
@@ -199,13 +180,10 @@ public interface DataSet extends EObject {
 	Date getLastModified();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.sociotech.communitymashup.data.DataSet#getLastModified
-	 * <em>Last Modified</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.DataSet#getLastModified <em>Last Modified</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Last Modified</em>' attribute.
+	 * @param value the new value of the '<em>Last Modified</em>' attribute.
 	 * @see #getLastModified()
 	 * @generated
 	 */
@@ -240,6 +218,22 @@ public interface DataSet extends EObject {
 	 * @generated
 	 */
 	void setLogLevel(Integer value);
+
+	/**
+	 * Returns the value of the '<em><b>Ident Counter</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ident Counter</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ident Counter</em>' attribute.
+	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_IdentCounter()
+	 * @model default="1" changeable="false"
+	 * @generated
+	 */
+	Long getIdentCounter();
 
 	/**
 	 * <!-- begin-user-doc --> Returns all items contained in this data set with
@@ -381,7 +375,6 @@ public interface DataSet extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -389,7 +382,6 @@ public interface DataSet extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -397,7 +389,6 @@ public interface DataSet extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -418,11 +409,11 @@ public interface DataSet extends EObject {
 	 * DataSet. The same like {@link DataSet#getAllMetaTags()}
 	 * 
 	 * @return List of all MetaTags, null in error case. <!-- end-user-doc -->
-	 *         <!-- begin-model-doc --> Returns all @link MetaTag Meta
-	 *         Tag@endlink instances contained in this @link DataSet Data
-	 *         Set@endlink. <!-- end-model-doc -->
-	 * @model kind="operation" annotation=
-	 *        "http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"'"
+	 * <!-- begin-model-doc -->
+	 * Returns all @link MetaTag Meta Tag@endlink instances contained in this @link DataSet Data Set@endlink.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"'"
 	 * @generated
 	 */
 	EList<MetaTag> getMetaTags();
@@ -1047,18 +1038,14 @@ public interface DataSet extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @model 
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
 	 * @generated
 	 */
 	void log(String message);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @model 
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
 	 * @generated
 	 */
 	void log(String message, Integer level);
@@ -1068,10 +1055,11 @@ public interface DataSet extends EObject {
 	 * DataSet. The same like {@link DataSet#getAllPersons()}
 	 * 
 	 * @return List of all Persons, null in error case. <!-- end-user-doc -->
-	 *         <!-- begin-model-doc --> Returns all Person instances contained
-	 *         in this @link DataSet Data Set@endlink. <!-- end-model-doc -->
-	 * @model kind="operation" annotation=
-	 *        "http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"'"
+	 * <!-- begin-model-doc -->
+	 * Returns all Person instances contained in this @link DataSet Data Set@endlink.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"'"
 	 * @generated
 	 */
 	EList<Person> getPersons();
@@ -1301,7 +1289,6 @@ public interface DataSet extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -1309,7 +1296,6 @@ public interface DataSet extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -1317,7 +1303,6 @@ public interface DataSet extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -1325,7 +1310,6 @@ public interface DataSet extends EObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -1362,8 +1346,7 @@ public interface DataSet extends EObject {
 	 * 
 	 * @generated
 	 */
-	public EObjectCondition isTypeCondition = org.sociotech.communitymashup.data.impl.DataSetImpl
-			.generateIsTypeCondition();
+	public EObjectCondition isTypeCondition = org.sociotech.communitymashup.data.impl.DataSetImpl.generateIsTypeCondition();
 
 	/**
 	 * This method can be used to recursively and generically call the Getter,

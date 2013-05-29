@@ -921,4 +921,48 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 		
 		return isContentOfOrganisationCondition;
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#isEqualItem(org.sociotech.communitymashup.data.Item)
+	 */
+	@Override
+	public Boolean isEqualItem(Item item) {
+		if(super.isEqualItem(item))
+		{
+			return true;
+		}
+		
+		if(this == item)
+		{
+			return true;
+		}
+		else if (item == null)
+		{
+			return false;
+		}
+		else if (this.eClass() != item.eClass())
+		{
+			return false;
+		}
+		
+		// given item is a organisation
+		Organisation organisation = (Organisation) item;
+		
+		if(this.getName() == null)
+		{
+			// name must be defined
+			return false;
+		}
+		
+		return this.getName().equalsIgnoreCase(organisation.getName());
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
+	
 } //OrganisationImpl

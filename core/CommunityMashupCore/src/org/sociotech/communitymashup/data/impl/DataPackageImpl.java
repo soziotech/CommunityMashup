@@ -735,6 +735,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDataSet_IdentCounter() {
+		return (EAttribute)dataSetEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItem() {
 		return itemEClass;
 	}
@@ -1656,6 +1665,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(dataSetEClass, DATA_SET__SET_UP);
 		createEAttribute(dataSetEClass, DATA_SET__LAST_MODIFIED);
 		createEAttribute(dataSetEClass, DATA_SET__LOG_LEVEL);
+		createEAttribute(dataSetEClass, DATA_SET__IDENT_COUNTER);
 
 		itemEClass = createEClass(ITEM);
 		createEReference(itemEClass, ITEM__DATA_SET);
@@ -2028,11 +2038,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		initEClass(dataSetEClass, DataSet.class, "DataSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataSet_Items(), this.getItem(), this.getItem_DataSet(), "items", null, 0, -1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataSet_CacheFolder(), ecorePackage.getEString(), "cacheFolder", null, 0, 1, DataSet.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSet_CacheFolder(), ecorePackage.getEString(), "cacheFolder", null, 0, 1, DataSet.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_CacheFileAttachements(), ecorePackage.getEBooleanObject(), "cacheFileAttachements", "false", 1, 1, DataSet.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataSet_SetUp(), theApplicationPackage.getMashup(), null, "setUp", null, 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataSet_SetUp(), theApplicationPackage.getMashup(), null, "setUp", null, 0, 1, DataSet.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_LastModified(), ecorePackage.getEDate(), "lastModified", null, 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataSet_LogLevel(), ecorePackage.getEIntegerObject(), "logLevel", null, 0, 1, DataSet.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSet_LogLevel(), ecorePackage.getEIntegerObject(), "logLevel", null, 0, 1, DataSet.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSet_IdentCounter(), ecorePackage.getELongObject(), "identCounter", "1", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(dataSetEClass, this.getItem(), "add", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -2331,8 +2342,6 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getItem_DeleteOnDelete(), this.getItem(), this.getItem_DeletedIfDeleted(), "deleteOnDelete", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_DeletedIfDeleted(), this.getItem(), this.getItem_DeleteOnDelete(), "deletedIfDeleted", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(itemEClass, ecorePackage.getEString(), "toAttributeMapString", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(itemEClass, null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2375,6 +2384,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(itemEClass, null, "deleteIfEmptyOnDelete", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(itemEClass, this.getItem(), "update", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(extensionEClass, Extension.class, "Extension", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

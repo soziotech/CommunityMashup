@@ -18,8 +18,10 @@ import java.util.Locale;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -27,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EParameter;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -809,6 +812,167 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	@SuppressWarnings("unchecked")
+	public Item update(Item item) {
+		if(item == null)
+		{
+			// no update can be performed
+			return null;
+		}
+		
+		Item updatedItem = (Item) item;
+		
+		if(updatedItem.eClass() != this.eClass())
+		{
+			// only updates of same type are allowed
+			log("Item " + this.getIdent() + " and Item " + item.getIdent() + " are from different types and can not be updated.", LogService.LOG_WARNING);
+			return null;
+		}
+
+		if(item == this)
+		{
+			// no merge needed on same objects
+			return this;
+		}
+		
+		
+		log("Updating " + this.getIdent() + " with " + item.getIdent(), LogService.LOG_DEBUG);
+		
+		// get possible attributes and references
+		EList<EAttribute> attributes = this.eClass().getEAllAttributes();
+		EList<EReference> references = this.eClass().getEAllReferences();
+		
+		// step through all attributes and update them
+		for(EAttribute attribute : attributes)
+		{
+			Object attributeValue1 = this.eGet(attribute);
+			Object attributeValue2 = item.eGet(attribute);
+			if(attribute.getFeatureID() == DataPackage.ITEM__IDENT)
+			{
+				// dont change the ident
+				continue;
+			}	
+			
+			if(attributeValue2 == null || (attributeValue2.equals(attributeValue1)))
+			{
+				// nothing to do
+				log("No new value for attribute " + attribute.getName() + " for item " + this.getIdent(), LogService.LOG_DEBUG);
+				continue;
+			}
+			else 
+			{
+				if(attributeValue2 instanceof String)
+				{
+					String stringValue = (String) attributeValue2;
+					if(stringValue.isEmpty())
+					{
+						// dont overwrite with empty values
+						continue;
+					}
+				}
+						
+					
+				// TODO check if new value is newer
+				log("Setting attribute " + attribute.getName() + " for item " + this.getIdent() + " to " + attributeValue2, LogService.LOG_DEBUG);
+				this.eSet(attribute, attributeValue2);
+			}
+			
+		}
+		
+		// step over all references and merge reference lists
+		for(EReference reference : references)
+		{
+			Object referencedObject1 = this.eGet(reference);
+			Object referencedObject2 = item.eGet(reference);
+			
+			if(referencedObject1 == null && referencedObject2 == null)
+			{
+				// nothing to do
+				continue;
+			}
+			
+			if(referencedObject2 == null)
+			{
+				// no new references
+				continue;
+			}
+			
+			if(referencedObject1 instanceof DataSet)
+			{
+				// dont change the data set reference
+				continue;
+			}
+			
+			if(referencedObject1 instanceof EList<?> && referencedObject2 instanceof EList<?>)
+			{
+				EList<Item> list2 = null;
+				try {
+					// try to cast, there should only be list of items
+					list2 = (EList<Item>) referencedObject2;
+				} catch (Exception e) {
+					// merge only list of items
+					log("References contain a list of non Item!", LogService.LOG_WARNING);
+					continue;
+				}
+				
+				if(list2.isEmpty())
+				{
+					// no new references
+					continue;
+				}
+				
+				log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
+				log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
+				
+				EList<Item> list1 = (EList<Item>) referencedObject1;
+				
+				// temporary keep all items from list2
+				EList<Item> tmpList = new BasicEList<Item>(list2);
+				
+				// clear list 2
+				list2.clear();
+				
+				// step over all items and add them to list 1
+				for(Item tmpItem : tmpList)
+				{
+					Item addedItem = null;
+					log("Adding: " + tmpItem.getIdent());
+					if(this.getDataSet() != null)
+					{
+						addedItem = this.getDataSet().add(tmpItem);
+					}
+					
+					// add it to list if not already contained
+					if(addedItem != null && !list1.contains(addedItem))
+					{
+						list1.add(addedItem);
+					}
+				}
+			}
+			
+			if(referencedObject1 == null && referencedObject2 instanceof Item)
+			{
+				log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
+				log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
+				
+				// reference is no list an not previously set
+				Item addedItem = null;
+				if(this.getDataSet() != null)
+				{
+					addedItem = this.getDataSet().add((Item) referencedObject2);
+				}
+				
+				this.eSet(reference, addedItem);
+			}
+		}
+		
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -1311,6 +1475,20 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				this.deleteIfEmptyOnDelete();
 				return this;
 				}
+		if ( command.getCommand().equalsIgnoreCase("update")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("Item.doOperation", 1, command.getArgCount()); 
+			Item item = null;
+			try {
+				try {
+					item = (Item)(RestUtil.fromInput(command.getArg("item")));
+				} catch (ClassNotFoundException e) {
+					item = (Item)command.getArg("item");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Item.doOperation", "Item", command.getArg("item").getClass().getName());
+			}
+			return this.update(item);
+		}
 		throw new UnknownOperationException(this, command);
 	}
 
@@ -1579,6 +1757,15 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			p.setLocale(loc);
 		}
 		return p.format(date);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		// can have an equal item if an identifier is defined
+		return this.getIdentifiedBy() != null && !this.getIdentifiedBy().isEmpty();
 	}
 	
 } //ItemImpl

@@ -12,8 +12,10 @@ package org.sociotech.communitymashup.data.impl;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -107,6 +109,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getSetUp <em>Set Up</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLastModified <em>Last Modified</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLogLevel <em>Log Level</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getIdentCounter <em>Ident Counter</em>}</li>
  * </ul>
  * </p>
  *
@@ -119,12 +122,6 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n \tPeter Lachenmaier - Design and initial implementation";
-	/**
-	 * Reference to singleton ocl environment. 
-	 */
-	//private EcoreEnvironment oclEnvironment = null;
-	// TODO make ident counter as instance variable
-	private static long identCounter = 0;
 	private static final String idPrefix = "a_";
 	
 	/**
@@ -137,6 +134,11 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * Log level, by default only warnings will be logged 
 	 */
 	private int logLevel = LogService.LOG_WARNING;
+	
+	/**
+	 * Map to look up items based on their type (eClass)
+	 */
+	private Map<String, List<Item>> typeBasedLookUpMap = new HashMap<String, List<Item>>();
 	
 	/**
 	 * Creates the OCL Environment at first call and then returns the singleton instance.
@@ -230,6 +232,29 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @ordered
 	 */
 	protected static final Integer LOG_LEVEL_EDEFAULT = null;
+	
+	/**
+	 * The default value of the '{@link #getIdentCounter() <em>Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentCounter()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Long IDENT_COUNTER_EDEFAULT = new Long(1L);
+	/**
+	 * The cached value of the '{@link #getIdentCounter() <em>Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentCounter()
+	 * @generated
+	 * @ordered
+	 */
+	protected Long identCounter = IDENT_COUNTER_EDEFAULT;
+	/**
+	 * Reference to singleton ocl environment. 
+	 */
+	//private EcoreEnvironment oclEnvironment = null;
 	
 	/**
 	 * True means that file attachment caching is on.
@@ -380,6 +405,15 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 */
 	public void setLogLevel(Integer newLogLevel) {
 		this.logLevel = newLogLevel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Long getIdentCounter() {
+		return identCounter;
 	}
 
 	/**
@@ -553,6 +587,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return getLastModified();
 			case DataPackage.DATA_SET__LOG_LEVEL:
 				return getLogLevel();
+			case DataPackage.DATA_SET__IDENT_COUNTER:
+				return getIdentCounter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -639,6 +675,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return LAST_MODIFIED_EDEFAULT == null ? lastModified != null : !LAST_MODIFIED_EDEFAULT.equals(lastModified);
 			case DataPackage.DATA_SET__LOG_LEVEL:
 				return LOG_LEVEL_EDEFAULT == null ? getLogLevel() != null : !LOG_LEVEL_EDEFAULT.equals(getLogLevel());
+			case DataPackage.DATA_SET__IDENT_COUNTER:
+				return IDENT_COUNTER_EDEFAULT == null ? identCounter != null : !IDENT_COUNTER_EDEFAULT.equals(identCounter);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -655,6 +693,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (lastModified: ");
 		result.append(lastModified);
+		result.append(", identCounter: ");
+		result.append(identCounter);
 		result.append(')');
 		return result.toString();
 	}
@@ -1885,10 +1925,23 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			return null;
 		}
 		
-		EList<Item> allItems = this.getItems();
+		if(!item.canHaveEqualItem()) {
+			// no equal items possible
+			return null;
+		}
 		
-		// run over all items
-		// TODO room for efficiency
+		// get type
+		String type = getTypeIdentifier(item);
+		
+		// get all items of type
+		List<Item> allItems = typeBasedLookUpMap.get(type);
+		
+		if(allItems == null)
+		{
+			return null;
+		}
+		
+		// run over all items of type
 		for(Item currentItem : allItems)
 		{
 			if(currentItem.isEqualItem(item))
@@ -1898,6 +1951,16 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		}
 		
 		return null;
+	}
+
+	/**
+	 * Returns the type identifier used in the {@link DataSetImpl#typeBasedLookUpMap}
+	 * 
+	 * @param item Item to get the type identifier for
+	 * @return The type identifier
+	 */
+	private String getTypeIdentifier(Item item) {
+		return item.eClass().getName();
 	}
 
 	/**
@@ -3119,6 +3182,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			return this.getLastModified();		
 		if ( featureName.equalsIgnoreCase("logLevel") )
 			return this.getLogLevel();		
+		if ( featureName.equalsIgnoreCase("identCounter") )
+			return this.getIdentCounter();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 
@@ -5021,17 +5086,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			}
 			
 			// provide a unique ident
-			if(item.getIdent() == null || item.getIdent().isEmpty() || item.getIdent().contains(" "))
-			{
-				// TODO more efficent ident generation
-				do
-				{
-					identCounter ++;
-				}
-				while(this.getItemsWithIdent(idPrefix + identCounter) != null);
-					
-				item.setIdent(idPrefix + identCounter); 
-			}	
+			identCounter ++;
+			item.setIdent(idPrefix + identCounter); 
 			
 			// set creation date to current time if it was not previously set
 			if(item.getCreated() == null)
@@ -6267,4 +6323,53 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		return this.automaticModificationDateUpdate;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotify(org.eclipse.emf.common.notify.Notification)
+	 */
+	@Override
+	public void eNotify(Notification notification) {
+		
+		if(notification.getFeatureID(DataSet.class) == DataPackage.DATA_SET__ITEMS)
+		{
+			
+			if(notification.getEventType() == Notification.REMOVE && notification.getOldValue() != null) 
+			{
+				// must always be an item
+				Item removedItem = (Item) notification.getOldValue();
+				
+				String type = getTypeIdentifier(removedItem);
+				
+				// get the object list for the type of the new item
+				List<Item> existingItems = typeBasedLookUpMap.get(type);
+				
+				if(existingItems != null)
+				{
+					// remove it from list
+					existingItems.remove(removedItem);
+				}
+				
+			}
+			else if(notification.getEventType() == Notification.ADD && notification.getNewValue() != null)
+			{
+				// must always be an item
+				Item newItem = (Item) notification.getNewValue();
+				String type = getTypeIdentifier(newItem);
+				
+				// get the object list for the type of the new item
+				List<Item> existingItems = typeBasedLookUpMap.get(type);
+				
+				if(existingItems == null)
+				{
+					// create new list
+					existingItems = new LinkedList<Item>();
+					// add it to lookup map
+					typeBasedLookUpMap.put(type, existingItems);
+				}	
+				
+				// add object to lookup list
+				existingItems.add(newItem);
+			}
+		}
+		super.eNotify(notification);
+	}
 } //DataSetImpl

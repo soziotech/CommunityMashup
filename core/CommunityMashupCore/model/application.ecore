@@ -9,7 +9,8 @@
     <eOperations name="pause"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="persistency" eType="#//Persistency"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="ecore:EClass data.ecore#//DataSet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="ecore:EClass data.ecore#//DataSet"
+        transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bundleId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//SourceState"
         defaultValueLiteral="0"/>

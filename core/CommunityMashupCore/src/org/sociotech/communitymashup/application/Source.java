@@ -90,7 +90,7 @@ public interface Source extends ConfigurableElement {
 	 * @return the value of the '<em>Data Set</em>' reference.
 	 * @see #setDataSet(DataSet)
 	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getSource_DataSet()
-	 * @model
+	 * @model transient="true"
 	 * @generated
 	 */
 	DataSet getDataSet();

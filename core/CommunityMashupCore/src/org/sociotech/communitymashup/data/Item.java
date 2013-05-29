@@ -295,14 +295,6 @@ public interface Item extends EObject {
 	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
 	 * @generated
 	 */
-	String toAttributeMapString();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
-	 * @generated
-	 */
 	void log(String message);
 
 	/**
@@ -457,11 +449,22 @@ public interface Item extends EObject {
 	void deleteIfEmptyOnDelete();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Updates this item with the values and referenced objects from the given updated item and returns the this updated item. The given item will be deleted afterwards.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Item update(Item item);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type Item.
 	 * 
 	 * @generated
 	 */
-public EObjectCondition isTypeCondition = org.sociotech.communitymashup.data.impl.ItemImpl.generateIsTypeCondition();
+	public EObjectCondition isTypeCondition = org.sociotech.communitymashup.data.impl.ItemImpl.generateIsTypeCondition();
 
 	/**
 	 * This method can be used to recursively and generically call the Getter, Setters and Operations of the generated classes.
@@ -475,4 +478,11 @@ public EObjectCondition isTypeCondition = org.sociotech.communitymashup.data.imp
 	 */
 	public Object process(LinkedList<RestCommand> input, RequestType requestType) throws ArgNotFoundException, WrongArgException, WrongArgCountException, UnknownOperationException;
 
+	/**
+	 * Returns true if this item can have an equal item regarding to {@link Item#isEqualItem(Item)}. Must always
+	 * be overwritten when {@link Item#isEqualItem(Item)} is overwritten
+	 * 
+	 * @return If this item can have an equal item.
+	 */
+	public boolean canHaveEqualItem();
 } // Item

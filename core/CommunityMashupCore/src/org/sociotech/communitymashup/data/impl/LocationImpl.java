@@ -1042,5 +1042,11 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 		return false;
 	}
 	
-
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
 } //LocationImpl

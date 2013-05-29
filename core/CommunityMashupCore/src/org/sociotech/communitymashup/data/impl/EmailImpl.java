@@ -444,4 +444,11 @@ public class EmailImpl extends MetaInformationImpl implements Email {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
 } //EmailImpl

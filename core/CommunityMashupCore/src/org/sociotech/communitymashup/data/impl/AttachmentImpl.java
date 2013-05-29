@@ -1153,4 +1153,12 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		return false;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
+	
 } //AttachmentImpl

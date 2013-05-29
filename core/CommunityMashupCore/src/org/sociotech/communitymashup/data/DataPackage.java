@@ -1057,13 +1057,22 @@ public interface DataPackage extends EPackage {
 	int DATA_SET__LOG_LEVEL = 5;
 
 	/**
+	 * The feature id for the '<em><b>Ident Counter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET__IDENT_COUNTER = 6;
+
+	/**
 	 * The number of structural features of the '<em>Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_FEATURE_COUNT = 6;
+	int DATA_SET_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -5488,6 +5497,17 @@ public interface DataPackage extends EPackage {
 	EAttribute getDataSet_LogLevel();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.DataSet#getIdentCounter <em>Ident Counter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ident Counter</em>'.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIdentCounter()
+	 * @see #getDataSet()
+	 * @generated
+	 */
+	EAttribute getDataSet_IdentCounter();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Item <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6853,6 +6873,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_SET__LOG_LEVEL = eINSTANCE.getDataSet_LogLevel();
+
+		/**
+		 * The meta object literal for the '<em><b>Ident Counter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SET__IDENT_COUNTER = eINSTANCE.getDataSet_IdentCounter();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ItemImpl <em>Item</em>}' class.

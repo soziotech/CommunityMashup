@@ -686,6 +686,14 @@ public class CategoryImpl extends ClassificationImpl implements Category {
 		
 		return this.getName().equals(((CategoryImpl)item).getName());
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#deleteIfUnused()

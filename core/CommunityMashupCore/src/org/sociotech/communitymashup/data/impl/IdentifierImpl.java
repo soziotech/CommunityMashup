@@ -668,6 +668,14 @@ public class IdentifierImpl extends ItemImpl implements Identifier {
 	}
 	
 	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
+	
+	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#deleteIfUnused()
 	 */
 	@Override

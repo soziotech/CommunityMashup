@@ -476,5 +476,48 @@ public class TagImpl extends ClassificationImpl implements Tag {
 		// results are only information objects
 		return new BasicEList<InformationObject>((Collection<? extends InformationObject>) result.getEObjects());
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#isEqualItem(org.sociotech.communitymashup.data.Item)
+	 */
+	@Override
+	public Boolean isEqualItem(Item item) {
+		if(super.isEqualItem(item))
+		{
+			return true;
+		}
+		
+		if(this == item)
+		{
+			return true;
+		}
+		else if (item == null)
+		{
+			return false;
+		}
+		else if (this.eClass() != item.eClass())
+		{
+			return false;
+		}
+		
+		// given item is a tag
+		Tag tag = (Tag) item;
+		
+		if(this.getName() == null)
+		{
+			// name must be defined
+			return false;
+		}
+		
+		return this.getName().equalsIgnoreCase(tag.getName());
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
 
 } //TagImpl

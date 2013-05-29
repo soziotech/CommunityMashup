@@ -671,4 +671,47 @@ public class MetaTagImpl extends ItemImpl implements MetaTag {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#isEqualItem(org.sociotech.communitymashup.data.Item)
+	 */
+	@Override
+	public Boolean isEqualItem(Item item) {
+		if(super.isEqualItem(item))
+		{
+			return true;
+		}
+		
+		if(this == item)
+		{
+			return true;
+		}
+		else if (item == null)
+		{
+			return false;
+		}
+		else if (this.eClass() != item.eClass())
+		{
+			return false;
+		}
+		
+		// given item is a meta tag
+		MetaTag metaTag = (MetaTag) item;
+		
+		if(this.getName() == null)
+		{
+			// name must be defined
+			return false;
+		}
+		
+		return this.getName().equalsIgnoreCase(metaTag.getName());
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
+	
 } //MetaTagImpl

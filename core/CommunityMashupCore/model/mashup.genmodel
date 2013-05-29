@@ -224,6 +224,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//DataSet/setUp"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/lastModified"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/logLevel"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/identCounter"/>
       <genOperations ecoreOperation="data.ecore#//DataSet/add">
         <genParameters ecoreParameter="data.ecore#//DataSet/add/item"/>
       </genOperations>
@@ -524,6 +525,10 @@
         <genParameters ecoreParameter="data.ecore#//Item/deleteOnDeleteOf/item"/>
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//Item/deleteIfEmptyOnDelete"/>
+      <genOperations ecoreOperation="data.ecore#//Item/update">
+        <genParameters ecoreParameter="data.ecore#//Item/update/item"/>
+        <genTypeParameters ecoreTypeParameter="data.ecore#//Item/update/T"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Extension">
       <genOperations ecoreOperation="data.ecore#//Extension/tag">

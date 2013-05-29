@@ -526,4 +526,12 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 		return this.adress.equalsIgnoreCase(compareWebSite.getAdress());
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
+	
 } //WebSiteImpl

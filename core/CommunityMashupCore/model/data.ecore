@@ -962,25 +962,23 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" resolveProxies="false" eOpposite="#//Item/dataSet"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheFolder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        volatile="true"/>
+        volatile="true" transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheFileAttachements"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
         volatile="true" defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="setUp" eType="ecore:EClass application.ecore#//Mashup"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setUp" eType="ecore:EClass application.ecore#//Mashup"
+        transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastModified" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
-        volatile="true"/>
+        volatile="true" transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identCounter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        changeable="false" defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Item" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="restSuperClass" value="true"/>
       <details key="documentation" value="An Item is an abstract superclass of @link InformationObject Information Object@endlink, Extension, Classification and @link MetaTag Meta Tag@endlink. Every Item can be classified by @link MetaTag Meta Tags@endlink."/>
     </eAnnotations>
-    <eOperations name="toAttributeMapString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="noREST" value="true"/>
-      </eAnnotations>
-    </eOperations>
     <eOperations name="log">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="noREST" value="true"/>
@@ -1068,6 +1066,12 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Deletes this item from the data set if the on delete list is empty."/>
       </eAnnotations>
+    </eOperations>
+    <eOperations name="update" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Updates this item with the values and referenced objects from the given updated item and returns the this updated item. The given item will be deleted afterwards."/>
+      </eAnnotations>
+      <eParameters name="item" eType="#//Item"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="#//DataSet"
         transient="true" resolveProxies="false" eOpposite="#//DataSet/items"/>

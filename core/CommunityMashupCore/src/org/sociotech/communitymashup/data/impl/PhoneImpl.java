@@ -581,4 +581,12 @@ public class PhoneImpl extends MetaInformationImpl implements Phone {
 		// compare numbers ignoring case
 		return this.number.equalsIgnoreCase(comparePhone.getNumber());
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
 } //PhoneImpl
