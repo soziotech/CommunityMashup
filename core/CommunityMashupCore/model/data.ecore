@@ -980,11 +980,7 @@
         <details key="noREST" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastModified" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="noREST" value="true"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastModified" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         volatile="true" transient="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

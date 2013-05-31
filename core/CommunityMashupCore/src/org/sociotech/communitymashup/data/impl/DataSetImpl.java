@@ -3172,6 +3172,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	protected Object getFeature(String featureName) throws UnknownOperationException {
 		if ( featureName.equalsIgnoreCase("items") )
 			return this.getItems();		
+		if ( featureName.equalsIgnoreCase("lastModified") )
+			return this.getLastModified();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 
@@ -3184,6 +3186,23 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated
 	 */
 	protected Object setFeature(String featureName, Object value) throws WrongArgException, UnknownOperationException {
+		if ( featureName.equalsIgnoreCase("lastModified") ) {
+				java.util.Date flastModified = null;
+				try {
+					try {
+						flastModified = RestUtil.fromDateString((String) value);
+						if(flastModified == null) {
+							flastModified = (java.util.Date)(RestUtil.fromInput(value));
+						}
+					} catch (ClassNotFoundException e) {
+						flastModified = (java.util.Date)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("DataSet.setFeature", "java.util.Date",value.getClass().getName());
+				}
+				this.setLastModified(flastModified);
+			return this;
+			}		
 	throw new UnknownOperationException(this, new RestCommand("set" + featureName).addArg("value",value));
 	}
 
