@@ -3172,18 +3172,6 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	protected Object getFeature(String featureName) throws UnknownOperationException {
 		if ( featureName.equalsIgnoreCase("items") )
 			return this.getItems();		
-		if ( featureName.equalsIgnoreCase("cacheFolder") )
-			return this.getCacheFolder();		
-		if ( featureName.equalsIgnoreCase("cacheFileAttachements") )
-			return this.getCacheFileAttachements();		
-		if ( featureName.equalsIgnoreCase("setUp") )
-			return this.getSetUp();		
-		if ( featureName.equalsIgnoreCase("lastModified") )
-			return this.getLastModified();		
-		if ( featureName.equalsIgnoreCase("logLevel") )
-			return this.getLogLevel();		
-		if ( featureName.equalsIgnoreCase("identCounter") )
-			return this.getIdentCounter();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 
@@ -3196,78 +3184,6 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated
 	 */
 	protected Object setFeature(String featureName, Object value) throws WrongArgException, UnknownOperationException {
-		if ( featureName.equalsIgnoreCase("cacheFolder") ) {
-				java.lang.String fcacheFolder = null;
-				try {
-					fcacheFolder = (java.lang.String)value;
-				} catch (ClassCastException e) {
-					throw new WrongArgException("DataSet.setFeature", "java.lang.String",value.getClass().getName());
-				}
-				this.setCacheFolder(fcacheFolder);
-			return this;
-			}		
-		if ( featureName.equalsIgnoreCase("cacheFileAttachements") ) {
-				java.lang.Boolean fcacheFileAttachements = null;
-				try {
-					try {
-						fcacheFileAttachements = (java.lang.Boolean)(RestUtil.fromInput(value));
-					} catch (ClassNotFoundException e) {
-						fcacheFileAttachements = (java.lang.Boolean)value;
-					}
-				} catch (ClassCastException e) {
-					throw new WrongArgException("DataSet.setFeature", "java.lang.Boolean",value.getClass().getName());
-				}
-				this.setCacheFileAttachements(fcacheFileAttachements);
-			return this;
-			}		
-		if ( featureName.equalsIgnoreCase("setUp") ) {
-				org.sociotech.communitymashup.application.Mashup fsetUp = null;
-				try {
-					try {
-						fsetUp = (org.sociotech.communitymashup.application.Mashup)(RestUtil.fromInput(value));
-					} catch (ClassNotFoundException e) {
-						fsetUp = (org.sociotech.communitymashup.application.Mashup)value;
-					}
-				} catch (ClassCastException e) {
-					throw new WrongArgException("DataSet.setFeature", "org.sociotech.communitymashup.application.Mashup",value.getClass().getName());
-				}
-				this.setSetUp(fsetUp);
-			return this;
-			}		
-		if ( featureName.equalsIgnoreCase("lastModified") ) {
-				java.util.Date flastModified = null;
-				try {
-					try {
-						flastModified = RestUtil.fromDateString((String) value);
-						if(flastModified == null) {
-							flastModified = (java.util.Date)(RestUtil.fromInput(value));
-						}
-					} catch (ClassNotFoundException e) {
-						flastModified = (java.util.Date)value;
-					}
-				} catch (ClassCastException e) {
-					throw new WrongArgException("DataSet.setFeature", "java.util.Date",value.getClass().getName());
-				}
-				this.setLastModified(flastModified);
-			return this;
-			}		
-		if ( featureName.equalsIgnoreCase("logLevel") ) {
-				java.lang.Integer flogLevel = null;
-				try {
-				try {
-					flogLevel = RestUtil.fromIntegerString((String) value);
-					if(flogLevel == null) {
-						flogLevel = (java.lang.Integer)(RestUtil.fromInput(value));
-					}
-				} catch (ClassNotFoundException e) {
-					flogLevel = (java.lang.Integer)value;
-				}
-				} catch (ClassCastException e) {
-					throw new WrongArgException("DataSet.setFeature", "java.lang.Integer",value.getClass().getName());
-				}
-				this.setLogLevel(flogLevel);
-			return this;
-			}		
 	throw new UnknownOperationException(this, new RestCommand("set" + featureName).addArg("value",value));
 	}
 

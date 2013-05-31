@@ -118,6 +118,7 @@ public interface DataSet extends EObject {
 	 * @see #setCacheFileAttachements(Boolean)
 	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_CacheFileAttachements()
 	 * @model default="false" required="true" volatile="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
 	 * @generated
 	 */
 	Boolean getCacheFileAttachements();
@@ -231,6 +232,7 @@ public interface DataSet extends EObject {
 	 * @return the value of the '<em>Ident Counter</em>' attribute.
 	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_IdentCounter()
 	 * @model default="1" changeable="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
 	 * @generated
 	 */
 	Long getIdentCounter();
