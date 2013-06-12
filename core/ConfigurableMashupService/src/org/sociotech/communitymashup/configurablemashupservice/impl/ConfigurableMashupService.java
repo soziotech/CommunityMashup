@@ -1031,6 +1031,8 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			interfaceFactoryTracker.close();
 		}
 		
+		startedEnrichment = false;
+		
 		// set state as stoped
 		mashup.setState(SourceState.STOPED);
 	}
@@ -1485,6 +1487,8 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		{
 			return;
 		}
+		
+		startedEnrichment = true;
 		
 		// get the matching source service
 		SourceServiceFacade sourceService = sourceServices.get(sourceConfiguration);
