@@ -34,10 +34,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.emf.common.util.AbstractEList;
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -55,10 +53,10 @@ import org.sociotech.communitymashup.application.RESTInterface;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Item;
-import org.sociotech.communitymashup.data.impl.ItemImpl;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.html.HTMLTemplateParser;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.properties.HTMLProperties;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
+import org.sociotech.communitymashup.rest.ProxyUtil;
 import org.sociotech.communitymashup.rest.RequestType;
 import org.sociotech.communitymashup.rest.RestCommand;
 import org.sociotech.communitymashup.rest.UnknownOperationException;
@@ -504,7 +502,8 @@ public class RESTServlet extends HttpServlet {
 		try {
 			resource.load(null);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log("Could not load emf objects from " + s + " due to exception (" + e.getMessage() + ")", LogService.LOG_WARNING);
+			return null;
 		}
 		List<EObject> result = new LinkedList<EObject>();
 		for (EObject c : resource.getContents()) {
@@ -689,144 +688,7 @@ public class RESTServlet extends HttpServlet {
 	 * @return The item with resolved proxies or null in error case
 	 */
 	private Item resolveProxies(Item item) {
-		if(item == null)
-		{
-			return null;
-		}
-		
-		EList<EReference> references = item.eClass().getEAllReferences();
-		
-		for(EReference reference : references)
-		{
-			Object referencedObject = item.eGet(reference);
-			
-			if(referencedObject == null)
-			{
-				// nothing to do
-				continue;
-			}
-			
-			if(referencedObject instanceof DataSet)
-			{
-				// dont use the data set reference
-				continue;
-			}
-			
-			if(referencedObject instanceof EList<?>)
-			{
-				// There can only be item lists
-				@SuppressWarnings("unchecked")
-				EList<Object> referenceList = (EList<Object>) referencedObject;
-				
-				if(!referenceList.isEmpty())
-				{
-					log("Resolving " + referenceList.size() + " referenced items of " + item.getIdent() + " through " + reference.getName(), LogService.LOG_DEBUG);
-				}
-				else
-				{
-					continue;
-				}
-				
-				// create new list for the resolved items
-				EList<Object> resolvedList = new BasicEList<Object>();
-				
-				
-				// step over all items resolve the and add them to the new list
-				for(Object refObject : referenceList)
-				{
-					
-					Item newItem = resolveProxyItem(refObject);
-					
-					if(newItem != null)
-					{
-						resolvedList.add(newItem);
-					}
-				}
-				
-				// clear old list and add all new objects
-				referenceList.clear();
-				referenceList.addAll(resolvedList);
-			}
-			else
-			{
-				Item newItem = resolveProxyItem(referencedObject);
-				
-				// replace referenced object with new object
-				item.eSet(reference, newItem);
-			}
-		}
-		
-		return item;
-	}
-
-	/**
-	 * Returns the item from the server side data set that is represented by the given
-	 * proxy object.
-	 * 
-	 * @param proxyObject Proxy object for an item from the server side data set
-	 * @return The resolved item.
-	 */
-	private Item resolveProxyItem(Object proxyObject) {
-		if(!(proxyObject instanceof ItemImpl))
-		{
-			// could only use items
-			return null;
-		}
-		
-		ItemImpl proxyItem = (ItemImpl) proxyObject;
-		
-		if(!proxyItem.eIsProxy())
-		{
-			// could only resolve proxies
-			return null;
-		}
-		
-		URI proxyUri = proxyItem.eProxyURI();
-		
-		if(proxyUri == null)
-		{
-			return null;
-		}
-		
-		Item resolvedItem = getItemForProxyUri(proxyUri.toString());
-		
-		// check type to avoid wrong casts in error case
-		if(resolvedItem == null || resolvedItem.eClass() != proxyItem.eClass())
-		{
-			return null;
-		}
-		
-		return resolvedItem;
-	}
-
-	/**
-	 * Looks up the item for the given uri in the server side data set.
-	 * 
-	 * @param proxyUri Uri for the item.
-	 * 
-	 * @return The item represented by the given proxy uri or null if not found.
-	 */
-	private Item getItemForProxyUri(String proxyUri) {
-		if(proxyUri == null || proxyUri.isEmpty())
-		{
-			return null;
-		}
-		
-		// extract the ident
-		String[] uriParts = proxyUri.split("getItemsWithIdent\\?ident=");
-		
-		if(uriParts.length > 1)
-		{
-			String ident = uriParts[1].trim();
-			while(ident.endsWith("/"))
-			{
-				ident = ident.replace("/", "");
-			}
-			
-			return dataSet.getItemsWithIdent(ident);
-		}
-		
-		return null;
+		return ProxyUtil.resolveProxies(item, dataSet);
 	}
 
 	/*
@@ -839,7 +701,12 @@ public class RESTServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		processRequest(req, resp, RequestType.rtGet);
+		try {
+			processRequest(req, resp, RequestType.rtGet);
+		} catch (Exception e) {
+			this.log("Error while processing GET request " + req.getRequestURI() + req.getQueryString(), LogService.LOG_WARNING);
+			resp.sendError(404, "Internal Error");
+		}
 	}
 
 	/* (non-Javadoc)
@@ -848,7 +715,12 @@ public class RESTServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		processRequest(req, resp, RequestType.rtPost);
+		try {
+			processRequest(req, resp, RequestType.rtPost);
+		} catch (Exception e) {
+			this.log("Error while processing POST request " + req.getRequestURI() + req.getQueryString(), LogService.LOG_WARNING);
+			resp.sendError(404, "Internal Error");
+		}
 	}
 
 	/**
@@ -1021,8 +893,7 @@ public class RESTServlet extends HttpServlet {
 		// retrieve expected character encoding
 		String respEncoding = chooseCharset(request.getHeader("Accept-Charset"));
 
-		log("[Servlet]: " + request.getRemoteAddr() + " requested '"
-				+ requestUrl + "'", LogService.LOG_INFO);
+		log("Rest Request at: " + this.urlSuffix + " : " + requestUrl, LogService.LOG_INFO);
 
 		// process request
 		if (requestUrl.equals("/")) {
@@ -1516,7 +1387,7 @@ public class RESTServlet extends HttpServlet {
 	 * @return The url without html parameters
 	 */
 	private String removeHtmlAttributes(String requestURL) {
-		System.out.println(requestURL);
+		//System.out.println(requestURL);
 		if(requestURL == null)
 		{
 			return null;
