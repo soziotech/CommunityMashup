@@ -399,7 +399,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			return;
 		}
 
-		if (source.getDataSet() != null) {
+		if (source.getDataSet() != null && source.getDataSet() != dataSet) {
 			// There was previously used data set
 			// This is not the way fill data set should be used
 			// During the whole lifecycle of source there should be only one
@@ -1305,8 +1305,12 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			getSourceInstanceMetaTag().delete();
 			// reset active state
 			source.setActiveState(SourceActiveStates.INITIALIZING);
+			
+			// reset data set
+			source.setDataSet(null);
 		}
 		
+		// set state to soped
 		source.setState(SourceState.STOPED);
 	}
 	
