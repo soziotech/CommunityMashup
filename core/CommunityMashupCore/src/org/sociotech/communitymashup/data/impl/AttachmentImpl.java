@@ -263,7 +263,12 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	 * <!-- end-user-doc -->
 	 */
 	public void setFileUrl(String newFileUrl) {
-		String oldFileUrl = fileUrl;
+		String oldFileUrl = getFileUrl();
+		if(oldFileUrl != null && oldFileUrl.equals(newFileUrl))
+		{
+			return;
+		}
+		
 		fileUrl = newFileUrl;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.ATTACHMENT__FILE_URL, oldFileUrl, fileUrl));

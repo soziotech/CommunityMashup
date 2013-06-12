@@ -110,6 +110,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLastModified <em>Last Modified</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLogLevel <em>Log Level</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getIdentCounter <em>Ident Counter</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getIdentPrefix <em>Ident Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,7 +123,6 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n \tPeter Lachenmaier - Design and initial implementation";
-	private static final String idPrefix = "a_";
 	
 	/**
 	 * If set to true the modification date of the data set and all contained items will
@@ -141,17 +141,11 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	private Map<String, List<Item>> typeBasedLookUpMap = new HashMap<String, List<Item>>();
 	
 	/**
-	 * Creates the OCL Environment at first call and then returns the singleton instance.
+	 * Returns a new ocl environment.
 	 * 
-	 * @return The OCL singleton instance, null in error case.
+	 * @return The OCL environment, null in error case.
 	 */
 	public Environment<EPackage, EClassifier, EOperation, EStructuralFeature, EEnumLiteral, EParameter, EObject, CallOperationAction, SendSignalAction, Constraint, EClass, EObject> getOclEnvironment() {
-//		if(oclEnvironment == null)
-//		{
-//			oclEnvironment = (EcoreEnvironment) EcoreEnvironmentFactory.INSTANCE.createEnvironment();
-//		}
-//		return oclEnvironment;
-		
 		// currently always returning a new environement
 		// TODO check performance
 		return 	(EcoreEnvironment) EcoreEnvironmentFactory.INSTANCE.createEnvironment();
@@ -252,9 +246,23 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 */
 	protected Long identCounter = IDENT_COUNTER_EDEFAULT;
 	/**
-	 * Reference to singleton ocl environment. 
+	 * The default value of the '{@link #getIdentPrefix() <em>Ident Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentPrefix()
+	 * @generated
+	 * @ordered
 	 */
-	//private EcoreEnvironment oclEnvironment = null;
+	protected static final String IDENT_PREFIX_EDEFAULT = "a_";
+	/**
+	 * The cached value of the '{@link #getIdentPrefix() <em>Ident Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentPrefix()
+	 * @generated
+	 * @ordered
+	 */
+	protected String identPrefix = IDENT_PREFIX_EDEFAULT;
 	
 	/**
 	 * True means that file attachment caching is on.
@@ -414,6 +422,27 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 */
 	public Long getIdentCounter() {
 		return identCounter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getIdentPrefix() {
+		return identPrefix;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIdentPrefix(String newIdentPrefix) {
+		String oldIdentPrefix = identPrefix;
+		identPrefix = newIdentPrefix;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.DATA_SET__IDENT_PREFIX, oldIdentPrefix, identPrefix));
 	}
 
 	/**
@@ -589,6 +618,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return getLogLevel();
 			case DataPackage.DATA_SET__IDENT_COUNTER:
 				return getIdentCounter();
+			case DataPackage.DATA_SET__IDENT_PREFIX:
+				return getIdentPrefix();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -621,6 +652,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			case DataPackage.DATA_SET__LOG_LEVEL:
 				setLogLevel((Integer)newValue);
 				return;
+			case DataPackage.DATA_SET__IDENT_PREFIX:
+				setIdentPrefix((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -651,6 +685,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			case DataPackage.DATA_SET__LOG_LEVEL:
 				setLogLevel(LOG_LEVEL_EDEFAULT);
 				return;
+			case DataPackage.DATA_SET__IDENT_PREFIX:
+				setIdentPrefix(IDENT_PREFIX_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -677,6 +714,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return LOG_LEVEL_EDEFAULT == null ? getLogLevel() != null : !LOG_LEVEL_EDEFAULT.equals(getLogLevel());
 			case DataPackage.DATA_SET__IDENT_COUNTER:
 				return IDENT_COUNTER_EDEFAULT == null ? identCounter != null : !IDENT_COUNTER_EDEFAULT.equals(identCounter);
+			case DataPackage.DATA_SET__IDENT_PREFIX:
+				return IDENT_PREFIX_EDEFAULT == null ? identPrefix != null : !IDENT_PREFIX_EDEFAULT.equals(identPrefix);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -695,6 +734,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		result.append(lastModified);
 		result.append(", identCounter: ");
 		result.append(identCounter);
+		result.append(", identPrefix: ");
+		result.append(identPrefix);
 		result.append(')');
 		return result.toString();
 	}
@@ -4178,6 +4219,20 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			}
 			return this.getRandomXOrganisations(x);
 		}
+		if ( command.getCommand().equalsIgnoreCase("getIdentsOfExistingItems")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
+			return this.getIdentsOfExistingItems();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getCategoryWithSlug")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.lang.String slug = null;
+			try {
+				slug = (java.lang.String)command.getArg("slug");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.lang.String", command.getArg("slug").getClass().getName());
+			}
+			return this.getCategoryWithSlug(slug);
+		}
 		throw new UnknownOperationException(this, command);
 	}
 
@@ -5009,41 +5064,29 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 */
 	public Item add(Item item) {
 		
-		if(item != null)
+		if(item == null)
 		{
-			Item equalItem = this.getEqualItem(item);
-			if(equalItem != null)
-			{
-				// TODO merge both
-				
-				// return the existing one
-				return equalItem;
-			}
-			
-			// provide a unique ident
-			identCounter ++;
-			item.setIdent(idPrefix + identCounter); 
-			
-			// set creation date to current time if it was not previously set
-			if(item.getCreated() == null)
-			{
-				Date d = new Date();
-				item.setCreated(d);
-			}
-			
-			// add to the same resource as data set
-			Resource resource = this.eResource();
-			if(resource != null)
-			{
-				resource.getContents().add(item);
-			}
-			
-			// add only valid items to data set
-			// TODO if getItems will be extended to deliver only copies this must be adapted
-			getItems().add(item);
+			return null;
 		}
 		
-		return item;
+		if(item.getDataSet() == this)
+		{
+			// already correctly contained
+			return item;
+		}
+		
+		Item equalItem = this.getEqualItem(item);
+		if(equalItem != null)
+		{
+			// return the existing one
+			return equalItem.update(item);
+		}
+		
+		// provide a unique ident
+		identCounter ++;
+		item.setIdent(getIdentPrefix() + identCounter); 
+		
+		return this.forceAdd(item);
 	}
 
 	/**
@@ -6232,6 +6275,87 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 */
 	public EList<Organisation> getRandomXOrganisations(Integer x) {
 		return getRandomXItemsFromList(getOrganisations(), x);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Item forceAdd(Item item) {
+		if(item == null)
+		{
+			return null;
+		}
+
+		// set creation date to current time if it was not previously set
+		if(item.getCreated() == null)
+		{
+			Date d = new Date();
+			item.setCreated(d);
+		}
+
+		// add to the same resource as data set
+		Resource resource = this.eResource();
+		if(resource != null)
+		{
+			resource.getContents().add(item);
+		}
+
+		// add only valid items to data set
+		// TODO if getItems will be extended to deliver only copies this must be adapted
+		getItems().add(item);
+
+		return item;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public String getIdentsOfExistingItems() {
+		EList<Item> allItems = getItems();
+		
+		if(allItems == null || allItems.isEmpty())
+		{
+			return "";
+		}
+		
+		StringBuffer identListBuffer = new StringBuffer();
+		for(Item item : allItems)
+		{
+			identListBuffer.append(item.getIdent() + ",");
+		}
+		// cut last comma and return as string
+		return identListBuffer.substring(0, identListBuffer.length() -1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Category getCategoryWithSlug(String slug) {
+		if(slug == null || slug.isEmpty())
+		{
+			return null;
+		}
+		
+		EList<Category> cats = this.getCategories();
+		
+		if(cats == null)
+		{
+			return null;
+		}
+		
+		for(Category currentCat : cats)
+		{
+			String currentSlug = currentCat.getSlug();
+			if(currentSlug != null && currentSlug.equals(slug))
+			{
+				return currentCat;
+			}
+		}
+		
+		return null;
 	}
 
 	/* (non-Javadoc)

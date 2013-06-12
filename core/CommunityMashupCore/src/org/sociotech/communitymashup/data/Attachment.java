@@ -91,7 +91,7 @@ public interface Attachment extends Extension {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cached File Url</em>' attribute.
 	 * @see org.sociotech.communitymashup.data.DataPackage#getAttachment_CachedFileUrl()
-	 * @model unique="false" changeable="false" volatile="true"
+	 * @model unique="false" transient="true" changeable="false" volatile="true"
 	 * @generated
 	 */
 	String getCachedFileUrl();

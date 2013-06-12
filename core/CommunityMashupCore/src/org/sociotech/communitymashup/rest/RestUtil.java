@@ -34,6 +34,8 @@ import org.sociotech.communitymashup.data.Item;
 public class RestUtil {
 
 
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");;
+
 	/**
 	 * Reads a serialized Object from a String.
 	 * 
@@ -89,15 +91,12 @@ public class RestUtil {
 			return null;
 		}
 		
-		// ISO 8601 date format
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-		
 		dateString = dateString.replace(' ', '+');
 				
 		//try {
 			ParsePosition pp = new ParsePosition(0);
-			sdf.setLenient(true);
-			Date d = sdf.parse(dateString, pp);
+			dateFormat.setLenient(true);
+			Date d = dateFormat.parse(dateString, pp);
 			return d;
 		//} catch (ParseException e) {
 			// no output
@@ -267,5 +266,14 @@ public class RestUtil {
 		// TODO add list operations here (like put ....)
 		
 		return o;
+	}
+
+	public static String toDateString(Date dateOfLastItemChange) {
+		if(dateOfLastItemChange == null)
+		{
+			return null;
+		}
+		
+		return dateFormat.format(dateOfLastItemChange);
 	}
 }

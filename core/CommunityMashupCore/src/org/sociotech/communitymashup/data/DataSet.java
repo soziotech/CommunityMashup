@@ -43,6 +43,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getLastModified <em>Last Modified</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getLogLevel <em>Log Level</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getIdentCounter <em>Ident Counter</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getIdentPrefix <em>Ident Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -236,6 +237,34 @@ public interface DataSet extends EObject {
 	 * @generated
 	 */
 	Long getIdentCounter();
+
+	/**
+	 * Returns the value of the '<em><b>Ident Prefix</b></em>' attribute.
+	 * The default value is <code>"a_"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ident Prefix</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ident Prefix</em>' attribute.
+	 * @see #setIdentPrefix(String)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_IdentPrefix()
+	 * @model default="a_"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
+	 * @generated
+	 */
+	String getIdentPrefix();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.DataSet#getIdentPrefix <em>Ident Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ident Prefix</em>' attribute.
+	 * @see #getIdentPrefix()
+	 * @generated
+	 */
+	void setIdentPrefix(String value);
 
 	/**
 	 * <!-- begin-user-doc --> Returns all items contained in this data set with
@@ -992,6 +1021,36 @@ public interface DataSet extends EObject {
 	 * @generated
 	 */
 	EList<Organisation> getRandomXOrganisations(Integer x);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Adds the given item without merging and ident changing.
+	 * <!-- end-model-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
+	 * @generated
+	 */
+	Item forceAdd(Item item);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns a comma separated list of the idents of all existing items.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getIdentsOfExistingItems();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Category getCategoryWithSlug(String slug);
 
 	/**
 	 * Returns all Attachments.

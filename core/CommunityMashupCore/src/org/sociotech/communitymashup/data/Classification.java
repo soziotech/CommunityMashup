@@ -137,6 +137,17 @@ public interface Classification extends Item {
 	Integer getOrganisationsCount();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns a lowercase name without any non word characters.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getSlug();
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type Classification.
 	 * 
 	 * @generated

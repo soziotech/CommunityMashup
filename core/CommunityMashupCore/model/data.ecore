@@ -959,6 +959,21 @@
       </eAnnotations>
       <eParameters name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     </eOperations>
+    <eOperations name="forceAdd" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Adds the given item without merging and ident changing."/>
+        <details key="noREST" value="true"/>
+      </eAnnotations>
+      <eParameters name="item" eType="#//Item"/>
+    </eOperations>
+    <eOperations name="getIdentsOfExistingItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a comma separated list of the idents of all existing items."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCategoryWithSlug" eType="#//Category">
+      <eParameters name="slug" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" resolveProxies="false" eOpposite="#//Item/dataSet"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheFolder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -989,6 +1004,12 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identCounter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
         changeable="false" defaultValueLiteral="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="noREST" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identPrefix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="a_">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="noREST" value="true"/>
       </eAnnotations>
@@ -1093,6 +1114,12 @@
       </eAnnotations>
       <eParameters name="item" eType="#//Item"/>
     </eOperations>
+    <eOperations name="forceUpdate" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Overwrites this item with the values and referenced objects from the given updated item and returns the this updated item. The given item will be deleted afterwards."/>
+      </eAnnotations>
+      <eParameters name="item" eType="#//Item"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="#//DataSet"
         transient="true" resolveProxies="false" eOpposite="#//DataSet/items"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ident" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -1139,6 +1166,11 @@
     <eOperations name="getPersonsCount" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eOperations name="getContentsCount" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eOperations name="getOrganisationsCount" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eOperations name="getSlug" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a lowercase name without any non word characters."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//Classification">
@@ -1177,12 +1209,6 @@
         eOpposite="#//Person/leaderOf"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="participants" upperBound="-1"
         eType="#//Person" eOpposite="#//Person/participates"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="phones" upperBound="-1"
-        eType="#//Phone"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="emails" upperBound="-1"
-        eType="#//Email"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="webAccounts" upperBound="-1"
-        eType="#//WebAccount"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="organisations" upperBound="-1"
         eType="#//Organisation" eOpposite="#//Organisation/parentOrganisation"/>
   </eClassifiers>
@@ -1270,7 +1296,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cachedFileUrl" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
-        volatile="true"/>
+        volatile="true" transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cachedOnly" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

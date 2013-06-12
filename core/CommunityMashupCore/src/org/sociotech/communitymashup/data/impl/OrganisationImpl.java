@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
@@ -84,9 +83,6 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getParentOrganisation <em>Parent Organisation</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getLeader <em>Leader</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getParticipants <em>Participants</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getPhones <em>Phones</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getEmails <em>Emails</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getWebAccounts <em>Web Accounts</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.OrganisationImpl#getOrganisations <em>Organisations</em>}</li>
  * </ul>
  * </p>
@@ -130,36 +126,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 	 * @ordered
 	 */
 	protected EList<Person> participants;
-
-	/**
-	 * The cached value of the '{@link #getPhones() <em>Phones</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPhones()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Phone> phones;
-
-	/**
-	 * The cached value of the '{@link #getEmails() <em>Emails</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEmails()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Email> emails;
-
-	/**
-	 * The cached value of the '{@link #getWebAccounts() <em>Web Accounts</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWebAccounts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<WebAccount> webAccounts;
 
 	/**
 	 * The cached value of the '{@link #getOrganisations() <em>Organisations</em>}' reference list.
@@ -324,42 +290,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Phone> getPhones() {
-		if (phones == null) {
-			phones = new EObjectResolvingEList<Phone>(Phone.class, this, DataPackage.ORGANISATION__PHONES);
-		}
-		return phones;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Email> getEmails() {
-		if (emails == null) {
-			emails = new EObjectResolvingEList<Email>(Email.class, this, DataPackage.ORGANISATION__EMAILS);
-		}
-		return emails;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<WebAccount> getWebAccounts() {
-		if (webAccounts == null) {
-			webAccounts = new EObjectResolvingEList<WebAccount>(WebAccount.class, this, DataPackage.ORGANISATION__WEB_ACCOUNTS);
-		}
-		return webAccounts;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * Creates a new list with the leaders and all participants.
 	 * 
 	 * @return List of Persons with the leader and all participants of this organisation.
@@ -496,12 +426,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 				return basicGetLeader();
 			case DataPackage.ORGANISATION__PARTICIPANTS:
 				return getParticipants();
-			case DataPackage.ORGANISATION__PHONES:
-				return getPhones();
-			case DataPackage.ORGANISATION__EMAILS:
-				return getEmails();
-			case DataPackage.ORGANISATION__WEB_ACCOUNTS:
-				return getWebAccounts();
 			case DataPackage.ORGANISATION__ORGANISATIONS:
 				return getOrganisations();
 		}
@@ -526,18 +450,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 			case DataPackage.ORGANISATION__PARTICIPANTS:
 				getParticipants().clear();
 				getParticipants().addAll((Collection<? extends Person>)newValue);
-				return;
-			case DataPackage.ORGANISATION__PHONES:
-				getPhones().clear();
-				getPhones().addAll((Collection<? extends Phone>)newValue);
-				return;
-			case DataPackage.ORGANISATION__EMAILS:
-				getEmails().clear();
-				getEmails().addAll((Collection<? extends Email>)newValue);
-				return;
-			case DataPackage.ORGANISATION__WEB_ACCOUNTS:
-				getWebAccounts().clear();
-				getWebAccounts().addAll((Collection<? extends WebAccount>)newValue);
 				return;
 			case DataPackage.ORGANISATION__ORGANISATIONS:
 				getOrganisations().clear();
@@ -564,15 +476,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 			case DataPackage.ORGANISATION__PARTICIPANTS:
 				getParticipants().clear();
 				return;
-			case DataPackage.ORGANISATION__PHONES:
-				getPhones().clear();
-				return;
-			case DataPackage.ORGANISATION__EMAILS:
-				getEmails().clear();
-				return;
-			case DataPackage.ORGANISATION__WEB_ACCOUNTS:
-				getWebAccounts().clear();
-				return;
 			case DataPackage.ORGANISATION__ORGANISATIONS:
 				getOrganisations().clear();
 				return;
@@ -594,12 +497,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 				return leader != null;
 			case DataPackage.ORGANISATION__PARTICIPANTS:
 				return participants != null && !participants.isEmpty();
-			case DataPackage.ORGANISATION__PHONES:
-				return phones != null && !phones.isEmpty();
-			case DataPackage.ORGANISATION__EMAILS:
-				return emails != null && !emails.isEmpty();
-			case DataPackage.ORGANISATION__WEB_ACCOUNTS:
-				return webAccounts != null && !webAccounts.isEmpty();
 			case DataPackage.ORGANISATION__ORGANISATIONS:
 				return organisations != null && !organisations.isEmpty();
 		}
@@ -632,12 +529,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 			return this.getLeader();		
 		if ( featureName.equalsIgnoreCase("participants") )
 			return this.getParticipants();		
-		if ( featureName.equalsIgnoreCase("phones") )
-			return this.getPhones();		
-		if ( featureName.equalsIgnoreCase("emails") )
-			return this.getEmails();		
-		if ( featureName.equalsIgnoreCase("webAccounts") )
-			return this.getWebAccounts();		
 		if ( featureName.equalsIgnoreCase("organisations") )
 			return this.getOrganisations();			
 		return super.getFeature(featureName); 

@@ -240,6 +240,27 @@ public abstract class ClassificationImpl extends ItemImpl implements Classificat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public String getSlug() {
+		String slug = getName();
+		if(slug == null || slug.isEmpty())
+		{
+			slug = getIdent();
+		}
+		
+		if(slug == null || slug.isEmpty())
+		{
+			// fallback if no ident or name set
+			return "slug";
+		}
+		
+		// return lowercase without non word characters
+		return slug.toLowerCase().replaceAll("\\W", "");
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -398,6 +419,10 @@ public abstract class ClassificationImpl extends ItemImpl implements Classificat
 		if ( command.getCommand().equalsIgnoreCase("getOrganisationsCount")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("Classification.doOperation", 0, command.getArgCount()); 
 			return this.getOrganisationsCount();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getSlug")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("Classification.doOperation", 0, command.getArgCount()); 
+			return this.getSlug();
 		}	
 		return super.doOperation(command);
 	}

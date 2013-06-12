@@ -245,6 +245,11 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	protected EList<MetaInformation> metaInformations;
 
 	/**
+	 * Factory for creating items
+	 */
+	private static DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -480,21 +485,18 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		{
 			return null;
 		}
-		// find the Tag with the given string value
-		Tag tag = dataSet.getTag(name);
-		
-		if(tag == null)
-		{
-			DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
-			tag = dataFactory.createTag();
-			tag.setName(name);
 			
-			// add the new Tag to the data set
-			dataSet.add(tag);
-		}
+		Tag tag = dataFactory.createTag();
+		tag.setName(name);
+			
+		// add the new Tag to the data set
+		tag = (Tag) dataSet.add(tag);
 		
-		// tag this information object
-		this.getTags().add(tag);
+		if(tag != null)
+		{
+			// tag this information object
+			this.getTags().add(tag);
+		}
 		
 		return tag;
 	}
@@ -516,20 +518,17 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			return null;
 		}
 		
-		// find the Category with the given name
-		Category category = this.getDataSet().getCategory(name);
+		Category category = dataFactory.createCategory();
+		category.setName(name);
 		
-		if(category == null)
+		// add the new Category to the data set
+		category = (Category) dataSet.add(category);
+		
+		if(category != null)
 		{
-			DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
-			category = dataFactory.createCategory();
-			category.setName(name);
-			// add the new Category to the data set
-			dataSet.add(category);
+			// categorize this information object
+			this.getCategories().add(category);
 		}
-		
-		// categorize this information object
-		this.getCategories().add(category);
 		
 		return category;
 	}
@@ -554,23 +553,24 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			return image;
 		}
 		
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
-		
 		// create image object
 		image = dataFactory.createImage();
+		
+		// set the url
+		image.setFileUrl(imageUrl);
 		
 		// add it to the data set
 		DataSet dataSet = this.getDataSet();
 		if(dataSet != null)
 		{
-			dataSet.add(image);
+			image = (Image) dataSet.add(image);
 		}
 		
-		// set the url
-		image.setFileUrl(imageUrl);
-		
-		// attach it to this information object
-		this.getImages().add(image);
+		if(image != null)
+		{
+			// attach it to this information object
+			this.getImages().add(image);
+		}
 		
 		return image;
 	}
@@ -610,8 +610,6 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		
 		double normalizedValue = stars.doubleValue()/ofStars.doubleValue();
 		
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
-		
 		// create new star Ranking
 		StarRanking starRanking = dataFactory.createStarRanking();
 		starRanking.setRankedInformationObject(this);
@@ -619,7 +617,10 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		starRanking.setNormalizedValue(normalizedValue);
 		
 		// add ranking to data set
-		this.getDataSet().add(starRanking);
+		if(this.getDataSet() != null)
+		{
+			starRanking = (StarRanking) this.getDataSet().add(starRanking);
+		}
 		
 		return starRanking;
 	}
@@ -629,14 +630,20 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 * <!-- end-user-doc -->
 	 */
 	public ViewRanking view() {
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
 		
 		// create new view ranking
 		ViewRanking viewRanking = dataFactory.createViewRanking();
-		viewRanking.setRankedInformationObject(this);
-	
+		
 		// add ranking to data set
-		this.getDataSet().add(viewRanking);
+		if(this.getDataSet() != null)
+		{
+			viewRanking = (ViewRanking) this.getDataSet().add(viewRanking);
+		}
+		
+		if(viewRanking != null)
+		{
+			viewRanking.setRankedInformationObject(this);
+		}
 		
 		return viewRanking;
 	}
@@ -646,16 +653,21 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 * <!-- end-user-doc -->
 	 */
 	public ThumbRanking thumbsUp() {
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
 		
 		// create new thumb ranking
 		ThumbRanking thumbRanking = dataFactory.createThumbRanking();
 		thumbRanking.setStringValue(ThumbRanking.THUMBS_UP_VALUE);
 		
-		thumbRanking.setRankedInformationObject(this);
-		
 		// add ranking to data set
-		this.getDataSet().add(thumbRanking);
+		if(this.getDataSet() != null)
+		{
+			thumbRanking = (ThumbRanking) this.getDataSet().add(thumbRanking);
+		}
+		
+		if(thumbRanking != null)
+		{
+			thumbRanking.setRankedInformationObject(this);
+		}
 		
 		return thumbRanking;
 	}
@@ -665,16 +677,21 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 * <!-- end-user-doc -->
 	 */
 	public ThumbRanking thumbsDown() {
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
 		
 		// create new thumb ranking
 		ThumbRanking thumbRanking = dataFactory.createThumbRanking();
 		thumbRanking.setStringValue(ThumbRanking.THUMBS_DOWN_VALUE);
 		
-		thumbRanking.setRankedInformationObject(this);
-		
 		// add ranking to data set
-		this.getDataSet().add(thumbRanking);
+		if(this.getDataSet() != null)
+		{
+			thumbRanking = (ThumbRanking) this.getDataSet().add(thumbRanking);
+		}
+		
+		if(thumbRanking != null)
+		{
+			thumbRanking.setRankedInformationObject(this);
+		}
 		
 		return thumbRanking;
 	}
@@ -831,17 +848,18 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			return null;
 		}
 		
-		EList<MetaInformation> metaInformations = this.getMetaInformations();
-		
-		if(metaInformations.contains(metaInformation))
+		// add it to data set
+		if(this.getDataSet() != null)
 		{
-			// return the existing object
-			return metaInformations.get(this.metaInformations.indexOf(metaInformation));
+			metaInformation = (MetaInformation) this.getDataSet().add(metaInformation);
 		}
 		
-		// TODO: if getMetaInformations will be extended to deliver only a copy, this must be adapted
-		// add it
-		metaInformations.add(metaInformation);
+		EList<MetaInformation> metaInformations = this.getMetaInformations();
+		
+		if(metaInformation != null && !metaInformations.contains(metaInformation))
+		{
+			metaInformations.add(metaInformation);
+		}
 		
 		return metaInformation;
 	}
@@ -1074,32 +1092,19 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 */
 	public Email addEmailAddress(String emailAdress) {
 		
-		// TODO check in Email object already exist case insensitive
-		
 		if(emailAdress == null || emailAdress.equals(""))
 		{
 			return null;
 		}
 		
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
-		
 		// create email object
 		Email email = dataFactory.createEmail();
-		
-		// add it to the data set
-		DataSet dataSet = this.getDataSet();
-		if(dataSet != null)
-		{
-			dataSet.add(email);
-		}
 		
 		// set the address
 		email.setAdress(emailAdress);
 		
 		// attach it to this information object
-		this.extend(email);
-		
-		return email;
+		return (Email) this.extend(email);
 	}
 
 	/**
@@ -1112,25 +1117,14 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			return null;
 		}
 		
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
-		
 		// create web site object
 		WebSite webSite = dataFactory.createWebSite();
 		
 		// set the address
 		webSite.setAdress(url);
 				
-		// add it to the data set
-		DataSet dataSet = this.getDataSet();
-		if(dataSet != null)
-		{
-			dataSet.add(webSite);
-		}
-		
 		// attach it to this information object
-		webSite = (WebSite) this.extend(webSite);
-		
-		return webSite;
+		return (WebSite) this.extend(webSite);
 	}
 
 	/**
@@ -1166,28 +1160,15 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		{
 			return null;
 		}
-		
-		// TODO check if web account already exist (same meta tags?)
-		
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
-		
+	
 		// create web account object
 		WebAccount webAccount = dataFactory.createWebAccount();
-		
-		// add it to the data set
-		DataSet dataSet = this.getDataSet();
-		if(dataSet != null)
-		{
-			dataSet.add(webAccount);
-		}
 		
 		// set the username
 		webAccount.setUsername(username);
 		
 		// attach it to this information object
-		this.extend(webAccount);
-		
-		return webAccount;
+		return (WebAccount) this.extend(webAccount);
 	}
 
 	/**
@@ -1368,10 +1349,10 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		if(connection == null)
 		{
 			// create new connection object
-			connection = DataFactory.eINSTANCE.createConnection();
+			connection = dataFactory.createConnection();
 			if(this.getDataSet() != null)
 			{
-				this.getDataSet().add(connection);
+				connection = (Connection) this.getDataSet().add(connection);
 			}
 			connection.setTo(informationObject);
 			connection.setFrom(this);
@@ -1474,26 +1455,15 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		{
 			return null;
 		}
-		
-		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
-		
+	
 		// create phone object
 		Phone phone = dataFactory.createPhone();
 		
 		// set the phonenumber
 		phone.setNumber(phoneNumber);
-				
-		// add it to the data set
-		DataSet dataSet = this.getDataSet();
-		if(dataSet != null)
-		{
-			dataSet.add(phone);
-		}
 		
 		// attach it to this information object
-		phone = (Phone) this.extend(phone);
-		
-		return phone;
+		return (Phone) this.extend(phone);
 	}
 
 	/**

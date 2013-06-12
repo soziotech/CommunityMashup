@@ -36,9 +36,6 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.Organisation#getParentOrganisation <em>Parent Organisation</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Organisation#getLeader <em>Leader</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Organisation#getParticipants <em>Participants</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.Organisation#getPhones <em>Phones</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.Organisation#getEmails <em>Emails</em>}</li>
- *   <li>{@link org.sociotech.communitymashup.data.Organisation#getWebAccounts <em>Web Accounts</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Organisation#getOrganisations <em>Organisations</em>}</li>
  * </ul>
  * </p>
@@ -128,54 +125,6 @@ public interface Organisation extends InformationObject {
 	 * @generated
 	 */
 	EList<Person> getParticipants();
-
-	/**
-	 * Returns the value of the '<em><b>Phones</b></em>' reference list.
-	 * The list contents are of type {@link org.sociotech.communitymashup.data.Phone}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Phones</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Phones</em>' reference list.
-	 * @see org.sociotech.communitymashup.data.DataPackage#getOrganisation_Phones()
-	 * @model
-	 * @generated
-	 */
-	EList<Phone> getPhones();
-
-	/**
-	 * Returns the value of the '<em><b>Emails</b></em>' reference list.
-	 * The list contents are of type {@link org.sociotech.communitymashup.data.Email}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Emails</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Emails</em>' reference list.
-	 * @see org.sociotech.communitymashup.data.DataPackage#getOrganisation_Emails()
-	 * @model
-	 * @generated
-	 */
-	EList<Email> getEmails();
-
-	/**
-	 * Returns the value of the '<em><b>Web Accounts</b></em>' reference list.
-	 * The list contents are of type {@link org.sociotech.communitymashup.data.WebAccount}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Web Accounts</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Web Accounts</em>' reference list.
-	 * @see org.sociotech.communitymashup.data.DataPackage#getOrganisation_WebAccounts()
-	 * @model
-	 * @generated
-	 */
-	EList<WebAccount> getWebAccounts();
 
 	/**
 	 * <!-- begin-user-doc -->

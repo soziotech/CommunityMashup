@@ -1066,13 +1066,22 @@ public interface DataPackage extends EPackage {
 	int DATA_SET__IDENT_COUNTER = 6;
 
 	/**
+	 * The feature id for the '<em><b>Ident Prefix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET__IDENT_PREFIX = 7;
+
+	/**
 	 * The number of structural features of the '<em>Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_FEATURE_COUNT = 7;
+	int DATA_SET_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -1818,40 +1827,13 @@ public interface DataPackage extends EPackage {
 	int ORGANISATION__PARTICIPANTS = INFORMATION_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Phones</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANISATION__PHONES = INFORMATION_OBJECT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Emails</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANISATION__EMAILS = INFORMATION_OBJECT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Web Accounts</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORGANISATION__WEB_ACCOUNTS = INFORMATION_OBJECT_FEATURE_COUNT + 5;
-
-	/**
 	 * The feature id for the '<em><b>Organisations</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANISATION__ORGANISATIONS = INFORMATION_OBJECT_FEATURE_COUNT + 6;
+	int ORGANISATION__ORGANISATIONS = INFORMATION_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Organisation</em>' class.
@@ -1860,7 +1842,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORGANISATION_FEATURE_COUNT = INFORMATION_OBJECT_FEATURE_COUNT + 7;
+	int ORGANISATION_FEATURE_COUNT = INFORMATION_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.MetaTagImpl <em>Meta Tag</em>}' class.
@@ -5508,6 +5490,17 @@ public interface DataPackage extends EPackage {
 	EAttribute getDataSet_IdentCounter();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.DataSet#getIdentPrefix <em>Ident Prefix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ident Prefix</em>'.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIdentPrefix()
+	 * @see #getDataSet()
+	 * @generated
+	 */
+	EAttribute getDataSet_IdentPrefix();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Item <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5775,39 +5768,6 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOrganisation_Participants();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Organisation#getPhones <em>Phones</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Phones</em>'.
-	 * @see org.sociotech.communitymashup.data.Organisation#getPhones()
-	 * @see #getOrganisation()
-	 * @generated
-	 */
-	EReference getOrganisation_Phones();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Organisation#getEmails <em>Emails</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Emails</em>'.
-	 * @see org.sociotech.communitymashup.data.Organisation#getEmails()
-	 * @see #getOrganisation()
-	 * @generated
-	 */
-	EReference getOrganisation_Emails();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Organisation#getWebAccounts <em>Web Accounts</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Web Accounts</em>'.
-	 * @see org.sociotech.communitymashup.data.Organisation#getWebAccounts()
-	 * @see #getOrganisation()
-	 * @generated
-	 */
-	EReference getOrganisation_WebAccounts();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Organisation#getOrganisations <em>Organisations</em>}'.
@@ -6883,6 +6843,14 @@ public interface DataPackage extends EPackage {
 		EAttribute DATA_SET__IDENT_COUNTER = eINSTANCE.getDataSet_IdentCounter();
 
 		/**
+		 * The meta object literal for the '<em><b>Ident Prefix</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SET__IDENT_PREFIX = eINSTANCE.getDataSet_IdentPrefix();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ItemImpl <em>Item</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7093,30 +7061,6 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ORGANISATION__PARTICIPANTS = eINSTANCE.getOrganisation_Participants();
-
-		/**
-		 * The meta object literal for the '<em><b>Phones</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ORGANISATION__PHONES = eINSTANCE.getOrganisation_Phones();
-
-		/**
-		 * The meta object literal for the '<em><b>Emails</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ORGANISATION__EMAILS = eINSTANCE.getOrganisation_Emails();
-
-		/**
-		 * The meta object literal for the '<em><b>Web Accounts</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ORGANISATION__WEB_ACCOUNTS = eINSTANCE.getOrganisation_WebAccounts();
 
 		/**
 		 * The meta object literal for the '<em><b>Organisations</b></em>' reference list feature.

@@ -460,6 +460,17 @@ public interface Item extends EObject {
 	Item update(Item item);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Overwrites this item with the values and referenced objects from the given updated item and returns the this updated item. The given item will be deleted afterwards.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Item forceUpdate(Item item);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type Item.
 	 * 
 	 * @generated

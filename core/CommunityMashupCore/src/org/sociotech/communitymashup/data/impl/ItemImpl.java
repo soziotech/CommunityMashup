@@ -82,6 +82,7 @@ import org.sociotech.communitymashup.data.ViewRanking;
 import org.sociotech.communitymashup.data.WebAccount;
 import org.sociotech.communitymashup.data.WebSite;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
+import org.sociotech.communitymashup.rest.ProxyUtil;
 import org.sociotech.communitymashup.rest.RequestType;
 import org.sociotech.communitymashup.rest.RestCommand;
 import org.sociotech.communitymashup.rest.RestUtil;
@@ -725,6 +726,11 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			return false;
 		}	
 		
+		if(this.getIdent() != null && !this.getIdent().isEmpty() && this.getIdent().equals(item.getIdent()))
+		{
+			return true;
+		}
+		
 		EList<Identifier> itemIdentifiers = item.getIdentifiedBy();
 		EList<Identifier> thisIdentifiers = this.getIdentifiedBy();
 		
@@ -821,9 +827,7 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			return null;
 		}
 		
-		Item updatedItem = (Item) item;
-		
-		if(updatedItem.eClass() != this.eClass())
+		if(item.eClass() != this.eClass())
 		{
 			// only updates of same type are allowed
 			log("Item " + this.getIdent() + " and Item " + item.getIdent() + " are from different types and can not be updated.", LogService.LOG_WARNING);
@@ -846,6 +850,12 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		// step through all attributes and update them
 		for(EAttribute attribute : attributes)
 		{
+			if(!attribute.isChangeable())
+			{
+				// continue with next attribute if this can not be updated
+				continue;
+			}
+			
 			Object attributeValue1 = this.eGet(attribute);
 			Object attributeValue2 = item.eGet(attribute);
 			if(attribute.getFeatureID() == DataPackage.ITEM__IDENT)
@@ -964,6 +974,202 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				}
 				
 				this.eSet(reference, addedItem);
+			}
+		}
+		
+		// delete update item
+		item.delete();
+		
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * The implementation tries to avoid all unnecessary modifications to avoid sending of unneccessary change notifications.
+	 * <!-- end-user-doc -->
+	 */
+	@SuppressWarnings("unchecked")
+	public Item forceUpdate(Item item) {
+		if(item == null)
+		{
+			// no update can be performed
+			return null;
+		}
+		
+		Item updatedItem = (Item) item;
+		
+		if(updatedItem.eClass() != this.eClass())
+		{
+			// only updates of same type are allowed
+			log("Item " + this.getIdent() + " and Item " + item.getIdent() + " are from different types and can not be updated.", LogService.LOG_WARNING);
+			return null;
+		}
+
+		if(item == this)
+		{
+			// no merge needed on same objects
+			return this;
+		}
+		
+		
+		log("Forcing update on " + this.getIdent() + " with " + item.getIdent(), LogService.LOG_DEBUG);
+		
+		// get possible attributes and references
+		EList<EAttribute> attributes = this.eClass().getEAllAttributes();
+		EList<EReference> references = this.eClass().getEAllReferences();
+		
+		// step through all attributes and update them
+		for(EAttribute attribute : attributes)
+		{
+			if(!attribute.isChangeable())
+			{
+				// continue with next item
+				continue;
+			}
+			
+			Object attributeValue2 = item.eGet(attribute);
+			Object attributeValue1 = this.eGet(attribute);
+			if(attributeValue1 != null && attributeValue1.equals(attributeValue2) ||
+			   attributeValue1 == null && attributeValue2 == null)
+			{
+				// no change needed
+				continue;
+			}
+			log("Setting attribute " + attribute.getName() + " for item " + this.getIdent() + " to " + attributeValue2, LogService.LOG_DEBUG);
+			this.eSet(attribute, attributeValue2);
+		}
+		
+		// step over all references and merge reference lists
+		for(EReference reference : references)
+		{
+			Object referencedObject1 = this.eGet(reference);
+			Object referencedObject2 = item.eGet(reference);
+			
+			if(referencedObject1 == null && referencedObject2 == null)
+			{
+				// nothing to do
+				continue;
+			}
+			
+			if(referencedObject1 instanceof DataSet)
+			{
+				// dont change the data set reference
+				continue;
+			}
+			
+			if(referencedObject2 == null)
+			{
+				item.eSet(reference, null);
+			}
+			
+			
+			if(referencedObject1 instanceof EList<?> && referencedObject2 instanceof EList<?>)
+			{
+				EList<Item> list2 = null;
+				try {
+					// try to cast, there should only be list of items
+					list2 = (EList<Item>) referencedObject2;
+				} catch (Exception e) {
+					// merge only list of items
+					log("References contain a list of non Item!", LogService.LOG_WARNING);
+					continue;
+				}
+				
+				log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
+				log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
+				
+				EList<Item> list1 = (EList<Item>) referencedObject1;
+				
+				// temporary keep all items from list1
+				List<Item> tmpList1 = new LinkedList<Item>(list1);
+				
+				
+				// temporary keep all items from list2
+				List<Item> tmpList2 = new LinkedList<Item>(list2);
+				
+				// step over all items and add them to list 1
+				for(Item tmpItem : tmpList2)
+				{
+					if(tmpItem.eIsProxy())
+					{
+						String tmpIdent = ProxyUtil.getIdentFromProxyItem(tmpItem);
+						// look if item is in list 1
+						boolean contained = false;
+						for(Item listItem : tmpList1)
+						{
+							if(listItem.getIdent().equals(tmpIdent))
+							{
+								contained = true;
+								break;
+							}
+						}
+						if(contained)
+						{
+							continue; 
+						}
+						// resolve proxies and add it if not in list
+						Item resolvedItem = ProxyUtil.resolveProxyItem(tmpItem, this.getDataSet());
+						if(resolvedItem != null)
+						{
+							list1.add(resolvedItem);
+						}
+						continue;
+					}
+					// add it to list if not already contained
+					if(!list1.contains(tmpItem))
+					{
+						list1.add(tmpItem);
+					}
+				}
+			
+				// step over all items and remove the ones that are not contained in list 2
+				for(Item tmpItem : tmpList1)
+				{
+					if(list2.contains(tmpItem))
+					{
+						continue;
+					}
+					// check also proxy items
+					boolean contained = false;
+					for(Item listItem : list2)
+					{
+						if(!listItem.eIsProxy())
+						{
+							continue;
+						}
+							
+						String listItemIdent = ProxyUtil.getIdentFromProxyItem(listItem);
+	
+						if(tmpItem.getIdent() != null && tmpItem.getIdent().equals(listItemIdent))
+						{
+							contained = true;
+							break;
+						}
+					}
+					if(contained)
+					{
+						continue; 
+					}
+					
+					// remove it from first list
+					list1.remove(tmpItem);
+				}
+				
+				// clear list 2
+				list2.clear();
+			}
+			
+			// resolve possible proxy
+			if(referencedObject2 instanceof Item && ((Item) referencedObject2).eIsProxy())
+			{
+				referencedObject2 = ProxyUtil.resolveProxyItem(referencedObject2, this.getDataSet());
+			}
+			
+			// simple object reference
+			if((referencedObject1 == null && referencedObject2 instanceof Item) ||
+			   (referencedObject2 == null && referencedObject1 instanceof Item))
+			{
+				this.eSet(reference, (Item) referencedObject2);
 			}
 		}
 		
@@ -1489,6 +1695,20 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			}
 			return this.update(item);
 		}
+		if ( command.getCommand().equalsIgnoreCase("forceUpdate")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("Item.doOperation", 1, command.getArgCount()); 
+			Item item = null;
+			try {
+				try {
+					item = (Item)(RestUtil.fromInput(command.getArg("item")));
+				} catch (ClassNotFoundException e) {
+					item = (Item)command.getArg("item");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Item.doOperation", "Item", command.getArg("item").getClass().getName());
+			}
+			return this.forceUpdate(item);
+		}
 		throw new UnknownOperationException(this, command);
 	}
 
@@ -1764,8 +1984,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	 */
 	@Override
 	public boolean canHaveEqualItem() {
-		// can have an equal item if an identifier is defined
-		return this.getIdentifiedBy() != null && !this.getIdentifiedBy().isEmpty();
+		// can have an equal item if ident or an identifier is defined
+		return (this.getIdent() != null && !this.getIdent().isEmpty()) || (this.getIdentifiedBy() != null && !this.getIdentifiedBy().isEmpty());
 	}
 	
 } //ItemImpl

@@ -744,6 +744,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDataSet_IdentPrefix() {
+		return (EAttribute)dataSetEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItem() {
 		return itemEClass;
 	}
@@ -969,35 +978,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOrganisation_Phones() {
-		return (EReference)organisationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOrganisation_Emails() {
-		return (EReference)organisationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOrganisation_WebAccounts() {
-		return (EReference)organisationEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOrganisation_Organisations() {
-		return (EReference)organisationEClass.getEStructuralFeatures().get(6);
+		return (EReference)organisationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1666,6 +1648,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(dataSetEClass, DATA_SET__LAST_MODIFIED);
 		createEAttribute(dataSetEClass, DATA_SET__LOG_LEVEL);
 		createEAttribute(dataSetEClass, DATA_SET__IDENT_COUNTER);
+		createEAttribute(dataSetEClass, DATA_SET__IDENT_PREFIX);
 
 		itemEClass = createEClass(ITEM);
 		createEReference(itemEClass, ITEM__DATA_SET);
@@ -1697,9 +1680,6 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(organisationEClass, ORGANISATION__PARENT_ORGANISATION);
 		createEReference(organisationEClass, ORGANISATION__LEADER);
 		createEReference(organisationEClass, ORGANISATION__PARTICIPANTS);
-		createEReference(organisationEClass, ORGANISATION__PHONES);
-		createEReference(organisationEClass, ORGANISATION__EMAILS);
-		createEReference(organisationEClass, ORGANISATION__WEB_ACCOUNTS);
 		createEReference(organisationEClass, ORGANISATION__ORGANISATIONS);
 
 		metaTagEClass = createEClass(META_TAG);
@@ -2044,6 +2024,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getDataSet_LastModified(), ecorePackage.getEDate(), "lastModified", null, 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_LogLevel(), ecorePackage.getEIntegerObject(), "logLevel", null, 0, 1, DataSet.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_IdentCounter(), ecorePackage.getELongObject(), "identCounter", "1", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSet_IdentPrefix(), ecorePackage.getEString(), "identPrefix", "a_", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(dataSetEClass, this.getItem(), "add", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -2330,6 +2311,14 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		op = addEOperation(dataSetEClass, this.getOrganisation(), "getRandomXOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataSetEClass, this.getItem(), "forceAdd", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataSetEClass, ecorePackage.getEString(), "getIdentsOfExistingItems", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataSetEClass, this.getCategory(), "getCategoryWithSlug", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "slug", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_DataSet(), this.getDataSet(), this.getDataSet_Items(), "dataSet", null, 0, 1, Item.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_Ident(), ecorePackage.getEString(), "ident", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2388,6 +2377,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		op = addEOperation(itemEClass, this.getItem(), "update", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(itemEClass, this.getItem(), "forceUpdate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(extensionEClass, Extension.class, "Extension", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(extensionEClass, this.getMetaTag(), "tag", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -2410,6 +2402,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		addEOperation(classificationEClass, ecorePackage.getEIntegerObject(), "getOrganisationsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(classificationEClass, ecorePackage.getEString(), "getSlug", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCategory_Categorized(), this.getInformationObject(), this.getInformationObject_Categories(), "categorized", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCategory_ParentCategory(), this.getCategory(), this.getCategory_Categories(), "parentCategory", null, 0, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2423,9 +2417,6 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getOrganisation_ParentOrganisation(), this.getOrganisation(), this.getOrganisation_Organisations(), "parentOrganisation", null, 0, 1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrganisation_Leader(), this.getPerson(), this.getPerson_LeaderOf(), "leader", null, 0, 1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrganisation_Participants(), this.getPerson(), this.getPerson_Participates(), "participants", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrganisation_Phones(), this.getPhone(), null, "phones", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrganisation_Emails(), this.getEmail(), null, "emails", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrganisation_WebAccounts(), this.getWebAccount(), null, "webAccounts", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrganisation_Organisations(), this.getOrganisation(), this.getOrganisation_ParentOrganisation(), "organisations", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(organisationEClass, this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
@@ -2473,7 +2464,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		initEClass(attachmentEClass, Attachment.class, "Attachment", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttachment_FileUrl(), ecorePackage.getEString(), "fileUrl", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAttachment_CachedFileUrl(), ecorePackage.getEString(), "cachedFileUrl", null, 0, 1, Attachment.class, !IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttachment_CachedFileUrl(), ecorePackage.getEString(), "cachedFileUrl", null, 0, 1, Attachment.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttachment_CachedOnly(), ecorePackage.getEBooleanObject(), "cachedOnly", "false", 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttachment_FileExtension(), ecorePackage.getEString(), "fileExtension", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttachment_FileIdentifier(), ecorePackage.getEString(), "fileIdentifier", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
