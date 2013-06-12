@@ -45,6 +45,11 @@ public class FileSourceService extends SourceServiceFacadeImpl
 	 */
 	private Map<String, Item> addedItems = new HashMap<String, Item>();
 	
+	/**
+	 * Prefix to add to all idents before adding to avoid wrong merges.
+	 */
+	private static final String identPrefix = "file_";
+	
 	private boolean speedUp;
 	
 	/* (non-Javadoc)
@@ -98,6 +103,15 @@ public class FileSourceService extends SourceServiceFacadeImpl
 		// duplicate list to avoid concurrent modifications
 		List<Item> tmpList = new LinkedList<Item>(items);
 
+		// add all items
+		for(Item item : tmpList)
+		{
+			if(item.getIdent() != null)
+			{
+				item.setIdent(identPrefix + item.getIdent());
+			}
+		}
+				
 		// add all items
 		for(Item item : tmpList)
 		{
