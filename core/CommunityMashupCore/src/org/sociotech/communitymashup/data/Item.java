@@ -471,6 +471,17 @@ public interface Item extends EObject {
 	Item forceUpdate(Item item);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Removes the @link MetaTag Meta Tag@endlink represented by the given name from this item. If the @link MetaTag Meta Tag@endlink already exists, this item will be added to its tagged items. If it does not exist, nothing will be done.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	MetaTag unMetaTag(String name);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type Item.
 	 * 
 	 * @generated

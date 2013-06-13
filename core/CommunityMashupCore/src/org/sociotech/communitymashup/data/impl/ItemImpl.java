@@ -1179,6 +1179,31 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public MetaTag unMetaTag(String name) {
+		EList<MetaTag> thisMetaTags = this.getMetaTags();
+		if(name == null || name.isEmpty() || thisMetaTags == null || thisMetaTags.isEmpty())
+		{
+			return null;
+		}
+		
+		// find tag
+		for(MetaTag current : thisMetaTags)
+		{
+			if(name.equalsIgnoreCase(current.getName()))
+			{
+				// found -> remove and return
+				thisMetaTags.remove(current);
+				return current;
+			}
+		}
+		
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -1708,6 +1733,16 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				throw new WrongArgException("Item.doOperation", "Item", command.getArg("item").getClass().getName());
 			}
 			return this.forceUpdate(item);
+		}
+		if ( command.getCommand().equalsIgnoreCase("unMetaTag")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("Item.doOperation", 1, command.getArgCount()); 
+			java.lang.String name = null;
+			try {
+				name = (java.lang.String)command.getArg("name");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Item.doOperation", "java.lang.String", command.getArg("name").getClass().getName());
+			}
+			return this.unMetaTag(name);
 		}
 		throw new UnknownOperationException(this, command);
 	}

@@ -1993,6 +1993,14 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		addEOperation(informationObjectEClass, this.getContent(), "getContentsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(informationObjectEClass, this.getTag(), "unTag", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(informationObjectEClass, this.getCategory(), "unCategorize", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(informationObjectEClass, ecorePackage.getEString(), "getSlugName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContent_Contents(), this.getContent(), this.getContent_ParentContent(), "contents", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContent_Contributors(), this.getPerson(), this.getPerson_Contributed(), "contributors", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2379,6 +2387,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		op = addEOperation(itemEClass, this.getItem(), "forceUpdate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(itemEClass, this.getMetaTag(), "unMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(extensionEClass, Extension.class, "Extension", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

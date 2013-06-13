@@ -1541,6 +1541,77 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Tag unTag(String name) {
+		EList<Tag> thisTags = this.getTags();
+		if(name == null || name.isEmpty() || thisTags == null || thisTags.isEmpty())
+		{
+			return null;
+		}
+		
+		// find tag
+		for(Tag current : thisTags)
+		{
+			if(name.equalsIgnoreCase(current.getName()))
+			{
+				// found -> remove and return
+				thisTags.remove(current);
+				return current;
+			}
+		}
+		
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Category unCategorize(String name) {
+		EList<Category> thisCategories = this.getCategories();
+		if(name == null || name.isEmpty() || thisCategories == null || thisCategories.isEmpty())
+		{
+			return null;
+		}
+		
+		// find category
+		for(Category current : thisCategories)
+		{
+			if(name.equalsIgnoreCase(current.getName()))
+			{
+				// found -> remove and return
+				thisCategories.remove(current);
+				return current;
+			}
+		}
+		
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public String getSlugName() {
+		String slug = getName();
+		if(slug == null || slug.isEmpty())
+		{
+			slug = getIdent();
+		}
+		
+		if(slug == null || slug.isEmpty())
+		{
+			// fallback if no ident or name set
+			return "slug";
+		}
+		
+		// return lowercase without non word characters
+		return slug.toLowerCase().replaceAll("\\W", "");
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -2270,6 +2341,30 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		if ( command.getCommand().equalsIgnoreCase("getContentsWithCommonTags")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("InformationObject.doOperation", 0, command.getArgCount()); 
 			return this.getContentsWithCommonTags();
+		}
+		if ( command.getCommand().equalsIgnoreCase("unTag")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("InformationObject.doOperation", 1, command.getArgCount()); 
+			java.lang.String name = null;
+			try {
+				name = (java.lang.String)command.getArg("name");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("name").getClass().getName());
+			}
+			return this.unTag(name);
+		}
+		if ( command.getCommand().equalsIgnoreCase("unCategorize")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("InformationObject.doOperation", 1, command.getArgCount()); 
+			java.lang.String name = null;
+			try {
+				name = (java.lang.String)command.getArg("name");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("name").getClass().getName());
+			}
+			return this.unCategorize(name);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getSlugName")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("InformationObject.doOperation", 0, command.getArgCount()); 
+			return this.getSlugName();
 		}	
 		return super.doOperation(command);
 	}
