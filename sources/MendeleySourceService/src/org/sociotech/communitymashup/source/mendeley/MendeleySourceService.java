@@ -37,11 +37,13 @@ import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
 import org.sociotech.communitymashup.source.mendeley.authorization.MendeleyAuthorizationServlet;
 import org.sociotech.communitymashup.source.mendeley.meta.MendeleyTags;
 import org.sociotech.communitymashup.source.mendeley.properties.MendeleyProperties;
+import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedDocumentServiceImpl;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedPrivateGroupServiceImpl;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedProfile;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedProfileServiceImpl;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.AdaptedPublicGroupServiceImpl;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.Author;
+import org.sociotech.communitymashup.source.mendeley.sdkadaption.AuthoredDocument;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.Editor;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.FileAttachement;
 import org.sociotech.communitymashup.source.mendeley.sdkadaption.GroupDocument;
@@ -54,7 +56,6 @@ import com.mendeley.oapi.schema.Group;
 import com.mendeley.oapi.schema.Group.MembershipType;
 import com.mendeley.oapi.schema.Group.Type;
 import com.mendeley.oapi.schema.User;
-import com.mendeley.oapi.services.impl.DocumentServiceImpl;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 import com.mendeley.oapi.services.oauth.MendeleyOAuthService;
@@ -71,13 +72,12 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 	private AdaptedProfileServiceImpl profileService;
 	private AdaptedPrivateGroupServiceImpl privateGroupService;
 	private AdaptedPublicGroupServiceImpl publicGroupService;
+	private AdaptedDocumentServiceImpl documentService;
 	
 	/**
 	 * Temporary keeps created persons identified by their mendeley profile id to avoid duplicated calls. 
 	 */
 	private Map<String, Person> createdPersons = new HashMap<String, Person>();
-	
-	private DocumentServiceImpl documentService;
 	
 	/**
 	 * Reference to the registrator of the authentication servlet 
@@ -292,7 +292,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		}
 		
 		try {
-			documentService = new DocumentServiceImpl(apiConsumer, accessTokenObject);
+			documentService = new AdaptedDocumentServiceImpl(apiConsumer, accessTokenObject);
 		}
 		catch (Exception e) {
 			log("Could not create mendeley document service (" + e.getMessage() + ")", LogService.LOG_ERROR);
@@ -342,6 +342,12 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 			}
 		}
 		
+		// add account owners publications
+		if(source.isPropertyTrueElseDefault(MendeleyProperties.ADD_AUTHORED_PUBLICATIONS_PROPERTY, MendeleyProperties.ADD_AUTHORED_PUBLICATIONS_DEFAULT))
+		{
+			createAuthoredPublications();
+		}
+				
 		if(source.isPropertyTrue(MendeleyProperties.ADD_CONTACTS_PROPERTY))
 		{
 			createContacts(accountOwner);
@@ -359,6 +365,176 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 	}
 
 	
+	/**
+	 * Adds all publication authored by the account owner
+	 */
+	private void createAuthoredPublications() {
+		
+		List<AuthoredDocument> authoredDocuments = documentService.getAuthoredDocuments();
+		
+		if(authoredDocuments == null || authoredDocuments.isEmpty())
+		{
+			log("No authored publications", LogService.LOG_DEBUG);
+			return;
+		}
+		
+		// get details for all documents
+		for(AuthoredDocument document : authoredDocuments)
+		{
+			try {
+				// create mashup content from document
+				createAuthoredDocument(document);
+			}
+			catch(Exception e) {
+				log("Problem while retrieving details for document " + document.getTitle(), LogService.LOG_WARNING);
+				continue;
+			}
+			
+			
+		}
+	}
+
+	/**
+	 * Creates a mashup content from the given document.
+	 * 
+	 * @param document Mendeley document.
+	 */
+	private void createAuthoredDocument(AuthoredDocument document) {
+		if(document == null || document.getTitle() == null || document.getTitle().isEmpty())
+		{
+			// at least a valid title is required
+			return;
+		}
+		
+		DataFactory factory = DataFactory.eINSTANCE;
+		
+		// create new content object
+		Content docContent = factory.createContent();
+		
+		docContent.setName(document.getTitle());
+		
+		String docAbstract = document.getAbstract();
+		if(docAbstract != null && !docAbstract.isEmpty())
+		{
+			docContent.setStringValue(docAbstract);
+		}
+		
+		// add it
+		docContent = this.add(docContent, document.getId());
+		
+		if(docContent == null)
+		{
+			log("Could not add document for mendeley document " + document.getTitle(), LogService.LOG_DEBUG);
+			return;
+		}
+		
+		// tag it
+		docContent.metaTag(MendeleyTags.MENDELEY);
+		docContent.metaTag(MendeleyTags.AUTHORED_DOCUMENT);
+		
+		// add tags as tags
+		List<String> tags = document.getTags();
+		if(tags != null)
+		{
+			for(String tag : tags)
+			{
+				docContent.tag(tag);
+			}
+		}
+		// add keywords as tags
+		List<String> keywords = document.getKeywords();
+		if(keywords != null)
+		{
+			for(String keyword : keywords)
+			{
+				docContent.tag(keyword);
+			}
+		}
+		
+		// add type as meta tag
+		String type = document.getType();
+		if(type != null && !type.isEmpty())
+		{
+			docContent.metaTag(type);
+		}
+		
+		// add document url as web site
+		String url = document.getUrl();
+		if(url == null || url.isEmpty())
+		{
+			// use Mendeley url instead
+			url = document.getMendeleyUrl();
+		}
+		
+		if(url != null && !url.isEmpty())
+		{
+			WebSite docWebsite = docContent.addWebSite(url);
+			docWebsite = this.add(docWebsite, "ws_" + document.getId());
+			if(docWebsite != null)
+			{
+				docWebsite.metaTag(MendeleyTags.MENDELEY);
+			}
+		}
+		
+		// set added date as created date
+		Date addedDate = document.getAddedDate();
+		if(addedDate != null)
+		{
+			docContent.setCreated(addedDate);
+		}
+		
+		// add files
+		if(source.isPropertyTrueElseDefault(MendeleyProperties.ATTACH_FILES_PROPERTY, MendeleyProperties.ATTACH_FILES_DEFAULT))
+		{
+			List<FileAttachement> files = document.getFiles();
+			
+			for(FileAttachement file : files)
+			{
+				try {
+					String fileUrl = documentService.getFileUrl(file, document.getId());
+					Document attachedFile = docContent.attachDocument(fileUrl);
+					
+					// set file extension
+					attachedFile.setFileExtension(file.getFile_extension());
+					
+					// create unique file identifier
+					attachedFile.setFileIdentifier("mendeley_" + document.getId() + "_" + file.getFile_hash());
+					
+					// set added date as created date
+					attachedFile.setCreated(file.getAddedDate());
+					
+					// mark as added by this source
+					attachedFile = this.add(attachedFile);
+					
+					if(attachedFile != null)
+					{
+						attachedFile.metaTag(MendeleyTags.MENDELEY_DOCUMENT);
+						attachedFile.metaTag(MendeleyTags.MENDELEY);
+						attachedFile.metaTag(file.getFile_extension());
+						
+						// file urls are only valid for a short time so only the cached files are valid
+						attachedFile.setCachedOnly(true);
+					}
+				} catch (Exception e) {
+					log("Could not download file for document " + document.getTitle() + " due to exception (" + e.getMessage() + ")", LogService.LOG_WARNING);
+					//e.printStackTrace();
+				}
+			}
+		}
+		
+		// set authors
+		if(shouldCreateAuthors())
+		{
+			addMendeleyAuthors(docContent, document.getAuthors(), addedDate);
+		}
+		
+		// set editors as contributers
+		if(shouldCreateEditors())
+		{
+			addMendeleyEditors(docContent, document.getEditors(), addedDate);			
+		}
+	}
+
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#updateDataSet()
 	 */
@@ -734,6 +910,16 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 				try {
 					String fileUrl = privateGroupService.getFileUrl(file, groupId, document.getId());
 					Document attachedFile = docContent.attachDocument(fileUrl);
+					
+					// set file extension
+					attachedFile.setFileExtension(file.getFile_extension());
+					
+					// create unique file identifier
+					attachedFile.setFileIdentifier("mendeley_" + document.getId() + "_" + file.getFile_hash());
+					
+					// set added date as created date
+					attachedFile.setCreated(file.getAddedDate());
+					
 					// mark as added by this source
 					attachedFile = this.add(attachedFile);
 					
@@ -742,15 +928,6 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 						attachedFile.metaTag(MendeleyTags.MENDELEY_DOCUMENT);
 						attachedFile.metaTag(MendeleyTags.MENDELEY);
 						attachedFile.metaTag(file.getFile_extension());
-						
-						// set file extension
-						attachedFile.setFileExtension(file.getFile_extension());
-						
-						// create unique file identifier
-						attachedFile.setFileIdentifier("mendeley_" + document.getId() + "_" + file.getFile_hash());
-						
-						// set added date as created date
-						attachedFile.setCreated(file.getAddedDate());
 						
 						// file urls are only valid for a short time so only the cached files are valid
 						attachedFile.setCachedOnly(true);

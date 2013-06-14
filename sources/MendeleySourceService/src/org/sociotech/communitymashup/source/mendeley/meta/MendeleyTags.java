@@ -40,7 +40,12 @@ public class MendeleyTags {
 	/**
 	 * Tag for all mendeley group documents 
 	 */
-	public static final String GROUP_DOCUMENT = null;
+	public static final String GROUP_DOCUMENT = "group_document";
+	
+	/**
+	 * Tag for all authored documents of the account owner 
+	 */
+	public static final String AUTHORED_DOCUMENT = "authored_document";
 	
 }
 

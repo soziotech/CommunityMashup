@@ -13,6 +13,6 @@ package org.sociotech.communitymashup.source.mendeley.sdkadaption;
 public class FileAccessUrls {
 	
 	// TODO: remove with_redirect after complete transition of api to new version
-	public static String GET_FILE_URL_URL = "http://api.mendeley.com/oapi/library/documents/{document_id}/file/{file_hash}/{group_id}/?with_redirect=true/";
-	//public static String GET_FILE_URL_URL = "http://api.mendeley.com/oapi/library/documents/{document_id}/file/{file_hash}/{group_id}/";
+	public static String GET_GROUP_FILE_URL_URL = "http://api.mendeley.com/oapi/library/documents/{document_id}/file/{file_hash}/{group_id}/?with_redirect=true/";
+	public static String GET_AUTHORED_FILE_URL_URL = "http://api.mendeley.com/oapi/library/documents/{document_id}/file/{file_hash}/?with_redirect=true/";
 }

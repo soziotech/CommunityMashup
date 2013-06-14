@@ -12,10 +12,8 @@ package org.sociotech.communitymashup.source.mendeley.sdkadaption;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -27,70 +25,32 @@ import org.apache.http.params.HttpParams;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import com.mendeley.oapi.schema.Group.MembershipType;
-import com.mendeley.oapi.schema.User;
 import com.mendeley.oapi.services.MendeleyException;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls;
 import com.mendeley.oapi.services.constant.MendeleyApiUrls.MendeleyApiUrlBuilder;
 import com.mendeley.oapi.services.constant.ParameterNames;
-import com.mendeley.oapi.services.impl.PrivateGroupServiceImpl;
+import com.mendeley.oapi.services.impl.DocumentServiceImpl;
 import com.mendeley.oapi.services.oauth.MendeleyAccessToken;
 import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
 
-public class AdaptedPrivateGroupServiceImpl extends PrivateGroupServiceImpl {
+public class AdaptedDocumentServiceImpl extends DocumentServiceImpl {
 
-	public AdaptedPrivateGroupServiceImpl(MendeleyApiConsumer apiConsumer,
+	public AdaptedDocumentServiceImpl(MendeleyApiConsumer apiConsumer,
 			MendeleyAccessToken accessToken) {
 		super(apiConsumer, accessToken);
 	}
-
-	/* (non-Javadoc)
-	 * @see com.mendeley.oapi.services.impl.PrivateGroupServiceImpl#getGroupPeople(java.lang.String)
-	 */
-	@Override
-	public Map<MembershipType, List<User>> getGroupPeople(String groupId) {
-		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(MendeleyApiUrls.PrivateGroupApiUrls.GET_GROUP_PEOPLE_URL);
-        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
-        JsonObject json = unmarshall(callApiGet(apiUrl)).getAsJsonObject();
-        Map<MembershipType, List<User>> groupPeople = new HashMap<MembershipType, List<User>>();
-        for (MembershipType type : MembershipType.values()) {
-        	if (json.get(type.value()) != null) {
-        		if(type == MembershipType.OWNER)
-        		{
-        			// there is only one owner
-        			// put him in an array
-        			JsonArray jsonArray = new JsonArray();
-        			jsonArray.add(json.get(type.value()));
-        			
-        			try{
-        				groupPeople.put(type, unmarshall(new TypeToken<List<User>>(){}, jsonArray));
-        			}
-        			catch (Exception e) {
-						// do nothing, leave owner away
-        				continue;
-					}
-        		}
-        		else
-        		{
-        			groupPeople.put(type, unmarshall(new TypeToken<List<User>>(){}, json.get(type.value())));
-        		}
-        	}
-        	
-        }
-		return groupPeople;
-	}
 	
-	public List<GroupDocument> getGroupDocuments(String groupId) {
+	public List<AuthoredDocument> getAuthoredDocuments() {
 		
 		// add page and documents per page parameter
-		String baseUrl = MendeleyApiUrls.PrivateGroupApiUrls.GET_GROUP_DETAILS_URL + "?items=100000";
+		// TODO check if items work
+		String baseUrl = MendeleyApiUrls.DocumentApiUrls.GET_AUTHORED_PUBLICATIONS_URL + "?items=100000";
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(baseUrl);
-        String                apiUrl  = builder.withField(ParameterNames.ID, groupId).buildUrl();
+        String                apiUrl  = builder.buildUrl();
         JsonObject json = unmarshall(callApiGet(apiUrl)).getAsJsonObject();
-        
+        // TODO possibly paging
         // new list for all documents
-        List<GroupDocument> documents = new LinkedList<GroupDocument>();
+        List<AuthoredDocument> documents = new LinkedList<AuthoredDocument>();
         
         JsonElement ids = json.get("document_ids");
         if(ids == null || !ids.isJsonArray())
@@ -103,9 +63,9 @@ public class AdaptedPrivateGroupServiceImpl extends PrivateGroupServiceImpl {
         for(int i = 0; i < idArray.size(); i++)
         {
         	String documentId = idArray.get(i).getAsString();
-        	GroupDocument doc = null;
+        	AuthoredDocument doc = null;
         	try {
-        		doc = getGroupDocumentDetails(groupId, documentId);
+        		doc = getAuthoredDocumentDetails(documentId);
         	}
         	catch (Exception e) {
 				// do nothing
@@ -121,16 +81,15 @@ public class AdaptedPrivateGroupServiceImpl extends PrivateGroupServiceImpl {
 		return documents;
 	}
 
-	public GroupDocument getGroupDocumentDetails(String groupId, String documentId) {
-		String baseUrl = MendeleyApiUrls.PrivateGroupApiUrls.GET_GROUP_DETAILS_URL + "{document_id}/";
+	public AuthoredDocument getAuthoredDocumentDetails(String documentId) {
+		String baseUrl = MendeleyApiUrls.DocumentApiUrls.GET_DOCUMENT_DETAILS_URL;
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(baseUrl);
-        String                apiUrl  = builder.withField(ParameterNames.ID, groupId)
-        									   .withField("document_id", documentId).buildUrl();
+        String                apiUrl  = builder.withField(ParameterNames.ID, documentId).buildUrl();
         JsonElement json = unmarshall(callApiGet(apiUrl));
         
-        GroupDocument unmarshalled = null;
+        AuthoredDocument unmarshalled = null;
         try {
-        	unmarshalled = unmarshall(GroupDocument.class, json);
+        	unmarshalled = unmarshall(AuthoredDocument.class, json);
         	try {
         		// quick fix to get the abstract
             	JsonObject jsonObject = json.getAsJsonObject();
@@ -148,12 +107,11 @@ public class AdaptedPrivateGroupServiceImpl extends PrivateGroupServiceImpl {
         return unmarshalled;
 	}
 	
-	public String getFileUrl(FileAttachement file, String groupId, String documentId)
+	public String getFileUrl(FileAttachement file, String documentId)
 	{
-		String baseUrl = FileAccessUrls.GET_GROUP_FILE_URL_URL;
+		String baseUrl = FileAccessUrls.GET_AUTHORED_FILE_URL_URL;
 		MendeleyApiUrlBuilder builder = createMendeleyApiUrlBuilder(baseUrl);
-        String                apiUrl  = builder.withField("group_id", groupId)
-        									   .withField("document_id", documentId)
+        String                apiUrl  = builder.withField("document_id", documentId)
         									   .withField("file_hash", file.getFile_hash()).buildUrl();
         
         String result = callGetForRedirectUrl(apiUrl);

@@ -48,6 +48,12 @@ public class MendeleyProperties {
 	public static final String ALLOW_UI_AUTHENTICATION = "uiAuthentication";
 	
 	/**
+	 * If this property is set to true all authored publication will be added
+	 */
+	public static final String ADD_AUTHORED_PUBLICATIONS_PROPERTY			= "addAuthoredPublications";
+	public static final String ADD_AUTHORED_PUBLICATIONS_DEFAULT			= "false";
+	
+	/**
 	 * If this property is set to true all contacts of the account owner will be added.
 	 */
 	public static final String ADD_CONTACTS_PROPERTY			= "addContacts";
