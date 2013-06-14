@@ -84,6 +84,12 @@
       <eParameters name="configurableElement" eType="#//ConfigurableElement"/>
     </eOperations>
     <eOperations name="getNewIdentNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eOperations name="getMashupWithIdent" eType="#//Mashup">
+      <eParameters name="ident" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getSourceConfigurationWithIdent" eType="#//Source">
+      <eParameters name="ident" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mashups" upperBound="-1"
         eType="#//Mashup" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allMashupAdmins" upperBound="-1"

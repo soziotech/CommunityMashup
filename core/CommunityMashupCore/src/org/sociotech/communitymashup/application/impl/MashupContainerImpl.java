@@ -455,6 +455,74 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Mashup getMashupWithIdent(String ident) {
+		if(ident == null || ident.isEmpty())
+		{
+			return null;
+		}
+		
+		EList<Mashup> allMashups = this.getMashups();
+		
+		if(allMashups == null)
+		{
+			return null;
+		}
+		
+		// look over all mashups
+		for(Mashup currentMashup : allMashups)
+		{
+			if(ident.equals(currentMashup.getIdent()))
+			{
+				return currentMashup;
+			}
+		}
+		
+		// not found
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Source getSourceConfigurationWithIdent(String ident) {
+		if(ident == null || ident.isEmpty())
+		{
+			return null;
+		}
+		
+		EList<Mashup> allSourceConfigurationContainers = this.getSourceConfigurations();
+		
+		if(allSourceConfigurationContainers == null)
+		{
+			return null;
+		}
+		
+		// look over all containers
+		for(Mashup currentContainer : allSourceConfigurationContainers)
+		{
+			EList<Source> containedConfigurations = currentContainer.getSources();
+			if(containedConfigurations == null)
+			{
+				continue;
+			}
+			for(Source currentConfiguration : containedConfigurations)
+			{
+				if(ident.equals(currentConfiguration.getIdent()))
+				{
+					return currentConfiguration;
+				}
+			}
+		}
+		
+		// not found
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -817,6 +885,26 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 		if ( command.getCommand().equalsIgnoreCase("getNewIdentNumber")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("MashupContainer.doOperation", 0, command.getArgCount()); 
 			return this.getNewIdentNumber();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getMashupWithIdent")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("MashupContainer.doOperation", 1, command.getArgCount()); 
+			java.lang.String ident = null;
+			try {
+				ident = (java.lang.String)command.getArg("ident");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("MashupContainer.doOperation", "java.lang.String", command.getArg("ident").getClass().getName());
+			}
+			return this.getMashupWithIdent(ident);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getSourceConfigurationWithIdent")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("MashupContainer.doOperation", 1, command.getArgCount()); 
+			java.lang.String ident = null;
+			try {
+				ident = (java.lang.String)command.getArg("ident");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("MashupContainer.doOperation", "java.lang.String", command.getArg("ident").getClass().getName());
+			}
+			return this.getSourceConfigurationWithIdent(ident);
 		}
 		throw new UnknownOperationException(this, command);
 	}

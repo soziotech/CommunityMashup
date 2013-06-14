@@ -1783,6 +1783,12 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		addEOperation(mashupContainerEClass, ecorePackage.getEIntegerObject(), "getNewIdentNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(mashupContainerEClass, this.getMashup(), "getMashupWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(mashupContainerEClass, this.getSource(), "getSourceConfigurationWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterface_Security(), this.getSecurity(), this.getSecurity_Interface(), "security", null, 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInterface_UrlSuffix(), ecorePackage.getEString(), "urlSuffix", "", 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

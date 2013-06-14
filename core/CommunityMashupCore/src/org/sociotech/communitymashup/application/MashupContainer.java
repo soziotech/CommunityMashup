@@ -332,6 +332,26 @@ public interface MashupContainer extends EObject {
 
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Mashup getMashupWithIdent(String ident);
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Source getSourceConfigurationWithIdent(String ident);
+
+
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type MashupContainer.
 	 * 
 	 * @generated
