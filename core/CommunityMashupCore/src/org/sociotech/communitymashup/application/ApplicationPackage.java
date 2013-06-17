@@ -1084,13 +1084,22 @@ public interface ApplicationPackage extends EPackage {
 	int INTERFACE__MASHUP = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Front End Caching</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__FRONT_END_CACHING = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Interface</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_FEATURE_COUNT = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 3;
+	int INTERFACE_FEATURE_COUNT = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.RESTInterfaceImpl <em>REST Interface</em>}' class.
@@ -1191,6 +1200,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int REST_INTERFACE__MASHUP = INTERFACE__MASHUP;
+
+	/**
+	 * The feature id for the '<em><b>Front End Caching</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE__FRONT_END_CACHING = INTERFACE__FRONT_END_CACHING;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1310,6 +1328,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEED_INTERFACE__MASHUP = INTERFACE__MASHUP;
+
+	/**
+	 * The feature id for the '<em><b>Front End Caching</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE__FRONT_END_CACHING = INTERFACE__FRONT_END_CACHING;
 
 	/**
 	 * The feature id for the '<em><b>Allow Person Filtering</b></em>' attribute.
@@ -2581,6 +2608,17 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInterface_Mashup();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.Interface#getFrontEndCaching <em>Front End Caching</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Front End Caching</em>'.
+	 * @see org.sociotech.communitymashup.application.Interface#getFrontEndCaching()
+	 * @see #getInterface()
+	 * @generated
+	 */
+	EAttribute getInterface_FrontEndCaching();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.RESTInterface <em>REST Interface</em>}'.
@@ -3880,6 +3918,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INTERFACE__MASHUP = eINSTANCE.getInterface_Mashup();
+
+		/**
+		 * The meta object literal for the '<em><b>Front End Caching</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTERFACE__FRONT_END_CACHING = eINSTANCE.getInterface_FrontEndCaching();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.RESTInterfaceImpl <em>REST Interface</em>}' class.

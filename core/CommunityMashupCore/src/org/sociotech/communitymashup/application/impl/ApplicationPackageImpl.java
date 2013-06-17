@@ -791,6 +791,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInterface_FrontEndCaching() {
+		return (EAttribute)interfaceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRESTInterface() {
 		return restInterfaceEClass;
 	}
@@ -1562,6 +1571,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(interfaceEClass, INTERFACE__SECURITY);
 		createEAttribute(interfaceEClass, INTERFACE__URL_SUFFIX);
 		createEReference(interfaceEClass, INTERFACE__MASHUP);
+		createEAttribute(interfaceEClass, INTERFACE__FRONT_END_CACHING);
 
 		restInterfaceEClass = createEClass(REST_INTERFACE);
 		createEAttribute(restInterfaceEClass, REST_INTERFACE__TYPE);
@@ -1793,6 +1803,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getInterface_Security(), this.getSecurity(), this.getSecurity_Interface(), "security", null, 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInterface_UrlSuffix(), ecorePackage.getEString(), "urlSuffix", "", 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInterface_Mashup(), this.getMashup(), this.getMashup_Interfaces(), "mashup", null, 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInterface_FrontEndCaching(), ecorePackage.getEBooleanObject(), "frontEndCaching", "false", 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(restInterfaceEClass, RESTInterface.class, "RESTInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRESTInterface_Type(), ecorePackage.getEString(), "type", null, 0, 1, RESTInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -96,6 +96,16 @@ public class RESTServlet extends HttpServlet {
 	public static final int TYPE_HTML 	= 3;
 	
 	private int type = TYPE_XML;
+	
+	/**
+	 * Keeps the date of the data sets modification date when cached.
+	 */
+	private Date cacheDate;
+	
+	/**
+	 * Keeps serialized data (request url -> cached data)  
+	 */
+	private Map<String, String> frontEndCache = new HashMap<String, String>();
 
 	// TODO make configurable
 	private boolean indentResult = true;
@@ -156,7 +166,6 @@ public class RESTServlet extends HttpServlet {
 	/**
 	 * Reference to the rest services configuration 
 	 */
-	@SuppressWarnings("unused")
 	private RESTInterface configuration = null;
 	
 	/**
@@ -786,7 +795,9 @@ public class RESTServlet extends HttpServlet {
 	private void processRequest(HttpServletRequest request,
 			HttpServletResponse resp, RequestType requestType)
 			throws ServletException, IOException {
-		
+
+		long startTime = System.currentTimeMillis();
+
 		// security check
 		if ((securityServiceNeeded && securityService == null)
 				|| (securityServiceNeeded && !securityService.isRequestAlowed(request))) {
@@ -895,101 +906,127 @@ public class RESTServlet extends HttpServlet {
 
 		log("Rest Request at: " + this.urlSuffix + " : " + requestUrl, LogService.LOG_INFO);
 
-		// process request
-		if (requestUrl.equals("/")) {
-			// no commands -> direct access of the DataSet
+		// Log the time it took to preprocess request
+		long duration = System.currentTimeMillis() - startTime;
+		log("Request preprocessing takes " + duration
+				+ "ms", LogService.LOG_DEBUG);
+		// count again
+		startTime = System.currentTimeMillis();
 
-			// temporary switch of caching cause data set will be copied at
-			// write
-			boolean caching = dataSet.getCacheFileAttachements();
+		// get possible cached result
+		result = getCachedResult(requestUrl);
+		if(result == null)
+		{
+			// process request
+			if (requestUrl.equals("/")) {
+				// no commands -> direct access of the DataSet
 
-			boolean delivering = dataSet.eDeliver();
-			// switch of delivering for the cache state change
-			dataSet.eSetDeliver(false);
-			dataSet.setCacheFileAttachements(false);
+				// temporary switch of caching cause data set will be copied at
+				// write
+				boolean caching = dataSet.getCacheFileAttachements();
 
-			result = serializeDataSet(dataSet, respEncoding);
+				boolean delivering = dataSet.eDeliver();
+				// switch of delivering for the cache state change
+				dataSet.eSetDeliver(false);
+				dataSet.setCacheFileAttachements(false);
 
-			// reset caching and delivering state
-			dataSet.setCacheFileAttachements(caching);
-			dataSet.eSetDeliver(delivering);
+				result = serializeDataSet(dataSet, respEncoding);
 
-		} else {
-			// found commands -> process them
-			LinkedList<RestCommand> input = new LinkedList<RestCommand>();
+				// reset caching and delivering state
+				dataSet.setCacheFileAttachements(caching);
+				dataSet.eSetDeliver(delivering);
 
-			// get payload if any
-			List<EObject> eos = null;
-			
-			// reconstruct list of submitted EObjects
-			if ((requestType != RequestType.rtGet)
-					&& (request.getInputStream() != null)
-					&& (request.getInputStream().available() != 0)) {
-				eos = load(request.getInputStream());
-			}
+				// cache result if needed
+				cacheResult(requestUrl, result);
 
-			// extract RESTcommands
-			List<String> l = Arrays.asList(requestUrl.substring(1).split("/"));
-			for (String sl : l) {
-				RestCommand r = parseCommand(sl, eos);
-				if (r != null)
-					input.add(r);
-				else {
-					resp.sendError(404, "IncompleteCommandException: " + sl);
+			} else {
+				// found commands -> process them
+				LinkedList<RestCommand> input = new LinkedList<RestCommand>();
+
+				// get payload if any
+				List<EObject> eos = null;
+
+				// reconstruct list of submitted EObjects
+				if ((requestType != RequestType.rtGet)
+						&& (request.getInputStream() != null)
+						&& (request.getInputStream().available() != 0)) {
+					eos = load(request.getInputStream());
+				}
+
+				// extract RESTcommands
+				List<String> l = Arrays.asList(requestUrl.substring(1).split("/"));
+				boolean canCache = true;
+				for (String sl : l) {
+					RestCommand r = parseCommand(sl, eos);
+					if (r != null)
+					{
+						input.add(r);
+						// can only cache get commands
+						canCache &= r.isGet();
+					}						
+					else {
+						resp.sendError(404, "IncompleteCommandException: " + sl);
+						return;
+					}
+				}
+
+				// process commands
+				Object o = null;
+				try {
+
+					// TODO workaround to allow HTTP.GET (for debugging purposes)
+
+					o = dataSet.process(input, RequestType.rtPost);
+					//filtering the data if there are forbidden meta tags
+					if (securityServiceNeeded && securityService != null) {
+						o = securityService.filterRequestResults(request,o);
+					}
+
+					// o = dataSet.process(input, requestType);
+				} catch (WrongArgException e) {
+					resp.sendError(404, "WrongArgException:" + e.getMessage());
+					return;
+				} catch (WrongArgCountException e) {
+					resp.sendError(404, "WrongArgCountException: " + e.getMessage());
+					return;
+				} catch (UnknownOperationException e) {
+					resp.sendError(404,
+							"UnknownOperationException" + e.getMessage());
+					return;
+				} catch (ArgNotFoundException e) {
+					resp.sendError(404, "ArgNotFoundException" + e.getMessage());
 					return;
 				}
-			}
 
-			// process commands
-			Object o = null;
-			try {
-				
-				// TODO workaround to allow HTTP.GET (for debugging purposes)
-			
-				o = dataSet.process(input, RequestType.rtPost);
-				//filtering the data if there are forbidden meta tags
-				if (securityServiceNeeded && securityService != null) {
-					o = securityService.filterRequestResults(request,o);
+				// prepare result to be delivered
+				if (o == null) {
+					// create empty list to be serialized as empty document
+					o = new BasicEList<Item>();
 				}
-				
-				// o = dataSet.process(input, requestType);
-			} catch (WrongArgException e) {
-				resp.sendError(404, "WrongArgException:" + e.getMessage());
-				return;
-			} catch (WrongArgCountException e) {
-				resp.sendError(404, "WrongArgCountException: " + e.getMessage());
-				return;
-			} catch (UnknownOperationException e) {
-				resp.sendError(404,
-						"UnknownOperationException" + e.getMessage());
-				return;
-			} catch (ArgNotFoundException e) {
-				resp.sendError(404, "ArgNotFoundException" + e.getMessage());
-				return;
-			}
 
-			// prepare result to be delivered
-			if (o == null) {
-				// create empty list to be serialized as empty document
-				o = new BasicEList<Item>();
-			}
+				// check the type of the result
+				if (o instanceof EObject || o instanceof AbstractEList<?>) {
+					// great: it's either an EObject or a list of EObjects: just
+					// serialize it...
 
-			// check the type of the result
-			if (o instanceof EObject || o instanceof AbstractEList<?>) {
-				// great: it's either an EObject or a list of EObjects: just
-				// serialize it...
+					// create result
+					result = serialize(o, respEncoding);
+					// cache result if needed
+					// only cache emf results
+					if(canCache)
+					{
+						cacheResult(requestUrl, result);
+					}
 
-				// create result
-				result = serialize(o, respEncoding);
+				} else if (o instanceof Date) {
+					Date d = (Date) o;
 
-			} else if (o instanceof Date) {
-				Date d = (Date) o;
-
-				contentType = "text/plain";
-				result = sdf.format(d);
-			} else {
-				contentType = "text/plain";
-				result = postProcessString(o.toString());
+					contentType = "text/plain";
+					result = sdf.format(d);
+				} else {
+					contentType = "text/plain";
+					result = postProcessString(o.toString());
+				}
 			}
 		}
 
@@ -1005,15 +1042,78 @@ public class RESTServlet extends HttpServlet {
 			result = URLDecoder.decode(jsonpOperation, "UTF-8") + "(" + result + ");";
 		}
 		
+		// Log the time it took to execute the request
+		duration = System.currentTimeMillis() - startTime;
+		log("Request execution takes " + duration
+				+ "ms", LogService.LOG_DEBUG);
+		// count again
+		startTime = System.currentTimeMillis();
+		
 		// write result
 		resp.setCharacterEncoding(respEncoding);
 		resp.setContentType(contentType);
 		// TODO: make configurable
 		resp.addHeader("Access-Control-Allow-Origin", "*"); // http://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 		resp.getWriter().write(result);
+		resp.flushBuffer();
+		
+		// Log the time it took to write the request
+		duration = System.currentTimeMillis() - startTime;
+		log("Request write takes " + duration
+				+ "ms", LogService.LOG_DEBUG);
+		
 	}
 
 	
+	/**
+	 * If caching is switched on the result is put to the cache.
+	 * 
+	 * @param requestUrl Url defining the request.
+	 * @param result Result for the request.
+	 */
+	private void cacheResult(String requestUrl, String result) {
+		if(!configuration.getFrontEndCaching() || requestUrl == null || result == null)
+		{
+			return;
+		}
+		
+		// put result in cache map
+		frontEndCache.put(requestUrl, result);
+	}
+
+	/**
+	 * Returns the cached result for the given request. Null if it does not exist.
+	 * 
+	 * @param requestUrl Url identifying the request.
+	 * @return The cached result or null if it does not exist.
+	 */
+	private String getCachedResult(String requestUrl) {
+		if(!configuration.getFrontEndCaching() || requestUrl == null)
+		{
+			return null;
+		}
+		
+		// check and clear cache if not up to date
+		checkCacheDate();
+		
+		// retrieve from cache map
+		return frontEndCache.get(requestUrl);
+	}
+
+	/**
+	 * Checks if the cache is up to date, otherwise clears it.
+	 */
+	private void checkCacheDate() {
+		Date lastModification = dataSet.getLastModified();
+		// check if cache is up to date (no modification since cache)
+		if(cacheDate != null && cacheDate.before(lastModification))
+		{
+			// clear cache
+			frontEndCache.clear();
+		}
+		cacheDate = lastModification;
+	}
+
 	/**
 	 * Extracts the Jsonp Operation from the request url
 	 * 

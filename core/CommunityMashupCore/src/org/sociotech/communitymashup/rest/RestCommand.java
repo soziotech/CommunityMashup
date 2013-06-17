@@ -22,6 +22,7 @@ public class RestCommand {
 	private String command;
 	private LinkedList<String> argNames;
 	private LinkedList<Object> argValues;
+	private boolean isGet = false;
 	
 	/**
 	 * The default constructor.
@@ -32,6 +33,10 @@ public class RestCommand {
 		argNames = new LinkedList<String>();
 		argValues = new LinkedList<Object>();
 		this.command = command;
+		if(command != null && command.startsWith("get"))
+		{
+			isGet = true;
+		}
 	}
 	
 	public String getCommand() {
@@ -99,5 +104,14 @@ public class RestCommand {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Returns true if this command is a get command
+	 * 
+	 * @return True if this command is a get command
+	 */
+	public boolean isGet() {
+		return isGet;
 	}
 }

@@ -31,6 +31,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.Interface#getSecurity <em>Security</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Interface#getUrlSuffix <em>Url Suffix</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Interface#getMashup <em>Mashup</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.Interface#getFrontEndCaching <em>Front End Caching</em>}</li>
  * </ul>
  * </p>
  *
@@ -134,6 +135,35 @@ public interface Interface extends ConfigurableElement {
 	 * @generated
 	 */
 	void setMashup(Mashup value);
+
+
+	/**
+	 * Returns the value of the '<em><b>Front End Caching</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Front End Caching</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Front End Caching</em>' attribute.
+	 * @see #setFrontEndCaching(Boolean)
+	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getInterface_FrontEndCaching()
+	 * @model default="false"
+	 * @generated
+	 */
+	Boolean getFrontEndCaching();
+
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.application.Interface#getFrontEndCaching <em>Front End Caching</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Front End Caching</em>' attribute.
+	 * @see #getFrontEndCaching()
+	 * @generated
+	 */
+	void setFrontEndCaching(Boolean value);
 
 
 	/**

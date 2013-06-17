@@ -119,6 +119,8 @@
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mashup" eType="#//Mashup"
         eOpposite="#//Mashup/interfaces"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="frontEndCaching" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RESTInterface" eSuperTypes="#//Interface">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

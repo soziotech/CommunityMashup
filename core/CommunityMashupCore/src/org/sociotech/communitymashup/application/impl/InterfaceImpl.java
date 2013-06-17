@@ -61,6 +61,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.InterfaceImpl#getSecurity <em>Security</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.InterfaceImpl#getUrlSuffix <em>Url Suffix</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.InterfaceImpl#getMashup <em>Mashup</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.InterfaceImpl#getFrontEndCaching <em>Front End Caching</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,6 +104,26 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 	 * @ordered
 	 */
 	protected String urlSuffix = URL_SUFFIX_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFrontEndCaching() <em>Front End Caching</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFrontEndCaching()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean FRONT_END_CACHING_EDEFAULT = Boolean.FALSE;
+
+	/**
+	 * The cached value of the '{@link #getFrontEndCaching() <em>Front End Caching</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFrontEndCaching()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean frontEndCaching = FRONT_END_CACHING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,6 +255,27 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Boolean getFrontEndCaching() {
+		return frontEndCaching;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFrontEndCaching(Boolean newFrontEndCaching) {
+		Boolean oldFrontEndCaching = frontEndCaching;
+		frontEndCaching = newFrontEndCaching;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.INTERFACE__FRONT_END_CACHING, oldFrontEndCaching, frontEndCaching));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -293,6 +335,8 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 				return getUrlSuffix();
 			case ApplicationPackage.INTERFACE__MASHUP:
 				return getMashup();
+			case ApplicationPackage.INTERFACE__FRONT_END_CACHING:
+				return getFrontEndCaching();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -313,6 +357,9 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 				return;
 			case ApplicationPackage.INTERFACE__MASHUP:
 				setMashup((Mashup)newValue);
+				return;
+			case ApplicationPackage.INTERFACE__FRONT_END_CACHING:
+				setFrontEndCaching((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -335,6 +382,9 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 			case ApplicationPackage.INTERFACE__MASHUP:
 				setMashup((Mashup)null);
 				return;
+			case ApplicationPackage.INTERFACE__FRONT_END_CACHING:
+				setFrontEndCaching(FRONT_END_CACHING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -353,6 +403,8 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 				return URL_SUFFIX_EDEFAULT == null ? urlSuffix != null : !URL_SUFFIX_EDEFAULT.equals(urlSuffix);
 			case ApplicationPackage.INTERFACE__MASHUP:
 				return getMashup() != null;
+			case ApplicationPackage.INTERFACE__FRONT_END_CACHING:
+				return FRONT_END_CACHING_EDEFAULT == null ? frontEndCaching != null : !FRONT_END_CACHING_EDEFAULT.equals(frontEndCaching);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -369,6 +421,8 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (urlSuffix: ");
 		result.append(urlSuffix);
+		result.append(", frontEndCaching: ");
+		result.append(frontEndCaching);
 		result.append(')');
 		return result.toString();
 	}
@@ -399,7 +453,9 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 		if ( featureName.equalsIgnoreCase("urlSuffix") )
 			return this.getUrlSuffix();		
 		if ( featureName.equalsIgnoreCase("mashup") )
-			return this.getMashup();			
+			return this.getMashup();		
+		if ( featureName.equalsIgnoreCase("frontEndCaching") )
+			return this.getFrontEndCaching();			
 		return super.getFeature(featureName); 
 	}
 	
@@ -448,6 +504,20 @@ public class InterfaceImpl extends ConfigurableElementImpl implements Interface 
 					throw new WrongArgException("Interface.setFeature", "org.sociotech.communitymashup.application.Mashup",value.getClass().getName());
 				}
 				this.setMashup(fmashup);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("frontEndCaching") ) {
+				java.lang.Boolean ffrontEndCaching = null;
+				try {
+					try {
+						ffrontEndCaching = (java.lang.Boolean)(RestUtil.fromInput(value));
+					} catch (ClassNotFoundException e) {
+						ffrontEndCaching = (java.lang.Boolean)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Interface.setFeature", "java.lang.Boolean",value.getClass().getName());
+				}
+				this.setFrontEndCaching(ffrontEndCaching);
 			return this;
 			}			
 		super.setFeature(featureName, value);
