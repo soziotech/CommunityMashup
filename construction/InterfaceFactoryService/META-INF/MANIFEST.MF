@@ -13,4 +13,5 @@ Import-Package: org.osgi.framework;version="1.3.0",
 Bundle-Vendor: org.sociotech.communitymashup
 Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1",
  org.sociotech.communitymashup.util.ServiceTracker;bundle-version="0.0.1"
-Export-Package: org.sociotech.communitymashup.interfaceprovider.factory.facade;uses:="org.sociotech.communitymashup.data,org.sociotech.communitymashup.interfaceprovider.facade,org.sociotech.communitymashup.application"
+Export-Package: org.sociotech.communitymashup.interfaceprovider.factory.callback,
+ org.sociotech.communitymashup.interfaceprovider.factory.facade;uses:="org.sociotech.communitymashup.data,org.sociotech.communitymashup.interfaceprovider.facade,org.sociotech.communitymashup.application"

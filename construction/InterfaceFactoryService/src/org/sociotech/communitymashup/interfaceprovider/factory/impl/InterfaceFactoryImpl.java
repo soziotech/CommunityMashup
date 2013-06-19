@@ -11,6 +11,7 @@ import org.sociotech.communitymashup.application.Interface;
 import org.sociotech.communitymashup.application.RESTInterface;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.interfaceprovider.facade.InterfaceServiceFacade;
+import org.sociotech.communitymashup.interfaceprovider.factory.callback.InterfaceProducedCallback;
 import org.sociotech.communitymashup.interfaceprovider.factory.facade.InterfaceFactoryFacade;
 import org.sociotech.communitymashup.interfaceprovider.instantiation.facade.InterfaceInstantiationServiceFacade;
 import org.sociotech.communitymashup.util.servicetracker.LogServiceTracker;
@@ -45,12 +46,20 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade, LogServiceT
 	private Map<Interface, DataSet> openInterfaces;
 
 	/**
+	 * This map contains all callbacks that are needed after successful production.
+	 */
+	private Map<Interface, InterfaceProducedCallback> callbacks;
+	
+	/**
 	 * Constructs a new interface factory.
 	 */
 	public InterfaceFactoryImpl()
 	{
-		// create empty list
+		// create empty map
 		openInterfaces = new HashMap<Interface, DataSet>();
+		
+		// create empty callback map
+		callbacks = new HashMap<Interface, InterfaceProducedCallback>();
 		
 		// open log service tracker
 		openLogServiceTracker();
@@ -151,14 +160,28 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade, LogServiceT
 			return null;
 		}
 
+		InterfaceServiceFacade producedInterface = null;
+		
 		if(interfaceConfiguration instanceof FEEDInterface)
 		{
-			return produceFeedInterface((FEEDInterface) interfaceConfiguration, dataSet);
+			producedInterface = produceFeedInterface((FEEDInterface) interfaceConfiguration, dataSet);
 		}
 
 		if(interfaceConfiguration instanceof RESTInterface)
 		{
-			return produceRESTInterface((RESTInterface) interfaceConfiguration, dataSet);
+			producedInterface = produceRESTInterface((RESTInterface) interfaceConfiguration, dataSet);
+		}
+		
+		if(producedInterface != null)
+		{
+			if(callbacks.containsKey(interfaceConfiguration))
+			{
+				// remove call back
+				InterfaceProducedCallback callback = callbacks.remove(interfaceConfiguration);
+				// call back
+				callback.interfaceProduced(interfaceConfiguration, producedInterface);
+			}
+			return producedInterface;
 		}
 
 		log("No implementation for producing interface " + interfaceConfiguration, LogService.LOG_ERROR);
@@ -295,5 +318,31 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade, LogServiceT
 		{
 			logServiceTracker.close();
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.interfaceprovider.factory.facade.InterfaceFactoryFacade#produceInterfaceAndCallback(org.sociotech.communitymashup.application.Interface, org.sociotech.communitymashup.data.DataSet, org.sociotech.communitymashup.interfaceprovider.factory.callback.InterfaceProducedCallback)
+	 */
+	@Override
+	public InterfaceServiceFacade produceInterfaceAndCallback(Interface interfaceConfiguration, DataSet dataSet, InterfaceProducedCallback callback) {
+		if(interfaceConfiguration == null)
+		{
+			return null;
+		}
+		
+		InterfaceServiceFacade producedInterface = produceInterface(interfaceConfiguration, dataSet);
+		if(producedInterface != null)
+		{
+			// directly produced -> so return
+			return producedInterface;
+		}
+		
+		if(callback != null)
+		{
+			// put callback in map
+			callbacks.put(interfaceConfiguration, callback);
+		}
+		
+		return null;
 	}
 }

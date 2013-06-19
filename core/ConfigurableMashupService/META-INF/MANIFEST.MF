@@ -11,6 +11,7 @@ Import-Package: org.eclipse.emf.ecore.xmi.impl,
  org.osgi.util.tracker,
  org.sociotech.communitymashup.configuration.observer.mashup,
  org.sociotech.communitymashup.data.observer.dataset,
+ org.sociotech.communitymashup.interfaceprovider.factory.callback,
  org.sociotech.communitymashup.interfaceprovider.factory.facade,
  org.sociotech.communitymashup.source.factory.facade,
  org.sociotech.communitymashup.source.factory.facade.callback

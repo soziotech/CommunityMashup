@@ -52,6 +52,7 @@ import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.observer.dataset.DataSetChangeObserver;
 import org.sociotech.communitymashup.data.observer.dataset.DataSetChangedInterface;
 import org.sociotech.communitymashup.interfaceprovider.facade.InterfaceServiceFacade;
+import org.sociotech.communitymashup.interfaceprovider.factory.callback.InterfaceProducedCallback;
 import org.sociotech.communitymashup.interfaceprovider.factory.facade.InterfaceFactoryFacade;
 import org.sociotech.communitymashup.mashup.impl.MashupServiceFacadeImpl;
 import org.sociotech.communitymashup.mashup.properties.MashupProperties;
@@ -64,7 +65,7 @@ import org.sociotech.communitymashup.source.factory.facade.callback.Asynchronous
  * 
  * This is a configurable implementation of a mashup service. 
  */
-public class ConfigurableMashupService extends MashupServiceFacadeImpl implements AsynchronousSourceInstantiationCallback, MashupChangedInterface, DataSetChangedInterface {
+public class ConfigurableMashupService extends MashupServiceFacadeImpl implements AsynchronousSourceInstantiationCallback, MashupChangedInterface, DataSetChangedInterface, InterfaceProducedCallback {
 
 	/**
 	 * The system specific file separator 
@@ -719,13 +720,17 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			InterfaceServiceFacade interfaceService = null;
 			// instantiate interface service
 			try {
-				interfaceService = interfaceFactory.produceInterface(interfaceConfiguration, this.getDataSet());
+				// production may be delayed
+				interfaceService = interfaceFactory.produceInterfaceAndCallback(interfaceConfiguration, this.getDataSet(), this);
 			} catch (Exception e) {
 				log("Error (" + e.getMessage() + ") while producing interface " + interfaceConfiguration.getName(), LogService.LOG_ERROR);
 				return;
 			}
-			// keep reference
-			interfaceServices.put(interfaceConfiguration, interfaceService);
+			// keep reference if directly produced
+			if(interfaceService != null)
+			{
+				interfaceServices.put(interfaceConfiguration, interfaceService);
+			}
 		}
 		else
 		{
@@ -1701,5 +1706,22 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		// set attributes to indicate change
 		this.needBackup = true;
 		this.needSave = true;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.interfaceprovider.factory.callback.InterfaceProducedCallback#interfaceProduced(org.sociotech.communitymashup.application.Interface, org.sociotech.communitymashup.interfaceprovider.facade.InterfaceServiceFacade)
+	 */
+	@Override
+	public void interfaceProduced(Interface configuration,
+			InterfaceServiceFacade interfaceService) {
+		if(configuration == null || interfaceService == null)
+		{
+			return;
+		}
+		
+		log("Got interface produced callback for " + configuration, LogService.LOG_DEBUG);
+		
+		// put it into services map
+		interfaceServices.put(configuration, interfaceService);
 	}
 }
