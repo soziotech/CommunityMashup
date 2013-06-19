@@ -482,6 +482,17 @@ public interface Item extends EObject {
 	MetaTag unMetaTag(String name);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an identifierer with the given key value pair to identify this item.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Identifier removeIdentifier(String key);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type Item.
 	 * 
 	 * @generated

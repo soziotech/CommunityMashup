@@ -1204,6 +1204,22 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Identifier removeIdentifier(String key) {
+		Identifier existingIdentifier = getIdentifier(key);
+		
+		if(existingIdentifier != null)
+		{
+			// remove it
+			this.getIdentifiedBy().remove(existingIdentifier);
+		}
+		// return the old identifier
+		return existingIdentifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -1743,6 +1759,16 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				throw new WrongArgException("Item.doOperation", "java.lang.String", command.getArg("name").getClass().getName());
 			}
 			return this.unMetaTag(name);
+		}
+		if ( command.getCommand().equalsIgnoreCase("removeIdentifier")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("Item.doOperation", 1, command.getArgCount()); 
+			java.lang.String key = null;
+			try {
+				key = (java.lang.String)command.getArg("key");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Item.doOperation", "java.lang.String", command.getArg("key").getClass().getName());
+			}
+			return this.removeIdentifier(key);
 		}
 		throw new UnknownOperationException(this, command);
 	}

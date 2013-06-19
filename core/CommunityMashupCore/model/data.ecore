@@ -278,6 +278,20 @@
         <details key="documentation" value="Returns a lowercase name without any non word characters."/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getConnectionsToWithMetaTag" upperBound="-1" eType="#//Connection">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns, if it exists, the @link Connection connection@endlink from this to the given information object to this information object that has the given value."/>
+      </eAnnotations>
+      <eParameters name="informationObject" eType="#//InformationObject"/>
+      <eParameters name="metaTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getConnectionsFromWithMetaTag" upperBound="-1" eType="#//Connection">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns, if it exists, the @link Connection connection@endlink from this to the given information object to this information object that has the given value."/>
+      </eAnnotations>
+      <eParameters name="informationObject" eType="#//InformationObject"/>
+      <eParameters name="metaTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" eOpposite="#//Category/categorized"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//Tag"
@@ -1136,6 +1150,12 @@
         <details key="documentation" value="Removes the @link MetaTag Meta Tag@endlink represented by the given name from this item. If the @link MetaTag Meta Tag@endlink already exists, this item will be added to its tagged items. If it does not exist, nothing will be done."/>
       </eAnnotations>
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="removeIdentifier" eType="#//Identifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an identifierer with the given key value pair to identify this item."/>
+      </eAnnotations>
+      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="#//DataSet"
         transient="true" resolveProxies="false" eOpposite="#//DataSet/items"/>

@@ -820,6 +820,28 @@ public interface InformationObject extends Item {
 	String getSlugName();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns, if it exists, the @link Connection connection@endlink from this to the given information object to this information object that has the given value.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	EList<Connection> getConnectionsToWithMetaTag(InformationObject informationObject, String metaTag);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns, if it exists, the @link Connection connection@endlink from this to the given information object to this information object that has the given value.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	EList<Connection> getConnectionsFromWithMetaTag(InformationObject informationObject, String metaTag);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type InformationObject.
 	 * 
 	 * @generated

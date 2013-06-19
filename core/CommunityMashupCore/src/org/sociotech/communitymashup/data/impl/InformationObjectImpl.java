@@ -1612,6 +1612,56 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public EList<Connection> getConnectionsToWithMetaTag(InformationObject informationObject, String metaTag) {
+		EList<Connection> allConectionsTo = getConnectionsTo(informationObject);
+		if(allConectionsTo == null)
+		{
+			return null;
+		}
+		
+		BasicEList<Connection> connectionList = new BasicEList<Connection>();
+		
+		// look at all connection to find the matching
+		for(Connection connectionTo : getConnectedTo())
+		{
+			if(connectionTo.hasMetaTag(metaTag))
+			{
+				connectionList.add(connectionTo);
+			}
+		}
+		
+		return connectionList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Connection> getConnectionsFromWithMetaTag(InformationObject informationObject, String metaTag) {
+		EList<Connection> allConectionsTo = getConnectionsTo(informationObject);
+		if(allConectionsTo == null)
+		{
+			return null;
+		}
+		
+		BasicEList<Connection> connectionList = new BasicEList<Connection>();
+		
+		// look at all connection to find the matching
+		for(Connection connectionTo : getConnectedTo())
+		{
+			if(connectionTo.hasMetaTag(metaTag))
+			{
+				connectionList.add(connectionTo);
+			}
+		}
+		
+		return connectionList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -2365,6 +2415,46 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		if ( command.getCommand().equalsIgnoreCase("getSlugName")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("InformationObject.doOperation", 0, command.getArgCount()); 
 			return this.getSlugName();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getConnectionsToWithMetaTag")) {
+			if (command.getArgCount() != 2) throw new WrongArgCountException("InformationObject.doOperation", 2, command.getArgCount()); 
+			InformationObject informationObject = null;
+			try {
+				try {
+					informationObject = (InformationObject)(RestUtil.fromInput(command.getArg("informationObject")));
+				} catch (ClassNotFoundException e) {
+					informationObject = (InformationObject)command.getArg("informationObject");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "InformationObject", command.getArg("informationObject").getClass().getName());
+			}
+			java.lang.String metaTag = null;
+			try {
+				metaTag = (java.lang.String)command.getArg("metaTag");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTag").getClass().getName());
+			}
+			return this.getConnectionsToWithMetaTag(informationObject, metaTag);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getConnectionsFromWithMetaTag")) {
+			if (command.getArgCount() != 2) throw new WrongArgCountException("InformationObject.doOperation", 2, command.getArgCount()); 
+			InformationObject informationObject = null;
+			try {
+				try {
+					informationObject = (InformationObject)(RestUtil.fromInput(command.getArg("informationObject")));
+				} catch (ClassNotFoundException e) {
+					informationObject = (InformationObject)command.getArg("informationObject");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "InformationObject", command.getArg("informationObject").getClass().getName());
+			}
+			java.lang.String metaTag = null;
+			try {
+				metaTag = (java.lang.String)command.getArg("metaTag");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTag").getClass().getName());
+			}
+			return this.getConnectionsFromWithMetaTag(informationObject, metaTag);
 		}	
 		return super.doOperation(command);
 	}

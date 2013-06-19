@@ -1474,4 +1474,34 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		// remove them from the delete on delete list
 		metaTag.getDeleteOnDelete().addAll(addedItems);
 	}
+
+	/**
+	 * Removes the source specific identifier from the given item.
+	 * 
+	 * @param item Item to remove source specific identifiers from.
+	 */
+	public void removeSourceIdentifier(Item item) {
+		if(item == null)
+		{
+			return;
+		}
+		
+		// remove the local identifier
+		item.removeIdentifier(getLocalIdentifierKey());
+	}
+
+	/**
+	 * Adds the source specific ident to the given item.
+	 * 
+	 * @param item Item to identify
+	 * @param sourceIdent Source specific identifier.
+	 */
+	public void identifyBy(Item item, String sourceIdent) {
+		if(item == null)
+		{
+			return;
+		}
+		
+		item.identifyBy(getLocalIdentifierKey(), sourceIdent);
+	}
 }
