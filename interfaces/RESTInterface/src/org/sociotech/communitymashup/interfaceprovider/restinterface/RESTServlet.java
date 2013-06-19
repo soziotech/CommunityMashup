@@ -1059,7 +1059,7 @@ public class RESTServlet extends HttpServlet {
 		
 		// Log the time it took to write the request
 		duration = System.currentTimeMillis() - startTime;
-		log("Request write takes " + duration
+		log("Request write of " + result.length() + " characters takes " + duration
 				+ "ms", LogService.LOG_DEBUG);
 		
 	}
