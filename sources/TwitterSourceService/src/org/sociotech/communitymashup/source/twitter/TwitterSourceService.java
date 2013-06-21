@@ -346,7 +346,13 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			search();
 		}
 		
-		// TODO do other updates
+		if (loadUserTimeline()) {
+			log("Loading user timeline from Twitter.", LogService.LOG_INFO);
+			// add User Timeline
+			addUserTimeline();
+		}
+		
+		// TODO do other updates, only tested updates are currently supported
 	}
 
 	/**
