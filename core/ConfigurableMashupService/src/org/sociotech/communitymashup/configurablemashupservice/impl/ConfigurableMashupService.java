@@ -362,16 +362,18 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		// interpret again to maybe transfer attributes to data set
 		interpretMashupConfigurationAttributes();
 		
-		// create all sources
-
+		
 		EList<Source> sources = mashup.getSources();
+		EList<Interface> interfaces = mashup.getInterfaces();
 
-		if(sources == null || sources.isEmpty())
+		if((sources == null || sources.isEmpty()) && (interfaces == null || interfaces.isEmpty()))
 		{
 			// nothing to do yet
 			configurationFullfilled  = true;
 			return mashup;
 		}
+
+		// create all sources
 
 		// first put all active sources on waiting list
 		for(Source currentSource : sources)
@@ -389,9 +391,6 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		}
 
 		// create all interfaces
-
-		EList<Interface> interfaces = mashup.getInterfaces();
-
 		for(Interface currentInterface : interfaces)
 		{
 			// create a interface for every interface in the configuration
