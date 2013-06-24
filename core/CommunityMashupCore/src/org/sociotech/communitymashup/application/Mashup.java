@@ -336,6 +336,16 @@ public interface Mashup extends Source {
 
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Source getSourceWithIdent(String ident);
+
+
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type Mashup.
 	 * 
 	 * @generated

@@ -231,12 +231,23 @@ public interface DataSet extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ident Counter</em>' attribute.
+	 * @see #setIdentCounter(Long)
 	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_IdentCounter()
-	 * @model default="1" changeable="false"
+	 * @model default="1"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
 	 * @generated
 	 */
 	Long getIdentCounter();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.DataSet#getIdentCounter <em>Ident Counter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ident Counter</em>' attribute.
+	 * @see #getIdentCounter()
+	 * @generated
+	 */
+	void setIdentCounter(Long value);
 
 	/**
 	 * Returns the value of the '<em><b>Ident Prefix</b></em>' attribute.
@@ -1051,6 +1062,17 @@ public interface DataSet extends EObject {
 	 * @generated
 	 */
 	Category getCategoryWithSlug(String slug);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Rebuilds all indexes used for performance.
+	 * <!-- end-model-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
+	 * @generated
+	 */
+	void rebuildIndexes();
 
 	/**
 	 * Returns all Attachments.

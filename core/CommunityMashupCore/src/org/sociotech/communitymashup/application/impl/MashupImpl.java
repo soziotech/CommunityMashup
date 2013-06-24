@@ -493,6 +493,34 @@ public class MashupImpl extends SourceImpl implements Mashup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Source getSourceWithIdent(String ident) {
+		if(ident == null || ident.isEmpty())
+		{
+			return null;
+		}
+		
+		EList<Source> existingSources = this.getSources();
+		if(existingSources == null)
+		{
+			return null;
+		}
+		for(Source currentSource : existingSources)
+		{
+			if(ident.equals(currentSource.getIdent()))
+			{
+				return currentSource;
+			}
+
+		}
+		
+		// not found
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -897,6 +925,16 @@ public class MashupImpl extends SourceImpl implements Mashup {
 		if ( command.getCommand().equalsIgnoreCase("getNewSourceIdent")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("Mashup.doOperation", 0, command.getArgCount()); 
 			return this.getNewSourceIdent();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getSourceWithIdent")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("Mashup.doOperation", 1, command.getArgCount()); 
+			java.lang.String ident = null;
+			try {
+				ident = (java.lang.String)command.getArg("ident");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Mashup.doOperation", "java.lang.String", command.getArg("ident").getClass().getName());
+			}
+			return this.getSourceWithIdent(ident);
 		}	
 		return super.doOperation(command);
 	}

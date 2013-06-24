@@ -26,6 +26,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mashup" eSuperTypes="#//Source">
     <eOperations name="getNewSourceIdent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eOperations name="getSourceWithIdent" eType="#//Source">
+      <eParameters name="ident" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mappingRules" upperBound="-1"
         eType="#//MappingRule" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"

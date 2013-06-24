@@ -1739,6 +1739,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		addEOperation(mashupEClass, ecorePackage.getEIntegerObject(), "getNewSourceIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		EOperation op = addEOperation(mashupEClass, this.getSource(), "getSourceWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(mappingRuleEClass, MappingRule.class, "MappingRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(configurationEClass, Configuration.class, "Configuration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1788,7 +1791,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		addEOperation(mashupContainerEClass, this.getMashupAdmin(), "getConfigurationAdmins", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(mashupContainerEClass, null, "setNewIdentFor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(mashupContainerEClass, null, "setNewIdentFor", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getConfigurableElement(), "configurableElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(mashupContainerEClass, ecorePackage.getEIntegerObject(), "getNewIdentNumber", 0, 1, IS_UNIQUE, IS_ORDERED);

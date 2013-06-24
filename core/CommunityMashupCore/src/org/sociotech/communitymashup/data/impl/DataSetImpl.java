@@ -429,6 +429,18 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void setIdentCounter(Long newIdentCounter) {
+		Long oldIdentCounter = identCounter;
+		identCounter = newIdentCounter;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.DATA_SET__IDENT_COUNTER, oldIdentCounter, identCounter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getIdentPrefix() {
 		return identPrefix;
 	}
@@ -652,6 +664,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			case DataPackage.DATA_SET__LOG_LEVEL:
 				setLogLevel((Integer)newValue);
 				return;
+			case DataPackage.DATA_SET__IDENT_COUNTER:
+				setIdentCounter((Long)newValue);
+				return;
 			case DataPackage.DATA_SET__IDENT_PREFIX:
 				setIdentPrefix((String)newValue);
 				return;
@@ -684,6 +699,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return;
 			case DataPackage.DATA_SET__LOG_LEVEL:
 				setLogLevel(LOG_LEVEL_EDEFAULT);
+				return;
+			case DataPackage.DATA_SET__IDENT_COUNTER:
+				setIdentCounter(IDENT_COUNTER_EDEFAULT);
 				return;
 			case DataPackage.DATA_SET__IDENT_PREFIX:
 				setIdentPrefix(IDENT_PREFIX_EDEFAULT);
@@ -6356,6 +6374,40 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		}
 		
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void rebuildIndexes() {
+		// clear
+		for(String key : typeBasedLookUpMap.keySet())
+		{
+			// clear every list
+			typeBasedLookUpMap.get(key).clear();
+		}
+		typeBasedLookUpMap.clear();
+		
+		EList<Item> allItems = this.getItems();
+		for(Item item : allItems)
+		{
+			String type = getTypeIdentifier(item);
+			
+			// get the object list for the type of the new item
+			List<Item> existingItems = typeBasedLookUpMap.get(type);
+			
+			if(existingItems == null)
+			{
+				// create new list
+				existingItems = new LinkedList<Item>();
+				// add it to lookup map
+				typeBasedLookUpMap.put(type, existingItems);
+			}	
+			
+			// add object to lookup list
+			existingItems.add(item);
+		}
 	}
 
 	/* (non-Javadoc)
