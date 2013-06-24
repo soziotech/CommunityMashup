@@ -448,7 +448,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			backupThread = null;
 		}
 		
-		if(this.cacheDataSet && this.canSave)
+		if(this.cacheDataSet && this.canSave && mashup.getDataSet() != null)
 		{
 			createCacheThread();
 			if(dataSetResource == null)
@@ -526,6 +526,11 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			// no dataset currently exist
 			// initialize new data set
 			existingDataSet = initializeNewDataSet();
+		}
+		else
+		{
+			// rebuild indexes
+			existingDataSet.rebuildIndexes();
 		}
 		
 		// set automatic update of last modification date
