@@ -1005,6 +1005,60 @@
         <details key="noREST" value="true"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getContentsWithAllMetaTags" upperBound="-1" eType="#//Content">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all @link InformationObject Information Object@endlink instances which are tagged by all of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned."/>
+        <details key="OCLCondition" value="&quot;true&quot;"/>
+        <details key="input" value="getItemsWithOneOfMetaTags(tags)"/>
+      </eAnnotations>
+      <eParameters name="tags" upperBound="-1" eType="#//MetaTag"/>
+    </eOperations>
+    <eOperations name="getContentsWithOneOfMetaTags" upperBound="-1" eType="#//Content">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all @link InformationObject Information Object@endlink instances which are tagged by one of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned."/>
+        <details key="OCLCondition" value="&quot;true&quot;"/>
+        <details key="input" value="getItemsWithOneOfMetaTags(tags)"/>
+      </eAnnotations>
+      <eParameters name="tags" upperBound="-1" eType="#//MetaTag"/>
+    </eOperations>
+    <eOperations name="getPersonsWithAllMetaTags" upperBound="-1" eType="#//Person">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all @link InformationObject Information Object@endlink instances which are tagged by all of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned."/>
+        <details key="OCLCondition" value="&quot;true&quot;"/>
+        <details key="input" value="getItemsWithOneOfMetaTags(tags)"/>
+      </eAnnotations>
+      <eParameters name="tags" upperBound="-1" eType="#//MetaTag"/>
+    </eOperations>
+    <eOperations name="getPersonsWithOneOfMetaTags" upperBound="-1" eType="#//Person">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all @link InformationObject Information Object@endlink instances which are tagged by one of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned."/>
+        <details key="OCLCondition" value="&quot;true&quot;"/>
+        <details key="input" value="getItemsWithOneOfMetaTags(tags)"/>
+      </eAnnotations>
+      <eParameters name="tags" upperBound="-1" eType="#//MetaTag"/>
+    </eOperations>
+    <eOperations name="getOrganisationsWithAllMetaTags" upperBound="-1" eType="#//Organisation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all @link InformationObject Information Object@endlink instances which are tagged by all of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned."/>
+        <details key="OCLCondition" value="&quot;true&quot;"/>
+        <details key="input" value="getItemsWithOneOfMetaTags(tags)"/>
+      </eAnnotations>
+      <eParameters name="tags" upperBound="-1" eType="#//MetaTag"/>
+    </eOperations>
+    <eOperations name="getOrganisationsWithOneOfMetaTags" upperBound="-1" eType="#//Organisation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all @link InformationObject Information Object@endlink instances which are tagged by one of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned."/>
+        <details key="OCLCondition" value="&quot;true&quot;"/>
+        <details key="input" value="getItemsWithOneOfMetaTags(tags)"/>
+      </eAnnotations>
+      <eParameters name="tags" upperBound="-1" eType="#//MetaTag"/>
+    </eOperations>
+    <eOperations name="getEvents" upperBound="-1" eType="#//Event">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all Person instances contained in this @link DataSet Data Set@endlink."/>
+        <details key="OCLCondition" value="&quot;true&quot;"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" resolveProxies="false" eOpposite="#//Item/dataSet"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheFolder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

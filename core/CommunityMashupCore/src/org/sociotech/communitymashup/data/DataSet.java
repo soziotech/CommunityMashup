@@ -1075,6 +1075,78 @@ public interface DataSet extends EObject {
 	void rebuildIndexes();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link InformationObject Information Object@endlink instances which are tagged by all of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned.
+	 * <!-- end-model-doc -->
+	 * @model tagsMany="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getItemsWithOneOfMetaTags(tags)'"
+	 * @generated
+	 */
+	EList<Content> getContentsWithAllMetaTags(EList<MetaTag> tags);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link InformationObject Information Object@endlink instances which are tagged by one of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned.
+	 * <!-- end-model-doc -->
+	 * @model tagsMany="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getItemsWithOneOfMetaTags(tags)'"
+	 * @generated
+	 */
+	EList<Content> getContentsWithOneOfMetaTags(EList<MetaTag> tags);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link InformationObject Information Object@endlink instances which are tagged by all of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned.
+	 * <!-- end-model-doc -->
+	 * @model tagsMany="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getItemsWithOneOfMetaTags(tags)'"
+	 * @generated
+	 */
+	EList<Person> getPersonsWithAllMetaTags(EList<MetaTag> tags);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link InformationObject Information Object@endlink instances which are tagged by one of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned.
+	 * <!-- end-model-doc -->
+	 * @model tagsMany="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getItemsWithOneOfMetaTags(tags)'"
+	 * @generated
+	 */
+	EList<Person> getPersonsWithOneOfMetaTags(EList<MetaTag> tags);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link InformationObject Information Object@endlink instances which are tagged by all of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned.
+	 * <!-- end-model-doc -->
+	 * @model tagsMany="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getItemsWithOneOfMetaTags(tags)'"
+	 * @generated
+	 */
+	EList<Organisation> getOrganisationsWithAllMetaTags(EList<MetaTag> tags);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link InformationObject Information Object@endlink instances which are tagged by one of the given @link MetaTag Meta Tags@endlink. If the list is empty or undefined then all @link InformationObject Information Object@endlink instances will be returned.
+	 * <!-- end-model-doc -->
+	 * @model tagsMany="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getItemsWithOneOfMetaTags(tags)'"
+	 * @generated
+	 */
+	EList<Organisation> getOrganisationsWithOneOfMetaTags(EList<MetaTag> tags);
+
+	/**
 	 * Returns all Attachments.
 	 * 
 	 * @return All Attachments of this DataSet.
@@ -1096,7 +1168,7 @@ public interface DataSet extends EObject {
 	 * @return All Events of this DataSet.
 	 * @generated
 	 */
-	public EList<Event> getEvents();
+	EList<Event> getEvents();
 
 	/**
 	 * <!-- begin-user-doc --> Returns a List of all MetaTags contained in this

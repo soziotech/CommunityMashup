@@ -3180,14 +3180,35 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated
 	 */
 	public EList<Event> getEvents() {
-		IQueryResult result = getItemsMatchingCondition(Event.isTypeCondition);
-		EList<Event> resList = new BasicEList<Event>();
-		if (result != null) {
-			for (EObject eo: result.getEObjects()) {
-				resList.add((Event) eo);
-			}
+		// Check if input is defined
+		if(getItems() == null) {
+			return null;
 		}
-		return resList;
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getEvent());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItems(), oclCondition.AND(Event.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<Event>();
+		}
+		
+		// results are only Events
+		@SuppressWarnings("unchecked")
+		EList<Event> objects = new BasicEList<Event>((Collection<? extends Event>) result.getEObjects());
+		
+		return objects;	
+	
 	}
 
 	/**
@@ -4250,6 +4271,94 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				throw new WrongArgException("DataSet.doOperation", "java.lang.String", command.getArg("slug").getClass().getName());
 			}
 			return this.getCategoryWithSlug(slug);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getContentsWithAllMetaTags")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			EList<MetaTag> tags = null;
+			try {
+				try {
+					tags = (EList<MetaTag>)(RestUtil.fromInput(command.getArg("tags")));
+				} catch (ClassNotFoundException e) {
+					tags = (EList<MetaTag>)command.getArg("tags");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "EList<MetaTag>", command.getArg("tags").getClass().getName());
+			}
+			return this.getContentsWithAllMetaTags(tags);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getContentsWithOneOfMetaTags")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			EList<MetaTag> tags = null;
+			try {
+				try {
+					tags = (EList<MetaTag>)(RestUtil.fromInput(command.getArg("tags")));
+				} catch (ClassNotFoundException e) {
+					tags = (EList<MetaTag>)command.getArg("tags");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "EList<MetaTag>", command.getArg("tags").getClass().getName());
+			}
+			return this.getContentsWithOneOfMetaTags(tags);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getPersonsWithAllMetaTags")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			EList<MetaTag> tags = null;
+			try {
+				try {
+					tags = (EList<MetaTag>)(RestUtil.fromInput(command.getArg("tags")));
+				} catch (ClassNotFoundException e) {
+					tags = (EList<MetaTag>)command.getArg("tags");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "EList<MetaTag>", command.getArg("tags").getClass().getName());
+			}
+			return this.getPersonsWithAllMetaTags(tags);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getPersonsWithOneOfMetaTags")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			EList<MetaTag> tags = null;
+			try {
+				try {
+					tags = (EList<MetaTag>)(RestUtil.fromInput(command.getArg("tags")));
+				} catch (ClassNotFoundException e) {
+					tags = (EList<MetaTag>)command.getArg("tags");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "EList<MetaTag>", command.getArg("tags").getClass().getName());
+			}
+			return this.getPersonsWithOneOfMetaTags(tags);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getOrganisationsWithAllMetaTags")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			EList<MetaTag> tags = null;
+			try {
+				try {
+					tags = (EList<MetaTag>)(RestUtil.fromInput(command.getArg("tags")));
+				} catch (ClassNotFoundException e) {
+					tags = (EList<MetaTag>)command.getArg("tags");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "EList<MetaTag>", command.getArg("tags").getClass().getName());
+			}
+			return this.getOrganisationsWithAllMetaTags(tags);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getOrganisationsWithOneOfMetaTags")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			EList<MetaTag> tags = null;
+			try {
+				try {
+					tags = (EList<MetaTag>)(RestUtil.fromInput(command.getArg("tags")));
+				} catch (ClassNotFoundException e) {
+					tags = (EList<MetaTag>)command.getArg("tags");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "EList<MetaTag>", command.getArg("tags").getClass().getName());
+			}
+			return this.getOrganisationsWithOneOfMetaTags(tags);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getEvents")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
+			return this.getEvents();
 		}
 		throw new UnknownOperationException(this, command);
 	}
@@ -6408,6 +6517,228 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			// add object to lookup list
 			existingItems.add(item);
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Content> getContentsWithAllMetaTags(EList<MetaTag> tags) {
+		// Check if input is defined
+		if(getItemsWithOneOfMetaTags(tags) == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getContent());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItemsWithOneOfMetaTags(tags), oclCondition.AND(Content.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<Content>();
+		}
+		
+		// results are only Contents
+		@SuppressWarnings("unchecked")
+		EList<Content> objects = new BasicEList<Content>((Collection<? extends Content>) result.getEObjects());
+		
+		return objects;	
+	
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Content> getContentsWithOneOfMetaTags(EList<MetaTag> tags) {
+		// Check if input is defined
+		if(getItemsWithOneOfMetaTags(tags) == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getContent());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItemsWithOneOfMetaTags(tags), oclCondition.AND(Content.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<Content>();
+		}
+		
+		// results are only Contents
+		@SuppressWarnings("unchecked")
+		EList<Content> objects = new BasicEList<Content>((Collection<? extends Content>) result.getEObjects());
+		
+		return objects;	
+	
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Person> getPersonsWithAllMetaTags(EList<MetaTag> tags) {
+		// Check if input is defined
+		if(getItemsWithOneOfMetaTags(tags) == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getPerson());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItemsWithOneOfMetaTags(tags), oclCondition.AND(Person.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<Person>();
+		}
+		
+		// results are only Persons
+		@SuppressWarnings("unchecked")
+		EList<Person> objects = new BasicEList<Person>((Collection<? extends Person>) result.getEObjects());
+		
+		return objects;	
+	
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Person> getPersonsWithOneOfMetaTags(EList<MetaTag> tags) {
+		// Check if input is defined
+		if(getItemsWithOneOfMetaTags(tags) == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getPerson());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItemsWithOneOfMetaTags(tags), oclCondition.AND(Person.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<Person>();
+		}
+		
+		// results are only Persons
+		@SuppressWarnings("unchecked")
+		EList<Person> objects = new BasicEList<Person>((Collection<? extends Person>) result.getEObjects());
+		
+		return objects;	
+	
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Organisation> getOrganisationsWithAllMetaTags(EList<MetaTag> tags) {
+		// Check if input is defined
+		if(getItemsWithOneOfMetaTags(tags) == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getOrganisation());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItemsWithOneOfMetaTags(tags), oclCondition.AND(Organisation.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<Organisation>();
+		}
+		
+		// results are only Organisations
+		@SuppressWarnings("unchecked")
+		EList<Organisation> objects = new BasicEList<Organisation>((Collection<? extends Organisation>) result.getEObjects());
+		
+		return objects;	
+	
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Organisation> getOrganisationsWithOneOfMetaTags(EList<MetaTag> tags) {
+		// Check if input is defined
+		if(getItemsWithOneOfMetaTags(tags) == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getOrganisation());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItemsWithOneOfMetaTags(tags), oclCondition.AND(Organisation.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<Organisation>();
+		}
+		
+		// results are only Organisations
+		@SuppressWarnings("unchecked")
+		EList<Organisation> objects = new BasicEList<Organisation>((Collection<? extends Organisation>) result.getEObjects());
+		
+		return objects;	
+	
 	}
 
 	/* (non-Javadoc)
