@@ -2357,6 +2357,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		addEOperation(dataSetEClass, this.getEvent(), "getEvents", 0, -1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataSetEClass, this.getItem(), "searchByQuery", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "query", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_DataSet(), this.getDataSet(), this.getDataSet_Items(), "dataSet", null, 0, 1, Item.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_Ident(), ecorePackage.getEString(), "ident", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

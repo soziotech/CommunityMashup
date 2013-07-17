@@ -1171,6 +1171,17 @@ public interface DataSet extends EObject {
 	EList<Event> getEvents();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Searches for Items matching the given search term.
+	 * <!-- end-model-doc -->
+	 * @model queryRequired="true"
+	 * @generated
+	 */
+	EList<Item> searchByQuery(String query);
+
+	/**
 	 * <!-- begin-user-doc --> Returns a List of all MetaTags contained in this
 	 * DataSet.
 	 * 

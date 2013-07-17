@@ -3212,6 +3212,15 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Item> searchByQuery(String query) {
+		//return querySearchInterface.search(this, query);
+		return null;
+	}
+
+	/**
 	 * Returns all Events matching the provided condition.
 	 *
 	 * @condition The condition to filter the Events.
@@ -4359,6 +4368,16 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		if ( command.getCommand().equalsIgnoreCase("getEvents")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
 			return this.getEvents();
+		}
+		if ( command.getCommand().equalsIgnoreCase("searchByQuery")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.lang.String query = null;
+			try {
+				query = (java.lang.String)command.getArg("query");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.lang.String", command.getArg("query").getClass().getName());
+			}
+			return this.searchByQuery(query);
 		}
 		throw new UnknownOperationException(this, command);
 	}
