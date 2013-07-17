@@ -290,6 +290,9 @@ public class RESTServlet extends HttpServlet {
 		// enable caching
 		options.put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
 
+		// force xsi type output to enable the creation of proxy object with the correct type
+		options.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);
+
 		options.put(XMLResource.OPTION_FORMATTED, indentResult);
 		
 		String result = "";
