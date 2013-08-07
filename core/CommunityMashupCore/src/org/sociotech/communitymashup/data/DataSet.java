@@ -44,6 +44,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getLogLevel <em>Log Level</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getIdentCounter <em>Ident Counter</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getIdentPrefix <em>Ident Prefix</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getCreated <em>Created</em>}</li>
  * </ul>
  * </p>
  *
@@ -276,6 +277,32 @@ public interface DataSet extends EObject {
 	 * @generated
 	 */
 	void setIdentPrefix(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Created</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Created</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Created</em>' attribute.
+	 * @see #setCreated(Date)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_Created()
+	 * @model
+	 * @generated
+	 */
+	Date getCreated();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.DataSet#getCreated <em>Created</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Created</em>' attribute.
+	 * @see #getCreated()
+	 * @generated
+	 */
+	void setCreated(Date value);
 
 	/**
 	 * <!-- begin-user-doc --> Returns all items contained in this data set with
@@ -1557,6 +1584,13 @@ public interface DataSet extends EObject {
 	 */
 	public void setUpdateModificationDate(boolean automaticUpdate);
 
+	/**
+	 * Calculates the last modified date from the contained items.
+	 * 
+	 */
+	public void calculateLastModificationDate();
+
+	
 	/**
 	 * Returns true if the automatic update of the modification date is enabled.
 	 * 

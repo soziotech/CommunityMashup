@@ -296,6 +296,9 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		// set attachment caching
 		boolean shouldCacheAttachments = this.mashup.getCacheAttachments();
 		newDataSet.setCacheFileAttachements(shouldCacheAttachments);
+		
+		// set created date to now
+		newDataSet.setCreated(new Date());
 
 		return newDataSet;
 	}
@@ -532,9 +535,14 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			existingDataSet.rebuildIndexes();
 		}
 		
+		// reset created date if not previously set (loaded from cached file)
+		if(existingDataSet.getCreated() == null) {
+			existingDataSet.setCreated(new Date());
+		}
+		
 		// set automatic update of last modification date
 		existingDataSet.setUpdateModificationDate(true);
-		
+						
 		// set it for usage
 		mashup.setDataSet(existingDataSet);
 				

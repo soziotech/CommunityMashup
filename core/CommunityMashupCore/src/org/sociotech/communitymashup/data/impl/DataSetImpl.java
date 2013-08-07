@@ -111,6 +111,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getLogLevel <em>Log Level</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getIdentCounter <em>Ident Counter</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getIdentPrefix <em>Ident Prefix</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getCreated <em>Created</em>}</li>
  * </ul>
  * </p>
  *
@@ -264,6 +265,26 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 */
 	protected String identPrefix = IDENT_PREFIX_EDEFAULT;
 	
+	/**
+	 * The default value of the '{@link #getCreated() <em>Created</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreated()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date CREATED_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCreated() <em>Created</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreated()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date created = CREATED_EDEFAULT;
+
 	/**
 	 * True means that file attachment caching is on.
 	 */
@@ -459,6 +480,27 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Date getCreated() {
+		return created;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCreated(Date newCreated) {
+		Date oldCreated = created;
+		created = newCreated;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.DATA_SET__CREATED, oldCreated, created));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * Returns all items with the given String value.
 	 * <!-- end-user-doc -->
 	 */
@@ -632,6 +674,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return getIdentCounter();
 			case DataPackage.DATA_SET__IDENT_PREFIX:
 				return getIdentPrefix();
+			case DataPackage.DATA_SET__CREATED:
+				return getCreated();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -670,6 +714,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			case DataPackage.DATA_SET__IDENT_PREFIX:
 				setIdentPrefix((String)newValue);
 				return;
+			case DataPackage.DATA_SET__CREATED:
+				setCreated((Date)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -706,6 +753,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			case DataPackage.DATA_SET__IDENT_PREFIX:
 				setIdentPrefix(IDENT_PREFIX_EDEFAULT);
 				return;
+			case DataPackage.DATA_SET__CREATED:
+				setCreated(CREATED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -734,6 +784,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return IDENT_COUNTER_EDEFAULT == null ? identCounter != null : !IDENT_COUNTER_EDEFAULT.equals(identCounter);
 			case DataPackage.DATA_SET__IDENT_PREFIX:
 				return IDENT_PREFIX_EDEFAULT == null ? identPrefix != null : !IDENT_PREFIX_EDEFAULT.equals(identPrefix);
+			case DataPackage.DATA_SET__CREATED:
+				return CREATED_EDEFAULT == null ? created != null : !CREATED_EDEFAULT.equals(created);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -754,6 +806,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		result.append(identCounter);
 		result.append(", identPrefix: ");
 		result.append(identPrefix);
+		result.append(", created: ");
+		result.append(created);
 		result.append(')');
 		return result.toString();
 	}
@@ -3263,6 +3317,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			return this.getItems();		
 		if ( featureName.equalsIgnoreCase("lastModified") )
 			return this.getLastModified();		
+		if ( featureName.equalsIgnoreCase("created") )
+			return this.getCreated();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 
@@ -3290,6 +3346,23 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 					throw new WrongArgException("DataSet.setFeature", "java.util.Date",value.getClass().getName());
 				}
 				this.setLastModified(flastModified);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("created") ) {
+				java.util.Date fcreated = null;
+				try {
+					try {
+						fcreated = RestUtil.fromDateString((String) value);
+						if(fcreated == null) {
+							fcreated = (java.util.Date)(RestUtil.fromInput(value));
+						}
+					} catch (ClassNotFoundException e) {
+						fcreated = (java.util.Date)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("DataSet.setFeature", "java.util.Date",value.getClass().getName());
+				}
+				this.setCreated(fcreated);
 			return this;
 			}		
 	throw new UnknownOperationException(this, new RestCommand("set" + featureName).addArg("value",value));
@@ -6774,6 +6847,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	@Override
 	public void setUpdateModificationDate(boolean automaticUpdate) {
 		this.automaticModificationDateUpdate = automaticUpdate;
+		// calculate current modification date
+		calculateLastModificationDate();
 	}
 
 	/* (non-Javadoc)
@@ -6784,6 +6859,47 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		return this.automaticModificationDateUpdate;
 	}
 	
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.DataSet#calculateLastModificationDate()
+	 */
+	@Override
+	public void calculateLastModificationDate() {
+		EList<Item> allItems = this.getItems();
+		Date lastModified = null;
+		
+		// find the newest modification date
+		for(Item item : allItems)
+		{
+			if(item.getLastModified() == null)
+			{
+				continue;
+			}
+			
+			if(lastModified == null)
+			{
+				lastModified = item.getLastModified();
+			}
+			else if(lastModified.after(item.getLastModified()))
+			{
+				lastModified = item.getLastModified();
+			}
+		}
+		
+		// if not set, look at the creation date
+		if(lastModified == null)
+		{
+			lastModified = this.getCreated();
+		}
+		
+		if(lastModified != null)
+		{
+			// copy date object and set it
+			this.setLastModified(new Date(lastModified.getTime()));
+		}
+		
+	}
+
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotify(org.eclipse.emf.common.notify.Notification)
 	 */

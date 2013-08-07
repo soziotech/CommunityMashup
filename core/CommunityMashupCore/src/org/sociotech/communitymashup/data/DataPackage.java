@@ -1075,13 +1075,22 @@ public interface DataPackage extends EPackage {
 	int DATA_SET__IDENT_PREFIX = 7;
 
 	/**
+	 * The feature id for the '<em><b>Created</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET__CREATED = 8;
+
+	/**
 	 * The number of structural features of the '<em>Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_FEATURE_COUNT = 8;
+	int DATA_SET_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -5501,6 +5510,17 @@ public interface DataPackage extends EPackage {
 	EAttribute getDataSet_IdentPrefix();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.DataSet#getCreated <em>Created</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Created</em>'.
+	 * @see org.sociotech.communitymashup.data.DataSet#getCreated()
+	 * @see #getDataSet()
+	 * @generated
+	 */
+	EAttribute getDataSet_Created();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Item <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6849,6 +6869,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_SET__IDENT_PREFIX = eINSTANCE.getDataSet_IdentPrefix();
+
+		/**
+		 * The meta object literal for the '<em><b>Created</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SET__CREATED = eINSTANCE.getDataSet_Created();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ItemImpl <em>Item</em>}' class.

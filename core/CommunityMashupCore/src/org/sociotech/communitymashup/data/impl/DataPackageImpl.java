@@ -753,6 +753,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDataSet_Created() {
+		return (EAttribute)dataSetEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItem() {
 		return itemEClass;
 	}
@@ -1649,6 +1658,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(dataSetEClass, DATA_SET__LOG_LEVEL);
 		createEAttribute(dataSetEClass, DATA_SET__IDENT_COUNTER);
 		createEAttribute(dataSetEClass, DATA_SET__IDENT_PREFIX);
+		createEAttribute(dataSetEClass, DATA_SET__CREATED);
 
 		itemEClass = createEClass(ITEM);
 		createEReference(itemEClass, ITEM__DATA_SET);
@@ -2041,6 +2051,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getDataSet_LogLevel(), ecorePackage.getEIntegerObject(), "logLevel", null, 0, 1, DataSet.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_IdentCounter(), ecorePackage.getELongObject(), "identCounter", "1", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_IdentPrefix(), ecorePackage.getEString(), "identPrefix", "a_", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSet_Created(), ecorePackage.getEDate(), "created", null, 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(dataSetEClass, this.getItem(), "add", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);

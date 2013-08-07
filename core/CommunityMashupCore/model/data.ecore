@@ -1105,6 +1105,7 @@
         <details key="noREST" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="created" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Item" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
