@@ -52,6 +52,15 @@ public abstract class MashupServiceFacadeImpl extends SourceServiceFacadeImpl im
 	 */
 	private ServiceRegistration<MashupServiceFacade> mashupRegistration;
 
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.mashup.facade.MashupServiceFacade#getMashupConfiguration()
+	 */
+	@Override
+	public Mashup getMashupConfiguration() {
+		return mashup;
+	}
+
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.mashup.MashupServiceFacade#loadConfiguration(org.sociotech.communitymashup.application.Mashup)
 	 */

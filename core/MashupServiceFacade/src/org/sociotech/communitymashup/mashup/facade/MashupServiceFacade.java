@@ -29,6 +29,13 @@ public interface MashupServiceFacade {
 
     // TODO: check dependency to source's getDataSet
     public DataSet getDataSet();
+    
+    /**
+     * Returns the configuration of this mashup service.
+     * 
+     * @return The configuration of this mashup service.
+     */
+    public Mashup getMashupConfiguration();
 
     /**
      * Loads an mashup configuration from an XML file (Application model) at the given URL

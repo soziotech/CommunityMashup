@@ -545,6 +545,8 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 						
 		// set it for usage
 		mashup.setDataSet(existingDataSet);
+		// set configuration reference in data set
+		existingDataSet.setSetUp(mashup);
 				
 		// if not loaded prepare save resource
 		if(dataSetResource == null && dataDirectory != null && this.cacheDataSet)

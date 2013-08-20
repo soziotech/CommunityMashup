@@ -378,6 +378,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		return setUp;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
