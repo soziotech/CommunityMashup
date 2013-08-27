@@ -577,9 +577,9 @@ public class RESTServlet extends HttpServlet {
 	 * @return The parsed RESTCommand.
 	 */
 	private RestCommand parseCommand(String string, List<EObject> eObjects) {
-		if (!string
-				.matches("[^\\?&=]+?(\\?[^\\?&=]+?=[^\\?&=]+?(&[^\\?&=]+?=[^\\?&=]+?)*?)?"))
-			return null;
+//		if (!string
+//				.matches("[^\\?&=]+?(\\?[^\\?&=]+?=[^\\?&=]+?(&[^\\?&=]+?=[^\\?&=]+?)*?)?"))
+//			return null;
 		String[] splitted = string.split("\\?", 2);
 
 		RestCommand command = new RestCommand(splitted[0]);
