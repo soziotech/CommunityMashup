@@ -51,6 +51,7 @@ import org.eclipse.ocl.ecore.EcoreEnvironment;
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 import org.eclipse.ocl.ecore.SendSignalAction;
 import org.osgi.service.log.LogService;
+import org.sociotech.communitymashup.SearchServiceFacade.SearchServiceFacade;
 import org.sociotech.communitymashup.application.Mashup;
 import org.sociotech.communitymashup.data.Attachment;
 import org.sociotech.communitymashup.data.Binary;
@@ -3266,13 +3267,26 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	
 	}
 
+	public SearchServiceFacade<Item> searchService;
+	
+	public void setSearchService(SearchServiceFacade<Item> searchService) {
+		this.searchService = searchService;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
 	public EList<Item> searchByQuery(String query) {
-		//return querySearchInterface.search(this, query);
+
+		if(this.searchService != null) {
+			return this.searchService.performSearch(query);
+		}else{
+			log("DataSet: No SearchService found", LogService.LOG_ERROR);
+		}
+		
 		return null;
+
 	}
 
 	/**
