@@ -1187,7 +1187,7 @@ public interface DataSet extends EObject {
 	 * @return All IndoorLocations of this DataSet.
 	 * @generated
 	 */
-	public EList<IndoorLocation> getIndoorLocations();
+	EList<IndoorLocation> getIndoorLocations();
 
 	/**
 	 * Returns all Events.

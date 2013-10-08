@@ -3180,14 +3180,35 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated
 	 */
 	public EList<IndoorLocation> getIndoorLocations() {
-		IQueryResult result = getItemsMatchingCondition(IndoorLocation.isTypeCondition);
-		EList<IndoorLocation> resList = new BasicEList<IndoorLocation>();
-		if (result != null) {
-			for (EObject eo: result.getEObjects()) {
-				resList.add((IndoorLocation) eo);
-			}
+		// Check if input is defined
+		if(getItems() == null) {
+			return null;
 		}
-		return resList;
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getIndoorLocation());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItems(), oclCondition.AND(IndoorLocation.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<IndoorLocation>();
+		}
+		
+		// results are only IndoorLocations
+		@SuppressWarnings("unchecked")
+		EList<IndoorLocation> objects = new BasicEList<IndoorLocation>((Collection<? extends IndoorLocation>) result.getEObjects());
+		
+		return objects;	
+	
 	}
 
 	/**
@@ -4452,6 +4473,10 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				throw new WrongArgException("DataSet.doOperation", "java.lang.String", command.getArg("query").getClass().getName());
 			}
 			return this.searchByQuery(query);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getIndoorLocations")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
+			return this.getIndoorLocations();
 		}
 		throw new UnknownOperationException(this, command);
 	}
