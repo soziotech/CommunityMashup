@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SLF4JLoggerBridgeLogListener
 Bundle-SymbolicName: org.sociotech.communitymashup.log.SLF4JLoggerBridgeLogListener
 Bundle-Version: 0.0.1
-Bundle-Activator: org.sociotech.communitymashup.log.slf4jloggerbridgeloglistener.LogListenerBundleActivator
+Bundle-Activator: org.sociotech.communitymashup.log.slf4jloggerbridgeloglistener.SLF4JLogListenerBundleActivator
 Bundle-Vendor: org.sociotech.communitymashup
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.eclipse.equinox.log;version="1.0.0",

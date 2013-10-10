@@ -19,20 +19,20 @@ import org.osgi.framework.BundleContext;
  * 
  * @author Peter Lachenmaier
  */
-public class LogListenerBundleActivator implements BundleActivator  
+public class SLF4JLogListenerBundleActivator implements BundleActivator  
 {
-	private SLF4JLoggerBridgeLogListener consoleLog = null;
+	private SLF4JLoggerBridgeLogListener slf4jLog = null;
 	
 	public void start(BundleContext context) throws Exception
 	{
-		// create new console log listener
-		this.consoleLog = new SLF4JLoggerBridgeLogListener(context);
+		// create new slf4j log listener
+		this.slf4jLog = new SLF4JLoggerBridgeLogListener(context);
 	}
 
 	public void stop(BundleContext context) throws Exception
 	{
-		// stop console log listener
-		this.consoleLog.stop();
+		// stop slf4j log listener
+		this.slf4jLog.stop();
 	}
 
 }
