@@ -556,9 +556,9 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 		try {
 			Integer intValue = new Integer(stringLogLevel);
 			if(intValue.equals(LogService.LOG_DEBUG) || 
-			   intValue.equals(LogService.LOG_DEBUG) ||
-			   intValue.equals(LogService.LOG_DEBUG) ||
-			   intValue.equals(LogService.LOG_DEBUG))
+			   intValue.equals(LogService.LOG_INFO) ||
+			   intValue.equals(LogService.LOG_WARNING) ||
+			   intValue.equals(LogService.LOG_ERROR))
 			{
 				// return if valid
 				return intValue;
