@@ -616,7 +616,7 @@ public class MashupConnector implements DataSetChangedInterface {
 			itemToUpdate.forceUpdate(updatedItem);
 		} catch (Exception e) {
 			log("(Local) Error while updating item " + updatedItem + " (" + e.getMessage() + ")", LogService.LOG_WARNING);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		finally {
 			touching = false;
