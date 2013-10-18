@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
@@ -1429,6 +1430,60 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return deletedIfDeleted != null && !deletedIfDeleted.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.ITEM___LOG__STRING:
+				log((String)arguments.get(0));
+				return null;
+			case DataPackage.ITEM___LOG__STRING_INTEGER:
+				log((String)arguments.get(0), (Integer)arguments.get(1));
+				return null;
+			case DataPackage.ITEM___META_TAG__STRING:
+				return metaTag((String)arguments.get(0));
+			case DataPackage.ITEM___IDENTIFY_BY__STRING_STRING:
+				return identifyBy((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.ITEM___GET_IDENTIFIER__STRING:
+				return getIdentifier((String)arguments.get(0));
+			case DataPackage.ITEM___HAS_META_TAG__STRING:
+				return hasMetaTag((String)arguments.get(0));
+			case DataPackage.ITEM___MATCHES_SEARCH__STRING:
+				return matchesSearch((String)arguments.get(0));
+			case DataPackage.ITEM___DELETE:
+				delete();
+				return null;
+			case DataPackage.ITEM___IS_EQUAL_ITEM__ITEM:
+				return isEqualItem((Item)arguments.get(0));
+			case DataPackage.ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING:
+				return getCreatedPrettyInLanguage((String)arguments.get(0));
+			case DataPackage.ITEM___GET_CREATED_PRETTY:
+				return getCreatedPretty();
+			case DataPackage.ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING:
+				return getLastModifiedPrettyInLanguage((String)arguments.get(0));
+			case DataPackage.ITEM___GET_LAST_MODIFIED_PRETTY:
+				return getLastModifiedPretty();
+			case DataPackage.ITEM___DELETE_ON_DELETE_OF__ITEM:
+				return deleteOnDeleteOf((Item)arguments.get(0));
+			case DataPackage.ITEM___DELETE_IF_EMPTY_ON_DELETE:
+				deleteIfEmptyOnDelete();
+				return null;
+			case DataPackage.ITEM___UPDATE__ITEM:
+				return update((Item)arguments.get(0));
+			case DataPackage.ITEM___FORCE_UPDATE__ITEM:
+				return forceUpdate((Item)arguments.get(0));
+			case DataPackage.ITEM___UN_META_TAG__STRING:
+				return unMetaTag((String)arguments.get(0));
+			case DataPackage.ITEM___REMOVE_IDENTIFIER__STRING:
+				return removeIdentifier((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -10,11 +10,13 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
@@ -213,6 +215,22 @@ public class EventImpl extends MetaInformationImpl implements Event {
 				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.EVENT___GET_DATE_PRETTY_IN_LANGUAGE__STRING:
+				return getDatePrettyInLanguage((String)arguments.get(0));
+			case DataPackage.EVENT___GET_DATE_PRETTY:
+				return getDatePretty();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

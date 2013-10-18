@@ -15,6 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -579,6 +580,20 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 				return CACHED_FILE_NAME_EDEFAULT == null ? cachedFileName != null : !CACHED_FILE_NAME_EDEFAULT.equals(cachedFileName);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.ATTACHMENT___GET_ORIGINAL_FILE_URL:
+				return getOriginalFileUrl();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

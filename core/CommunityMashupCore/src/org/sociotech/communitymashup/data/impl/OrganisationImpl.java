@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -501,6 +502,24 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 				return organisations != null && !organisations.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.ORGANISATION___GET_PERSONS:
+				return getPersons();
+			case DataPackage.ORGANISATION___GET_CONTENTS:
+				return getContents();
+			case DataPackage.ORGANISATION___ADD_PARTICIPANT__PERSON:
+				return addParticipant((Person)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -13,6 +13,7 @@ package org.sociotech.communitymashup.collection;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -107,6 +108,15 @@ public interface CollectionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ITEMS_COLLECTION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Items Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEMS_COLLECTION_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.collection.impl.SmartInformationObjectCollectionImpl <em>Smart Information Object Collection</em>}' class.
@@ -272,6 +282,42 @@ public interface CollectionPackage extends EPackage {
 	int SMART_INFORMATION_OBJECT_COLLECTION_FEATURE_COUNT = ITEMS_COLLECTION_FEATURE_COUNT + 14;
 
 	/**
+	 * The operation id for the '<em>Add Positive</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_INFORMATION_OBJECT_COLLECTION___ADD_POSITIVE__ITEM = ITEMS_COLLECTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add Negative</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_INFORMATION_OBJECT_COLLECTION___ADD_NEGATIVE__ITEM = ITEMS_COLLECTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Remove</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_INFORMATION_OBJECT_COLLECTION___REMOVE__ITEM = ITEMS_COLLECTION_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Smart Information Object Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMART_INFORMATION_OBJECT_COLLECTION_OPERATION_COUNT = ITEMS_COLLECTION_OPERATION_COUNT + 3;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.collection.impl.ManualCollectionImpl <em>Manual Collection</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -307,6 +353,33 @@ public interface CollectionPackage extends EPackage {
 	 * @ordered
 	 */
 	int MANUAL_COLLECTION_FEATURE_COUNT = ITEMS_COLLECTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUAL_COLLECTION___ADD_ITEM__ITEM = ITEMS_COLLECTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Remove Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUAL_COLLECTION___REMOVE_ITEM__ITEM = ITEMS_COLLECTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Manual Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUAL_COLLECTION_OPERATION_COUNT = ITEMS_COLLECTION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.collection.impl.RemoteCollectionImpl <em>Remote Collection</em>}' class.
@@ -353,6 +426,16 @@ public interface CollectionPackage extends EPackage {
 	 * @ordered
 	 */
 	int REMOTE_COLLECTION_FEATURE_COUNT = ITEMS_COLLECTION_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The number of operations of the '<em>Remote Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOTE_COLLECTION_OPERATION_COUNT = ITEMS_COLLECTION_OPERATION_COUNT + 0;
 
 
 	/**
@@ -552,6 +635,36 @@ public interface CollectionPackage extends EPackage {
 	EAttribute getSmartInformationObjectCollection_MinimumAge();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.collection.SmartInformationObjectCollection#addPositive(org.sociotech.communitymashup.data.Item) <em>Add Positive</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Positive</em>' operation.
+	 * @see org.sociotech.communitymashup.collection.SmartInformationObjectCollection#addPositive(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getSmartInformationObjectCollection__AddPositive__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.collection.SmartInformationObjectCollection#addNegative(org.sociotech.communitymashup.data.Item) <em>Add Negative</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Negative</em>' operation.
+	 * @see org.sociotech.communitymashup.collection.SmartInformationObjectCollection#addNegative(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getSmartInformationObjectCollection__AddNegative__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.collection.SmartInformationObjectCollection#remove(org.sociotech.communitymashup.data.Item) <em>Remove</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Remove</em>' operation.
+	 * @see org.sociotech.communitymashup.collection.SmartInformationObjectCollection#remove(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getSmartInformationObjectCollection__Remove__Item();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.collection.ManualCollection <em>Manual Collection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -560,6 +673,26 @@ public interface CollectionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getManualCollection();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.collection.ManualCollection#addItem(org.sociotech.communitymashup.data.Item) <em>Add Item</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Item</em>' operation.
+	 * @see org.sociotech.communitymashup.collection.ManualCollection#addItem(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getManualCollection__AddItem__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.collection.ManualCollection#removeItem(org.sociotech.communitymashup.data.Item) <em>Remove Item</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Remove Item</em>' operation.
+	 * @see org.sociotech.communitymashup.collection.ManualCollection#removeItem(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getManualCollection__RemoveItem__Item();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.collection.RemoteCollection <em>Remote Collection</em>}'.
@@ -753,6 +886,30 @@ public interface CollectionPackage extends EPackage {
 		EAttribute SMART_INFORMATION_OBJECT_COLLECTION__MINIMUM_AGE = eINSTANCE.getSmartInformationObjectCollection_MinimumAge();
 
 		/**
+		 * The meta object literal for the '<em><b>Add Positive</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SMART_INFORMATION_OBJECT_COLLECTION___ADD_POSITIVE__ITEM = eINSTANCE.getSmartInformationObjectCollection__AddPositive__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Negative</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SMART_INFORMATION_OBJECT_COLLECTION___ADD_NEGATIVE__ITEM = eINSTANCE.getSmartInformationObjectCollection__AddNegative__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Remove</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SMART_INFORMATION_OBJECT_COLLECTION___REMOVE__ITEM = eINSTANCE.getSmartInformationObjectCollection__Remove__Item();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.collection.impl.ManualCollectionImpl <em>Manual Collection</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -761,6 +918,22 @@ public interface CollectionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MANUAL_COLLECTION = eINSTANCE.getManualCollection();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Item</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MANUAL_COLLECTION___ADD_ITEM__ITEM = eINSTANCE.getManualCollection__AddItem__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Remove Item</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MANUAL_COLLECTION___REMOVE_ITEM__ITEM = eINSTANCE.getManualCollection__RemoveItem__Item();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.collection.impl.RemoteCollectionImpl <em>Remote Collection</em>}' class.

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.application.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -722,6 +723,22 @@ public class MashupImpl extends SourceImpl implements Mashup {
 
 
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ApplicationPackage.MASHUP___GET_NEW_SOURCE_IDENT:
+				return getNewSourceIdent();
+			case ApplicationPackage.MASHUP___GET_SOURCE_WITH_IDENT__STRING:
+				return getSourceWithIdent((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

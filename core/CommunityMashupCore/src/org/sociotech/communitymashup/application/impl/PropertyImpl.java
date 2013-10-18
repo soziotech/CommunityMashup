@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.application.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -695,6 +696,28 @@ public class PropertyImpl extends EObjectImpl implements Property {
 				return propertyType != PROPERTY_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ApplicationPackage.PROPERTY___IS_VALUE_LIST:
+				return isValueList();
+			case ApplicationPackage.PROPERTY___IS_VALUE_RANGE:
+				return isValueRange();
+			case ApplicationPackage.PROPERTY___GET_LIST_OF_VALUES:
+				return getListOfValues();
+			case ApplicationPackage.PROPERTY___GET_MIN_VALUE:
+				return getMinValue();
+			case ApplicationPackage.PROPERTY___GET_MAX_VALUE:
+				return getMaxValue();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

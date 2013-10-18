@@ -395,6 +395,42 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSource__GetLogLevelIntValue() {
+		return sourceEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSource__Start() {
+		return sourceEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSource__Stop() {
+		return sourceEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSource__Pause() {
+		return sourceEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMashup() {
 		return mashupEClass;
 	}
@@ -496,6 +532,24 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 */
 	public EAttribute getMashup_SourceIdentCounter() {
 		return (EAttribute)mashupEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMashup__GetNewSourceIdent() {
+		return mashupEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMashup__GetSourceWithIdent__String() {
+		return mashupEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -638,6 +692,51 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getProperty__IsValueList() {
+		return propertyEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getProperty__IsValueRange() {
+		return propertyEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getProperty__GetListOfValues() {
+		return propertyEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getProperty__GetMinValue() {
+		return propertyEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getProperty__GetMaxValue() {
+		return propertyEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOCLRestrictedProperty() {
 		return oclRestrictedPropertyEClass;
 	}
@@ -748,6 +847,51 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 */
 	public EAttribute getMashupContainer_IdentCounter() {
 		return (EAttribute)mashupContainerEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMashupContainer__GetConfigurationAdmins() {
+		return mashupContainerEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMashupContainer__SetNewIdentFor__ConfigurableElement() {
+		return mashupContainerEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMashupContainer__GetNewIdentNumber() {
+		return mashupContainerEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMashupContainer__GetMashupWithIdent__String() {
+		return mashupContainerEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMashupContainer__GetSourceConfigurationWithIdent__String() {
+		return mashupContainerEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -973,6 +1117,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 */
 	public EAttribute getApplicationKeyConfig_ApplicationKeys() {
 		return (EAttribute)applicationKeyConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getApplicationKeyConfig__HasApplicationKey__String() {
+		return applicationKeyConfigEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1457,6 +1610,78 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getConfigurableElement__GetProperty__String() {
+		return configurableElementEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfigurableElement__AddProperty__String_String() {
+		return configurableElementEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfigurableElement__AddProperty__Property() {
+		return configurableElementEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfigurableElement__GetPropertyValue__String() {
+		return configurableElementEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfigurableElement__IsPropertyTrue__String() {
+		return configurableElementEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfigurableElement__GetPropertyValueElseDefault__String_String() {
+		return configurableElementEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfigurableElement__IsPropertyTrueElseDefault__String_String() {
+		return configurableElementEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConfigurableElement__RemoveProperty__String() {
+		return configurableElementEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getSourceState() {
 		return sourceStateEEnum;
 	}
@@ -1517,6 +1742,10 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(sourceEClass, SOURCE__MASHUP);
 		createEAttribute(sourceEClass, SOURCE__REMOVE_DATA_ON_STOP);
 		createEAttribute(sourceEClass, SOURCE__UPDATE_ROUND);
+		createEOperation(sourceEClass, SOURCE___GET_LOG_LEVEL_INT_VALUE);
+		createEOperation(sourceEClass, SOURCE___START);
+		createEOperation(sourceEClass, SOURCE___STOP);
+		createEOperation(sourceEClass, SOURCE___PAUSE);
 
 		mashupEClass = createEClass(MASHUP);
 		createEReference(mashupEClass, MASHUP__MAPPING_RULES);
@@ -1530,6 +1759,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(mashupEClass, MASHUP__BACKUP_INTERVALL);
 		createEAttribute(mashupEClass, MASHUP__CACHE_DELAY);
 		createEAttribute(mashupEClass, MASHUP__SOURCE_IDENT_COUNTER);
+		createEOperation(mashupEClass, MASHUP___GET_NEW_SOURCE_IDENT);
+		createEOperation(mashupEClass, MASHUP___GET_SOURCE_WITH_IDENT__STRING);
 
 		mappingRuleEClass = createEClass(MAPPING_RULE);
 
@@ -1551,6 +1782,11 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(propertyEClass, PROPERTY__HELP_TEXT);
 		createEAttribute(propertyEClass, PROPERTY__REQUIRED);
 		createEAttribute(propertyEClass, PROPERTY__PROPERTY_TYPE);
+		createEOperation(propertyEClass, PROPERTY___IS_VALUE_LIST);
+		createEOperation(propertyEClass, PROPERTY___IS_VALUE_RANGE);
+		createEOperation(propertyEClass, PROPERTY___GET_LIST_OF_VALUES);
+		createEOperation(propertyEClass, PROPERTY___GET_MIN_VALUE);
+		createEOperation(propertyEClass, PROPERTY___GET_MAX_VALUE);
 
 		oclRestrictedPropertyEClass = createEClass(OCL_RESTRICTED_PROPERTY);
 		createEAttribute(oclRestrictedPropertyEClass, OCL_RESTRICTED_PROPERTY__OCL_RESTRICTION);
@@ -1566,6 +1802,11 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__IMMEDIATE_SAVE);
 		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__CREATE_ACCOUNTS_AT_LOGIN_TRY);
 		createEAttribute(mashupContainerEClass, MASHUP_CONTAINER__IDENT_COUNTER);
+		createEOperation(mashupContainerEClass, MASHUP_CONTAINER___GET_CONFIGURATION_ADMINS);
+		createEOperation(mashupContainerEClass, MASHUP_CONTAINER___SET_NEW_IDENT_FOR__CONFIGURABLEELEMENT);
+		createEOperation(mashupContainerEClass, MASHUP_CONTAINER___GET_NEW_IDENT_NUMBER);
+		createEOperation(mashupContainerEClass, MASHUP_CONTAINER___GET_MASHUP_WITH_IDENT__STRING);
+		createEOperation(mashupContainerEClass, MASHUP_CONTAINER___GET_SOURCE_CONFIGURATION_WITH_IDENT__STRING);
 
 		interfaceEClass = createEClass(INTERFACE);
 		createEReference(interfaceEClass, INTERFACE__SECURITY);
@@ -1597,6 +1838,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		applicationKeyConfigEClass = createEClass(APPLICATION_KEY_CONFIG);
 		createEAttribute(applicationKeyConfigEClass, APPLICATION_KEY_CONFIG__APPLICATION_KEYS);
+		createEOperation(applicationKeyConfigEClass, APPLICATION_KEY_CONFIG___HAS_APPLICATION_KEY__STRING);
 
 		oAuthClientConfigEClass = createEClass(OAUTH_CLIENT_CONFIG);
 		createEAttribute(oAuthClientConfigEClass, OAUTH_CLIENT_CONFIG__TYPE);
@@ -1655,6 +1897,14 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(configurableElementEClass, CONFIGURABLE_ELEMENT__CHANGEABLE);
 		createEAttribute(configurableElementEClass, CONFIGURABLE_ELEMENT__HIDDEN);
 		createEAttribute(configurableElementEClass, CONFIGURABLE_ELEMENT__IDENT);
+		createEOperation(configurableElementEClass, CONFIGURABLE_ELEMENT___GET_PROPERTY__STRING);
+		createEOperation(configurableElementEClass, CONFIGURABLE_ELEMENT___ADD_PROPERTY__STRING_STRING);
+		createEOperation(configurableElementEClass, CONFIGURABLE_ELEMENT___ADD_PROPERTY__PROPERTY);
+		createEOperation(configurableElementEClass, CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE__STRING);
+		createEOperation(configurableElementEClass, CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE__STRING);
+		createEOperation(configurableElementEClass, CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING);
+		createEOperation(configurableElementEClass, CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING);
+		createEOperation(configurableElementEClass, CONFIGURABLE_ELEMENT___REMOVE_PROPERTY__STRING);
 
 		// Create enums
 		sourceStateEEnum = createEEnum(SOURCE_STATE);
@@ -1704,7 +1954,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		oAuthConfigEClass.getESuperTypes().add(this.getSecurity());
 		applicationKeyConfigEClass.getESuperTypes().add(this.getSecurity());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSource_Persistency(), this.getPersistency(), null, "persistency", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSource_DataSet(), theDataPackage.getDataSet(), null, "dataSet", null, 0, 1, Source.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1716,13 +1966,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getSource_RemoveDataOnStop(), ecorePackage.getEBooleanObject(), "removeDataOnStop", "false", 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSource_UpdateRound(), ecorePackage.getEIntegerObject(), "updateRound", "1", 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(sourceEClass, ecorePackage.getEIntegerObject(), "getLogLevelIntValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSource__GetLogLevelIntValue(), ecorePackage.getEIntegerObject(), "getLogLevelIntValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(sourceEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSource__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(sourceEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSource__Stop(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(sourceEClass, null, "pause", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSource__Pause(), null, "pause", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(mashupEClass, Mashup.class, "Mashup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMashup_MappingRules(), this.getMappingRule(), null, "mappingRules", null, 0, -1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1737,9 +1987,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getMashup_CacheDelay(), ecorePackage.getEIntegerObject(), "cacheDelay", "300", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashup_SourceIdentCounter(), ecorePackage.getEIntegerObject(), "sourceIdentCounter", "1", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(mashupEClass, ecorePackage.getEIntegerObject(), "getNewSourceIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getMashup__GetNewSourceIdent(), ecorePackage.getEIntegerObject(), "getNewSourceIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(mashupEClass, this.getSource(), "getSourceWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getMashup__GetSourceWithIdent__String(), this.getSource(), "getSourceWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(mappingRuleEClass, MappingRule.class, "MappingRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1764,15 +2014,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getProperty_Required(), ecorePackage.getEBooleanObject(), "required", "false", 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProperty_PropertyType(), this.getPropertyTypes(), "propertyType", "String", 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(propertyEClass, ecorePackage.getEBoolean(), "isValueList", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getProperty__IsValueList(), ecorePackage.getEBoolean(), "isValueList", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(propertyEClass, ecorePackage.getEBoolean(), "isValueRange", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getProperty__IsValueRange(), ecorePackage.getEBoolean(), "isValueRange", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(propertyEClass, ecorePackage.getEString(), "getListOfValues", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getProperty__GetListOfValues(), ecorePackage.getEString(), "getListOfValues", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(propertyEClass, ecorePackage.getEString(), "getMinValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getProperty__GetMinValue(), ecorePackage.getEString(), "getMinValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(propertyEClass, ecorePackage.getEString(), "getMaxValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getProperty__GetMaxValue(), ecorePackage.getEString(), "getMaxValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(oclRestrictedPropertyEClass, OCLRestrictedProperty.class, "OCLRestrictedProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOCLRestrictedProperty_OCLRestriction(), ecorePackage.getEString(), "OCLRestriction", null, 0, 1, OCLRestrictedProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1789,17 +2039,17 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getMashupContainer_CreateAccountsAtLoginTry(), ecorePackage.getEBooleanObject(), "createAccountsAtLoginTry", "false", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashupContainer_IdentCounter(), ecorePackage.getEIntegerObject(), "identCounter", "1", 0, 1, MashupContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(mashupContainerEClass, this.getMashupAdmin(), "getConfigurationAdmins", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getMashupContainer__GetConfigurationAdmins(), this.getMashupAdmin(), "getConfigurationAdmins", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(mashupContainerEClass, null, "setNewIdentFor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getMashupContainer__SetNewIdentFor__ConfigurableElement(), null, "setNewIdentFor", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getConfigurableElement(), "configurableElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(mashupContainerEClass, ecorePackage.getEIntegerObject(), "getNewIdentNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getMashupContainer__GetNewIdentNumber(), ecorePackage.getEIntegerObject(), "getNewIdentNumber", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(mashupContainerEClass, this.getMashup(), "getMashupWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getMashupContainer__GetMashupWithIdent__String(), this.getMashup(), "getMashupWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(mashupContainerEClass, this.getSource(), "getSourceConfigurationWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getMashupContainer__GetSourceConfigurationWithIdent__String(), this.getSource(), "getSourceConfigurationWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1833,7 +2083,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEClass(applicationKeyConfigEClass, ApplicationKeyConfig.class, "ApplicationKeyConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getApplicationKeyConfig_ApplicationKeys(), ecorePackage.getEString(), "applicationKeys", null, 0, -1, ApplicationKeyConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(applicationKeyConfigEClass, ecorePackage.getEBooleanObject(), "hasApplicationKey", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getApplicationKeyConfig__HasApplicationKey__String(), ecorePackage.getEBooleanObject(), "hasApplicationKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "applicationKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(oAuthClientConfigEClass, OAuthClientConfig.class, "OAuthClientConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1894,31 +2144,31 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getConfigurableElement_Hidden(), ecorePackage.getEBooleanObject(), "hidden", "false", 0, 1, ConfigurableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConfigurableElement_Ident(), ecorePackage.getEString(), "ident", null, 0, 1, ConfigurableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(configurableElementEClass, this.getProperty(), "getProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfigurableElement__GetProperty__String(), this.getProperty(), "getProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(configurableElementEClass, null, "addProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfigurableElement__AddProperty__String_String(), null, "addProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(configurableElementEClass, null, "addProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfigurableElement__AddProperty__Property(), null, "addProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProperty(), "property", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(configurableElementEClass, ecorePackage.getEString(), "getPropertyValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfigurableElement__GetPropertyValue__String(), ecorePackage.getEString(), "getPropertyValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(configurableElementEClass, ecorePackage.getEBoolean(), "isPropertyTrue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfigurableElement__IsPropertyTrue__String(), ecorePackage.getEBoolean(), "isPropertyTrue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(configurableElementEClass, ecorePackage.getEString(), "getPropertyValueElseDefault", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "defaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(configurableElementEClass, ecorePackage.getEBoolean(), "isPropertyTrueElseDefault", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfigurableElement__GetPropertyValueElseDefault__String_String(), ecorePackage.getEString(), "getPropertyValueElseDefault", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "defaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(configurableElementEClass, null, "removeProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getConfigurableElement__IsPropertyTrueElseDefault__String_String(), ecorePackage.getEBoolean(), "isPropertyTrueElseDefault", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "defaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getConfigurableElement__RemoveProperty__String(), null, "removeProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals

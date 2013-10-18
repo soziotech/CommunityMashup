@@ -10,11 +10,13 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.application.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -696,6 +698,37 @@ public abstract class ConfigurableElementImpl extends EObjectImpl implements Con
 				return IDENT_EDEFAULT == null ? ident != null : !IDENT_EDEFAULT.equals(ident);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ApplicationPackage.CONFIGURABLE_ELEMENT___GET_PROPERTY__STRING:
+				return getProperty((String)arguments.get(0));
+			case ApplicationPackage.CONFIGURABLE_ELEMENT___ADD_PROPERTY__STRING_STRING:
+				addProperty((String)arguments.get(0), (String)arguments.get(1));
+				return null;
+			case ApplicationPackage.CONFIGURABLE_ELEMENT___ADD_PROPERTY__PROPERTY:
+				addProperty((Property)arguments.get(0));
+				return null;
+			case ApplicationPackage.CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE__STRING:
+				return getPropertyValue((String)arguments.get(0));
+			case ApplicationPackage.CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE__STRING:
+				return isPropertyTrue((String)arguments.get(0));
+			case ApplicationPackage.CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING:
+				return getPropertyValueElseDefault((String)arguments.get(0), (String)arguments.get(1));
+			case ApplicationPackage.CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING:
+				return isPropertyTrueElseDefault((String)arguments.get(0), (String)arguments.get(1));
+			case ApplicationPackage.CONFIGURABLE_ELEMENT___REMOVE_PROPERTY__STRING:
+				removeProperty((String)arguments.get(0));
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

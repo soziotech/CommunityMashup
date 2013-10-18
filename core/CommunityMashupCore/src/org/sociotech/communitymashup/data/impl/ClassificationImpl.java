@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -314,6 +315,34 @@ public abstract class ClassificationImpl extends ItemImpl implements Classificat
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.CLASSIFICATION___GET_PERSONS:
+				return getPersons();
+			case DataPackage.CLASSIFICATION___GET_CONTENTS:
+				return getContents();
+			case DataPackage.CLASSIFICATION___GET_ORGANISATIONS:
+				return getOrganisations();
+			case DataPackage.CLASSIFICATION___GET_COUNT:
+				return getCount();
+			case DataPackage.CLASSIFICATION___GET_PERSONS_COUNT:
+				return getPersonsCount();
+			case DataPackage.CLASSIFICATION___GET_CONTENTS_COUNT:
+				return getContentsCount();
+			case DataPackage.CLASSIFICATION___GET_ORGANISATIONS_COUNT:
+				return getOrganisationsCount();
+			case DataPackage.CLASSIFICATION___GET_SLUG:
+				return getSlug();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

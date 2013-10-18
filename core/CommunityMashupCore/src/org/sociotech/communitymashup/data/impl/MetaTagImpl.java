@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -406,6 +407,28 @@ public class MetaTagImpl extends ItemImpl implements MetaTag {
 				return metaTagged != null && !metaTagged.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.META_TAG___GET_WEB_ACCOUNTS:
+				return getWebAccounts();
+			case DataPackage.META_TAG___GET_INFORMATION_OBJECTS:
+				return getInformationObjects();
+			case DataPackage.META_TAG___GET_EXTENSIONS:
+				return getExtensions();
+			case DataPackage.META_TAG___GET_COUNT:
+				return getCount();
+			case DataPackage.META_TAG___GET_INFORMATION_OBJECTS_COUNT:
+				return getInformationObjectsCount();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

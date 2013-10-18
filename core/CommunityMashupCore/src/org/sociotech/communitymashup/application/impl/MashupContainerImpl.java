@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.application.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -696,6 +697,29 @@ public class MashupContainerImpl extends EObjectImpl implements MashupContainer 
 		return super.eIsSet(featureID);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ApplicationPackage.MASHUP_CONTAINER___GET_CONFIGURATION_ADMINS:
+				return getConfigurationAdmins();
+			case ApplicationPackage.MASHUP_CONTAINER___SET_NEW_IDENT_FOR__CONFIGURABLEELEMENT:
+				setNewIdentFor((ConfigurableElement)arguments.get(0));
+				return null;
+			case ApplicationPackage.MASHUP_CONTAINER___GET_NEW_IDENT_NUMBER:
+				return getNewIdentNumber();
+			case ApplicationPackage.MASHUP_CONTAINER___GET_MASHUP_WITH_IDENT__STRING:
+				return getMashupWithIdent((String)arguments.get(0));
+			case ApplicationPackage.MASHUP_CONTAINER___GET_SOURCE_CONFIGURATION_WITH_IDENT__STRING:
+				return getSourceConfigurationWithIdent((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.application.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -195,6 +196,20 @@ public class ApplicationKeyConfigImpl extends SecurityImpl implements Applicatio
 				return applicationKeys != null && !applicationKeys.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ApplicationPackage.APPLICATION_KEY_CONFIG___HAS_APPLICATION_KEY__STRING:
+				return hasApplicationKey((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

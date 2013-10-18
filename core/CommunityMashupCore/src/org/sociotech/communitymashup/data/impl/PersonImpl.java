@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
@@ -737,6 +738,30 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 				return ranked != null && !ranked.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.PERSON___GET_CONTENTS:
+				return getContents();
+			case DataPackage.PERSON___GET_ORGANISATIONS:
+				return getOrganisations();
+			case DataPackage.PERSON___ADD_CONTRIBUTED_CONTENT__CONTENT:
+				return addContributedContent((Content)arguments.get(0));
+			case DataPackage.PERSON___ADD_AUTHORED_CONTENT__CONTENT:
+				return addAuthoredContent((Content)arguments.get(0));
+			case DataPackage.PERSON___PARSE_FIRST_NAME:
+				return parseFirstName();
+			case DataPackage.PERSON___PARSE_LAST_NAME:
+				return parseLastName();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.collection.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -986,6 +987,25 @@ public class SmartInformationObjectCollectionImpl extends ItemsCollectionImpl im
 				return MINIMUM_AGE_EDEFAULT == null ? minimumAge != null : !MINIMUM_AGE_EDEFAULT.equals(minimumAge);
 		}
 		return super.eIsSet(featureID);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CollectionPackage.SMART_INFORMATION_OBJECT_COLLECTION___ADD_POSITIVE__ITEM:
+				return addPositive((Item)arguments.get(0));
+			case CollectionPackage.SMART_INFORMATION_OBJECT_COLLECTION___ADD_NEGATIVE__ITEM:
+				return addNegative((Item)arguments.get(0));
+			case CollectionPackage.SMART_INFORMATION_OBJECT_COLLECTION___REMOVE__ITEM:
+				return remove((Item)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 

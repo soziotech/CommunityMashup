@@ -11,6 +11,7 @@
 package org.sociotech.communitymashup.data.impl;
 
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -1902,6 +1903,120 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		return super.eIsSet(featureID);
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.INFORMATION_OBJECT___TAG__STRING:
+				return tag((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___CATEGORIZE__STRING:
+				return categorize((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___ATTACH_IMAGE__STRING:
+				return attachImage((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_ATTACHMENTS:
+				return getAttachments();
+			case DataPackage.INFORMATION_OBJECT___STAR_RANK__INTEGER_INTEGER:
+				return starRank((Integer)arguments.get(0), (Integer)arguments.get(1));
+			case DataPackage.INFORMATION_OBJECT___VIEW:
+				return view();
+			case DataPackage.INFORMATION_OBJECT___THUMBS_UP:
+				return thumbsUp();
+			case DataPackage.INFORMATION_OBJECT___THUMBS_DOWN:
+				return thumbsDown();
+			case DataPackage.INFORMATION_OBJECT___GET_THUMBS_UP:
+				return getThumbsUp();
+			case DataPackage.INFORMATION_OBJECT___GET_THUMBS_DOWN:
+				return getThumbsDown();
+			case DataPackage.INFORMATION_OBJECT___GET_THUMBS_UP_COUNT:
+				return getThumbsUpCount();
+			case DataPackage.INFORMATION_OBJECT___GET_THUMBS_DOWN_COUNT:
+				return getThumbsDownCount();
+			case DataPackage.INFORMATION_OBJECT___GET_THUMBS_COUNT:
+				return getThumbsCount();
+			case DataPackage.INFORMATION_OBJECT___GET_VIEWS_COUNT:
+				return getViewsCount();
+			case DataPackage.INFORMATION_OBJECT___GET_STAR_RANKING:
+				return getStarRanking();
+			case DataPackage.INFORMATION_OBJECT___EXTEND__METAINFORMATION:
+				return extend((MetaInformation)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_WEB_ACCOUNTS:
+				return getWebAccounts();
+			case DataPackage.INFORMATION_OBJECT___GET_WEB_SITES:
+				return getWebSites();
+			case DataPackage.INFORMATION_OBJECT___GET_PHONES:
+				return getPhones();
+			case DataPackage.INFORMATION_OBJECT___GET_LOCATIONS:
+				return getLocations();
+			case DataPackage.INFORMATION_OBJECT___GET_EMAILS:
+				return getEmails();
+			case DataPackage.INFORMATION_OBJECT___GET_INSTANT_MESSENGERS:
+				return getInstantMessengers();
+			case DataPackage.INFORMATION_OBJECT___ADD_EMAIL_ADDRESS__STRING:
+				return addEmailAddress((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___ADD_WEB_SITE__STRING:
+				return addWebSite((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS:
+				return getInformationObjectsWithCommonTags();
+			case DataPackage.INFORMATION_OBJECT___ADD_WEB_ACCOUNT__STRING:
+				return addWebAccount((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___HAS_IMAGES:
+				return hasImages();
+			case DataPackage.INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO:
+				return getInformationObjectsConnectedTo();
+			case DataPackage.INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM:
+				return getInformationObjectsConnectedFrom();
+			case DataPackage.INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED:
+				return getInformationObjectsConnected();
+			case DataPackage.INFORMATION_OBJECT___CONNECT_TO__INFORMATIONOBJECT:
+				return connectTo((InformationObject)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING:
+				return connectToWithMetaTag((InformationObject)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING:
+				return getInformationObjectsConnectedToWithMetaTag((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING:
+				return getInformationObjectsConnectedFromWithMetaTag((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING:
+				return getInformationObjectsConnectedWithMetaTag((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_CONNECTIONS_FROM__INFORMATIONOBJECT:
+				return getConnectionsFrom((InformationObject)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_CONNECTIONS_TO__INFORMATIONOBJECT:
+				return getConnectionsTo((InformationObject)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING:
+				return connectToWithValueAndMetaTag((InformationObject)arguments.get(0), (String)arguments.get(1), (String)arguments.get(2));
+			case DataPackage.INFORMATION_OBJECT___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING:
+				return getConnectionTo((InformationObject)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.INFORMATION_OBJECT___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING:
+				return getConnectionFrom((InformationObject)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.INFORMATION_OBJECT___GET_ATTACHMENT_WITH_URL__STRING:
+				return getAttachmentWithUrl((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_URL__STRING:
+				return getAttachedImageWithUrl((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___ADD_PHONE__STRING:
+				return addPhone((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_PERSONS_WITH_COMMON_TAGS:
+				return getPersonsWithCommonTags();
+			case DataPackage.INFORMATION_OBJECT___GET_ORGANISATIONS_WITH_COMMON_TAGS:
+				return getOrganisationsWithCommonTags();
+			case DataPackage.INFORMATION_OBJECT___GET_CONTENTS_WITH_COMMON_TAGS:
+				return getContentsWithCommonTags();
+			case DataPackage.INFORMATION_OBJECT___UN_TAG__STRING:
+				return unTag((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___UN_CATEGORIZE__STRING:
+				return unCategorize((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_SLUG_NAME:
+				return getSlugName();
+			case DataPackage.INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING:
+				return getConnectionsToWithMetaTag((InformationObject)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING:
+				return getConnectionsFromWithMetaTag((InformationObject)arguments.get(0), (String)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

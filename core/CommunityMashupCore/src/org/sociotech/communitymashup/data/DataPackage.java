@@ -12,6 +12,7 @@ package org.sociotech.communitymashup.data;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -178,6 +179,186 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ITEM_FEATURE_COUNT = 10;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___LOG__STRING = 0;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___LOG__STRING_INTEGER = 1;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___META_TAG__STRING = 2;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___IDENTIFY_BY__STRING_STRING = 3;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___GET_IDENTIFIER__STRING = 4;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___HAS_META_TAG__STRING = 5;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___MATCHES_SEARCH__STRING = 6;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___DELETE = 7;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___IS_EQUAL_ITEM__ITEM = 8;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = 9;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___GET_CREATED_PRETTY = 10;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = 11;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___GET_LAST_MODIFIED_PRETTY = 12;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___DELETE_ON_DELETE_OF__ITEM = 13;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___DELETE_IF_EMPTY_ON_DELETE = 14;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___UPDATE__ITEM = 15;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___FORCE_UPDATE__ITEM = 16;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___UN_META_TAG__STRING = 17;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___REMOVE_IDENTIFIER__STRING = 18;
+
+	/**
+	 * The number of operations of the '<em>Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_OPERATION_COUNT = 19;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl <em>Information Object</em>}' class.
@@ -395,6 +576,645 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int INFORMATION_OBJECT_FEATURE_COUNT = ITEM_FEATURE_COUNT + 12;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___LOG__STRING = ITEM___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___LOG__STRING_INTEGER = ITEM___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___META_TAG__STRING = ITEM___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___IDENTIFY_BY__STRING_STRING = ITEM___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_IDENTIFIER__STRING = ITEM___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___HAS_META_TAG__STRING = ITEM___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___MATCHES_SEARCH__STRING = ITEM___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___DELETE = ITEM___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___IS_EQUAL_ITEM__ITEM = ITEM___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CREATED_PRETTY = ITEM___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_LAST_MODIFIED_PRETTY = ITEM___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___DELETE_ON_DELETE_OF__ITEM = ITEM___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___DELETE_IF_EMPTY_ON_DELETE = ITEM___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___UPDATE__ITEM = ITEM___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___FORCE_UPDATE__ITEM = ITEM___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___UN_META_TAG__STRING = ITEM___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___TAG__STRING = ITEM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Categorize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___CATEGORIZE__STRING = ITEM_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Attach Image</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___ATTACH_IMAGE__STRING = ITEM_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Attachments</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_ATTACHMENTS = ITEM_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Star Rank</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___STAR_RANK__INTEGER_INTEGER = ITEM_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>View</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___VIEW = ITEM_OPERATION_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Thumbs Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___THUMBS_UP = ITEM_OPERATION_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Thumbs Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___THUMBS_DOWN = ITEM_OPERATION_COUNT + 7;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_THUMBS_UP = ITEM_OPERATION_COUNT + 8;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_THUMBS_DOWN = ITEM_OPERATION_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Up Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_THUMBS_UP_COUNT = ITEM_OPERATION_COUNT + 10;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Down Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_THUMBS_DOWN_COUNT = ITEM_OPERATION_COUNT + 11;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_THUMBS_COUNT = ITEM_OPERATION_COUNT + 12;
+
+	/**
+	 * The operation id for the '<em>Get Views Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_VIEWS_COUNT = ITEM_OPERATION_COUNT + 13;
+
+	/**
+	 * The operation id for the '<em>Get Star Ranking</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_STAR_RANKING = ITEM_OPERATION_COUNT + 14;
+
+	/**
+	 * The operation id for the '<em>Extend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___EXTEND__METAINFORMATION = ITEM_OPERATION_COUNT + 15;
+
+	/**
+	 * The operation id for the '<em>Get Web Accounts</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_WEB_ACCOUNTS = ITEM_OPERATION_COUNT + 16;
+
+	/**
+	 * The operation id for the '<em>Get Web Sites</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_WEB_SITES = ITEM_OPERATION_COUNT + 17;
+
+	/**
+	 * The operation id for the '<em>Get Phones</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_PHONES = ITEM_OPERATION_COUNT + 18;
+
+	/**
+	 * The operation id for the '<em>Get Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_LOCATIONS = ITEM_OPERATION_COUNT + 19;
+
+	/**
+	 * The operation id for the '<em>Get Emails</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_EMAILS = ITEM_OPERATION_COUNT + 20;
+
+	/**
+	 * The operation id for the '<em>Get Instant Messengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INSTANT_MESSENGERS = ITEM_OPERATION_COUNT + 21;
+
+	/**
+	 * The operation id for the '<em>Add Email Address</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___ADD_EMAIL_ADDRESS__STRING = ITEM_OPERATION_COUNT + 22;
+
+	/**
+	 * The operation id for the '<em>Add Web Site</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___ADD_WEB_SITE__STRING = ITEM_OPERATION_COUNT + 23;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS = ITEM_OPERATION_COUNT + 24;
+
+	/**
+	 * The operation id for the '<em>Add Web Account</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___ADD_WEB_ACCOUNT__STRING = ITEM_OPERATION_COUNT + 25;
+
+	/**
+	 * The operation id for the '<em>Has Images</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___HAS_IMAGES = ITEM_OPERATION_COUNT + 26;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO = ITEM_OPERATION_COUNT + 27;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM = ITEM_OPERATION_COUNT + 28;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED = ITEM_OPERATION_COUNT + 29;
+
+	/**
+	 * The operation id for the '<em>Connect To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___CONNECT_TO__INFORMATIONOBJECT = ITEM_OPERATION_COUNT + 30;
+
+	/**
+	 * The operation id for the '<em>Connect To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = ITEM_OPERATION_COUNT + 31;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING = ITEM_OPERATION_COUNT + 32;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected From With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING = ITEM_OPERATION_COUNT + 33;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING = ITEM_OPERATION_COUNT + 34;
+
+	/**
+	 * The operation id for the '<em>Get Connections From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CONNECTIONS_FROM__INFORMATIONOBJECT = ITEM_OPERATION_COUNT + 35;
+
+	/**
+	 * The operation id for the '<em>Get Connections To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CONNECTIONS_TO__INFORMATIONOBJECT = ITEM_OPERATION_COUNT + 36;
+
+	/**
+	 * The operation id for the '<em>Connect To With Value And Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING = ITEM_OPERATION_COUNT + 37;
+
+	/**
+	 * The operation id for the '<em>Get Connection To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING = ITEM_OPERATION_COUNT + 38;
+
+	/**
+	 * The operation id for the '<em>Get Connection From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING = ITEM_OPERATION_COUNT + 39;
+
+	/**
+	 * The operation id for the '<em>Get Attachment With Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_ATTACHMENT_WITH_URL__STRING = ITEM_OPERATION_COUNT + 40;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_URL__STRING = ITEM_OPERATION_COUNT + 41;
+
+	/**
+	 * The operation id for the '<em>Add Phone</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___ADD_PHONE__STRING = ITEM_OPERATION_COUNT + 42;
+
+	/**
+	 * The operation id for the '<em>Get Persons With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_PERSONS_WITH_COMMON_TAGS = ITEM_OPERATION_COUNT + 43;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_ORGANISATIONS_WITH_COMMON_TAGS = ITEM_OPERATION_COUNT + 44;
+
+	/**
+	 * The operation id for the '<em>Get Contents With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CONTENTS_WITH_COMMON_TAGS = ITEM_OPERATION_COUNT + 45;
+
+	/**
+	 * The operation id for the '<em>Un Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___UN_TAG__STRING = ITEM_OPERATION_COUNT + 46;
+
+	/**
+	 * The operation id for the '<em>Un Categorize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___UN_CATEGORIZE__STRING = ITEM_OPERATION_COUNT + 47;
+
+	/**
+	 * The operation id for the '<em>Get Slug Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_SLUG_NAME = ITEM_OPERATION_COUNT + 48;
+
+	/**
+	 * The operation id for the '<em>Get Connections To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = ITEM_OPERATION_COUNT + 49;
+
+	/**
+	 * The operation id for the '<em>Get Connections From With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = ITEM_OPERATION_COUNT + 50;
+
+	/**
+	 * The number of operations of the '<em>Information Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 51;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.PersonImpl <em>Person</em>}' class.
@@ -704,6 +1524,699 @@ public interface DataPackage extends EPackage {
 	int PERSON_FEATURE_COUNT = INFORMATION_OBJECT_FEATURE_COUNT + 10;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___LOG__STRING = INFORMATION_OBJECT___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___LOG__STRING_INTEGER = INFORMATION_OBJECT___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___META_TAG__STRING = INFORMATION_OBJECT___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___IDENTIFY_BY__STRING_STRING = INFORMATION_OBJECT___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_IDENTIFIER__STRING = INFORMATION_OBJECT___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___HAS_META_TAG__STRING = INFORMATION_OBJECT___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___MATCHES_SEARCH__STRING = INFORMATION_OBJECT___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___DELETE = INFORMATION_OBJECT___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___IS_EQUAL_ITEM__ITEM = INFORMATION_OBJECT___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = INFORMATION_OBJECT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CREATED_PRETTY = INFORMATION_OBJECT___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = INFORMATION_OBJECT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_LAST_MODIFIED_PRETTY = INFORMATION_OBJECT___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___DELETE_ON_DELETE_OF__ITEM = INFORMATION_OBJECT___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___DELETE_IF_EMPTY_ON_DELETE = INFORMATION_OBJECT___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___UPDATE__ITEM = INFORMATION_OBJECT___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___FORCE_UPDATE__ITEM = INFORMATION_OBJECT___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___UN_META_TAG__STRING = INFORMATION_OBJECT___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___REMOVE_IDENTIFIER__STRING = INFORMATION_OBJECT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___TAG__STRING = INFORMATION_OBJECT___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Categorize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___CATEGORIZE__STRING = INFORMATION_OBJECT___CATEGORIZE__STRING;
+
+	/**
+	 * The operation id for the '<em>Attach Image</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ATTACH_IMAGE__STRING = INFORMATION_OBJECT___ATTACH_IMAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attachments</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ATTACHMENTS = INFORMATION_OBJECT___GET_ATTACHMENTS;
+
+	/**
+	 * The operation id for the '<em>Star Rank</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___STAR_RANK__INTEGER_INTEGER = INFORMATION_OBJECT___STAR_RANK__INTEGER_INTEGER;
+
+	/**
+	 * The operation id for the '<em>View</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___VIEW = INFORMATION_OBJECT___VIEW;
+
+	/**
+	 * The operation id for the '<em>Thumbs Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___THUMBS_UP = INFORMATION_OBJECT___THUMBS_UP;
+
+	/**
+	 * The operation id for the '<em>Thumbs Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___THUMBS_DOWN = INFORMATION_OBJECT___THUMBS_DOWN;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_THUMBS_UP = INFORMATION_OBJECT___GET_THUMBS_UP;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_THUMBS_DOWN = INFORMATION_OBJECT___GET_THUMBS_DOWN;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Up Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_THUMBS_UP_COUNT = INFORMATION_OBJECT___GET_THUMBS_UP_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Down Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_THUMBS_DOWN_COUNT = INFORMATION_OBJECT___GET_THUMBS_DOWN_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_THUMBS_COUNT = INFORMATION_OBJECT___GET_THUMBS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Views Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_VIEWS_COUNT = INFORMATION_OBJECT___GET_VIEWS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Star Ranking</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_STAR_RANKING = INFORMATION_OBJECT___GET_STAR_RANKING;
+
+	/**
+	 * The operation id for the '<em>Extend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___EXTEND__METAINFORMATION = INFORMATION_OBJECT___EXTEND__METAINFORMATION;
+
+	/**
+	 * The operation id for the '<em>Get Web Accounts</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_WEB_ACCOUNTS = INFORMATION_OBJECT___GET_WEB_ACCOUNTS;
+
+	/**
+	 * The operation id for the '<em>Get Web Sites</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_WEB_SITES = INFORMATION_OBJECT___GET_WEB_SITES;
+
+	/**
+	 * The operation id for the '<em>Get Phones</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_PHONES = INFORMATION_OBJECT___GET_PHONES;
+
+	/**
+	 * The operation id for the '<em>Get Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_LOCATIONS = INFORMATION_OBJECT___GET_LOCATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Emails</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_EMAILS = INFORMATION_OBJECT___GET_EMAILS;
+
+	/**
+	 * The operation id for the '<em>Get Instant Messengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INSTANT_MESSENGERS = INFORMATION_OBJECT___GET_INSTANT_MESSENGERS;
+
+	/**
+	 * The operation id for the '<em>Add Email Address</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ADD_EMAIL_ADDRESS__STRING = INFORMATION_OBJECT___ADD_EMAIL_ADDRESS__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Web Site</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ADD_WEB_SITE__STRING = INFORMATION_OBJECT___ADD_WEB_SITE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Add Web Account</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ADD_WEB_ACCOUNT__STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Images</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___HAS_IMAGES = INFORMATION_OBJECT___HAS_IMAGES;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INFORMATION_OBJECTS_CONNECTED_TO = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INFORMATION_OBJECTS_CONNECTED_FROM = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INFORMATION_OBJECTS_CONNECTED = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED;
+
+	/**
+	 * The operation id for the '<em>Connect To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___CONNECT_TO__INFORMATIONOBJECT = INFORMATION_OBJECT___CONNECT_TO__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Connect To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected From With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connections From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CONNECTIONS_FROM__INFORMATIONOBJECT = INFORMATION_OBJECT___GET_CONNECTIONS_FROM__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Get Connections To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CONNECTIONS_TO__INFORMATIONOBJECT = INFORMATION_OBJECT___GET_CONNECTIONS_TO__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Connect To With Value And Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING = INFORMATION_OBJECT___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connection To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connection From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attachment With Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ATTACHMENT_WITH_URL__STRING = INFORMATION_OBJECT___GET_ATTACHMENT_WITH_URL__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ATTACHED_IMAGE_WITH_URL__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_URL__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Phone</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ADD_PHONE__STRING = INFORMATION_OBJECT___ADD_PHONE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Persons With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_PERSONS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_PERSONS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ORGANISATIONS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_ORGANISATIONS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Get Contents With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CONTENTS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_CONTENTS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Un Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___UN_TAG__STRING = INFORMATION_OBJECT___UN_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Un Categorize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___UN_CATEGORIZE__STRING = INFORMATION_OBJECT___UN_CATEGORIZE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Slug Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_SLUG_NAME = INFORMATION_OBJECT___GET_SLUG_NAME;
+
+	/**
+	 * The operation id for the '<em>Get Connections To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connections From With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_CONTENTS = INFORMATION_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Organisations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ORGANISATIONS = INFORMATION_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add Contributed Content</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ADD_CONTRIBUTED_CONTENT__CONTENT = INFORMATION_OBJECT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Add Authored Content</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ADD_AUTHORED_CONTENT__CONTENT = INFORMATION_OBJECT_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Parse First Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___PARSE_FIRST_NAME = INFORMATION_OBJECT_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Parse Last Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___PARSE_LAST_NAME = INFORMATION_OBJECT_OPERATION_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Person</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON_OPERATION_COUNT = INFORMATION_OBJECT_OPERATION_COUNT + 6;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ContentImpl <em>Content</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -993,6 +2506,690 @@ public interface DataPackage extends EPackage {
 	int CONTENT_FEATURE_COUNT = INFORMATION_OBJECT_FEATURE_COUNT + 8;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___LOG__STRING = INFORMATION_OBJECT___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___LOG__STRING_INTEGER = INFORMATION_OBJECT___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___META_TAG__STRING = INFORMATION_OBJECT___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___IDENTIFY_BY__STRING_STRING = INFORMATION_OBJECT___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_IDENTIFIER__STRING = INFORMATION_OBJECT___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___HAS_META_TAG__STRING = INFORMATION_OBJECT___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___MATCHES_SEARCH__STRING = INFORMATION_OBJECT___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___DELETE = INFORMATION_OBJECT___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___IS_EQUAL_ITEM__ITEM = INFORMATION_OBJECT___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = INFORMATION_OBJECT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CREATED_PRETTY = INFORMATION_OBJECT___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = INFORMATION_OBJECT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_LAST_MODIFIED_PRETTY = INFORMATION_OBJECT___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___DELETE_ON_DELETE_OF__ITEM = INFORMATION_OBJECT___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___DELETE_IF_EMPTY_ON_DELETE = INFORMATION_OBJECT___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___UPDATE__ITEM = INFORMATION_OBJECT___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___FORCE_UPDATE__ITEM = INFORMATION_OBJECT___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___UN_META_TAG__STRING = INFORMATION_OBJECT___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___REMOVE_IDENTIFIER__STRING = INFORMATION_OBJECT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___TAG__STRING = INFORMATION_OBJECT___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Categorize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___CATEGORIZE__STRING = INFORMATION_OBJECT___CATEGORIZE__STRING;
+
+	/**
+	 * The operation id for the '<em>Attach Image</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ATTACH_IMAGE__STRING = INFORMATION_OBJECT___ATTACH_IMAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attachments</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ATTACHMENTS = INFORMATION_OBJECT___GET_ATTACHMENTS;
+
+	/**
+	 * The operation id for the '<em>Star Rank</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___STAR_RANK__INTEGER_INTEGER = INFORMATION_OBJECT___STAR_RANK__INTEGER_INTEGER;
+
+	/**
+	 * The operation id for the '<em>View</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___VIEW = INFORMATION_OBJECT___VIEW;
+
+	/**
+	 * The operation id for the '<em>Thumbs Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___THUMBS_UP = INFORMATION_OBJECT___THUMBS_UP;
+
+	/**
+	 * The operation id for the '<em>Thumbs Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___THUMBS_DOWN = INFORMATION_OBJECT___THUMBS_DOWN;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_THUMBS_UP = INFORMATION_OBJECT___GET_THUMBS_UP;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_THUMBS_DOWN = INFORMATION_OBJECT___GET_THUMBS_DOWN;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Up Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_THUMBS_UP_COUNT = INFORMATION_OBJECT___GET_THUMBS_UP_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Down Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_THUMBS_DOWN_COUNT = INFORMATION_OBJECT___GET_THUMBS_DOWN_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_THUMBS_COUNT = INFORMATION_OBJECT___GET_THUMBS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Views Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_VIEWS_COUNT = INFORMATION_OBJECT___GET_VIEWS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Star Ranking</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_STAR_RANKING = INFORMATION_OBJECT___GET_STAR_RANKING;
+
+	/**
+	 * The operation id for the '<em>Extend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___EXTEND__METAINFORMATION = INFORMATION_OBJECT___EXTEND__METAINFORMATION;
+
+	/**
+	 * The operation id for the '<em>Get Web Accounts</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_WEB_ACCOUNTS = INFORMATION_OBJECT___GET_WEB_ACCOUNTS;
+
+	/**
+	 * The operation id for the '<em>Get Web Sites</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_WEB_SITES = INFORMATION_OBJECT___GET_WEB_SITES;
+
+	/**
+	 * The operation id for the '<em>Get Phones</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_PHONES = INFORMATION_OBJECT___GET_PHONES;
+
+	/**
+	 * The operation id for the '<em>Get Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_LOCATIONS = INFORMATION_OBJECT___GET_LOCATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Emails</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_EMAILS = INFORMATION_OBJECT___GET_EMAILS;
+
+	/**
+	 * The operation id for the '<em>Get Instant Messengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INSTANT_MESSENGERS = INFORMATION_OBJECT___GET_INSTANT_MESSENGERS;
+
+	/**
+	 * The operation id for the '<em>Add Email Address</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ADD_EMAIL_ADDRESS__STRING = INFORMATION_OBJECT___ADD_EMAIL_ADDRESS__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Web Site</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ADD_WEB_SITE__STRING = INFORMATION_OBJECT___ADD_WEB_SITE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Add Web Account</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ADD_WEB_ACCOUNT__STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Images</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___HAS_IMAGES = INFORMATION_OBJECT___HAS_IMAGES;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INFORMATION_OBJECTS_CONNECTED_TO = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INFORMATION_OBJECTS_CONNECTED_FROM = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INFORMATION_OBJECTS_CONNECTED = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED;
+
+	/**
+	 * The operation id for the '<em>Connect To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___CONNECT_TO__INFORMATIONOBJECT = INFORMATION_OBJECT___CONNECT_TO__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Connect To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected From With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connections From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CONNECTIONS_FROM__INFORMATIONOBJECT = INFORMATION_OBJECT___GET_CONNECTIONS_FROM__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Get Connections To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CONNECTIONS_TO__INFORMATIONOBJECT = INFORMATION_OBJECT___GET_CONNECTIONS_TO__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Connect To With Value And Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING = INFORMATION_OBJECT___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connection To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connection From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attachment With Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ATTACHMENT_WITH_URL__STRING = INFORMATION_OBJECT___GET_ATTACHMENT_WITH_URL__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ATTACHED_IMAGE_WITH_URL__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_URL__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Phone</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ADD_PHONE__STRING = INFORMATION_OBJECT___ADD_PHONE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Persons With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_PERSONS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_PERSONS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ORGANISATIONS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_ORGANISATIONS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Get Contents With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CONTENTS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_CONTENTS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Un Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___UN_TAG__STRING = INFORMATION_OBJECT___UN_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Un Categorize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___UN_CATEGORIZE__STRING = INFORMATION_OBJECT___UN_CATEGORIZE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Slug Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_SLUG_NAME = INFORMATION_OBJECT___GET_SLUG_NAME;
+
+	/**
+	 * The operation id for the '<em>Get Connections To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connections From With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Organisations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ORGANISATIONS = INFORMATION_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Persons</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_PERSONS = INFORMATION_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Comment</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___COMMENT__STRING = INFORMATION_OBJECT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Add Contributor</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ADD_CONTRIBUTOR__PERSON = INFORMATION_OBJECT_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Attach Document</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ATTACH_DOCUMENT__STRING = INFORMATION_OBJECT_OPERATION_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Content</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT_OPERATION_COUNT = INFORMATION_OBJECT_OPERATION_COUNT + 5;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.DataSetImpl <em>Set</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1091,6 +3288,1068 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_SET_FEATURE_COUNT = 9;
+
+	/**
+	 * The operation id for the '<em>Add</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___ADD__ITEM = 0;
+
+	/**
+	 * The operation id for the '<em>Get Items With String Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_WITH_STRING_VALUE__STRING = 1;
+
+	/**
+	 * The operation id for the '<em>Get Persons With Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_NAME__STRING = 2;
+
+	/**
+	 * The operation id for the '<em>Get Persons With Lastname</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_LASTNAME__STRING = 3;
+
+	/**
+	 * The operation id for the '<em>Get Persons With First Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_FIRST_NAME__STRING = 4;
+
+	/**
+	 * The operation id for the '<em>Get Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_TAG__STRING = 5;
+
+	/**
+	 * The operation id for the '<em>Get Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_META_TAG__STRING = 6;
+
+	/**
+	 * The operation id for the '<em>Get All Persons</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ALL_PERSONS = 7;
+
+	/**
+	 * The operation id for the '<em>Get All Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ALL_CONTENTS = 8;
+
+	/**
+	 * The operation id for the '<em>Get All Organisations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ALL_ORGANISATIONS = 9;
+
+	/**
+	 * The operation id for the '<em>Get All Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ALL_CATEGORIES = 10;
+
+	/**
+	 * The operation id for the '<em>Get Category</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CATEGORY__STRING = 11;
+
+	/**
+	 * The operation id for the '<em>Get All Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ALL_TAGS = 12;
+
+	/**
+	 * The operation id for the '<em>Get Items Modified Since</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_MODIFIED_SINCE__DATE = 13;
+
+	/**
+	 * The operation id for the '<em>Get All Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ALL_META_TAGS = 14;
+
+	/**
+	 * The operation id for the '<em>Get All Connections</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ALL_CONNECTIONS = 15;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___LOG__STRING = 16;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___LOG__STRING_INTEGER = 17;
+
+	/**
+	 * The operation id for the '<em>Get Content With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENT_WITH_IDENT__STRING = 18;
+
+	/**
+	 * The operation id for the '<em>Get Person With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSON_WITH_IDENT__STRING = 19;
+
+	/**
+	 * The operation id for the '<em>Get Organisation With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATION_WITH_IDENT__STRING = 20;
+
+	/**
+	 * The operation id for the '<em>Get Attachment With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ATTACHMENT_WITH_IDENT__STRING = 21;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With All Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_CATEGORIES__ELIST = 22;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With One Of Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_CATEGORIES__ELIST = 23;
+
+	/**
+	 * The operation id for the '<em>Get Contents With All Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS_WITH_ALL_CATEGORIES__ELIST = 24;
+
+	/**
+	 * The operation id for the '<em>Get Contents With One Of Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS_WITH_ONE_OF_CATEGORIES__ELIST = 25;
+
+	/**
+	 * The operation id for the '<em>Get Persons With All Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_ALL_CATEGORIES__ELIST = 26;
+
+	/**
+	 * The operation id for the '<em>Get Persons With One Of Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_ONE_OF_CATEGORIES__ELIST = 27;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With All Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS_WITH_ALL_CATEGORIES__ELIST = 28;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With One Of Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_CATEGORIES__ELIST = 29;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With All Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_TAGS__ELIST = 30;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With One Of Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_TAGS__ELIST = 31;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With All Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS_WITH_ALL_TAGS__ELIST = 32;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With One Of Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_TAGS__ELIST = 33;
+
+	/**
+	 * The operation id for the '<em>Get Persons With All Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_ALL_TAGS__ELIST = 34;
+
+	/**
+	 * The operation id for the '<em>Get Persons With One Of Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_ONE_OF_TAGS__ELIST = 35;
+
+	/**
+	 * The operation id for the '<em>Get Contents With All Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS_WITH_ALL_TAGS__ELIST = 36;
+
+	/**
+	 * The operation id for the '<em>Get Contents With One Of Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS_WITH_ONE_OF_TAGS__ELIST = 37;
+
+	/**
+	 * The operation id for the '<em>Get Contents With Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS_WITH_NAME__STRING = 38;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS_WITH_NAME__STRING = 39;
+
+	/**
+	 * The operation id for the '<em>Get Items With All Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_WITH_ALL_META_TAGS__ELIST = 40;
+
+	/**
+	 * The operation id for the '<em>Get Items With One Of Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_WITH_ONE_OF_META_TAGS__ELIST = 41;
+
+	/**
+	 * The operation id for the '<em>Get Persons</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS = 42;
+
+	/**
+	 * The operation id for the '<em>Get Organisations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS = 43;
+
+	/**
+	 * The operation id for the '<em>Get Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS = 44;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS = 45;
+
+	/**
+	 * The operation id for the '<em>Get Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_TAGS = 46;
+
+	/**
+	 * The operation id for the '<em>Get Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_META_TAGS = 47;
+
+	/**
+	 * The operation id for the '<em>Get Attachments</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ATTACHMENTS = 48;
+
+	/**
+	 * The operation id for the '<em>Get Binaries</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_BINARIES = 49;
+
+	/**
+	 * The operation id for the '<em>Get Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CATEGORIES = 50;
+
+	/**
+	 * The operation id for the '<em>Get Classifications</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CLASSIFICATIONS = 51;
+
+	/**
+	 * The operation id for the '<em>Get Connections</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONNECTIONS = 52;
+
+	/**
+	 * The operation id for the '<em>Get Documents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_DOCUMENTS = 53;
+
+	/**
+	 * The operation id for the '<em>Get Emails</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_EMAILS = 54;
+
+	/**
+	 * The operation id for the '<em>Get Extensions</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_EXTENSIONS = 55;
+
+	/**
+	 * The operation id for the '<em>Get Images</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_IMAGES = 56;
+
+	/**
+	 * The operation id for the '<em>Get Instant Messengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INSTANT_MESSENGERS = 57;
+
+	/**
+	 * The operation id for the '<em>Get Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_LOCATIONS = 58;
+
+	/**
+	 * The operation id for the '<em>Get Meta Informations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_META_INFORMATIONS = 59;
+
+	/**
+	 * The operation id for the '<em>Get Phones</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PHONES = 60;
+
+	/**
+	 * The operation id for the '<em>Get Rankings</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_RANKINGS = 61;
+
+	/**
+	 * The operation id for the '<em>Get Star Rankings</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_STAR_RANKINGS = 62;
+
+	/**
+	 * The operation id for the '<em>Get Thumb Rankings</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_THUMB_RANKINGS = 63;
+
+	/**
+	 * The operation id for the '<em>Get Transformations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_TRANSFORMATIONS = 64;
+
+	/**
+	 * The operation id for the '<em>Get Videos</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_VIDEOS = 65;
+
+	/**
+	 * The operation id for the '<em>Get View Rankings</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_VIEW_RANKINGS = 66;
+
+	/**
+	 * The operation id for the '<em>Get Web Accounts</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_WEB_ACCOUNTS = 67;
+
+	/**
+	 * The operation id for the '<em>Get Web Sites</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_WEB_SITES = 68;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With All Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_META_TAGS__ELIST = 69;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With One Of Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_META_TAGS__ELIST = 70;
+
+	/**
+	 * The operation id for the '<em>Get Identifiers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_IDENTIFIERS = 71;
+
+	/**
+	 * The operation id for the '<em>Get Identifiers With Key</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_IDENTIFIERS_WITH_KEY__STRING = 72;
+
+	/**
+	 * The operation id for the '<em>Get Identifier With Key Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_IDENTIFIER_WITH_KEY_VALUE__STRING_STRING = 73;
+
+	/**
+	 * The operation id for the '<em>Get Item With Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEM_WITH_IDENTIFIER__STRING_STRING = 74;
+
+	/**
+	 * The operation id for the '<em>Get Person With Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSON_WITH_IDENTIFIER__STRING_STRING = 75;
+
+	/**
+	 * The operation id for the '<em>Get Content With Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENT_WITH_IDENTIFIER__STRING_STRING = 76;
+
+	/**
+	 * The operation id for the '<em>Get Organisation With Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATION_WITH_IDENTIFIER__STRING_STRING = 77;
+
+	/**
+	 * The operation id for the '<em>Get Location With Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_LOCATION_WITH_IDENTIFIER__STRING_STRING = 78;
+
+	/**
+	 * The operation id for the '<em>Get Indoor Location With Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INDOOR_LOCATION_WITH_IDENTIFIER__STRING_STRING = 79;
+
+	/**
+	 * The operation id for the '<em>Get Image With Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_IMAGE_WITH_IDENTIFIER__STRING_STRING = 80;
+
+	/**
+	 * The operation id for the '<em>Get Empty Item With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_EMPTY_ITEM_WITH_IDENT__STRING = 81;
+
+	/**
+	 * The operation id for the '<em>Get Tags With More Than XInformation Objects</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_TAGS_WITH_MORE_THAN_XINFORMATION_OBJECTS__INTEGER = 82;
+
+	/**
+	 * The operation id for the '<em>Get Items Created Since</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_CREATED_SINCE__DATE = 83;
+
+	/**
+	 * The operation id for the '<em>Search Items</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___SEARCH_ITEMS__STRING = 84;
+
+	/**
+	 * The operation id for the '<em>Search Information Objects</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___SEARCH_INFORMATION_OBJECTS__STRING = 85;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With Attachment</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS_WITH_ATTACHMENT__ATTACHMENT = 86;
+
+	/**
+	 * The operation id for the '<em>Get Persons With Attachment</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_ATTACHMENT__ATTACHMENT = 87;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With Attachment</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS_WITH_ATTACHMENT__ATTACHMENT = 88;
+
+	/**
+	 * The operation id for the '<em>Get Contents With Attachment</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS_WITH_ATTACHMENT__ATTACHMENT = 89;
+
+	/**
+	 * The operation id for the '<em>Get Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_EQUAL_ITEM__ITEM = 90;
+
+	/**
+	 * The operation id for the '<em>Has Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___HAS_EQUAL_ITEM__ITEM = 91;
+
+	/**
+	 * The operation id for the '<em>Get Items With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_WITH_IDENT__STRING = 92;
+
+	/**
+	 * The operation id for the '<em>Get Attachments With Cached File Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ATTACHMENTS_WITH_CACHED_FILE_NAME__STRING = 93;
+
+	/**
+	 * The operation id for the '<em>Get Events After</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_EVENTS_AFTER__DATE = 94;
+
+	/**
+	 * The operation id for the '<em>Get Events Before</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_EVENTS_BEFORE__DATE = 95;
+
+	/**
+	 * The operation id for the '<em>Get Events Between Dates</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_EVENTS_BETWEEN_DATES__DATE_DATE = 96;
+
+	/**
+	 * The operation id for the '<em>Get Spicynodes Representation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_SPICYNODES_REPRESENTATION = 97;
+
+	/**
+	 * The operation id for the '<em>Get Connections Between Information Objects Of Different Categories</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONNECTIONS_BETWEEN_INFORMATION_OBJECTS_OF_DIFFERENT_CATEGORIES = 98;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Modified Since</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INFORMATION_OBJECTS_MODIFIED_SINCE__DATE = 99;
+
+	/**
+	 * The operation id for the '<em>Get Random XInformation Objects</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_RANDOM_XINFORMATION_OBJECTS__INTEGER = 100;
+
+	/**
+	 * The operation id for the '<em>Get Random XContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_RANDOM_XCONTENTS__INTEGER = 101;
+
+	/**
+	 * The operation id for the '<em>Get Random XPersons</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_RANDOM_XPERSONS__INTEGER = 102;
+
+	/**
+	 * The operation id for the '<em>Get Random XOrganisations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_RANDOM_XORGANISATIONS__INTEGER = 103;
+
+	/**
+	 * The operation id for the '<em>Force Add</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___FORCE_ADD__ITEM = 104;
+
+	/**
+	 * The operation id for the '<em>Get Idents Of Existing Items</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_IDENTS_OF_EXISTING_ITEMS = 105;
+
+	/**
+	 * The operation id for the '<em>Get Category With Slug</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CATEGORY_WITH_SLUG__STRING = 106;
+
+	/**
+	 * The operation id for the '<em>Rebuild Indexes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___REBUILD_INDEXES = 107;
+
+	/**
+	 * The operation id for the '<em>Get Contents With All Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS_WITH_ALL_META_TAGS__ELIST = 108;
+
+	/**
+	 * The operation id for the '<em>Get Contents With One Of Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_CONTENTS_WITH_ONE_OF_META_TAGS__ELIST = 109;
+
+	/**
+	 * The operation id for the '<em>Get Persons With All Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_ALL_META_TAGS__ELIST = 110;
+
+	/**
+	 * The operation id for the '<em>Get Persons With One Of Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_PERSONS_WITH_ONE_OF_META_TAGS__ELIST = 111;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With All Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS_WITH_ALL_META_TAGS__ELIST = 112;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With One Of Meta Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_META_TAGS__ELIST = 113;
+
+	/**
+	 * The operation id for the '<em>Get Events</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_EVENTS = 114;
+
+	/**
+	 * The operation id for the '<em>Search By Query</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___SEARCH_BY_QUERY__STRING = 115;
+
+	/**
+	 * The operation id for the '<em>Get Indoor Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_INDOOR_LOCATIONS = 116;
+
+	/**
+	 * The number of operations of the '<em>Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET_OPERATION_COUNT = 117;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -1200,6 +4459,195 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXTENSION_FEATURE_COUNT = ITEM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___LOG__STRING = ITEM___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___LOG__STRING_INTEGER = ITEM___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___META_TAG__STRING = ITEM___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___IDENTIFY_BY__STRING_STRING = ITEM___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___GET_IDENTIFIER__STRING = ITEM___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___HAS_META_TAG__STRING = ITEM___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___MATCHES_SEARCH__STRING = ITEM___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___DELETE = ITEM___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___IS_EQUAL_ITEM__ITEM = ITEM___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___GET_CREATED_PRETTY = ITEM___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___GET_LAST_MODIFIED_PRETTY = ITEM___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___DELETE_ON_DELETE_OF__ITEM = ITEM___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___DELETE_IF_EMPTY_ON_DELETE = ITEM___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___UPDATE__ITEM = ITEM___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___FORCE_UPDATE__ITEM = ITEM___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___UN_META_TAG__STRING = ITEM___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___TAG__STRING = ITEM_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Extension</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_OPERATION_COUNT = ITEM_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ClassificationImpl <em>Classification</em>}' class.
@@ -1318,6 +4766,258 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASSIFICATION_FEATURE_COUNT = ITEM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___LOG__STRING = ITEM___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___LOG__STRING_INTEGER = ITEM___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___META_TAG__STRING = ITEM___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___IDENTIFY_BY__STRING_STRING = ITEM___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_IDENTIFIER__STRING = ITEM___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___HAS_META_TAG__STRING = ITEM___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___MATCHES_SEARCH__STRING = ITEM___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___DELETE = ITEM___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___IS_EQUAL_ITEM__ITEM = ITEM___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_CREATED_PRETTY = ITEM___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_LAST_MODIFIED_PRETTY = ITEM___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___DELETE_ON_DELETE_OF__ITEM = ITEM___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___DELETE_IF_EMPTY_ON_DELETE = ITEM___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___UPDATE__ITEM = ITEM___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___FORCE_UPDATE__ITEM = ITEM___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___UN_META_TAG__STRING = ITEM___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Persons</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_PERSONS = ITEM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_CONTENTS = ITEM_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Organisations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_ORGANISATIONS = ITEM_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_COUNT = ITEM_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Persons Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_PERSONS_COUNT = ITEM_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get Contents Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_CONTENTS_COUNT = ITEM_OPERATION_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Get Organisations Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_ORGANISATIONS_COUNT = ITEM_OPERATION_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Get Slug</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___GET_SLUG = ITEM_OPERATION_COUNT + 7;
+
+	/**
+	 * The number of operations of the '<em>Classification</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_OPERATION_COUNT = ITEM_OPERATION_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.CategoryImpl <em>Category</em>}' class.
@@ -1474,6 +5174,258 @@ public interface DataPackage extends EPackage {
 	int CATEGORY_FEATURE_COUNT = CLASSIFICATION_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___LOG__STRING = CLASSIFICATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___LOG__STRING_INTEGER = CLASSIFICATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___META_TAG__STRING = CLASSIFICATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___IDENTIFY_BY__STRING_STRING = CLASSIFICATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_IDENTIFIER__STRING = CLASSIFICATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___HAS_META_TAG__STRING = CLASSIFICATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___MATCHES_SEARCH__STRING = CLASSIFICATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___DELETE = CLASSIFICATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___IS_EQUAL_ITEM__ITEM = CLASSIFICATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = CLASSIFICATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_CREATED_PRETTY = CLASSIFICATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = CLASSIFICATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_LAST_MODIFIED_PRETTY = CLASSIFICATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___DELETE_ON_DELETE_OF__ITEM = CLASSIFICATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___DELETE_IF_EMPTY_ON_DELETE = CLASSIFICATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___UPDATE__ITEM = CLASSIFICATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___FORCE_UPDATE__ITEM = CLASSIFICATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___UN_META_TAG__STRING = CLASSIFICATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___REMOVE_IDENTIFIER__STRING = CLASSIFICATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Persons</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_PERSONS = CLASSIFICATION___GET_PERSONS;
+
+	/**
+	 * The operation id for the '<em>Get Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_CONTENTS = CLASSIFICATION___GET_CONTENTS;
+
+	/**
+	 * The operation id for the '<em>Get Organisations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_ORGANISATIONS = CLASSIFICATION___GET_ORGANISATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_COUNT = CLASSIFICATION___GET_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Persons Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_PERSONS_COUNT = CLASSIFICATION___GET_PERSONS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Contents Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_CONTENTS_COUNT = CLASSIFICATION___GET_CONTENTS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Organisations Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_ORGANISATIONS_COUNT = CLASSIFICATION___GET_ORGANISATIONS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Slug</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___GET_SLUG = CLASSIFICATION___GET_SLUG;
+
+	/**
+	 * The number of operations of the '<em>Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY_OPERATION_COUNT = CLASSIFICATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.TagImpl <em>Tag</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1599,6 +5551,258 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int TAG_FEATURE_COUNT = CLASSIFICATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___LOG__STRING = CLASSIFICATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___LOG__STRING_INTEGER = CLASSIFICATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___META_TAG__STRING = CLASSIFICATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___IDENTIFY_BY__STRING_STRING = CLASSIFICATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_IDENTIFIER__STRING = CLASSIFICATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___HAS_META_TAG__STRING = CLASSIFICATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___MATCHES_SEARCH__STRING = CLASSIFICATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___DELETE = CLASSIFICATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___IS_EQUAL_ITEM__ITEM = CLASSIFICATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = CLASSIFICATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_CREATED_PRETTY = CLASSIFICATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = CLASSIFICATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_LAST_MODIFIED_PRETTY = CLASSIFICATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___DELETE_ON_DELETE_OF__ITEM = CLASSIFICATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___DELETE_IF_EMPTY_ON_DELETE = CLASSIFICATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___UPDATE__ITEM = CLASSIFICATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___FORCE_UPDATE__ITEM = CLASSIFICATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___UN_META_TAG__STRING = CLASSIFICATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___REMOVE_IDENTIFIER__STRING = CLASSIFICATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Persons</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_PERSONS = CLASSIFICATION___GET_PERSONS;
+
+	/**
+	 * The operation id for the '<em>Get Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_CONTENTS = CLASSIFICATION___GET_CONTENTS;
+
+	/**
+	 * The operation id for the '<em>Get Organisations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_ORGANISATIONS = CLASSIFICATION___GET_ORGANISATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_COUNT = CLASSIFICATION___GET_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Persons Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_PERSONS_COUNT = CLASSIFICATION___GET_PERSONS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Contents Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_CONTENTS_COUNT = CLASSIFICATION___GET_CONTENTS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Organisations Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_ORGANISATIONS_COUNT = CLASSIFICATION___GET_ORGANISATIONS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Slug</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___GET_SLUG = CLASSIFICATION___GET_SLUG;
+
+	/**
+	 * The number of operations of the '<em>Tag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG_OPERATION_COUNT = CLASSIFICATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.OrganisationImpl <em>Organisation</em>}' class.
@@ -1854,6 +6058,672 @@ public interface DataPackage extends EPackage {
 	int ORGANISATION_FEATURE_COUNT = INFORMATION_OBJECT_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___LOG__STRING = INFORMATION_OBJECT___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___LOG__STRING_INTEGER = INFORMATION_OBJECT___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___META_TAG__STRING = INFORMATION_OBJECT___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___IDENTIFY_BY__STRING_STRING = INFORMATION_OBJECT___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_IDENTIFIER__STRING = INFORMATION_OBJECT___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___HAS_META_TAG__STRING = INFORMATION_OBJECT___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___MATCHES_SEARCH__STRING = INFORMATION_OBJECT___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___DELETE = INFORMATION_OBJECT___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___IS_EQUAL_ITEM__ITEM = INFORMATION_OBJECT___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = INFORMATION_OBJECT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CREATED_PRETTY = INFORMATION_OBJECT___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = INFORMATION_OBJECT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_LAST_MODIFIED_PRETTY = INFORMATION_OBJECT___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___DELETE_ON_DELETE_OF__ITEM = INFORMATION_OBJECT___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___DELETE_IF_EMPTY_ON_DELETE = INFORMATION_OBJECT___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___UPDATE__ITEM = INFORMATION_OBJECT___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___FORCE_UPDATE__ITEM = INFORMATION_OBJECT___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___UN_META_TAG__STRING = INFORMATION_OBJECT___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___REMOVE_IDENTIFIER__STRING = INFORMATION_OBJECT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___TAG__STRING = INFORMATION_OBJECT___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Categorize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___CATEGORIZE__STRING = INFORMATION_OBJECT___CATEGORIZE__STRING;
+
+	/**
+	 * The operation id for the '<em>Attach Image</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___ATTACH_IMAGE__STRING = INFORMATION_OBJECT___ATTACH_IMAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attachments</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_ATTACHMENTS = INFORMATION_OBJECT___GET_ATTACHMENTS;
+
+	/**
+	 * The operation id for the '<em>Star Rank</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___STAR_RANK__INTEGER_INTEGER = INFORMATION_OBJECT___STAR_RANK__INTEGER_INTEGER;
+
+	/**
+	 * The operation id for the '<em>View</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___VIEW = INFORMATION_OBJECT___VIEW;
+
+	/**
+	 * The operation id for the '<em>Thumbs Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___THUMBS_UP = INFORMATION_OBJECT___THUMBS_UP;
+
+	/**
+	 * The operation id for the '<em>Thumbs Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___THUMBS_DOWN = INFORMATION_OBJECT___THUMBS_DOWN;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_THUMBS_UP = INFORMATION_OBJECT___GET_THUMBS_UP;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_THUMBS_DOWN = INFORMATION_OBJECT___GET_THUMBS_DOWN;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Up Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_THUMBS_UP_COUNT = INFORMATION_OBJECT___GET_THUMBS_UP_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Down Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_THUMBS_DOWN_COUNT = INFORMATION_OBJECT___GET_THUMBS_DOWN_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Thumbs Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_THUMBS_COUNT = INFORMATION_OBJECT___GET_THUMBS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Views Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_VIEWS_COUNT = INFORMATION_OBJECT___GET_VIEWS_COUNT;
+
+	/**
+	 * The operation id for the '<em>Get Star Ranking</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_STAR_RANKING = INFORMATION_OBJECT___GET_STAR_RANKING;
+
+	/**
+	 * The operation id for the '<em>Extend</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___EXTEND__METAINFORMATION = INFORMATION_OBJECT___EXTEND__METAINFORMATION;
+
+	/**
+	 * The operation id for the '<em>Get Web Accounts</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_WEB_ACCOUNTS = INFORMATION_OBJECT___GET_WEB_ACCOUNTS;
+
+	/**
+	 * The operation id for the '<em>Get Web Sites</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_WEB_SITES = INFORMATION_OBJECT___GET_WEB_SITES;
+
+	/**
+	 * The operation id for the '<em>Get Phones</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_PHONES = INFORMATION_OBJECT___GET_PHONES;
+
+	/**
+	 * The operation id for the '<em>Get Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_LOCATIONS = INFORMATION_OBJECT___GET_LOCATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Emails</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_EMAILS = INFORMATION_OBJECT___GET_EMAILS;
+
+	/**
+	 * The operation id for the '<em>Get Instant Messengers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INSTANT_MESSENGERS = INFORMATION_OBJECT___GET_INSTANT_MESSENGERS;
+
+	/**
+	 * The operation id for the '<em>Add Email Address</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___ADD_EMAIL_ADDRESS__STRING = INFORMATION_OBJECT___ADD_EMAIL_ADDRESS__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Web Site</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___ADD_WEB_SITE__STRING = INFORMATION_OBJECT___ADD_WEB_SITE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Add Web Account</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___ADD_WEB_ACCOUNT__STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Images</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___HAS_IMAGES = INFORMATION_OBJECT___HAS_IMAGES;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INFORMATION_OBJECTS_CONNECTED_TO = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INFORMATION_OBJECTS_CONNECTED_FROM = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INFORMATION_OBJECTS_CONNECTED = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED;
+
+	/**
+	 * The operation id for the '<em>Connect To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___CONNECT_TO__INFORMATIONOBJECT = INFORMATION_OBJECT___CONNECT_TO__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Connect To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected From With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Connected With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING = INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connections From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CONNECTIONS_FROM__INFORMATIONOBJECT = INFORMATION_OBJECT___GET_CONNECTIONS_FROM__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Get Connections To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CONNECTIONS_TO__INFORMATIONOBJECT = INFORMATION_OBJECT___GET_CONNECTIONS_TO__INFORMATIONOBJECT;
+
+	/**
+	 * The operation id for the '<em>Connect To With Value And Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING = INFORMATION_OBJECT___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connection To</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connection From</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attachment With Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_ATTACHMENT_WITH_URL__STRING = INFORMATION_OBJECT___GET_ATTACHMENT_WITH_URL__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_ATTACHED_IMAGE_WITH_URL__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_URL__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Phone</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___ADD_PHONE__STRING = INFORMATION_OBJECT___ADD_PHONE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Persons With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_PERSONS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_PERSONS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Get Organisations With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_ORGANISATIONS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_ORGANISATIONS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Get Contents With Common Tags</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CONTENTS_WITH_COMMON_TAGS = INFORMATION_OBJECT___GET_CONTENTS_WITH_COMMON_TAGS;
+
+	/**
+	 * The operation id for the '<em>Un Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___UN_TAG__STRING = INFORMATION_OBJECT___UN_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Un Categorize</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___UN_CATEGORIZE__STRING = INFORMATION_OBJECT___UN_CATEGORIZE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Slug Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_SLUG_NAME = INFORMATION_OBJECT___GET_SLUG_NAME;
+
+	/**
+	 * The operation id for the '<em>Get Connections To With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Connections From With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Persons</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_PERSONS = INFORMATION_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_CONTENTS = INFORMATION_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add Participant</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___ADD_PARTICIPANT__PERSON = INFORMATION_OBJECT_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Organisation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION_OPERATION_COUNT = INFORMATION_OBJECT_OPERATION_COUNT + 3;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.MetaTagImpl <em>Meta Tag</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1981,6 +6851,231 @@ public interface DataPackage extends EPackage {
 	int META_TAG_FEATURE_COUNT = ITEM_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___LOG__STRING = ITEM___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___LOG__STRING_INTEGER = ITEM___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___META_TAG__STRING = ITEM___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___IDENTIFY_BY__STRING_STRING = ITEM___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_IDENTIFIER__STRING = ITEM___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___HAS_META_TAG__STRING = ITEM___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___MATCHES_SEARCH__STRING = ITEM___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___DELETE = ITEM___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___IS_EQUAL_ITEM__ITEM = ITEM___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_CREATED_PRETTY = ITEM___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_LAST_MODIFIED_PRETTY = ITEM___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___DELETE_ON_DELETE_OF__ITEM = ITEM___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___DELETE_IF_EMPTY_ON_DELETE = ITEM___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___UPDATE__ITEM = ITEM___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___FORCE_UPDATE__ITEM = ITEM___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___UN_META_TAG__STRING = ITEM___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Web Accounts</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_WEB_ACCOUNTS = ITEM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_INFORMATION_OBJECTS = ITEM_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Extensions</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_EXTENSIONS = ITEM_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_COUNT = ITEM_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Information Objects Count</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___GET_INFORMATION_OBJECTS_COUNT = ITEM_OPERATION_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Meta Tag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG_OPERATION_COUNT = ITEM_OPERATION_COUNT + 5;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.MetaInformationImpl <em>Meta Information</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2097,6 +7192,195 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int META_INFORMATION_FEATURE_COUNT = EXTENSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___LOG__STRING = EXTENSION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___LOG__STRING_INTEGER = EXTENSION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___META_TAG__STRING = EXTENSION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___IDENTIFY_BY__STRING_STRING = EXTENSION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___GET_IDENTIFIER__STRING = EXTENSION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___HAS_META_TAG__STRING = EXTENSION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___MATCHES_SEARCH__STRING = EXTENSION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___DELETE = EXTENSION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___IS_EQUAL_ITEM__ITEM = EXTENSION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = EXTENSION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___GET_CREATED_PRETTY = EXTENSION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = EXTENSION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___GET_LAST_MODIFIED_PRETTY = EXTENSION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___DELETE_ON_DELETE_OF__ITEM = EXTENSION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE = EXTENSION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___UPDATE__ITEM = EXTENSION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___FORCE_UPDATE__ITEM = EXTENSION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___UN_META_TAG__STRING = EXTENSION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___REMOVE_IDENTIFIER__STRING = EXTENSION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___TAG__STRING = EXTENSION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Meta Information</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION_OPERATION_COUNT = EXTENSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.PhoneImpl <em>Phone</em>}' class.
@@ -2244,6 +7528,195 @@ public interface DataPackage extends EPackage {
 	int PHONE_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___LOG__STRING = META_INFORMATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___LOG__STRING_INTEGER = META_INFORMATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___META_TAG__STRING = META_INFORMATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___IDENTIFY_BY__STRING_STRING = META_INFORMATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___GET_IDENTIFIER__STRING = META_INFORMATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___HAS_META_TAG__STRING = META_INFORMATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___MATCHES_SEARCH__STRING = META_INFORMATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___DELETE = META_INFORMATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___IS_EQUAL_ITEM__ITEM = META_INFORMATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___GET_CREATED_PRETTY = META_INFORMATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___GET_LAST_MODIFIED_PRETTY = META_INFORMATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___DELETE_IF_EMPTY_ON_DELETE = META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___UPDATE__ITEM = META_INFORMATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___FORCE_UPDATE__ITEM = META_INFORMATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___UN_META_TAG__STRING = META_INFORMATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___TAG__STRING = META_INFORMATION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Phone</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.InstantMessengerImpl <em>Instant Messenger</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2369,6 +7842,195 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSTANT_MESSENGER_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___LOG__STRING = META_INFORMATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___LOG__STRING_INTEGER = META_INFORMATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___META_TAG__STRING = META_INFORMATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___IDENTIFY_BY__STRING_STRING = META_INFORMATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___GET_IDENTIFIER__STRING = META_INFORMATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___HAS_META_TAG__STRING = META_INFORMATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___MATCHES_SEARCH__STRING = META_INFORMATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___DELETE = META_INFORMATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___IS_EQUAL_ITEM__ITEM = META_INFORMATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___GET_CREATED_PRETTY = META_INFORMATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___GET_LAST_MODIFIED_PRETTY = META_INFORMATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___DELETE_IF_EMPTY_ON_DELETE = META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___UPDATE__ITEM = META_INFORMATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___FORCE_UPDATE__ITEM = META_INFORMATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___UN_META_TAG__STRING = META_INFORMATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___TAG__STRING = META_INFORMATION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Instant Messenger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.EmailImpl <em>Email</em>}' class.
@@ -2498,6 +8160,195 @@ public interface DataPackage extends EPackage {
 	int EMAIL_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___LOG__STRING = META_INFORMATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___LOG__STRING_INTEGER = META_INFORMATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___META_TAG__STRING = META_INFORMATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___IDENTIFY_BY__STRING_STRING = META_INFORMATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___GET_IDENTIFIER__STRING = META_INFORMATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___HAS_META_TAG__STRING = META_INFORMATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___MATCHES_SEARCH__STRING = META_INFORMATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___DELETE = META_INFORMATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___IS_EQUAL_ITEM__ITEM = META_INFORMATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___GET_CREATED_PRETTY = META_INFORMATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___GET_LAST_MODIFIED_PRETTY = META_INFORMATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___DELETE_IF_EMPTY_ON_DELETE = META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___UPDATE__ITEM = META_INFORMATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___FORCE_UPDATE__ITEM = META_INFORMATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___UN_META_TAG__STRING = META_INFORMATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___TAG__STRING = META_INFORMATION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Email</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.WebAccountImpl <em>Web Account</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2623,6 +8474,195 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int WEB_ACCOUNT_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___LOG__STRING = META_INFORMATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___LOG__STRING_INTEGER = META_INFORMATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___META_TAG__STRING = META_INFORMATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___IDENTIFY_BY__STRING_STRING = META_INFORMATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___GET_IDENTIFIER__STRING = META_INFORMATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___HAS_META_TAG__STRING = META_INFORMATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___MATCHES_SEARCH__STRING = META_INFORMATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___DELETE = META_INFORMATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___IS_EQUAL_ITEM__ITEM = META_INFORMATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___GET_CREATED_PRETTY = META_INFORMATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___GET_LAST_MODIFIED_PRETTY = META_INFORMATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___DELETE_IF_EMPTY_ON_DELETE = META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___UPDATE__ITEM = META_INFORMATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___FORCE_UPDATE__ITEM = META_INFORMATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___UN_META_TAG__STRING = META_INFORMATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___TAG__STRING = META_INFORMATION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Web Account</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.WebSiteImpl <em>Web Site</em>}' class.
@@ -2761,6 +8801,195 @@ public interface DataPackage extends EPackage {
 	int WEB_SITE_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___LOG__STRING = META_INFORMATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___LOG__STRING_INTEGER = META_INFORMATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___META_TAG__STRING = META_INFORMATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___IDENTIFY_BY__STRING_STRING = META_INFORMATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___GET_IDENTIFIER__STRING = META_INFORMATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___HAS_META_TAG__STRING = META_INFORMATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___MATCHES_SEARCH__STRING = META_INFORMATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___DELETE = META_INFORMATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___IS_EQUAL_ITEM__ITEM = META_INFORMATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___GET_CREATED_PRETTY = META_INFORMATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___GET_LAST_MODIFIED_PRETTY = META_INFORMATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___DELETE_IF_EMPTY_ON_DELETE = META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___UPDATE__ITEM = META_INFORMATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___FORCE_UPDATE__ITEM = META_INFORMATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___UN_META_TAG__STRING = META_INFORMATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___TAG__STRING = META_INFORMATION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Web Site</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.RankingImpl <em>Ranking</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2886,6 +9115,195 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int RANKING_FEATURE_COUNT = EXTENSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___LOG__STRING = EXTENSION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___LOG__STRING_INTEGER = EXTENSION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___META_TAG__STRING = EXTENSION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___IDENTIFY_BY__STRING_STRING = EXTENSION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___GET_IDENTIFIER__STRING = EXTENSION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___HAS_META_TAG__STRING = EXTENSION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___MATCHES_SEARCH__STRING = EXTENSION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___DELETE = EXTENSION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___IS_EQUAL_ITEM__ITEM = EXTENSION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = EXTENSION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___GET_CREATED_PRETTY = EXTENSION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = EXTENSION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___GET_LAST_MODIFIED_PRETTY = EXTENSION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___DELETE_ON_DELETE_OF__ITEM = EXTENSION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___DELETE_IF_EMPTY_ON_DELETE = EXTENSION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___UPDATE__ITEM = EXTENSION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___FORCE_UPDATE__ITEM = EXTENSION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___UN_META_TAG__STRING = EXTENSION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___REMOVE_IDENTIFIER__STRING = EXTENSION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___TAG__STRING = EXTENSION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Ranking</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING_OPERATION_COUNT = EXTENSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.AttachmentImpl <em>Attachment</em>}' class.
@@ -3049,6 +9467,204 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTACHMENT_FEATURE_COUNT = EXTENSION_FEATURE_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___LOG__STRING = EXTENSION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___LOG__STRING_INTEGER = EXTENSION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___META_TAG__STRING = EXTENSION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___IDENTIFY_BY__STRING_STRING = EXTENSION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___GET_IDENTIFIER__STRING = EXTENSION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___HAS_META_TAG__STRING = EXTENSION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___MATCHES_SEARCH__STRING = EXTENSION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___DELETE = EXTENSION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___IS_EQUAL_ITEM__ITEM = EXTENSION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = EXTENSION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___GET_CREATED_PRETTY = EXTENSION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = EXTENSION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___GET_LAST_MODIFIED_PRETTY = EXTENSION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___DELETE_ON_DELETE_OF__ITEM = EXTENSION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___DELETE_IF_EMPTY_ON_DELETE = EXTENSION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___UPDATE__ITEM = EXTENSION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___FORCE_UPDATE__ITEM = EXTENSION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___UN_META_TAG__STRING = EXTENSION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___REMOVE_IDENTIFIER__STRING = EXTENSION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___TAG__STRING = EXTENSION___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Original File Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___GET_ORIGINAL_FILE_URL = EXTENSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Attachment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT_OPERATION_COUNT = EXTENSION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.LocationImpl <em>Location</em>}' class.
@@ -3250,6 +9866,195 @@ public interface DataPackage extends EPackage {
 	int LOCATION_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 9;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___LOG__STRING = META_INFORMATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___LOG__STRING_INTEGER = META_INFORMATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___META_TAG__STRING = META_INFORMATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___IDENTIFY_BY__STRING_STRING = META_INFORMATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___GET_IDENTIFIER__STRING = META_INFORMATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___HAS_META_TAG__STRING = META_INFORMATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___MATCHES_SEARCH__STRING = META_INFORMATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___DELETE = META_INFORMATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___IS_EQUAL_ITEM__ITEM = META_INFORMATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___GET_CREATED_PRETTY = META_INFORMATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___GET_LAST_MODIFIED_PRETTY = META_INFORMATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___DELETE_IF_EMPTY_ON_DELETE = META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___UPDATE__ITEM = META_INFORMATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___FORCE_UPDATE__ITEM = META_INFORMATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___UN_META_TAG__STRING = META_INFORMATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___TAG__STRING = META_INFORMATION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Location</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ImageImpl <em>Image</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3411,6 +10216,204 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int IMAGE_FEATURE_COUNT = ATTACHMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___LOG__STRING = ATTACHMENT___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___LOG__STRING_INTEGER = ATTACHMENT___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___META_TAG__STRING = ATTACHMENT___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___IDENTIFY_BY__STRING_STRING = ATTACHMENT___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___GET_IDENTIFIER__STRING = ATTACHMENT___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___HAS_META_TAG__STRING = ATTACHMENT___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___MATCHES_SEARCH__STRING = ATTACHMENT___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___DELETE = ATTACHMENT___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___IS_EQUAL_ITEM__ITEM = ATTACHMENT___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___GET_CREATED_PRETTY = ATTACHMENT___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___GET_LAST_MODIFIED_PRETTY = ATTACHMENT___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___DELETE_IF_EMPTY_ON_DELETE = ATTACHMENT___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___UPDATE__ITEM = ATTACHMENT___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___FORCE_UPDATE__ITEM = ATTACHMENT___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___UN_META_TAG__STRING = ATTACHMENT___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___TAG__STRING = ATTACHMENT___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Original File Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
+
+	/**
+	 * The number of operations of the '<em>Image</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE_OPERATION_COUNT = ATTACHMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.DocumentImpl <em>Document</em>}' class.
@@ -3576,6 +10579,204 @@ public interface DataPackage extends EPackage {
 	int DOCUMENT_FEATURE_COUNT = ATTACHMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___LOG__STRING = ATTACHMENT___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___LOG__STRING_INTEGER = ATTACHMENT___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___META_TAG__STRING = ATTACHMENT___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___IDENTIFY_BY__STRING_STRING = ATTACHMENT___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___GET_IDENTIFIER__STRING = ATTACHMENT___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___HAS_META_TAG__STRING = ATTACHMENT___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___MATCHES_SEARCH__STRING = ATTACHMENT___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___DELETE = ATTACHMENT___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___IS_EQUAL_ITEM__ITEM = ATTACHMENT___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___GET_CREATED_PRETTY = ATTACHMENT___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___GET_LAST_MODIFIED_PRETTY = ATTACHMENT___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___DELETE_IF_EMPTY_ON_DELETE = ATTACHMENT___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___UPDATE__ITEM = ATTACHMENT___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___FORCE_UPDATE__ITEM = ATTACHMENT___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___UN_META_TAG__STRING = ATTACHMENT___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___TAG__STRING = ATTACHMENT___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Original File Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
+
+	/**
+	 * The number of operations of the '<em>Document</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT_OPERATION_COUNT = ATTACHMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.StarRankingImpl <em>Star Ranking</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3721,6 +10922,195 @@ public interface DataPackage extends EPackage {
 	int STAR_RANKING_FEATURE_COUNT = RANKING_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___LOG__STRING = RANKING___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___LOG__STRING_INTEGER = RANKING___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___META_TAG__STRING = RANKING___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___IDENTIFY_BY__STRING_STRING = RANKING___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___GET_IDENTIFIER__STRING = RANKING___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___HAS_META_TAG__STRING = RANKING___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___MATCHES_SEARCH__STRING = RANKING___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___DELETE = RANKING___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___IS_EQUAL_ITEM__ITEM = RANKING___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = RANKING___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___GET_CREATED_PRETTY = RANKING___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = RANKING___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___GET_LAST_MODIFIED_PRETTY = RANKING___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___DELETE_ON_DELETE_OF__ITEM = RANKING___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___DELETE_IF_EMPTY_ON_DELETE = RANKING___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___UPDATE__ITEM = RANKING___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___FORCE_UPDATE__ITEM = RANKING___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___UN_META_TAG__STRING = RANKING___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___REMOVE_IDENTIFIER__STRING = RANKING___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___TAG__STRING = RANKING___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Star Ranking</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING_OPERATION_COUNT = RANKING_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ViewRankingImpl <em>View Ranking</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3855,6 +11245,195 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int VIEW_RANKING_FEATURE_COUNT = RANKING_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___LOG__STRING = RANKING___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___LOG__STRING_INTEGER = RANKING___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___META_TAG__STRING = RANKING___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___IDENTIFY_BY__STRING_STRING = RANKING___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___GET_IDENTIFIER__STRING = RANKING___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___HAS_META_TAG__STRING = RANKING___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___MATCHES_SEARCH__STRING = RANKING___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___DELETE = RANKING___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___IS_EQUAL_ITEM__ITEM = RANKING___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = RANKING___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___GET_CREATED_PRETTY = RANKING___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = RANKING___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___GET_LAST_MODIFIED_PRETTY = RANKING___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___DELETE_ON_DELETE_OF__ITEM = RANKING___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___DELETE_IF_EMPTY_ON_DELETE = RANKING___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___UPDATE__ITEM = RANKING___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___FORCE_UPDATE__ITEM = RANKING___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___UN_META_TAG__STRING = RANKING___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___REMOVE_IDENTIFIER__STRING = RANKING___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___TAG__STRING = RANKING___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>View Ranking</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING_OPERATION_COUNT = RANKING_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ThumbRankingImpl <em>Thumb Ranking</em>}' class.
@@ -3992,6 +11571,213 @@ public interface DataPackage extends EPackage {
 	 */
 	int THUMB_RANKING_FEATURE_COUNT = RANKING_FEATURE_COUNT + 1;
 
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___LOG__STRING = RANKING___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___LOG__STRING_INTEGER = RANKING___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___META_TAG__STRING = RANKING___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___IDENTIFY_BY__STRING_STRING = RANKING___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___GET_IDENTIFIER__STRING = RANKING___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___HAS_META_TAG__STRING = RANKING___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___MATCHES_SEARCH__STRING = RANKING___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___DELETE = RANKING___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___IS_EQUAL_ITEM__ITEM = RANKING___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = RANKING___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___GET_CREATED_PRETTY = RANKING___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = RANKING___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___GET_LAST_MODIFIED_PRETTY = RANKING___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___DELETE_ON_DELETE_OF__ITEM = RANKING___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___DELETE_IF_EMPTY_ON_DELETE = RANKING___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___UPDATE__ITEM = RANKING___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___FORCE_UPDATE__ITEM = RANKING___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___UN_META_TAG__STRING = RANKING___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___REMOVE_IDENTIFIER__STRING = RANKING___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___TAG__STRING = RANKING___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Is Thumb Up</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___IS_THUMB_UP = RANKING_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Thumb Down</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___IS_THUMB_DOWN = RANKING_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Thumb Ranking</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING_OPERATION_COUNT = RANKING_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.TransformationImpl <em>Transformation</em>}' class.
@@ -4167,6 +11953,204 @@ public interface DataPackage extends EPackage {
 
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___LOG__STRING = ATTACHMENT___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___LOG__STRING_INTEGER = ATTACHMENT___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___META_TAG__STRING = ATTACHMENT___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___IDENTIFY_BY__STRING_STRING = ATTACHMENT___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___GET_IDENTIFIER__STRING = ATTACHMENT___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___HAS_META_TAG__STRING = ATTACHMENT___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___MATCHES_SEARCH__STRING = ATTACHMENT___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___DELETE = ATTACHMENT___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___IS_EQUAL_ITEM__ITEM = ATTACHMENT___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___GET_CREATED_PRETTY = ATTACHMENT___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___GET_LAST_MODIFIED_PRETTY = ATTACHMENT___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___DELETE_IF_EMPTY_ON_DELETE = ATTACHMENT___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___UPDATE__ITEM = ATTACHMENT___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___FORCE_UPDATE__ITEM = ATTACHMENT___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___UN_META_TAG__STRING = ATTACHMENT___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___TAG__STRING = ATTACHMENT___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Original File Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
+
+	/**
+	 * The number of operations of the '<em>Transformation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION_OPERATION_COUNT = ATTACHMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.VideoImpl <em>Video</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4331,6 +12315,204 @@ public interface DataPackage extends EPackage {
 
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___LOG__STRING = ATTACHMENT___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___LOG__STRING_INTEGER = ATTACHMENT___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___META_TAG__STRING = ATTACHMENT___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___IDENTIFY_BY__STRING_STRING = ATTACHMENT___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___GET_IDENTIFIER__STRING = ATTACHMENT___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___HAS_META_TAG__STRING = ATTACHMENT___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___MATCHES_SEARCH__STRING = ATTACHMENT___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___DELETE = ATTACHMENT___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___IS_EQUAL_ITEM__ITEM = ATTACHMENT___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___GET_CREATED_PRETTY = ATTACHMENT___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___GET_LAST_MODIFIED_PRETTY = ATTACHMENT___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___DELETE_IF_EMPTY_ON_DELETE = ATTACHMENT___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___UPDATE__ITEM = ATTACHMENT___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___FORCE_UPDATE__ITEM = ATTACHMENT___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___UN_META_TAG__STRING = ATTACHMENT___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___TAG__STRING = ATTACHMENT___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Original File Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
+
+	/**
+	 * The number of operations of the '<em>Video</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO_OPERATION_COUNT = ATTACHMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ConnectionImpl <em>Connection</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4457,6 +12639,195 @@ public interface DataPackage extends EPackage {
 	 */
 	int CONNECTION_FEATURE_COUNT = EXTENSION_FEATURE_COUNT + 2;
 
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___LOG__STRING = EXTENSION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___LOG__STRING_INTEGER = EXTENSION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___META_TAG__STRING = EXTENSION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___IDENTIFY_BY__STRING_STRING = EXTENSION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___GET_IDENTIFIER__STRING = EXTENSION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___HAS_META_TAG__STRING = EXTENSION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___MATCHES_SEARCH__STRING = EXTENSION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___DELETE = EXTENSION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___IS_EQUAL_ITEM__ITEM = EXTENSION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = EXTENSION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___GET_CREATED_PRETTY = EXTENSION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = EXTENSION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___GET_LAST_MODIFIED_PRETTY = EXTENSION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___DELETE_ON_DELETE_OF__ITEM = EXTENSION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___DELETE_IF_EMPTY_ON_DELETE = EXTENSION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___UPDATE__ITEM = EXTENSION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___FORCE_UPDATE__ITEM = EXTENSION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___UN_META_TAG__STRING = EXTENSION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___REMOVE_IDENTIFIER__STRING = EXTENSION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___TAG__STRING = EXTENSION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Connection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_OPERATION_COUNT = EXTENSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.BinaryImpl <em>Binary</em>}' class.
@@ -4632,6 +13003,204 @@ public interface DataPackage extends EPackage {
 
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___LOG__STRING = ATTACHMENT___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___LOG__STRING_INTEGER = ATTACHMENT___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___META_TAG__STRING = ATTACHMENT___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___IDENTIFY_BY__STRING_STRING = ATTACHMENT___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___GET_IDENTIFIER__STRING = ATTACHMENT___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___HAS_META_TAG__STRING = ATTACHMENT___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___MATCHES_SEARCH__STRING = ATTACHMENT___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___DELETE = ATTACHMENT___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___IS_EQUAL_ITEM__ITEM = ATTACHMENT___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___GET_CREATED_PRETTY = ATTACHMENT___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ATTACHMENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___GET_LAST_MODIFIED_PRETTY = ATTACHMENT___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___DELETE_IF_EMPTY_ON_DELETE = ATTACHMENT___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___UPDATE__ITEM = ATTACHMENT___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___FORCE_UPDATE__ITEM = ATTACHMENT___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___UN_META_TAG__STRING = ATTACHMENT___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___TAG__STRING = ATTACHMENT___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Original File Url</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
+
+	/**
+	 * The number of operations of the '<em>Binary</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OPERATION_COUNT = ATTACHMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.IndoorLocationImpl <em>Indoor Location</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4787,6 +13356,195 @@ public interface DataPackage extends EPackage {
 
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___LOG__STRING = META_INFORMATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___LOG__STRING_INTEGER = META_INFORMATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___META_TAG__STRING = META_INFORMATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___IDENTIFY_BY__STRING_STRING = META_INFORMATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___GET_IDENTIFIER__STRING = META_INFORMATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___HAS_META_TAG__STRING = META_INFORMATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___MATCHES_SEARCH__STRING = META_INFORMATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___DELETE = META_INFORMATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___IS_EQUAL_ITEM__ITEM = META_INFORMATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___GET_CREATED_PRETTY = META_INFORMATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___GET_LAST_MODIFIED_PRETTY = META_INFORMATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___DELETE_IF_EMPTY_ON_DELETE = META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___UPDATE__ITEM = META_INFORMATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___FORCE_UPDATE__ITEM = META_INFORMATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___UN_META_TAG__STRING = META_INFORMATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___TAG__STRING = META_INFORMATION___TAG__STRING;
+
+	/**
+	 * The number of operations of the '<em>Indoor Location</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.IdentifierImpl <em>Identifier</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4924,6 +13682,186 @@ public interface DataPackage extends EPackage {
 
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___LOG__STRING = ITEM___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___LOG__STRING_INTEGER = ITEM___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___META_TAG__STRING = ITEM___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___IDENTIFY_BY__STRING_STRING = ITEM___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___GET_IDENTIFIER__STRING = ITEM___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___HAS_META_TAG__STRING = ITEM___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___MATCHES_SEARCH__STRING = ITEM___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___DELETE = ITEM___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___IS_EQUAL_ITEM__ITEM = ITEM___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___GET_CREATED_PRETTY = ITEM___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___GET_LAST_MODIFIED_PRETTY = ITEM___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___DELETE_ON_DELETE_OF__ITEM = ITEM___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___DELETE_IF_EMPTY_ON_DELETE = ITEM___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___UPDATE__ITEM = ITEM___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___FORCE_UPDATE__ITEM = ITEM___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___UN_META_TAG__STRING = ITEM___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The number of operations of the '<em>Identifier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER_OPERATION_COUNT = ITEM_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.EventImpl <em>Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5052,6 +13990,214 @@ public interface DataPackage extends EPackage {
 
 
 	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___LOG__STRING = META_INFORMATION___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___LOG__STRING_INTEGER = META_INFORMATION___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___META_TAG__STRING = META_INFORMATION___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___IDENTIFY_BY__STRING_STRING = META_INFORMATION___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_IDENTIFIER__STRING = META_INFORMATION___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___HAS_META_TAG__STRING = META_INFORMATION___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___MATCHES_SEARCH__STRING = META_INFORMATION___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___DELETE = META_INFORMATION___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___IS_EQUAL_ITEM__ITEM = META_INFORMATION___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_CREATED_PRETTY = META_INFORMATION___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_LAST_MODIFIED_PRETTY = META_INFORMATION___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___DELETE_IF_EMPTY_ON_DELETE = META_INFORMATION___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___UPDATE__ITEM = META_INFORMATION___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___FORCE_UPDATE__ITEM = META_INFORMATION___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___UN_META_TAG__STRING = META_INFORMATION___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___TAG__STRING = META_INFORMATION___TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Date Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_DATE_PRETTY_IN_LANGUAGE__STRING = META_INFORMATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Date Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_DATE_PRETTY = META_INFORMATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Person <em>Person</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5115,6 +14261,66 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPerson_Ranked();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Person#getContents() <em>Get Contents</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Person#getContents()
+	 * @generated
+	 */
+	EOperation getPerson__GetContents();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Person#getOrganisations() <em>Get Organisations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Person#getOrganisations()
+	 * @generated
+	 */
+	EOperation getPerson__GetOrganisations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Person#addContributedContent(org.sociotech.communitymashup.data.Content) <em>Add Contributed Content</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Contributed Content</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Person#addContributedContent(org.sociotech.communitymashup.data.Content)
+	 * @generated
+	 */
+	EOperation getPerson__AddContributedContent__Content();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Person#addAuthoredContent(org.sociotech.communitymashup.data.Content) <em>Add Authored Content</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Authored Content</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Person#addAuthoredContent(org.sociotech.communitymashup.data.Content)
+	 * @generated
+	 */
+	EOperation getPerson__AddAuthoredContent__Content();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Person#parseFirstName() <em>Parse First Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Parse First Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Person#parseFirstName()
+	 * @generated
+	 */
+	EOperation getPerson__ParseFirstName();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Person#parseLastName() <em>Parse Last Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Parse Last Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Person#parseLastName()
+	 * @generated
+	 */
+	EOperation getPerson__ParseLastName();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Person#getLeaderOf <em>Leader Of</em>}'.
@@ -5314,6 +14520,516 @@ public interface DataPackage extends EPackage {
 	EReference getInformationObject_MetaInformations();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#tag(java.lang.String) <em>Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#tag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__Tag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#categorize(java.lang.String) <em>Categorize</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Categorize</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#categorize(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__Categorize__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#attachImage(java.lang.String) <em>Attach Image</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Attach Image</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#attachImage(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__AttachImage__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getAttachments() <em>Get Attachments</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attachments</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getAttachments()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetAttachments();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#starRank(java.lang.Integer, java.lang.Integer) <em>Star Rank</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Star Rank</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#starRank(java.lang.Integer, java.lang.Integer)
+	 * @generated
+	 */
+	EOperation getInformationObject__StarRank__Integer_Integer();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#view() <em>View</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>View</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#view()
+	 * @generated
+	 */
+	EOperation getInformationObject__View();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#thumbsUp() <em>Thumbs Up</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Thumbs Up</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#thumbsUp()
+	 * @generated
+	 */
+	EOperation getInformationObject__ThumbsUp();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#thumbsDown() <em>Thumbs Down</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Thumbs Down</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#thumbsDown()
+	 * @generated
+	 */
+	EOperation getInformationObject__ThumbsDown();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getThumbsUp() <em>Get Thumbs Up</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Thumbs Up</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getThumbsUp()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetThumbsUp();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getThumbsDown() <em>Get Thumbs Down</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Thumbs Down</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getThumbsDown()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetThumbsDown();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getThumbsUpCount() <em>Get Thumbs Up Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Thumbs Up Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getThumbsUpCount()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetThumbsUpCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getThumbsDownCount() <em>Get Thumbs Down Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Thumbs Down Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getThumbsDownCount()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetThumbsDownCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getThumbsCount() <em>Get Thumbs Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Thumbs Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getThumbsCount()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetThumbsCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getViewsCount() <em>Get Views Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Views Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getViewsCount()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetViewsCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getStarRanking() <em>Get Star Ranking</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Star Ranking</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getStarRanking()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetStarRanking();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#extend(org.sociotech.communitymashup.data.MetaInformation) <em>Extend</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Extend</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#extend(org.sociotech.communitymashup.data.MetaInformation)
+	 * @generated
+	 */
+	EOperation getInformationObject__Extend__MetaInformation();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getWebAccounts() <em>Get Web Accounts</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Web Accounts</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getWebAccounts()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetWebAccounts();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getWebSites() <em>Get Web Sites</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Web Sites</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getWebSites()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetWebSites();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getPhones() <em>Get Phones</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Phones</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getPhones()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetPhones();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getLocations() <em>Get Locations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Locations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getLocations()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetLocations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getEmails() <em>Get Emails</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Emails</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getEmails()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetEmails();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getInstantMessengers() <em>Get Instant Messengers</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Instant Messengers</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getInstantMessengers()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetInstantMessengers();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#addEmailAddress(java.lang.String) <em>Add Email Address</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Email Address</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#addEmailAddress(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__AddEmailAddress__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#addWebSite(java.lang.String) <em>Add Web Site</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Web Site</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#addWebSite(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__AddWebSite__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getInformationObjectsWithCommonTags() <em>Get Information Objects With Common Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects With Common Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getInformationObjectsWithCommonTags()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetInformationObjectsWithCommonTags();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#addWebAccount(java.lang.String) <em>Add Web Account</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Web Account</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#addWebAccount(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__AddWebAccount__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#hasImages() <em>Has Images</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Has Images</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#hasImages()
+	 * @generated
+	 */
+	EOperation getInformationObject__HasImages();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedTo() <em>Get Information Objects Connected To</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects Connected To</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedTo()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetInformationObjectsConnectedTo();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedFrom() <em>Get Information Objects Connected From</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects Connected From</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedFrom()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetInformationObjectsConnectedFrom();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnected() <em>Get Information Objects Connected</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects Connected</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnected()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetInformationObjectsConnected();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#connectTo(org.sociotech.communitymashup.data.InformationObject) <em>Connect To</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Connect To</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#connectTo(org.sociotech.communitymashup.data.InformationObject)
+	 * @generated
+	 */
+	EOperation getInformationObject__ConnectTo__InformationObject();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#connectToWithMetaTag(org.sociotech.communitymashup.data.InformationObject, java.lang.String) <em>Connect To With Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Connect To With Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#connectToWithMetaTag(org.sociotech.communitymashup.data.InformationObject, java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__ConnectToWithMetaTag__InformationObject_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedToWithMetaTag(java.lang.String) <em>Get Information Objects Connected To With Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects Connected To With Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedToWithMetaTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetInformationObjectsConnectedToWithMetaTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedFromWithMetaTag(java.lang.String) <em>Get Information Objects Connected From With Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects Connected From With Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedFromWithMetaTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetInformationObjectsConnectedFromWithMetaTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedWithMetaTag(java.lang.String) <em>Get Information Objects Connected With Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects Connected With Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getInformationObjectsConnectedWithMetaTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetInformationObjectsConnectedWithMetaTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getConnectionsFrom(org.sociotech.communitymashup.data.InformationObject) <em>Get Connections From</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Connections From</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getConnectionsFrom(org.sociotech.communitymashup.data.InformationObject)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetConnectionsFrom__InformationObject();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getConnectionsTo(org.sociotech.communitymashup.data.InformationObject) <em>Get Connections To</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Connections To</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getConnectionsTo(org.sociotech.communitymashup.data.InformationObject)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetConnectionsTo__InformationObject();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#connectToWithValueAndMetaTag(org.sociotech.communitymashup.data.InformationObject, java.lang.String, java.lang.String) <em>Connect To With Value And Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Connect To With Value And Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#connectToWithValueAndMetaTag(org.sociotech.communitymashup.data.InformationObject, java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__ConnectToWithValueAndMetaTag__InformationObject_String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getConnectionTo(org.sociotech.communitymashup.data.InformationObject, java.lang.String) <em>Get Connection To</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Connection To</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getConnectionTo(org.sociotech.communitymashup.data.InformationObject, java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetConnectionTo__InformationObject_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getConnectionFrom(org.sociotech.communitymashup.data.InformationObject, java.lang.String) <em>Get Connection From</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Connection From</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getConnectionFrom(org.sociotech.communitymashup.data.InformationObject, java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetConnectionFrom__InformationObject_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getAttachmentWithUrl(java.lang.String) <em>Get Attachment With Url</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attachment With Url</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getAttachmentWithUrl(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetAttachmentWithUrl__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getAttachedImageWithUrl(java.lang.String) <em>Get Attached Image With Url</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attached Image With Url</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getAttachedImageWithUrl(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetAttachedImageWithUrl__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#addPhone(java.lang.String) <em>Add Phone</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Phone</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#addPhone(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__AddPhone__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getPersonsWithCommonTags() <em>Get Persons With Common Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With Common Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getPersonsWithCommonTags()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetPersonsWithCommonTags();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getOrganisationsWithCommonTags() <em>Get Organisations With Common Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With Common Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getOrganisationsWithCommonTags()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetOrganisationsWithCommonTags();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getContentsWithCommonTags() <em>Get Contents With Common Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With Common Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getContentsWithCommonTags()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetContentsWithCommonTags();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#unTag(java.lang.String) <em>Un Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Un Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#unTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__UnTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#unCategorize(java.lang.String) <em>Un Categorize</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Un Categorize</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#unCategorize(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__UnCategorize__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getSlugName() <em>Get Slug Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Slug Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getSlugName()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetSlugName();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getConnectionsToWithMetaTag(org.sociotech.communitymashup.data.InformationObject, java.lang.String) <em>Get Connections To With Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Connections To With Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getConnectionsToWithMetaTag(org.sociotech.communitymashup.data.InformationObject, java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetConnectionsToWithMetaTag__InformationObject_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getConnectionsFromWithMetaTag(org.sociotech.communitymashup.data.InformationObject, java.lang.String) <em>Get Connections From With Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Connections From With Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getConnectionsFromWithMetaTag(org.sociotech.communitymashup.data.InformationObject, java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetConnectionsFromWithMetaTag__InformationObject_String();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Content <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5410,6 +15126,56 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getContent_Videos();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Content#getOrganisations() <em>Get Organisations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Content#getOrganisations()
+	 * @generated
+	 */
+	EOperation getContent__GetOrganisations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Content#getPersons() <em>Get Persons</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Content#getPersons()
+	 * @generated
+	 */
+	EOperation getContent__GetPersons();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Content#comment(java.lang.String) <em>Comment</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Comment</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Content#comment(java.lang.String)
+	 * @generated
+	 */
+	EOperation getContent__Comment__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Content#addContributor(org.sociotech.communitymashup.data.Person) <em>Add Contributor</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Contributor</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Content#addContributor(org.sociotech.communitymashup.data.Person)
+	 * @generated
+	 */
+	EOperation getContent__AddContributor__Person();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Content#attachDocument(java.lang.String) <em>Attach Document</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Attach Document</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Content#attachDocument(java.lang.String)
+	 * @generated
+	 */
+	EOperation getContent__AttachDocument__String();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.DataSet <em>Set</em>}'.
@@ -5519,6 +15285,1176 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataSet_Created();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#add(org.sociotech.communitymashup.data.Item) <em>Add</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#add(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getDataSet__Add__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsWithStringValue(java.lang.String) <em>Get Items With String Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items With String Value</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsWithStringValue(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsWithStringValue__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithName(java.lang.String) <em>Get Persons With Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithName__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithLastname(java.lang.String) <em>Get Persons With Lastname</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With Lastname</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithLastname(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithLastname__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithFirstName(java.lang.String) <em>Get Persons With First Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With First Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithFirstName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithFirstName__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getTag(java.lang.String) <em>Get Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getMetaTag(java.lang.String) <em>Get Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getMetaTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetMetaTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAllPersons() <em>Get All Persons</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Persons</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAllPersons()
+	 * @generated
+	 */
+	EOperation getDataSet__GetAllPersons();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAllContents() <em>Get All Contents</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Contents</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAllContents()
+	 * @generated
+	 */
+	EOperation getDataSet__GetAllContents();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAllOrganisations() <em>Get All Organisations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Organisations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAllOrganisations()
+	 * @generated
+	 */
+	EOperation getDataSet__GetAllOrganisations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAllCategories() <em>Get All Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAllCategories()
+	 * @generated
+	 */
+	EOperation getDataSet__GetAllCategories();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getCategory(java.lang.String) <em>Get Category</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Category</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getCategory(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetCategory__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAllTags() <em>Get All Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAllTags()
+	 * @generated
+	 */
+	EOperation getDataSet__GetAllTags();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsModifiedSince(java.util.Date) <em>Get Items Modified Since</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items Modified Since</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsModifiedSince(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsModifiedSince__Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAllMetaTags() <em>Get All Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAllMetaTags()
+	 * @generated
+	 */
+	EOperation getDataSet__GetAllMetaTags();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAllConnections() <em>Get All Connections</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get All Connections</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAllConnections()
+	 * @generated
+	 */
+	EOperation getDataSet__GetAllConnections();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#log(java.lang.String) <em>Log</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Log</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#log(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__Log__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#log(java.lang.String, java.lang.Integer) <em>Log</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Log</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#log(java.lang.String, java.lang.Integer)
+	 * @generated
+	 */
+	EOperation getDataSet__Log__String_Integer();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentWithIdent(java.lang.String) <em>Get Content With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Content With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentWithIdent__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonWithIdent(java.lang.String) <em>Get Person With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Person With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonWithIdent__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationWithIdent(java.lang.String) <em>Get Organisation With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisation With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationWithIdent__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAttachmentWithIdent(java.lang.String) <em>Get Attachment With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attachment With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAttachmentWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetAttachmentWithIdent__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithAllCategories(org.eclipse.emf.common.util.EList) <em>Get Information Objects With All Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects With All Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithAllCategories(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjectsWithAllCategories__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithOneOfCategories(org.eclipse.emf.common.util.EList) <em>Get Information Objects With One Of Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects With One Of Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithOneOfCategories(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjectsWithOneOfCategories__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentsWithAllCategories(org.eclipse.emf.common.util.EList) <em>Get Contents With All Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With All Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentsWithAllCategories(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentsWithAllCategories__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentsWithOneOfCategories(org.eclipse.emf.common.util.EList) <em>Get Contents With One Of Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With One Of Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentsWithOneOfCategories(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentsWithOneOfCategories__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithAllCategories(org.eclipse.emf.common.util.EList) <em>Get Persons With All Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With All Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithAllCategories(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithAllCategories__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithOneOfCategories(org.eclipse.emf.common.util.EList) <em>Get Persons With One Of Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With One Of Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithOneOfCategories(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithOneOfCategories__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationsWithAllCategories(org.eclipse.emf.common.util.EList) <em>Get Organisations With All Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With All Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationsWithAllCategories(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationsWithAllCategories__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationsWithOneOfCategories(org.eclipse.emf.common.util.EList) <em>Get Organisations With One Of Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With One Of Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationsWithOneOfCategories(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationsWithOneOfCategories__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithAllTags(org.eclipse.emf.common.util.EList) <em>Get Information Objects With All Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects With All Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithAllTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjectsWithAllTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithOneOfTags(org.eclipse.emf.common.util.EList) <em>Get Information Objects With One Of Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects With One Of Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithOneOfTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjectsWithOneOfTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationsWithAllTags(org.eclipse.emf.common.util.EList) <em>Get Organisations With All Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With All Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationsWithAllTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationsWithAllTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationsWithOneOfTags(org.eclipse.emf.common.util.EList) <em>Get Organisations With One Of Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With One Of Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationsWithOneOfTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationsWithOneOfTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithAllTags(org.eclipse.emf.common.util.EList) <em>Get Persons With All Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With All Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithAllTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithAllTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithOneOfTags(org.eclipse.emf.common.util.EList) <em>Get Persons With One Of Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With One Of Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithOneOfTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithOneOfTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentsWithAllTags(org.eclipse.emf.common.util.EList) <em>Get Contents With All Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With All Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentsWithAllTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentsWithAllTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentsWithOneOfTags(org.eclipse.emf.common.util.EList) <em>Get Contents With One Of Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With One Of Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentsWithOneOfTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentsWithOneOfTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentsWithName(java.lang.String) <em>Get Contents With Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentsWithName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentsWithName__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationsWithName(java.lang.String) <em>Get Organisations With Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationsWithName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationsWithName__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsWithAllMetaTags(org.eclipse.emf.common.util.EList) <em>Get Items With All Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items With All Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsWithAllMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsWithAllMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsWithOneOfMetaTags(org.eclipse.emf.common.util.EList) <em>Get Items With One Of Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items With One Of Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsWithOneOfMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsWithOneOfMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersons() <em>Get Persons</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersons()
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersons();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisations() <em>Get Organisations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisations()
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContents() <em>Get Contents</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContents()
+	 * @generated
+	 */
+	EOperation getDataSet__GetContents();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjects() <em>Get Information Objects</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjects()
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjects();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getTags() <em>Get Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getTags()
+	 * @generated
+	 */
+	EOperation getDataSet__GetTags();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getMetaTags() <em>Get Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getMetaTags()
+	 * @generated
+	 */
+	EOperation getDataSet__GetMetaTags();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAttachments() <em>Get Attachments</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attachments</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAttachments()
+	 * @generated
+	 */
+	EOperation getDataSet__GetAttachments();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getBinaries() <em>Get Binaries</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Binaries</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getBinaries()
+	 * @generated
+	 */
+	EOperation getDataSet__GetBinaries();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getCategories() <em>Get Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getCategories()
+	 * @generated
+	 */
+	EOperation getDataSet__GetCategories();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getClassifications() <em>Get Classifications</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Classifications</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getClassifications()
+	 * @generated
+	 */
+	EOperation getDataSet__GetClassifications();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getConnections() <em>Get Connections</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Connections</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getConnections()
+	 * @generated
+	 */
+	EOperation getDataSet__GetConnections();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getDocuments() <em>Get Documents</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Documents</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getDocuments()
+	 * @generated
+	 */
+	EOperation getDataSet__GetDocuments();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEmails() <em>Get Emails</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Emails</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getEmails()
+	 * @generated
+	 */
+	EOperation getDataSet__GetEmails();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getExtensions() <em>Get Extensions</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Extensions</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getExtensions()
+	 * @generated
+	 */
+	EOperation getDataSet__GetExtensions();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getImages() <em>Get Images</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Images</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getImages()
+	 * @generated
+	 */
+	EOperation getDataSet__GetImages();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInstantMessengers() <em>Get Instant Messengers</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Instant Messengers</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInstantMessengers()
+	 * @generated
+	 */
+	EOperation getDataSet__GetInstantMessengers();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getLocations() <em>Get Locations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Locations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getLocations()
+	 * @generated
+	 */
+	EOperation getDataSet__GetLocations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getMetaInformations() <em>Get Meta Informations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Meta Informations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getMetaInformations()
+	 * @generated
+	 */
+	EOperation getDataSet__GetMetaInformations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPhones() <em>Get Phones</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Phones</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPhones()
+	 * @generated
+	 */
+	EOperation getDataSet__GetPhones();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getRankings() <em>Get Rankings</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Rankings</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getRankings()
+	 * @generated
+	 */
+	EOperation getDataSet__GetRankings();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getStarRankings() <em>Get Star Rankings</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Star Rankings</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getStarRankings()
+	 * @generated
+	 */
+	EOperation getDataSet__GetStarRankings();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getThumbRankings() <em>Get Thumb Rankings</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Thumb Rankings</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getThumbRankings()
+	 * @generated
+	 */
+	EOperation getDataSet__GetThumbRankings();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getTransformations() <em>Get Transformations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Transformations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getTransformations()
+	 * @generated
+	 */
+	EOperation getDataSet__GetTransformations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getVideos() <em>Get Videos</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Videos</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getVideos()
+	 * @generated
+	 */
+	EOperation getDataSet__GetVideos();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getViewRankings() <em>Get View Rankings</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get View Rankings</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getViewRankings()
+	 * @generated
+	 */
+	EOperation getDataSet__GetViewRankings();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getWebAccounts() <em>Get Web Accounts</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Web Accounts</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getWebAccounts()
+	 * @generated
+	 */
+	EOperation getDataSet__GetWebAccounts();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getWebSites() <em>Get Web Sites</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Web Sites</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getWebSites()
+	 * @generated
+	 */
+	EOperation getDataSet__GetWebSites();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithAllMetaTags(org.eclipse.emf.common.util.EList) <em>Get Information Objects With All Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects With All Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithAllMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjectsWithAllMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithOneOfMetaTags(org.eclipse.emf.common.util.EList) <em>Get Information Objects With One Of Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects With One Of Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithOneOfMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjectsWithOneOfMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getIdentifiers() <em>Get Identifiers</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Identifiers</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIdentifiers()
+	 * @generated
+	 */
+	EOperation getDataSet__GetIdentifiers();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getIdentifiersWithKey(java.lang.String) <em>Get Identifiers With Key</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Identifiers With Key</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIdentifiersWithKey(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetIdentifiersWithKey__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getIdentifierWithKeyValue(java.lang.String, java.lang.String) <em>Get Identifier With Key Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Identifier With Key Value</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIdentifierWithKeyValue(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetIdentifierWithKeyValue__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemWithIdentifier(java.lang.String, java.lang.String) <em>Get Item With Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Item With Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemWithIdentifier(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemWithIdentifier__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonWithIdentifier(java.lang.String, java.lang.String) <em>Get Person With Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Person With Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonWithIdentifier(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonWithIdentifier__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentWithIdentifier(java.lang.String, java.lang.String) <em>Get Content With Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Content With Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentWithIdentifier(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentWithIdentifier__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationWithIdentifier(java.lang.String, java.lang.String) <em>Get Organisation With Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisation With Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationWithIdentifier(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationWithIdentifier__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getLocationWithIdentifier(java.lang.String, java.lang.String) <em>Get Location With Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Location With Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getLocationWithIdentifier(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetLocationWithIdentifier__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getIndoorLocationWithIdentifier(java.lang.String, java.lang.String) <em>Get Indoor Location With Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Indoor Location With Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIndoorLocationWithIdentifier(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetIndoorLocationWithIdentifier__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getImageWithIdentifier(java.lang.String, java.lang.String) <em>Get Image With Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Image With Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getImageWithIdentifier(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetImageWithIdentifier__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEmptyItemWithIdent(java.lang.String) <em>Get Empty Item With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Empty Item With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getEmptyItemWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetEmptyItemWithIdent__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getTagsWithMoreThanXInformationObjects(java.lang.Integer) <em>Get Tags With More Than XInformation Objects</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Tags With More Than XInformation Objects</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getTagsWithMoreThanXInformationObjects(java.lang.Integer)
+	 * @generated
+	 */
+	EOperation getDataSet__GetTagsWithMoreThanXInformationObjects__Integer();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsCreatedSince(java.util.Date) <em>Get Items Created Since</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items Created Since</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsCreatedSince(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsCreatedSince__Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#searchItems(java.lang.String) <em>Search Items</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Search Items</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#searchItems(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__SearchItems__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#searchInformationObjects(java.lang.String) <em>Search Information Objects</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Search Information Objects</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#searchInformationObjects(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__SearchInformationObjects__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithAttachment(org.sociotech.communitymashup.data.Attachment) <em>Get Information Objects With Attachment</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects With Attachment</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjectsWithAttachment(org.sociotech.communitymashup.data.Attachment)
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjectsWithAttachment__Attachment();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithAttachment(org.sociotech.communitymashup.data.Attachment) <em>Get Persons With Attachment</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With Attachment</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithAttachment(org.sociotech.communitymashup.data.Attachment)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithAttachment__Attachment();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationsWithAttachment(org.sociotech.communitymashup.data.Attachment) <em>Get Organisations With Attachment</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With Attachment</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationsWithAttachment(org.sociotech.communitymashup.data.Attachment)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationsWithAttachment__Attachment();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentsWithAttachment(org.sociotech.communitymashup.data.Attachment) <em>Get Contents With Attachment</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With Attachment</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentsWithAttachment(org.sociotech.communitymashup.data.Attachment)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentsWithAttachment__Attachment();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEqualItem(org.sociotech.communitymashup.data.Item) <em>Get Equal Item</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Equal Item</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getEqualItem(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getDataSet__GetEqualItem__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#hasEqualItem(org.sociotech.communitymashup.data.Item) <em>Has Equal Item</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Has Equal Item</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#hasEqualItem(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getDataSet__HasEqualItem__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsWithIdent(java.lang.String) <em>Get Items With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsWithIdent__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getAttachmentsWithCachedFileName(java.lang.String) <em>Get Attachments With Cached File Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attachments With Cached File Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getAttachmentsWithCachedFileName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetAttachmentsWithCachedFileName__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEventsAfter(java.util.Date) <em>Get Events After</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Events After</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getEventsAfter(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetEventsAfter__Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEventsBefore(java.util.Date) <em>Get Events Before</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Events Before</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getEventsBefore(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetEventsBefore__Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEventsBetweenDates(java.util.Date, java.util.Date) <em>Get Events Between Dates</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Events Between Dates</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getEventsBetweenDates(java.util.Date, java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetEventsBetweenDates__Date_Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getSpicynodesRepresentation() <em>Get Spicynodes Representation</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Spicynodes Representation</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getSpicynodesRepresentation()
+	 * @generated
+	 */
+	EOperation getDataSet__GetSpicynodesRepresentation();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getConnectionsBetweenInformationObjectsOfDifferentCategories() <em>Get Connections Between Information Objects Of Different Categories</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Connections Between Information Objects Of Different Categories</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getConnectionsBetweenInformationObjectsOfDifferentCategories()
+	 * @generated
+	 */
+	EOperation getDataSet__GetConnectionsBetweenInformationObjectsOfDifferentCategories();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getInformationObjectsModifiedSince(java.util.Date) <em>Get Information Objects Modified Since</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects Modified Since</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getInformationObjectsModifiedSince(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetInformationObjectsModifiedSince__Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getRandomXInformationObjects(java.lang.Integer) <em>Get Random XInformation Objects</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Random XInformation Objects</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getRandomXInformationObjects(java.lang.Integer)
+	 * @generated
+	 */
+	EOperation getDataSet__GetRandomXInformationObjects__Integer();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getRandomXContents(java.lang.Integer) <em>Get Random XContents</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Random XContents</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getRandomXContents(java.lang.Integer)
+	 * @generated
+	 */
+	EOperation getDataSet__GetRandomXContents__Integer();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getRandomXPersons(java.lang.Integer) <em>Get Random XPersons</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Random XPersons</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getRandomXPersons(java.lang.Integer)
+	 * @generated
+	 */
+	EOperation getDataSet__GetRandomXPersons__Integer();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getRandomXOrganisations(java.lang.Integer) <em>Get Random XOrganisations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Random XOrganisations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getRandomXOrganisations(java.lang.Integer)
+	 * @generated
+	 */
+	EOperation getDataSet__GetRandomXOrganisations__Integer();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#forceAdd(org.sociotech.communitymashup.data.Item) <em>Force Add</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Force Add</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#forceAdd(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getDataSet__ForceAdd__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getIdentsOfExistingItems() <em>Get Idents Of Existing Items</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Idents Of Existing Items</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIdentsOfExistingItems()
+	 * @generated
+	 */
+	EOperation getDataSet__GetIdentsOfExistingItems();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getCategoryWithSlug(java.lang.String) <em>Get Category With Slug</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Category With Slug</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getCategoryWithSlug(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__GetCategoryWithSlug__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#rebuildIndexes() <em>Rebuild Indexes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Rebuild Indexes</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#rebuildIndexes()
+	 * @generated
+	 */
+	EOperation getDataSet__RebuildIndexes();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentsWithAllMetaTags(org.eclipse.emf.common.util.EList) <em>Get Contents With All Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With All Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentsWithAllMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentsWithAllMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getContentsWithOneOfMetaTags(org.eclipse.emf.common.util.EList) <em>Get Contents With One Of Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents With One Of Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getContentsWithOneOfMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetContentsWithOneOfMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithAllMetaTags(org.eclipse.emf.common.util.EList) <em>Get Persons With All Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With All Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithAllMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithAllMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getPersonsWithOneOfMetaTags(org.eclipse.emf.common.util.EList) <em>Get Persons With One Of Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons With One Of Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getPersonsWithOneOfMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetPersonsWithOneOfMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationsWithAllMetaTags(org.eclipse.emf.common.util.EList) <em>Get Organisations With All Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With All Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationsWithAllMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationsWithAllMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getOrganisationsWithOneOfMetaTags(org.eclipse.emf.common.util.EList) <em>Get Organisations With One Of Meta Tags</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations With One Of Meta Tags</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getOrganisationsWithOneOfMetaTags(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getDataSet__GetOrganisationsWithOneOfMetaTags__EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEvents() <em>Get Events</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Events</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getEvents()
+	 * @generated
+	 */
+	EOperation getDataSet__GetEvents();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#searchByQuery(java.lang.String) <em>Search By Query</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Search By Query</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#searchByQuery(java.lang.String)
+	 * @generated
+	 */
+	EOperation getDataSet__SearchByQuery__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getIndoorLocations() <em>Get Indoor Locations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Indoor Locations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIndoorLocations()
+	 * @generated
+	 */
+	EOperation getDataSet__GetIndoorLocations();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Item <em>Item</em>}'.
@@ -5641,6 +16577,196 @@ public interface DataPackage extends EPackage {
 	EReference getItem_DeletedIfDeleted();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#log(java.lang.String) <em>Log</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Log</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#log(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__Log__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#log(java.lang.String, java.lang.Integer) <em>Log</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Log</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#log(java.lang.String, java.lang.Integer)
+	 * @generated
+	 */
+	EOperation getItem__Log__String_Integer();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#metaTag(java.lang.String) <em>Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#metaTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__MetaTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#identifyBy(java.lang.String, java.lang.String) <em>Identify By</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Identify By</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#identifyBy(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__IdentifyBy__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#getIdentifier(java.lang.String) <em>Get Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#getIdentifier(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__GetIdentifier__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#hasMetaTag(java.lang.String) <em>Has Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Has Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#hasMetaTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__HasMetaTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#matchesSearch(java.lang.String) <em>Matches Search</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Matches Search</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#matchesSearch(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__MatchesSearch__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#delete() <em>Delete</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Delete</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#delete()
+	 * @generated
+	 */
+	EOperation getItem__Delete();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#isEqualItem(org.sociotech.communitymashup.data.Item) <em>Is Equal Item</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Equal Item</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#isEqualItem(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getItem__IsEqualItem__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#getCreatedPrettyInLanguage(java.lang.String) <em>Get Created Pretty In Language</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Created Pretty In Language</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#getCreatedPrettyInLanguage(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__GetCreatedPrettyInLanguage__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#getCreatedPretty() <em>Get Created Pretty</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Created Pretty</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#getCreatedPretty()
+	 * @generated
+	 */
+	EOperation getItem__GetCreatedPretty();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#getLastModifiedPrettyInLanguage(java.lang.String) <em>Get Last Modified Pretty In Language</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#getLastModifiedPrettyInLanguage(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__GetLastModifiedPrettyInLanguage__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#getLastModifiedPretty() <em>Get Last Modified Pretty</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Last Modified Pretty</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#getLastModifiedPretty()
+	 * @generated
+	 */
+	EOperation getItem__GetLastModifiedPretty();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#deleteOnDeleteOf(org.sociotech.communitymashup.data.Item) <em>Delete On Delete Of</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Delete On Delete Of</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#deleteOnDeleteOf(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getItem__DeleteOnDeleteOf__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#deleteIfEmptyOnDelete() <em>Delete If Empty On Delete</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Delete If Empty On Delete</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#deleteIfEmptyOnDelete()
+	 * @generated
+	 */
+	EOperation getItem__DeleteIfEmptyOnDelete();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#update(org.sociotech.communitymashup.data.Item) <em>Update</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Update</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#update(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getItem__Update__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#forceUpdate(org.sociotech.communitymashup.data.Item) <em>Force Update</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Force Update</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#forceUpdate(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getItem__ForceUpdate__Item();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#unMetaTag(java.lang.String) <em>Un Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Un Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#unMetaTag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__UnMetaTag__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#removeIdentifier(java.lang.String) <em>Remove Identifier</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Remove Identifier</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#removeIdentifier(java.lang.String)
+	 * @generated
+	 */
+	EOperation getItem__RemoveIdentifier__String();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Extension <em>Extension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5649,6 +16775,16 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getExtension();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Extension#tag(java.lang.String) <em>Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Extension#tag(java.lang.String)
+	 * @generated
+	 */
+	EOperation getExtension__Tag__String();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Classification <em>Classification</em>}'.
@@ -5670,6 +16806,86 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getClassification_Name();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Classification#getPersons() <em>Get Persons</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Classification#getPersons()
+	 * @generated
+	 */
+	EOperation getClassification__GetPersons();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Classification#getContents() <em>Get Contents</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Classification#getContents()
+	 * @generated
+	 */
+	EOperation getClassification__GetContents();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Classification#getOrganisations() <em>Get Organisations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Classification#getOrganisations()
+	 * @generated
+	 */
+	EOperation getClassification__GetOrganisations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Classification#getCount() <em>Get Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Classification#getCount()
+	 * @generated
+	 */
+	EOperation getClassification__GetCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Classification#getPersonsCount() <em>Get Persons Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Classification#getPersonsCount()
+	 * @generated
+	 */
+	EOperation getClassification__GetPersonsCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Classification#getContentsCount() <em>Get Contents Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Classification#getContentsCount()
+	 * @generated
+	 */
+	EOperation getClassification__GetContentsCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Classification#getOrganisationsCount() <em>Get Organisations Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Organisations Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Classification#getOrganisationsCount()
+	 * @generated
+	 */
+	EOperation getClassification__GetOrganisationsCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Classification#getSlug() <em>Get Slug</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Slug</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Classification#getSlug()
+	 * @generated
+	 */
+	EOperation getClassification__GetSlug();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Category <em>Category</em>}'.
@@ -5801,6 +17017,36 @@ public interface DataPackage extends EPackage {
 	EReference getOrganisation_Organisations();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Organisation#getPersons() <em>Get Persons</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Persons</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Organisation#getPersons()
+	 * @generated
+	 */
+	EOperation getOrganisation__GetPersons();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Organisation#getContents() <em>Get Contents</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Contents</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Organisation#getContents()
+	 * @generated
+	 */
+	EOperation getOrganisation__GetContents();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Organisation#addParticipant(org.sociotech.communitymashup.data.Person) <em>Add Participant</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Participant</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Organisation#addParticipant(org.sociotech.communitymashup.data.Person)
+	 * @generated
+	 */
+	EOperation getOrganisation__AddParticipant__Person();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.MetaTag <em>Meta Tag</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5831,6 +17077,56 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMetaTag_MetaTagged();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.MetaTag#getWebAccounts() <em>Get Web Accounts</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Web Accounts</em>' operation.
+	 * @see org.sociotech.communitymashup.data.MetaTag#getWebAccounts()
+	 * @generated
+	 */
+	EOperation getMetaTag__GetWebAccounts();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.MetaTag#getInformationObjects() <em>Get Information Objects</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects</em>' operation.
+	 * @see org.sociotech.communitymashup.data.MetaTag#getInformationObjects()
+	 * @generated
+	 */
+	EOperation getMetaTag__GetInformationObjects();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.MetaTag#getExtensions() <em>Get Extensions</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Extensions</em>' operation.
+	 * @see org.sociotech.communitymashup.data.MetaTag#getExtensions()
+	 * @generated
+	 */
+	EOperation getMetaTag__GetExtensions();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.MetaTag#getCount() <em>Get Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.MetaTag#getCount()
+	 * @generated
+	 */
+	EOperation getMetaTag__GetCount();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.MetaTag#getInformationObjectsCount() <em>Get Information Objects Count</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Information Objects Count</em>' operation.
+	 * @see org.sociotech.communitymashup.data.MetaTag#getInformationObjectsCount()
+	 * @generated
+	 */
+	EOperation getMetaTag__GetInformationObjectsCount();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Phone <em>Phone</em>}'.
@@ -6079,6 +17375,16 @@ public interface DataPackage extends EPackage {
 	EAttribute getAttachment_CachedFileName();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Attachment#getOriginalFileUrl() <em>Get Original File Url</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Original File Url</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Attachment#getOriginalFileUrl()
+	 * @generated
+	 */
+	EOperation getAttachment__GetOriginalFileUrl();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Location <em>Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6280,6 +17586,26 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getThumbRanking_RankedInformationObject();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.ThumbRanking#isThumbUp() <em>Is Thumb Up</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Thumb Up</em>' operation.
+	 * @see org.sociotech.communitymashup.data.ThumbRanking#isThumbUp()
+	 * @generated
+	 */
+	EOperation getThumbRanking__IsThumbUp();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.ThumbRanking#isThumbDown() <em>Is Thumb Down</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Thumb Down</em>' operation.
+	 * @see org.sociotech.communitymashup.data.ThumbRanking#isThumbDown()
+	 * @generated
+	 */
+	EOperation getThumbRanking__IsThumbDown();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Transformation <em>Transformation</em>}'.
@@ -6505,6 +17831,26 @@ public interface DataPackage extends EPackage {
 	EAttribute getEvent_Date();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Event#getDatePrettyInLanguage(java.lang.String) <em>Get Date Pretty In Language</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Date Pretty In Language</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Event#getDatePrettyInLanguage(java.lang.String)
+	 * @generated
+	 */
+	EOperation getEvent__GetDatePrettyInLanguage__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Event#getDatePretty() <em>Get Date Pretty</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Date Pretty</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Event#getDatePretty()
+	 * @generated
+	 */
+	EOperation getEvent__GetDatePretty();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6575,6 +17921,54 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PERSON__RANKED = eINSTANCE.getPerson_Ranked();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PERSON___GET_CONTENTS = eINSTANCE.getPerson__GetContents();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PERSON___GET_ORGANISATIONS = eINSTANCE.getPerson__GetOrganisations();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Contributed Content</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PERSON___ADD_CONTRIBUTED_CONTENT__CONTENT = eINSTANCE.getPerson__AddContributedContent__Content();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Authored Content</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PERSON___ADD_AUTHORED_CONTENT__CONTENT = eINSTANCE.getPerson__AddAuthoredContent__Content();
+
+		/**
+		 * The meta object literal for the '<em><b>Parse First Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PERSON___PARSE_FIRST_NAME = eINSTANCE.getPerson__ParseFirstName();
+
+		/**
+		 * The meta object literal for the '<em><b>Parse Last Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PERSON___PARSE_LAST_NAME = eINSTANCE.getPerson__ParseLastName();
 
 		/**
 		 * The meta object literal for the '<em><b>Leader Of</b></em>' reference list feature.
@@ -6723,6 +18117,414 @@ public interface DataPackage extends EPackage {
 		EReference INFORMATION_OBJECT__META_INFORMATIONS = eINSTANCE.getInformationObject_MetaInformations();
 
 		/**
+		 * The meta object literal for the '<em><b>Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___TAG__STRING = eINSTANCE.getInformationObject__Tag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Categorize</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___CATEGORIZE__STRING = eINSTANCE.getInformationObject__Categorize__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Attach Image</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___ATTACH_IMAGE__STRING = eINSTANCE.getInformationObject__AttachImage__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attachments</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_ATTACHMENTS = eINSTANCE.getInformationObject__GetAttachments();
+
+		/**
+		 * The meta object literal for the '<em><b>Star Rank</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___STAR_RANK__INTEGER_INTEGER = eINSTANCE.getInformationObject__StarRank__Integer_Integer();
+
+		/**
+		 * The meta object literal for the '<em><b>View</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___VIEW = eINSTANCE.getInformationObject__View();
+
+		/**
+		 * The meta object literal for the '<em><b>Thumbs Up</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___THUMBS_UP = eINSTANCE.getInformationObject__ThumbsUp();
+
+		/**
+		 * The meta object literal for the '<em><b>Thumbs Down</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___THUMBS_DOWN = eINSTANCE.getInformationObject__ThumbsDown();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Thumbs Up</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_THUMBS_UP = eINSTANCE.getInformationObject__GetThumbsUp();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Thumbs Down</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_THUMBS_DOWN = eINSTANCE.getInformationObject__GetThumbsDown();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Thumbs Up Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_THUMBS_UP_COUNT = eINSTANCE.getInformationObject__GetThumbsUpCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Thumbs Down Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_THUMBS_DOWN_COUNT = eINSTANCE.getInformationObject__GetThumbsDownCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Thumbs Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_THUMBS_COUNT = eINSTANCE.getInformationObject__GetThumbsCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Views Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_VIEWS_COUNT = eINSTANCE.getInformationObject__GetViewsCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Star Ranking</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_STAR_RANKING = eINSTANCE.getInformationObject__GetStarRanking();
+
+		/**
+		 * The meta object literal for the '<em><b>Extend</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___EXTEND__METAINFORMATION = eINSTANCE.getInformationObject__Extend__MetaInformation();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Web Accounts</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_WEB_ACCOUNTS = eINSTANCE.getInformationObject__GetWebAccounts();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Web Sites</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_WEB_SITES = eINSTANCE.getInformationObject__GetWebSites();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Phones</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_PHONES = eINSTANCE.getInformationObject__GetPhones();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Locations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_LOCATIONS = eINSTANCE.getInformationObject__GetLocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Emails</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_EMAILS = eINSTANCE.getInformationObject__GetEmails();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Instant Messengers</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INSTANT_MESSENGERS = eINSTANCE.getInformationObject__GetInstantMessengers();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Email Address</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___ADD_EMAIL_ADDRESS__STRING = eINSTANCE.getInformationObject__AddEmailAddress__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Web Site</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___ADD_WEB_SITE__STRING = eINSTANCE.getInformationObject__AddWebSite__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects With Common Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS = eINSTANCE.getInformationObject__GetInformationObjectsWithCommonTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Web Account</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___ADD_WEB_ACCOUNT__STRING = eINSTANCE.getInformationObject__AddWebAccount__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Images</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___HAS_IMAGES = eINSTANCE.getInformationObject__HasImages();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects Connected To</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO = eINSTANCE.getInformationObject__GetInformationObjectsConnectedTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects Connected From</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM = eINSTANCE.getInformationObject__GetInformationObjectsConnectedFrom();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects Connected</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED = eINSTANCE.getInformationObject__GetInformationObjectsConnected();
+
+		/**
+		 * The meta object literal for the '<em><b>Connect To</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___CONNECT_TO__INFORMATIONOBJECT = eINSTANCE.getInformationObject__ConnectTo__InformationObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Connect To With Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = eINSTANCE.getInformationObject__ConnectToWithMetaTag__InformationObject_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects Connected To With Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING = eINSTANCE.getInformationObject__GetInformationObjectsConnectedToWithMetaTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects Connected From With Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING = eINSTANCE.getInformationObject__GetInformationObjectsConnectedFromWithMetaTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects Connected With Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING = eINSTANCE.getInformationObject__GetInformationObjectsConnectedWithMetaTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Connections From</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_CONNECTIONS_FROM__INFORMATIONOBJECT = eINSTANCE.getInformationObject__GetConnectionsFrom__InformationObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Connections To</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_CONNECTIONS_TO__INFORMATIONOBJECT = eINSTANCE.getInformationObject__GetConnectionsTo__InformationObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Connect To With Value And Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING = eINSTANCE.getInformationObject__ConnectToWithValueAndMetaTag__InformationObject_String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Connection To</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING = eINSTANCE.getInformationObject__GetConnectionTo__InformationObject_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Connection From</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING = eINSTANCE.getInformationObject__GetConnectionFrom__InformationObject_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attachment With Url</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_ATTACHMENT_WITH_URL__STRING = eINSTANCE.getInformationObject__GetAttachmentWithUrl__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attached Image With Url</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_URL__STRING = eINSTANCE.getInformationObject__GetAttachedImageWithUrl__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Phone</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___ADD_PHONE__STRING = eINSTANCE.getInformationObject__AddPhone__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With Common Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_PERSONS_WITH_COMMON_TAGS = eINSTANCE.getInformationObject__GetPersonsWithCommonTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With Common Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_ORGANISATIONS_WITH_COMMON_TAGS = eINSTANCE.getInformationObject__GetOrganisationsWithCommonTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With Common Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_CONTENTS_WITH_COMMON_TAGS = eINSTANCE.getInformationObject__GetContentsWithCommonTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Un Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___UN_TAG__STRING = eINSTANCE.getInformationObject__UnTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Un Categorize</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___UN_CATEGORIZE__STRING = eINSTANCE.getInformationObject__UnCategorize__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Slug Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_SLUG_NAME = eINSTANCE.getInformationObject__GetSlugName();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Connections To With Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING = eINSTANCE.getInformationObject__GetConnectionsToWithMetaTag__InformationObject_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Connections From With Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = eINSTANCE.getInformationObject__GetConnectionsFromWithMetaTag__InformationObject_String();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ContentImpl <em>Content</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6795,6 +18597,46 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONTENT__VIDEOS = eINSTANCE.getContent_Videos();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTENT___GET_ORGANISATIONS = eINSTANCE.getContent__GetOrganisations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTENT___GET_PERSONS = eINSTANCE.getContent__GetPersons();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTENT___COMMENT__STRING = eINSTANCE.getContent__Comment__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Contributor</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTENT___ADD_CONTRIBUTOR__PERSON = eINSTANCE.getContent__AddContributor__Person();
+
+		/**
+		 * The meta object literal for the '<em><b>Attach Document</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTENT___ATTACH_DOCUMENT__STRING = eINSTANCE.getContent__AttachDocument__String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.DataSetImpl <em>Set</em>}' class.
@@ -6877,6 +18719,942 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_SET__CREATED = eINSTANCE.getDataSet_Created();
+
+		/**
+		 * The meta object literal for the '<em><b>Add</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___ADD__ITEM = eINSTANCE.getDataSet__Add__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items With String Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_WITH_STRING_VALUE__STRING = eINSTANCE.getDataSet__GetItemsWithStringValue__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_NAME__STRING = eINSTANCE.getDataSet__GetPersonsWithName__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With Lastname</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_LASTNAME__STRING = eINSTANCE.getDataSet__GetPersonsWithLastname__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With First Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_FIRST_NAME__STRING = eINSTANCE.getDataSet__GetPersonsWithFirstName__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_TAG__STRING = eINSTANCE.getDataSet__GetTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_META_TAG__STRING = eINSTANCE.getDataSet__GetMetaTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Persons</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ALL_PERSONS = eINSTANCE.getDataSet__GetAllPersons();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Contents</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ALL_CONTENTS = eINSTANCE.getDataSet__GetAllContents();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Organisations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ALL_ORGANISATIONS = eINSTANCE.getDataSet__GetAllOrganisations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ALL_CATEGORIES = eINSTANCE.getDataSet__GetAllCategories();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Category</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CATEGORY__STRING = eINSTANCE.getDataSet__GetCategory__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ALL_TAGS = eINSTANCE.getDataSet__GetAllTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items Modified Since</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_MODIFIED_SINCE__DATE = eINSTANCE.getDataSet__GetItemsModifiedSince__Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ALL_META_TAGS = eINSTANCE.getDataSet__GetAllMetaTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Get All Connections</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ALL_CONNECTIONS = eINSTANCE.getDataSet__GetAllConnections();
+
+		/**
+		 * The meta object literal for the '<em><b>Log</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___LOG__STRING = eINSTANCE.getDataSet__Log__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Log</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___LOG__STRING_INTEGER = eINSTANCE.getDataSet__Log__String_Integer();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Content With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENT_WITH_IDENT__STRING = eINSTANCE.getDataSet__GetContentWithIdent__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Person With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSON_WITH_IDENT__STRING = eINSTANCE.getDataSet__GetPersonWithIdent__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisation With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATION_WITH_IDENT__STRING = eINSTANCE.getDataSet__GetOrganisationWithIdent__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attachment With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ATTACHMENT_WITH_IDENT__STRING = eINSTANCE.getDataSet__GetAttachmentWithIdent__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects With All Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_CATEGORIES__ELIST = eINSTANCE.getDataSet__GetInformationObjectsWithAllCategories__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects With One Of Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_CATEGORIES__ELIST = eINSTANCE.getDataSet__GetInformationObjectsWithOneOfCategories__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With All Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS_WITH_ALL_CATEGORIES__ELIST = eINSTANCE.getDataSet__GetContentsWithAllCategories__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With One Of Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS_WITH_ONE_OF_CATEGORIES__ELIST = eINSTANCE.getDataSet__GetContentsWithOneOfCategories__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With All Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_ALL_CATEGORIES__ELIST = eINSTANCE.getDataSet__GetPersonsWithAllCategories__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With One Of Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_ONE_OF_CATEGORIES__ELIST = eINSTANCE.getDataSet__GetPersonsWithOneOfCategories__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With All Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS_WITH_ALL_CATEGORIES__ELIST = eINSTANCE.getDataSet__GetOrganisationsWithAllCategories__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With One Of Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_CATEGORIES__ELIST = eINSTANCE.getDataSet__GetOrganisationsWithOneOfCategories__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects With All Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_TAGS__ELIST = eINSTANCE.getDataSet__GetInformationObjectsWithAllTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects With One Of Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_TAGS__ELIST = eINSTANCE.getDataSet__GetInformationObjectsWithOneOfTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With All Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS_WITH_ALL_TAGS__ELIST = eINSTANCE.getDataSet__GetOrganisationsWithAllTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With One Of Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_TAGS__ELIST = eINSTANCE.getDataSet__GetOrganisationsWithOneOfTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With All Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_ALL_TAGS__ELIST = eINSTANCE.getDataSet__GetPersonsWithAllTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With One Of Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_ONE_OF_TAGS__ELIST = eINSTANCE.getDataSet__GetPersonsWithOneOfTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With All Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS_WITH_ALL_TAGS__ELIST = eINSTANCE.getDataSet__GetContentsWithAllTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With One Of Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS_WITH_ONE_OF_TAGS__ELIST = eINSTANCE.getDataSet__GetContentsWithOneOfTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS_WITH_NAME__STRING = eINSTANCE.getDataSet__GetContentsWithName__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS_WITH_NAME__STRING = eINSTANCE.getDataSet__GetOrganisationsWithName__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items With All Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_WITH_ALL_META_TAGS__ELIST = eINSTANCE.getDataSet__GetItemsWithAllMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items With One Of Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_WITH_ONE_OF_META_TAGS__ELIST = eINSTANCE.getDataSet__GetItemsWithOneOfMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS = eINSTANCE.getDataSet__GetPersons();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS = eINSTANCE.getDataSet__GetOrganisations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS = eINSTANCE.getDataSet__GetContents();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS = eINSTANCE.getDataSet__GetInformationObjects();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_TAGS = eINSTANCE.getDataSet__GetTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_META_TAGS = eINSTANCE.getDataSet__GetMetaTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attachments</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ATTACHMENTS = eINSTANCE.getDataSet__GetAttachments();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Binaries</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_BINARIES = eINSTANCE.getDataSet__GetBinaries();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CATEGORIES = eINSTANCE.getDataSet__GetCategories();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Classifications</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CLASSIFICATIONS = eINSTANCE.getDataSet__GetClassifications();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Connections</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONNECTIONS = eINSTANCE.getDataSet__GetConnections();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Documents</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_DOCUMENTS = eINSTANCE.getDataSet__GetDocuments();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Emails</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_EMAILS = eINSTANCE.getDataSet__GetEmails();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Extensions</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_EXTENSIONS = eINSTANCE.getDataSet__GetExtensions();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Images</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_IMAGES = eINSTANCE.getDataSet__GetImages();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Instant Messengers</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INSTANT_MESSENGERS = eINSTANCE.getDataSet__GetInstantMessengers();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Locations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_LOCATIONS = eINSTANCE.getDataSet__GetLocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Meta Informations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_META_INFORMATIONS = eINSTANCE.getDataSet__GetMetaInformations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Phones</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PHONES = eINSTANCE.getDataSet__GetPhones();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Rankings</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_RANKINGS = eINSTANCE.getDataSet__GetRankings();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Star Rankings</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_STAR_RANKINGS = eINSTANCE.getDataSet__GetStarRankings();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Thumb Rankings</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_THUMB_RANKINGS = eINSTANCE.getDataSet__GetThumbRankings();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Transformations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_TRANSFORMATIONS = eINSTANCE.getDataSet__GetTransformations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Videos</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_VIDEOS = eINSTANCE.getDataSet__GetVideos();
+
+		/**
+		 * The meta object literal for the '<em><b>Get View Rankings</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_VIEW_RANKINGS = eINSTANCE.getDataSet__GetViewRankings();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Web Accounts</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_WEB_ACCOUNTS = eINSTANCE.getDataSet__GetWebAccounts();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Web Sites</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_WEB_SITES = eINSTANCE.getDataSet__GetWebSites();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects With All Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_META_TAGS__ELIST = eINSTANCE.getDataSet__GetInformationObjectsWithAllMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects With One Of Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_META_TAGS__ELIST = eINSTANCE.getDataSet__GetInformationObjectsWithOneOfMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Identifiers</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_IDENTIFIERS = eINSTANCE.getDataSet__GetIdentifiers();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Identifiers With Key</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_IDENTIFIERS_WITH_KEY__STRING = eINSTANCE.getDataSet__GetIdentifiersWithKey__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Identifier With Key Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_IDENTIFIER_WITH_KEY_VALUE__STRING_STRING = eINSTANCE.getDataSet__GetIdentifierWithKeyValue__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Item With Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEM_WITH_IDENTIFIER__STRING_STRING = eINSTANCE.getDataSet__GetItemWithIdentifier__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Person With Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSON_WITH_IDENTIFIER__STRING_STRING = eINSTANCE.getDataSet__GetPersonWithIdentifier__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Content With Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENT_WITH_IDENTIFIER__STRING_STRING = eINSTANCE.getDataSet__GetContentWithIdentifier__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisation With Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATION_WITH_IDENTIFIER__STRING_STRING = eINSTANCE.getDataSet__GetOrganisationWithIdentifier__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Location With Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_LOCATION_WITH_IDENTIFIER__STRING_STRING = eINSTANCE.getDataSet__GetLocationWithIdentifier__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Indoor Location With Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INDOOR_LOCATION_WITH_IDENTIFIER__STRING_STRING = eINSTANCE.getDataSet__GetIndoorLocationWithIdentifier__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Image With Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_IMAGE_WITH_IDENTIFIER__STRING_STRING = eINSTANCE.getDataSet__GetImageWithIdentifier__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Empty Item With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_EMPTY_ITEM_WITH_IDENT__STRING = eINSTANCE.getDataSet__GetEmptyItemWithIdent__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Tags With More Than XInformation Objects</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_TAGS_WITH_MORE_THAN_XINFORMATION_OBJECTS__INTEGER = eINSTANCE.getDataSet__GetTagsWithMoreThanXInformationObjects__Integer();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items Created Since</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_CREATED_SINCE__DATE = eINSTANCE.getDataSet__GetItemsCreatedSince__Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Search Items</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___SEARCH_ITEMS__STRING = eINSTANCE.getDataSet__SearchItems__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Search Information Objects</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___SEARCH_INFORMATION_OBJECTS__STRING = eINSTANCE.getDataSet__SearchInformationObjects__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects With Attachment</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS_WITH_ATTACHMENT__ATTACHMENT = eINSTANCE.getDataSet__GetInformationObjectsWithAttachment__Attachment();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With Attachment</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_ATTACHMENT__ATTACHMENT = eINSTANCE.getDataSet__GetPersonsWithAttachment__Attachment();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With Attachment</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS_WITH_ATTACHMENT__ATTACHMENT = eINSTANCE.getDataSet__GetOrganisationsWithAttachment__Attachment();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With Attachment</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS_WITH_ATTACHMENT__ATTACHMENT = eINSTANCE.getDataSet__GetContentsWithAttachment__Attachment();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Equal Item</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_EQUAL_ITEM__ITEM = eINSTANCE.getDataSet__GetEqualItem__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Equal Item</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___HAS_EQUAL_ITEM__ITEM = eINSTANCE.getDataSet__HasEqualItem__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_WITH_IDENT__STRING = eINSTANCE.getDataSet__GetItemsWithIdent__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attachments With Cached File Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ATTACHMENTS_WITH_CACHED_FILE_NAME__STRING = eINSTANCE.getDataSet__GetAttachmentsWithCachedFileName__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Events After</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_EVENTS_AFTER__DATE = eINSTANCE.getDataSet__GetEventsAfter__Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Events Before</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_EVENTS_BEFORE__DATE = eINSTANCE.getDataSet__GetEventsBefore__Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Events Between Dates</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_EVENTS_BETWEEN_DATES__DATE_DATE = eINSTANCE.getDataSet__GetEventsBetweenDates__Date_Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Spicynodes Representation</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_SPICYNODES_REPRESENTATION = eINSTANCE.getDataSet__GetSpicynodesRepresentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Connections Between Information Objects Of Different Categories</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONNECTIONS_BETWEEN_INFORMATION_OBJECTS_OF_DIFFERENT_CATEGORIES = eINSTANCE.getDataSet__GetConnectionsBetweenInformationObjectsOfDifferentCategories();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects Modified Since</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INFORMATION_OBJECTS_MODIFIED_SINCE__DATE = eINSTANCE.getDataSet__GetInformationObjectsModifiedSince__Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Random XInformation Objects</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_RANDOM_XINFORMATION_OBJECTS__INTEGER = eINSTANCE.getDataSet__GetRandomXInformationObjects__Integer();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Random XContents</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_RANDOM_XCONTENTS__INTEGER = eINSTANCE.getDataSet__GetRandomXContents__Integer();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Random XPersons</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_RANDOM_XPERSONS__INTEGER = eINSTANCE.getDataSet__GetRandomXPersons__Integer();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Random XOrganisations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_RANDOM_XORGANISATIONS__INTEGER = eINSTANCE.getDataSet__GetRandomXOrganisations__Integer();
+
+		/**
+		 * The meta object literal for the '<em><b>Force Add</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___FORCE_ADD__ITEM = eINSTANCE.getDataSet__ForceAdd__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Idents Of Existing Items</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_IDENTS_OF_EXISTING_ITEMS = eINSTANCE.getDataSet__GetIdentsOfExistingItems();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Category With Slug</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CATEGORY_WITH_SLUG__STRING = eINSTANCE.getDataSet__GetCategoryWithSlug__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Rebuild Indexes</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___REBUILD_INDEXES = eINSTANCE.getDataSet__RebuildIndexes();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With All Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS_WITH_ALL_META_TAGS__ELIST = eINSTANCE.getDataSet__GetContentsWithAllMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents With One Of Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_CONTENTS_WITH_ONE_OF_META_TAGS__ELIST = eINSTANCE.getDataSet__GetContentsWithOneOfMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With All Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_ALL_META_TAGS__ELIST = eINSTANCE.getDataSet__GetPersonsWithAllMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons With One Of Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_PERSONS_WITH_ONE_OF_META_TAGS__ELIST = eINSTANCE.getDataSet__GetPersonsWithOneOfMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With All Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS_WITH_ALL_META_TAGS__ELIST = eINSTANCE.getDataSet__GetOrganisationsWithAllMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations With One Of Meta Tags</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_META_TAGS__ELIST = eINSTANCE.getDataSet__GetOrganisationsWithOneOfMetaTags__EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Events</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_EVENTS = eINSTANCE.getDataSet__GetEvents();
+
+		/**
+		 * The meta object literal for the '<em><b>Search By Query</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___SEARCH_BY_QUERY__STRING = eINSTANCE.getDataSet__SearchByQuery__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Indoor Locations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_INDOOR_LOCATIONS = eINSTANCE.getDataSet__GetIndoorLocations();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ItemImpl <em>Item</em>}' class.
@@ -6969,6 +19747,158 @@ public interface DataPackage extends EPackage {
 		EReference ITEM__DELETED_IF_DELETED = eINSTANCE.getItem_DeletedIfDeleted();
 
 		/**
+		 * The meta object literal for the '<em><b>Log</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___LOG__STRING = eINSTANCE.getItem__Log__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Log</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___LOG__STRING_INTEGER = eINSTANCE.getItem__Log__String_Integer();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___META_TAG__STRING = eINSTANCE.getItem__MetaTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Identify By</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___IDENTIFY_BY__STRING_STRING = eINSTANCE.getItem__IdentifyBy__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___GET_IDENTIFIER__STRING = eINSTANCE.getItem__GetIdentifier__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___HAS_META_TAG__STRING = eINSTANCE.getItem__HasMetaTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Matches Search</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___MATCHES_SEARCH__STRING = eINSTANCE.getItem__MatchesSearch__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Delete</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___DELETE = eINSTANCE.getItem__Delete();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Equal Item</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___IS_EQUAL_ITEM__ITEM = eINSTANCE.getItem__IsEqualItem__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Created Pretty In Language</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = eINSTANCE.getItem__GetCreatedPrettyInLanguage__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Created Pretty</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___GET_CREATED_PRETTY = eINSTANCE.getItem__GetCreatedPretty();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Last Modified Pretty In Language</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = eINSTANCE.getItem__GetLastModifiedPrettyInLanguage__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Last Modified Pretty</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___GET_LAST_MODIFIED_PRETTY = eINSTANCE.getItem__GetLastModifiedPretty();
+
+		/**
+		 * The meta object literal for the '<em><b>Delete On Delete Of</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___DELETE_ON_DELETE_OF__ITEM = eINSTANCE.getItem__DeleteOnDeleteOf__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Delete If Empty On Delete</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___DELETE_IF_EMPTY_ON_DELETE = eINSTANCE.getItem__DeleteIfEmptyOnDelete();
+
+		/**
+		 * The meta object literal for the '<em><b>Update</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___UPDATE__ITEM = eINSTANCE.getItem__Update__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Force Update</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___FORCE_UPDATE__ITEM = eINSTANCE.getItem__ForceUpdate__Item();
+
+		/**
+		 * The meta object literal for the '<em><b>Un Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___UN_META_TAG__STRING = eINSTANCE.getItem__UnMetaTag__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Remove Identifier</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___REMOVE_IDENTIFIER__STRING = eINSTANCE.getItem__RemoveIdentifier__String();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6977,6 +19907,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXTENSION = eINSTANCE.getExtension();
+
+		/**
+		 * The meta object literal for the '<em><b>Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXTENSION___TAG__STRING = eINSTANCE.getExtension__Tag__String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ClassificationImpl <em>Classification</em>}' class.
@@ -6995,6 +19933,70 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLASSIFICATION__NAME = eINSTANCE.getClassification_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLASSIFICATION___GET_PERSONS = eINSTANCE.getClassification__GetPersons();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLASSIFICATION___GET_CONTENTS = eINSTANCE.getClassification__GetContents();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLASSIFICATION___GET_ORGANISATIONS = eINSTANCE.getClassification__GetOrganisations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLASSIFICATION___GET_COUNT = eINSTANCE.getClassification__GetCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Persons Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLASSIFICATION___GET_PERSONS_COUNT = eINSTANCE.getClassification__GetPersonsCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLASSIFICATION___GET_CONTENTS_COUNT = eINSTANCE.getClassification__GetContentsCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Organisations Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLASSIFICATION___GET_ORGANISATIONS_COUNT = eINSTANCE.getClassification__GetOrganisationsCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Slug</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLASSIFICATION___GET_SLUG = eINSTANCE.getClassification__GetSlug();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.CategoryImpl <em>Category</em>}' class.
@@ -7099,6 +20101,30 @@ public interface DataPackage extends EPackage {
 		EReference ORGANISATION__ORGANISATIONS = eINSTANCE.getOrganisation_Organisations();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Persons</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ORGANISATION___GET_PERSONS = eINSTANCE.getOrganisation__GetPersons();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Contents</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ORGANISATION___GET_CONTENTS = eINSTANCE.getOrganisation__GetContents();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Participant</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ORGANISATION___ADD_PARTICIPANT__PERSON = eINSTANCE.getOrganisation__AddParticipant__Person();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.MetaTagImpl <em>Meta Tag</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7123,6 +20149,46 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference META_TAG__META_TAGGED = eINSTANCE.getMetaTag_MetaTagged();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Web Accounts</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation META_TAG___GET_WEB_ACCOUNTS = eINSTANCE.getMetaTag__GetWebAccounts();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation META_TAG___GET_INFORMATION_OBJECTS = eINSTANCE.getMetaTag__GetInformationObjects();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Extensions</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation META_TAG___GET_EXTENSIONS = eINSTANCE.getMetaTag__GetExtensions();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation META_TAG___GET_COUNT = eINSTANCE.getMetaTag__GetCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Information Objects Count</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation META_TAG___GET_INFORMATION_OBJECTS_COUNT = eINSTANCE.getMetaTag__GetInformationObjectsCount();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.PhoneImpl <em>Phone</em>}' class.
@@ -7323,6 +20389,14 @@ public interface DataPackage extends EPackage {
 		EAttribute ATTACHMENT__CACHED_FILE_NAME = eINSTANCE.getAttachment_CachedFileName();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Original File Url</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ATTACHMENT___GET_ORIGINAL_FILE_URL = eINSTANCE.getAttachment__GetOriginalFileUrl();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.LocationImpl <em>Location</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7485,6 +20559,22 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference THUMB_RANKING__RANKED_INFORMATION_OBJECT = eINSTANCE.getThumbRanking_RankedInformationObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Thumb Up</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation THUMB_RANKING___IS_THUMB_UP = eINSTANCE.getThumbRanking__IsThumbUp();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Thumb Down</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation THUMB_RANKING___IS_THUMB_DOWN = eINSTANCE.getThumbRanking__IsThumbDown();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.TransformationImpl <em>Transformation</em>}' class.
@@ -7669,6 +20759,22 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVENT__DATE = eINSTANCE.getEvent_Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Date Pretty In Language</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EVENT___GET_DATE_PRETTY_IN_LANGUAGE__STRING = eINSTANCE.getEvent__GetDatePrettyInLanguage__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Date Pretty</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EVENT___GET_DATE_PRETTY = eINSTANCE.getEvent__GetDatePretty();
 
 	}
 

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -735,6 +736,28 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 				return videos != null && !videos.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.CONTENT___GET_ORGANISATIONS:
+				return getOrganisations();
+			case DataPackage.CONTENT___GET_PERSONS:
+				return getPersons();
+			case DataPackage.CONTENT___COMMENT__STRING:
+				return comment((String)arguments.get(0));
+			case DataPackage.CONTENT___ADD_CONTRIBUTOR__PERSON:
+				return addContributor((Person)arguments.get(0));
+			case DataPackage.CONTENT___ATTACH_DOCUMENT__STRING:
+				return attachDocument((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

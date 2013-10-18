@@ -306,8 +306,53 @@ public class CollectionPackageImpl extends EPackageImpl implements CollectionPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSmartInformationObjectCollection__AddPositive__Item() {
+		return smartInformationObjectCollectionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSmartInformationObjectCollection__AddNegative__Item() {
+		return smartInformationObjectCollectionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSmartInformationObjectCollection__Remove__Item() {
+		return smartInformationObjectCollectionEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getManualCollection() {
 		return manualCollectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getManualCollection__AddItem__Item() {
+		return manualCollectionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getManualCollection__RemoveItem__Item() {
+		return manualCollectionEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -375,8 +420,13 @@ public class CollectionPackageImpl extends EPackageImpl implements CollectionPac
 		createEAttribute(smartInformationObjectCollectionEClass, SMART_INFORMATION_OBJECT_COLLECTION__INCLUDE_ORGANISATIONS);
 		createEAttribute(smartInformationObjectCollectionEClass, SMART_INFORMATION_OBJECT_COLLECTION__INCLUDE_CONTENTS);
 		createEAttribute(smartInformationObjectCollectionEClass, SMART_INFORMATION_OBJECT_COLLECTION__MINIMUM_AGE);
+		createEOperation(smartInformationObjectCollectionEClass, SMART_INFORMATION_OBJECT_COLLECTION___ADD_POSITIVE__ITEM);
+		createEOperation(smartInformationObjectCollectionEClass, SMART_INFORMATION_OBJECT_COLLECTION___ADD_NEGATIVE__ITEM);
+		createEOperation(smartInformationObjectCollectionEClass, SMART_INFORMATION_OBJECT_COLLECTION___REMOVE__ITEM);
 
 		manualCollectionEClass = createEClass(MANUAL_COLLECTION);
+		createEOperation(manualCollectionEClass, MANUAL_COLLECTION___ADD_ITEM__ITEM);
+		createEOperation(manualCollectionEClass, MANUAL_COLLECTION___REMOVE_ITEM__ITEM);
 
 		remoteCollectionEClass = createEClass(REMOTE_COLLECTION);
 		createEAttribute(remoteCollectionEClass, REMOTE_COLLECTION__REMOTE_URL);
@@ -417,7 +467,7 @@ public class CollectionPackageImpl extends EPackageImpl implements CollectionPac
 		manualCollectionEClass.getESuperTypes().add(this.getItemsCollection());
 		remoteCollectionEClass.getESuperTypes().add(this.getItemsCollection());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(itemsCollectionEClass, ItemsCollection.class, "ItemsCollection", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItemsCollection_Items(), theDataPackage.getItem(), null, "items", null, 0, -1, ItemsCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItemsCollection_DataSet(), theDataPackage.getDataSet(), null, "dataSet", null, 1, 1, ItemsCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -438,21 +488,21 @@ public class CollectionPackageImpl extends EPackageImpl implements CollectionPac
 		initEAttribute(getSmartInformationObjectCollection_IncludeContents(), ecorePackage.getEBooleanObject(), "includeContents", "true", 0, 1, SmartInformationObjectCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSmartInformationObjectCollection_MinimumAge(), ecorePackage.getEDate(), "minimumAge", null, 0, 1, SmartInformationObjectCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(smartInformationObjectCollectionEClass, theDataPackage.getItem(), "addPositive", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getSmartInformationObjectCollection__AddPositive__Item(), theDataPackage.getItem(), "addPositive", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theDataPackage.getItem(), "item", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(smartInformationObjectCollectionEClass, theDataPackage.getItem(), "addNegative", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getSmartInformationObjectCollection__AddNegative__Item(), theDataPackage.getItem(), "addNegative", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theDataPackage.getItem(), "item", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(smartInformationObjectCollectionEClass, theDataPackage.getItem(), "remove", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getSmartInformationObjectCollection__Remove__Item(), theDataPackage.getItem(), "remove", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theDataPackage.getItem(), "item", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(manualCollectionEClass, ManualCollection.class, "ManualCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(manualCollectionEClass, theDataPackage.getItem(), "addItem", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getManualCollection__AddItem__Item(), theDataPackage.getItem(), "addItem", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theDataPackage.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(manualCollectionEClass, theDataPackage.getItem(), "removeItem", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getManualCollection__RemoveItem__Item(), theDataPackage.getItem(), "removeItem", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theDataPackage.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(remoteCollectionEClass, RemoteCollection.class, "RemoteCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -10,11 +10,13 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -273,6 +275,22 @@ public class ThumbRankingImpl extends RankingImpl implements ThumbRanking {
 				return rankedInformationObject != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.THUMB_RANKING___IS_THUMB_UP:
+				return isThumbUp();
+			case DataPackage.THUMB_RANKING___IS_THUMB_DOWN:
+				return isThumbDown();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.data.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -791,6 +792,256 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		return super.eIsSet(featureID);
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DataPackage.DATA_SET___ADD__ITEM:
+				return add((Item)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ITEMS_WITH_STRING_VALUE__STRING:
+				return getItemsWithStringValue((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_NAME__STRING:
+				return getPersonsWithName((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_LASTNAME__STRING:
+				return getPersonsWithLastname((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_FIRST_NAME__STRING:
+				return getPersonsWithFirstName((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_TAG__STRING:
+				return getTag((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_META_TAG__STRING:
+				return getMetaTag((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ALL_PERSONS:
+				return getAllPersons();
+			case DataPackage.DATA_SET___GET_ALL_CONTENTS:
+				return getAllContents();
+			case DataPackage.DATA_SET___GET_ALL_ORGANISATIONS:
+				return getAllOrganisations();
+			case DataPackage.DATA_SET___GET_ALL_CATEGORIES:
+				return getAllCategories();
+			case DataPackage.DATA_SET___GET_CATEGORY__STRING:
+				return getCategory((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ALL_TAGS:
+				return getAllTags();
+			case DataPackage.DATA_SET___GET_ITEMS_MODIFIED_SINCE__DATE:
+				return getItemsModifiedSince((Date)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ALL_META_TAGS:
+				return getAllMetaTags();
+			case DataPackage.DATA_SET___GET_ALL_CONNECTIONS:
+				return getAllConnections();
+			case DataPackage.DATA_SET___LOG__STRING:
+				log((String)arguments.get(0));
+				return null;
+			case DataPackage.DATA_SET___LOG__STRING_INTEGER:
+				log((String)arguments.get(0), (Integer)arguments.get(1));
+				return null;
+			case DataPackage.DATA_SET___GET_CONTENT_WITH_IDENT__STRING:
+				return getContentWithIdent((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSON_WITH_IDENT__STRING:
+				return getPersonWithIdent((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATION_WITH_IDENT__STRING:
+				return getOrganisationWithIdent((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ATTACHMENT_WITH_IDENT__STRING:
+				return getAttachmentWithIdent((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_CATEGORIES__ELIST:
+				return getInformationObjectsWithAllCategories((EList<Category>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_CATEGORIES__ELIST:
+				return getInformationObjectsWithOneOfCategories((EList<Category>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_CONTENTS_WITH_ALL_CATEGORIES__ELIST:
+				return getContentsWithAllCategories((EList<Category>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_CONTENTS_WITH_ONE_OF_CATEGORIES__ELIST:
+				return getContentsWithOneOfCategories((EList<Category>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_ALL_CATEGORIES__ELIST:
+				return getPersonsWithAllCategories((EList<Category>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_ONE_OF_CATEGORIES__ELIST:
+				return getPersonsWithOneOfCategories((EList<Category>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATIONS_WITH_ALL_CATEGORIES__ELIST:
+				return getOrganisationsWithAllCategories((EList<Category>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_CATEGORIES__ELIST:
+				return getOrganisationsWithOneOfCategories((EList<Category>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_TAGS__ELIST:
+				return getInformationObjectsWithAllTags((EList<Tag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_TAGS__ELIST:
+				return getInformationObjectsWithOneOfTags((EList<Tag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATIONS_WITH_ALL_TAGS__ELIST:
+				return getOrganisationsWithAllTags((EList<Tag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_TAGS__ELIST:
+				return getOrganisationsWithOneOfTags((EList<Tag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_ALL_TAGS__ELIST:
+				return getPersonsWithAllTags((EList<Tag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_ONE_OF_TAGS__ELIST:
+				return getPersonsWithOneOfTags((EList<Tag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_CONTENTS_WITH_ALL_TAGS__ELIST:
+				return getContentsWithAllTags((EList<Tag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_CONTENTS_WITH_ONE_OF_TAGS__ELIST:
+				return getContentsWithOneOfTags((EList<Tag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_CONTENTS_WITH_NAME__STRING:
+				return getContentsWithName((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATIONS_WITH_NAME__STRING:
+				return getOrganisationsWithName((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ITEMS_WITH_ALL_META_TAGS__ELIST:
+				return getItemsWithAllMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ITEMS_WITH_ONE_OF_META_TAGS__ELIST:
+				return getItemsWithOneOfMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS:
+				return getPersons();
+			case DataPackage.DATA_SET___GET_ORGANISATIONS:
+				return getOrganisations();
+			case DataPackage.DATA_SET___GET_CONTENTS:
+				return getContents();
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS:
+				return getInformationObjects();
+			case DataPackage.DATA_SET___GET_TAGS:
+				return getTags();
+			case DataPackage.DATA_SET___GET_META_TAGS:
+				return getMetaTags();
+			case DataPackage.DATA_SET___GET_ATTACHMENTS:
+				return getAttachments();
+			case DataPackage.DATA_SET___GET_BINARIES:
+				return getBinaries();
+			case DataPackage.DATA_SET___GET_CATEGORIES:
+				return getCategories();
+			case DataPackage.DATA_SET___GET_CLASSIFICATIONS:
+				return getClassifications();
+			case DataPackage.DATA_SET___GET_CONNECTIONS:
+				return getConnections();
+			case DataPackage.DATA_SET___GET_DOCUMENTS:
+				return getDocuments();
+			case DataPackage.DATA_SET___GET_EMAILS:
+				return getEmails();
+			case DataPackage.DATA_SET___GET_EXTENSIONS:
+				return getExtensions();
+			case DataPackage.DATA_SET___GET_IMAGES:
+				return getImages();
+			case DataPackage.DATA_SET___GET_INSTANT_MESSENGERS:
+				return getInstantMessengers();
+			case DataPackage.DATA_SET___GET_LOCATIONS:
+				return getLocations();
+			case DataPackage.DATA_SET___GET_META_INFORMATIONS:
+				return getMetaInformations();
+			case DataPackage.DATA_SET___GET_PHONES:
+				return getPhones();
+			case DataPackage.DATA_SET___GET_RANKINGS:
+				return getRankings();
+			case DataPackage.DATA_SET___GET_STAR_RANKINGS:
+				return getStarRankings();
+			case DataPackage.DATA_SET___GET_THUMB_RANKINGS:
+				return getThumbRankings();
+			case DataPackage.DATA_SET___GET_TRANSFORMATIONS:
+				return getTransformations();
+			case DataPackage.DATA_SET___GET_VIDEOS:
+				return getVideos();
+			case DataPackage.DATA_SET___GET_VIEW_RANKINGS:
+				return getViewRankings();
+			case DataPackage.DATA_SET___GET_WEB_ACCOUNTS:
+				return getWebAccounts();
+			case DataPackage.DATA_SET___GET_WEB_SITES:
+				return getWebSites();
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_META_TAGS__ELIST:
+				return getInformationObjectsWithAllMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_META_TAGS__ELIST:
+				return getInformationObjectsWithOneOfMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_IDENTIFIERS:
+				return getIdentifiers();
+			case DataPackage.DATA_SET___GET_IDENTIFIERS_WITH_KEY__STRING:
+				return getIdentifiersWithKey((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_IDENTIFIER_WITH_KEY_VALUE__STRING_STRING:
+				return getIdentifierWithKeyValue((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.DATA_SET___GET_ITEM_WITH_IDENTIFIER__STRING_STRING:
+				return getItemWithIdentifier((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.DATA_SET___GET_PERSON_WITH_IDENTIFIER__STRING_STRING:
+				return getPersonWithIdentifier((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.DATA_SET___GET_CONTENT_WITH_IDENTIFIER__STRING_STRING:
+				return getContentWithIdentifier((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.DATA_SET___GET_ORGANISATION_WITH_IDENTIFIER__STRING_STRING:
+				return getOrganisationWithIdentifier((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.DATA_SET___GET_LOCATION_WITH_IDENTIFIER__STRING_STRING:
+				return getLocationWithIdentifier((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.DATA_SET___GET_INDOOR_LOCATION_WITH_IDENTIFIER__STRING_STRING:
+				return getIndoorLocationWithIdentifier((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.DATA_SET___GET_IMAGE_WITH_IDENTIFIER__STRING_STRING:
+				return getImageWithIdentifier((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.DATA_SET___GET_EMPTY_ITEM_WITH_IDENT__STRING:
+				return getEmptyItemWithIdent((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_TAGS_WITH_MORE_THAN_XINFORMATION_OBJECTS__INTEGER:
+				return getTagsWithMoreThanXInformationObjects((Integer)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ITEMS_CREATED_SINCE__DATE:
+				return getItemsCreatedSince((Date)arguments.get(0));
+			case DataPackage.DATA_SET___SEARCH_ITEMS__STRING:
+				return searchItems((String)arguments.get(0));
+			case DataPackage.DATA_SET___SEARCH_INFORMATION_OBJECTS__STRING:
+				return searchInformationObjects((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS_WITH_ATTACHMENT__ATTACHMENT:
+				return getInformationObjectsWithAttachment((Attachment)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_ATTACHMENT__ATTACHMENT:
+				return getPersonsWithAttachment((Attachment)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATIONS_WITH_ATTACHMENT__ATTACHMENT:
+				return getOrganisationsWithAttachment((Attachment)arguments.get(0));
+			case DataPackage.DATA_SET___GET_CONTENTS_WITH_ATTACHMENT__ATTACHMENT:
+				return getContentsWithAttachment((Attachment)arguments.get(0));
+			case DataPackage.DATA_SET___GET_EQUAL_ITEM__ITEM:
+				return getEqualItem((Item)arguments.get(0));
+			case DataPackage.DATA_SET___HAS_EQUAL_ITEM__ITEM:
+				return hasEqualItem((Item)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ITEMS_WITH_IDENT__STRING:
+				return getItemsWithIdent((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ATTACHMENTS_WITH_CACHED_FILE_NAME__STRING:
+				return getAttachmentsWithCachedFileName((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_EVENTS_AFTER__DATE:
+				return getEventsAfter((Date)arguments.get(0));
+			case DataPackage.DATA_SET___GET_EVENTS_BEFORE__DATE:
+				return getEventsBefore((Date)arguments.get(0));
+			case DataPackage.DATA_SET___GET_EVENTS_BETWEEN_DATES__DATE_DATE:
+				return getEventsBetweenDates((Date)arguments.get(0), (Date)arguments.get(1));
+			case DataPackage.DATA_SET___GET_SPICYNODES_REPRESENTATION:
+				return getSpicynodesRepresentation();
+			case DataPackage.DATA_SET___GET_CONNECTIONS_BETWEEN_INFORMATION_OBJECTS_OF_DIFFERENT_CATEGORIES:
+				return getConnectionsBetweenInformationObjectsOfDifferentCategories();
+			case DataPackage.DATA_SET___GET_INFORMATION_OBJECTS_MODIFIED_SINCE__DATE:
+				return getInformationObjectsModifiedSince((Date)arguments.get(0));
+			case DataPackage.DATA_SET___GET_RANDOM_XINFORMATION_OBJECTS__INTEGER:
+				return getRandomXInformationObjects((Integer)arguments.get(0));
+			case DataPackage.DATA_SET___GET_RANDOM_XCONTENTS__INTEGER:
+				return getRandomXContents((Integer)arguments.get(0));
+			case DataPackage.DATA_SET___GET_RANDOM_XPERSONS__INTEGER:
+				return getRandomXPersons((Integer)arguments.get(0));
+			case DataPackage.DATA_SET___GET_RANDOM_XORGANISATIONS__INTEGER:
+				return getRandomXOrganisations((Integer)arguments.get(0));
+			case DataPackage.DATA_SET___FORCE_ADD__ITEM:
+				return forceAdd((Item)arguments.get(0));
+			case DataPackage.DATA_SET___GET_IDENTS_OF_EXISTING_ITEMS:
+				return getIdentsOfExistingItems();
+			case DataPackage.DATA_SET___GET_CATEGORY_WITH_SLUG__STRING:
+				return getCategoryWithSlug((String)arguments.get(0));
+			case DataPackage.DATA_SET___REBUILD_INDEXES:
+				rebuildIndexes();
+				return null;
+			case DataPackage.DATA_SET___GET_CONTENTS_WITH_ALL_META_TAGS__ELIST:
+				return getContentsWithAllMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_CONTENTS_WITH_ONE_OF_META_TAGS__ELIST:
+				return getContentsWithOneOfMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_ALL_META_TAGS__ELIST:
+				return getPersonsWithAllMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_PERSONS_WITH_ONE_OF_META_TAGS__ELIST:
+				return getPersonsWithOneOfMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATIONS_WITH_ALL_META_TAGS__ELIST:
+				return getOrganisationsWithAllMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_META_TAGS__ELIST:
+				return getOrganisationsWithOneOfMetaTags((EList<MetaTag>)arguments.get(0));
+			case DataPackage.DATA_SET___GET_EVENTS:
+				return getEvents();
+			case DataPackage.DATA_SET___SEARCH_BY_QUERY__STRING:
+				return searchByQuery((String)arguments.get(0));
+			case DataPackage.DATA_SET___GET_INDOOR_LOCATIONS:
+				return getIndoorLocations();
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

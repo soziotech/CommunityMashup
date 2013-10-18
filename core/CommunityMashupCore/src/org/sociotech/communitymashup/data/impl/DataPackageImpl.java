@@ -429,6 +429,60 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getPerson__GetContents() {
+		return personEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPerson__GetOrganisations() {
+		return personEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPerson__AddContributedContent__Content() {
+		return personEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPerson__AddAuthoredContent__Content() {
+		return personEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPerson__ParseFirstName() {
+		return personEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPerson__ParseLastName() {
+		return personEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getPerson_LeaderOf() {
 		return (EReference)personEClass.getEStructuralFeatures().get(2);
 	}
@@ -591,6 +645,465 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInformationObject__Tag__String() {
+		return informationObjectEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__Categorize__String() {
+		return informationObjectEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__AttachImage__String() {
+		return informationObjectEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetAttachments() {
+		return informationObjectEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__StarRank__Integer_Integer() {
+		return informationObjectEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__View() {
+		return informationObjectEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__ThumbsUp() {
+		return informationObjectEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__ThumbsDown() {
+		return informationObjectEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetThumbsUp() {
+		return informationObjectEClass.getEOperations().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetThumbsDown() {
+		return informationObjectEClass.getEOperations().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetThumbsUpCount() {
+		return informationObjectEClass.getEOperations().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetThumbsDownCount() {
+		return informationObjectEClass.getEOperations().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetThumbsCount() {
+		return informationObjectEClass.getEOperations().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetViewsCount() {
+		return informationObjectEClass.getEOperations().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetStarRanking() {
+		return informationObjectEClass.getEOperations().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__Extend__MetaInformation() {
+		return informationObjectEClass.getEOperations().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetWebAccounts() {
+		return informationObjectEClass.getEOperations().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetWebSites() {
+		return informationObjectEClass.getEOperations().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetPhones() {
+		return informationObjectEClass.getEOperations().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetLocations() {
+		return informationObjectEClass.getEOperations().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetEmails() {
+		return informationObjectEClass.getEOperations().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetInstantMessengers() {
+		return informationObjectEClass.getEOperations().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__AddEmailAddress__String() {
+		return informationObjectEClass.getEOperations().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__AddWebSite__String() {
+		return informationObjectEClass.getEOperations().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetInformationObjectsWithCommonTags() {
+		return informationObjectEClass.getEOperations().get(24);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__AddWebAccount__String() {
+		return informationObjectEClass.getEOperations().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__HasImages() {
+		return informationObjectEClass.getEOperations().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetInformationObjectsConnectedTo() {
+		return informationObjectEClass.getEOperations().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetInformationObjectsConnectedFrom() {
+		return informationObjectEClass.getEOperations().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetInformationObjectsConnected() {
+		return informationObjectEClass.getEOperations().get(29);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__ConnectTo__InformationObject() {
+		return informationObjectEClass.getEOperations().get(30);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__ConnectToWithMetaTag__InformationObject_String() {
+		return informationObjectEClass.getEOperations().get(31);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetInformationObjectsConnectedToWithMetaTag__String() {
+		return informationObjectEClass.getEOperations().get(32);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetInformationObjectsConnectedFromWithMetaTag__String() {
+		return informationObjectEClass.getEOperations().get(33);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetInformationObjectsConnectedWithMetaTag__String() {
+		return informationObjectEClass.getEOperations().get(34);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetConnectionsFrom__InformationObject() {
+		return informationObjectEClass.getEOperations().get(35);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetConnectionsTo__InformationObject() {
+		return informationObjectEClass.getEOperations().get(36);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__ConnectToWithValueAndMetaTag__InformationObject_String_String() {
+		return informationObjectEClass.getEOperations().get(37);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetConnectionTo__InformationObject_String() {
+		return informationObjectEClass.getEOperations().get(38);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetConnectionFrom__InformationObject_String() {
+		return informationObjectEClass.getEOperations().get(39);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetAttachmentWithUrl__String() {
+		return informationObjectEClass.getEOperations().get(40);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetAttachedImageWithUrl__String() {
+		return informationObjectEClass.getEOperations().get(41);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__AddPhone__String() {
+		return informationObjectEClass.getEOperations().get(42);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetPersonsWithCommonTags() {
+		return informationObjectEClass.getEOperations().get(43);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetOrganisationsWithCommonTags() {
+		return informationObjectEClass.getEOperations().get(44);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetContentsWithCommonTags() {
+		return informationObjectEClass.getEOperations().get(45);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__UnTag__String() {
+		return informationObjectEClass.getEOperations().get(46);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__UnCategorize__String() {
+		return informationObjectEClass.getEOperations().get(47);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetSlugName() {
+		return informationObjectEClass.getEOperations().get(48);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetConnectionsToWithMetaTag__InformationObject_String() {
+		return informationObjectEClass.getEOperations().get(49);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetConnectionsFromWithMetaTag__InformationObject_String() {
+		return informationObjectEClass.getEOperations().get(50);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContent() {
 		return contentEClass;
 	}
@@ -665,6 +1178,51 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EReference getContent_Videos() {
 		return (EReference)contentEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContent__GetOrganisations() {
+		return contentEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContent__GetPersons() {
+		return contentEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContent__Comment__String() {
+		return contentEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContent__AddContributor__Person() {
+		return contentEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getContent__AttachDocument__String() {
+		return contentEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -755,6 +1313,1059 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EAttribute getDataSet_Created() {
 		return (EAttribute)dataSetEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__Add__Item() {
+		return dataSetEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemsWithStringValue__String() {
+		return dataSetEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithName__String() {
+		return dataSetEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithLastname__String() {
+		return dataSetEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithFirstName__String() {
+		return dataSetEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetTag__String() {
+		return dataSetEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetMetaTag__String() {
+		return dataSetEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAllPersons() {
+		return dataSetEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAllContents() {
+		return dataSetEClass.getEOperations().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAllOrganisations() {
+		return dataSetEClass.getEOperations().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAllCategories() {
+		return dataSetEClass.getEOperations().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetCategory__String() {
+		return dataSetEClass.getEOperations().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAllTags() {
+		return dataSetEClass.getEOperations().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemsModifiedSince__Date() {
+		return dataSetEClass.getEOperations().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAllMetaTags() {
+		return dataSetEClass.getEOperations().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAllConnections() {
+		return dataSetEClass.getEOperations().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__Log__String() {
+		return dataSetEClass.getEOperations().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__Log__String_Integer() {
+		return dataSetEClass.getEOperations().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentWithIdent__String() {
+		return dataSetEClass.getEOperations().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonWithIdent__String() {
+		return dataSetEClass.getEOperations().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationWithIdent__String() {
+		return dataSetEClass.getEOperations().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAttachmentWithIdent__String() {
+		return dataSetEClass.getEOperations().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjectsWithAllCategories__EList() {
+		return dataSetEClass.getEOperations().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjectsWithOneOfCategories__EList() {
+		return dataSetEClass.getEOperations().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentsWithAllCategories__EList() {
+		return dataSetEClass.getEOperations().get(24);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentsWithOneOfCategories__EList() {
+		return dataSetEClass.getEOperations().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithAllCategories__EList() {
+		return dataSetEClass.getEOperations().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithOneOfCategories__EList() {
+		return dataSetEClass.getEOperations().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationsWithAllCategories__EList() {
+		return dataSetEClass.getEOperations().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationsWithOneOfCategories__EList() {
+		return dataSetEClass.getEOperations().get(29);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjectsWithAllTags__EList() {
+		return dataSetEClass.getEOperations().get(30);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjectsWithOneOfTags__EList() {
+		return dataSetEClass.getEOperations().get(31);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationsWithAllTags__EList() {
+		return dataSetEClass.getEOperations().get(32);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationsWithOneOfTags__EList() {
+		return dataSetEClass.getEOperations().get(33);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithAllTags__EList() {
+		return dataSetEClass.getEOperations().get(34);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithOneOfTags__EList() {
+		return dataSetEClass.getEOperations().get(35);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentsWithAllTags__EList() {
+		return dataSetEClass.getEOperations().get(36);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentsWithOneOfTags__EList() {
+		return dataSetEClass.getEOperations().get(37);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentsWithName__String() {
+		return dataSetEClass.getEOperations().get(38);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationsWithName__String() {
+		return dataSetEClass.getEOperations().get(39);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemsWithAllMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(40);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemsWithOneOfMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(41);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersons() {
+		return dataSetEClass.getEOperations().get(42);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisations() {
+		return dataSetEClass.getEOperations().get(43);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContents() {
+		return dataSetEClass.getEOperations().get(44);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjects() {
+		return dataSetEClass.getEOperations().get(45);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetTags() {
+		return dataSetEClass.getEOperations().get(46);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetMetaTags() {
+		return dataSetEClass.getEOperations().get(47);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAttachments() {
+		return dataSetEClass.getEOperations().get(48);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetBinaries() {
+		return dataSetEClass.getEOperations().get(49);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetCategories() {
+		return dataSetEClass.getEOperations().get(50);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetClassifications() {
+		return dataSetEClass.getEOperations().get(51);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetConnections() {
+		return dataSetEClass.getEOperations().get(52);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetDocuments() {
+		return dataSetEClass.getEOperations().get(53);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetEmails() {
+		return dataSetEClass.getEOperations().get(54);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetExtensions() {
+		return dataSetEClass.getEOperations().get(55);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetImages() {
+		return dataSetEClass.getEOperations().get(56);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInstantMessengers() {
+		return dataSetEClass.getEOperations().get(57);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetLocations() {
+		return dataSetEClass.getEOperations().get(58);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetMetaInformations() {
+		return dataSetEClass.getEOperations().get(59);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPhones() {
+		return dataSetEClass.getEOperations().get(60);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetRankings() {
+		return dataSetEClass.getEOperations().get(61);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetStarRankings() {
+		return dataSetEClass.getEOperations().get(62);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetThumbRankings() {
+		return dataSetEClass.getEOperations().get(63);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetTransformations() {
+		return dataSetEClass.getEOperations().get(64);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetVideos() {
+		return dataSetEClass.getEOperations().get(65);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetViewRankings() {
+		return dataSetEClass.getEOperations().get(66);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetWebAccounts() {
+		return dataSetEClass.getEOperations().get(67);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetWebSites() {
+		return dataSetEClass.getEOperations().get(68);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjectsWithAllMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(69);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjectsWithOneOfMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(70);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetIdentifiers() {
+		return dataSetEClass.getEOperations().get(71);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetIdentifiersWithKey__String() {
+		return dataSetEClass.getEOperations().get(72);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetIdentifierWithKeyValue__String_String() {
+		return dataSetEClass.getEOperations().get(73);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemWithIdentifier__String_String() {
+		return dataSetEClass.getEOperations().get(74);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonWithIdentifier__String_String() {
+		return dataSetEClass.getEOperations().get(75);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentWithIdentifier__String_String() {
+		return dataSetEClass.getEOperations().get(76);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationWithIdentifier__String_String() {
+		return dataSetEClass.getEOperations().get(77);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetLocationWithIdentifier__String_String() {
+		return dataSetEClass.getEOperations().get(78);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetIndoorLocationWithIdentifier__String_String() {
+		return dataSetEClass.getEOperations().get(79);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetImageWithIdentifier__String_String() {
+		return dataSetEClass.getEOperations().get(80);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetEmptyItemWithIdent__String() {
+		return dataSetEClass.getEOperations().get(81);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetTagsWithMoreThanXInformationObjects__Integer() {
+		return dataSetEClass.getEOperations().get(82);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemsCreatedSince__Date() {
+		return dataSetEClass.getEOperations().get(83);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__SearchItems__String() {
+		return dataSetEClass.getEOperations().get(84);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__SearchInformationObjects__String() {
+		return dataSetEClass.getEOperations().get(85);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjectsWithAttachment__Attachment() {
+		return dataSetEClass.getEOperations().get(86);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithAttachment__Attachment() {
+		return dataSetEClass.getEOperations().get(87);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationsWithAttachment__Attachment() {
+		return dataSetEClass.getEOperations().get(88);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentsWithAttachment__Attachment() {
+		return dataSetEClass.getEOperations().get(89);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetEqualItem__Item() {
+		return dataSetEClass.getEOperations().get(90);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__HasEqualItem__Item() {
+		return dataSetEClass.getEOperations().get(91);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemsWithIdent__String() {
+		return dataSetEClass.getEOperations().get(92);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetAttachmentsWithCachedFileName__String() {
+		return dataSetEClass.getEOperations().get(93);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetEventsAfter__Date() {
+		return dataSetEClass.getEOperations().get(94);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetEventsBefore__Date() {
+		return dataSetEClass.getEOperations().get(95);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetEventsBetweenDates__Date_Date() {
+		return dataSetEClass.getEOperations().get(96);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetSpicynodesRepresentation() {
+		return dataSetEClass.getEOperations().get(97);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetConnectionsBetweenInformationObjectsOfDifferentCategories() {
+		return dataSetEClass.getEOperations().get(98);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetInformationObjectsModifiedSince__Date() {
+		return dataSetEClass.getEOperations().get(99);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetRandomXInformationObjects__Integer() {
+		return dataSetEClass.getEOperations().get(100);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetRandomXContents__Integer() {
+		return dataSetEClass.getEOperations().get(101);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetRandomXPersons__Integer() {
+		return dataSetEClass.getEOperations().get(102);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetRandomXOrganisations__Integer() {
+		return dataSetEClass.getEOperations().get(103);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__ForceAdd__Item() {
+		return dataSetEClass.getEOperations().get(104);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetIdentsOfExistingItems() {
+		return dataSetEClass.getEOperations().get(105);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetCategoryWithSlug__String() {
+		return dataSetEClass.getEOperations().get(106);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__RebuildIndexes() {
+		return dataSetEClass.getEOperations().get(107);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentsWithAllMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(108);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetContentsWithOneOfMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(109);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithAllMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(110);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetPersonsWithOneOfMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(111);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationsWithAllMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(112);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetOrganisationsWithOneOfMetaTags__EList() {
+		return dataSetEClass.getEOperations().get(113);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetEvents() {
+		return dataSetEClass.getEOperations().get(114);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__SearchByQuery__String() {
+		return dataSetEClass.getEOperations().get(115);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetIndoorLocations() {
+		return dataSetEClass.getEOperations().get(116);
 	}
 
 	/**
@@ -861,8 +2472,188 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getItem__Log__String() {
+		return itemEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__Log__String_Integer() {
+		return itemEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__MetaTag__String() {
+		return itemEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__IdentifyBy__String_String() {
+		return itemEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__GetIdentifier__String() {
+		return itemEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__HasMetaTag__String() {
+		return itemEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__MatchesSearch__String() {
+		return itemEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__Delete() {
+		return itemEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__IsEqualItem__Item() {
+		return itemEClass.getEOperations().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__GetCreatedPrettyInLanguage__String() {
+		return itemEClass.getEOperations().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__GetCreatedPretty() {
+		return itemEClass.getEOperations().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__GetLastModifiedPrettyInLanguage__String() {
+		return itemEClass.getEOperations().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__GetLastModifiedPretty() {
+		return itemEClass.getEOperations().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__DeleteOnDeleteOf__Item() {
+		return itemEClass.getEOperations().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__DeleteIfEmptyOnDelete() {
+		return itemEClass.getEOperations().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__Update__Item() {
+		return itemEClass.getEOperations().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__ForceUpdate__Item() {
+		return itemEClass.getEOperations().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__UnMetaTag__String() {
+		return itemEClass.getEOperations().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__RemoveIdentifier__String() {
+		return itemEClass.getEOperations().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getExtension() {
 		return extensionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getExtension__Tag__String() {
+		return extensionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -881,6 +2672,78 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EAttribute getClassification_Name() {
 		return (EAttribute)classificationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getClassification__GetPersons() {
+		return classificationEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getClassification__GetContents() {
+		return classificationEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getClassification__GetOrganisations() {
+		return classificationEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getClassification__GetCount() {
+		return classificationEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getClassification__GetPersonsCount() {
+		return classificationEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getClassification__GetContentsCount() {
+		return classificationEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getClassification__GetOrganisationsCount() {
+		return classificationEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getClassification__GetSlug() {
+		return classificationEClass.getEOperations().get(7);
 	}
 
 	/**
@@ -996,6 +2859,33 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getOrganisation__GetPersons() {
+		return organisationEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getOrganisation__GetContents() {
+		return organisationEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getOrganisation__AddParticipant__Person() {
+		return organisationEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMetaTag() {
 		return metaTagEClass;
 	}
@@ -1016,6 +2906,51 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EReference getMetaTag_MetaTagged() {
 		return (EReference)metaTagEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMetaTag__GetWebAccounts() {
+		return metaTagEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMetaTag__GetInformationObjects() {
+		return metaTagEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMetaTag__GetExtensions() {
+		return metaTagEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMetaTag__GetCount() {
+		return metaTagEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMetaTag__GetInformationObjectsCount() {
+		return metaTagEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -1230,6 +3165,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getAttachment__GetOriginalFileUrl() {
+		return attachmentEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLocation() {
 		return locationEClass;
 	}
@@ -1394,6 +3338,24 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EReference getThumbRanking_RankedInformationObject() {
 		return (EReference)thumbRankingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getThumbRanking__IsThumbUp() {
+		return thumbRankingEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getThumbRanking__IsThumbDown() {
+		return thumbRankingEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1590,6 +3552,24 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getEvent__GetDatePrettyInLanguage__String() {
+		return eventEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEvent__GetDatePretty() {
+		return eventEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataFactory getDataFactory() {
 		return (DataFactory)getEFactoryInstance();
 	}
@@ -1624,6 +3604,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(personEClass, PERSON__PERSONS);
 		createEAttribute(personEClass, PERSON__TITLE);
 		createEReference(personEClass, PERSON__RANKED);
+		createEOperation(personEClass, PERSON___GET_CONTENTS);
+		createEOperation(personEClass, PERSON___GET_ORGANISATIONS);
+		createEOperation(personEClass, PERSON___ADD_CONTRIBUTED_CONTENT__CONTENT);
+		createEOperation(personEClass, PERSON___ADD_AUTHORED_CONTENT__CONTENT);
+		createEOperation(personEClass, PERSON___PARSE_FIRST_NAME);
+		createEOperation(personEClass, PERSON___PARSE_LAST_NAME);
 
 		informationObjectEClass = createEClass(INFORMATION_OBJECT);
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__CATEGORIES);
@@ -1638,6 +3624,57 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__BINARIES);
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__MAIN_CATEGORY);
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__META_INFORMATIONS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___TAG__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___CATEGORIZE__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ATTACH_IMAGE__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHMENTS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___STAR_RANK__INTEGER_INTEGER);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___VIEW);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___THUMBS_UP);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___THUMBS_DOWN);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_THUMBS_UP);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_THUMBS_DOWN);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_THUMBS_UP_COUNT);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_THUMBS_DOWN_COUNT);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_THUMBS_COUNT);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_VIEWS_COUNT);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_STAR_RANKING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___EXTEND__METAINFORMATION);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_WEB_ACCOUNTS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_WEB_SITES);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_PHONES);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_LOCATIONS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_EMAILS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INSTANT_MESSENGERS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ADD_EMAIL_ADDRESS__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ADD_WEB_SITE__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_WITH_COMMON_TAGS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ADD_WEB_ACCOUNT__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___HAS_IMAGES);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___CONNECT_TO__INFORMATIONOBJECT);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___CONNECT_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_TO_WITH_META_TAG__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_FROM_WITH_META_TAG__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INFORMATION_OBJECTS_CONNECTED_WITH_META_TAG__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTIONS_FROM__INFORMATIONOBJECT);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTIONS_TO__INFORMATIONOBJECT);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___CONNECT_TO_WITH_VALUE_AND_META_TAG__INFORMATIONOBJECT_STRING_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTION_TO__INFORMATIONOBJECT_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTION_FROM__INFORMATIONOBJECT_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHMENT_WITH_URL__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_URL__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ADD_PHONE__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_PERSONS_WITH_COMMON_TAGS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ORGANISATIONS_WITH_COMMON_TAGS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONTENTS_WITH_COMMON_TAGS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___UN_TAG__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___UN_CATEGORIZE__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_SLUG_NAME);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING);
 
 		contentEClass = createEClass(CONTENT);
 		createEReference(contentEClass, CONTENT__CONTENTS);
@@ -1648,6 +3685,11 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(contentEClass, CONTENT__LOCALE);
 		createEReference(contentEClass, CONTENT__TRANSFORMATIONS);
 		createEReference(contentEClass, CONTENT__VIDEOS);
+		createEOperation(contentEClass, CONTENT___GET_ORGANISATIONS);
+		createEOperation(contentEClass, CONTENT___GET_PERSONS);
+		createEOperation(contentEClass, CONTENT___COMMENT__STRING);
+		createEOperation(contentEClass, CONTENT___ADD_CONTRIBUTOR__PERSON);
+		createEOperation(contentEClass, CONTENT___ATTACH_DOCUMENT__STRING);
 
 		dataSetEClass = createEClass(DATA_SET);
 		createEReference(dataSetEClass, DATA_SET__ITEMS);
@@ -1659,6 +3701,123 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(dataSetEClass, DATA_SET__IDENT_COUNTER);
 		createEAttribute(dataSetEClass, DATA_SET__IDENT_PREFIX);
 		createEAttribute(dataSetEClass, DATA_SET__CREATED);
+		createEOperation(dataSetEClass, DATA_SET___ADD__ITEM);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_WITH_STRING_VALUE__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_NAME__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_LASTNAME__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_FIRST_NAME__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_TAG__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_META_TAG__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ALL_PERSONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ALL_CONTENTS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ALL_ORGANISATIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ALL_CATEGORIES);
+		createEOperation(dataSetEClass, DATA_SET___GET_CATEGORY__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ALL_TAGS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_MODIFIED_SINCE__DATE);
+		createEOperation(dataSetEClass, DATA_SET___GET_ALL_META_TAGS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ALL_CONNECTIONS);
+		createEOperation(dataSetEClass, DATA_SET___LOG__STRING);
+		createEOperation(dataSetEClass, DATA_SET___LOG__STRING_INTEGER);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENT_WITH_IDENT__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSON_WITH_IDENT__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATION_WITH_IDENT__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ATTACHMENT_WITH_IDENT__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_CATEGORIES__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_CATEGORIES__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_ALL_CATEGORIES__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_ONE_OF_CATEGORIES__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_ALL_CATEGORIES__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_ONE_OF_CATEGORIES__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_ALL_CATEGORIES__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_CATEGORIES__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_ALL_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_ALL_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_ONE_OF_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_ALL_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_ONE_OF_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_NAME__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_NAME__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_WITH_ALL_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_WITH_ONE_OF_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS);
+		createEOperation(dataSetEClass, DATA_SET___GET_TAGS);
+		createEOperation(dataSetEClass, DATA_SET___GET_META_TAGS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ATTACHMENTS);
+		createEOperation(dataSetEClass, DATA_SET___GET_BINARIES);
+		createEOperation(dataSetEClass, DATA_SET___GET_CATEGORIES);
+		createEOperation(dataSetEClass, DATA_SET___GET_CLASSIFICATIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONNECTIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_DOCUMENTS);
+		createEOperation(dataSetEClass, DATA_SET___GET_EMAILS);
+		createEOperation(dataSetEClass, DATA_SET___GET_EXTENSIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_IMAGES);
+		createEOperation(dataSetEClass, DATA_SET___GET_INSTANT_MESSENGERS);
+		createEOperation(dataSetEClass, DATA_SET___GET_LOCATIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_META_INFORMATIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_PHONES);
+		createEOperation(dataSetEClass, DATA_SET___GET_RANKINGS);
+		createEOperation(dataSetEClass, DATA_SET___GET_STAR_RANKINGS);
+		createEOperation(dataSetEClass, DATA_SET___GET_THUMB_RANKINGS);
+		createEOperation(dataSetEClass, DATA_SET___GET_TRANSFORMATIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_VIDEOS);
+		createEOperation(dataSetEClass, DATA_SET___GET_VIEW_RANKINGS);
+		createEOperation(dataSetEClass, DATA_SET___GET_WEB_ACCOUNTS);
+		createEOperation(dataSetEClass, DATA_SET___GET_WEB_SITES);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS_WITH_ALL_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS_WITH_ONE_OF_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_IDENTIFIERS);
+		createEOperation(dataSetEClass, DATA_SET___GET_IDENTIFIERS_WITH_KEY__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_IDENTIFIER_WITH_KEY_VALUE__STRING_STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEM_WITH_IDENTIFIER__STRING_STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSON_WITH_IDENTIFIER__STRING_STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENT_WITH_IDENTIFIER__STRING_STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATION_WITH_IDENTIFIER__STRING_STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_LOCATION_WITH_IDENTIFIER__STRING_STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_INDOOR_LOCATION_WITH_IDENTIFIER__STRING_STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_IMAGE_WITH_IDENTIFIER__STRING_STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_EMPTY_ITEM_WITH_IDENT__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_TAGS_WITH_MORE_THAN_XINFORMATION_OBJECTS__INTEGER);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_CREATED_SINCE__DATE);
+		createEOperation(dataSetEClass, DATA_SET___SEARCH_ITEMS__STRING);
+		createEOperation(dataSetEClass, DATA_SET___SEARCH_INFORMATION_OBJECTS__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS_WITH_ATTACHMENT__ATTACHMENT);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_ATTACHMENT__ATTACHMENT);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_ATTACHMENT__ATTACHMENT);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_ATTACHMENT__ATTACHMENT);
+		createEOperation(dataSetEClass, DATA_SET___GET_EQUAL_ITEM__ITEM);
+		createEOperation(dataSetEClass, DATA_SET___HAS_EQUAL_ITEM__ITEM);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_WITH_IDENT__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_ATTACHMENTS_WITH_CACHED_FILE_NAME__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_EVENTS_AFTER__DATE);
+		createEOperation(dataSetEClass, DATA_SET___GET_EVENTS_BEFORE__DATE);
+		createEOperation(dataSetEClass, DATA_SET___GET_EVENTS_BETWEEN_DATES__DATE_DATE);
+		createEOperation(dataSetEClass, DATA_SET___GET_SPICYNODES_REPRESENTATION);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONNECTIONS_BETWEEN_INFORMATION_OBJECTS_OF_DIFFERENT_CATEGORIES);
+		createEOperation(dataSetEClass, DATA_SET___GET_INFORMATION_OBJECTS_MODIFIED_SINCE__DATE);
+		createEOperation(dataSetEClass, DATA_SET___GET_RANDOM_XINFORMATION_OBJECTS__INTEGER);
+		createEOperation(dataSetEClass, DATA_SET___GET_RANDOM_XCONTENTS__INTEGER);
+		createEOperation(dataSetEClass, DATA_SET___GET_RANDOM_XPERSONS__INTEGER);
+		createEOperation(dataSetEClass, DATA_SET___GET_RANDOM_XORGANISATIONS__INTEGER);
+		createEOperation(dataSetEClass, DATA_SET___FORCE_ADD__ITEM);
+		createEOperation(dataSetEClass, DATA_SET___GET_IDENTS_OF_EXISTING_ITEMS);
+		createEOperation(dataSetEClass, DATA_SET___GET_CATEGORY_WITH_SLUG__STRING);
+		createEOperation(dataSetEClass, DATA_SET___REBUILD_INDEXES);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_ALL_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_ONE_OF_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_ALL_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_ONE_OF_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_ALL_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_ONE_OF_META_TAGS__ELIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_EVENTS);
+		createEOperation(dataSetEClass, DATA_SET___SEARCH_BY_QUERY__STRING);
+		createEOperation(dataSetEClass, DATA_SET___GET_INDOOR_LOCATIONS);
 
 		itemEClass = createEClass(ITEM);
 		createEReference(itemEClass, ITEM__DATA_SET);
@@ -1671,11 +3830,39 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(itemEClass, ITEM__IDENTIFIED_BY);
 		createEReference(itemEClass, ITEM__DELETE_ON_DELETE);
 		createEReference(itemEClass, ITEM__DELETED_IF_DELETED);
+		createEOperation(itemEClass, ITEM___LOG__STRING);
+		createEOperation(itemEClass, ITEM___LOG__STRING_INTEGER);
+		createEOperation(itemEClass, ITEM___META_TAG__STRING);
+		createEOperation(itemEClass, ITEM___IDENTIFY_BY__STRING_STRING);
+		createEOperation(itemEClass, ITEM___GET_IDENTIFIER__STRING);
+		createEOperation(itemEClass, ITEM___HAS_META_TAG__STRING);
+		createEOperation(itemEClass, ITEM___MATCHES_SEARCH__STRING);
+		createEOperation(itemEClass, ITEM___DELETE);
+		createEOperation(itemEClass, ITEM___IS_EQUAL_ITEM__ITEM);
+		createEOperation(itemEClass, ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING);
+		createEOperation(itemEClass, ITEM___GET_CREATED_PRETTY);
+		createEOperation(itemEClass, ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING);
+		createEOperation(itemEClass, ITEM___GET_LAST_MODIFIED_PRETTY);
+		createEOperation(itemEClass, ITEM___DELETE_ON_DELETE_OF__ITEM);
+		createEOperation(itemEClass, ITEM___DELETE_IF_EMPTY_ON_DELETE);
+		createEOperation(itemEClass, ITEM___UPDATE__ITEM);
+		createEOperation(itemEClass, ITEM___FORCE_UPDATE__ITEM);
+		createEOperation(itemEClass, ITEM___UN_META_TAG__STRING);
+		createEOperation(itemEClass, ITEM___REMOVE_IDENTIFIER__STRING);
 
 		extensionEClass = createEClass(EXTENSION);
+		createEOperation(extensionEClass, EXTENSION___TAG__STRING);
 
 		classificationEClass = createEClass(CLASSIFICATION);
 		createEAttribute(classificationEClass, CLASSIFICATION__NAME);
+		createEOperation(classificationEClass, CLASSIFICATION___GET_PERSONS);
+		createEOperation(classificationEClass, CLASSIFICATION___GET_CONTENTS);
+		createEOperation(classificationEClass, CLASSIFICATION___GET_ORGANISATIONS);
+		createEOperation(classificationEClass, CLASSIFICATION___GET_COUNT);
+		createEOperation(classificationEClass, CLASSIFICATION___GET_PERSONS_COUNT);
+		createEOperation(classificationEClass, CLASSIFICATION___GET_CONTENTS_COUNT);
+		createEOperation(classificationEClass, CLASSIFICATION___GET_ORGANISATIONS_COUNT);
+		createEOperation(classificationEClass, CLASSIFICATION___GET_SLUG);
 
 		categoryEClass = createEClass(CATEGORY);
 		createEReference(categoryEClass, CATEGORY__CATEGORIZED);
@@ -1691,10 +3878,18 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(organisationEClass, ORGANISATION__LEADER);
 		createEReference(organisationEClass, ORGANISATION__PARTICIPANTS);
 		createEReference(organisationEClass, ORGANISATION__ORGANISATIONS);
+		createEOperation(organisationEClass, ORGANISATION___GET_PERSONS);
+		createEOperation(organisationEClass, ORGANISATION___GET_CONTENTS);
+		createEOperation(organisationEClass, ORGANISATION___ADD_PARTICIPANT__PERSON);
 
 		metaTagEClass = createEClass(META_TAG);
 		createEAttribute(metaTagEClass, META_TAG__NAME);
 		createEReference(metaTagEClass, META_TAG__META_TAGGED);
+		createEOperation(metaTagEClass, META_TAG___GET_WEB_ACCOUNTS);
+		createEOperation(metaTagEClass, META_TAG___GET_INFORMATION_OBJECTS);
+		createEOperation(metaTagEClass, META_TAG___GET_EXTENSIONS);
+		createEOperation(metaTagEClass, META_TAG___GET_COUNT);
+		createEOperation(metaTagEClass, META_TAG___GET_INFORMATION_OBJECTS_COUNT);
 
 		phoneEClass = createEClass(PHONE);
 		createEAttribute(phoneEClass, PHONE__AREA_CODE);
@@ -1725,6 +3920,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(attachmentEClass, ATTACHMENT__FILE_EXTENSION);
 		createEAttribute(attachmentEClass, ATTACHMENT__FILE_IDENTIFIER);
 		createEAttribute(attachmentEClass, ATTACHMENT__CACHED_FILE_NAME);
+		createEOperation(attachmentEClass, ATTACHMENT___GET_ORIGINAL_FILE_URL);
 
 		locationEClass = createEClass(LOCATION);
 		createEAttribute(locationEClass, LOCATION__STREET);
@@ -1750,6 +3946,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		thumbRankingEClass = createEClass(THUMB_RANKING);
 		createEReference(thumbRankingEClass, THUMB_RANKING__RANKED_INFORMATION_OBJECT);
+		createEOperation(thumbRankingEClass, THUMB_RANKING___IS_THUMB_UP);
+		createEOperation(thumbRankingEClass, THUMB_RANKING___IS_THUMB_DOWN);
 
 		transformationEClass = createEClass(TRANSFORMATION);
 		createEReference(transformationEClass, TRANSFORMATION__TRANSFORMED);
@@ -1779,6 +3977,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		eventEClass = createEClass(EVENT);
 		createEAttribute(eventEClass, EVENT__DATE);
+		createEOperation(eventEClass, EVENT___GET_DATE_PRETTY_IN_LANGUAGE__STRING);
+		createEOperation(eventEClass, EVENT___GET_DATE_PRETTY);
 	}
 
 	/**
@@ -1843,7 +4043,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		identifierEClass.getESuperTypes().add(this.getItem());
 		eventEClass.getESuperTypes().add(this.getMetaInformation());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPerson_Lastname(), ecorePackage.getEString(), "lastname", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_Firstname(), ecorePackage.getEString(), "firstname", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1856,19 +4056,19 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getPerson_Title(), ecorePackage.getEString(), "title", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Ranked(), this.getRanking(), this.getRanking_Ranker(), "ranked", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(personEClass, this.getContent(), "getContents", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPerson__GetContents(), this.getContent(), "getContents", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(personEClass, this.getOrganisation(), "getOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPerson__GetOrganisations(), this.getOrganisation(), "getOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(personEClass, this.getContent(), "addContributedContent", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getPerson__AddContributedContent__Content(), this.getContent(), "addContributedContent", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContent(), "contributedContent", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(personEClass, this.getContent(), "addAuthoredContent", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getPerson__AddAuthoredContent__Content(), this.getContent(), "addAuthoredContent", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContent(), "authoredContent", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(personEClass, ecorePackage.getEString(), "parseFirstName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPerson__ParseFirstName(), ecorePackage.getEString(), "parseFirstName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(personEClass, ecorePackage.getEString(), "parseLastName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPerson__ParseLastName(), ecorePackage.getEString(), "parseLastName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(informationObjectEClass, InformationObject.class, "InformationObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInformationObject_Categories(), this.getCategory(), this.getCategory_Categorized(), "categories", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1884,138 +4084,138 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getInformationObject_MainCategory(), this.getCategory(), this.getCategory_MainCategorized(), "mainCategory", null, 0, 1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInformationObject_MetaInformations(), this.getMetaInformation(), this.getMetaInformation_InformationObjects(), "metaInformations", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getTag(), "tag", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__Tag__String(), this.getTag(), "tag", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getCategory(), "categorize", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__Categorize__String(), this.getCategory(), "categorize", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getImage(), "attachImage", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__AttachImage__String(), this.getImage(), "attachImage", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "imageUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getAttachment(), "getAttachments", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetAttachments(), this.getAttachment(), "getAttachments", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getStarRanking(), "starRank", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__StarRank__Integer_Integer(), this.getStarRanking(), "starRank", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "stars", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "ofStars", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getViewRanking(), "view", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__View(), this.getViewRanking(), "view", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getThumbRanking(), "thumbsUp", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__ThumbsUp(), this.getThumbRanking(), "thumbsUp", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getThumbRanking(), "thumbsDown", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__ThumbsDown(), this.getThumbRanking(), "thumbsDown", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getThumbRanking(), "getThumbsUp", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetThumbsUp(), this.getThumbRanking(), "getThumbsUp", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getThumbRanking(), "getThumbsDown", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetThumbsDown(), this.getThumbRanking(), "getThumbsDown", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, ecorePackage.getEIntegerObject(), "getThumbsUpCount", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetThumbsUpCount(), ecorePackage.getEIntegerObject(), "getThumbsUpCount", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, ecorePackage.getEIntegerObject(), "getThumbsDownCount", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetThumbsDownCount(), ecorePackage.getEIntegerObject(), "getThumbsDownCount", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, ecorePackage.getEIntegerObject(), "getThumbsCount", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetThumbsCount(), ecorePackage.getEIntegerObject(), "getThumbsCount", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, ecorePackage.getEIntegerObject(), "getViewsCount", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetViewsCount(), ecorePackage.getEIntegerObject(), "getViewsCount", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, ecorePackage.getEDoubleObject(), "getStarRanking", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetStarRanking(), ecorePackage.getEDoubleObject(), "getStarRanking", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getMetaInformation(), "extend", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__Extend__MetaInformation(), this.getMetaInformation(), "extend", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaInformation(), "metaInformation", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getWebAccount(), "getWebAccounts", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetWebAccounts(), this.getWebAccount(), "getWebAccounts", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getWebSite(), "getWebSites", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetWebSites(), this.getWebSite(), "getWebSites", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getPhone(), "getPhones", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetPhones(), this.getPhone(), "getPhones", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getLocation(), "getLocations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetLocations(), this.getLocation(), "getLocations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getEmail(), "getEmails", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetEmails(), this.getEmail(), "getEmails", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getInstantMessenger(), "getInstantMessengers", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetInstantMessengers(), this.getInstantMessenger(), "getInstantMessengers", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getEmail(), "addEmailAddress", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__AddEmailAddress__String(), this.getEmail(), "addEmailAddress", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "emailAdress", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getWebSite(), "addWebSite", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__AddWebSite__String(), this.getWebSite(), "addWebSite", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "url", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getInformationObject(), "getInformationObjectsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetInformationObjectsWithCommonTags(), this.getInformationObject(), "getInformationObjectsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getWebAccount(), "addWebAccount", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__AddWebAccount__String(), this.getWebAccount(), "addWebAccount", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "username", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, ecorePackage.getEBooleanObject(), "hasImages", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__HasImages(), ecorePackage.getEBooleanObject(), "hasImages", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getInformationObject(), "getInformationObjectsConnectedTo", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetInformationObjectsConnectedTo(), this.getInformationObject(), "getInformationObjectsConnectedTo", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getInformationObject(), "getInformationObjectsConnectedFrom", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetInformationObjectsConnectedFrom(), this.getInformationObject(), "getInformationObjectsConnectedFrom", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getInformationObject(), "getInformationObjectsConnected", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetInformationObjectsConnected(), this.getInformationObject(), "getInformationObjectsConnected", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "connectTo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__ConnectTo__InformationObject(), this.getConnection(), "connectTo", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "connectToWithMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__ConnectToWithMetaTag__InformationObject_String(), this.getConnection(), "connectToWithMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getInformationObject(), "getInformationObjectsConnectedToWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetInformationObjectsConnectedToWithMetaTag__String(), this.getInformationObject(), "getInformationObjectsConnectedToWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getInformationObject(), "getInformationObjectsConnectedFromWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetInformationObjectsConnectedFromWithMetaTag__String(), this.getInformationObject(), "getInformationObjectsConnectedFromWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getInformationObject(), "getInformationObjectsConnectedWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetInformationObjectsConnectedWithMetaTag__String(), this.getInformationObject(), "getInformationObjectsConnectedWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "getConnectionsFrom", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetConnectionsFrom__InformationObject(), this.getConnection(), "getConnectionsFrom", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "getConnectionsTo", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetConnectionsTo__InformationObject(), this.getConnection(), "getConnectionsTo", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "connectToWithValueAndMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__ConnectToWithValueAndMetaTag__InformationObject_String_String(), this.getConnection(), "connectToWithValueAndMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "getConnectionTo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetConnectionTo__InformationObject_String(), this.getConnection(), "getConnectionTo", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "getConnectionFrom", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetConnectionFrom__InformationObject_String(), this.getConnection(), "getConnectionFrom", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getAttachment(), "getAttachmentWithUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetAttachmentWithUrl__String(), this.getAttachment(), "getAttachmentWithUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "url", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getImage(), "getAttachedImageWithUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetAttachedImageWithUrl__String(), this.getImage(), "getAttachedImageWithUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "url", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getPhone(), "addPhone", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__AddPhone__String(), this.getPhone(), "addPhone", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "phoneNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getPerson(), "getPersonsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetPersonsWithCommonTags(), this.getPerson(), "getPersonsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getOrganisation(), "getOrganisationsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetOrganisationsWithCommonTags(), this.getOrganisation(), "getOrganisationsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, this.getContent(), "getContentsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetContentsWithCommonTags(), this.getContent(), "getContentsWithCommonTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getTag(), "unTag", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__UnTag__String(), this.getTag(), "unTag", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getCategory(), "unCategorize", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__UnCategorize__String(), this.getCategory(), "unCategorize", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(informationObjectEClass, ecorePackage.getEString(), "getSlugName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInformationObject__GetSlugName(), ecorePackage.getEString(), "getSlugName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "getConnectionsToWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetConnectionsToWithMetaTag__InformationObject_String(), this.getConnection(), "getConnectionsToWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(informationObjectEClass, this.getConnection(), "getConnectionsFromWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getInformationObject__GetConnectionsFromWithMetaTag__InformationObject_String(), this.getConnection(), "getConnectionsFromWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2029,17 +4229,17 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getContent_Transformations(), this.getTransformation(), this.getTransformation_Transformed(), "transformations", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContent_Videos(), this.getVideo(), null, "videos", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(contentEClass, this.getOrganisation(), "getOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContent__GetOrganisations(), this.getOrganisation(), "getOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(contentEClass, this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContent__GetPersons(), this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(contentEClass, this.getContent(), "comment", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getContent__Comment__String(), this.getContent(), "comment", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "comment", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(contentEClass, this.getPerson(), "addContributor", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getContent__AddContributor__Person(), this.getPerson(), "addContributor", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getPerson(), "contributor", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(contentEClass, this.getDocument(), "attachDocument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getContent__AttachDocument__String(), this.getDocument(), "attachDocument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "fileUrl", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataSetEClass, DataSet.class, "DataSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2053,325 +4253,325 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getDataSet_IdentPrefix(), ecorePackage.getEString(), "identPrefix", "a_", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_Created(), ecorePackage.getEDate(), "created", null, 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "add", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__Add__Item(), this.getItem(), "add", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getItemsWithStringValue", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetItemsWithStringValue__String(), this.getItem(), "getItemsWithStringValue", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "stringValue", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithName", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithName__String(), this.getPerson(), "getPersonsWithName", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithLastname", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithLastname__String(), this.getPerson(), "getPersonsWithLastname", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "lastname", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithFirstName", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithFirstName__String(), this.getPerson(), "getPersonsWithFirstName", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "firstname", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getTag(), "getTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetTag__String(), this.getTag(), "getTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getMetaTag(), "getMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetMetaTag__String(), this.getMetaTag(), "getMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getPerson(), "getAllPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetAllPersons(), this.getPerson(), "getAllPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getContent(), "getAllContents", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetAllContents(), this.getContent(), "getAllContents", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getOrganisation(), "getAllOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetAllOrganisations(), this.getOrganisation(), "getAllOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getCategory(), "getAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetAllCategories(), this.getCategory(), "getAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getCategory(), "getCategory", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetCategory__String(), this.getCategory(), "getCategory", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getTag(), "getAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetAllTags(), this.getTag(), "getAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getItemsModifiedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetItemsModifiedSince__Date(), this.getItem(), "getItemsModifiedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getMetaTag(), "getAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetAllMetaTags(), this.getMetaTag(), "getAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getConnection(), "getAllConnections", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetAllConnections(), this.getConnection(), "getAllConnections", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__Log__String(), null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__Log__String_Integer(), null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "level", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentWithIdent__String(), this.getContent(), "getContentWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonWithIdent__String(), this.getPerson(), "getPersonWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationWithIdent__String(), this.getOrganisation(), "getOrganisationWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getAttachment(), "getAttachmentWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetAttachmentWithIdent__String(), this.getAttachment(), "getAttachmentWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsWithAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetInformationObjectsWithAllCategories__EList(), this.getInformationObject(), "getInformationObjectsWithAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCategory(), "categories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsWithOneOfCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetInformationObjectsWithOneOfCategories__EList(), this.getInformationObject(), "getInformationObjectsWithOneOfCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCategory(), "categories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentsWithAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentsWithAllCategories__EList(), this.getContent(), "getContentsWithAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCategory(), "categories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentsWithOneOfCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentsWithOneOfCategories__EList(), this.getContent(), "getContentsWithOneOfCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCategory(), "categories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithAllCategories__EList(), this.getPerson(), "getPersonsWithAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCategory(), "categories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithOneOfCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithOneOfCategories__EList(), this.getPerson(), "getPersonsWithOneOfCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCategory(), "categories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationsWithAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationsWithAllCategories__EList(), this.getOrganisation(), "getOrganisationsWithAllCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCategory(), "categories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationsWithOneOfCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationsWithOneOfCategories__EList(), this.getOrganisation(), "getOrganisationsWithOneOfCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCategory(), "categories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsWithAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetInformationObjectsWithAllTags__EList(), this.getInformationObject(), "getInformationObjectsWithAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsWithOneOfTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetInformationObjectsWithOneOfTags__EList(), this.getInformationObject(), "getInformationObjectsWithOneOfTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationsWithAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationsWithAllTags__EList(), this.getOrganisation(), "getOrganisationsWithAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationsWithOneOfTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationsWithOneOfTags__EList(), this.getOrganisation(), "getOrganisationsWithOneOfTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithAllTags__EList(), this.getPerson(), "getPersonsWithAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithOneOfTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithOneOfTags__EList(), this.getPerson(), "getPersonsWithOneOfTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentsWithAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentsWithAllTags__EList(), this.getContent(), "getContentsWithAllTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentsWithOneOfTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentsWithOneOfTags__EList(), this.getContent(), "getContentsWithOneOfTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentsWithName", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentsWithName__String(), this.getContent(), "getContentsWithName", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationsWithName", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationsWithName__String(), this.getOrganisation(), "getOrganisationsWithName", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getItemsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetItemsWithAllMetaTags__EList(), this.getItem(), "getItemsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getItemsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetItemsWithOneOfMetaTags__EList(), this.getItem(), "getItemsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetPersons(), this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetOrganisations(), this.getOrganisation(), "getOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getContent(), "getContents", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetContents(), this.getContent(), "getContents", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetInformationObjects(), this.getInformationObject(), "getInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getTag(), "getTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetTags(), this.getTag(), "getTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getMetaTag(), "getMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetMetaTags(), this.getMetaTag(), "getMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getAttachment(), "getAttachments", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetAttachments(), this.getAttachment(), "getAttachments", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getBinary(), "getBinaries", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetBinaries(), this.getBinary(), "getBinaries", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getCategory(), "getCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetCategories(), this.getCategory(), "getCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getClassification(), "getClassifications", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetClassifications(), this.getClassification(), "getClassifications", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getConnection(), "getConnections", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetConnections(), this.getConnection(), "getConnections", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getDocument(), "getDocuments", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetDocuments(), this.getDocument(), "getDocuments", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getEmail(), "getEmails", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetEmails(), this.getEmail(), "getEmails", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getExtension(), "getExtensions", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetExtensions(), this.getExtension(), "getExtensions", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getImage(), "getImages", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetImages(), this.getImage(), "getImages", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getInstantMessenger(), "getInstantMessengers", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetInstantMessengers(), this.getInstantMessenger(), "getInstantMessengers", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getLocation(), "getLocations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetLocations(), this.getLocation(), "getLocations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getMetaInformation(), "getMetaInformations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetMetaInformations(), this.getMetaInformation(), "getMetaInformations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getPhone(), "getPhones", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetPhones(), this.getPhone(), "getPhones", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getRanking(), "getRankings", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetRankings(), this.getRanking(), "getRankings", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getStarRanking(), "getStarRankings", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetStarRankings(), this.getStarRanking(), "getStarRankings", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getThumbRanking(), "getThumbRankings", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetThumbRankings(), this.getThumbRanking(), "getThumbRankings", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getTransformation(), "getTransformations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetTransformations(), this.getTransformation(), "getTransformations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getVideo(), "getVideos", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetVideos(), this.getVideo(), "getVideos", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getViewRanking(), "getViewRankings", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetViewRankings(), this.getViewRanking(), "getViewRankings", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getWebAccount(), "getWebAccounts", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetWebAccounts(), this.getWebAccount(), "getWebAccounts", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getWebSite(), "getWebSites", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetWebSites(), this.getWebSite(), "getWebSites", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetInformationObjectsWithAllMetaTags__EList(), this.getInformationObject(), "getInformationObjectsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetInformationObjectsWithOneOfMetaTags__EList(), this.getInformationObject(), "getInformationObjectsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getIdentifier(), "getIdentifiers", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetIdentifiers(), this.getIdentifier(), "getIdentifiers", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getIdentifier(), "getIdentifiersWithKey", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetIdentifiersWithKey__String(), this.getIdentifier(), "getIdentifiersWithKey", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getIdentifier(), "getIdentifierWithKeyValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetIdentifierWithKeyValue__String_String(), this.getIdentifier(), "getIdentifierWithKeyValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getItemWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetItemWithIdentifier__String_String(), this.getItem(), "getItemWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonWithIdentifier__String_String(), this.getPerson(), "getPersonWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentWithIdentifier__String_String(), this.getContent(), "getContentWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationWithIdentifier__String_String(), this.getOrganisation(), "getOrganisationWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getLocation(), "getLocationWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetLocationWithIdentifier__String_String(), this.getLocation(), "getLocationWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getIndoorLocation(), "getIndoorLocationWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetIndoorLocationWithIdentifier__String_String(), this.getIndoorLocation(), "getIndoorLocationWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getImage(), "getImageWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetImageWithIdentifier__String_String(), this.getImage(), "getImageWithIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getEmptyItemWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetEmptyItemWithIdent__String(), this.getItem(), "getEmptyItemWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getTag(), "getTagsWithMoreThanXInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetTagsWithMoreThanXInformationObjects__Integer(), this.getTag(), "getTagsWithMoreThanXInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getItemsCreatedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetItemsCreatedSince__Date(), this.getItem(), "getItemsCreatedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "searchItems", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__SearchItems__String(), this.getItem(), "searchItems", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "term", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "searchInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__SearchInformationObjects__String(), this.getInformationObject(), "searchInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "term", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetInformationObjectsWithAttachment__Attachment(), this.getInformationObject(), "getInformationObjectsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAttachment(), "attachment", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithAttachment__Attachment(), this.getPerson(), "getPersonsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAttachment(), "attachment", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationsWithAttachment__Attachment(), this.getOrganisation(), "getOrganisationsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAttachment(), "attachment", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentsWithAttachment__Attachment(), this.getContent(), "getContentsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAttachment(), "attachment", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getEqualItem", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetEqualItem__Item(), this.getItem(), "getEqualItem", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, ecorePackage.getEBooleanObject(), "hasEqualItem", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__HasEqualItem__Item(), ecorePackage.getEBooleanObject(), "hasEqualItem", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "getItemsWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetItemsWithIdent__String(), this.getItem(), "getItemsWithIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "ident", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getAttachment(), "getAttachmentsWithCachedFileName", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetAttachmentsWithCachedFileName__String(), this.getAttachment(), "getAttachmentsWithCachedFileName", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "cachedFileName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getEvent(), "getEventsAfter", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetEventsAfter__Date(), this.getEvent(), "getEventsAfter", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getEvent(), "getEventsBefore", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetEventsBefore__Date(), this.getEvent(), "getEventsBefore", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getEvent(), "getEventsBetweenDates", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetEventsBetweenDates__Date_Date(), this.getEvent(), "getEventsBetweenDates", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "after", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "before", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, ecorePackage.getEString(), "getSpicynodesRepresentation", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetSpicynodesRepresentation(), ecorePackage.getEString(), "getSpicynodesRepresentation", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getConnection(), "getConnectionsBetweenInformationObjectsOfDifferentCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetConnectionsBetweenInformationObjectsOfDifferentCategories(), this.getConnection(), "getConnectionsBetweenInformationObjectsOfDifferentCategories", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getInformationObjectsModifiedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetInformationObjectsModifiedSince__Date(), this.getInformationObject(), "getInformationObjectsModifiedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getInformationObject(), "getRandomXInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetRandomXInformationObjects__Integer(), this.getInformationObject(), "getRandomXInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getRandomXContents", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetRandomXContents__Integer(), this.getContent(), "getRandomXContents", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getRandomXPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetRandomXPersons__Integer(), this.getPerson(), "getRandomXPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getRandomXOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetRandomXOrganisations__Integer(), this.getOrganisation(), "getRandomXOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "x", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "forceAdd", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__ForceAdd__Item(), this.getItem(), "forceAdd", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, ecorePackage.getEString(), "getIdentsOfExistingItems", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetIdentsOfExistingItems(), ecorePackage.getEString(), "getIdentsOfExistingItems", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getCategory(), "getCategoryWithSlug", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetCategoryWithSlug__String(), this.getCategory(), "getCategoryWithSlug", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "slug", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, null, "rebuildIndexes", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__RebuildIndexes(), null, "rebuildIndexes", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentsWithAllMetaTags__EList(), this.getContent(), "getContentsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getContent(), "getContentsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetContentsWithOneOfMetaTags__EList(), this.getContent(), "getContentsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithAllMetaTags__EList(), this.getPerson(), "getPersonsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getPerson(), "getPersonsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetPersonsWithOneOfMetaTags__EList(), this.getPerson(), "getPersonsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationsWithAllMetaTags__EList(), this.getOrganisation(), "getOrganisationsWithAllMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getOrganisation(), "getOrganisationsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetOrganisationsWithOneOfMetaTags__EList(), this.getOrganisation(), "getOrganisationsWithOneOfMetaTags", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getMetaTag(), "tags", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getEvent(), "getEvents", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetEvents(), this.getEvent(), "getEvents", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataSetEClass, this.getItem(), "searchByQuery", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__SearchByQuery__String(), this.getItem(), "searchByQuery", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "query", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataSetEClass, this.getIndoorLocation(), "getIndoorLocations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDataSet__GetIndoorLocations(), this.getIndoorLocation(), "getIndoorLocations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_DataSet(), this.getDataSet(), this.getDataSet_Items(), "dataSet", null, 0, 1, Item.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2385,84 +4585,84 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getItem_DeleteOnDelete(), this.getItem(), this.getItem_DeletedIfDeleted(), "deleteOnDelete", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_DeletedIfDeleted(), this.getItem(), this.getItem_DeleteOnDelete(), "deletedIfDeleted", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(itemEClass, null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__Log__String(), null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__Log__String_Integer(), null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "level", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, this.getMetaTag(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__MetaTag__String(), this.getMetaTag(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, this.getIdentifier(), "identifyBy", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__IdentifyBy__String_String(), this.getIdentifier(), "identifyBy", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, this.getIdentifier(), "getIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__GetIdentifier__String(), this.getIdentifier(), "getIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, ecorePackage.getEBooleanObject(), "hasMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__HasMetaTag__String(), ecorePackage.getEBooleanObject(), "hasMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "tag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, ecorePackage.getEBooleanObject(), "matchesSearch", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__MatchesSearch__String(), ecorePackage.getEBooleanObject(), "matchesSearch", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "term", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(itemEClass, null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getItem__Delete(), null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, ecorePackage.getEBooleanObject(), "isEqualItem", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__IsEqualItem__Item(), ecorePackage.getEBooleanObject(), "isEqualItem", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, ecorePackage.getEString(), "getCreatedPrettyInLanguage", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__GetCreatedPrettyInLanguage__String(), ecorePackage.getEString(), "getCreatedPrettyInLanguage", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "language", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(itemEClass, ecorePackage.getEString(), "getCreatedPretty", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getItem__GetCreatedPretty(), ecorePackage.getEString(), "getCreatedPretty", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, ecorePackage.getEString(), "getLastModifiedPrettyInLanguage", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__GetLastModifiedPrettyInLanguage__String(), ecorePackage.getEString(), "getLastModifiedPrettyInLanguage", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "language", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(itemEClass, ecorePackage.getEString(), "getLastModifiedPretty", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getItem__GetLastModifiedPretty(), ecorePackage.getEString(), "getLastModifiedPretty", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, this.getItem(), "deleteOnDeleteOf", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__DeleteOnDeleteOf__Item(), this.getItem(), "deleteOnDeleteOf", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(itemEClass, null, "deleteIfEmptyOnDelete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getItem__DeleteIfEmptyOnDelete(), null, "deleteIfEmptyOnDelete", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, this.getItem(), "update", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__Update__Item(), this.getItem(), "update", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, this.getItem(), "forceUpdate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__ForceUpdate__Item(), this.getItem(), "forceUpdate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, this.getMetaTag(), "unMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__UnMetaTag__String(), this.getMetaTag(), "unMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(itemEClass, this.getIdentifier(), "removeIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getItem__RemoveIdentifier__String(), this.getIdentifier(), "removeIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(extensionEClass, Extension.class, "Extension", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(extensionEClass, this.getMetaTag(), "tag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getExtension__Tag__String(), this.getMetaTag(), "tag", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(classificationEClass, Classification.class, "Classification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassification_Name(), ecorePackage.getEString(), "name", null, 1, 1, Classification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(classificationEClass, this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getClassification__GetPersons(), this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(classificationEClass, this.getContent(), "getContents", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getClassification__GetContents(), this.getContent(), "getContents", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(classificationEClass, this.getOrganisation(), "getOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getClassification__GetOrganisations(), this.getOrganisation(), "getOrganisations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(classificationEClass, ecorePackage.getEIntegerObject(), "getCount", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getClassification__GetCount(), ecorePackage.getEIntegerObject(), "getCount", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(classificationEClass, ecorePackage.getEIntegerObject(), "getPersonsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getClassification__GetPersonsCount(), ecorePackage.getEIntegerObject(), "getPersonsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(classificationEClass, ecorePackage.getEIntegerObject(), "getContentsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getClassification__GetContentsCount(), ecorePackage.getEIntegerObject(), "getContentsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(classificationEClass, ecorePackage.getEIntegerObject(), "getOrganisationsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getClassification__GetOrganisationsCount(), ecorePackage.getEIntegerObject(), "getOrganisationsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(classificationEClass, ecorePackage.getEString(), "getSlug", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getClassification__GetSlug(), ecorePackage.getEString(), "getSlug", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCategory_Categorized(), this.getInformationObject(), this.getInformationObject_Categories(), "categorized", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2479,26 +4679,26 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getOrganisation_Participants(), this.getPerson(), this.getPerson_Participates(), "participants", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrganisation_Organisations(), this.getOrganisation(), this.getOrganisation_ParentOrganisation(), "organisations", null, 0, -1, Organisation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(organisationEClass, this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getOrganisation__GetPersons(), this.getPerson(), "getPersons", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(organisationEClass, this.getContent(), "getContents", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getOrganisation__GetContents(), this.getContent(), "getContents", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(organisationEClass, this.getPerson(), "addParticipant", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getOrganisation__AddParticipant__Person(), this.getPerson(), "addParticipant", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getPerson(), "participant", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(metaTagEClass, MetaTag.class, "MetaTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMetaTag_Name(), ecorePackage.getEString(), "name", null, 0, 1, MetaTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMetaTag_MetaTagged(), this.getItem(), this.getItem_MetaTags(), "metaTagged", null, 0, -1, MetaTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(metaTagEClass, this.getWebAccount(), "getWebAccounts", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getMetaTag__GetWebAccounts(), this.getWebAccount(), "getWebAccounts", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(metaTagEClass, this.getInformationObject(), "getInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getMetaTag__GetInformationObjects(), this.getInformationObject(), "getInformationObjects", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(metaTagEClass, this.getExtension(), "getExtensions", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getMetaTag__GetExtensions(), this.getExtension(), "getExtensions", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(metaTagEClass, ecorePackage.getEIntegerObject(), "getCount", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getMetaTag__GetCount(), ecorePackage.getEIntegerObject(), "getCount", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(metaTagEClass, ecorePackage.getEIntegerObject(), "getInformationObjectsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getMetaTag__GetInformationObjectsCount(), ecorePackage.getEIntegerObject(), "getInformationObjectsCount", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(phoneEClass, Phone.class, "Phone", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPhone_AreaCode(), ecorePackage.getEString(), "areaCode", null, 0, 1, Phone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2530,7 +4730,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getAttachment_FileIdentifier(), ecorePackage.getEString(), "fileIdentifier", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttachment_CachedFileName(), ecorePackage.getEString(), "cachedFileName", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(attachmentEClass, ecorePackage.getEString(), "getOriginalFileUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getAttachment__GetOriginalFileUrl(), ecorePackage.getEString(), "getOriginalFileUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(locationEClass, Location.class, "Location", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLocation_Street(), ecorePackage.getEString(), "street", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2557,9 +4757,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEClass(thumbRankingEClass, ThumbRanking.class, "ThumbRanking", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getThumbRanking_RankedInformationObject(), this.getInformationObject(), this.getInformationObject_ThumbRankings(), "rankedInformationObject", null, 0, 1, ThumbRanking.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(thumbRankingEClass, ecorePackage.getEBooleanObject(), "isThumbUp", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getThumbRanking__IsThumbUp(), ecorePackage.getEBooleanObject(), "isThumbUp", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(thumbRankingEClass, ecorePackage.getEBooleanObject(), "isThumbDown", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getThumbRanking__IsThumbDown(), ecorePackage.getEBooleanObject(), "isThumbDown", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransformation_Transformed(), this.getContent(), this.getContent_Transformations(), "transformed", null, 0, -1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2590,10 +4790,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEvent_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(eventEClass, ecorePackage.getEString(), "getDatePrettyInLanguage", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getEvent__GetDatePrettyInLanguage__String(), ecorePackage.getEString(), "getDatePrettyInLanguage", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "language", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(eventEClass, ecorePackage.getEString(), "getDatePretty", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getEvent__GetDatePretty(), ecorePackage.getEString(), "getDatePretty", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

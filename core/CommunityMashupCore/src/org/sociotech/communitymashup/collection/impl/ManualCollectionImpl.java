@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.collection.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -116,6 +117,22 @@ public class ManualCollectionImpl extends ItemsCollectionImpl implements ManualC
 		return item;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CollectionPackage.MANUAL_COLLECTION___ADD_ITEM__ITEM:
+				return addItem((Item)arguments.get(0));
+			case CollectionPackage.MANUAL_COLLECTION___REMOVE_ITEM__ITEM:
+				return removeItem((Item)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
 
 	/**
 	 * Generates an EObjectCondition to check whether an Object is of the type ManualCollection.

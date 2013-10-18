@@ -13,6 +13,7 @@ package org.sociotech.communitymashup.application;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -152,6 +153,87 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONFIGURABLE_ELEMENT_FEATURE_COUNT = 7;
+
+	/**
+	 * The operation id for the '<em>Get Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT___GET_PROPERTY__STRING = 0;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT___ADD_PROPERTY__STRING_STRING = 1;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT___ADD_PROPERTY__PROPERTY = 2;
+
+	/**
+	 * The operation id for the '<em>Get Property Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE__STRING = 3;
+
+	/**
+	 * The operation id for the '<em>Is Property True</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE__STRING = 4;
+
+	/**
+	 * The operation id for the '<em>Get Property Value Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING = 5;
+
+	/**
+	 * The operation id for the '<em>Is Property True Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING = 6;
+
+	/**
+	 * The operation id for the '<em>Remove Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT___REMOVE_PROPERTY__STRING = 7;
+
+	/**
+	 * The number of operations of the '<em>Configurable Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURABLE_ELEMENT_OPERATION_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.SourceImpl <em>Source</em>}' class.
@@ -315,6 +397,123 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SOURCE_FEATURE_COUNT = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Get Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___GET_PROPERTY__STRING = CONFIGURABLE_ELEMENT___GET_PROPERTY__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___ADD_PROPERTY__STRING_STRING = CONFIGURABLE_ELEMENT___ADD_PROPERTY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___ADD_PROPERTY__PROPERTY = CONFIGURABLE_ELEMENT___ADD_PROPERTY__PROPERTY;
+
+	/**
+	 * The operation id for the '<em>Get Property Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___GET_PROPERTY_VALUE__STRING = CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___IS_PROPERTY_TRUE__STRING = CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Property Value Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING = CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING = CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___REMOVE_PROPERTY__STRING = CONFIGURABLE_ELEMENT___REMOVE_PROPERTY__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Log Level Int Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___GET_LOG_LEVEL_INT_VALUE = CONFIGURABLE_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___START = CONFIGURABLE_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___STOP = CONFIGURABLE_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Pause</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___PAUSE = CONFIGURABLE_ELEMENT_OPERATION_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_OPERATION_COUNT = CONFIGURABLE_ELEMENT_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.MashupImpl <em>Mashup</em>}' class.
@@ -579,6 +778,141 @@ public interface ApplicationPackage extends EPackage {
 	int MASHUP_FEATURE_COUNT = SOURCE_FEATURE_COUNT + 11;
 
 	/**
+	 * The operation id for the '<em>Get Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___GET_PROPERTY__STRING = SOURCE___GET_PROPERTY__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___ADD_PROPERTY__STRING_STRING = SOURCE___ADD_PROPERTY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___ADD_PROPERTY__PROPERTY = SOURCE___ADD_PROPERTY__PROPERTY;
+
+	/**
+	 * The operation id for the '<em>Get Property Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___GET_PROPERTY_VALUE__STRING = SOURCE___GET_PROPERTY_VALUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___IS_PROPERTY_TRUE__STRING = SOURCE___IS_PROPERTY_TRUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Property Value Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING = SOURCE___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING = SOURCE___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___REMOVE_PROPERTY__STRING = SOURCE___REMOVE_PROPERTY__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Log Level Int Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___GET_LOG_LEVEL_INT_VALUE = SOURCE___GET_LOG_LEVEL_INT_VALUE;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___START = SOURCE___START;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___STOP = SOURCE___STOP;
+
+	/**
+	 * The operation id for the '<em>Pause</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___PAUSE = SOURCE___PAUSE;
+
+	/**
+	 * The operation id for the '<em>Get New Source Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___GET_NEW_SOURCE_IDENT = SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Source With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP___GET_SOURCE_WITH_IDENT__STRING = SOURCE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Mashup</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_OPERATION_COUNT = SOURCE_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.MappingRuleImpl <em>Mapping Rule</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -596,6 +930,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAPPING_RULE_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Mapping Rule</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPING_RULE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.ConfigurationImpl <em>Configuration</em>}' class.
@@ -626,6 +969,15 @@ public interface ApplicationPackage extends EPackage {
 	int CONFIGURATION_FEATURE_COUNT = 1;
 
 	/**
+	 * The number of operations of the '<em>Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.PersistencyImpl <em>Persistency</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -643,6 +995,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSISTENCY_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Persistency</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENCY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.XMLFileImpl <em>XML File</em>}' class.
@@ -664,6 +1025,15 @@ public interface ApplicationPackage extends EPackage {
 	int XML_FILE_FEATURE_COUNT = PERSISTENCY_FEATURE_COUNT + 0;
 
 	/**
+	 * The number of operations of the '<em>XML File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_FILE_OPERATION_COUNT = PERSISTENCY_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.DatabaseImpl <em>Database</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -681,6 +1051,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATABASE_FEATURE_COUNT = PERSISTENCY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Database</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_OPERATION_COUNT = PERSISTENCY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.PropertyImpl <em>Property</em>}' class.
@@ -772,6 +1151,60 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTY_FEATURE_COUNT = 8;
+
+	/**
+	 * The operation id for the '<em>Is Value List</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY___IS_VALUE_LIST = 0;
+
+	/**
+	 * The operation id for the '<em>Is Value Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY___IS_VALUE_RANGE = 1;
+
+	/**
+	 * The operation id for the '<em>Get List Of Values</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY___GET_LIST_OF_VALUES = 2;
+
+	/**
+	 * The operation id for the '<em>Get Min Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY___GET_MIN_VALUE = 3;
+
+	/**
+	 * The operation id for the '<em>Get Max Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY___GET_MAX_VALUE = 4;
+
+	/**
+	 * The number of operations of the '<em>Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_OPERATION_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.OCLRestrictedPropertyImpl <em>OCL Restricted Property</em>}' class.
@@ -873,6 +1306,60 @@ public interface ApplicationPackage extends EPackage {
 	 */
 	int OCL_RESTRICTED_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 1;
 
+
+	/**
+	 * The operation id for the '<em>Is Value List</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_RESTRICTED_PROPERTY___IS_VALUE_LIST = PROPERTY___IS_VALUE_LIST;
+
+	/**
+	 * The operation id for the '<em>Is Value Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_RESTRICTED_PROPERTY___IS_VALUE_RANGE = PROPERTY___IS_VALUE_RANGE;
+
+	/**
+	 * The operation id for the '<em>Get List Of Values</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_RESTRICTED_PROPERTY___GET_LIST_OF_VALUES = PROPERTY___GET_LIST_OF_VALUES;
+
+	/**
+	 * The operation id for the '<em>Get Min Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_RESTRICTED_PROPERTY___GET_MIN_VALUE = PROPERTY___GET_MIN_VALUE;
+
+	/**
+	 * The operation id for the '<em>Get Max Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_RESTRICTED_PROPERTY___GET_MAX_VALUE = PROPERTY___GET_MAX_VALUE;
+
+	/**
+	 * The number of operations of the '<em>OCL Restricted Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCL_RESTRICTED_PROPERTY_OPERATION_COUNT = PROPERTY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.MashupContainerImpl <em>Mashup Container</em>}' class.
@@ -982,6 +1469,60 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MASHUP_CONTAINER_FEATURE_COUNT = 10;
+
+	/**
+	 * The operation id for the '<em>Get Configuration Admins</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER___GET_CONFIGURATION_ADMINS = 0;
+
+	/**
+	 * The operation id for the '<em>Set New Ident For</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER___SET_NEW_IDENT_FOR__CONFIGURABLEELEMENT = 1;
+
+	/**
+	 * The operation id for the '<em>Get New Ident Number</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER___GET_NEW_IDENT_NUMBER = 2;
+
+	/**
+	 * The operation id for the '<em>Get Mashup With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER___GET_MASHUP_WITH_IDENT__STRING = 3;
+
+	/**
+	 * The operation id for the '<em>Get Source Configuration With Ident</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER___GET_SOURCE_CONFIGURATION_WITH_IDENT__STRING = 4;
+
+	/**
+	 * The number of operations of the '<em>Mashup Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_CONTAINER_OPERATION_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -1100,6 +1641,87 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE_FEATURE_COUNT = CONFIGURABLE_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE___GET_PROPERTY__STRING = CONFIGURABLE_ELEMENT___GET_PROPERTY__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE___ADD_PROPERTY__STRING_STRING = CONFIGURABLE_ELEMENT___ADD_PROPERTY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE___ADD_PROPERTY__PROPERTY = CONFIGURABLE_ELEMENT___ADD_PROPERTY__PROPERTY;
+
+	/**
+	 * The operation id for the '<em>Get Property Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE___GET_PROPERTY_VALUE__STRING = CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE___IS_PROPERTY_TRUE__STRING = CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Property Value Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING = CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING = CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE___REMOVE_PROPERTY__STRING = CONFIGURABLE_ELEMENT___REMOVE_PROPERTY__STRING;
+
+	/**
+	 * The number of operations of the '<em>Interface</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_OPERATION_COUNT = CONFIGURABLE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.RESTInterfaceImpl <em>REST Interface</em>}' class.
@@ -1228,6 +1850,87 @@ public interface ApplicationPackage extends EPackage {
 	 */
 	int REST_INTERFACE_FEATURE_COUNT = INTERFACE_FEATURE_COUNT + 1;
 
+
+	/**
+	 * The operation id for the '<em>Get Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE___GET_PROPERTY__STRING = INTERFACE___GET_PROPERTY__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE___ADD_PROPERTY__STRING_STRING = INTERFACE___ADD_PROPERTY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE___ADD_PROPERTY__PROPERTY = INTERFACE___ADD_PROPERTY__PROPERTY;
+
+	/**
+	 * The operation id for the '<em>Get Property Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE___GET_PROPERTY_VALUE__STRING = INTERFACE___GET_PROPERTY_VALUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE___IS_PROPERTY_TRUE__STRING = INTERFACE___IS_PROPERTY_TRUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Property Value Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING = INTERFACE___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING = INTERFACE___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE___REMOVE_PROPERTY__STRING = INTERFACE___REMOVE_PROPERTY__STRING;
+
+	/**
+	 * The number of operations of the '<em>REST Interface</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REST_INTERFACE_OPERATION_COUNT = INTERFACE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.FEEDInterfaceImpl <em>FEED Interface</em>}' class.
@@ -1430,6 +2133,87 @@ public interface ApplicationPackage extends EPackage {
 
 
 	/**
+	 * The operation id for the '<em>Get Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE___GET_PROPERTY__STRING = INTERFACE___GET_PROPERTY__STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE___ADD_PROPERTY__STRING_STRING = INTERFACE___ADD_PROPERTY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE___ADD_PROPERTY__PROPERTY = INTERFACE___ADD_PROPERTY__PROPERTY;
+
+	/**
+	 * The operation id for the '<em>Get Property Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE___GET_PROPERTY_VALUE__STRING = INTERFACE___GET_PROPERTY_VALUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE___IS_PROPERTY_TRUE__STRING = INTERFACE___IS_PROPERTY_TRUE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Property Value Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING = INTERFACE___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Is Property True Else Default</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING = INTERFACE___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE___REMOVE_PROPERTY__STRING = INTERFACE___REMOVE_PROPERTY__STRING;
+
+	/**
+	 * The number of operations of the '<em>FEED Interface</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEED_INTERFACE_OPERATION_COUNT = INTERFACE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.SecurityImpl <em>Security</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1456,6 +2240,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SECURITY_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Security</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURITY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.OAuthConfigImpl <em>OAuth Config</em>}' class.
@@ -1513,6 +2306,15 @@ public interface ApplicationPackage extends EPackage {
 	int OAUTH_CONFIG_FEATURE_COUNT = SECURITY_FEATURE_COUNT + 3;
 
 	/**
+	 * The number of operations of the '<em>OAuth Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OAUTH_CONFIG_OPERATION_COUNT = SECURITY_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.ApplicationKeyConfigImpl <em>Key Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1548,6 +2350,24 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int APPLICATION_KEY_CONFIG_FEATURE_COUNT = SECURITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Has Application Key</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_KEY_CONFIG___HAS_APPLICATION_KEY__STRING = SECURITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Key Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_KEY_CONFIG_OPERATION_COUNT = SECURITY_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.OAuthClientConfigImpl <em>OAuth Client Config</em>}' class.
@@ -1713,6 +2533,15 @@ public interface ApplicationPackage extends EPackage {
 	int OAUTH_CLIENT_CONFIG_FEATURE_COUNT = 16;
 
 	/**
+	 * The number of operations of the '<em>OAuth Client Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OAUTH_CLIENT_CONFIG_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.OAuthAdminImpl <em>OAuth Admin</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1748,6 +2577,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int OAUTH_ADMIN_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>OAuth Admin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OAUTH_ADMIN_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.OAuthClientScopeImpl <em>OAuth Client Scope</em>}' class.
@@ -1904,6 +2742,15 @@ public interface ApplicationPackage extends EPackage {
 	int OAUTH_CLIENT_SCOPE_FEATURE_COUNT = 15;
 
 	/**
+	 * The number of operations of the '<em>OAuth Client Scope</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OAUTH_CLIENT_SCOPE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.impl.MashupAdminImpl <em>Mashup Admin</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1993,6 +2840,15 @@ public interface ApplicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MASHUP_ADMIN_FEATURE_COUNT = 8;
+
+	/**
+	 * The number of operations of the '<em>Mashup Admin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP_ADMIN_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.application.SourceState <em>Source State</em>}' enum.
@@ -2136,6 +2992,46 @@ public interface ApplicationPackage extends EPackage {
 	EAttribute getSource_UpdateRound();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Source#getLogLevelIntValue() <em>Get Log Level Int Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Log Level Int Value</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Source#getLogLevelIntValue()
+	 * @generated
+	 */
+	EOperation getSource__GetLogLevelIntValue();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Source#start() <em>Start</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Start</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Source#start()
+	 * @generated
+	 */
+	EOperation getSource__Start();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Source#stop() <em>Stop</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Stop</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Source#stop()
+	 * @generated
+	 */
+	EOperation getSource__Stop();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Source#pause() <em>Pause</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Pause</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Source#pause()
+	 * @generated
+	 */
+	EOperation getSource__Pause();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.Mashup <em>Mashup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2265,6 +3161,26 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMashup_SourceIdentCounter();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Mashup#getNewSourceIdent() <em>Get New Source Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get New Source Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Mashup#getNewSourceIdent()
+	 * @generated
+	 */
+	EOperation getMashup__GetNewSourceIdent();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Mashup#getSourceWithIdent(java.lang.String) <em>Get Source With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Source With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Mashup#getSourceWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getMashup__GetSourceWithIdent__String();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.MappingRule <em>Mapping Rule</em>}'.
@@ -2426,6 +3342,56 @@ public interface ApplicationPackage extends EPackage {
 	EAttribute getProperty_PropertyType();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Property#isValueList() <em>Is Value List</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Value List</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Property#isValueList()
+	 * @generated
+	 */
+	EOperation getProperty__IsValueList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Property#isValueRange() <em>Is Value Range</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Value Range</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Property#isValueRange()
+	 * @generated
+	 */
+	EOperation getProperty__IsValueRange();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Property#getListOfValues() <em>Get List Of Values</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get List Of Values</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Property#getListOfValues()
+	 * @generated
+	 */
+	EOperation getProperty__GetListOfValues();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Property#getMinValue() <em>Get Min Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Min Value</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Property#getMinValue()
+	 * @generated
+	 */
+	EOperation getProperty__GetMinValue();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Property#getMaxValue() <em>Get Max Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Max Value</em>' operation.
+	 * @see org.sociotech.communitymashup.application.Property#getMaxValue()
+	 * @generated
+	 */
+	EOperation getProperty__GetMaxValue();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.OCLRestrictedProperty <em>OCL Restricted Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2565,6 +3531,56 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMashupContainer_IdentCounter();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.MashupContainer#getConfigurationAdmins() <em>Get Configuration Admins</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Configuration Admins</em>' operation.
+	 * @see org.sociotech.communitymashup.application.MashupContainer#getConfigurationAdmins()
+	 * @generated
+	 */
+	EOperation getMashupContainer__GetConfigurationAdmins();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.MashupContainer#setNewIdentFor(org.sociotech.communitymashup.application.ConfigurableElement) <em>Set New Ident For</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set New Ident For</em>' operation.
+	 * @see org.sociotech.communitymashup.application.MashupContainer#setNewIdentFor(org.sociotech.communitymashup.application.ConfigurableElement)
+	 * @generated
+	 */
+	EOperation getMashupContainer__SetNewIdentFor__ConfigurableElement();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.MashupContainer#getNewIdentNumber() <em>Get New Ident Number</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get New Ident Number</em>' operation.
+	 * @see org.sociotech.communitymashup.application.MashupContainer#getNewIdentNumber()
+	 * @generated
+	 */
+	EOperation getMashupContainer__GetNewIdentNumber();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.MashupContainer#getMashupWithIdent(java.lang.String) <em>Get Mashup With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Mashup With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.application.MashupContainer#getMashupWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getMashupContainer__GetMashupWithIdent__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.MashupContainer#getSourceConfigurationWithIdent(java.lang.String) <em>Get Source Configuration With Ident</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Source Configuration With Ident</em>' operation.
+	 * @see org.sociotech.communitymashup.application.MashupContainer#getSourceConfigurationWithIdent(java.lang.String)
+	 * @generated
+	 */
+	EOperation getMashupContainer__GetSourceConfigurationWithIdent__String();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.Interface <em>Interface</em>}'.
@@ -2834,6 +3850,16 @@ public interface ApplicationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getApplicationKeyConfig_ApplicationKeys();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ApplicationKeyConfig#hasApplicationKey(java.lang.String) <em>Has Application Key</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Has Application Key</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ApplicationKeyConfig#hasApplicationKey(java.lang.String)
+	 * @generated
+	 */
+	EOperation getApplicationKeyConfig__HasApplicationKey__String();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.application.OAuthClientConfig <em>OAuth Client Config</em>}'.
@@ -3414,6 +4440,86 @@ public interface ApplicationPackage extends EPackage {
 	EAttribute getConfigurableElement_Ident();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ConfigurableElement#getProperty(java.lang.String) <em>Get Property</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Property</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ConfigurableElement#getProperty(java.lang.String)
+	 * @generated
+	 */
+	EOperation getConfigurableElement__GetProperty__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ConfigurableElement#addProperty(java.lang.String, java.lang.String) <em>Add Property</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Property</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ConfigurableElement#addProperty(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getConfigurableElement__AddProperty__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ConfigurableElement#addProperty(org.sociotech.communitymashup.application.Property) <em>Add Property</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Property</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ConfigurableElement#addProperty(org.sociotech.communitymashup.application.Property)
+	 * @generated
+	 */
+	EOperation getConfigurableElement__AddProperty__Property();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ConfigurableElement#getPropertyValue(java.lang.String) <em>Get Property Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Property Value</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ConfigurableElement#getPropertyValue(java.lang.String)
+	 * @generated
+	 */
+	EOperation getConfigurableElement__GetPropertyValue__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ConfigurableElement#isPropertyTrue(java.lang.String) <em>Is Property True</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Property True</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ConfigurableElement#isPropertyTrue(java.lang.String)
+	 * @generated
+	 */
+	EOperation getConfigurableElement__IsPropertyTrue__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ConfigurableElement#getPropertyValueElseDefault(java.lang.String, java.lang.String) <em>Get Property Value Else Default</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Property Value Else Default</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ConfigurableElement#getPropertyValueElseDefault(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getConfigurableElement__GetPropertyValueElseDefault__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ConfigurableElement#isPropertyTrueElseDefault(java.lang.String, java.lang.String) <em>Is Property True Else Default</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Property True Else Default</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ConfigurableElement#isPropertyTrueElseDefault(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getConfigurableElement__IsPropertyTrueElseDefault__String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.ConfigurableElement#removeProperty(java.lang.String) <em>Remove Property</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Remove Property</em>' operation.
+	 * @see org.sociotech.communitymashup.application.ConfigurableElement#removeProperty(java.lang.String)
+	 * @generated
+	 */
+	EOperation getConfigurableElement__RemoveProperty__String();
+
+	/**
 	 * Returns the meta object for enum '{@link org.sociotech.communitymashup.application.SourceState <em>Source State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3548,6 +4654,38 @@ public interface ApplicationPackage extends EPackage {
 		EAttribute SOURCE__UPDATE_ROUND = eINSTANCE.getSource_UpdateRound();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Log Level Int Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SOURCE___GET_LOG_LEVEL_INT_VALUE = eINSTANCE.getSource__GetLogLevelIntValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SOURCE___START = eINSTANCE.getSource__Start();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SOURCE___STOP = eINSTANCE.getSource__Stop();
+
+		/**
+		 * The meta object literal for the '<em><b>Pause</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SOURCE___PAUSE = eINSTANCE.getSource__Pause();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.MashupImpl <em>Mashup</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3644,6 +4782,22 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MASHUP__SOURCE_IDENT_COUNTER = eINSTANCE.getMashup_SourceIdentCounter();
+
+		/**
+		 * The meta object literal for the '<em><b>Get New Source Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MASHUP___GET_NEW_SOURCE_IDENT = eINSTANCE.getMashup__GetNewSourceIdent();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Source With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MASHUP___GET_SOURCE_WITH_IDENT__STRING = eINSTANCE.getMashup__GetSourceWithIdent__String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.MappingRuleImpl <em>Mapping Rule</em>}' class.
@@ -3778,6 +4932,46 @@ public interface ApplicationPackage extends EPackage {
 		EAttribute PROPERTY__PROPERTY_TYPE = eINSTANCE.getProperty_PropertyType();
 
 		/**
+		 * The meta object literal for the '<em><b>Is Value List</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PROPERTY___IS_VALUE_LIST = eINSTANCE.getProperty__IsValueList();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Value Range</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PROPERTY___IS_VALUE_RANGE = eINSTANCE.getProperty__IsValueRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Get List Of Values</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PROPERTY___GET_LIST_OF_VALUES = eINSTANCE.getProperty__GetListOfValues();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Min Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PROPERTY___GET_MIN_VALUE = eINSTANCE.getProperty__GetMinValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Max Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PROPERTY___GET_MAX_VALUE = eINSTANCE.getProperty__GetMaxValue();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.OCLRestrictedPropertyImpl <em>OCL Restricted Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3884,6 +5078,46 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MASHUP_CONTAINER__IDENT_COUNTER = eINSTANCE.getMashupContainer_IdentCounter();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Configuration Admins</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MASHUP_CONTAINER___GET_CONFIGURATION_ADMINS = eINSTANCE.getMashupContainer__GetConfigurationAdmins();
+
+		/**
+		 * The meta object literal for the '<em><b>Set New Ident For</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MASHUP_CONTAINER___SET_NEW_IDENT_FOR__CONFIGURABLEELEMENT = eINSTANCE.getMashupContainer__SetNewIdentFor__ConfigurableElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Get New Ident Number</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MASHUP_CONTAINER___GET_NEW_IDENT_NUMBER = eINSTANCE.getMashupContainer__GetNewIdentNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Mashup With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MASHUP_CONTAINER___GET_MASHUP_WITH_IDENT__STRING = eINSTANCE.getMashupContainer__GetMashupWithIdent__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Source Configuration With Ident</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MASHUP_CONTAINER___GET_SOURCE_CONFIGURATION_WITH_IDENT__STRING = eINSTANCE.getMashupContainer__GetSourceConfigurationWithIdent__String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -4096,6 +5330,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute APPLICATION_KEY_CONFIG__APPLICATION_KEYS = eINSTANCE.getApplicationKeyConfig_ApplicationKeys();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Application Key</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation APPLICATION_KEY_CONFIG___HAS_APPLICATION_KEY__STRING = eINSTANCE.getApplicationKeyConfig__HasApplicationKey__String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.impl.OAuthClientConfigImpl <em>OAuth Client Config</em>}' class.
@@ -4530,6 +5772,70 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONFIGURABLE_ELEMENT__IDENT = eINSTANCE.getConfigurableElement_Ident();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Property</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURABLE_ELEMENT___GET_PROPERTY__STRING = eINSTANCE.getConfigurableElement__GetProperty__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Property</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURABLE_ELEMENT___ADD_PROPERTY__STRING_STRING = eINSTANCE.getConfigurableElement__AddProperty__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Property</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURABLE_ELEMENT___ADD_PROPERTY__PROPERTY = eINSTANCE.getConfigurableElement__AddProperty__Property();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Property Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE__STRING = eINSTANCE.getConfigurableElement__GetPropertyValue__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Property True</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE__STRING = eINSTANCE.getConfigurableElement__IsPropertyTrue__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Property Value Else Default</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURABLE_ELEMENT___GET_PROPERTY_VALUE_ELSE_DEFAULT__STRING_STRING = eINSTANCE.getConfigurableElement__GetPropertyValueElseDefault__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Property True Else Default</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURABLE_ELEMENT___IS_PROPERTY_TRUE_ELSE_DEFAULT__STRING_STRING = eINSTANCE.getConfigurableElement__IsPropertyTrueElseDefault__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Remove Property</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONFIGURABLE_ELEMENT___REMOVE_PROPERTY__STRING = eINSTANCE.getConfigurableElement__RemoveProperty__String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.application.SourceState <em>Source State</em>}' enum.

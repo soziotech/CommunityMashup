@@ -10,11 +10,13 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.application.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -788,6 +790,29 @@ public class SourceImpl extends ConfigurableElementImpl implements Source {
 				return UPDATE_ROUND_EDEFAULT == null ? updateRound != null : !UPDATE_ROUND_EDEFAULT.equals(updateRound);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ApplicationPackage.SOURCE___GET_LOG_LEVEL_INT_VALUE:
+				return getLogLevelIntValue();
+			case ApplicationPackage.SOURCE___START:
+				start();
+				return null;
+			case ApplicationPackage.SOURCE___STOP:
+				stop();
+				return null;
+			case ApplicationPackage.SOURCE___PAUSE:
+				pause();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
