@@ -6,8 +6,7 @@ Bundle-Version: 0.0.1
 Bundle-Vendor: org.sociotech.communitymashup
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1",
- org.sociotech.communitymashup.data.DataObservers;bundle-version="0.0.1",
- org.slf4j.log4j;bundle-version="1.6.4"
+ org.sociotech.communitymashup.data.DataObservers;bundle-version="0.0.1"
 Import-Package: org.apache.commons.logging,
  org.eclipse.core.runtime;version="3.4.0",
  org.eclipse.emf.ecore.xmi,
@@ -19,6 +18,7 @@ Bundle-ClassPath: lib/httpclient-4.2.1.jar,
  lib/httpcore-4.2.1.jar,
  lib/slf4j-api-1.7.5.jar,
  lib/slf4j-jdk14-1.7.5.jar,
- .
+ .,
+ lib/slf4j-log4j12-1.7.5.jar
 Export-Package: org.sociotech.communitymashup.framework.java,
  org.sociotech.communitymashup.framework.java.exceptions
