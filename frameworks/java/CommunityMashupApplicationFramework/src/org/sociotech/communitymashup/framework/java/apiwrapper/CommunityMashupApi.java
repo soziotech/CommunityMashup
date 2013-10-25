@@ -88,7 +88,7 @@ public class CommunityMashupApi {
 		try {
 			resource.load(null);
 		} catch (IOException e) {
-			throw new MashupConnectionException(e.getMessage(), url);
+			throw new MashupConnectionException(e, url);
 		}
 
 		TreeIterator<EObject> dataIterator = resource.getAllContents();
@@ -158,7 +158,7 @@ public class CommunityMashupApi {
 		try {
 			resource.load(new ByteArrayInputStream(resultXML.getBytes()), null);
 		} catch (IOException e) {
-			throw new MashupConnectionException(e.getMessage(), url);
+			throw new MashupConnectionException(e, url);
 		}
 
 		TreeIterator<EObject> dataIterator = resource.getAllContents();
@@ -217,7 +217,7 @@ public class CommunityMashupApi {
 		try {
 			resource.load(null);
 		} catch (IOException e) {
-			throw new MashupConnectionException(e.getMessage(), url);
+			throw new MashupConnectionException(e, url);
 		}
 
 		TreeIterator<EObject> dataIterator = resource.getAllContents();
@@ -271,7 +271,7 @@ public class CommunityMashupApi {
 			Date result = RestUtil.fromDateString(dateString);
 			return result;
 		} catch (Exception e) {
-			throw new MashupConnectionException(e.getMessage(), url);
+			throw new MashupConnectionException(e, url);
 		}
 	}
 
@@ -298,7 +298,7 @@ public class CommunityMashupApi {
 		try {
 			result = httpClient.execute(get, responseHandler);
 		} catch (Exception e) {
-			throw new MashupConnectionException(e.getMessage(), url);
+			throw new MashupConnectionException(e, url);
 		} finally {
 			// client is no longer needed
 			httpClient.getConnectionManager().shutdown();
@@ -333,7 +333,7 @@ public class CommunityMashupApi {
 			post.setEntity(new StringEntity(parameterString));
 			result = httpClient.execute(post, responseHandler);
 		} catch (Exception e) {
-			throw new MashupConnectionException(e.getMessage(), url);
+			throw new MashupConnectionException(e, url);
 		} finally {
 			// client is no longer needed
 			httpClient.getConnectionManager().shutdown();
@@ -375,7 +375,7 @@ public class CommunityMashupApi {
 			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			result = httpClient.execute(post, responseHandler);
 		} catch (Exception e) {
-			throw new MashupConnectionException(e.getMessage(), url);
+			throw new MashupConnectionException(e, url);
 		} finally {
 			// client is no longer needed
 			httpClient.getConnectionManager().shutdown();
