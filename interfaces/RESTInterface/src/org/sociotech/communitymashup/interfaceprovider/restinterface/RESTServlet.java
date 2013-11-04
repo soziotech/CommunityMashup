@@ -14,6 +14,7 @@ package org.sociotech.communitymashup.interfaceprovider.restinterface;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -595,7 +596,13 @@ public class RESTServlet extends HttpServlet {
 		Object attribute;
 		for (String s : commandParts) {
 			a = s.split("=", 2);
-			attribute = a[1];
+			// decode attribute
+			try {
+				attribute = URLDecoder.decode(a[1], "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				attribute = null;
+			}
+			
 			if (a[1].startsWith("@")) {
 				// @ indicates an ident of the data set
 				attribute = resolveDataSetItem(a[1]);
@@ -844,7 +851,7 @@ public class RESTServlet extends HttpServlet {
 		}
 
 		// decode request url
-		requestUrl = URLDecoder.decode(requestUrl, "UTF-8");
+		//requestUrl = URLDecoder.decode(requestUrl, "UTF-8");
 
 		String jsonpOperation = extractJsonpOperation(request);
 		if(jsonpOperation != null)
