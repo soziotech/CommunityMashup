@@ -693,7 +693,11 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		for(Item itemToDelete : deletionList)
 		{
 			// delete only if the clear has removed the last delete on delete item
-			itemToDelete.deleteIfEmptyOnDelete();
+			//itemToDelete.deleteIfEmptyOnDelete();
+
+			// TODO: check intention 
+			// directly delete
+			itemToDelete.delete();
 		}
 		
 		// use ecore util to delete

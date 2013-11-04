@@ -10209,13 +10209,31 @@ public interface DataPackage extends EPackage {
 	int IMAGE__CACHED_FILE_NAME = ATTACHMENT__CACHED_FILE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__WIDTH = ATTACHMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__HEIGHT = ATTACHMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Image</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMAGE_FEATURE_COUNT = ATTACHMENT_FEATURE_COUNT + 0;
+	int IMAGE_FEATURE_COUNT = ATTACHMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -17504,6 +17522,28 @@ public interface DataPackage extends EPackage {
 	EClass getImage();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.Image#getWidth <em>Width</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Width</em>'.
+	 * @see org.sociotech.communitymashup.data.Image#getWidth()
+	 * @see #getImage()
+	 * @generated
+	 */
+	EAttribute getImage_Width();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.Image#getHeight <em>Height</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Height</em>'.
+	 * @see org.sociotech.communitymashup.data.Image#getHeight()
+	 * @see #getImage()
+	 * @generated
+	 */
+	EAttribute getImage_Height();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Document <em>Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20487,6 +20527,22 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EClass IMAGE = eINSTANCE.getImage();
+
+		/**
+		 * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMAGE__WIDTH = eINSTANCE.getImage_Width();
+
+		/**
+		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMAGE__HEIGHT = eINSTANCE.getImage_Height();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.DocumentImpl <em>Document</em>}' class.

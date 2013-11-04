@@ -13,7 +13,9 @@ package org.sociotech.communitymashup.data.impl;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
 import org.eclipse.emf.query.conditions.eobjects.EObjectTypeRelationCondition;
 import org.sociotech.communitymashup.data.Attachment;
@@ -62,6 +64,11 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * An implementation of the model object '<em><b>Image</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.ImageImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.ImageImpl#getHeight <em>Height</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -75,6 +82,43 @@ public class ImageImpl extends AttachmentImpl implements Image {
 	 */
 	public static final String copyright = "Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n \tPeter Lachenmaier - Design and initial implementation";
 	
+	/**
+	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer WIDTH_EDEFAULT = new Integer(-1);
+	/**
+	 * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidth()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer width = WIDTH_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getHeight() <em>Height</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHeight()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer HEIGHT_EDEFAULT = new Integer(-1);
+	/**
+	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHeight()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer height = HEIGHT_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,6 +136,134 @@ public class ImageImpl extends AttachmentImpl implements Image {
 	@Override
 	protected EClass eStaticClass() {
 		return DataPackage.Literals.IMAGE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getWidth() {
+		return width;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWidth(Integer newWidth) {
+		Integer oldWidth = width;
+		width = newWidth;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.IMAGE__WIDTH, oldWidth, width));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getHeight() {
+		return height;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHeight(Integer newHeight) {
+		Integer oldHeight = height;
+		height = newHeight;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.IMAGE__HEIGHT, oldHeight, height));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case DataPackage.IMAGE__WIDTH:
+				return getWidth();
+			case DataPackage.IMAGE__HEIGHT:
+				return getHeight();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case DataPackage.IMAGE__WIDTH:
+				setWidth((Integer)newValue);
+				return;
+			case DataPackage.IMAGE__HEIGHT:
+				setHeight((Integer)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case DataPackage.IMAGE__WIDTH:
+				setWidth(WIDTH_EDEFAULT);
+				return;
+			case DataPackage.IMAGE__HEIGHT:
+				setHeight(HEIGHT_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case DataPackage.IMAGE__WIDTH:
+				return WIDTH_EDEFAULT == null ? width != null : !WIDTH_EDEFAULT.equals(width);
+			case DataPackage.IMAGE__HEIGHT:
+				return HEIGHT_EDEFAULT == null ? height != null : !HEIGHT_EDEFAULT.equals(height);
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (width: ");
+		result.append(width);
+		result.append(", height: ");
+		result.append(height);
+		result.append(')');
+		return result.toString();
 	}
 
 	/**
@@ -113,7 +285,11 @@ public class ImageImpl extends AttachmentImpl implements Image {
  	 * 
 	 * @generated
 	 */
-	protected Object getFeature(String featureName) throws UnknownOperationException {	
+	protected Object getFeature(String featureName) throws UnknownOperationException {
+		if ( featureName.equalsIgnoreCase("width") )
+			return this.getWidth();		
+		if ( featureName.equalsIgnoreCase("height") )
+			return this.getHeight();			
 		return super.getFeature(featureName); 
 	}
 
@@ -125,7 +301,41 @@ public class ImageImpl extends AttachmentImpl implements Image {
  	 * 
 	 * @generated
 	 */
-	protected Object setFeature(String featureName, Object value) throws WrongArgException, UnknownOperationException {	
+	protected Object setFeature(String featureName, Object value) throws WrongArgException, UnknownOperationException {
+		if ( featureName.equalsIgnoreCase("width") ) {
+				java.lang.Integer fwidth = null;
+				try {
+				try {
+					fwidth = RestUtil.fromIntegerString((String) value);
+					if(fwidth == null) {
+						fwidth = (java.lang.Integer)(RestUtil.fromInput(value));
+					}
+				} catch (ClassNotFoundException e) {
+					fwidth = (java.lang.Integer)value;
+				}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Image.setFeature", "java.lang.Integer",value.getClass().getName());
+				}
+				this.setWidth(fwidth);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("height") ) {
+				java.lang.Integer fheight = null;
+				try {
+				try {
+					fheight = RestUtil.fromIntegerString((String) value);
+					if(fheight == null) {
+						fheight = (java.lang.Integer)(RestUtil.fromInput(value));
+					}
+				} catch (ClassNotFoundException e) {
+					fheight = (java.lang.Integer)value;
+				}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Image.setFeature", "java.lang.Integer",value.getClass().getName());
+				}
+				this.setHeight(fheight);
+			return this;
+			}			
 		super.setFeature(featureName, value);
 		return this; 
 	}
