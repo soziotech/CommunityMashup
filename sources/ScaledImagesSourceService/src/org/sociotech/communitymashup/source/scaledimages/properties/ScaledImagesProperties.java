@@ -21,13 +21,13 @@ import org.imgscalr.Scalr;
 public class ScaledImagesProperties {
 
 		/**
-	 * Whether to enrich content images or not
+	 * Whether to enrich content images or not.
 	 */
 	public static final String ENRICH_CONTENT_IMAGE_PROPERTY = "enrichContent";
 	public static final String ENRICH_CONTENT_IMAGE_DEFAULT = "true";
 	
 	/**
-	 * Whether to enrich person images or not
+	 * Whether to enrich person images or not.
 	 */
 	public static final String ENRICH_PERSON_IMAGE_PROPERTY = "enrichPerson";
 	public static final String ENRICH_PERSON_IMAGE_DEFAULT = "true";
@@ -49,19 +49,19 @@ public class ScaledImagesProperties {
 	public static final String PROCESS_ONLY_IMAGES_WITH_METATAG_PROPERTY = "neededImageMetaTag";
 	
 	/**
-	 * Switch to turn on writing of dimensions to original images
+	 * Switch to turn on writing of dimensions to original images.
 	 */
 	public static final String WRITE_DIMENSIONS_TO_ORIG_IMAGE_PROPERTY = "writeDimension";
 	public static final String WRITE_DIMENSIONS_TO_ORIG_IMAGE_DEFAULT = "false";
 	
 	/**
-	 * Width to scale images to
+	 * Width to scale images to.
 	 */
 	public static final String SCALED_IMAGE_WIDTH_PROPERTY = "imageWidth";
 	public static final String SCALED_IMAGE_WIDTH_DEFAULT = "50";
 	
 	/**
-	 * Heigth to scale images to
+	 * Height to scale images to.
 	 */
 	public static final String SCALED_IMAGE_HEIGHT_PROPERTY = "imageHeight";
 	public static final String SCALED_IMAGE_HEIGHT_DEFAULT = "50";
@@ -73,19 +73,19 @@ public class ScaledImagesProperties {
 	public static final String SCALE_MODE_DEFAULT = "AUTOMATIC";
 	
 	/**
-	 * Mode of scaling according to {@link Scalr.Method}, AUTOMATIC, BALANCED, QUALITY, SPEED, ULTRA_QUALITY 
+	 * Method of scaling according to {@link Scalr.Method}, AUTOMATIC, BALANCED, QUALITY, SPEED, ULTRA_QUALITY 
 	 */
 	public static final String SCALE_METHOD_PROPERTY = "scaleMethod";
 	public static final String SCALE_METHOD_DEFAULT = "AUTOMATIC";
 	
 	/**
-	 * Switch to turn off creation of scaled images. E. g. to write only dimensions
+	 * Switch to turn off creation of scaled images. E. g. to write only dimensions.
 	 */
 	public static final String CREATE_SCALED_IMAGE_PROPERTY = "createScaledImages";
 	public static final String CREATE_SCALED_IMAGE_DEFAULT = "true";
 	
 	/**
-	 * Type of the resulting scaled image. Can be jpg, png, gif according javax.imageio.ImageIO
+	 * Type of the resulting scaled image. Can be jpg, png, gif according javax.imageio.ImageIO .
 	 */
 	public static final String IMAGE_TYPE_PROPERTY = "imageType";
 	public static final String IMAGE_TYPE_DEFAULT = "png";
