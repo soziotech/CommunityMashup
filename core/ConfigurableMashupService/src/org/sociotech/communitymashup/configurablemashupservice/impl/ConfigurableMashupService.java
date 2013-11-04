@@ -1449,9 +1449,15 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 					return;
 				}
 				
+				// keep old source state
+				SourceState oldSourceState = changedSource.getState();
+				
 				// property change can not be handled
 				// so destroy source
 				destroySource(changedSource);
+				
+				// reset old source state to restart source if possible
+				changedSource.setState(oldSourceState);
 				
 				// and recreate it
 				createSourceService(changedSource);
