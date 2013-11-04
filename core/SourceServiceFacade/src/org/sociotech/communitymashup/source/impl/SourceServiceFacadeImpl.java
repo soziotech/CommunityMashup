@@ -438,7 +438,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		}
 		catch (Exception e) {
 			log("Error while enriching data set in source " + this + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
-			e.printStackTrace();
+			//e.printStackTrace();
 			source.setState(SourceState.ERROR);
 			return;
 		}
@@ -765,6 +765,10 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 				{
 					log("Adding " + origReferenceL.size() + " referenced items of " + item.getIdent() + " through " + reference.getName(), LogService.LOG_DEBUG);
 				}
+				else
+				{
+					continue;
+				}
 				
 				EList<Item> referencedList = new BasicEList<Item>();
 				referencedList.addAll(origReferenceL);
@@ -999,8 +1003,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		addSourceSpecificTags(item);
 		addSourceSpecificMetaTags(item);
 		addSourceSpecificCategories(item);
-		
-		// TODO add addition source specific ids in this method 
+
 	}
 
 	/**
@@ -1010,6 +1013,11 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 * @return The source instance specific meta tag
 	 */
 	private MetaTag getSourceInstanceMetaTag() {
+		
+		if(source == null || source.getDataSet() == null) {
+			// happens if source not started before
+			return null;
+		}
 		
 		if(sourceInstanceMetaTag == null)
 		{
@@ -1302,7 +1310,11 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		if(source.getRemoveDataOnStop())
 		{
 			// simply delete source secific meta tag
-			getSourceInstanceMetaTag().delete();
+			MetaTag instanceMetaTag = getSourceInstanceMetaTag();
+			if(instanceMetaTag != null) {
+				instanceMetaTag.delete();
+			}
+			
 			// reset active state
 			source.setActiveState(SourceActiveStates.INITIALIZING);
 			
