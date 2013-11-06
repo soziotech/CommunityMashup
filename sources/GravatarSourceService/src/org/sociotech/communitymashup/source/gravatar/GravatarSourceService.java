@@ -14,14 +14,15 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Image;
 import org.sociotech.communitymashup.data.InformationObject;
-import org.sociotech.communitymashup.source.gravatar.adapter.NewEmailAdapter;
-import org.sociotech.communitymashup.source.gravatar.adapter.NewEmailConnectionAdapter;
+import org.sociotech.communitymashup.data.observer.dataset.DataSetChangeObserver;
+import org.sociotech.communitymashup.data.observer.dataset.DataSetChangedInterface;
 import org.sociotech.communitymashup.source.gravatar.meta.GravatarTags;
 import org.sociotech.communitymashup.source.gravatar.properties.GravatarProperties;
 import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
@@ -33,10 +34,12 @@ import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
  * 
  * @author Peter Lachenmaier
  */
-public class GravatarSourceService extends SourceServiceFacadeImpl {
+public class GravatarSourceService extends SourceServiceFacadeImpl implements DataSetChangedInterface {
 
-	private NewEmailAdapter newEmailAdapter;
-	private NewEmailConnectionAdapter newEmailConnectionAdapter;
+	/**
+	 * Observer to react on data set changes
+	 */
+	private DataSetChangeObserver dataSetChangeObserver;
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrichDataSet()
@@ -67,22 +70,10 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 			}
 		}
 		
-		// TODO remove all of these adapters when stoping source
-		
-		// now add an adapter to observe future changes
-		newEmailAdapter = new NewEmailAdapter(this);
-		dataSet.eAdapters().add(newEmailAdapter);
-		
-		newEmailConnectionAdapter = new NewEmailConnectionAdapter(this);
-		//dataSet.eAdapters().add(newWebSiteConnectionAdapter);
-		
-		EList<InformationObject> informationObjects = dataSet.getInformationObjects();
-		for(InformationObject informationObject : informationObjects)
-		{
-			informationObject.eAdapters().add(newEmailConnectionAdapter);
-		}
+		// add adapter to get informed about new or changed items
+		dataSetChangeObserver = new DataSetChangeObserver(dataSet, this);
 	}
-
+	
 	/**
 	 * Attaches a gravatar image to all information objects the given email belongs
 	 * to ({@link Email#getInformationObjects()})
@@ -104,8 +95,6 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 			// not attached to an information object
 			return;
 		}
-		
-		// TODO check if this image already exists as attachment of this information object
 		
 		String imageUrl = createImageUrl(email.getAdress()); 
 		
@@ -143,8 +132,6 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 			return;
 		}
 		
-		// TODO check if this image already exists as attachment of this information object
-		
 		String imageUrl = createImageUrl(email.getAdress()); 
 				
 		if(imageUrl == null)
@@ -165,16 +152,31 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 	 */
 	private void enrichInfomationObject(InformationObject informationObject, String imageUrl) {
 		
-		Image gravatarImage = informationObject.attachImage(imageUrl);
-		// add it explicitly to this source
-		gravatarImage = (Image) this.add(gravatarImage);
+		String ioImageIdent = informationObject.getIdent() + "_" + imageUrl.hashCode();
+		
+		Image gravatarImage = this.getImageWithSourceIdent(ioImageIdent);
+		
+		if(gravatarImage != null) {
+			// image already exists
+			return;
+		}
+		
+		gravatarImage = informationObject.attachImage(imageUrl);
+		
+		// add locally to remember that this image was attached by this source
+		gravatarImage = this.add(gravatarImage, ioImageIdent);
+		
+		if(gravatarImage == null) {
+			return;
+		}
+		
+		// delete it when the io gets deleted
+		gravatarImage.deleteOnDeleteOf(informationObject);
+		
 		// tag it
 		gravatarImage.metaTag(GravatarTags.GRAVATAR);
 		// tag with size
 		gravatarImage.metaTag(getImageSize());
-		
-		// add locally to remember that this image was attached by this source
-		this.add(gravatarImage);
 		
 		log("Added gravatar image " + imageUrl + " to " + informationObject.getName(), LogService.LOG_INFO);
 	}
@@ -216,18 +218,11 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 	/**
 	 * Determine the gravatar rating parameter out of the configuration entry or the default value.
 	 *
-	 * @return
+	 * @return The set rating, or the default if not set.
 	 */
 	private String getRating() {
-		String rating = source.getPropertyValue(GravatarProperties.RATING_PROPERTY);
-		
-		if(rating == null || rating.isEmpty())
-		{
-			// not set so use default value
-			rating = GravatarProperties.RATING_DEFAULT;
-		}
-		
-		return rating;
+		return source.getPropertyValueElseDefault(GravatarProperties.RATING_PROPERTY,
+												  GravatarProperties.RATING_DEFAULT);
 	}
 
 	/**
@@ -236,14 +231,8 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 	 * @return Gravatar default image parameter
 	 */
 	private String getDefaultImage() {
-		String defaultImage = source.getPropertyValue(GravatarProperties.DEFAULTIMAGE_PROPERTY);
-		
-		if(defaultImage == null || defaultImage.isEmpty())
-		{
-			// not set so use default value
-			defaultImage = GravatarProperties.DEFAULTIMAGE_DEFAULT;
-		}
-		
+		String defaultImage = source.getPropertyValueElseDefault(GravatarProperties.DEFAULTIMAGE_PROPERTY,
+															     GravatarProperties.DEFAULTIMAGE_DEFAULT);
 		if(defaultImage.startsWith("http"))
 		{
 			// image url set as default image
@@ -264,12 +253,8 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 	 * @return The image size as value between 1 and 512
 	 */
 	private String getImageSize() {
-		String size = source.getPropertyValue(GravatarProperties.IMAGE_SIZE_PROPERTY);
-		
-		if(size == null || size.isEmpty())
-		{
-			size = GravatarProperties.IMAGE_SIZE_DEFAULT;
-		}
+		String size = source.getPropertyValueElseDefault(GravatarProperties.IMAGE_SIZE_PROPERTY,
+														 GravatarProperties.IMAGE_SIZE_DEFAULT);
 		
 		Integer intSize = new Integer(size);
 		if(intSize < 1)
@@ -282,5 +267,49 @@ public class GravatarSourceService extends SourceServiceFacadeImpl {
 		}
 		
 		return size;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.observer.dataset.DataSetChangedInterface#dataSetChanged(org.eclipse.emf.common.notify.Notification)
+	 */
+	@Override
+	public void dataSetChanged(Notification notification) {
+		if(notification == null)
+		{
+			return;
+		}
+		
+		// new email added to the data set
+		if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof DataSet && notification.getNewValue() instanceof Email)
+		{
+			Email newEmail = (Email) notification.getNewValue();
+			// enrich information objects of email
+			enrichInformationObjectsOfEmail(newEmail);
+		}
+		// information object got new Email
+		else if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof InformationObject && notification.getNewValue() instanceof Email)
+		{
+			// information object with new email
+			InformationObject changedIO = (InformationObject) notification.getNotifier();
+			
+			// get added email
+			Email addedEmail = (Email) notification.getNewValue();
+				
+			// enrich with email
+			enrichInformationObject(changedIO, addedEmail);
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#stop()
+	 */
+	@Override
+	protected void stop() {
+		// disconnect data set observer
+		if (dataSetChangeObserver != null) {
+			dataSetChangeObserver.disconnect();
+		}
+
+		super.stop();
 	}
 }

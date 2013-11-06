@@ -17,15 +17,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Random;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Image;
 import org.sociotech.communitymashup.data.InformationObject;
 import org.sociotech.communitymashup.data.WebSite;
+import org.sociotech.communitymashup.data.observer.dataset.DataSetChangeObserver;
+import org.sociotech.communitymashup.data.observer.dataset.DataSetChangedInterface;
 import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
-import org.sociotech.communitymashup.source.qrcode.adapter.NewWebSiteAdapter;
-import org.sociotech.communitymashup.source.qrcode.adapter.NewWebSiteConnectionAdapter;
 import org.sociotech.communitymashup.source.qrcode.meta.QRCodeTags;
 import org.sociotech.communitymashup.source.qrcode.properties.QRCodeProperties;
 
@@ -36,10 +37,12 @@ import org.sociotech.communitymashup.source.qrcode.properties.QRCodeProperties;
  * 
  * @author Peter Lachenmaier
  */
-public class QRCodeSourceService extends SourceServiceFacadeImpl {
+public class QRCodeSourceService extends SourceServiceFacadeImpl implements DataSetChangedInterface {
 
-	private NewWebSiteAdapter newWebSiteAdapter;
-	private NewWebSiteConnectionAdapter newWebSiteConnectionAdapter;
+	/**
+	 * Observer to react on data set changes
+	 */
+	private DataSetChangeObserver dataSetChangeObserver;
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrichDataSet()
@@ -70,20 +73,8 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl {
 			}
 		}
 		
-		// TODO remove all of these adapters when stoping source
-		
-		// now add an adapter to observe future changes
-		newWebSiteAdapter = new NewWebSiteAdapter(this);
-		dataSet.eAdapters().add(newWebSiteAdapter);
-		
-		newWebSiteConnectionAdapter = new NewWebSiteConnectionAdapter(this);
-		//dataSet.eAdapters().add(newWebSiteConnectionAdapter);
-		
-		EList<InformationObject> informationObjects = dataSet.getInformationObjects();
-		for(InformationObject informationObject : informationObjects)
-		{
-			informationObject.eAdapters().add(newWebSiteConnectionAdapter);
-		}
+		// add adapter to get informed about new or changed items
+		dataSetChangeObserver = new DataSetChangeObserver(dataSet, this);
 	}
 
 	/**
@@ -107,8 +98,6 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl {
 			// not attached to an information object
 			return;
 		}
-		
-		// TODO check if this marker already exists as attachment of this information object
 		
 		String markerUrl = createMarkerUrl(webSite.getAdress()); 
 		
@@ -167,16 +156,34 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl {
 	 * @param markerUrl Url of the marker image
 	 */
 	private void enrichInfomationObject(InformationObject informationObject, String markerUrl) {
-		Image markerImage = informationObject.attachImage(markerUrl);
+		
+		String ioImageIdent = informationObject.getIdent() + "_" + markerUrl.hashCode();
+		
+		Image markerImage = this.getImageWithSourceIdent(ioImageIdent);
+		
+		if(markerImage != null) {
+			// image already exists
+			return;
+		}
+		
+		
+		markerImage = informationObject.attachImage(markerUrl);
+		
 		// add it explicitly to this source
-		markerImage = (Image) this.add(markerImage);
+		markerImage = this.add(markerImage, ioImageIdent);
+		
+		if(markerImage == null) {
+			log("Could not add marker image with iden " + ioImageIdent, LogService.LOG_WARNING);
+			return;
+		}
+		
+		// delete it when the io gets deleted
+		markerImage.deleteOnDeleteOf(informationObject);
+				
 		// tag it
 		markerImage.metaTag(QRCodeTags.QRCODE);
 		// tag with size
 		markerImage.metaTag(getMarkerSize());
-		
-		// add locally to remember that this image was attached by this source
-		this.add(markerImage);
 		
 		log("Added qr marker " + markerUrl + " to " + informationObject.getName(), LogService.LOG_INFO);
 	}
@@ -237,6 +244,47 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl {
 		return size;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.observer.dataset.DataSetChangedInterface#dataSetChanged(org.eclipse.emf.common.notify.Notification)
+	 */
+	@Override
+	public void dataSetChanged(Notification notification) {
+		if(notification == null)
+		{
+			return;
+		}
+		
+		// new website added to the data set
+		if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof DataSet && notification.getNewValue() instanceof WebSite)
+		{
+			WebSite newWebSite = (WebSite) notification.getNewValue();
+			// enrich information objects of website
+			enrichInformationObjectsOfWebSite(newWebSite);
+		}
+		// information object got new web site
+		else if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof InformationObject && notification.getNewValue() instanceof WebSite)
+		{
+			// information object with new website
+			InformationObject changedIO = (InformationObject) notification.getNotifier();
+			
+			// get added website
+			WebSite addedWebSite = (WebSite) notification.getNewValue();
+				
+			// enrich with website
+			enrichInformationObject(changedIO, addedWebSite);
+		}
+	}
 	
-	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#stop()
+	 */
+	@Override
+	protected void stop() {
+		// disconnect data set observer
+		if (dataSetChangeObserver != null) {
+			dataSetChangeObserver.disconnect();
+		}
+
+		super.stop();
+	}
 }
