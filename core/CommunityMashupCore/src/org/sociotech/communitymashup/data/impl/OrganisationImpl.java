@@ -19,6 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -312,25 +313,23 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Queries all items to find contents authored or contributed by persons of this organisation.
+	 * Aggregates all contents of persons of this organisation.
 	 * 
 	 * @return A list of contents, null in error case.
 	 * <!-- end-user-doc -->
 	 */
 	public EList<Content> getContents() {
-		// TODO: cache
-		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(this.getDataSet().getItems(), this.isContentOfOrganisationCondition());
 		
-		if(result == null)
-		{
-			return null;
+		EList<Content> organisationContents = new UniqueEList<Content>();
+		
+		EList<Person> orgPersons = this.getPersons();
+		
+		for(Person person : orgPersons) {
+			// add contents of all organisation persons
+			organisationContents.addAll(person.getContents());
 		}
 		
-		// results are only contents
-		@SuppressWarnings("unchecked")
-		EList<Content> contentss = new BasicEList<Content>((Collection<? extends Content>) result.getEObjects());
-		
-		return contentss;
+		return organisationContents;
 	}
 
 	/**
@@ -779,57 +778,6 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 			}
 		}
 		return null;
-	}
-	
-	private EObjectCondition isContentOfOrganisationCondition()
-	{
-		EObjectCondition isContentOfOrganisationCondition;
-		
-		if(this.getIdent() == null)
-		{
-			return null;
-		}
-		// condition will be created at first use
-		try
-		{
-			DataPackage dPI = DataPackage.eINSTANCE;
-			
-			// Important: extract strings to get compiler errors if something of the naming changes
-			String author 		= dPI.getContent_Author().getName();
-			String leaderOf 	= dPI.getPerson_LeaderOf().getName();
-			String itemIdent	= dPI.getItem_Ident().getName();
-			String contributers = dPI.getContent_Contributors().getName();
-			String participates = dPI.getPerson_Participates().getName();
-			
-			
-			// participated organisations
-			
-			// of author
-			String oclStatement = 			  "self." + author + "." + participates + "->exists(o1 | o1." + itemIdent + " = '" + this.ident + "')";
-			// or contributors
-			oclStatement = oclStatement + " or self." + contributers + "->exists(p1 | p1."+ participates + "->exists(o2 | o2." + itemIdent + " = '" + this.ident + "'))";
-			
-			// leaded organisations
-			
-			// of author
-			oclStatement = oclStatement + " or self." + author + "." + leaderOf + "->exists(o3 | o3." + itemIdent + " = '" + this.ident + "')";
-			// or contributors
-			oclStatement = oclStatement + " or self." + contributers + "->exists(p2 | p2." + leaderOf + "->exists(o4 | o4." + itemIdent + " = '" + this.ident + "'))";
-			
-			log("contents of organisation ocl: " + oclStatement, LogService.LOG_INFO);
-			
-			isContentOfOrganisationCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( getOclEnvironment(),
-																							oclStatement,
-																						    dPI.getContent());
-			
-		}
-		catch (ParserException e)
-		{
-			log("Malformed ocl statement.", LogService.LOG_ERROR);
-			return null;
-		}
-		
-		return isContentOfOrganisationCondition;
 	}
 	
 	/* (non-Javadoc)
