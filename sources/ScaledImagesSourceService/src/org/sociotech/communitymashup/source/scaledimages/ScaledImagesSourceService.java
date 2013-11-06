@@ -502,14 +502,14 @@ public class ScaledImagesSourceService extends SourceServiceFacadeImpl implement
 			return;
 		}
 		
-		// new web site added to the data set
+		// new information object added to the data set
 		if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof DataSet && notification.getNewValue() instanceof InformationObject)
 		{
 			InformationObject newIO = (InformationObject) notification.getNewValue();
 			// enrich new information object
 			enrichIO(newIO);
 		}
-		// web site changed
+		// information object got new image
 		else if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof InformationObject && notification.getNewValue() instanceof Image)
 		{
 			// attached image to information object
