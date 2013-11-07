@@ -19,4 +19,5 @@ Require-Bundle: org.sociotech.communitymashup.source.SourceServiceFacade;bundle-
  org.sociotech.communitymashup.core;bundle-version="0.0.1"
 Bundle-ClassPath: .,
  lib/jsoup-1.5.2.jar,
- lib/rome-1.0RC2.jar
+ lib/rome-1.0RC2.jar,
+ lib/commons-io-2.4.jar

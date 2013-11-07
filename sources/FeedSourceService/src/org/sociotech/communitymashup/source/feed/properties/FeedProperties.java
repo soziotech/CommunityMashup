@@ -34,6 +34,13 @@ public class FeedProperties {
 	public static final String SET_FIRST_CATEGORY_DEFAULT = "false";
 	
 	/**
+	 * If set to true a deep cleanup of the xml input before parsing is done. Use this only
+	 * when you experience problems with certain invalid feeds.
+	 */
+	public static final String DEEP_CLEANUP_PROPERTY = "deepXMLCleanUp";
+	public static final String DEEP_CLEANUP_DEFAULT = "false";
+	
+	/**
 	 * This Property determines if only the first or all images of an entry will be attached.
 	 */
 	public static final String ADD_ONLY_FIRST_IMAGE_PROPERTY = "addOnlyFirstImage";
