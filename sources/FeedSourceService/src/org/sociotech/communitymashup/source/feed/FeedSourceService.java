@@ -143,7 +143,7 @@ public class FeedSourceService extends SourceServiceFacadeImpl {
 			return;
 		} catch (FeedException e) {
 			log("FeedException while parsing feed. Error:" + e.getMessage(), LogService.LOG_ERROR);
-			e.printStackTrace();
+			//e.printStackTrace();
 			// set state to error
 			this.source.setState(SourceState.ERROR);
 			return;
