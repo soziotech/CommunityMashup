@@ -56,6 +56,7 @@ import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Item;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.html.HTMLTemplateParser;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.properties.HTMLProperties;
+import org.sociotech.communitymashup.interfaceprovider.restinterface.properties.RESTInterfaceProperties;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
 import org.sociotech.communitymashup.rest.ProxyUtil;
 import org.sociotech.communitymashup.rest.RequestType;
@@ -108,7 +109,9 @@ public class RESTServlet extends HttpServlet {
 	 */
 	private Map<String, String> frontEndCache = new HashMap<String, String>();
 
-	// TODO make configurable
+	/**
+	 * If set to true, the result will be formatted. 
+	 */
 	private boolean indentResult = true;
 	
 	/**
@@ -183,6 +186,8 @@ public class RESTServlet extends HttpServlet {
 
 	private RESTInterfaceService restInterfaceService;
 
+	private boolean shortReferences;
+
 	// Serialize Dates in ISO 8601
 	private static SimpleDateFormat sdf = new SimpleDateFormat(
 			"yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -206,6 +211,11 @@ public class RESTServlet extends HttpServlet {
 		this.urlSuffix = urlSuffix;
 		this.type = type;
 		
+		this.indentResult = !configuration.isPropertyTrueElseDefault(RESTInterfaceProperties.NO_FORMATTING_PROPERTY,
+																	 RESTInterfaceProperties.NO_FORMATTING_DEFAULT);
+		
+		this.shortReferences = configuration.isPropertyTrueElseDefault(RESTInterfaceProperties.SHORT_REFERENCES_PROPERTY,
+																	   RESTInterfaceProperties.SHORT_REFERENCES_DEFAULT);
 		if(type == TYPE_JSON_P)
 		{
 			// switch of indentation in jsonp case
@@ -295,8 +305,7 @@ public class RESTServlet extends HttpServlet {
 		options.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);
 
 		options.put(XMLResource.OPTION_FORMATTED, indentResult);
-		
-		String result = "";
+				String result = "";
 		try {
 			result = XMLHelperImpl.saveString(options, objectList,
 					respEncoding, null);
@@ -386,10 +395,11 @@ public class RESTServlet extends HttpServlet {
 		// but the references should point to the respective files on the
 		// FileServer/REST-Interface
 
-		// redirect references to the REST-Interface
-		String result = xmlInput.replaceAll("href=\"" + resourceName + "#",
-				"href=\"http://" + serverName + ":" + serverPort + urlSuffix
-						+ serverAlias + "/getItemsWithIdent?ident=");
+		// redirect references to the REST-Interface or shorten if property set
+		String replaceString = shortReferences?"href=\"":"href=\"http://" + serverName + ":" + serverPort + urlSuffix
+				+ serverAlias + "/getItemsWithIdent?ident=";
+		
+		String result = xmlInput.replaceAll("href=\"" + resourceName + "#",replaceString);
 		return result;
 	}
 
@@ -408,10 +418,13 @@ public class RESTServlet extends HttpServlet {
 		// but the references should point to the respective files on the
 		// FileServer/REST-Interface
 
+		
 		// redirect references to the REST-Interface
-		String result = jsonInput.replaceAll("\"" + resourceName + "#",
-				"\"http://" + serverName + ":" + serverPort + urlSuffix
-						+ serverAlias + "/getItemsWithIdent?ident=");
+		String replaceString = shortReferences?"ref\" : \"":"ref\" : \"http://" + serverName + ":" + serverPort + urlSuffix
+				+ serverAlias + "/getItemsWithIdent?ident=";
+		
+		String result = jsonInput.replaceAll("ref\" ?: ?\"(" + resourceName + "\\#)?"  ,replaceString);
+		
 		return result;
 	}
 	/**

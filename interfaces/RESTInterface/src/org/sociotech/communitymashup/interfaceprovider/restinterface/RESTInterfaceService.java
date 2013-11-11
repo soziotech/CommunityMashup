@@ -36,7 +36,8 @@ public class RESTInterfaceService extends InterfaceServiceFacadeImpl
 	 * @param dataSet Data set containing the data served by this rest interface.
 	 */
 	public RESTInterfaceService(BundleContext context, RESTInterface configuration, DataSet dataSet) {
-
+		super(configuration);
+		
 		// register resource registrator to make rest servlets available when http service starts
 		resourceRegistrator = new ResourceRegistrator(context, dataSet, configuration, this);
 		resourceRegistrator.open();

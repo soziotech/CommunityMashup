@@ -26,10 +26,23 @@ import org.sociotech.communitymashup.util.servicetracker.callback.LogServiceTrac
 public abstract class InterfaceServiceFacadeImpl implements InterfaceServiceFacade, LogServiceTracked
 {
 
-	public InterfaceServiceFacadeImpl() {
+	/**
+	 * Local reference to the configuration.
+	 */
+	protected Interface configuration;
+	
+	/**
+	 * Keeps a reference to the given configuration locally and opens a log service tracker.
+	 * 
+	 * @param configuration Interface configuration
+	 */
+	public InterfaceServiceFacadeImpl(Interface configuration) {
 		// open log service tracker
 		openLogServiceTracker();
+		
+		this.configuration = configuration;
 	}
+	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.interfaceprovider.facade.InterfaceServiceFacade#handleChange(org.eclipse.emf.common.notify.Notification)
 	 */
@@ -39,7 +52,6 @@ public abstract class InterfaceServiceFacadeImpl implements InterfaceServiceFaca
 		{
 			return false;
 		}
-		// TODO check if this notification really belongs to this interface
 		return this.handle(notification);
 	}
 
@@ -51,12 +63,13 @@ public abstract class InterfaceServiceFacadeImpl implements InterfaceServiceFaca
 	 */
 	protected boolean handle(Notification notification) {
 		int featureID = notification.getFeatureID(Interface.class);
-		if(featureID == ApplicationPackage.INTERFACE__CHANGEABLE ||
+		if(notification.getNotifier() == this.configuration &&
+		  (featureID == ApplicationPackage.INTERFACE__CHANGEABLE ||
 		   featureID == ApplicationPackage.INTERFACE__HIDDEN ||
 		   featureID == ApplicationPackage.INTERFACE__DESCRIPTION ||
 		   featureID == ApplicationPackage.INTERFACE__NAME ||
 		   featureID == ApplicationPackage.INTERFACE__CONFIGURATION_IMAGE ||
-		   featureID == ApplicationPackage.INTERFACE__IDENT)
+		   featureID == ApplicationPackage.INTERFACE__IDENT))
 		{
 			// basic attributes that only influence the gui don't need to be handled
 			return true;

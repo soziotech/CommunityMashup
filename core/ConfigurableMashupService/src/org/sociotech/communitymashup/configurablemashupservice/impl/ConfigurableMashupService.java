@@ -1332,23 +1332,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		{
 			Interface changedInterface = (Interface) notifier;
 			
-			// interface changed
-			log("Interface changed.", LogService.LOG_DEBUG);
-			
-			// get interface service
-			InterfaceServiceFacade interfaceService = interfaceServices.get(changedInterface);
-			
-			if(interfaceService != null && interfaceService.handleChange(notification))
-			{
-				// interface handles change
-				return;
-			}
-			
-			// can not be handled, so
-			// destroy
-			destroyInterface(changedInterface);
-			// and recreate
-			createInterfaceService(changedInterface);
+			interfaceChanged(notification, changedInterface);
 		}
 		// handle source changes that can not be handled by the source services themselves
 		else if(notifier instanceof Source && notification.getEventType() == Notification.SET)
@@ -1403,10 +1387,12 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		{
 			// new property
 			log("Property added.", LogService.LOG_DEBUG);
+			// TODO restart source or interface
 		}
 		else if(notifier instanceof Configuration && notification.getEventType() == Notification.REMOVE)
 		{
 			log("Property removed.", LogService.LOG_DEBUG);
+			// TODO restart source or interface
 		}
 		else if(notifier instanceof Property && notification.getEventType() == Notification.SET)
 		{
@@ -1462,7 +1448,42 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 				// and recreate it
 				createSourceService(changedSource);
 			}
+			else if(changedConfiguration.eContainer() instanceof Interface)
+			{
+				Interface changedInterface = (Interface) changedConfiguration.eContainer();
+				
+				this.interfaceChanged(notification, changedInterface);
+			}
 		}	
+	}
+
+	/**
+	 * Should be called when an interface changes. If the change can not be handled by
+	 * the implementing interface service, thenn the interface will be destroyed and
+	 * recreated
+	 * 
+	 * @param notification Notification with change details
+	 * @param changedInterface The changed interface.
+	 */
+	private void interfaceChanged(Notification notification,
+			Interface changedInterface) {
+		// interface changed
+		log("Interface changed.", LogService.LOG_DEBUG);
+		
+		// get interface service
+		InterfaceServiceFacade interfaceService = interfaceServices.get(changedInterface);
+		
+		if(interfaceService != null && interfaceService.handleChange(notification))
+		{
+			// interface handles change
+			return;
+		}
+		
+		// can not be handled, so
+		// destroy
+		destroyInterface(changedInterface);
+		// and recreate
+		createInterfaceService(changedInterface);
 	}
 
 	/* (non-Javadoc)
