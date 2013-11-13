@@ -107,7 +107,11 @@ public class GravatarSourceService extends SourceServiceFacadeImpl implements Da
 		// attach the image to all information objects
 		for(InformationObject informationObject : informationObjects)
 		{
-			enrichInfomationObject(informationObject, imageUrl);
+			Image attachedImage = enrichInfomationObject(informationObject, imageUrl);
+			if(attachedImage != null) {
+				// delete image after deletion of email
+				attachedImage.forceDeleteOnDeleteOf(email);
+			}
 		}
 		
 	}
@@ -141,7 +145,11 @@ public class GravatarSourceService extends SourceServiceFacadeImpl implements Da
 		}
 		
 		// attach the image to the information objects
-		enrichInfomationObject(informationObject, imageUrl);
+		Image attachedImage = enrichInfomationObject(informationObject, imageUrl);
+		if(attachedImage != null) {
+			// delete image after deletion of email
+			attachedImage.forceDeleteOnDeleteOf(email);
+		}
 	}
 	
 	/**
@@ -149,8 +157,9 @@ public class GravatarSourceService extends SourceServiceFacadeImpl implements Da
 	 * 
 	 * @param informationObject Information object to attach gravatar image to
 	 * @param imageUrl Url of the gravatar image
+	 * @return The attached image
 	 */
-	private void enrichInfomationObject(InformationObject informationObject, String imageUrl) {
+	private Image enrichInfomationObject(InformationObject informationObject, String imageUrl) {
 		
 		String ioImageIdent = informationObject.getIdent() + "_" + imageUrl.hashCode();
 		
@@ -158,7 +167,7 @@ public class GravatarSourceService extends SourceServiceFacadeImpl implements Da
 		
 		if(gravatarImage != null) {
 			// image already exists
-			return;
+			return null;
 		}
 		
 		gravatarImage = informationObject.attachImage(imageUrl);
@@ -167,11 +176,8 @@ public class GravatarSourceService extends SourceServiceFacadeImpl implements Da
 		gravatarImage = this.add(gravatarImage, ioImageIdent);
 		
 		if(gravatarImage == null) {
-			return;
+			return null;
 		}
-		
-		// delete it when the io gets deleted
-		gravatarImage.deleteOnDeleteOf(informationObject);
 		
 		// tag it
 		gravatarImage.metaTag(GravatarTags.GRAVATAR);
@@ -179,6 +185,8 @@ public class GravatarSourceService extends SourceServiceFacadeImpl implements Da
 		gravatarImage.metaTag(getImageSize());
 		
 		log("Added gravatar image " + imageUrl + " to " + informationObject.getName(), LogService.LOG_INFO);
+		
+		return gravatarImage;
 	}
 
 	/**
