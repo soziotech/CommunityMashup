@@ -297,6 +297,9 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		boolean shouldCacheAttachments = this.mashup.getCacheAttachments();
 		newDataSet.setCacheFileAttachements(shouldCacheAttachments);
 		
+		// set if data set should contain a list of deleted items
+		newDataSet.setKeepDeletedItemsList(mashup.getKeepDeletedItemsList());
+		
 		// set created date to now
 		newDataSet.setCreated(new Date());
 
@@ -435,6 +438,8 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			mashup.getDataSet().setCacheFileAttachements(mashup.getCacheAttachments());
 			// set mashup log level also for data set
 			mashup.getDataSet().setLogLevel(logLevel);
+			// set if data set should contain a list of deleted items
+			mashup.getDataSet().setKeepDeletedItemsList(mashup.getKeepDeletedItemsList());
 		}
 		
 		// TODO check if working directory changes and maybe rename directory
