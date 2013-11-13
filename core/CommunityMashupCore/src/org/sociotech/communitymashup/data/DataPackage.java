@@ -4523,13 +4523,31 @@ public interface DataPackage extends EPackage {
 	int DATA_SET___GET_DELETED_ITEMS = 122;
 
 	/**
+	 * The operation id for the '<em>Get Items Except Identifiers Created Since</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_CREATED_SINCE__DATE = 123;
+
+	/**
+	 * The operation id for the '<em>Get Items Except Identifiers Modified Since</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_MODIFIED_SINCE__DATE = 124;
+
+	/**
 	 * The number of operations of the '<em>Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_OPERATION_COUNT = 123;
+	int DATA_SET_OPERATION_COUNT = 125;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -17792,6 +17810,26 @@ public interface DataPackage extends EPackage {
 	EOperation getDataSet__GetDeletedItems();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsExceptIdentifiersCreatedSince(java.util.Date) <em>Get Items Except Identifiers Created Since</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items Except Identifiers Created Since</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsExceptIdentifiersCreatedSince(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsExceptIdentifiersCreatedSince__Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsExceptIdentifiersModifiedSince(java.util.Date) <em>Get Items Except Identifiers Modified Since</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items Except Identifiers Modified Since</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsExceptIdentifiersModifiedSince(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsExceptIdentifiersModifiedSince__Date();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Item <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21129,6 +21167,22 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation DATA_SET___GET_DELETED_ITEMS = eINSTANCE.getDataSet__GetDeletedItems();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items Except Identifiers Created Since</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_CREATED_SINCE__DATE = eINSTANCE.getDataSet__GetItemsExceptIdentifiersCreatedSince__Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items Except Identifiers Modified Since</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_MODIFIED_SINCE__DATE = eINSTANCE.getDataSet__GetItemsExceptIdentifiersModifiedSince__Date();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ItemImpl <em>Item</em>}' class.

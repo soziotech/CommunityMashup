@@ -1298,6 +1298,28 @@ public interface DataSet extends EObject {
 	EList<DeletedItem> getDeletedItems();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all items except the identifiers which are created since the given date.
+	 * <!-- end-model-doc -->
+	 * @model dateRequired="true"
+	 * @generated
+	 */
+	EList<Item> getItemsExceptIdentifiersCreatedSince(Date date);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all items except the identifiers which are modiefied since the given date.
+	 * <!-- end-model-doc -->
+	 * @model dateRequired="true"
+	 * @generated
+	 */
+	EList<Item> getItemsExceptIdentifiersModifiedSince(Date date);
+
+	/**
 	 * Returns all Events.
 	 * 
 	 * @return All Events of this DataSet.

@@ -2453,6 +2453,24 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getDataSet__GetItemsExceptIdentifiersCreatedSince__Date() {
+		return dataSetEClass.getEOperations().get(123);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemsExceptIdentifiersModifiedSince__Date() {
+		return dataSetEClass.getEOperations().get(124);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItem() {
 		return itemEClass;
 	}
@@ -3969,6 +3987,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(dataSetEClass, DATA_SET___GET_IDENTS_OF_ITEMS_DELETED_SINCE__DATE);
 		createEOperation(dataSetEClass, DATA_SET___CLEAR_DELETED_ITEMS_LIST);
 		createEOperation(dataSetEClass, DATA_SET___GET_DELETED_ITEMS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_CREATED_SINCE__DATE);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_MODIFIED_SINCE__DATE);
 
 		itemEClass = createEClass(ITEM);
 		createEReference(itemEClass, ITEM__DATA_SET);
@@ -4748,6 +4768,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEOperation(getDataSet__ClearDeletedItemsList(), this.getDeletedItem(), "clearDeletedItemsList", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getDataSet__GetDeletedItems(), this.getDeletedItem(), "getDeletedItems", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDataSet__GetItemsExceptIdentifiersCreatedSince__Date(), this.getItem(), "getItemsExceptIdentifiersCreatedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDataSet__GetItemsExceptIdentifiersModifiedSince__Date(), this.getItem(), "getItemsExceptIdentifiersModifiedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_DataSet(), this.getDataSet(), this.getDataSet_Items(), "dataSet", null, 0, 1, Item.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

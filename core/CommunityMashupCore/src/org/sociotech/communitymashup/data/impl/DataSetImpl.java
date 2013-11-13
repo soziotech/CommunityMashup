@@ -1143,6 +1143,10 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return clearDeletedItemsList();
 			case DataPackage.DATA_SET___GET_DELETED_ITEMS:
 				return getDeletedItems();
+			case DataPackage.DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_CREATED_SINCE__DATE:
+				return getItemsExceptIdentifiersCreatedSince((Date)arguments.get(0));
+			case DataPackage.DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_MODIFIED_SINCE__DATE:
+				return getItemsExceptIdentifiersModifiedSince((Date)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -3577,16 +3581,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		
 		EList<Item> allItems = this.getItems();
 		
-		EList<Item> itemsWithoutIdentifiers = new BasicEList<Item>();
-		
-		// filter all identifiers
-		for(Item item : allItems) {
-			if(!(item instanceof Identifier)) {
-				itemsWithoutIdentifiers.add(item);
-			}
-		}
-		
-		return itemsWithoutIdentifiers;
+		return filterIdentifiers(allItems);
 	}
 
 	/**
@@ -3780,6 +3775,45 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	public EList<DeletedItem> getDeletedItems() {
 		// deleted items are in a separate list so return the list.
 		return getItemsDeleted();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Item> getItemsExceptIdentifiersCreatedSince(Date date) {
+		EList<Item> allItems = this.getItemsCreatedSince(date);
+		
+		return filterIdentifiers(allItems);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Item> getItemsExceptIdentifiersModifiedSince(Date date) {
+		EList<Item> allItems = this.getItemsModifiedSince(date);
+		
+		return filterIdentifiers(allItems);
+	}
+
+	/**
+	 * Filters all identifiers from the given list of items.
+	 * 
+	 * @param itemList List of items
+	 * @return A new list without identifiers.
+	 */
+	private EList<Item> filterIdentifiers(EList<Item> itemList) {
+		EList<Item> itemsWithoutIdentifiers = new BasicEList<Item>();
+		
+		// filter all identifiers
+		for(Item item : itemList) {
+			if(!(item instanceof Identifier)) {
+				itemsWithoutIdentifiers.add(item);
+			}
+		}
+		
+		return itemsWithoutIdentifiers;
 	}
 
 	/**
@@ -5017,6 +5051,26 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		if ( command.getCommand().equalsIgnoreCase("getDeletedItems")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
 			return this.getDeletedItems();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getItemsExceptIdentifiersCreatedSince")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.util.Date date = null;
+			try {
+				date = (java.util.Date)(RestUtil.fromDateString((String)command.getArg("date")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.util.Date", command.getArg("date").getClass().getName());
+			}
+			return this.getItemsExceptIdentifiersCreatedSince(date);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getItemsExceptIdentifiersModifiedSince")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.util.Date date = null;
+			try {
+				date = (java.util.Date)(RestUtil.fromDateString((String)command.getArg("date")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.util.Date", command.getArg("date").getClass().getName());
+			}
+			return this.getItemsExceptIdentifiersModifiedSince(date);
 		}
 		throw new UnknownOperationException(this, command);
 	}

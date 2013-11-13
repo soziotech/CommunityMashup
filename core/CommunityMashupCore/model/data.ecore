@@ -1104,6 +1104,18 @@
         <details key="OCLCondition" value="&quot;true&quot;"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getItemsExceptIdentifiersCreatedSince" upperBound="-1" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all items except the identifiers which are created since the given date."/>
+      </eAnnotations>
+      <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eOperations>
+    <eOperations name="getItemsExceptIdentifiersModifiedSince" upperBound="-1" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all items except the identifiers which are modiefied since the given date."/>
+      </eAnnotations>
+      <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" resolveProxies="false" eOpposite="#//Item/dataSet"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheFolder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
