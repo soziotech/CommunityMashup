@@ -389,7 +389,7 @@ public class ScaledImagesSourceService extends SourceServiceFacadeImpl implement
 		io.getImages().add(attachedImage);
 		
 		// delete scaled image after orig is deleted
-		attachedImage.deleteOnDeleteOf(image);
+		attachedImage.forceDeleteOnDeleteOf(image);
 		
 		// add meta tag
 		attachedImage.metaTag(ScaledImagesTags.SCALEDIMAGES_METATAG);
