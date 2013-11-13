@@ -45,6 +45,8 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getIdentCounter <em>Ident Counter</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getIdentPrefix <em>Ident Prefix</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.DataSet#getCreated <em>Created</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getKeepDeletedItemsList <em>Keep Deleted Items List</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DataSet#getItemsDeleted <em>Items Deleted</em>}</li>
  * </ul>
  * </p>
  *
@@ -303,6 +305,49 @@ public interface DataSet extends EObject {
 	 * @generated
 	 */
 	void setCreated(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>Keep Deleted Items List</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Keep Deleted Items List</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Keep Deleted Items List</em>' attribute.
+	 * @see #setKeepDeletedItemsList(Boolean)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_KeepDeletedItemsList()
+	 * @model default="false"
+	 * @generated
+	 */
+	Boolean getKeepDeletedItemsList();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.DataSet#getKeepDeletedItemsList <em>Keep Deleted Items List</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Keep Deleted Items List</em>' attribute.
+	 * @see #getKeepDeletedItemsList()
+	 * @generated
+	 */
+	void setKeepDeletedItemsList(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Items Deleted</b></em>' containment reference list.
+	 * The list contents are of type {@link org.sociotech.communitymashup.data.DeletedItem}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Items Deleted</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Items Deleted</em>' containment reference list.
+	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_ItemsDeleted()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<DeletedItem> getItemsDeleted();
 
 	/**
 	 * <!-- begin-user-doc --> Returns all items contained in this data set with
@@ -1188,6 +1233,69 @@ public interface DataSet extends EObject {
 	 * @generated
 	 */
 	EList<IndoorLocation> getIndoorLocations();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all items except the identifiers
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<Item> getItemsExceptIdentifiers();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns a comma separated list of the idents of all deleted items.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getIdentsOfDeletedItems();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all items that are deleted since the given date.
+	 * <!-- end-model-doc -->
+	 * @model dateRequired="true"
+	 * @generated
+	 */
+	EList<Item> getItemsDeletedSince(Date date);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns a comma separated list of the idents of all items that are deleted since the given date.
+	 * <!-- end-model-doc -->
+	 * @model dateRequired="true"
+	 * @generated
+	 */
+	String getIdentsOfItemsDeletedSince(Date date);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Clears the list of deleted items.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	EList<DeletedItem> clearDeletedItemsList();
+
+	/**
+	 * Returns all DeletedItems.
+	 *
+	 * @return All DeletedItems of this DataSet.
+	 * @generated
+	 */
+	EList<DeletedItem> getDeletedItems();
 
 	/**
 	 * Returns all Events.

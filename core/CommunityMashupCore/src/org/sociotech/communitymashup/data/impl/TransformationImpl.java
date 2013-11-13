@@ -30,6 +30,7 @@ import org.sociotech.communitymashup.data.Connection;
 import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.DeletedItem;
 import org.sociotech.communitymashup.data.Document;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Event;
@@ -408,6 +409,9 @@ public class TransformationImpl extends AttachmentImpl implements Transformation
 			}
 			if (o instanceof EventImpl) {
 				return ((Event) o).process(input, requestType);
+			}
+			if (o instanceof DeletedItemImpl) {
+				return ((DeletedItem) o).process(input, requestType);
 			}
 			if (o instanceof List) {
 				return RestUtil.listProcess((List<?>) o, input, requestType);

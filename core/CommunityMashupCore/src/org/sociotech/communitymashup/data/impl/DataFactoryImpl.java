@@ -22,6 +22,7 @@ import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.DeletedItem;
 import org.sociotech.communitymashup.data.Document;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Event;
@@ -122,6 +123,7 @@ public class DataFactoryImpl extends EFactoryImpl implements DataFactory {
 			case DataPackage.INDOOR_LOCATION: return createIndoorLocation();
 			case DataPackage.IDENTIFIER: return createIdentifier();
 			case DataPackage.EVENT: return createEvent();
+			case DataPackage.DELETED_ITEM: return createDeletedItem();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -385,6 +387,16 @@ public class DataFactoryImpl extends EFactoryImpl implements DataFactory {
 	public Event createEvent() {
 		EventImpl event = new EventImpl();
 		return event;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeletedItem createDeletedItem() {
+		DeletedItemImpl deletedItem = new DeletedItemImpl();
+		return deletedItem;
 	}
 
 	/**

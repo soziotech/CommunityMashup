@@ -40,6 +40,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.Mashup#getBackupIntervall <em>Backup Intervall</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Mashup#getCacheDelay <em>Cache Delay</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.Mashup#getSourceIdentCounter <em>Source Ident Counter</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.Mashup#getKeepDeletedItemsList <em>Keep Deleted Items List</em>}</li>
  * </ul>
  * </p>
  *
@@ -324,6 +325,33 @@ public interface Mashup extends Source {
 	 * @generated
 	 */
 	void setSourceIdentCounter(Integer value);
+
+	/**
+	 * Returns the value of the '<em><b>Keep Deleted Items List</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Keep Deleted Items List</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Keep Deleted Items List</em>' attribute.
+	 * @see #setKeepDeletedItemsList(Boolean)
+	 * @see org.sociotech.communitymashup.application.ApplicationPackage#getMashup_KeepDeletedItemsList()
+	 * @model default="false"
+	 * @generated
+	 */
+	Boolean getKeepDeletedItemsList();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.application.Mashup#getKeepDeletedItemsList <em>Keep Deleted Items List</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Keep Deleted Items List</em>' attribute.
+	 * @see #getKeepDeletedItemsList()
+	 * @generated
+	 */
+	void setKeepDeletedItemsList(Boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

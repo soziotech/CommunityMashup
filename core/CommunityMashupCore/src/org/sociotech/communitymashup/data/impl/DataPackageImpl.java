@@ -36,6 +36,7 @@ import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.DeletedItem;
 import org.sociotech.communitymashup.data.Document;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Event;
@@ -300,6 +301,13 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * @generated
 	 */
 	private EClass eventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass deletedItemEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1313,6 +1321,24 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EAttribute getDataSet_Created() {
 		return (EAttribute)dataSetEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataSet_KeepDeletedItemsList() {
+		return (EAttribute)dataSetEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataSet_ItemsDeleted() {
+		return (EReference)dataSetEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -2373,6 +2399,60 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getDataSet__GetItemsExceptIdentifiers() {
+		return dataSetEClass.getEOperations().get(117);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetIdentsOfDeletedItems() {
+		return dataSetEClass.getEOperations().get(118);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetItemsDeletedSince__Date() {
+		return dataSetEClass.getEOperations().get(119);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetIdentsOfItemsDeletedSince__Date() {
+		return dataSetEClass.getEOperations().get(120);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__ClearDeletedItemsList() {
+		return dataSetEClass.getEOperations().get(121);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataSet__GetDeletedItems() {
+		return dataSetEClass.getEOperations().get(122);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItem() {
 		return itemEClass;
 	}
@@ -2465,6 +2545,24 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EReference getItem_DeletedIfDeleted() {
 		return (EReference)itemEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getItem_ForcedDeleteOnDelete() {
+		return (EReference)itemEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getItem_ForcedDeletedIfDeleted() {
+		return (EReference)itemEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -2636,6 +2734,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EOperation getItem__RemoveIdentifier__String() {
 		return itemEClass.getEOperations().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getItem__ForceDeleteOnDeleteOf__Item() {
+		return itemEClass.getEOperations().get(19);
 	}
 
 	/**
@@ -3588,6 +3695,24 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDeletedItem() {
+		return deletedItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDeletedItem_Deleted() {
+		return (EAttribute)deletedItemEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataFactory getDataFactory() {
 		return (DataFactory)getEFactoryInstance();
 	}
@@ -3719,6 +3844,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(dataSetEClass, DATA_SET__IDENT_COUNTER);
 		createEAttribute(dataSetEClass, DATA_SET__IDENT_PREFIX);
 		createEAttribute(dataSetEClass, DATA_SET__CREATED);
+		createEAttribute(dataSetEClass, DATA_SET__KEEP_DELETED_ITEMS_LIST);
+		createEReference(dataSetEClass, DATA_SET__ITEMS_DELETED);
 		createEOperation(dataSetEClass, DATA_SET___ADD__ITEM);
 		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_WITH_STRING_VALUE__STRING);
 		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_NAME__STRING);
@@ -3836,6 +3963,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(dataSetEClass, DATA_SET___GET_EVENTS);
 		createEOperation(dataSetEClass, DATA_SET___SEARCH_BY_QUERY__STRING);
 		createEOperation(dataSetEClass, DATA_SET___GET_INDOOR_LOCATIONS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS);
+		createEOperation(dataSetEClass, DATA_SET___GET_IDENTS_OF_DELETED_ITEMS);
+		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_DELETED_SINCE__DATE);
+		createEOperation(dataSetEClass, DATA_SET___GET_IDENTS_OF_ITEMS_DELETED_SINCE__DATE);
+		createEOperation(dataSetEClass, DATA_SET___CLEAR_DELETED_ITEMS_LIST);
+		createEOperation(dataSetEClass, DATA_SET___GET_DELETED_ITEMS);
 
 		itemEClass = createEClass(ITEM);
 		createEReference(itemEClass, ITEM__DATA_SET);
@@ -3848,6 +3981,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(itemEClass, ITEM__IDENTIFIED_BY);
 		createEReference(itemEClass, ITEM__DELETE_ON_DELETE);
 		createEReference(itemEClass, ITEM__DELETED_IF_DELETED);
+		createEReference(itemEClass, ITEM__FORCED_DELETE_ON_DELETE);
+		createEReference(itemEClass, ITEM__FORCED_DELETED_IF_DELETED);
 		createEOperation(itemEClass, ITEM___LOG__STRING);
 		createEOperation(itemEClass, ITEM___LOG__STRING_INTEGER);
 		createEOperation(itemEClass, ITEM___META_TAG__STRING);
@@ -3867,6 +4002,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(itemEClass, ITEM___FORCE_UPDATE__ITEM);
 		createEOperation(itemEClass, ITEM___UN_META_TAG__STRING);
 		createEOperation(itemEClass, ITEM___REMOVE_IDENTIFIER__STRING);
+		createEOperation(itemEClass, ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM);
 
 		extensionEClass = createEClass(EXTENSION);
 		createEOperation(extensionEClass, EXTENSION___TAG__STRING);
@@ -3999,6 +4135,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(eventEClass, EVENT__DATE);
 		createEOperation(eventEClass, EVENT___GET_DATE_PRETTY_IN_LANGUAGE__STRING);
 		createEOperation(eventEClass, EVENT___GET_DATE_PRETTY);
+
+		deletedItemEClass = createEClass(DELETED_ITEM);
+		createEAttribute(deletedItemEClass, DELETED_ITEM__DELETED);
 	}
 
 	/**
@@ -4062,6 +4201,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		indoorLocationEClass.getESuperTypes().add(this.getMetaInformation());
 		identifierEClass.getESuperTypes().add(this.getItem());
 		eventEClass.getESuperTypes().add(this.getMetaInformation());
+		deletedItemEClass.getESuperTypes().add(this.getItem());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4272,6 +4412,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getDataSet_IdentCounter(), ecorePackage.getELongObject(), "identCounter", "1", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_IdentPrefix(), ecorePackage.getEString(), "identPrefix", "a_", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_Created(), ecorePackage.getEDate(), "created", null, 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSet_KeepDeletedItemsList(), ecorePackage.getEBooleanObject(), "keepDeletedItemsList", "false", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataSet_ItemsDeleted(), this.getDeletedItem(), null, "itemsDeleted", null, 0, -1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getDataSet__Add__Item(), this.getItem(), "add", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -4593,6 +4735,20 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		initEOperation(getDataSet__GetIndoorLocations(), this.getIndoorLocation(), "getIndoorLocations", 0, -1, IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getDataSet__GetItemsExceptIdentifiers(), this.getItem(), "getItemsExceptIdentifiers", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getDataSet__GetIdentsOfDeletedItems(), ecorePackage.getEString(), "getIdentsOfDeletedItems", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDataSet__GetItemsDeletedSince__Date(), this.getItem(), "getItemsDeletedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getDataSet__GetIdentsOfItemsDeletedSince__Date(), ecorePackage.getEString(), "getIdentsOfItemsDeletedSince", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getDataSet__ClearDeletedItemsList(), this.getDeletedItem(), "clearDeletedItemsList", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getDataSet__GetDeletedItems(), this.getDeletedItem(), "getDeletedItems", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_DataSet(), this.getDataSet(), this.getDataSet_Items(), "dataSet", null, 0, 1, Item.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_Ident(), ecorePackage.getEString(), "ident", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4604,6 +4760,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getItem_IdentifiedBy(), this.getIdentifier(), this.getIdentifier_Identified(), "identifiedBy", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_DeleteOnDelete(), this.getItem(), this.getItem_DeletedIfDeleted(), "deleteOnDelete", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_DeletedIfDeleted(), this.getItem(), this.getItem_DeleteOnDelete(), "deletedIfDeleted", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItem_ForcedDeleteOnDelete(), this.getItem(), this.getItem_ForcedDeletedIfDeleted(), "forcedDeleteOnDelete", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItem_ForcedDeletedIfDeleted(), this.getItem(), this.getItem_ForcedDeleteOnDelete(), "forcedDeletedIfDeleted", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getItem__Log__String(), null, "log", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -4659,6 +4817,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		op = initEOperation(getItem__RemoveIdentifier__String(), this.getIdentifier(), "removeIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getItem__ForceDeleteOnDeleteOf__Item(), this.getItem(), "forceDeleteOnDeleteOf", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(extensionEClass, Extension.class, "Extension", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4816,6 +4977,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		addEParameter(op, ecorePackage.getEString(), "language", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEvent__GetDatePretty(), ecorePackage.getEString(), "getDatePretty", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(deletedItemEClass, DeletedItem.class, "DeletedItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeletedItem_Deleted(), ecorePackage.getEDate(), "deleted", null, 0, 1, DeletedItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

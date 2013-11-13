@@ -769,13 +769,22 @@ public interface ApplicationPackage extends EPackage {
 	int MASHUP__SOURCE_IDENT_COUNTER = SOURCE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Keep Deleted Items List</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MASHUP__KEEP_DELETED_ITEMS_LIST = SOURCE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Mashup</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MASHUP_FEATURE_COUNT = SOURCE_FEATURE_COUNT + 11;
+	int MASHUP_FEATURE_COUNT = SOURCE_FEATURE_COUNT + 12;
 
 	/**
 	 * The operation id for the '<em>Get Property</em>' operation.
@@ -3163,6 +3172,17 @@ public interface ApplicationPackage extends EPackage {
 	EAttribute getMashup_SourceIdentCounter();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.application.Mashup#getKeepDeletedItemsList <em>Keep Deleted Items List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Keep Deleted Items List</em>'.
+	 * @see org.sociotech.communitymashup.application.Mashup#getKeepDeletedItemsList()
+	 * @see #getMashup()
+	 * @generated
+	 */
+	EAttribute getMashup_KeepDeletedItemsList();
+
+	/**
 	 * Returns the meta object for the '{@link org.sociotech.communitymashup.application.Mashup#getNewSourceIdent() <em>Get New Source Ident</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4782,6 +4802,14 @@ public interface ApplicationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MASHUP__SOURCE_IDENT_COUNTER = eINSTANCE.getMashup_SourceIdentCounter();
+
+		/**
+		 * The meta object literal for the '<em><b>Keep Deleted Items List</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MASHUP__KEEP_DELETED_ITEMS_LIST = eINSTANCE.getMashup_KeepDeletedItemsList();
 
 		/**
 		 * The meta object literal for the '<em><b>Get New Source Ident</b></em>' operation.

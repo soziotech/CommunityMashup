@@ -1071,6 +1071,39 @@
         <details key="OCLCondition" value="&quot;true&quot;"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getItemsExceptIdentifiers" upperBound="-1" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all items except the identifiers"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getIdentsOfDeletedItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a comma separated list of the idents of all deleted items."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getItemsDeletedSince" upperBound="-1" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all items that are deleted since the given date."/>
+      </eAnnotations>
+      <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eOperations>
+    <eOperations name="getIdentsOfItemsDeletedSince" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a comma separated list of the idents of all items that are deleted since the given date."/>
+      </eAnnotations>
+      <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eOperations>
+    <eOperations name="clearDeletedItemsList" upperBound="-1" eType="#//DeletedItem">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Clears the list of deleted items."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getDeletedItems" upperBound="-1" eType="#//DeletedItem">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns all Person instances contained in this @link DataSet Data Set@endlink."/>
+        <details key="OCLCondition" value="&quot;true&quot;"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" resolveProxies="false" eOpposite="#//Item/dataSet"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheFolder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -1112,6 +1145,10 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="created" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keepDeletedItemsList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemsDeleted" upperBound="-1"
+        eType="#//DeletedItem" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Item" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1230,6 +1267,12 @@
       </eAnnotations>
       <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="forceDeleteOnDeleteOf" lowerBound="1" eType="#//Item">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Activates the deletion of this item when the given item will be deleted."/>
+      </eAnnotations>
+      <eParameters name="item" eType="#//Item"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="#//DataSet"
         transient="true" resolveProxies="false" eOpposite="#//DataSet/items"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ident" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -1251,6 +1294,18 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deletedIfDeleted" upperBound="-1"
         eType="#//Item" eOpposite="#//Item/deleteOnDelete">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This item will be deleted if one of the referenced items will be deleted."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forcedDeleteOnDelete" upperBound="-1"
+        eType="#//Item" eOpposite="#//Item/forcedDeletedIfDeleted">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="References items will be deleted when this item will be deleted"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forcedDeletedIfDeleted"
+        upperBound="-1" eType="#//Item" eOpposite="#//Item/forcedDeleteOnDelete">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="This item will be deleted if one of the referenced items will be deleted."/>
       </eAnnotations>
@@ -1552,5 +1607,15 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeletedItem" eSuperTypes="#//Item">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A DeletedItem is representation for an deleted Item, having the same ident."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deleted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The date when the deletion was performed.&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

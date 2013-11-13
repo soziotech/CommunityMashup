@@ -21,6 +21,7 @@ import org.sociotech.communitymashup.data.Connection;
 import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.DeletedItem;
 import org.sociotech.communitymashup.data.Document;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Event;
@@ -371,6 +372,13 @@ public class DataSwitch<T> extends Switch<T> {
 				if (result == null) result = caseMetaInformation(event);
 				if (result == null) result = caseExtension(event);
 				if (result == null) result = caseItem(event);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataPackage.DELETED_ITEM: {
+				DeletedItem deletedItem = (DeletedItem)theEObject;
+				T result = caseDeletedItem(deletedItem);
+				if (result == null) result = caseItem(deletedItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -855,6 +863,21 @@ public class DataSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEvent(Event object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Deleted Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Deleted Item</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeletedItem(DeletedItem object) {
 		return null;
 	}
 

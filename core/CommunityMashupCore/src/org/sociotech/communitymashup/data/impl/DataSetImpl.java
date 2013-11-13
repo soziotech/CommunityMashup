@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
@@ -62,6 +63,7 @@ import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.DeletedItem;
 import org.sociotech.communitymashup.data.Document;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Event;
@@ -113,6 +115,8 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getIdentCounter <em>Ident Counter</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getIdentPrefix <em>Ident Prefix</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getCreated <em>Created</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getKeepDeletedItemsList <em>Keep Deleted Items List</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.DataSetImpl#getItemsDeleted <em>Items Deleted</em>}</li>
  * </ul>
  * </p>
  *
@@ -285,6 +289,36 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @ordered
 	 */
 	protected Date created = CREATED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getKeepDeletedItemsList() <em>Keep Deleted Items List</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKeepDeletedItemsList()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean KEEP_DELETED_ITEMS_LIST_EDEFAULT = Boolean.FALSE;
+
+	/**
+	 * The cached value of the '{@link #getKeepDeletedItemsList() <em>Keep Deleted Items List</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKeepDeletedItemsList()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean keepDeletedItemsList = KEEP_DELETED_ITEMS_LIST_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getItemsDeleted() <em>Items Deleted</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItemsDeleted()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DeletedItem> itemsDeleted;
 
 	/**
 	 * True means that file attachment caching is on.
@@ -503,6 +537,42 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getKeepDeletedItemsList() {
+		return keepDeletedItemsList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public void setKeepDeletedItemsList(Boolean newKeepDeletedItemsList) {
+		if(!newKeepDeletedItemsList && keepDeletedItemsList) {
+			// switch of, so clear list
+			clearDeletedItemsList();
+		}
+		Boolean oldKeepDeletedItemsList = keepDeletedItemsList;
+		keepDeletedItemsList = newKeepDeletedItemsList;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.DATA_SET__KEEP_DELETED_ITEMS_LIST, oldKeepDeletedItemsList, keepDeletedItemsList));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<DeletedItem> getItemsDeleted() {
+		if (itemsDeleted == null) {
+			itemsDeleted = new EObjectContainmentEList<DeletedItem>(DeletedItem.class, this, DataPackage.DATA_SET__ITEMS_DELETED);
+		}
+		return itemsDeleted;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * Returns all items with the given String value.
 	 * <!-- end-user-doc -->
 	 */
@@ -647,6 +717,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
 				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
+			case DataPackage.DATA_SET__ITEMS_DELETED:
+				return ((InternalEList<?>)getItemsDeleted()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -678,6 +750,10 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return getIdentPrefix();
 			case DataPackage.DATA_SET__CREATED:
 				return getCreated();
+			case DataPackage.DATA_SET__KEEP_DELETED_ITEMS_LIST:
+				return getKeepDeletedItemsList();
+			case DataPackage.DATA_SET__ITEMS_DELETED:
+				return getItemsDeleted();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -719,6 +795,13 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			case DataPackage.DATA_SET__CREATED:
 				setCreated((Date)newValue);
 				return;
+			case DataPackage.DATA_SET__KEEP_DELETED_ITEMS_LIST:
+				setKeepDeletedItemsList((Boolean)newValue);
+				return;
+			case DataPackage.DATA_SET__ITEMS_DELETED:
+				getItemsDeleted().clear();
+				getItemsDeleted().addAll((Collection<? extends DeletedItem>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -758,6 +841,12 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			case DataPackage.DATA_SET__CREATED:
 				setCreated(CREATED_EDEFAULT);
 				return;
+			case DataPackage.DATA_SET__KEEP_DELETED_ITEMS_LIST:
+				setKeepDeletedItemsList(KEEP_DELETED_ITEMS_LIST_EDEFAULT);
+				return;
+			case DataPackage.DATA_SET__ITEMS_DELETED:
+				getItemsDeleted().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -788,6 +877,10 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return IDENT_PREFIX_EDEFAULT == null ? identPrefix != null : !IDENT_PREFIX_EDEFAULT.equals(identPrefix);
 			case DataPackage.DATA_SET__CREATED:
 				return CREATED_EDEFAULT == null ? created != null : !CREATED_EDEFAULT.equals(created);
+			case DataPackage.DATA_SET__KEEP_DELETED_ITEMS_LIST:
+				return KEEP_DELETED_ITEMS_LIST_EDEFAULT == null ? keepDeletedItemsList != null : !KEEP_DELETED_ITEMS_LIST_EDEFAULT.equals(keepDeletedItemsList);
+			case DataPackage.DATA_SET__ITEMS_DELETED:
+				return itemsDeleted != null && !itemsDeleted.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1038,6 +1131,18 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return searchByQuery((String)arguments.get(0));
 			case DataPackage.DATA_SET___GET_INDOOR_LOCATIONS:
 				return getIndoorLocations();
+			case DataPackage.DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS:
+				return getItemsExceptIdentifiers();
+			case DataPackage.DATA_SET___GET_IDENTS_OF_DELETED_ITEMS:
+				return getIdentsOfDeletedItems();
+			case DataPackage.DATA_SET___GET_ITEMS_DELETED_SINCE__DATE:
+				return getItemsDeletedSince((Date)arguments.get(0));
+			case DataPackage.DATA_SET___GET_IDENTS_OF_ITEMS_DELETED_SINCE__DATE:
+				return getIdentsOfItemsDeletedSince((Date)arguments.get(0));
+			case DataPackage.DATA_SET___CLEAR_DELETED_ITEMS_LIST:
+				return clearDeletedItemsList();
+			case DataPackage.DATA_SET___GET_DELETED_ITEMS:
+				return getDeletedItems();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -1060,6 +1165,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		result.append(identPrefix);
 		result.append(", created: ");
 		result.append(created);
+		result.append(", keepDeletedItemsList: ");
+		result.append(keepDeletedItemsList);
 		result.append(')');
 		return result.toString();
 	}
@@ -3463,6 +3570,105 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Item> getItemsExceptIdentifiers() {
+		
+		EList<Item> allItems = this.getItems();
+		
+		EList<Item> itemsWithoutIdentifiers = new BasicEList<Item>();
+		
+		// filter all identifiers
+		for(Item item : allItems) {
+			if(!(item instanceof Identifier)) {
+				itemsWithoutIdentifiers.add(item);
+			}
+		}
+		
+		return itemsWithoutIdentifiers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public String getIdentsOfDeletedItems() {
+		EList<DeletedItem> allDeletedItems = getDeletedItems();
+		
+		return createIdentList(allDeletedItems);
+	}
+
+	/**
+	 * Creates a comma separated string of all idents of the given list of items.
+	 * 
+	 * @param items List of items
+	 * @return Comma separated string of all idents. Empty string if no item contained in the given list.
+	 */
+	private String createIdentList(EList<? extends Item> items) {
+		if(items == null || items.isEmpty())
+		{
+			return "";
+		}
+		
+		StringBuffer identListBuffer = new StringBuffer();
+		for(Item item : items)
+		{
+			identListBuffer.append(item.getIdent() + ",");
+		}
+		// cut last comma and return as string
+		return identListBuffer.substring(0, identListBuffer.length() -1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Item> getItemsDeletedSince(Date date) {
+		if(date == null)
+		{
+			return null;
+		}	
+		
+		EList<Item> results = new BasicEList<Item>();
+		
+		EList<DeletedItem> itemList = this.getDeletedItems();
+		
+		// check deletion date of all deleted items
+		// TODO create more performant query with date sorted list
+		for(DeletedItem item : itemList)
+		{
+			Date deletionDate = item.getDeleted();
+			
+			if(deletionDate != null && deletionDate.after(date))
+			{
+				results.add(item);
+			}
+		}
+		
+		return results;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public String getIdentsOfItemsDeletedSince(Date date) {
+		EList<Item> allDeletedItems = getItemsDeletedSince(date);
+		
+		return createIdentList(allDeletedItems);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<DeletedItem> clearDeletedItemsList() {
+		this.getItemsDeleted().clear();
+		return getItemsDeleted();
+	}
+
+	/**
 	 * Returns all IndoorLocations matching the provided condition.
 	 *
 	 * @condition The condition to filter the IndoorLocations.
@@ -3567,6 +3773,35 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	}
 
 	/**
+	 * Returns all DeletedItems.
+	 *
+	 * @return All DeletedItems of this DataSet.
+	 */
+	public EList<DeletedItem> getDeletedItems() {
+		// deleted items are in a separate list so return the list.
+		return getItemsDeleted();
+	}
+
+	/**
+	 * Returns all DeletedItems matching the provided condition.
+	 *
+	 * @condition The condition to filter the DeletedItems.
+	 * @return All DeletedItems of this DataSet matching the condition.
+	 * @generated
+	 */
+	public EList<DeletedItem> getDeletedItemsMatchingCondition(EObjectCondition condition) {
+		if (condition == null) return null;
+		IQueryResult result = getItemsMatchingCondition(DeletedItem.isTypeCondition.AND(condition));
+		EList<DeletedItem> resList = new BasicEList<DeletedItem>();
+		if (result != null) {
+			for (EObject eo: result.getEObjects()) {
+				resList.add((DeletedItem) eo);
+			}
+		}
+		return resList;
+	}
+
+	/**
 	 * Generates an EObjectCondition to check whether an Object is of the type DataSet.
 	 * 
 	 * @return An EObjectCondition whether the Object is of the type DataSet.
@@ -3592,6 +3827,10 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			return this.getLastModified();		
 		if ( featureName.equalsIgnoreCase("created") )
 			return this.getCreated();		
+		if ( featureName.equalsIgnoreCase("keepDeletedItemsList") )
+			return this.getKeepDeletedItemsList();		
+		if ( featureName.equalsIgnoreCase("itemsDeleted") )
+			return this.getItemsDeleted();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 
@@ -3636,6 +3875,20 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 					throw new WrongArgException("DataSet.setFeature", "java.util.Date",value.getClass().getName());
 				}
 				this.setCreated(fcreated);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("keepDeletedItemsList") ) {
+				java.lang.Boolean fkeepDeletedItemsList = null;
+				try {
+					try {
+						fkeepDeletedItemsList = (java.lang.Boolean)(RestUtil.fromInput(value));
+					} catch (ClassNotFoundException e) {
+						fkeepDeletedItemsList = (java.lang.Boolean)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("DataSet.setFeature", "java.lang.Boolean",value.getClass().getName());
+				}
+				this.setKeepDeletedItemsList(fkeepDeletedItemsList);
 			return this;
 			}		
 	throw new UnknownOperationException(this, new RestCommand("set" + featureName).addArg("value",value));
@@ -4729,6 +4982,42 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
 			return this.getIndoorLocations();
 		}
+		if ( command.getCommand().equalsIgnoreCase("getItemsExceptIdentifiers")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
+			return this.getItemsExceptIdentifiers();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getIdentsOfDeletedItems")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
+			return this.getIdentsOfDeletedItems();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getItemsDeletedSince")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.util.Date date = null;
+			try {
+				date = (java.util.Date)(RestUtil.fromDateString((String)command.getArg("date")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.util.Date", command.getArg("date").getClass().getName());
+			}
+			return this.getItemsDeletedSince(date);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getIdentsOfItemsDeletedSince")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
+			java.util.Date date = null;
+			try {
+				date = (java.util.Date)(RestUtil.fromDateString((String)command.getArg("date")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("DataSet.doOperation", "java.util.Date", command.getArg("date").getClass().getName());
+			}
+			return this.getIdentsOfItemsDeletedSince(date);
+		}
+		if ( command.getCommand().equalsIgnoreCase("clearDeletedItemsList")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
+			return this.clearDeletedItemsList();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getDeletedItems")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
+			return this.getDeletedItems();
+		}
 		throw new UnknownOperationException(this, command);
 	}
 
@@ -4875,6 +5164,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			}
 			if (o instanceof EventImpl) {
 				return ((Event) o).process(input, requestType);
+			}
+			if (o instanceof DeletedItemImpl) {
+				return ((DeletedItem) o).process(input, requestType);
 			}
 			if (o instanceof List) {
 				return RestUtil.listProcess((List<?>) o, input, requestType);
@@ -6811,18 +7103,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	public String getIdentsOfExistingItems() {
 		EList<Item> allItems = getItems();
 		
-		if(allItems == null || allItems.isEmpty())
-		{
-			return "";
-		}
-		
-		StringBuffer identListBuffer = new StringBuffer();
-		for(Item item : allItems)
-		{
-			identListBuffer.append(item.getIdent() + ",");
-		}
-		// cut last comma and return as string
-		return identListBuffer.substring(0, identListBuffer.length() -1);
+		return createIdentList(allItems);
 	}
 
 	/**

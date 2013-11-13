@@ -243,6 +243,8 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/identCounter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/identPrefix"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/created"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DataSet/keepDeletedItemsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference data.ecore#//DataSet/itemsDeleted"/>
       <genOperations ecoreOperation="data.ecore#//DataSet/add">
         <genParameters ecoreParameter="data.ecore#//DataSet/add/item"/>
       </genOperations>
@@ -522,6 +524,14 @@
         <genParameters ecoreParameter="data.ecore#//DataSet/searchByQuery/query"/>
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//DataSet/getIndoorLocations"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsExceptIdentifiers"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getIdentsOfDeletedItems"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsDeletedSince">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsDeletedSince/date"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getIdentsOfItemsDeletedSince">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getIdentsOfItemsDeletedSince/date"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Item">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference data.ecore#//Item/dataSet"/>
@@ -534,6 +544,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/identifiedBy"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/deleteOnDelete"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/deletedIfDeleted"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/forcedDeleteOnDelete"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/forcedDeletedIfDeleted"/>
       <genOperations ecoreOperation="data.ecore#//Item/log">
         <genParameters ecoreParameter="data.ecore#//Item/log/message"/>
       </genOperations>
@@ -584,6 +596,9 @@
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//Item/removeIdentifier">
         <genParameters ecoreParameter="data.ecore#//Item/removeIdentifier/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Item/forceDeleteOnDeleteOf">
+        <genParameters ecoreParameter="data.ecore#//Item/forceDeleteOnDeleteOf/item"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Extension">
@@ -673,7 +688,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Location/indoorLocations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/state"/>
     </genClasses>
-    <genClasses ecoreClass="data.ecore#//Image"/>
+    <genClasses ecoreClass="data.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Image/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Image/height"/>
+    </genClasses>
     <genClasses ecoreClass="data.ecore#//Document"/>
     <genClasses ecoreClass="data.ecore#//StarRanking">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//StarRanking/rankedInformationObject"/>
@@ -718,6 +736,9 @@
         <genParameters ecoreParameter="data.ecore#//Event/getDatePrettyInLanguage/language"/>
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//Event/getDatePretty"/>
+    </genClasses>
+    <genClasses ecoreClass="data.ecore#//DeletedItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DeletedItem/deleted"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Application" basePackage="org.sociotech.communitymashup" disposableProviderFactory="true"
@@ -778,6 +799,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/backupIntervall"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/cacheDelay"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/sourceIdentCounter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Mashup/keepDeletedItemsList"/>
       <genOperations ecoreOperation="application.ecore#//Mashup/getNewSourceIdent"/>
       <genOperations ecoreOperation="application.ecore#//Mashup/getSourceWithIdent">
         <genParameters ecoreParameter="application.ecore#//Mashup/getSourceWithIdent/ident"/>

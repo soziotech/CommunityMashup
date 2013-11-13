@@ -539,6 +539,15 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMashup_KeepDeletedItemsList() {
+		return (EAttribute)mashupEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getMashup__GetNewSourceIdent() {
 		return mashupEClass.getEOperations().get(0);
 	}
@@ -1759,6 +1768,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(mashupEClass, MASHUP__BACKUP_INTERVALL);
 		createEAttribute(mashupEClass, MASHUP__CACHE_DELAY);
 		createEAttribute(mashupEClass, MASHUP__SOURCE_IDENT_COUNTER);
+		createEAttribute(mashupEClass, MASHUP__KEEP_DELETED_ITEMS_LIST);
 		createEOperation(mashupEClass, MASHUP___GET_NEW_SOURCE_IDENT);
 		createEOperation(mashupEClass, MASHUP___GET_SOURCE_WITH_IDENT__STRING);
 
@@ -1986,6 +1996,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getMashup_BackupIntervall(), ecorePackage.getEIntegerObject(), "backupIntervall", "3600", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashup_CacheDelay(), ecorePackage.getEIntegerObject(), "cacheDelay", "300", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMashup_SourceIdentCounter(), ecorePackage.getEIntegerObject(), "sourceIdentCounter", "1", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMashup_KeepDeletedItemsList(), ecorePackage.getEBooleanObject(), "keepDeletedItemsList", "false", 0, 1, Mashup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getMashup__GetNewSourceIdent(), ecorePackage.getEIntegerObject(), "getNewSourceIdent", 0, 1, IS_UNIQUE, IS_ORDERED);
 

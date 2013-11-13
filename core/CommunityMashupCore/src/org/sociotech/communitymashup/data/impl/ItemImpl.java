@@ -57,6 +57,7 @@ import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.DeletedItem;
 import org.sociotech.communitymashup.data.Document;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Event;
@@ -117,23 +118,19 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n \tPeter Lachenmaier - Design and initial implementation";
-
+	
 	/**
-	 * Reference to singleton ocl environment. 
+	 * Indicates if this item will currently be deleted.
 	 */
-	private static EcoreEnvironment oclEnvironment = null;
+	private boolean onDelete = false;
 	
 	/**
 	 * Creates the OCL Environment at first call and then returns the singleton instance.
 	 * 
 	 * @return The OCL singleton instance, null in error case.
 	 */
-	public static Environment<EPackage, EClassifier, EOperation, EStructuralFeature, EEnumLiteral, EParameter, EObject, CallOperationAction, SendSignalAction, Constraint, EClass, EObject> getOclEnvironment() {
-		if(oclEnvironment == null)
-		{
-			oclEnvironment = (EcoreEnvironment) EcoreEnvironmentFactory.INSTANCE.createEnvironment();
-		}
-		return oclEnvironment;
+	protected static Environment<EPackage, EClassifier, EOperation, EStructuralFeature, EEnumLiteral, EParameter, EObject, CallOperationAction, SendSignalAction, Constraint, EClass, EObject> getOclEnvironment() {
+		return (EcoreEnvironment) EcoreEnvironmentFactory.INSTANCE.createEnvironment();
 	}
 
 	/**
@@ -275,6 +272,26 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	 * @ordered
 	 */
 	protected EList<Item> deletedIfDeleted;
+
+	/**
+	 * The cached value of the '{@link #getForcedDeleteOnDelete() <em>Forced Delete On Delete</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForcedDeleteOnDelete()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Item> forcedDeleteOnDelete;
+
+	/**
+	 * The cached value of the '{@link #getForcedDeletedIfDeleted() <em>Forced Deleted If Deleted</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForcedDeletedIfDeleted()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Item> forcedDeletedIfDeleted;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -508,6 +525,30 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Item> getForcedDeleteOnDelete() {
+		if (forcedDeleteOnDelete == null) {
+			forcedDeleteOnDelete = new EObjectWithInverseResolvingEList.ManyInverse<Item>(Item.class, this, DataPackage.ITEM__FORCED_DELETE_ON_DELETE, DataPackage.ITEM__FORCED_DELETED_IF_DELETED);
+		}
+		return forcedDeleteOnDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Item> getForcedDeletedIfDeleted() {
+		if (forcedDeletedIfDeleted == null) {
+			forcedDeletedIfDeleted = new EObjectWithInverseResolvingEList.ManyInverse<Item>(Item.class, this, DataPackage.ITEM__FORCED_DELETED_IF_DELETED, DataPackage.ITEM__FORCED_DELETE_ON_DELETE);
+		}
+		return forcedDeletedIfDeleted;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * Returns this.toString() as default.
 	 * <!-- end-user-doc -->
 	 */
@@ -680,8 +721,27 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	 * <!-- end-user-doc -->
 	 */
 	public void delete() {
+		if(onDelete) {
+			// this item will currently be deleted
+			return;
+		}
+		
+		// indicate that this item will be deleted
+		onDelete = true;
 		
 		log("Deleting " + this.eClass().getInstanceTypeName() + ": " + this.getIdent(), LogService.LOG_DEBUG);
+		
+		// delete all items that are forced to be deleted when this item will be deleted
+		// create copy of list
+		EList<Item> forceDeletionList = new UniqueEList<Item>(this.getForcedDeleteOnDelete());
+		
+		// clear original deletion list
+		this.getForcedDeleteOnDelete().clear();
+		
+		for(Item itemToDelete : forceDeletionList) {
+			// directly delete
+			itemToDelete.delete();
+		}
 		
 		// delete all items that need to be deleted when this item will be deleted
 		// create copy of list
@@ -690,14 +750,20 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		// clear original deletion list
 		this.getDeleteOnDelete().clear();
 		
-		for(Item itemToDelete : deletionList)
-		{
+		for(Item itemToDelete : deletionList) {
 			// delete only if the clear has removed the last delete on delete item
-			//itemToDelete.deleteIfEmptyOnDelete();
-
-			// TODO: check intention 
-			// directly delete
-			itemToDelete.delete();
+			itemToDelete.deleteIfEmptyOnDelete();
+		}
+		
+		// keep deletion information if switched on
+		if(this.getDataSet() != null && this.getDataSet().getKeepDeletedItemsList()) {
+			// create deleted item with same ident
+			DeletedItem deletedItem = DataFactory.eINSTANCE.createDeletedItem();
+			deletedItem.setIdent(this.getIdent());
+			// set deletion date to now
+			deletedItem.setDeleted(new Date());
+			// add it to deleted item list
+			this.getDataSet().getDeletedItems().add(deletedItem);
 		}
 		
 		// use ecore util to delete
@@ -1225,6 +1291,21 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Item forceDeleteOnDeleteOf(Item item) {
+		if(item == null)
+		{
+			return null;
+		}
+		
+		item.getForcedDeleteOnDelete().add(this);
+		
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -1243,6 +1324,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeleteOnDelete()).basicAdd(otherEnd, msgs);
 			case DataPackage.ITEM__DELETED_IF_DELETED:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeletedIfDeleted()).basicAdd(otherEnd, msgs);
+			case DataPackage.ITEM__FORCED_DELETE_ON_DELETE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getForcedDeleteOnDelete()).basicAdd(otherEnd, msgs);
+			case DataPackage.ITEM__FORCED_DELETED_IF_DELETED:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getForcedDeletedIfDeleted()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1265,6 +1350,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return ((InternalEList<?>)getDeleteOnDelete()).basicRemove(otherEnd, msgs);
 			case DataPackage.ITEM__DELETED_IF_DELETED:
 				return ((InternalEList<?>)getDeletedIfDeleted()).basicRemove(otherEnd, msgs);
+			case DataPackage.ITEM__FORCED_DELETE_ON_DELETE:
+				return ((InternalEList<?>)getForcedDeleteOnDelete()).basicRemove(otherEnd, msgs);
+			case DataPackage.ITEM__FORCED_DELETED_IF_DELETED:
+				return ((InternalEList<?>)getForcedDeletedIfDeleted()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1311,6 +1400,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return getDeleteOnDelete();
 			case DataPackage.ITEM__DELETED_IF_DELETED:
 				return getDeletedIfDeleted();
+			case DataPackage.ITEM__FORCED_DELETE_ON_DELETE:
+				return getForcedDeleteOnDelete();
+			case DataPackage.ITEM__FORCED_DELETED_IF_DELETED:
+				return getForcedDeletedIfDeleted();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1358,6 +1451,14 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				getDeletedIfDeleted().clear();
 				getDeletedIfDeleted().addAll((Collection<? extends Item>)newValue);
 				return;
+			case DataPackage.ITEM__FORCED_DELETE_ON_DELETE:
+				getForcedDeleteOnDelete().clear();
+				getForcedDeleteOnDelete().addAll((Collection<? extends Item>)newValue);
+				return;
+			case DataPackage.ITEM__FORCED_DELETED_IF_DELETED:
+				getForcedDeletedIfDeleted().clear();
+				getForcedDeletedIfDeleted().addAll((Collection<? extends Item>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1400,6 +1501,12 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			case DataPackage.ITEM__DELETED_IF_DELETED:
 				getDeletedIfDeleted().clear();
 				return;
+			case DataPackage.ITEM__FORCED_DELETE_ON_DELETE:
+				getForcedDeleteOnDelete().clear();
+				return;
+			case DataPackage.ITEM__FORCED_DELETED_IF_DELETED:
+				getForcedDeletedIfDeleted().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1432,6 +1539,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return deleteOnDelete != null && !deleteOnDelete.isEmpty();
 			case DataPackage.ITEM__DELETED_IF_DELETED:
 				return deletedIfDeleted != null && !deletedIfDeleted.isEmpty();
+			case DataPackage.ITEM__FORCED_DELETE_ON_DELETE:
+				return forcedDeleteOnDelete != null && !forcedDeleteOnDelete.isEmpty();
+			case DataPackage.ITEM__FORCED_DELETED_IF_DELETED:
+				return forcedDeletedIfDeleted != null && !forcedDeletedIfDeleted.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1486,6 +1597,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return unMetaTag((String)arguments.get(0));
 			case DataPackage.ITEM___REMOVE_IDENTIFIER__STRING:
 				return removeIdentifier((String)arguments.get(0));
+			case DataPackage.ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM:
+				return forceDeleteOnDeleteOf((Item)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -1522,7 +1635,7 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	 */
 	public static EObjectCondition generateIsTypeCondition() {
 		EObjectCondition result = new EObjectTypeRelationCondition(DataPackageImpl.eINSTANCE.getItem());
-		return result.OR(InformationObject.isTypeCondition).OR(Extension.isTypeCondition).OR(Classification.isTypeCondition).OR(MetaTag.isTypeCondition).OR(Identifier.isTypeCondition);
+		return result.OR(InformationObject.isTypeCondition).OR(Extension.isTypeCondition).OR(Classification.isTypeCondition).OR(MetaTag.isTypeCondition).OR(Identifier.isTypeCondition).OR(DeletedItem.isTypeCondition);
 	}
 
 	/**
@@ -1555,6 +1668,10 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			return this.getDeleteOnDelete();		
 		if ( featureName.equalsIgnoreCase("deletedIfDeleted") )
 			return this.getDeletedIfDeleted();		
+		if ( featureName.equalsIgnoreCase("forcedDeleteOnDelete") )
+			return this.getForcedDeleteOnDelete();		
+		if ( featureName.equalsIgnoreCase("forcedDeletedIfDeleted") )
+			return this.getForcedDeletedIfDeleted();		
 		throw new UnknownOperationException(this, new RestCommand("get" + featureName)); 
 	}
 
@@ -1829,6 +1946,20 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			}
 			return this.removeIdentifier(key);
 		}
+		if ( command.getCommand().equalsIgnoreCase("forceDeleteOnDeleteOf")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("Item.doOperation", 1, command.getArgCount()); 
+			Item item = null;
+			try {
+				try {
+					item = (Item)(RestUtil.fromInput(command.getArg("item")));
+				} catch (ClassNotFoundException e) {
+					item = (Item)command.getArg("item");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Item.doOperation", "Item", command.getArg("item").getClass().getName());
+			}
+			return this.forceDeleteOnDeleteOf(item);
+		}
 		throw new UnknownOperationException(this, command);
 	}
 
@@ -1975,6 +2106,9 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			}
 			if (o instanceof EventImpl) {
 				return ((Event) o).process(input, requestType);
+			}
+			if (o instanceof DeletedItemImpl) {
+				return ((DeletedItem) o).process(input, requestType);
 			}
 			if (o instanceof List) {
 				return RestUtil.listProcess((List<?>) o, input, requestType);

@@ -45,6 +45,8 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.Item#getIdentifiedBy <em>Identified By</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getDeleteOnDelete <em>Delete On Delete</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getDeletedIfDeleted <em>Deleted If Deleted</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.Item#getForcedDeleteOnDelete <em>Forced Delete On Delete</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.Item#getForcedDeletedIfDeleted <em>Forced Deleted If Deleted</em>}</li>
  * </ul>
  * </p>
  *
@@ -290,6 +292,40 @@ public interface Item extends EObject {
 	EList<Item> getDeletedIfDeleted();
 
 	/**
+	 * Returns the value of the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * The list contents are of type {@link org.sociotech.communitymashup.data.Item}.
+	 * It is bidirectional and its opposite is '{@link org.sociotech.communitymashup.data.Item#getForcedDeletedIfDeleted <em>Forced Deleted If Deleted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References items will be deleted when this item will be deleted
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Forced Delete On Delete</em>' reference list.
+	 * @see org.sociotech.communitymashup.data.DataPackage#getItem_ForcedDeleteOnDelete()
+	 * @see org.sociotech.communitymashup.data.Item#getForcedDeletedIfDeleted
+	 * @model opposite="forcedDeletedIfDeleted"
+	 * @generated
+	 */
+	EList<Item> getForcedDeleteOnDelete();
+
+	/**
+	 * Returns the value of the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * The list contents are of type {@link org.sociotech.communitymashup.data.Item}.
+	 * It is bidirectional and its opposite is '{@link org.sociotech.communitymashup.data.Item#getForcedDeleteOnDelete <em>Forced Delete On Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This item will be deleted if one of the referenced items will be deleted.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Forced Deleted If Deleted</em>' reference list.
+	 * @see org.sociotech.communitymashup.data.DataPackage#getItem_ForcedDeletedIfDeleted()
+	 * @see org.sociotech.communitymashup.data.Item#getForcedDeleteOnDelete
+	 * @model opposite="forcedDeleteOnDelete"
+	 * @generated
+	 */
+	EList<Item> getForcedDeletedIfDeleted();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel noREST='true'"
@@ -491,6 +527,17 @@ public interface Item extends EObject {
 	 * @generated
 	 */
 	Identifier removeIdentifier(String key);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Activates the deletion of this item when the given item will be deleted.
+	 * <!-- end-model-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	Item forceDeleteOnDeleteOf(Item item);
 
 	/**
 	 * An EObjectCondition to check whether an Object is of the type Item.

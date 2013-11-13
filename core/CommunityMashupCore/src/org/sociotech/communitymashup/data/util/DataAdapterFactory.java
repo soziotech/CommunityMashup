@@ -22,6 +22,7 @@ import org.sociotech.communitymashup.data.Connection;
 import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.DeletedItem;
 import org.sociotech.communitymashup.data.Document;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Event;
@@ -238,6 +239,10 @@ public class DataAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEvent(Event object) {
 				return createEventAdapter();
+			}
+			@Override
+			public Adapter caseDeletedItem(DeletedItem object) {
+				return createDeletedItemAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -704,6 +709,20 @@ public class DataAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sociotech.communitymashup.data.DeletedItem <em>Deleted Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sociotech.communitymashup.data.DeletedItem
+	 * @generated
+	 */
+	public Adapter createDeletedItemAdapter() {
 		return null;
 	}
 

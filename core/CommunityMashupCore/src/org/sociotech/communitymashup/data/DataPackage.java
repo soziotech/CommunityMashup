@@ -172,13 +172,31 @@ public interface DataPackage extends EPackage {
 	int ITEM__DELETED_IF_DELETED = 9;
 
 	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__FORCED_DELETE_ON_DELETE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__FORCED_DELETED_IF_DELETED = 11;
+
+	/**
 	 * The number of structural features of the '<em>Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_FEATURE_COUNT = 10;
+	int ITEM_FEATURE_COUNT = 12;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -352,13 +370,22 @@ public interface DataPackage extends EPackage {
 	int ITEM___REMOVE_IDENTIFIER__STRING = 18;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM = 19;
+
+	/**
 	 * The number of operations of the '<em>Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_OPERATION_COUNT = 19;
+	int ITEM_OPERATION_COUNT = 20;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl <em>Information Object</em>}' class.
@@ -459,6 +486,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int INFORMATION_OBJECT__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT__FORCED_DELETE_ON_DELETE = ITEM__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT__FORCED_DELETED_IF_DELETED = ITEM__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' reference list.
@@ -747,6 +792,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int INFORMATION_OBJECT___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___FORCE_DELETE_ON_DELETE_OF__ITEM = ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM;
 
 	/**
 	 * The operation id for the '<em>Tag</em>' operation.
@@ -1317,6 +1371,24 @@ public interface DataPackage extends EPackage {
 	int PERSON__DELETED_IF_DELETED = INFORMATION_OBJECT__DELETED_IF_DELETED;
 
 	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__FORCED_DELETE_ON_DELETE = INFORMATION_OBJECT__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__FORCED_DELETED_IF_DELETED = INFORMATION_OBJECT__FORCED_DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Categories</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1693,6 +1765,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSON___REMOVE_IDENTIFIER__STRING = INFORMATION_OBJECT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___FORCE_DELETE_ON_DELETE_OF__ITEM = INFORMATION_OBJECT___FORCE_DELETE_ON_DELETE_OF__ITEM;
 
 	/**
 	 * The operation id for the '<em>Tag</em>' operation.
@@ -2317,6 +2398,24 @@ public interface DataPackage extends EPackage {
 	int CONTENT__DELETED_IF_DELETED = INFORMATION_OBJECT__DELETED_IF_DELETED;
 
 	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT__FORCED_DELETE_ON_DELETE = INFORMATION_OBJECT__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT__FORCED_DELETED_IF_DELETED = INFORMATION_OBJECT__FORCED_DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Categories</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2675,6 +2774,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT___REMOVE_IDENTIFIER__STRING = INFORMATION_OBJECT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___FORCE_DELETE_ON_DELETE_OF__ITEM = INFORMATION_OBJECT___FORCE_DELETE_ON_DELETE_OF__ITEM;
 
 	/**
 	 * The operation id for the '<em>Tag</em>' operation.
@@ -3281,13 +3389,31 @@ public interface DataPackage extends EPackage {
 	int DATA_SET__CREATED = 8;
 
 	/**
+	 * The feature id for the '<em><b>Keep Deleted Items List</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET__KEEP_DELETED_ITEMS_LIST = 9;
+
+	/**
+	 * The feature id for the '<em><b>Items Deleted</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET__ITEMS_DELETED = 10;
+
+	/**
 	 * The number of structural features of the '<em>Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_FEATURE_COUNT = 9;
+	int DATA_SET_FEATURE_COUNT = 11;
 
 	/**
 	 * The operation id for the '<em>Add</em>' operation.
@@ -4343,13 +4469,67 @@ public interface DataPackage extends EPackage {
 	int DATA_SET___GET_INDOOR_LOCATIONS = 116;
 
 	/**
+	 * The operation id for the '<em>Get Items Except Identifiers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS = 117;
+
+	/**
+	 * The operation id for the '<em>Get Idents Of Deleted Items</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_IDENTS_OF_DELETED_ITEMS = 118;
+
+	/**
+	 * The operation id for the '<em>Get Items Deleted Since</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_ITEMS_DELETED_SINCE__DATE = 119;
+
+	/**
+	 * The operation id for the '<em>Get Idents Of Items Deleted Since</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_IDENTS_OF_ITEMS_DELETED_SINCE__DATE = 120;
+
+	/**
+	 * The operation id for the '<em>Clear Deleted Items List</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___CLEAR_DELETED_ITEMS_LIST = 121;
+
+	/**
+	 * The operation id for the '<em>Get Deleted Items</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___GET_DELETED_ITEMS = 122;
+
+	/**
 	 * The number of operations of the '<em>Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_OPERATION_COUNT = 117;
+	int DATA_SET_OPERATION_COUNT = 123;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -4450,6 +4630,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXTENSION__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__FORCED_DELETE_ON_DELETE = ITEM__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__FORCED_DELETED_IF_DELETED = ITEM__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The number of structural features of the '<em>Extension</em>' class.
@@ -4632,6 +4830,15 @@ public interface DataPackage extends EPackage {
 	int EXTENSION___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION___FORCE_DELETE_ON_DELETE_OF__ITEM = ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4748,6 +4955,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASSIFICATION__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION__FORCED_DELETE_ON_DELETE = ITEM__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION__FORCED_DELETED_IF_DELETED = ITEM__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4939,6 +5164,15 @@ public interface DataPackage extends EPackage {
 	int CLASSIFICATION___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION___FORCE_DELETE_ON_DELETE_OF__ITEM = ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Get Persons</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5118,6 +5352,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CATEGORY__DELETED_IF_DELETED = CLASSIFICATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__FORCED_DELETE_ON_DELETE = CLASSIFICATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__FORCED_DELETED_IF_DELETED = CLASSIFICATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5345,6 +5597,15 @@ public interface DataPackage extends EPackage {
 	int CATEGORY___REMOVE_IDENTIFIER__STRING = CLASSIFICATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY___FORCE_DELETE_ON_DELETE_OF__ITEM = CLASSIFICATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Get Persons</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5524,6 +5785,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int TAG__DELETED_IF_DELETED = CLASSIFICATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__FORCED_DELETE_ON_DELETE = CLASSIFICATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__FORCED_DELETED_IF_DELETED = CLASSIFICATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5724,6 +6003,15 @@ public interface DataPackage extends EPackage {
 	int TAG___REMOVE_IDENTIFIER__STRING = CLASSIFICATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG___FORCE_DELETE_ON_DELETE_OF__ITEM = CLASSIFICATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Get Persons</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5903,6 +6191,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANISATION__DELETED_IF_DELETED = INFORMATION_OBJECT__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION__FORCED_DELETE_ON_DELETE = INFORMATION_OBJECT__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION__FORCED_DELETED_IF_DELETED = INFORMATION_OBJECT__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Categories</b></em>' reference list.
@@ -6227,6 +6533,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANISATION___REMOVE_IDENTIFIER__STRING = INFORMATION_OBJECT___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___FORCE_DELETE_ON_DELETE_OF__ITEM = INFORMATION_OBJECT___FORCE_DELETE_ON_DELETE_OF__ITEM;
 
 	/**
 	 * The operation id for the '<em>Tag</em>' operation.
@@ -6824,6 +7139,24 @@ public interface DataPackage extends EPackage {
 	int META_TAG__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
 
 	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG__FORCED_DELETE_ON_DELETE = ITEM__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG__FORCED_DELETED_IF_DELETED = ITEM__FORCED_DELETED_IF_DELETED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7022,6 +7355,15 @@ public interface DataPackage extends EPackage {
 	int META_TAG___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG___FORCE_DELETE_ON_DELETE_OF__ITEM = ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Get Web Accounts</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7174,6 +7516,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int META_INFORMATION__DELETED_IF_DELETED = EXTENSION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION__FORCED_DELETE_ON_DELETE = EXTENSION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION__FORCED_DELETED_IF_DELETED = EXTENSION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -7365,6 +7725,15 @@ public interface DataPackage extends EPackage {
 	int META_INFORMATION___REMOVE_IDENTIFIER__STRING = EXTENSION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM = EXTENSION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7481,6 +7850,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PHONE__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE__FORCED_DELETE_ON_DELETE = META_INFORMATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE__FORCED_DELETED_IF_DELETED = META_INFORMATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -7699,6 +8086,15 @@ public interface DataPackage extends EPackage {
 	int PHONE___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE___FORCE_DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7815,6 +8211,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSTANT_MESSENGER__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER__FORCED_DELETE_ON_DELETE = META_INFORMATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER__FORCED_DELETED_IF_DELETED = META_INFORMATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -8015,6 +8429,15 @@ public interface DataPackage extends EPackage {
 	int INSTANT_MESSENGER___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER___FORCE_DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8131,6 +8554,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMAIL__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL__FORCED_DELETE_ON_DELETE = META_INFORMATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL__FORCED_DELETED_IF_DELETED = META_INFORMATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -8331,6 +8772,15 @@ public interface DataPackage extends EPackage {
 	int EMAIL___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL___FORCE_DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8447,6 +8897,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int WEB_ACCOUNT__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT__FORCED_DELETE_ON_DELETE = META_INFORMATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT__FORCED_DELETED_IF_DELETED = META_INFORMATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -8647,6 +9115,15 @@ public interface DataPackage extends EPackage {
 	int WEB_ACCOUNT___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT___FORCE_DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8763,6 +9240,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int WEB_SITE__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE__FORCED_DELETE_ON_DELETE = META_INFORMATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE__FORCED_DELETED_IF_DELETED = META_INFORMATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -8972,6 +9467,15 @@ public interface DataPackage extends EPackage {
 	int WEB_SITE___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE___FORCE_DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9088,6 +9592,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int RANKING__DELETED_IF_DELETED = EXTENSION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING__FORCED_DELETE_ON_DELETE = EXTENSION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING__FORCED_DELETED_IF_DELETED = EXTENSION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -9288,6 +9810,15 @@ public interface DataPackage extends EPackage {
 	int RANKING___REMOVE_IDENTIFIER__STRING = EXTENSION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING___FORCE_DELETE_ON_DELETE_OF__ITEM = EXTENSION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9404,6 +9935,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTACHMENT__DELETED_IF_DELETED = EXTENSION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT__FORCED_DELETE_ON_DELETE = EXTENSION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT__FORCED_DELETED_IF_DELETED = EXTENSION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -9640,6 +10189,15 @@ public interface DataPackage extends EPackage {
 	int ATTACHMENT___REMOVE_IDENTIFIER__STRING = EXTENSION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___FORCE_DELETE_ON_DELETE_OF__ITEM = EXTENSION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9765,6 +10323,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOCATION__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION__FORCED_DELETE_ON_DELETE = META_INFORMATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION__FORCED_DELETED_IF_DELETED = META_INFORMATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -10037,6 +10613,15 @@ public interface DataPackage extends EPackage {
 	int LOCATION___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION___FORCE_DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10153,6 +10738,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int IMAGE__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__FORCED_DELETE_ON_DELETE = ATTACHMENT__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__FORCED_DELETED_IF_DELETED = ATTACHMENT__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -10407,6 +11010,15 @@ public interface DataPackage extends EPackage {
 	int IMAGE___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___FORCE_DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10532,6 +11144,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENT__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__FORCED_DELETE_ON_DELETE = ATTACHMENT__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__FORCED_DELETED_IF_DELETED = ATTACHMENT__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -10768,6 +11398,15 @@ public interface DataPackage extends EPackage {
 	int DOCUMENT___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___FORCE_DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10893,6 +11532,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int STAR_RANKING__DELETED_IF_DELETED = RANKING__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING__FORCED_DELETE_ON_DELETE = RANKING__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING__FORCED_DELETED_IF_DELETED = RANKING__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -11111,6 +11768,15 @@ public interface DataPackage extends EPackage {
 	int STAR_RANKING___REMOVE_IDENTIFIER__STRING = RANKING___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING___FORCE_DELETE_ON_DELETE_OF__ITEM = RANKING___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11227,6 +11893,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int VIEW_RANKING__DELETED_IF_DELETED = RANKING__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING__FORCED_DELETE_ON_DELETE = RANKING__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING__FORCED_DELETED_IF_DELETED = RANKING__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -11436,6 +12120,15 @@ public interface DataPackage extends EPackage {
 	int VIEW_RANKING___REMOVE_IDENTIFIER__STRING = RANKING___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING___FORCE_DELETE_ON_DELETE_OF__ITEM = RANKING___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11552,6 +12245,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int THUMB_RANKING__DELETED_IF_DELETED = RANKING__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING__FORCED_DELETE_ON_DELETE = RANKING__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING__FORCED_DELETED_IF_DELETED = RANKING__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -11762,6 +12473,15 @@ public interface DataPackage extends EPackage {
 	int THUMB_RANKING___REMOVE_IDENTIFIER__STRING = RANKING___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING___FORCE_DELETE_ON_DELETE_OF__ITEM = RANKING___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11896,6 +12616,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSFORMATION__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__FORCED_DELETE_ON_DELETE = ATTACHMENT__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__FORCED_DELETED_IF_DELETED = ATTACHMENT__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -12142,6 +12880,15 @@ public interface DataPackage extends EPackage {
 	int TRANSFORMATION___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12267,6 +13014,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int VIDEO__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO__FORCED_DELETE_ON_DELETE = ATTACHMENT__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO__FORCED_DELETED_IF_DELETED = ATTACHMENT__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -12504,6 +13269,15 @@ public interface DataPackage extends EPackage {
 	int VIDEO___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___FORCE_DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12629,6 +13403,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONNECTION__DELETED_IF_DELETED = EXTENSION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__FORCED_DELETE_ON_DELETE = EXTENSION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__FORCED_DELETED_IF_DELETED = EXTENSION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>From</b></em>' reference.
@@ -12830,6 +13622,15 @@ public interface DataPackage extends EPackage {
 	int CONNECTION___REMOVE_IDENTIFIER__STRING = EXTENSION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION___FORCE_DELETE_ON_DELETE_OF__ITEM = EXTENSION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12946,6 +13747,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY__DELETED_IF_DELETED = ATTACHMENT__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY__FORCED_DELETE_ON_DELETE = ATTACHMENT__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY__FORCED_DELETED_IF_DELETED = ATTACHMENT__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>File Url</b></em>' attribute.
@@ -13192,6 +14011,15 @@ public interface DataPackage extends EPackage {
 	int BINARY___REMOVE_IDENTIFIER__STRING = ATTACHMENT___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___FORCE_DELETE_ON_DELETE_OF__ITEM = ATTACHMENT___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13317,6 +14145,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int INDOOR_LOCATION__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION__FORCED_DELETE_ON_DELETE = META_INFORMATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION__FORCED_DELETED_IF_DELETED = META_INFORMATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -13545,6 +14391,15 @@ public interface DataPackage extends EPackage {
 	int INDOOR_LOCATION___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION___FORCE_DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13661,6 +14516,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int IDENTIFIER__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER__FORCED_DELETE_ON_DELETE = ITEM__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER__FORCED_DELETED_IF_DELETED = ITEM__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -13871,6 +14744,15 @@ public interface DataPackage extends EPackage {
 	int IDENTIFIER___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER___FORCE_DELETE_ON_DELETE_OF__ITEM = ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The number of operations of the '<em>Identifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13978,6 +14860,24 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__DELETED_IF_DELETED = META_INFORMATION__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__FORCED_DELETE_ON_DELETE = META_INFORMATION__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__FORCED_DELETED_IF_DELETED = META_INFORMATION__FORCED_DELETED_IF_DELETED;
 
 	/**
 	 * The feature id for the '<em><b>Information Objects</b></em>' reference list.
@@ -14179,6 +15079,15 @@ public interface DataPackage extends EPackage {
 	int EVENT___REMOVE_IDENTIFIER__STRING = META_INFORMATION___REMOVE_IDENTIFIER__STRING;
 
 	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___FORCE_DELETE_ON_DELETE_OF__ITEM = META_INFORMATION___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
 	 * The operation id for the '<em>Tag</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14213,6 +15122,332 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_OPERATION_COUNT = META_INFORMATION_OPERATION_COUNT + 2;
+
+
+	/**
+	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.DeletedItemImpl <em>Deleted Item</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sociotech.communitymashup.data.impl.DeletedItemImpl
+	 * @see org.sociotech.communitymashup.data.impl.DataPackageImpl#getDeletedItem()
+	 * @generated
+	 */
+	int DELETED_ITEM = 32;
+
+	/**
+	 * The feature id for the '<em><b>Data Set</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__DATA_SET = ITEM__DATA_SET;
+
+	/**
+	 * The feature id for the '<em><b>Ident</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__IDENT = ITEM__IDENT;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__URI = ITEM__URI;
+
+	/**
+	 * The feature id for the '<em><b>String Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__STRING_VALUE = ITEM__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__LAST_MODIFIED = ITEM__LAST_MODIFIED;
+
+	/**
+	 * The feature id for the '<em><b>Created</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__CREATED = ITEM__CREATED;
+
+	/**
+	 * The feature id for the '<em><b>Meta Tags</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__META_TAGS = ITEM__META_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Identified By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__IDENTIFIED_BY = ITEM__IDENTIFIED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__DELETE_ON_DELETE = ITEM__DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__DELETED_IF_DELETED = ITEM__DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__FORCED_DELETE_ON_DELETE = ITEM__FORCED_DELETE_ON_DELETE;
+
+	/**
+	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__FORCED_DELETED_IF_DELETED = ITEM__FORCED_DELETED_IF_DELETED;
+
+	/**
+	 * The feature id for the '<em><b>Deleted</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__DELETED = ITEM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Deleted Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM_FEATURE_COUNT = ITEM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___LOG__STRING = ITEM___LOG__STRING;
+
+	/**
+	 * The operation id for the '<em>Log</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___LOG__STRING_INTEGER = ITEM___LOG__STRING_INTEGER;
+
+	/**
+	 * The operation id for the '<em>Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___META_TAG__STRING = ITEM___META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Identify By</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___IDENTIFY_BY__STRING_STRING = ITEM___IDENTIFY_BY__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___GET_IDENTIFIER__STRING = ITEM___GET_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Has Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___HAS_META_TAG__STRING = ITEM___HAS_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Matches Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___MATCHES_SEARCH__STRING = ITEM___MATCHES_SEARCH__STRING;
+
+	/**
+	 * The operation id for the '<em>Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___DELETE = ITEM___DELETE;
+
+	/**
+	 * The operation id for the '<em>Is Equal Item</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___IS_EQUAL_ITEM__ITEM = ITEM___IS_EQUAL_ITEM__ITEM;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_CREATED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Created Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___GET_CREATED_PRETTY = ITEM___GET_CREATED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty In Language</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING = ITEM___GET_LAST_MODIFIED_PRETTY_IN_LANGUAGE__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Last Modified Pretty</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___GET_LAST_MODIFIED_PRETTY = ITEM___GET_LAST_MODIFIED_PRETTY;
+
+	/**
+	 * The operation id for the '<em>Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___DELETE_ON_DELETE_OF__ITEM = ITEM___DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The operation id for the '<em>Delete If Empty On Delete</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___DELETE_IF_EMPTY_ON_DELETE = ITEM___DELETE_IF_EMPTY_ON_DELETE;
+
+	/**
+	 * The operation id for the '<em>Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___UPDATE__ITEM = ITEM___UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Force Update</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___FORCE_UPDATE__ITEM = ITEM___FORCE_UPDATE__ITEM;
+
+	/**
+	 * The operation id for the '<em>Un Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___UN_META_TAG__STRING = ITEM___UN_META_TAG__STRING;
+
+	/**
+	 * The operation id for the '<em>Remove Identifier</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___REMOVE_IDENTIFIER__STRING = ITEM___REMOVE_IDENTIFIER__STRING;
+
+	/**
+	 * The operation id for the '<em>Force Delete On Delete Of</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM = ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM;
+
+	/**
+	 * The number of operations of the '<em>Deleted Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM_OPERATION_COUNT = ITEM_OPERATION_COUNT + 0;
 
 
 	/**
@@ -15303,6 +16538,28 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataSet_Created();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.DataSet#getKeepDeletedItemsList <em>Keep Deleted Items List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Keep Deleted Items List</em>'.
+	 * @see org.sociotech.communitymashup.data.DataSet#getKeepDeletedItemsList()
+	 * @see #getDataSet()
+	 * @generated
+	 */
+	EAttribute getDataSet_KeepDeletedItemsList();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sociotech.communitymashup.data.DataSet#getItemsDeleted <em>Items Deleted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Items Deleted</em>'.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsDeleted()
+	 * @see #getDataSet()
+	 * @generated
+	 */
+	EReference getDataSet_ItemsDeleted();
 
 	/**
 	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#add(org.sociotech.communitymashup.data.Item) <em>Add</em>}' operation.
@@ -16475,6 +17732,66 @@ public interface DataPackage extends EPackage {
 	EOperation getDataSet__GetIndoorLocations();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsExceptIdentifiers() <em>Get Items Except Identifiers</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items Except Identifiers</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsExceptIdentifiers()
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsExceptIdentifiers();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getIdentsOfDeletedItems() <em>Get Idents Of Deleted Items</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Idents Of Deleted Items</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIdentsOfDeletedItems()
+	 * @generated
+	 */
+	EOperation getDataSet__GetIdentsOfDeletedItems();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getItemsDeletedSince(java.util.Date) <em>Get Items Deleted Since</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Items Deleted Since</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getItemsDeletedSince(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetItemsDeletedSince__Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getIdentsOfItemsDeletedSince(java.util.Date) <em>Get Idents Of Items Deleted Since</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Idents Of Items Deleted Since</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getIdentsOfItemsDeletedSince(java.util.Date)
+	 * @generated
+	 */
+	EOperation getDataSet__GetIdentsOfItemsDeletedSince__Date();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#clearDeletedItemsList() <em>Clear Deleted Items List</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Clear Deleted Items List</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#clearDeletedItemsList()
+	 * @generated
+	 */
+	EOperation getDataSet__ClearDeletedItemsList();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getDeletedItems() <em>Get Deleted Items</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Deleted Items</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getDeletedItems()
+	 * @generated
+	 */
+	EOperation getDataSet__GetDeletedItems();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Item <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16593,6 +17910,28 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getItem_DeletedIfDeleted();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Item#getForcedDeleteOnDelete <em>Forced Delete On Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Forced Delete On Delete</em>'.
+	 * @see org.sociotech.communitymashup.data.Item#getForcedDeleteOnDelete()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EReference getItem_ForcedDeleteOnDelete();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.sociotech.communitymashup.data.Item#getForcedDeletedIfDeleted <em>Forced Deleted If Deleted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Forced Deleted If Deleted</em>'.
+	 * @see org.sociotech.communitymashup.data.Item#getForcedDeletedIfDeleted()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EReference getItem_ForcedDeletedIfDeleted();
 
 	/**
 	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#log(java.lang.String) <em>Log</em>}' operation.
@@ -16783,6 +18122,16 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getItem__RemoveIdentifier__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Item#forceDeleteOnDeleteOf(org.sociotech.communitymashup.data.Item) <em>Force Delete On Delete Of</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Force Delete On Delete Of</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Item#forceDeleteOnDeleteOf(org.sociotech.communitymashup.data.Item)
+	 * @generated
+	 */
+	EOperation getItem__ForceDeleteOnDeleteOf__Item();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Extension <em>Extension</em>}'.
@@ -17891,6 +19240,27 @@ public interface DataPackage extends EPackage {
 	EOperation getEvent__GetDatePretty();
 
 	/**
+	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.DeletedItem <em>Deleted Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Deleted Item</em>'.
+	 * @see org.sociotech.communitymashup.data.DeletedItem
+	 * @generated
+	 */
+	EClass getDeletedItem();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.DeletedItem#getDeleted <em>Deleted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Deleted</em>'.
+	 * @see org.sociotech.communitymashup.data.DeletedItem#getDeleted()
+	 * @see #getDeletedItem()
+	 * @generated
+	 */
+	EAttribute getDeletedItem_Deleted();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18759,6 +20129,22 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_SET__CREATED = eINSTANCE.getDataSet_Created();
+
+		/**
+		 * The meta object literal for the '<em><b>Keep Deleted Items List</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SET__KEEP_DELETED_ITEMS_LIST = eINSTANCE.getDataSet_KeepDeletedItemsList();
+
+		/**
+		 * The meta object literal for the '<em><b>Items Deleted</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_SET__ITEMS_DELETED = eINSTANCE.getDataSet_ItemsDeleted();
 
 		/**
 		 * The meta object literal for the '<em><b>Add</b></em>' operation.
@@ -19697,6 +21083,54 @@ public interface DataPackage extends EPackage {
 		EOperation DATA_SET___GET_INDOOR_LOCATIONS = eINSTANCE.getDataSet__GetIndoorLocations();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Items Except Identifiers</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS = eINSTANCE.getDataSet__GetItemsExceptIdentifiers();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Idents Of Deleted Items</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_IDENTS_OF_DELETED_ITEMS = eINSTANCE.getDataSet__GetIdentsOfDeletedItems();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Items Deleted Since</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_ITEMS_DELETED_SINCE__DATE = eINSTANCE.getDataSet__GetItemsDeletedSince__Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Idents Of Items Deleted Since</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_IDENTS_OF_ITEMS_DELETED_SINCE__DATE = eINSTANCE.getDataSet__GetIdentsOfItemsDeletedSince__Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Clear Deleted Items List</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___CLEAR_DELETED_ITEMS_LIST = eINSTANCE.getDataSet__ClearDeletedItemsList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Deleted Items</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___GET_DELETED_ITEMS = eINSTANCE.getDataSet__GetDeletedItems();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ItemImpl <em>Item</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -19785,6 +21219,22 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ITEM__DELETED_IF_DELETED = eINSTANCE.getItem_DeletedIfDeleted();
+
+		/**
+		 * The meta object literal for the '<em><b>Forced Delete On Delete</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ITEM__FORCED_DELETE_ON_DELETE = eINSTANCE.getItem_ForcedDeleteOnDelete();
+
+		/**
+		 * The meta object literal for the '<em><b>Forced Deleted If Deleted</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ITEM__FORCED_DELETED_IF_DELETED = eINSTANCE.getItem_ForcedDeletedIfDeleted();
 
 		/**
 		 * The meta object literal for the '<em><b>Log</b></em>' operation.
@@ -19937,6 +21387,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ITEM___REMOVE_IDENTIFIER__STRING = eINSTANCE.getItem__RemoveIdentifier__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Force Delete On Delete Of</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ITEM___FORCE_DELETE_ON_DELETE_OF__ITEM = eINSTANCE.getItem__ForceDeleteOnDeleteOf__Item();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -20831,6 +22289,24 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation EVENT___GET_DATE_PRETTY = eINSTANCE.getEvent__GetDatePretty();
+
+		/**
+		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.DeletedItemImpl <em>Deleted Item</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sociotech.communitymashup.data.impl.DeletedItemImpl
+		 * @see org.sociotech.communitymashup.data.impl.DataPackageImpl#getDeletedItem()
+		 * @generated
+		 */
+		EClass DELETED_ITEM = eINSTANCE.getDeletedItem();
+
+		/**
+		 * The meta object literal for the '<em><b>Deleted</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DELETED_ITEM__DELETED = eINSTANCE.getDeletedItem_Deleted();
 
 	}
 

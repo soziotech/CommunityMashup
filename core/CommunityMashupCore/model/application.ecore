@@ -50,6 +50,8 @@
         defaultValueLiteral="300"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceIdentCounter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keepDeletedItemsList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MappingRule"/>
   <eClassifiers xsi:type="ecore:EClass" name="Configuration">

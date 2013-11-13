@@ -75,6 +75,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getBackupIntervall <em>Backup Intervall</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getCacheDelay <em>Cache Delay</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getSourceIdentCounter <em>Source Ident Counter</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.application.impl.MashupImpl#getKeepDeletedItemsList <em>Keep Deleted Items List</em>}</li>
  * </ul>
  * </p>
  *
@@ -267,6 +268,26 @@ public class MashupImpl extends SourceImpl implements Mashup {
 	 * @ordered
 	 */
 	protected Integer sourceIdentCounter = SOURCE_IDENT_COUNTER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getKeepDeletedItemsList() <em>Keep Deleted Items List</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKeepDeletedItemsList()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean KEEP_DELETED_ITEMS_LIST_EDEFAULT = Boolean.FALSE;
+
+	/**
+	 * The cached value of the '{@link #getKeepDeletedItemsList() <em>Keep Deleted Items List</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKeepDeletedItemsList()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean keepDeletedItemsList = KEEP_DELETED_ITEMS_LIST_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -485,6 +506,27 @@ public class MashupImpl extends SourceImpl implements Mashup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getKeepDeletedItemsList() {
+		return keepDeletedItemsList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKeepDeletedItemsList(Boolean newKeepDeletedItemsList) {
+		Boolean oldKeepDeletedItemsList = keepDeletedItemsList;
+		keepDeletedItemsList = newKeepDeletedItemsList;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.MASHUP__KEEP_DELETED_ITEMS_LIST, oldKeepDeletedItemsList, keepDeletedItemsList));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public Integer getNewSourceIdent() {
 		
@@ -588,6 +630,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 				return getCacheDelay();
 			case ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER:
 				return getSourceIdentCounter();
+			case ApplicationPackage.MASHUP__KEEP_DELETED_ITEMS_LIST:
+				return getKeepDeletedItemsList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -638,6 +682,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 			case ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER:
 				setSourceIdentCounter((Integer)newValue);
 				return;
+			case ApplicationPackage.MASHUP__KEEP_DELETED_ITEMS_LIST:
+				setKeepDeletedItemsList((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -683,6 +730,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 			case ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER:
 				setSourceIdentCounter(SOURCE_IDENT_COUNTER_EDEFAULT);
 				return;
+			case ApplicationPackage.MASHUP__KEEP_DELETED_ITEMS_LIST:
+				setKeepDeletedItemsList(KEEP_DELETED_ITEMS_LIST_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -717,6 +767,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 				return CACHE_DELAY_EDEFAULT == null ? cacheDelay != null : !CACHE_DELAY_EDEFAULT.equals(cacheDelay);
 			case ApplicationPackage.MASHUP__SOURCE_IDENT_COUNTER:
 				return SOURCE_IDENT_COUNTER_EDEFAULT == null ? sourceIdentCounter != null : !SOURCE_IDENT_COUNTER_EDEFAULT.equals(sourceIdentCounter);
+			case ApplicationPackage.MASHUP__KEEP_DELETED_ITEMS_LIST:
+				return KEEP_DELETED_ITEMS_LIST_EDEFAULT == null ? keepDeletedItemsList != null : !KEEP_DELETED_ITEMS_LIST_EDEFAULT.equals(keepDeletedItemsList);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -763,6 +815,8 @@ public class MashupImpl extends SourceImpl implements Mashup {
 		result.append(cacheDelay);
 		result.append(", sourceIdentCounter: ");
 		result.append(sourceIdentCounter);
+		result.append(", keepDeletedItemsList: ");
+		result.append(keepDeletedItemsList);
 		result.append(')');
 		return result.toString();
 	}
@@ -808,7 +862,9 @@ public class MashupImpl extends SourceImpl implements Mashup {
 		if ( featureName.equalsIgnoreCase("cacheDelay") )
 			return this.getCacheDelay();		
 		if ( featureName.equalsIgnoreCase("sourceIdentCounter") )
-			return this.getSourceIdentCounter();			
+			return this.getSourceIdentCounter();		
+		if ( featureName.equalsIgnoreCase("keepDeletedItemsList") )
+			return this.getKeepDeletedItemsList();			
 		return super.getFeature(featureName); 
 	}
 	
@@ -922,6 +978,20 @@ public class MashupImpl extends SourceImpl implements Mashup {
 					throw new WrongArgException("Mashup.setFeature", "java.lang.Integer",value.getClass().getName());
 				}
 				this.setSourceIdentCounter(fsourceIdentCounter);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("keepDeletedItemsList") ) {
+				java.lang.Boolean fkeepDeletedItemsList = null;
+				try {
+					try {
+						fkeepDeletedItemsList = (java.lang.Boolean)(RestUtil.fromInput(value));
+					} catch (ClassNotFoundException e) {
+						fkeepDeletedItemsList = (java.lang.Boolean)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Mashup.setFeature", "java.lang.Boolean",value.getClass().getName());
+				}
+				this.setKeepDeletedItemsList(fkeepDeletedItemsList);
 			return this;
 			}			
 		super.setFeature(featureName, value);
