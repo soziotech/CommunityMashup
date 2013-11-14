@@ -19,4 +19,10 @@ public class RESTInterfaceProperties {
 	public static final String NO_FORMATTING_PROPERTY = "noFormatting";
 	public static final String NO_FORMATTING_DEFAULT  = "false";
 
+	/**
+	 * If set to true, the output will be zip compressed.
+	 */
+	public static final String ZIP_OUTPUT_PROPERTY = "zipOutput";
+	public static final String ZIP_OUTPUT_DEFAULT  = "false";
+
 }

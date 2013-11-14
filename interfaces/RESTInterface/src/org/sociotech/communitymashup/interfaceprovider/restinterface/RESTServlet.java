@@ -11,6 +11,7 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.interfaceprovider.restinterface;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -27,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.GZIPOutputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -186,7 +188,15 @@ public class RESTServlet extends HttpServlet {
 
 	private RESTInterfaceService restInterfaceService;
 
+	/**
+	 * Whether to use ident references instead of fully qualified urls.
+	 */
 	private boolean shortReferences;
+
+	/**
+	 * Whether to compress the output or not
+	 */
+	private boolean zipOutput;
 
 	// Serialize Dates in ISO 8601
 	private static SimpleDateFormat sdf = new SimpleDateFormat(
@@ -216,6 +226,10 @@ public class RESTServlet extends HttpServlet {
 		
 		this.shortReferences = configuration.isPropertyTrueElseDefault(RESTInterfaceProperties.SHORT_REFERENCES_PROPERTY,
 																	   RESTInterfaceProperties.SHORT_REFERENCES_DEFAULT);
+		
+		this.zipOutput = configuration.isPropertyTrueElseDefault(RESTInterfaceProperties.ZIP_OUTPUT_PROPERTY,
+				   												 RESTInterfaceProperties.ZIP_OUTPUT_DEFAULT);
+
 		if(type == TYPE_JSON_P)
 		{
 			// switch of indentation in jsonp case
@@ -291,11 +305,7 @@ public class RESTServlet extends HttpServlet {
 		// create map for options
 		Map<Object, Object> options = new HashMap<Object, Object>();
 		options.put(XMLResource.OPTION_ENCODING, respEncoding);
-
-		// Switch off formating
-		// TODO property to switch off
-		// options.put(XMLResource.OPTION_FORMATTED, Boolean.FALSE);
-
+		
 		// add cache list as option
 		options.put(XMLResource.OPTION_USE_CACHED_LOOKUP_TABLE, emfCacheList);
 		// enable caching
@@ -306,6 +316,7 @@ public class RESTServlet extends HttpServlet {
 
 		options.put(XMLResource.OPTION_FORMATTED, indentResult);
 				String result = "";
+	
 		try {
 			result = XMLHelperImpl.saveString(options, objectList,
 					respEncoding, null);
@@ -1065,6 +1076,11 @@ public class RESTServlet extends HttpServlet {
 			result = URLDecoder.decode(jsonpOperation, "UTF-8") + "(" + result + ");";
 		}
 		
+		// compress result if needed
+		if(zipOutput) {
+			result = zipOutput(result);
+		}
+		
 		// Log the time it took to execute the request
 		duration = System.currentTimeMillis() - startTime;
 		log("Request execution takes " + duration
@@ -1545,4 +1561,41 @@ public class RESTServlet extends HttpServlet {
 		
 		return result;
 	}
+	
+	/**
+	 * Compresses the given input string by using gzip and returns the result.
+	 * 
+	 * @param output String to compress
+	 * @return The zipped output or null in error case.
+	 */
+	private String zipOutput(String output){
+	    if (output == null || output.length() == 0) {
+	        return output;
+	    }
+	    
+	    // created zipped output stream
+	    ByteArrayOutputStream out = new ByteArrayOutputStream();
+	    GZIPOutputStream gzip;
+		try {
+			gzip = new GZIPOutputStream(out);
+		} catch (IOException e) {
+			log("Could not create gzip output stream due to exception " + e.getMessage() , LogService.LOG_WARNING);
+			return null;
+		}
+		// created zipped version by writing string bytes to zipped output stream
+	    try {
+			gzip.write(output.getBytes());
+		} catch (IOException e) {
+			log("Could not compress string due to exception " + e.getMessage() , LogService.LOG_WARNING);
+			return null;
+		}
+	    try {
+			gzip.close();
+		} catch (IOException e) {
+			log("Could not close zipped output streame due to exception " + e.getMessage() , LogService.LOG_WARNING);
+			return null;
+		}
+	    
+	    return out.toString();
+	 }
 }
