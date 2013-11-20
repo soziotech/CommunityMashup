@@ -11,7 +11,6 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.interfaceprovider.restinterface;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -1076,11 +1075,6 @@ public class RESTServlet extends HttpServlet {
 			result = URLDecoder.decode(jsonpOperation, "UTF-8") + "(" + result + ");";
 		}
 		
-		// compress result if needed
-		if(zipOutput) {
-			result = zipOutput(result);
-		}
-		
 		// Log the time it took to execute the request
 		duration = System.currentTimeMillis() - startTime;
 		log("Request execution takes " + duration
@@ -1091,9 +1085,28 @@ public class RESTServlet extends HttpServlet {
 		// write result
 		resp.setCharacterEncoding(respEncoding);
 		resp.setContentType(contentType);
+
 		// TODO: make configurable
 		resp.addHeader("Access-Control-Allow-Origin", "*"); // http://en.wikipedia.org/wiki/Cross-origin_resource_sharing
-		resp.getWriter().write(result);
+					
+		// compress result if needed
+		if(zipOutput) {
+			resp.addHeader("Content-Encoding", "gzip");
+			
+			byte[] bytes = result.getBytes();
+			resp.setContentLength(bytes.length);
+			int length = bytes.length;
+			GZIPOutputStream gzip = new GZIPOutputStream(resp.getOutputStream(), length);
+			gzip.write(bytes, 0, length);	
+			
+			// flush everything
+			gzip.finish();
+			gzip.flush();
+				
+		} else {
+			resp.getWriter().write(result);
+		}
+		
 		resp.flushBuffer();
 		
 		// Log the time it took to write the request
@@ -1104,6 +1117,8 @@ public class RESTServlet extends HttpServlet {
 	}
 
 	
+	
+
 	/**
 	 * If caching is switched on the result is put to the cache.
 	 * 
@@ -1561,41 +1576,4 @@ public class RESTServlet extends HttpServlet {
 		
 		return result;
 	}
-	
-	/**
-	 * Compresses the given input string by using gzip and returns the result.
-	 * 
-	 * @param output String to compress
-	 * @return The zipped output or null in error case.
-	 */
-	private String zipOutput(String output){
-	    if (output == null || output.length() == 0) {
-	        return output;
-	    }
-	    
-	    // created zipped output stream
-	    ByteArrayOutputStream out = new ByteArrayOutputStream();
-	    GZIPOutputStream gzip;
-		try {
-			gzip = new GZIPOutputStream(out);
-		} catch (IOException e) {
-			log("Could not create gzip output stream due to exception " + e.getMessage() , LogService.LOG_WARNING);
-			return null;
-		}
-		// created zipped version by writing string bytes to zipped output stream
-	    try {
-			gzip.write(output.getBytes());
-		} catch (IOException e) {
-			log("Could not compress string due to exception " + e.getMessage() , LogService.LOG_WARNING);
-			return null;
-		}
-	    try {
-			gzip.close();
-		} catch (IOException e) {
-			log("Could not close zipped output streame due to exception " + e.getMessage() , LogService.LOG_WARNING);
-			return null;
-		}
-	    
-	    return out.toString();
-	 }
 }
