@@ -26,6 +26,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.sociotech.communitymashup.data.DeletedItem#getDeleted <em>Deleted</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.DeletedItem#getIdentOfDeleted <em>Ident Of Deleted</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +67,34 @@ public interface DeletedItem extends Item {
 	 * @generated
 	 */
 	void setDeleted(Date value);
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Ident Of Deleted</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ident Of Deleted</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ident Of Deleted</em>' attribute.
+	 * @see #setIdentOfDeleted(String)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getDeletedItem_IdentOfDeleted()
+	 * @model
+	 * @generated
+	 */
+	String getIdentOfDeleted();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.DeletedItem#getIdentOfDeleted <em>Ident Of Deleted</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ident Of Deleted</em>' attribute.
+	 * @see #getIdentOfDeleted()
+	 * @generated
+	 */
+	void setIdentOfDeleted(String value);
 
 
 

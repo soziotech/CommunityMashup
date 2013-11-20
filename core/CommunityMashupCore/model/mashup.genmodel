@@ -532,6 +532,14 @@
       <genOperations ecoreOperation="data.ecore#//DataSet/getIdentsOfItemsDeletedSince">
         <genParameters ecoreParameter="data.ecore#//DataSet/getIdentsOfItemsDeletedSince/date"/>
       </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/clearDeletedItemsList"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getDeletedItems"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsExceptIdentifiersCreatedSince">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsExceptIdentifiersCreatedSince/date"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getItemsExceptIdentifiersModifiedSince">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getItemsExceptIdentifiersModifiedSince/date"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Item">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference data.ecore#//Item/dataSet"/>
@@ -739,6 +747,7 @@
     </genClasses>
     <genClasses ecoreClass="data.ecore#//DeletedItem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DeletedItem/deleted"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//DeletedItem/identOfDeleted"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Application" basePackage="org.sociotech.communitymashup" disposableProviderFactory="true"

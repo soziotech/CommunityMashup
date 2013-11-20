@@ -3731,6 +3731,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDeletedItem_IdentOfDeleted() {
+		return (EAttribute)deletedItemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataFactory getDataFactory() {
 		return (DataFactory)getEFactoryInstance();
 	}
@@ -4158,6 +4167,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		deletedItemEClass = createEClass(DELETED_ITEM);
 		createEAttribute(deletedItemEClass, DELETED_ITEM__DELETED);
+		createEAttribute(deletedItemEClass, DELETED_ITEM__IDENT_OF_DELETED);
 	}
 
 	/**
@@ -5006,6 +5016,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		initEClass(deletedItemEClass, DeletedItem.class, "DeletedItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDeletedItem_Deleted(), ecorePackage.getEDate(), "deleted", null, 0, 1, DeletedItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeletedItem_IdentOfDeleted(), ecorePackage.getEString(), "identOfDeleted", null, 0, 1, DeletedItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

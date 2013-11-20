@@ -62,6 +62,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.sociotech.communitymashup.data.impl.DeletedItemImpl#getDeleted <em>Deleted</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.DeletedItemImpl#getIdentOfDeleted <em>Ident Of Deleted</em>}</li>
  * </ul>
  * </p>
  *
@@ -94,6 +95,26 @@ public class DeletedItemImpl extends ItemImpl implements DeletedItem {
 	 * @ordered
 	 */
 	protected Date deleted = DELETED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIdentOfDeleted() <em>Ident Of Deleted</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentOfDeleted()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String IDENT_OF_DELETED_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIdentOfDeleted() <em>Ident Of Deleted</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentOfDeleted()
+	 * @generated
+	 * @ordered
+	 */
+	protected String identOfDeleted = IDENT_OF_DELETED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,11 +161,34 @@ public class DeletedItemImpl extends ItemImpl implements DeletedItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getIdentOfDeleted() {
+		return identOfDeleted;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIdentOfDeleted(String newIdentOfDeleted) {
+		String oldIdentOfDeleted = identOfDeleted;
+		identOfDeleted = newIdentOfDeleted;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.DELETED_ITEM__IDENT_OF_DELETED, oldIdentOfDeleted, identOfDeleted));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DataPackage.DELETED_ITEM__DELETED:
 				return getDeleted();
+			case DataPackage.DELETED_ITEM__IDENT_OF_DELETED:
+				return getIdentOfDeleted();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -159,6 +203,9 @@ public class DeletedItemImpl extends ItemImpl implements DeletedItem {
 		switch (featureID) {
 			case DataPackage.DELETED_ITEM__DELETED:
 				setDeleted((Date)newValue);
+				return;
+			case DataPackage.DELETED_ITEM__IDENT_OF_DELETED:
+				setIdentOfDeleted((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -175,6 +222,9 @@ public class DeletedItemImpl extends ItemImpl implements DeletedItem {
 			case DataPackage.DELETED_ITEM__DELETED:
 				setDeleted(DELETED_EDEFAULT);
 				return;
+			case DataPackage.DELETED_ITEM__IDENT_OF_DELETED:
+				setIdentOfDeleted(IDENT_OF_DELETED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -189,6 +239,8 @@ public class DeletedItemImpl extends ItemImpl implements DeletedItem {
 		switch (featureID) {
 			case DataPackage.DELETED_ITEM__DELETED:
 				return DELETED_EDEFAULT == null ? deleted != null : !DELETED_EDEFAULT.equals(deleted);
+			case DataPackage.DELETED_ITEM__IDENT_OF_DELETED:
+				return IDENT_OF_DELETED_EDEFAULT == null ? identOfDeleted != null : !IDENT_OF_DELETED_EDEFAULT.equals(identOfDeleted);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -205,6 +257,8 @@ public class DeletedItemImpl extends ItemImpl implements DeletedItem {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (deleted: ");
 		result.append(deleted);
+		result.append(", identOfDeleted: ");
+		result.append(identOfDeleted);
 		result.append(')');
 		return result.toString();
 	}
@@ -231,7 +285,9 @@ public class DeletedItemImpl extends ItemImpl implements DeletedItem {
 	 */
 	protected Object getFeature(String featureName) throws UnknownOperationException {
 		if ( featureName.equalsIgnoreCase("deleted") )
-			return this.getDeleted();			
+			return this.getDeleted();		
+		if ( featureName.equalsIgnoreCase("identOfDeleted") )
+			return this.getIdentOfDeleted();			
 		return super.getFeature(featureName); 
 	}
 	
@@ -259,6 +315,16 @@ public class DeletedItemImpl extends ItemImpl implements DeletedItem {
 					throw new WrongArgException("DeletedItem.setFeature", "java.util.Date",value.getClass().getName());
 				}
 				this.setDeleted(fdeleted);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("identOfDeleted") ) {
+				java.lang.String fidentOfDeleted = null;
+				try {
+					fidentOfDeleted = (java.lang.String)value;
+				} catch (ClassCastException e) {
+					throw new WrongArgException("DeletedItem.setFeature", "java.lang.String",value.getClass().getName());
+				}
+				this.setIdentOfDeleted(fidentOfDeleted);
 			return this;
 			}			
 		super.setFeature(featureName, value);

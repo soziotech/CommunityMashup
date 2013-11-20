@@ -759,7 +759,7 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		if(this.getDataSet() != null && this.getDataSet().getKeepDeletedItemsList()) {
 			// create deleted item with same ident
 			DeletedItem deletedItem = DataFactory.eINSTANCE.createDeletedItem();
-			deletedItem.setIdent(this.getIdent());
+			deletedItem.setIdentOfDeleted(this.getIdent());
 			// set deletion date to now
 			deletedItem.setDeleted(new Date());
 			// add it to deleted item list

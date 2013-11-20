@@ -1629,5 +1629,6 @@
         <details key="documentation" value="The date when the deletion was performed.&#xA;"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identOfDeleted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

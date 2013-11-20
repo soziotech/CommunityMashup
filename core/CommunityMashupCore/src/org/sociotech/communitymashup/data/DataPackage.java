@@ -15270,13 +15270,22 @@ public interface DataPackage extends EPackage {
 	int DELETED_ITEM__DELETED = ITEM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Ident Of Deleted</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__IDENT_OF_DELETED = ITEM_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Deleted Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DELETED_ITEM_FEATURE_COUNT = ITEM_FEATURE_COUNT + 1;
+	int DELETED_ITEM_FEATURE_COUNT = ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -19299,6 +19308,17 @@ public interface DataPackage extends EPackage {
 	EAttribute getDeletedItem_Deleted();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.DeletedItem#getIdentOfDeleted <em>Ident Of Deleted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ident Of Deleted</em>'.
+	 * @see org.sociotech.communitymashup.data.DeletedItem#getIdentOfDeleted()
+	 * @see #getDeletedItem()
+	 * @generated
+	 */
+	EAttribute getDeletedItem_IdentOfDeleted();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22361,6 +22381,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DELETED_ITEM__DELETED = eINSTANCE.getDeletedItem_Deleted();
+
+		/**
+		 * The meta object literal for the '<em><b>Ident Of Deleted</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DELETED_ITEM__IDENT_OF_DELETED = eINSTANCE.getDeletedItem_IdentOfDeleted();
 
 	}
 
