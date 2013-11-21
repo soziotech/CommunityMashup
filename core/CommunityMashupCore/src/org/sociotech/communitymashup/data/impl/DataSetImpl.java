@@ -184,6 +184,11 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	protected String cacheFolder = CACHE_FOLDER_EDEFAULT;
 	
 	/**
+	 * Local reference to the search service
+	 */
+	protected CoreSearchFacade<Item> searchService;
+	
+	/**
 	 * The default value of the '{@link #getCacheFileAttachements() <em>Cache File Attachements</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3740,8 +3745,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	
 	}
 
-	public CoreSearchFacade<Item> searchService;
-	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.DataSet#setSearchService(org.sociotech.communitymashup.search.CoreSearchFacade)
+	 */
 	public void setSearchService(CoreSearchFacade<Item> searchService) {
 		this.searchService = searchService;
 	}
@@ -3754,12 +3760,11 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 
 		if(this.searchService != null) {
 			return this.searchService.performSearch(query);
-		}else{
+		} else {
 			log("DataSet: No SearchService found", LogService.LOG_ERROR);
 		}
 		
 		return null;
-
 	}
 
 	/**
