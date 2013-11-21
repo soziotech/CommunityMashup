@@ -197,6 +197,11 @@ public class RESTServlet extends HttpServlet {
 	 */
 	private boolean zipOutput;
 
+	/**
+	 * Whether to write zipped content length to repose header
+	 */
+	private boolean writeZipContentLength;
+
 	// Serialize Dates in ISO 8601
 	private static SimpleDateFormat sdf = new SimpleDateFormat(
 			"yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -228,6 +233,9 @@ public class RESTServlet extends HttpServlet {
 		
 		this.zipOutput = configuration.isPropertyTrueElseDefault(RESTInterfaceProperties.ZIP_OUTPUT_PROPERTY,
 				   												 RESTInterfaceProperties.ZIP_OUTPUT_DEFAULT);
+
+		this.writeZipContentLength = configuration.isPropertyTrueElseDefault(RESTInterfaceProperties.WRITE_ZIPPED_LENGTH_PROPERTY,
+					 														 RESTInterfaceProperties.WRITE_ZIPPED_LENGTH_DEFAULT);
 
 		if(type == TYPE_JSON_P)
 		{
@@ -1094,8 +1102,12 @@ public class RESTServlet extends HttpServlet {
 			resp.addHeader("Content-Encoding", "gzip");
 			
 			byte[] bytes = result.getBytes();
-			resp.setContentLength(bytes.length);
 			int length = bytes.length;
+			
+			if(writeZipContentLength) {
+				resp.setContentLength(bytes.length);
+			}
+			
 			GZIPOutputStream gzip = new GZIPOutputStream(resp.getOutputStream(), length);
 			gzip.write(bytes, 0, length);	
 			

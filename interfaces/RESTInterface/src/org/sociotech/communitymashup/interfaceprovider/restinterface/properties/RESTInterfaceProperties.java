@@ -24,5 +24,11 @@ public class RESTInterfaceProperties {
 	 */
 	public static final String ZIP_OUTPUT_PROPERTY = "zipOutput";
 	public static final String ZIP_OUTPUT_DEFAULT  = "false";
+	
+	/**
+	 * If set to true, the length of the zipped output will be written to response header.
+	 */
+	public static final String WRITE_ZIPPED_LENGTH_PROPERTY = "writeZippedLength";
+	public static final String WRITE_ZIPPED_LENGTH_DEFAULT  = "false";
 
 }
