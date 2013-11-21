@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
 import org.osgi.service.log.LogService;
+import org.sociotech.communitymashup.SearchServiceFacade.SearchServiceFacade;
 import org.sociotech.communitymashup.application.Mashup;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
 import org.sociotech.communitymashup.rest.RequestType;
@@ -61,6 +62,8 @@ public interface DataSet extends EObject {
 	 */
 	String copyright = "Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n \tPeter Lachenmaier - Design and initial implementation";
 
+	public void setSearchService(SearchServiceFacade<Item> searchService);
+	
 	/**
 	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sociotech.communitymashup.data.Item}.
