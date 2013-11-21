@@ -18,13 +18,13 @@ Export-Package: org.sociotech.communitymashup.application,
  org.sociotech.communitymashup.data.comparators,
  org.sociotech.communitymashup.data.impl,
  org.sociotech.communitymashup.data.util,
- org.sociotech.communitymashup.rest
+ org.sociotech.communitymashup.rest,
+ org.sociotech.communitymashup.search
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
  org.eclipse.emf.query;bundle-version="1.2.100",
  org.eclipse.emf.query.ocl;bundle-version="2.0.0",
- org.eclipse.emf.codegen.ecore,
- org.sociotech.communitymashup.source.SearchServiceFacade;bundle-version="0.0.1"
+ org.eclipse.emf.codegen.ecore
 Import-Package: org.eclipse.emf.codegen,
  org.eclipse.emf.codegen.ecore,
  org.eclipse.ocl.ecore,

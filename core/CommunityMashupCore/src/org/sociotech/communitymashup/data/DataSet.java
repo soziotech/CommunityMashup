@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
 import org.osgi.service.log.LogService;
-import org.sociotech.communitymashup.SearchServiceFacade.SearchServiceFacade;
 import org.sociotech.communitymashup.application.Mashup;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
 import org.sociotech.communitymashup.rest.RequestType;
@@ -25,6 +24,7 @@ import org.sociotech.communitymashup.rest.RestCommand;
 import org.sociotech.communitymashup.rest.UnknownOperationException;
 import org.sociotech.communitymashup.rest.WrongArgCountException;
 import org.sociotech.communitymashup.rest.WrongArgException;
+import org.sociotech.communitymashup.search.CoreSearchFacade;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -62,7 +62,12 @@ public interface DataSet extends EObject {
 	 */
 	String copyright = "Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n \tPeter Lachenmaier - Design and initial implementation";
 
-	public void setSearchService(SearchServiceFacade<Item> searchService);
+	/**
+	 * Sets the service to be used for searching inside this data set.
+	 * 
+	 * @param searchService Service to be used for searching.
+	 */
+	public void setSearchService(CoreSearchFacade<Item> searchService);
 	
 	/**
 	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.

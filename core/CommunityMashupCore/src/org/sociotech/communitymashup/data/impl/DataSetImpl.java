@@ -53,7 +53,6 @@ import org.eclipse.ocl.ecore.EcoreEnvironment;
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 import org.eclipse.ocl.ecore.SendSignalAction;
 import org.osgi.service.log.LogService;
-import org.sociotech.communitymashup.SearchServiceFacade.SearchServiceFacade;
 import org.sociotech.communitymashup.application.Mashup;
 import org.sociotech.communitymashup.data.Attachment;
 import org.sociotech.communitymashup.data.Binary;
@@ -97,6 +96,7 @@ import org.sociotech.communitymashup.rest.RestUtil;
 import org.sociotech.communitymashup.rest.UnknownOperationException;
 import org.sociotech.communitymashup.rest.WrongArgCountException;
 import org.sociotech.communitymashup.rest.WrongArgException;
+import org.sociotech.communitymashup.search.CoreSearchFacade;
 
 
 
@@ -3740,9 +3740,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	
 	}
 
-	public SearchServiceFacade<Item> searchService;
+	public CoreSearchFacade<Item> searchService;
 	
-	public void setSearchService(SearchServiceFacade<Item> searchService) {
+	public void setSearchService(CoreSearchFacade<Item> searchService) {
 		this.searchService = searchService;
 	}
 
