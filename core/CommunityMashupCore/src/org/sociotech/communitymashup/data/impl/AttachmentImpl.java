@@ -229,9 +229,14 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	}
 
 	/**
-	 * Shows if a dowload was attempted. 
+	 * Shows if a download was attempted. 
 	 */
 	private boolean triedToDownload = false;
+	
+	/**
+	 * Shows if cached file exists 
+	 */
+	private boolean cachedFileExists = false;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -275,6 +280,10 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.ATTACHMENT__FILE_URL, oldFileUrl, fileUrl));
 		
+		// dont know if file exists
+		cachedFileExists = false;
+		triedToDownload = false;
+				
 		// start downloading immediately if url set and this file should be available only localy
 		if(getCachedOnly())
 		{
@@ -903,7 +912,11 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	 * @return The Url of the new cached file or null if no caching happened.
 	 */
 	protected String cacheFile(String newCacheFileUrl)
-	{		
+	{	
+		if(cachedFileExists) {
+			// quickly return
+			return newCacheFileUrl;
+		}
 		// TODO do the file caching in a new thread
 	
 		// download file from orig url and write it to the newCacheFileURL
@@ -1036,6 +1049,10 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 			return;
 		}
 		
+		if(cachedFileExists && !forceDownload) {
+			return;
+		}
+		
 		URI targetURI;
 		File targetFile;
 		// get file uri
@@ -1045,13 +1062,16 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 			log("Could not create URI for url " + targetUrl + " (" + e.getMessage() + ")", LogService.LOG_WARNING);
 			return;
 		}
-		targetFile = new File(targetURI);
 		
 		// TODO implement forceDownload
+		
+		targetFile = new File(targetURI);
 		
 		// check if file is already downloaded
 		if(targetFile.exists() && !forceDownload)
 		{
+			// setting existance to true to avoid to many file checks
+			cachedFileExists = true;
 			log("target file already exists: " + targetUrl, LogService.LOG_DEBUG);
 			return;
 		}
