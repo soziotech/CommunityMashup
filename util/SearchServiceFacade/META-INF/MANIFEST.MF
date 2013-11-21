@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SearchServiceFacade
+Bundle-SymbolicName: org.sociotech.communitymashup.source.SearchServiceFacade
+Bundle-Version: 0.0.1
+Bundle-Activator: org.sociotech.communitymashup.SearchServiceFacade.Activator
+Bundle-Vendor: org.sociotech.communitymashup
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.eclipse.emf.common.util,
+ org.osgi.framework;version="1.3.0"
+Export-Package: org.sociotech.communitymashup.SearchServiceFacade;uses:="org.eclipse.emf.common.util,org.osgi.framework"
