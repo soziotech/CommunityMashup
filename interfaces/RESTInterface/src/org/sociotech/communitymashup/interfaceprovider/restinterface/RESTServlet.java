@@ -1098,7 +1098,7 @@ public class RESTServlet extends HttpServlet {
 		resp.addHeader("Access-Control-Allow-Origin", "*"); // http://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 					
 		// compress result if needed
-		if(zipOutput) {
+		if(zipOutput && result != null && !result.isEmpty()) {
 			resp.addHeader("Content-Encoding", "gzip");
 			
 			byte[] bytes = result.getBytes();
