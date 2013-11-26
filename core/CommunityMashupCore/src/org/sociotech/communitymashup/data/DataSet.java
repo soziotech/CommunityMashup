@@ -1273,7 +1273,7 @@ public interface DataSet extends EObject {
 	 * @model dateRequired="true"
 	 * @generated
 	 */
-	EList<Item> getItemsDeletedSince(Date date);
+	EList<DeletedItem> getItemsDeletedSince(Date date);
 
 	/**
 	 * <!-- begin-user-doc -->

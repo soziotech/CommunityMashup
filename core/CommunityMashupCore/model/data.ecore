@@ -1081,7 +1081,7 @@
         <details key="documentation" value="Returns a comma separated list of the idents of all deleted items."/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getItemsDeletedSince" upperBound="-1" eType="#//Item">
+    <eOperations name="getItemsDeletedSince" upperBound="-1" eType="#//DeletedItem">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Returns all items that are deleted since the given date."/>
       </eAnnotations>

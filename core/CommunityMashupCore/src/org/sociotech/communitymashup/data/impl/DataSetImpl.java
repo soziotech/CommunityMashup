@@ -3597,7 +3597,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	public String getIdentsOfDeletedItems() {
 		EList<DeletedItem> allDeletedItems = getDeletedItems();
 		
-		return createIdentList(allDeletedItems);
+		return createDeletedIdentList(allDeletedItems);
 	}
 
 	/**
@@ -3622,16 +3622,37 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	}
 
 	/**
+	 * Creates a comma separated string of all deleted idents of the given list of items.
+	 * 
+	 * @param items List of items
+	 * @return Comma separated string of all deleted idents. Empty string if no item contained in the given list.
+	 */
+	private String createDeletedIdentList(EList<DeletedItem> items) {
+		if(items == null || items.isEmpty())
+		{
+			return "";
+		}
+		
+		StringBuffer identListBuffer = new StringBuffer();
+		for(DeletedItem item : items)
+		{
+			identListBuffer.append(item.getIdentOfDeleted() + ",");
+		}
+		// cut last comma and return as string
+		return identListBuffer.substring(0, identListBuffer.length() -1);
+	}
+	
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public EList<Item> getItemsDeletedSince(Date date) {
+	public EList<DeletedItem> getItemsDeletedSince(Date date) {
 		if(date == null)
 		{
 			return null;
 		}	
 		
-		EList<Item> results = new BasicEList<Item>();
+		EList<DeletedItem> results = new BasicEList<DeletedItem>();
 		
 		EList<DeletedItem> itemList = this.getDeletedItems();
 		
@@ -3655,9 +3676,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * <!-- end-user-doc -->
 	 */
 	public String getIdentsOfItemsDeletedSince(Date date) {
-		EList<Item> allDeletedItems = getItemsDeletedSince(date);
+		EList<DeletedItem> allDeletedItems = getItemsDeletedSince(date);
 		
-		return createIdentList(allDeletedItems);
+		return createDeletedIdentList(allDeletedItems);
 	}
 
 	/**

@@ -4769,7 +4769,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		initEOperation(getDataSet__GetIdentsOfDeletedItems(), ecorePackage.getEString(), "getIdentsOfDeletedItems", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getDataSet__GetItemsDeletedSince__Date(), this.getItem(), "getItemsDeletedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetItemsDeletedSince__Date(), this.getDeletedItem(), "getItemsDeletedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getDataSet__GetIdentsOfItemsDeletedSince__Date(), ecorePackage.getEString(), "getIdentsOfItemsDeletedSince", 0, 1, IS_UNIQUE, IS_ORDERED);
