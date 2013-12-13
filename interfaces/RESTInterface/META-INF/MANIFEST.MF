@@ -30,4 +30,4 @@ Bundle-ClassPath: .,
  lib/org.eclipselabs.emfjson_0.4.1.201207260839.jar,
  lib/org.codehaus.jackson.core_1.6.0.v20101005-0925.jar,
  lib/org.codehaus.jackson.mapper_1.6.0.v20101005-0925.jar,
- lib/freemarker-2.3.19.jar
+ lib/freemarker-2.3.20.jar
