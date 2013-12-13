@@ -4443,7 +4443,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getDataSet_IdentPrefix(), ecorePackage.getEString(), "identPrefix", "a_", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_Created(), ecorePackage.getEDate(), "created", null, 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSet_KeepDeletedItemsList(), ecorePackage.getEBooleanObject(), "keepDeletedItemsList", "false", 0, 1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataSet_ItemsDeleted(), this.getDeletedItem(), null, "itemsDeleted", null, 0, -1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataSet_ItemsDeleted(), this.getDeletedItem(), null, "itemsDeleted", null, 0, -1, DataSet.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getDataSet__Add__Item(), this.getItem(), "add", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);

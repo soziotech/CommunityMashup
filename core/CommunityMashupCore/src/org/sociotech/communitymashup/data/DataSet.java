@@ -352,7 +352,7 @@ public interface DataSet extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Items Deleted</em>' containment reference list.
 	 * @see org.sociotech.communitymashup.data.DataPackage#getDataSet_ItemsDeleted()
-	 * @model containment="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	EList<DeletedItem> getItemsDeleted();

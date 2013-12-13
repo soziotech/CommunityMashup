@@ -1160,7 +1160,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keepDeletedItemsList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itemsDeleted" upperBound="-1"
-        eType="#//DeletedItem" containment="true"/>
+        eType="#//DeletedItem" transient="true" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Item" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
