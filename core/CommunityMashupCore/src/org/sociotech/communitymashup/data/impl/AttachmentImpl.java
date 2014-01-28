@@ -246,22 +246,24 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		
 		DataSet dataSet = this.getDataSet();
 		
+		if(getCachedOnly()) {
+			// if only cache can be valid
+			return getCachedFileUrl();
+		}
+		
 		if(dataSet == null || dataSet.getCacheFileAttachements() == false)
 		{
 			return fileUrl;
 		}	
 		
-		// cache if necessary
-		this.cacheFile();
-		
-		// if cached only is true this returns null cause the file url is invalid
 		String cachedFileUrl = this.getCachedFileUrl();
-		if(cachedFileUrl != null || getCachedOnly())
+		if(cachedFileUrl != null)
 		{
 			// if cache is available return the url of the cached file
 			return cachedFileUrl;
 		}
 		
+		// return file url if not yet cached
 		return fileUrl;
 	}
 

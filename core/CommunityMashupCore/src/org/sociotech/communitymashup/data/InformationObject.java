@@ -842,6 +842,14 @@ public interface InformationObject extends Item {
 	EList<Connection> getConnectionsFromWithMetaTag(InformationObject informationObject, String metaTag);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	StarRanking starRankWithMetaTag(Integer stars, Integer ofStars, String metaTag);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type InformationObject.
 	 * 
 	 * @generated

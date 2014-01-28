@@ -1112,6 +1112,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInformationObject__StarRankWithMetaTag__Integer_Integer_String() {
+		return informationObjectEClass.getEOperations().get(51);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContent() {
 		return contentEClass;
 	}
@@ -3845,6 +3854,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_SLUG_NAME);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING);
 
 		contentEClass = createEClass(CONTENT);
 		createEReference(contentEClass, CONTENT__CONTENTS);
@@ -4407,6 +4417,11 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		op = initEOperation(getInformationObject__GetConnectionsFromWithMetaTag__InformationObject_String(), this.getConnection(), "getConnectionsFromWithMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInformationObject(), "informationObject", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInformationObject__StarRankWithMetaTag__Integer_Integer_String(), this.getStarRanking(), "starRankWithMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEIntegerObject(), "stars", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEIntegerObject(), "ofStars", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

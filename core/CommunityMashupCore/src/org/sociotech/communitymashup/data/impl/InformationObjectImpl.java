@@ -1664,6 +1664,18 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public StarRanking starRankWithMetaTag(Integer stars, Integer ofStars, String metaTag) {
+		StarRanking ranking = this.starRank(stars, ofStars);
+		if(ranking != null) {
+			ranking.metaTag(metaTag);
+		}
+		return ranking;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -2014,6 +2026,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return getConnectionsToWithMetaTag((InformationObject)arguments.get(0), (String)arguments.get(1));
 			case DataPackage.INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING:
 				return getConnectionsFromWithMetaTag((InformationObject)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING:
+				return starRankWithMetaTag((Integer)arguments.get(0), (Integer)arguments.get(1), (String)arguments.get(2));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -2571,6 +2585,28 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTag").getClass().getName());
 			}
 			return this.getConnectionsFromWithMetaTag(informationObject, metaTag);
+		}
+		if ( command.getCommand().equalsIgnoreCase("starRankWithMetaTag")) {
+			if (command.getArgCount() != 3) throw new WrongArgCountException("InformationObject.doOperation", 3, command.getArgCount()); 
+			java.lang.Integer stars = null;
+			try {
+				stars = (java.lang.Integer)(RestUtil.fromIntegerString((String)command.getArg("stars")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.Integer", command.getArg("stars").getClass().getName());
+			}
+			java.lang.Integer ofStars = null;
+			try {
+				ofStars = (java.lang.Integer)(RestUtil.fromIntegerString((String)command.getArg("ofStars")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.Integer", command.getArg("ofStars").getClass().getName());
+			}
+			java.lang.String metaTag = null;
+			try {
+				metaTag = (java.lang.String)command.getArg("metaTag");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTag").getClass().getName());
+			}
+			return this.starRankWithMetaTag(stars, ofStars, metaTag);
 		}	
 		return super.doOperation(command);
 	}

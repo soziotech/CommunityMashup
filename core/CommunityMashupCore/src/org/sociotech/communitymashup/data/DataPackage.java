@@ -1262,13 +1262,22 @@ public interface DataPackage extends EPackage {
 	int INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = ITEM_OPERATION_COUNT + 50;
 
 	/**
+	 * The operation id for the '<em>Star Rank With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = ITEM_OPERATION_COUNT + 51;
+
+	/**
 	 * The number of operations of the '<em>Information Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 51;
+	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 52;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.PersonImpl <em>Person</em>}' class.
@@ -2233,6 +2242,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSON___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Star Rank With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING;
 
 	/**
 	 * The operation id for the '<em>Get Contents</em>' operation.
@@ -3242,6 +3260,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Star Rank With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING;
 
 	/**
 	 * The operation id for the '<em>Get Organisations</em>' operation.
@@ -7019,6 +7046,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANISATION___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING;
+
+	/**
+	 * The operation id for the '<em>Star Rank With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING;
 
 	/**
 	 * The operation id for the '<em>Get Persons</em>' operation.
@@ -16310,6 +16346,16 @@ public interface DataPackage extends EPackage {
 	EOperation getInformationObject__GetConnectionsFromWithMetaTag__InformationObject_String();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#starRankWithMetaTag(java.lang.Integer, java.lang.Integer, java.lang.String) <em>Star Rank With Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Star Rank With Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#starRankWithMetaTag(java.lang.Integer, java.lang.Integer, java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__StarRankWithMetaTag__Integer_Integer_String();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Content <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19991,6 +20037,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING = eINSTANCE.getInformationObject__GetConnectionsFromWithMetaTag__InformationObject_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Star Rank With Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = eINSTANCE.getInformationObject__StarRankWithMetaTag__Integer_Integer_String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ContentImpl <em>Content</em>}' class.
