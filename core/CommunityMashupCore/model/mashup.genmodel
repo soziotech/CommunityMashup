@@ -211,6 +211,11 @@
         <genParameters ecoreParameter="data.ecore#//InformationObject/getConnectionsFromWithMetaTag/informationObject"/>
         <genParameters ecoreParameter="data.ecore#//InformationObject/getConnectionsFromWithMetaTag/metaTag"/>
       </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/starRankWithMetaTag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTag/stars"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTag/ofStars"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTag/metaTag"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Content">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/contents"/>
