@@ -40,6 +40,7 @@ import twitter4j.DirectMessage;
 import twitter4j.GeoLocation;
 import twitter4j.HashtagEntity;
 import twitter4j.IDs;
+import twitter4j.MediaEntity;
 import twitter4j.Paging;
 import twitter4j.Place;
 import twitter4j.Query;
@@ -1127,6 +1128,11 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			return null;
 		}
 
+		if(loadPhotoTweetsOnly() && !hasPhotos(tweet)) {
+			// do not load without photos
+			return null;
+		}
+		
 		Content tweetContent = factory.createContent();
 		tweetContent.setStringValue(tweetText);
 		tweetContent.setName(createTitleFromTwitterText(tweetText));
@@ -1190,9 +1196,11 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 //			tweetContent.metaTag(language);
 //		}
 		
-		// TODO check media entities
-		// MediaEntity[] mediaEntities = twitterStatus.getMediaEntities();
-
+		if(loadPhotos()) {
+			// attach photos possibly contained in tweet
+			attachPhotos(tweet, tweetContent);
+		}
+		
 		// add location
 		GeoLocation tweetLocation = tweet.getGeoLocation();
 		Place place = tweet.getPlace();
@@ -1224,6 +1232,56 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		}
 		
 		return tweetContent;
+	}
+
+	/**
+	 * Attaches photos that are contained in the given tweet to the given content.
+	 * 
+	 * @param tweet Tweet with photos
+	 * @param tweetContent Content to attach photos to.
+	 */
+	private void attachPhotos(Status tweet, Content tweetContent) {
+		if(tweet == null || tweet.getMediaEntities().length == 0 || tweetContent == null) {
+			// no photos
+			return;
+		}
+		
+		// check all media entities for a photo
+		for(MediaEntity entity : tweet.getMediaEntities()) {
+			if(entity.getType().equalsIgnoreCase("photo")) {
+				// found photo
+				// attach it
+				Image attachedImage = tweetContent.attachImage(entity.getMediaURL());
+				if(attachedImage != null) {
+					// add a meta tag
+					attachedImage.metaTag(TwitterTags.PHOTO_METATAG);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Checks if the given tweet contains photos.
+	 * 
+	 * @param tweet Tweet to check
+	 * @return True if tweet contains photos
+	 */
+	private boolean hasPhotos(Status tweet) {
+		if(tweet == null || tweet.getMediaEntities().length == 0) {
+			// no photos
+			return false;
+		}
+		
+		// check all media entities for a photo
+		for(MediaEntity entity : tweet.getMediaEntities()) {
+			if(entity.getType().equalsIgnoreCase("photo")) {
+				// found photo
+				return true;
+			}
+		}
+		
+		// no photo found
+		return false;
 	}
 
 	/**
@@ -1307,6 +1365,14 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 
 	private boolean loadFollowers() {
 		return source.isPropertyTrue(TwitterProperties.LOAD_FOLLOWERS_PROPERTY);
+	}
+
+	private boolean loadPhotoTweetsOnly() {
+		return source.isPropertyTrueElseDefault(TwitterProperties.LOAD_PHOTO_TWEETS_ONLY_PROPERTY, TwitterProperties.LOAD_PHOTO_TWEETS_ONLY_DEFAULT);
+	}
+
+	private boolean loadPhotos() {
+		return source.isPropertyTrueElseDefault(TwitterProperties.LOAD_PHOTOS_PROPERTY, TwitterProperties.LOAD_PHOTOS_DEFAULT);
 	}
 
 	private boolean loadSentDirectMessages() {

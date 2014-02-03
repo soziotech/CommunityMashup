@@ -148,6 +148,18 @@ public class TwitterProperties {
 	public static final String LOAD_ACCOUNTOWNER_PROFILE_DEFAULT  = "true";
 	
 	/**
+	 * Whether to load photos from media entities as content attachments
+	 */
+	public static final String LOAD_PHOTOS_PROPERTY = "loadPhotos";
+	public static final String LOAD_PHOTOS_DEFAULT  = "false";
+	
+	/**
+	 * Whether to keep only tweets with photos
+	 */
+	public static final String LOAD_PHOTO_TWEETS_ONLY_PROPERTY = "loadPhotoTweetsOnly";
+	public static final String LOAD_PHOTO_TWEETS_ONLY_DEFAULT  = "false";
+	
+	/**
 	 * Key for the load direct messages property.
 	 */
 	// currently not supported due to restrictions of public applications

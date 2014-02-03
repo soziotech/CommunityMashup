@@ -30,4 +30,6 @@ public class TwitterTags {
 	public static final String PROFILE_IMAGE = "twitter_profile_image";
 
 	public static final String PROVIDED_PROFILE = "provided_twitter_profile";
+	
+	public static final String PHOTO_METATAG = "tweetpic";
 }
