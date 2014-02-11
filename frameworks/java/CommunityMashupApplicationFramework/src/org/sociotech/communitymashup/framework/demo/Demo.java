@@ -33,8 +33,11 @@ public class Demo {
 		
 		// switch on caching
 		dataSet.setCacheFileAttachements(true);
-		dataSet.setLogLevel(LogService.LOG_ERROR);
+		dataSet.setLogLevel(LogService.LOG_DEBUG);
 
+		// load all attachements
+		connector.setPreLoadAttachedFiles(true);
+				
 		EList<InformationObject> allInformationObjects = dataSet.getInformationObjects();
 		System.out.println("Data set has " + allInformationObjects.size() + " information objects.");
 		

@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.osgi.service.log.LogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sociotech.communitymashup.data.Attachment;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Item;
@@ -128,6 +129,11 @@ public class MashupConnector implements DataSetChangedInterface {
 	private AsynchronousProcessorThread asynchronousProcessorThread;
 
 	/**
+	 * Whether to load attached files directly.
+	 */
+	private boolean preLoadAttachedFiles = false;
+
+	/**
 	 * Creates a new connector to the CommunityMashup at the given url.
 	 * 
 	 * @param url
@@ -198,6 +204,28 @@ public class MashupConnector implements DataSetChangedInterface {
 			this.pollInterval = 0;
 		}
 		checkUpdateThread();
+	}
+
+	/**
+	 * Returns whether pre loading of attached files is enabled or not.
+	 * 
+	 * @return Whether pre loading of attached files is enabled or not.
+	 */
+	public boolean isPreLoadAttachedFiles() {
+		return preLoadAttachedFiles;
+	}
+
+	/**
+	 * Setting to true switches on direct loading of attached files.
+	 * Works only in combination with switched on caching ({@link DataSet#setCacheFileAttachements(Boolean)}).
+	 * 
+	 * @param preLoadAttachedFiles True to enable pre loading
+	 */
+	public void setPreLoadAttachedFiles(boolean preLoadAttachedFiles) {
+		this.preLoadAttachedFiles = preLoadAttachedFiles;
+		
+		// pre load attached files
+		preLoadAttachedFiles();		
 	}
 
 	/**
@@ -342,12 +370,28 @@ public class MashupConnector implements DataSetChangedInterface {
 		// keep last modified date of data set
 		dateOfLastItemChange = dataSet.getLastModified();
 
+		// pre load attached files
+		preLoadAttachedFiles();
+		
 		// sucessfully loaded
 		loaded = true;
 
 		// add adapter to play back changes if needed
 		if(playBackChanges) {
 			new DataSetChangeObserver(dataSet, this);
+		}
+	}
+
+	/**
+	 * Loads the attached files if {@link MashupConnector#preLoadAttachedFiles} is true.
+	 */
+	private void preLoadAttachedFiles() {
+		EList<Attachment> allAttachments = dataSet.getAttachments();
+		if(preLoadAttachedFiles && allAttachments != null) {
+			for(Attachment attachment : allAttachments) {
+				// get file url to start downloading (if caching is enabled)
+				attachment.getFileUrl();
+			}
 		}
 	}
 
@@ -595,11 +639,28 @@ public class MashupConnector implements DataSetChangedInterface {
 		touching = true;
 		try {
 			dataSet.forceAdd(itemToAdd);
+			postProcessItem(itemToAdd);
 		} catch (Exception e) {
 			log("(Local) Error while adding item " + itemToAdd + " (" + e.getMessage() + ")", LogService.LOG_WARNING);
 		}
 		finally {
 			touching = false;
+		}
+	}
+
+	/**
+	 * Processes an item after adding locally.
+	 * 
+	 * @param itemToAdd Item to process
+	 */
+	private void postProcessItem(Item itemToAdd) {
+		if(itemToAdd == null) {
+			return;
+		}
+		
+		if(preLoadAttachedFiles && itemToAdd instanceof Attachment) {
+			// get file url to start file download
+			((Attachment) itemToAdd).getFileUrl();
 		}
 	}
 
