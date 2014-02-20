@@ -22,7 +22,6 @@ import org.sociotech.communitymashup.application.ApplicationPackage;
 import org.sociotech.communitymashup.application.Configuration;
 import org.sociotech.communitymashup.application.Database;
 import org.sociotech.communitymashup.application.FEEDInterface;
-import org.sociotech.communitymashup.application.Interface;
 import org.sociotech.communitymashup.application.MappingRule;
 import org.sociotech.communitymashup.application.Mashup;
 import org.sociotech.communitymashup.application.MashupAdmin;
@@ -103,7 +102,6 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 			case ApplicationPackage.PROPERTY: return createProperty();
 			case ApplicationPackage.OCL_RESTRICTED_PROPERTY: return createOCLRestrictedProperty();
 			case ApplicationPackage.MASHUP_CONTAINER: return createMashupContainer();
-			case ApplicationPackage.INTERFACE: return createInterface();
 			case ApplicationPackage.REST_INTERFACE: return createRESTInterface();
 			case ApplicationPackage.FEED_INTERFACE: return createFEEDInterface();
 			case ApplicationPackage.OAUTH_CONFIG: return createOAuthConfig();
@@ -253,16 +251,6 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	public MashupContainer createMashupContainer() {
 		MashupContainerImpl mashupContainer = new MashupContainerImpl();
 		return mashupContainer;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Interface createInterface() {
-		InterfaceImpl interface_ = new InterfaceImpl();
-		return interface_;
 	}
 
 	/**

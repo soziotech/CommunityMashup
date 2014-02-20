@@ -126,15 +126,6 @@ public interface ApplicationFactory extends EFactory {
 	MashupContainer createMashupContainer();
 
 	/**
-	 * Returns a new object of class '<em>Interface</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Interface</em>'.
-	 * @generated
-	 */
-	Interface createInterface();
-
-	/**
 	 * Returns a new object of class '<em>REST Interface</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

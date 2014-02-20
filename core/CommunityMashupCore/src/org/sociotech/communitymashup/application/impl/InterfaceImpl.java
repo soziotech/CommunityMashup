@@ -67,7 +67,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *
  * @generated
  */
-public class InterfaceImpl extends ConfigurableElementImpl implements Interface {
+public abstract class InterfaceImpl extends ConfigurableElementImpl implements Interface {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

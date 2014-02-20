@@ -117,7 +117,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identCounter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         defaultValueLiteral="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="#//ConfigurableElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Interface" abstract="true" eSuperTypes="#//ConfigurableElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="security" eType="#//Security"
         containment="true" eOpposite="#//Security/interface"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="urlSuffix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

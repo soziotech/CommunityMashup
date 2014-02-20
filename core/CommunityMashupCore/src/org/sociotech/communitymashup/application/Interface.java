@@ -36,7 +36,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * </p>
  *
  * @see org.sociotech.communitymashup.application.ApplicationPackage#getInterface()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Interface extends ConfigurableElement {
