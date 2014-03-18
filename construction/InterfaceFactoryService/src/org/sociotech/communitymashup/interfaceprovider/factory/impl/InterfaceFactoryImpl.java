@@ -1,7 +1,9 @@
 package org.sociotech.communitymashup.interfaceprovider.factory.impl;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
 import org.osgi.service.log.LogService;
@@ -46,6 +48,11 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade, LogServiceT
 	private Map<Interface, DataSet> openInterfaces;
 
 	/**
+	 * This set contains interfaces that are currently in production
+	 */
+	private Set<Interface> interfacesInProduction;
+
+	/**
 	 * This map contains all callbacks that are needed after successful production.
 	 */
 	private Map<Interface, InterfaceProducedCallback> callbacks;
@@ -57,6 +64,9 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade, LogServiceT
 	{
 		// create empty map
 		openInterfaces = new HashMap<Interface, DataSet>();
+		
+		// create empty set for interfaces in production
+		interfacesInProduction = new HashSet<Interface>();
 		
 		// create empty callback map
 		callbacks = new HashMap<Interface, InterfaceProducedCallback>();
@@ -202,8 +212,21 @@ public class InterfaceFactoryImpl implements InterfaceFactoryFacade, LogServiceT
 			return null;
 		}
 
+		// TODO this is a workaround, maybe remove later
+		// check to do not produce twice when interface is already in production
+		// happens when a interface changes during the production and therefore gets destroyed and recreated
+		if(interfacesInProduction.contains(interfaceConfiguration)) {
+			return null;
+		}
+		
+		// indicate that the interface is in production
+		interfacesInProduction.add(interfaceConfiguration);
+		
 		InterfaceServiceFacade newInterfaceService = restInstantiationService.instantiate(interfaceConfiguration, dataSet);
 
+		// indicate finished production
+		interfacesInProduction.remove(interfaceConfiguration);
+		
 		log("Produced rest interface.", LogService.LOG_DEBUG);
 
 		// remove it from open interfaces
