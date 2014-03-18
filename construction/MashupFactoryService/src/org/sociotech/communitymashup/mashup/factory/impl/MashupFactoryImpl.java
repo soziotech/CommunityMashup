@@ -270,6 +270,7 @@ public class MashupFactoryImpl implements MashupFactoryFacade, ContainerChangedI
 
 		// Register XML resource factory
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml",  new XMLResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi",  new XMIResourceFactoryImpl());
 
 		Resource resource = resourceSet.createResource(URI.createFileURI(configurationFile.getAbsolutePath()));
 
