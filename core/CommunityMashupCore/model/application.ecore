@@ -3,6 +3,11 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="application" nsURI="http://application.cscm.communitymashup.de"
     nsPrefix="application">
   <eClassifiers xsi:type="ecore:EClass" name="Source" eSuperTypes="#//ConfigurableElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutTabularCols"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPalette" value="Source"/>
+    </eAnnotations>
     <eOperations name="getLogLevelIntValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eOperations name="start"/>
     <eOperations name="stop"/>
