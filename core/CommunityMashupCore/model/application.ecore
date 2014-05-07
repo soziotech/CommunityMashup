@@ -4,9 +4,9 @@
     nsPrefix="application">
   <eClassifiers xsi:type="ecore:EClass" name="Source" eSuperTypes="#//ConfigurableElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="ConfiguratorLayout" value="LayoutTabularCols"/>
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
       <details key="ConfiguratorIsPattern" value="true"/>
-      <details key="ConfiguratorPalette" value="Source"/>
+      <details key="ConfiguratorPaletteName" value="Source"/>
     </eAnnotations>
     <eOperations name="getLogLevelIntValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eOperations name="start"/>
@@ -30,6 +30,11 @@
         defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mashup" eSuperTypes="#//Source">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutTabularCols"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="Mashup"/>
+    </eAnnotations>
     <eOperations name="getNewSourceIdent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eOperations name="getSourceWithIdent" eType="#//Source">
       <eParameters name="ident" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -63,9 +68,30 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true" eKeys="#//Property/Key"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Persistency"/>
-  <eClassifiers xsi:type="ecore:EClass" name="XMLFile" eSuperTypes="#//Persistency"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Database" eSuperTypes="#//Persistency"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Persistency">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="Persistency"/>
+      <details key="ConfiguratorPaletteCategory" value="Persistency"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XMLFile" eSuperTypes="#//Persistency">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="XMLFile"/>
+      <details key="ConfiguratorPaletteCategory" value="Persistency"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Database" eSuperTypes="#//Persistency">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="Database"/>
+      <details key="ConfiguratorPaletteCategory" value="Persistency"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property">
     <eOperations name="isValueList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isValueRange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -89,6 +115,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="OCLRestriction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MashupContainer">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutTabularRows"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+    </eAnnotations>
     <eOperations name="getConfigurationAdmins" upperBound="-1" eType="#//MashupAdmin"/>
     <eOperations name="setNewIdentFor">
       <eParameters name="configurableElement" eType="#//ConfigurableElement"/>
@@ -133,9 +163,21 @@
         defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RESTInterface" eSuperTypes="#//Interface">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="RESTInterface"/>
+      <details key="ConfiguratorPaletteCategory" value="Interface"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FEEDInterface" eSuperTypes="#//Interface">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="FEEDInterface"/>
+      <details key="ConfiguratorPaletteCategory" value="Interface"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowPersonFiltering" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowOrganisationFiltering"
@@ -177,6 +219,12 @@
         eOpposite="#//Interface/security"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OAuthConfig" eSuperTypes="#//Security">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="OAuthConfig"/>
+      <details key="ConfiguratorPaletteCategory" value="Security"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clients" upperBound="-1"
         eType="#//OAuthClientConfig" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="admins" upperBound="-1"
@@ -185,6 +233,12 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationKeyConfig" eSuperTypes="#//Security">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="ApplicationKeyConfig"/>
+      <details key="ConfiguratorPaletteCategory" value="Security"/>
+    </eAnnotations>
     <eOperations name="hasApplicationKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
       <eParameters name="applicationKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -192,6 +246,12 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OAuthClientConfig">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="OAuthClientConfig"/>
+      <details key="ConfiguratorPaletteCategory" value="Security"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="redirectionURL" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -218,10 +278,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="oAuthScopeLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OAuthAdmin">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="OAuthAdmin"/>
+      <details key="ConfiguratorPaletteCategory" value="Security"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passwordHash" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OAuthClientScope">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="OAuthClientScope"/>
+      <details key="ConfiguratorPaletteCategory" value="Security"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="positiveTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="negativeTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="positiveMetaTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -244,6 +316,11 @@
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MashupAdmin">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="ConfiguratorLayout" value="LayoutDefault"/>
+      <details key="ConfiguratorIsPattern" value="true"/>
+      <details key="ConfiguratorPaletteName" value="MashupAdmin"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="provider" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configurableMashups" upperBound="-1"
