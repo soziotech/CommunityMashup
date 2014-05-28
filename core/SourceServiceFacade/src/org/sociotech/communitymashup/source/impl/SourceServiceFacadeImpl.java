@@ -350,7 +350,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 */
 	@Override
 	public void fill(DataSet dataSet) {
-		if(!isActive())
+		if(!isActive() || !isInitialized())
 		{
 			return;
 		}
@@ -1321,6 +1321,9 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			// reset data set
 			source.setDataSet(null);
 		}
+		
+		// reset initialization
+		this.setInitialized(false);
 		
 		// set state to soped
 		source.setState(SourceState.STOPED);
