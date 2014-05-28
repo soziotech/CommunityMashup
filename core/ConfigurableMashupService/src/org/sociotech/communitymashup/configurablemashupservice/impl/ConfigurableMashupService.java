@@ -687,6 +687,11 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			return;
 		}
 				
+		if(sourceServices.containsKey(sourceConfiguration)) {
+			// don't produce already created sources
+			return;
+		}
+		
 		// get bundle id from configuration
 		String bundleId = sourceConfiguration.getBundleId();
 
@@ -827,40 +832,45 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 
 			// TODO maintain a global(mashup service) initialization state
 			// now initialize the source service with the configuration
-			boolean initialized = sourceService.initialize(configuration);
+			boolean initialized = false;
+			try {
+				initialized = sourceService.initialize(configuration);
+			} catch (Exception e) {
+				log("Exception " + e.getMessage() + "while initializing source " + sourceService, LogService.LOG_ERROR);
+			}
 
 			if(initialized)
 			{
 				// set source state to active
 				configuration.setState(SourceState.ACTIVE);
+				
+				// remove it from asynchronous instantiation list
+				asynchronousInstantionStarted.remove(configuration);
+				// and add it to instantiated services
+				sourceServices.put(configuration, sourceService);
+							
+				// now let the source add data
+				// TODO maybe do it after all sources are created 
+				try {
+					sourceService.fill(this.getDataSet());
+					log("Filled data set by " + configuration.getName(), LogService.LOG_INFO);
+				} catch (Exception e) {
+					log("Exception (" + e.getMessage() + ") while filling dataset by source " + sourceService, LogService.LOG_ERROR);
+				}
+				
+				if(startedEnrichment)
+				{
+					// if enrichment already started, let this source enrich
+					enrichSource(configuration);
+				}
+				// start update loop after first source is instantiated and filled
+				this.startUpdateLoop();
 			}
 			else
 			{
 				//something happened -> set error state
 				configuration.setState(SourceState.ERROR);
 			}
-			
-			// remove it from asynchronous instantiation list
-			asynchronousInstantionStarted.remove(configuration);
-			// and add it to instantiated services
-			sourceServices.put(configuration, sourceService);
-						
-			// now let the source add data
-			// TODO maybe do it after all sources are created 
-			try {
-				sourceService.fill(this.getDataSet());
-				log("Filled data set by " + configuration.getName(), LogService.LOG_INFO);
-			} catch (Exception e) {
-				log("Exception (" + e.getMessage() + ") while filling dataset by source " + sourceService, LogService.LOG_ERROR);
-			}
-			
-			if(startedEnrichment)
-			{
-				// if enrichment already started, let this source enrich
-				enrichSource(configuration);
-			}
-			// start update loop after first source is instantiated and filled
-			this.startUpdateLoop();
 		}
 		else
 		{
@@ -1359,12 +1369,14 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			
 			// handle stop of source
 			if(notification.getFeatureID(Source.class) == ApplicationPackage.SOURCE__STATE && 
-			   notification.getNewValue() == SourceState.STOPED)
+			   notification.getNewValue() == SourceState.STOPED &&
+			   notification.getOldValue() != SourceState.STOPED)
 			{
 				// destroy source service
 				destroySource(changedSource);
 				return;
 			}
+			
 			// handle resume of source service
 			if(notification.getFeatureID(Source.class) == ApplicationPackage.SOURCE__STATE && 
 			   notification.getNewValue() == SourceState.ACTIVE &&
@@ -1374,18 +1386,25 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 				enrichSource(changedSource);
 				return;
 			}
-				
-			if(sourceService != null && sourceService.handleChange(notification))
+			
+			// handle start of source (not after pause)
+			if(notification.getFeatureID(Source.class) == ApplicationPackage.SOURCE__STATE && 
+			   notification.getNewValue() == SourceState.ACTIVE &&
+			   notification.getOldValue() != SourceState.ACTIVE)
 			{
-				// interface handles change
+				// create source service
+				createSourceService(changedSource);
 				return;
 			}
 			
-			// can not be handled, so
-			// destroy
-			destroySource(changedSource);
-			// and recreate
-			createSourceService(changedSource);
+			if(sourceService != null && sourceService.handleChange(notification))
+			{
+				// source handles change
+				return;
+			}
+			
+			// can not be handled, so recreate
+			recreateSource(changedSource);
 		}
 		// handle property changes
 		else if(notifier instanceof Configuration && notification.getEventType() == Notification.ADD)
@@ -1440,18 +1459,8 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 					return;
 				}
 				
-				// keep old source state
-				SourceState oldSourceState = changedSource.getState();
-				
-				// property change can not be handled
-				// so destroy source
-				destroySource(changedSource);
-				
-				// reset old source state to restart source if possible
-				changedSource.setState(oldSourceState);
-				
-				// and recreate it
-				createSourceService(changedSource);
+				// recreate source
+				recreateSource(changedSource);
 			}
 			else if(changedConfiguration.eContainer() instanceof Interface)
 			{
@@ -1460,6 +1469,27 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 				this.interfaceChanged(notification, changedInterface);
 			}
 		}	
+	}
+
+	/**
+	 * Recreates the source for the given configuration by destroying and creation.
+	 * 
+	 * @param changedSource Configuration for the source to recreate
+	 */
+	private void recreateSource(Source changedSource) {
+		// keep old source state
+		SourceState oldSourceState = changedSource.getState();
+
+		if(oldSourceState == SourceState.STOPED) {
+			// nothing to recreate
+			return;
+		}
+		
+		// stop source
+		changedSource.setState(SourceState.STOPED);
+		
+		// reset old source state to restart source if possible
+		changedSource.setState(oldSourceState);
 	}
 
 	/**
