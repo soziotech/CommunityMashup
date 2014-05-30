@@ -44,6 +44,7 @@ import twitter4j.MediaEntity;
 import twitter4j.Paging;
 import twitter4j.Place;
 import twitter4j.Query;
+import twitter4j.Query.Unit;
 import twitter4j.QueryResult;
 import twitter4j.ResponseList;
 import twitter4j.Status;
@@ -977,7 +978,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		}
 		
 		// add geo location to twitter query
-		twitterQuery.setGeoCode(new GeoLocation(latVal, lonVal), radiusVal, unit);
+		twitterQuery.setGeoCode(new GeoLocation(latVal, lonVal), radiusVal, Unit.valueOf(unit));
 	}
 
 	private String parseSinceId(QueryResult searchResult) {
