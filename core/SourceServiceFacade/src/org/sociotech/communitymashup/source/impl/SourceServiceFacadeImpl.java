@@ -349,7 +349,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#fill(org.sociotech.communitymashup.data.DataSet)
 	 */
 	@Override
-	public void fill(DataSet dataSet) {
+	public final void fill(DataSet dataSet) {
 		if(!isActive() || !isInitialized())
 		{
 			return;
@@ -418,7 +418,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 * @see org.sociotech.communitymashup.source.facade.SourceServiceFacade#enrich()
 	 */
 	@Override
-	public void enrich() {
+	public final void enrich() {
 		if(!isActive())
 		{
 			return;
