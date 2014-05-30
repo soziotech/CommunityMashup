@@ -870,6 +870,10 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			{
 				//something happened -> set error state
 				configuration.setState(SourceState.ERROR);
+				
+				// and remove it from asynchronous instantiation list -> need to be recreated
+				asynchronousInstantionStarted.remove(configuration);
+				
 			}
 		}
 		else
@@ -903,13 +907,10 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 	}
 
 	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrich()
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrichDataSet()
 	 */
 	@Override
-	public void enrich() {
-		// TODO Maintain source active state also for mashup
-		//super.enrich();
-		
+	public void enrichDataSet() {
 		// get all created source services
 		Collection<SourceServiceFacade> services = sourceServices.values();
 		
