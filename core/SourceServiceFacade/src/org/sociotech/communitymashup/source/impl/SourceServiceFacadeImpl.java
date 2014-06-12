@@ -118,6 +118,11 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	private int updateRoundCounter = 1;
 	
 	/**
+	 * Is set if a local identifier key is set in the configuration.
+	 */
+	private String configuredLocalIdentifierKey = null;
+	
+	/**
 	 * Wait that number of tries for the source service to be in the state for update.
 	 */
 	//private static int UPDATE_TRY_COUNT = 5;
@@ -158,8 +163,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 */
 	public boolean initialize(Source configuration) {
 		
-		if(isInitialized())
-		{
+		if(isInitialized())	{
 			// already initialized
 			return true;
 		}
@@ -173,11 +177,13 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		// open log service tracker
 		openLogServiceTracker();
 		
-		if(source != null)
-		{
+		if(source != null) {
 			// get log level
 			logLevel = source.getLogLevelIntValue();
 		
+			// get possibly configured identifier key
+			configuredLocalIdentifierKey = source.getPropertyValue(SourceServiceProperties.LOCAL_IDENTIFIER_KEY_PROPERTY);
+			
 			setInitialized(true);
 		}
 	
@@ -970,7 +976,10 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 * @return The key used for source specific identifiers.
 	 */
 	protected String getLocalIdentifierKey() {
-		// TODO make this configurable
+		if(configuredLocalIdentifierKey != null) {
+			return configuredLocalIdentifierKey;
+		}
+		
 		return this.getClass().getCanonicalName();
 	}
 	

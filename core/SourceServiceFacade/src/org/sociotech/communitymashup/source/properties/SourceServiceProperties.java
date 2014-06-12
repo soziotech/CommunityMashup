@@ -54,4 +54,9 @@ public class SourceServiceProperties {
 	 * Key for property to an url where the authentication for this source service can be created. 
 	 */
 	public static final String AUTHORIZATION_URL = "authorizationUrl";
+	
+	/**
+	 * Property to set the local identifier key used for adding objects by the source.
+	 */
+	public static final String LOCAL_IDENTIFIER_KEY_PROPERTY = "localIdentifierKey";
 }

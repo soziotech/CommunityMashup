@@ -26,7 +26,7 @@ import org.sociotech.communitymashup.source.properties.SourceServiceProperties;
  * 
  * @author Peter Lachenmaier
  */
-public abstract class OAuthAuthorizationServlet extends HttpServlet {
+public abstract class OAuth10AuthorizationServlet extends SourceAuthorizationServlet {
 
 	/**
 	 * Serial version UID
@@ -60,7 +60,7 @@ public abstract class OAuthAuthorizationServlet extends HttpServlet {
 	 * @param sourceConfiguration Configuration of the source service.
 	 * @param authorizationUrl External url where the authorization can be performed by a user.
 	 */
-	public OAuthAuthorizationServlet(Source sourceConfiguration, String authorizationUrl) {
+	public OAuth10AuthorizationServlet(Source sourceConfiguration, String authorizationUrl) {
 		this.sourceConfiguration = sourceConfiguration;
 		this.externalAuthorizationUrl = authorizationUrl;
 		this.thisServletUrl  = sourceConfiguration.getPropertyValue(SourceServiceProperties.AUTHORIZATION_URL);

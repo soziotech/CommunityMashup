@@ -51,7 +51,7 @@ public class OAuthAuthorizationRegistrator implements HttpServiceTracked {
 	/**
 	 * Reference to the authorization Servlet 
 	 */
-	private OAuthAuthorizationServlet authorizationServlet;
+	private SourceAuthorizationServlet authorizationServlet;
 	
 	/**
 	 * Reference to the authorization Servlet
@@ -63,7 +63,7 @@ public class OAuthAuthorizationRegistrator implements HttpServiceTracked {
 	 * 
 	 * @param authorizationServlet Authorization servlet to register.
 	 */
-	public OAuthAuthorizationRegistrator(OAuthAuthorizationServlet authorizationServlet) {
+	public OAuthAuthorizationRegistrator(SourceAuthorizationServlet authorizationServlet) {
 		this(authorizationServlet, null);
 	}
 	
@@ -74,7 +74,7 @@ public class OAuthAuthorizationRegistrator implements HttpServiceTracked {
 	 * @param authorizationServlet Authorization servlet to register.
 	 * @param authorizationUrlProperty Property to write in the authorization url
 	 */
-	public OAuthAuthorizationRegistrator(OAuthAuthorizationServlet authorizationServlet, Property authorizationUrlProperty) {
+	public OAuthAuthorizationRegistrator(SourceAuthorizationServlet authorizationServlet, Property authorizationUrlProperty) {
 		this.authorizationServlet = authorizationServlet;
 		this.authorizationUrlProperty = authorizationUrlProperty;
 	}
