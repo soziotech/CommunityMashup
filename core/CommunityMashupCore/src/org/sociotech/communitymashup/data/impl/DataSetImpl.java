@@ -22,6 +22,7 @@ import java.util.Random;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
@@ -334,7 +335,17 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * Log service to be used for logging
 	 */
-	private LogService logService; 
+	private LogService logService;
+
+	/**
+	 * Indicates that the copy of the items list is out of date
+	 */
+	private boolean itemsCopyOutOfDate = true; 
+	
+	/**
+	 * A copy of the items list to work on
+	 */
+	private EList<Item> itemsCopy;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -358,13 +369,17 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public EList<Item> getItems() {
-		if (items == null) {
-			items = new EObjectContainmentWithInverseEList<Item>(Item.class, this, DataPackage.DATA_SET__ITEMS, DataPackage.ITEM__DATA_SET);
+		ceateItemsListIfNeeded();
+		
+		if(itemsCopyOutOfDate) {
+			// create unmodifiable copy
+			itemsCopy = ECollections.unmodifiableEList(items);
+			itemsCopyOutOfDate = false;
 		}
-		return items;
+		
+		return itemsCopy;
 	}
 
 	/**
@@ -7183,11 +7198,22 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			resource.getContents().add(item);
 		}
 
+		// create items list if not created before
+		ceateItemsListIfNeeded();
+		
 		// add only valid items to data set
-		// TODO if getItems will be extended to deliver only copies this must be adapted
-		getItems().add(item);
+		items.add(item);
 
 		return item;
+	}
+
+	/**
+	 * Creates the items list if needed
+	 */
+	private void ceateItemsListIfNeeded() {
+		if (items == null) {
+			items = new EObjectContainmentWithInverseEList<Item>(Item.class, this, DataPackage.DATA_SET__ITEMS, DataPackage.ITEM__DATA_SET);
+		}
 	}
 
 	/**
@@ -7560,6 +7586,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		
 		if(notification.getFeatureID(DataSet.class) == DataPackage.DATA_SET__ITEMS)
 		{
+			this.itemsCopyOutOfDate  = true;
 			
 			if(notification.getEventType() == Notification.REMOVE && notification.getOldValue() != null) 
 			{
