@@ -618,8 +618,7 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	public Identifier identifyBy(String key, String value) {
 		// check if data set exists
 		DataSet dataSet = this.getDataSet();
-		if(dataSet == null)
-		{
+		if(dataSet == null)	{
 			return null;
 		}
 		
@@ -631,10 +630,18 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		identifier.setValue(value);
 		
 		// add the new Identifier to the data set
-		dataSet.add(identifier);
+		identifier = (Identifier) dataSet.add(identifier);
 		
-		// identify this item
-		this.getIdentifiedBy().add(identifier);
+		if(identifier != null) {
+			if(identifier.getIdentified() != null) {
+				// if identifier was used before than update/merge
+				this.update(identifier.getIdentified());
+			}
+			else {
+				// identify this item
+				this.getIdentifiedBy().add(identifier);
+			}
+		}
 		
 		return identifier;
 	}
