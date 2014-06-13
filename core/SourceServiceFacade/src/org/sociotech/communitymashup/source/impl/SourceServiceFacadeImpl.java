@@ -479,6 +479,11 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			return;
 		}
 		
+		if(!(source.getActiveState() == SourceActiveStates.WAITING_FOR_UPDATE || source.getActiveState() == SourceActiveStates.FILLED)) {
+			// not yet ready for update
+			return;
+		}
+		
 		if(updateRoundCounter < 1)
 		{
 			// no updates
