@@ -22,7 +22,6 @@ import java.util.Random;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
@@ -371,11 +370,15 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * <!-- end-user-doc -->
 	 */
 	public EList<Item> getItems() {
-		ceateItemsListIfNeeded();
+		createItemsListIfNeeded();
 		
 		if(itemsCopyOutOfDate) {
-			// create unmodifiable copy
-			itemsCopy = ECollections.unmodifiableEList(items);
+			// we need to create an modifable list to be copied correctly by EcoreUtil
+			// TODO this should be an unmodifable list when figured out how to use copy in EcoreUtil otherwise
+			//itemsCopy = ECollections.unmodifiableEList(items);
+			itemsCopy = new BasicEList<Item>();
+			itemsCopy.addAll(items);
+			
 			itemsCopyOutOfDate = false;
 		}
 		
@@ -747,13 +750,14 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				return getItems();
+				// directly working with the list cause getter returns copy 
+				createItemsListIfNeeded();
+				return items;
 			case DataPackage.DATA_SET__CACHE_FOLDER:
 				return getCacheFolder();
 			case DataPackage.DATA_SET__CACHE_FILE_ATTACHEMENTS:
@@ -782,15 +786,16 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				getItems().clear();
-				getItems().addAll((Collection<? extends Item>)newValue);
+				// directly working with the list cause getter returns copy 
+				createItemsListIfNeeded();
+				items.clear();
+				items.addAll((Collection<? extends Item>)newValue);
 				return;
 			case DataPackage.DATA_SET__CACHE_FOLDER:
 				setCacheFolder((String)newValue);
@@ -830,13 +835,14 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				getItems().clear();
+				// directly working with the list cause getter returns copy 
+				createItemsListIfNeeded();
+				items.clear();
 				return;
 			case DataPackage.DATA_SET__CACHE_FOLDER:
 				setCacheFolder(CACHE_FOLDER_EDEFAULT);
@@ -7199,7 +7205,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		}
 
 		// create items list if not created before
-		ceateItemsListIfNeeded();
+		createItemsListIfNeeded();
 		
 		// add only valid items to data set
 		items.add(item);
@@ -7210,7 +7216,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * Creates the items list if needed
 	 */
-	private void ceateItemsListIfNeeded() {
+	private void createItemsListIfNeeded() {
 		if (items == null) {
 			items = new EObjectContainmentWithInverseEList<Item>(Item.class, this, DataPackage.DATA_SET__ITEMS, DataPackage.ITEM__DATA_SET);
 		}
