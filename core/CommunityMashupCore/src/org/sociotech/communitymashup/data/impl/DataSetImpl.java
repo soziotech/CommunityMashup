@@ -7604,10 +7604,13 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				// get the object list for the type of the new item
 				List<Item> existingItems = typeBasedLookUpMap.get(type);
 				
-				if(existingItems != null)
-				{
+				if(existingItems != null) {
+					// create copy
+					existingItems = new LinkedList<Item>(existingItems);
 					// remove it from list
 					existingItems.remove(removedItem);
+					// add it to lookup map
+					typeBasedLookUpMap.put(type, existingItems);
 				}
 				
 			}
@@ -7620,16 +7623,21 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				// get the object list for the type of the new item
 				List<Item> existingItems = typeBasedLookUpMap.get(type);
 				
-				if(existingItems == null)
-				{
+				if(existingItems == null) {
 					// create new list
 					existingItems = new LinkedList<Item>();
-					// add it to lookup map
-					typeBasedLookUpMap.put(type, existingItems);
-				}	
+				}
+				else {
+					// create copy
+					existingItems = new LinkedList<Item>(existingItems);		
+				}
 				
 				// add object to lookup list
 				existingItems.add(newItem);
+				
+				// add it to lookup map
+				typeBasedLookUpMap.put(type, existingItems);
+				
 			}
 		}
 		super.eNotify(notification);
