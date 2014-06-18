@@ -417,6 +417,8 @@ public class RESTServlet extends HttpServlet {
 		String replaceString = shortReferences?"href=\"":"href=\"http://" + serverName + ":" + serverPort + urlSuffix
 				+ serverAlias + "/getItemsWithIdent?ident=";
 		
+		log("Replacing " + "href=\"" + resourceName + "#" + " by " + replaceString, LogService.LOG_DEBUG);
+		
 		String result = xmlInput.replaceAll("href=\"" + resourceName + "#",replaceString);
 		return result;
 	}
@@ -754,8 +756,9 @@ public class RESTServlet extends HttpServlet {
 		try {
 			processRequest(req, resp, RequestType.rtGet);
 		} catch (Exception e) {
-			this.log("Error while processing GET request " + req.getRequestURI() + req.getQueryString(), LogService.LOG_WARNING);
+			this.log("Error while processing GET request " + req.getRequestURI() + req.getQueryString() + " with exception: " + e.getMessage(), LogService.LOG_WARNING);
 			resp.sendError(404, "Internal Error");
+			//e.printStackTrace();
 		}
 	}
 
@@ -768,7 +771,7 @@ public class RESTServlet extends HttpServlet {
 		try {
 			processRequest(req, resp, RequestType.rtPost);
 		} catch (Exception e) {
-			this.log("Error while processing POST request " + req.getRequestURI() + req.getQueryString(), LogService.LOG_WARNING);
+			this.log("Error while processing GET request " + req.getRequestURI() + req.getQueryString() + " with exception: " + e.getMessage(), LogService.LOG_WARNING);
 			resp.sendError(404, "Internal Error");
 		}
 	}
