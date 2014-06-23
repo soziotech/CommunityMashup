@@ -796,6 +796,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				createItemsListIfNeeded();
 				items.clear();
 				items.addAll((Collection<? extends Item>)newValue);
+				itemsCopyOutOfDate = true;
 				return;
 			case DataPackage.DATA_SET__CACHE_FOLDER:
 				setCacheFolder((String)newValue);
@@ -843,6 +844,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				// directly working with the list cause getter returns copy 
 				createItemsListIfNeeded();
 				items.clear();
+				itemsCopyOutOfDate = true;
 				return;
 			case DataPackage.DATA_SET__CACHE_FOLDER:
 				setCacheFolder(CACHE_FOLDER_EDEFAULT);
