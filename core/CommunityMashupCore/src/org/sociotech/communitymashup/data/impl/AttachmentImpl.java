@@ -239,6 +239,11 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	private boolean cachedFileExists = false;
 	
 	/**
+	 * Non persistent url of the cached file 
+	 */
+	private String cachedFileUrl = null;
+	
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
@@ -320,6 +325,10 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 			return null;
 		}
 		
+		if(cachedFileUrl != null) {
+			return cachedFileUrl;
+		}
+		
 		String cacheFileName = this.cachedFileName;
 		
 		if(cacheFileName == null)
@@ -375,11 +384,11 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 			return null;
 		}
 		
-		String cacheFileUrlString = newCacheFileURL.toString();
-		// dowload file if not happened before
-		this.cacheFile(cacheFileUrlString);
+		cachedFileUrl = newCacheFileURL.toString();
+		// download file if not happened before
+		this.cacheFile(cachedFileUrl);
 		
-		return cacheFileUrlString;
+		return cachedFileUrl;
 	}
 
 	/**
@@ -495,6 +504,41 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Attachment reloadFile() {
+		if(getCachedOnly()) {
+			// do nothing when cached only is active
+			// file cannot be loaded
+			return this;
+		}
+		
+		if(cachedFileExists || cachedFileUrl != null) {
+			File existingFile;
+			try {
+				existingFile = new File(new URI(cachedFileUrl));
+				if(existingFile.exists()) {
+					// delete old cache file
+					existingFile.delete();
+				}
+			} catch (Exception e) {
+				// do nothing
+				// cached file will be invalidated
+			}// (cachedFileUrl.replaceFirst("file:", ""));
+			// reset indicators
+			triedToDownload = false;
+			cachedFileExists = false;
+			cachedFileUrl = null;
+		}
+		
+		// load by getting file url
+		getFileUrl();
+		
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -604,6 +648,8 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		switch (operationID) {
 			case DataPackage.ATTACHMENT___GET_ORIGINAL_FILE_URL:
 				return getOriginalFileUrl();
+			case DataPackage.ATTACHMENT___RELOAD_FILE:
+				return reloadFile();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -749,6 +795,10 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		if ( command.getCommand().equalsIgnoreCase("getOriginalFileUrl")) {
 			if (command.getArgCount() != 0) throw new WrongArgCountException("Attachment.doOperation", 0, command.getArgCount()); 
 			return this.getOriginalFileUrl();
+		}
+		if ( command.getCommand().equalsIgnoreCase("reloadFile")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("Attachment.doOperation", 0, command.getArgCount()); 
+			return this.reloadFile();
 		}	
 		return super.doOperation(command);
 	}

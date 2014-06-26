@@ -212,6 +212,17 @@ public interface Attachment extends Extension {
 	String getOriginalFileUrl();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Trys to reload the file if not cached only is true.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Attachment reloadFile();
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type Attachment.
 	 * 
 	 * @generated

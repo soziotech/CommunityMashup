@@ -102,6 +102,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/binaries"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/mainCategory"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/metaInformations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//InformationObject/alternativeNames"/>
       <genOperations ecoreOperation="data.ecore#//InformationObject/tag">
         <genParameters ecoreParameter="data.ecore#//InformationObject/tag/name"/>
       </genOperations>
@@ -215,6 +216,15 @@
         <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTag/stars"/>
         <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTag/ofStars"/>
         <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTag/metaTag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/addAlternativeName">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/addAlternativeName/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachedImageWithMetaTag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getAttachedImageWithMetaTag/metaTag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachedImageWithMetaTagName">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getAttachedImageWithMetaTagName/metaTagName"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Content">

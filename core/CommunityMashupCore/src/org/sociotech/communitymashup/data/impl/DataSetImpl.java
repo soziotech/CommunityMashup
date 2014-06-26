@@ -1176,6 +1176,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return getItemsExceptIdentifiersCreatedSince((Date)arguments.get(0));
 			case DataPackage.DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_MODIFIED_SINCE__DATE:
 				return getItemsExceptIdentifiersModifiedSince((Date)arguments.get(0));
+			case DataPackage.DATA_SET___RELOAD_ALL_ATTACHMENT_FILES:
+				return reloadAllAttachmentFiles();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -3861,6 +3863,25 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Attachment> reloadAllAttachmentFiles() {
+		EList<Attachment> allAttachments = this.getAttachments();
+		
+		if(allAttachments == null) {
+			return null;
+		}
+		
+		// call reload on every single attachment
+		for(Attachment attachment : allAttachments) {
+			attachment.reloadFile();
+		}
+		
+		return allAttachments;
+	}
+
+	/**
 	 * Filters all identifiers from the given list of items.
 	 * 
 	 * @param itemList List of items
@@ -5134,6 +5155,10 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				throw new WrongArgException("DataSet.doOperation", "java.util.Date", command.getArg("date").getClass().getName());
 			}
 			return this.getItemsExceptIdentifiersModifiedSince(date);
+		}
+		if ( command.getCommand().equalsIgnoreCase("reloadAllAttachmentFiles")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("DataSet.doOperation", 0, command.getArgCount()); 
+			return this.reloadAllAttachmentFiles();
 		}
 		throw new UnknownOperationException(this, command);
 	}

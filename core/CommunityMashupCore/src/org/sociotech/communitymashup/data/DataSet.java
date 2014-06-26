@@ -1328,6 +1328,17 @@ public interface DataSet extends EObject {
 	EList<Item> getItemsExceptIdentifiersModifiedSince(Date date);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Reloads the files of all attachments and returns the attachments contained in this @link DataSet Data Set@endlink.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	EList<Attachment> reloadAllAttachmentFiles();
+
+	/**
 	 * Returns all Events.
 	 * 
 	 * @return All Events of this DataSet.

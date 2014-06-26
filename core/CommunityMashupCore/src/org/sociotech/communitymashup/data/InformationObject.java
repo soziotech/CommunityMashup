@@ -46,6 +46,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.InformationObject#getBinaries <em>Binaries</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.InformationObject#getMainCategory <em>Main Category</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.InformationObject#getMetaInformations <em>Meta Informations</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.InformationObject#getAlternativeNames <em>Alternative Names</em>}</li>
  * </ul>
  * </p>
  *
@@ -290,6 +291,22 @@ public interface InformationObject extends Item {
 	 * @generated
 	 */
 	EList<MetaInformation> getMetaInformations();
+
+	/**
+	 * Returns the value of the '<em><b>Alternative Names</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Alternative Names</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Alternative Names</em>' attribute list.
+	 * @see org.sociotech.communitymashup.data.DataPackage#getInformationObject_AlternativeNames()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getAlternativeNames();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -848,6 +865,36 @@ public interface InformationObject extends Item {
 	 * @generated
 	 */
 	StarRanking starRankWithMetaTag(Integer stars, Integer ofStars, String metaTag);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
+	String addAlternativeName(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns, if it exists, the first @link Image image@endlink of this information object with the given MetaTag
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Image getAttachedImageWithMetaTag(MetaTag metaTag);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns, if it exists, the first @link Image image@endlink of this information object with the given MetaTag
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Image getAttachedImageWithMetaTagName(String metaTagName);
 
 	/**
 	 * An EObjectCondition to check whether an Object is of the type InformationObject.

@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -101,6 +102,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl#getBinaries <em>Binaries</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl#getMainCategory <em>Main Category</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl#getMetaInformations <em>Meta Informations</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl#getAlternativeNames <em>Alternative Names</em>}</li>
  * </ul>
  * </p>
  *
@@ -245,6 +247,16 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 * @ordered
 	 */
 	protected EList<MetaInformation> metaInformations;
+
+	/**
+	 * The cached value of the '{@link #getAlternativeNames() <em>Alternative Names</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAlternativeNames()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> alternativeNames;
 
 	/**
 	 * Factory for creating items
@@ -469,6 +481,18 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			metaInformations = new EObjectWithInverseResolvingEList.ManyInverse<MetaInformation>(MetaInformation.class, this, DataPackage.INFORMATION_OBJECT__META_INFORMATIONS, DataPackage.META_INFORMATION__INFORMATION_OBJECTS);
 		}
 		return metaInformations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<String> getAlternativeNames() {
+		if (alternativeNames == null) {
+			alternativeNames = new EDataTypeUniqueEList<String>(String.class, this, DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES);
+		}
+		return alternativeNames;
 	}
 
 	/**
@@ -1676,6 +1700,55 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public String addAlternativeName(String name) {
+		if(name == null) {
+			return null;
+		}
+		
+		// trim name and add it if it is valid
+		String trimmedName = name.trim();
+		
+		if(trimmedName.isEmpty()) {
+			return null;
+		}
+		
+		if(!getAlternativeNames().contains(trimmedName)) {
+			getAlternativeNames().add(trimmedName);
+		}
+		
+		return trimmedName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Image getAttachedImageWithMetaTag(MetaTag metaTag) {
+		images = getImages();
+		
+		if(images == null || images.isEmpty()) return null;
+		
+		// find first image with metatag and return it
+		for(Image image : images) {
+			if(image.getMetaTags().contains(metaTag)) return image;
+		}
+				
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public Image getAttachedImageWithMetaTagName(String metaTagName) {
+		if(getDataSet() == null) return null;
+		return getAttachedImageWithMetaTag(getDataSet().getMetaTag(metaTagName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -1769,6 +1842,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return basicGetMainCategory();
 			case DataPackage.INFORMATION_OBJECT__META_INFORMATIONS:
 				return getMetaInformations();
+			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
+				return getAlternativeNames();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1828,6 +1903,10 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				getMetaInformations().clear();
 				getMetaInformations().addAll((Collection<? extends MetaInformation>)newValue);
 				return;
+			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
+				getAlternativeNames().clear();
+				getAlternativeNames().addAll((Collection<? extends String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1876,6 +1955,9 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			case DataPackage.INFORMATION_OBJECT__META_INFORMATIONS:
 				getMetaInformations().clear();
 				return;
+			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
+				getAlternativeNames().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1912,6 +1994,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return mainCategory != null;
 			case DataPackage.INFORMATION_OBJECT__META_INFORMATIONS:
 				return metaInformations != null && !metaInformations.isEmpty();
+			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
+				return alternativeNames != null && !alternativeNames.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2028,6 +2112,12 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return getConnectionsFromWithMetaTag((InformationObject)arguments.get(0), (String)arguments.get(1));
 			case DataPackage.INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING:
 				return starRankWithMetaTag((Integer)arguments.get(0), (Integer)arguments.get(1), (String)arguments.get(2));
+			case DataPackage.INFORMATION_OBJECT___ADD_ALTERNATIVE_NAME__STRING:
+				return addAlternativeName((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG:
+				return getAttachedImageWithMetaTag((MetaTag)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING:
+				return getAttachedImageWithMetaTagName((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -2044,6 +2134,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", alternativeNames: ");
+		result.append(alternativeNames);
 		result.append(')');
 		return result.toString();
 	}
@@ -2092,7 +2184,9 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		if ( featureName.equalsIgnoreCase("mainCategory") )
 			return this.getMainCategory();		
 		if ( featureName.equalsIgnoreCase("metaInformations") )
-			return this.getMetaInformations();			
+			return this.getMetaInformations();		
+		if ( featureName.equalsIgnoreCase("alternativeNames") )
+			return this.getAlternativeNames();			
 		return super.getFeature(featureName); 
 	}
 
@@ -2607,6 +2701,40 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTag").getClass().getName());
 			}
 			return this.starRankWithMetaTag(stars, ofStars, metaTag);
+		}
+		if ( command.getCommand().equalsIgnoreCase("addAlternativeName")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("InformationObject.doOperation", 1, command.getArgCount()); 
+			java.lang.String name = null;
+			try {
+				name = (java.lang.String)command.getArg("name");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("name").getClass().getName());
+			}
+			return this.addAlternativeName(name);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getAttachedImageWithMetaTag")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("InformationObject.doOperation", 1, command.getArgCount()); 
+			MetaTag metaTag = null;
+			try {
+				try {
+					metaTag = (MetaTag)(RestUtil.fromInput(command.getArg("metaTag")));
+				} catch (ClassNotFoundException e) {
+					metaTag = (MetaTag)command.getArg("metaTag");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "MetaTag", command.getArg("metaTag").getClass().getName());
+			}
+			return this.getAttachedImageWithMetaTag(metaTag);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getAttachedImageWithMetaTagName")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("InformationObject.doOperation", 1, command.getArgCount()); 
+			java.lang.String metaTagName = null;
+			try {
+				metaTagName = (java.lang.String)command.getArg("metaTagName");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTagName").getClass().getName());
+			}
+			return this.getAttachedImageWithMetaTagName(metaTagName);
 		}	
 		return super.doOperation(command);
 	}

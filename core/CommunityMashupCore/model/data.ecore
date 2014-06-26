@@ -297,6 +297,21 @@
       <eParameters name="ofStars" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
       <eParameters name="metaTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="addAlternativeName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getAttachedImageWithMetaTag" eType="#//Image">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns, if it exists, the first @link Image image@endlink of this information object with the given MetaTag"/>
+      </eAnnotations>
+      <eParameters name="metaTag" eType="#//MetaTag"/>
+    </eOperations>
+    <eOperations name="getAttachedImageWithMetaTagName" eType="#//Image">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns, if it exists, the first @link Image image@endlink of this information object with the given MetaTag"/>
+      </eAnnotations>
+      <eParameters name="metaTagName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" eOpposite="#//Category/categorized"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//Tag"
@@ -320,6 +335,8 @@
         eOpposite="#//Category/mainCategorized"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaInformations" upperBound="-1"
         eType="#//MetaInformation" eOpposite="#//MetaInformation/informationObjects"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alternativeNames" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Content" eSuperTypes="#//InformationObject">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1121,6 +1138,11 @@
       </eAnnotations>
       <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eOperations>
+    <eOperations name="reloadAllAttachmentFiles" upperBound="-1" eType="#//Attachment">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Reloads the files of all attachments and returns the attachments contained in this @link DataSet Data Set@endlink."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" resolveProxies="false" eOpposite="#//Item/dataSet"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheFolder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -1473,6 +1495,11 @@
     <eOperations name="getOriginalFileUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Returns the original file url."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="reloadFile" eType="#//Attachment">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Trys to reload the file if not cached only is true."/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

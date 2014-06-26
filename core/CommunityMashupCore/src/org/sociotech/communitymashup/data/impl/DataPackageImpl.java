@@ -653,6 +653,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInformationObject_AlternativeNames() {
+		return (EAttribute)informationObjectEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getInformationObject__Tag__String() {
 		return informationObjectEClass.getEOperations().get(0);
 	}
@@ -1114,6 +1123,33 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 */
 	public EOperation getInformationObject__StarRankWithMetaTag__Integer_Integer_String() {
 		return informationObjectEClass.getEOperations().get(51);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__AddAlternativeName__String() {
+		return informationObjectEClass.getEOperations().get(52);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetAttachedImageWithMetaTag__MetaTag() {
+		return informationObjectEClass.getEOperations().get(53);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetAttachedImageWithMetaTagName__String() {
+		return informationObjectEClass.getEOperations().get(54);
 	}
 
 	/**
@@ -2480,6 +2516,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getDataSet__ReloadAllAttachmentFiles() {
+		return dataSetEClass.getEOperations().get(125);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItem() {
 		return itemEClass;
 	}
@@ -3308,6 +3353,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getAttachment__ReloadFile() {
+		return attachmentEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLocation() {
 		return locationEClass;
 	}
@@ -3803,6 +3857,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__BINARIES);
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__MAIN_CATEGORY);
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__META_INFORMATIONS);
+		createEAttribute(informationObjectEClass, INFORMATION_OBJECT__ALTERNATIVE_NAMES);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___TAG__STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___CATEGORIZE__STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ATTACH_IMAGE__STRING);
@@ -3855,6 +3910,9 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTIONS_TO_WITH_META_TAG__INFORMATIONOBJECT_STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_CONNECTIONS_FROM_WITH_META_TAG__INFORMATIONOBJECT_STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ADD_ALTERNATIVE_NAME__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING);
 
 		contentEClass = createEClass(CONTENT);
 		createEReference(contentEClass, CONTENT__CONTENTS);
@@ -4008,6 +4066,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(dataSetEClass, DATA_SET___GET_DELETED_ITEMS);
 		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_CREATED_SINCE__DATE);
 		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_MODIFIED_SINCE__DATE);
+		createEOperation(dataSetEClass, DATA_SET___RELOAD_ALL_ATTACHMENT_FILES);
 
 		itemEClass = createEClass(ITEM);
 		createEReference(itemEClass, ITEM__DATA_SET);
@@ -4114,6 +4173,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(attachmentEClass, ATTACHMENT__FILE_IDENTIFIER);
 		createEAttribute(attachmentEClass, ATTACHMENT__CACHED_FILE_NAME);
 		createEOperation(attachmentEClass, ATTACHMENT___GET_ORIGINAL_FILE_URL);
+		createEOperation(attachmentEClass, ATTACHMENT___RELOAD_FILE);
 
 		locationEClass = createEClass(LOCATION);
 		createEAttribute(locationEClass, LOCATION__STREET);
@@ -4283,6 +4343,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getInformationObject_Binaries(), this.getBinary(), null, "binaries", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInformationObject_MainCategory(), this.getCategory(), this.getCategory_MainCategorized(), "mainCategory", null, 0, 1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInformationObject_MetaInformations(), this.getMetaInformation(), this.getMetaInformation_InformationObjects(), "metaInformations", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInformationObject_AlternativeNames(), ecorePackage.getEString(), "alternativeNames", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getInformationObject__Tag__String(), this.getTag(), "tag", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -4423,6 +4484,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		addEParameter(op, ecorePackage.getEIntegerObject(), "stars", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "ofStars", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInformationObject__AddAlternativeName__String(), ecorePackage.getEString(), "addAlternativeName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInformationObject__GetAttachedImageWithMetaTag__MetaTag(), this.getImage(), "getAttachedImageWithMetaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getMetaTag(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInformationObject__GetAttachedImageWithMetaTagName__String(), this.getImage(), "getAttachedImageWithMetaTagName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "metaTagName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContent_Contents(), this.getContent(), this.getContent_ParentContent(), "contents", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4800,6 +4870,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		op = initEOperation(getDataSet__GetItemsExceptIdentifiersModifiedSince__Date(), this.getItem(), "getItemsExceptIdentifiersModifiedSince", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getDataSet__ReloadAllAttachmentFiles(), this.getAttachment(), "reloadAllAttachmentFiles", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_DataSet(), this.getDataSet(), this.getDataSet_Items(), "dataSet", null, 0, 1, Item.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_Ident(), ecorePackage.getEString(), "ident", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4963,6 +5035,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getAttachment_CachedFileName(), ecorePackage.getEString(), "cachedFileName", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getAttachment__GetOriginalFileUrl(), ecorePackage.getEString(), "getOriginalFileUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getAttachment__ReloadFile(), this.getAttachment(), "reloadFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(locationEClass, Location.class, "Location", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLocation_Street(), ecorePackage.getEString(), "street", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

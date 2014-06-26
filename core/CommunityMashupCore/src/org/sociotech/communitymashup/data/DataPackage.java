@@ -614,13 +614,22 @@ public interface DataPackage extends EPackage {
 	int INFORMATION_OBJECT__META_INFORMATIONS = ITEM_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT__ALTERNATIVE_NAMES = ITEM_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Information Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_OBJECT_FEATURE_COUNT = ITEM_FEATURE_COUNT + 12;
+	int INFORMATION_OBJECT_FEATURE_COUNT = ITEM_FEATURE_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -1271,13 +1280,40 @@ public interface DataPackage extends EPackage {
 	int INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = ITEM_OPERATION_COUNT + 51;
 
 	/**
+	 * The operation id for the '<em>Add Alternative Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___ADD_ALTERNATIVE_NAME__STRING = ITEM_OPERATION_COUNT + 52;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG = ITEM_OPERATION_COUNT + 53;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Meta Tag Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING = ITEM_OPERATION_COUNT + 54;
+
+	/**
 	 * The number of operations of the '<em>Information Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 52;
+	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 55;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.PersonImpl <em>Person</em>}' class.
@@ -1504,6 +1540,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSON__META_INFORMATIONS = INFORMATION_OBJECT__META_INFORMATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__ALTERNATIVE_NAMES = INFORMATION_OBJECT__ALTERNATIVE_NAMES;
 
 	/**
 	 * The feature id for the '<em><b>Lastname</b></em>' attribute.
@@ -2253,6 +2298,33 @@ public interface DataPackage extends EPackage {
 	int PERSON___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING;
 
 	/**
+	 * The operation id for the '<em>Add Alternative Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ADD_ALTERNATIVE_NAME__STRING = INFORMATION_OBJECT___ADD_ALTERNATIVE_NAME__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Meta Tag Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING;
+
+	/**
 	 * The operation id for the '<em>Get Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2540,6 +2612,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT__META_INFORMATIONS = INFORMATION_OBJECT__META_INFORMATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT__ALTERNATIVE_NAMES = INFORMATION_OBJECT__ALTERNATIVE_NAMES;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' reference list.
@@ -3269,6 +3350,33 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Alternative Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ADD_ALTERNATIVE_NAME__STRING = INFORMATION_OBJECT___ADD_ALTERNATIVE_NAME__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Meta Tag Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING;
 
 	/**
 	 * The operation id for the '<em>Get Organisations</em>' operation.
@@ -4568,13 +4676,22 @@ public interface DataPackage extends EPackage {
 	int DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_MODIFIED_SINCE__DATE = 124;
 
 	/**
+	 * The operation id for the '<em>Reload All Attachment Files</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET___RELOAD_ALL_ATTACHMENT_FILES = 125;
+
+	/**
 	 * The number of operations of the '<em>Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_OPERATION_COUNT = 125;
+	int DATA_SET_OPERATION_COUNT = 126;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -6364,6 +6481,15 @@ public interface DataPackage extends EPackage {
 	int ORGANISATION__META_INFORMATIONS = INFORMATION_OBJECT__META_INFORMATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION__ALTERNATIVE_NAMES = INFORMATION_OBJECT__ALTERNATIVE_NAMES;
+
+	/**
 	 * The feature id for the '<em><b>Parent Organisation</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7055,6 +7181,33 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANISATION___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Alternative Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___ADD_ALTERNATIVE_NAME__STRING = INFORMATION_OBJECT___ADD_ALTERNATIVE_NAME__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG;
+
+	/**
+	 * The operation id for the '<em>Get Attached Image With Meta Tag Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING;
 
 	/**
 	 * The operation id for the '<em>Get Persons</em>' operation.
@@ -10270,13 +10423,22 @@ public interface DataPackage extends EPackage {
 	int ATTACHMENT___GET_ORIGINAL_FILE_URL = EXTENSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Reload File</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT___RELOAD_FILE = EXTENSION_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Attachment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTACHMENT_OPERATION_COUNT = EXTENSION_OPERATION_COUNT + 1;
+	int ATTACHMENT_OPERATION_COUNT = EXTENSION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.LocationImpl <em>Location</em>}' class.
@@ -11091,6 +11253,15 @@ public interface DataPackage extends EPackage {
 	int IMAGE___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
 
 	/**
+	 * The operation id for the '<em>Reload File</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE___RELOAD_FILE = ATTACHMENT___RELOAD_FILE;
+
+	/**
 	 * The number of operations of the '<em>Image</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11477,6 +11648,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENT___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
+
+	/**
+	 * The operation id for the '<em>Reload File</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT___RELOAD_FILE = ATTACHMENT___RELOAD_FILE;
 
 	/**
 	 * The number of operations of the '<em>Document</em>' class.
@@ -12961,6 +13141,15 @@ public interface DataPackage extends EPackage {
 	int TRANSFORMATION___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
 
 	/**
+	 * The operation id for the '<em>Reload File</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION___RELOAD_FILE = ATTACHMENT___RELOAD_FILE;
+
+	/**
 	 * The number of operations of the '<em>Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13348,6 +13537,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int VIDEO___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
+
+	/**
+	 * The operation id for the '<em>Reload File</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO___RELOAD_FILE = ATTACHMENT___RELOAD_FILE;
 
 	/**
 	 * The number of operations of the '<em>Video</em>' class.
@@ -14090,6 +14288,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY___GET_ORIGINAL_FILE_URL = ATTACHMENT___GET_ORIGINAL_FILE_URL;
+
+	/**
+	 * The operation id for the '<em>Reload File</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY___RELOAD_FILE = ATTACHMENT___RELOAD_FILE;
 
 	/**
 	 * The number of operations of the '<em>Binary</em>' class.
@@ -15836,6 +16043,17 @@ public interface DataPackage extends EPackage {
 	EReference getInformationObject_MetaInformations();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link org.sociotech.communitymashup.data.InformationObject#getAlternativeNames <em>Alternative Names</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Alternative Names</em>'.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getAlternativeNames()
+	 * @see #getInformationObject()
+	 * @generated
+	 */
+	EAttribute getInformationObject_AlternativeNames();
+
+	/**
 	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#tag(java.lang.String) <em>Tag</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16354,6 +16572,36 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getInformationObject__StarRankWithMetaTag__Integer_Integer_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#addAlternativeName(java.lang.String) <em>Add Alternative Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Alternative Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#addAlternativeName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__AddAlternativeName__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getAttachedImageWithMetaTag(org.sociotech.communitymashup.data.MetaTag) <em>Get Attached Image With Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attached Image With Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getAttachedImageWithMetaTag(org.sociotech.communitymashup.data.MetaTag)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetAttachedImageWithMetaTag__MetaTag();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getAttachedImageWithMetaTagName(java.lang.String) <em>Get Attached Image With Meta Tag Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attached Image With Meta Tag Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getAttachedImageWithMetaTagName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetAttachedImageWithMetaTagName__String();
 
 	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Content <em>Content</em>}'.
@@ -17885,6 +18133,16 @@ public interface DataPackage extends EPackage {
 	EOperation getDataSet__GetItemsExceptIdentifiersModifiedSince__Date();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#reloadAllAttachmentFiles() <em>Reload All Attachment Files</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Reload All Attachment Files</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#reloadAllAttachmentFiles()
+	 * @generated
+	 */
+	EOperation getDataSet__ReloadAllAttachmentFiles();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Item <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18845,6 +19103,16 @@ public interface DataPackage extends EPackage {
 	EOperation getAttachment__GetOriginalFileUrl();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Attachment#reloadFile() <em>Reload File</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Reload File</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Attachment#reloadFile()
+	 * @generated
+	 */
+	EOperation getAttachment__ReloadFile();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Location <em>Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19631,6 +19899,14 @@ public interface DataPackage extends EPackage {
 		EReference INFORMATION_OBJECT__META_INFORMATIONS = eINSTANCE.getInformationObject_MetaInformations();
 
 		/**
+		 * The meta object literal for the '<em><b>Alternative Names</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INFORMATION_OBJECT__ALTERNATIVE_NAMES = eINSTANCE.getInformationObject_AlternativeNames();
+
+		/**
 		 * The meta object literal for the '<em><b>Tag</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -20045,6 +20321,30 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG__INTEGER_INTEGER_STRING = eINSTANCE.getInformationObject__StarRankWithMetaTag__Integer_Integer_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Alternative Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___ADD_ALTERNATIVE_NAME__STRING = eINSTANCE.getInformationObject__AddAlternativeName__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attached Image With Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG = eINSTANCE.getInformationObject__GetAttachedImageWithMetaTag__MetaTag();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attached Image With Meta Tag Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING = eINSTANCE.getInformationObject__GetAttachedImageWithMetaTagName__String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ContentImpl <em>Content</em>}' class.
@@ -21259,6 +21559,14 @@ public interface DataPackage extends EPackage {
 		EOperation DATA_SET___GET_ITEMS_EXCEPT_IDENTIFIERS_MODIFIED_SINCE__DATE = eINSTANCE.getDataSet__GetItemsExceptIdentifiersModifiedSince__Date();
 
 		/**
+		 * The meta object literal for the '<em><b>Reload All Attachment Files</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_SET___RELOAD_ALL_ATTACHMENT_FILES = eINSTANCE.getDataSet__ReloadAllAttachmentFiles();
+
+		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ItemImpl <em>Item</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -22021,6 +22329,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ATTACHMENT___GET_ORIGINAL_FILE_URL = eINSTANCE.getAttachment__GetOriginalFileUrl();
+
+		/**
+		 * The meta object literal for the '<em><b>Reload File</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ATTACHMENT___RELOAD_FILE = eINSTANCE.getAttachment__ReloadFile();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.LocationImpl <em>Location</em>}' class.
