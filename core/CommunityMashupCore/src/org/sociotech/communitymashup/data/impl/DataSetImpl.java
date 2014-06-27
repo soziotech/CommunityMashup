@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -1105,8 +1106,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 				return getOrganisationsWithAttachment((Attachment)arguments.get(0));
 			case DataPackage.DATA_SET___GET_CONTENTS_WITH_ATTACHMENT__ATTACHMENT:
 				return getContentsWithAttachment((Attachment)arguments.get(0));
-			case DataPackage.DATA_SET___GET_EQUAL_ITEM__ITEM:
-				return getEqualItem((Item)arguments.get(0));
+			case DataPackage.DATA_SET___GET_EQUAL_ITEMS__ITEM:
+				return getEqualItems((Item)arguments.get(0));
 			case DataPackage.DATA_SET___HAS_EQUAL_ITEM__ITEM:
 				return hasEqualItem((Item)arguments.get(0));
 			case DataPackage.DATA_SET___GET_ITEMS_WITH_IDENT__STRING:
@@ -2426,7 +2427,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
-	public Item getEqualItem(Item item) {
+	public EList<Item> getEqualItems(Item item) {
 		if(item == null)
 		{
 			return null;
@@ -2443,21 +2444,20 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		// get all items of type
 		List<Item> allItems = typeBasedLookUpMap.get(type);
 		
-		if(allItems == null)
-		{
+		if(allItems == null || allItems.isEmpty()) {
 			return null;
 		}
 		
+		EList<Item> equalItems = new BasicEList<Item>();
+		
 		// run over all items of type
-		for(Item currentItem : allItems)
-		{
-			if(currentItem.isEqualItem(item))
-			{
-				return currentItem;
+		for(Item currentItem : allItems) {
+			if(currentItem.isEqualItem(item)) {
+				equalItems.add(currentItem);
 			}
 		}
 		
-		return null;
+		return equalItems;
 	}
 
 	/**
@@ -2475,7 +2475,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * <!-- end-user-doc -->
 	 */
 	public Boolean hasEqualItem(Item item) {
-		return getEqualItem(item) != null;
+		EList<Item> equalItems = getEqualItems(item);
+		return equalItems != null && !equalItems.isEmpty();
 	}
 
 	/**
@@ -4842,7 +4843,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			}
 			return this.getContentsWithAttachment(attachment);
 		}
-		if ( command.getCommand().equalsIgnoreCase("getEqualItem")) {
+		if ( command.getCommand().equalsIgnoreCase("getEqualItems")) {
 			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
 			Item item = null;
 			try {
@@ -4854,7 +4855,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			} catch (ClassCastException e) {
 				throw new WrongArgException("DataSet.doOperation", "Item", command.getArg("item").getClass().getName());
 			}
-			return this.getEqualItem(item);
+			return this.getEqualItems(item);
 		}
 		if ( command.getCommand().equalsIgnoreCase("hasEqualItem")) {
 			if (command.getArgCount() != 1) throw new WrongArgCountException("DataSet.doOperation", 1, command.getArgCount()); 
@@ -6005,11 +6006,18 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			return item;
 		}
 		
-		Item equalItem = this.getEqualItem(item);
-		if(equalItem != null)
-		{
-			// return the existing one
-			return equalItem.update(item);
+		EList<Item> equalItems = getEqualItems(item);
+		if(equalItems != null && !equalItems.isEmpty())	{
+			Iterator<Item> eqItemIterator = equalItems.iterator();
+			Item firstItem = eqItemIterator.next();
+			// merge the new item into first item
+			firstItem.update(item);
+			// merge all other items into first item
+			while(eqItemIterator.hasNext()) {
+				firstItem.update(eqItemIterator.next());
+			}
+			// return the merged one
+			return firstItem;
 		}
 		
 		// provide a unique ident

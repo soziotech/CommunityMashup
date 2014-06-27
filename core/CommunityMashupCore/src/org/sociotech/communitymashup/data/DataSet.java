@@ -979,14 +979,15 @@ public interface DataSet extends EObject {
 	EList<Content> getContentsWithAttachment(Attachment attachment);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> If
-	 * the dataset already contains an equal item it will be returned. Otherwise
-	 * null is returned. <!-- end-model-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the dataset already contains equal items, they will be returned. Otherwise null is returned. It can be a list, cause the given item can contain informations that unveil that two or more existing items are equal.
+	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */
-	Item getEqualItem(Item item);
+	EList<Item> getEqualItems(Item item);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> If

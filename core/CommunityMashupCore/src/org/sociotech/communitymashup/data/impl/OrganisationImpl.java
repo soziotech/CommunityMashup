@@ -802,14 +802,28 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 		}
 		
 		// given item is a organisation
-		Organisation organisation = (Organisation) item;
+		OrganisationImpl organisation = (OrganisationImpl) item;
 		
-		if(this.getName() == null)
+		if(this.getName() == null || this.getName().isEmpty())
 		{
 			// name must be defined
 			return false;
 		}
 		
+		// look if any alternative name is defined
+		if(this.alternativeNames != null || organisation.alternativeNames == null) {
+			for(String name1 : this.getAlternativeNamesSet()) {
+				// one alternative name matches main name of other organisation
+				if(organisation.getName().equalsIgnoreCase(name1)) 
+					return true;
+				for(String name2: organisation.getAlternativeNamesSet()) {
+					if(name1.equalsIgnoreCase(name2) || this.getName().equalsIgnoreCase(name2)) {
+						return true;
+					}
+				}
+			}
+		}
+				
 		return this.getName().equalsIgnoreCase(organisation.getName());
 	}
 

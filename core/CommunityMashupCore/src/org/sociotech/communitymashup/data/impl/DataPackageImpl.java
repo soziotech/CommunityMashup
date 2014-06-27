@@ -2201,7 +2201,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getDataSet__GetEqualItem__Item() {
+	public EOperation getDataSet__GetEqualItems__Item() {
 		return dataSetEClass.getEOperations().get(90);
 	}
 
@@ -4031,7 +4031,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(dataSetEClass, DATA_SET___GET_PERSONS_WITH_ATTACHMENT__ATTACHMENT);
 		createEOperation(dataSetEClass, DATA_SET___GET_ORGANISATIONS_WITH_ATTACHMENT__ATTACHMENT);
 		createEOperation(dataSetEClass, DATA_SET___GET_CONTENTS_WITH_ATTACHMENT__ATTACHMENT);
-		createEOperation(dataSetEClass, DATA_SET___GET_EQUAL_ITEM__ITEM);
+		createEOperation(dataSetEClass, DATA_SET___GET_EQUAL_ITEMS__ITEM);
 		createEOperation(dataSetEClass, DATA_SET___HAS_EQUAL_ITEM__ITEM);
 		createEOperation(dataSetEClass, DATA_SET___GET_ITEMS_WITH_IDENT__STRING);
 		createEOperation(dataSetEClass, DATA_SET___GET_ATTACHMENTS_WITH_CACHED_FILE_NAME__STRING);
@@ -4343,7 +4343,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getInformationObject_Binaries(), this.getBinary(), null, "binaries", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInformationObject_MainCategory(), this.getCategory(), this.getCategory_MainCategorized(), "mainCategory", null, 0, 1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInformationObject_MetaInformations(), this.getMetaInformation(), this.getMetaInformation_InformationObjects(), "metaInformations", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInformationObject_AlternativeNames(), ecorePackage.getEString(), "alternativeNames", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInformationObject_AlternativeNames(), ecorePackage.getEString(), "alternativeNames", null, 0, 1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getInformationObject__Tag__String(), this.getTag(), "tag", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -4774,7 +4774,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		op = initEOperation(getDataSet__GetContentsWithAttachment__Attachment(), this.getContent(), "getContentsWithAttachment", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAttachment(), "attachment", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getDataSet__GetEqualItem__Item(), this.getItem(), "getEqualItem", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getDataSet__GetEqualItems__Item(), this.getItem(), "getEqualItems", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItem(), "item", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getDataSet__HasEqualItem__Item(), ecorePackage.getEBooleanObject(), "hasEqualItem", 1, 1, IS_UNIQUE, IS_ORDERED);

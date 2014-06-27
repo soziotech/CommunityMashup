@@ -614,7 +614,7 @@ public interface DataPackage extends EPackage {
 	int INFORMATION_OBJECT__META_INFORMATIONS = ITEM_FEATURE_COUNT + 11;
 
 	/**
-	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute list.
+	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1542,7 +1542,7 @@ public interface DataPackage extends EPackage {
 	int PERSON__META_INFORMATIONS = INFORMATION_OBJECT__META_INFORMATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute list.
+	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2614,7 +2614,7 @@ public interface DataPackage extends EPackage {
 	int CONTENT__META_INFORMATIONS = INFORMATION_OBJECT__META_INFORMATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute list.
+	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4361,13 +4361,13 @@ public interface DataPackage extends EPackage {
 	int DATA_SET___GET_CONTENTS_WITH_ATTACHMENT__ATTACHMENT = 89;
 
 	/**
-	 * The operation id for the '<em>Get Equal Item</em>' operation.
+	 * The operation id for the '<em>Get Equal Items</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET___GET_EQUAL_ITEM__ITEM = 90;
+	int DATA_SET___GET_EQUAL_ITEMS__ITEM = 90;
 
 	/**
 	 * The operation id for the '<em>Has Equal Item</em>' operation.
@@ -6481,7 +6481,7 @@ public interface DataPackage extends EPackage {
 	int ORGANISATION__META_INFORMATIONS = INFORMATION_OBJECT__META_INFORMATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute list.
+	 * The feature id for the '<em><b>Alternative Names</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -16043,10 +16043,10 @@ public interface DataPackage extends EPackage {
 	EReference getInformationObject_MetaInformations();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.sociotech.communitymashup.data.InformationObject#getAlternativeNames <em>Alternative Names</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.InformationObject#getAlternativeNames <em>Alternative Names</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Alternative Names</em>'.
+	 * @return the meta object for the attribute '<em>Alternative Names</em>'.
 	 * @see org.sociotech.communitymashup.data.InformationObject#getAlternativeNames()
 	 * @see #getInformationObject()
 	 * @generated
@@ -17783,14 +17783,14 @@ public interface DataPackage extends EPackage {
 	EOperation getDataSet__GetContentsWithAttachment__Attachment();
 
 	/**
-	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEqualItem(org.sociotech.communitymashup.data.Item) <em>Get Equal Item</em>}' operation.
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#getEqualItems(org.sociotech.communitymashup.data.Item) <em>Get Equal Items</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Equal Item</em>' operation.
-	 * @see org.sociotech.communitymashup.data.DataSet#getEqualItem(org.sociotech.communitymashup.data.Item)
+	 * @return the meta object for the '<em>Get Equal Items</em>' operation.
+	 * @see org.sociotech.communitymashup.data.DataSet#getEqualItems(org.sociotech.communitymashup.data.Item)
 	 * @generated
 	 */
-	EOperation getDataSet__GetEqualItem__Item();
+	EOperation getDataSet__GetEqualItems__Item();
 
 	/**
 	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.DataSet#hasEqualItem(org.sociotech.communitymashup.data.Item) <em>Has Equal Item</em>}' operation.
@@ -19899,7 +19899,7 @@ public interface DataPackage extends EPackage {
 		EReference INFORMATION_OBJECT__META_INFORMATIONS = eINSTANCE.getInformationObject_MetaInformations();
 
 		/**
-		 * The meta object literal for the '<em><b>Alternative Names</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Alternative Names</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -21279,12 +21279,12 @@ public interface DataPackage extends EPackage {
 		EOperation DATA_SET___GET_CONTENTS_WITH_ATTACHMENT__ATTACHMENT = eINSTANCE.getDataSet__GetContentsWithAttachment__Attachment();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Equal Item</b></em>' operation.
+		 * The meta object literal for the '<em><b>Get Equal Items</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation DATA_SET___GET_EQUAL_ITEM__ITEM = eINSTANCE.getDataSet__GetEqualItem__Item();
+		EOperation DATA_SET___GET_EQUAL_ITEMS__ITEM = eINSTANCE.getDataSet__GetEqualItems__Item();
 
 		/**
 		 * The meta object literal for the '<em><b>Has Equal Item</b></em>' operation.

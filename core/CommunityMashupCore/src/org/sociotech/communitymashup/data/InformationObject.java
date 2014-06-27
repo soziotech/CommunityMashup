@@ -293,20 +293,33 @@ public interface InformationObject extends Item {
 	EList<MetaInformation> getMetaInformations();
 
 	/**
-	 * Returns the value of the '<em><b>Alternative Names</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Alternative Names</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Alternative Names</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Alternative Names</em>' attribute list.
+	 * <!-- begin-model-doc -->
+	 * A maintained comma separated list of alternative names.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Alternative Names</em>' attribute.
+	 * @see #setAlternativeNames(String)
 	 * @see org.sociotech.communitymashup.data.DataPackage#getInformationObject_AlternativeNames()
 	 * @model
 	 * @generated
 	 */
-	EList<String> getAlternativeNames();
+	String getAlternativeNames();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.InformationObject#getAlternativeNames <em>Alternative Names</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Alternative Names</em>' attribute.
+	 * @see #getAlternativeNames()
+	 * @generated
+	 */
+	void setAlternativeNames(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

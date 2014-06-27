@@ -1127,12 +1127,25 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 		}
 		
 		// given item is a person
-		Person person = (Person) item;
+		PersonImpl person = (PersonImpl) item;
 		
-		if(this.getName() == null)
+		if(this.getName() == null || this.getName().isEmpty())
 		{
 			// name must be defined
 			return false;
+		}
+		
+		// look if any alternative name is defined
+		if(this.alternativeNames != null || person.alternativeNames == null) {
+			for(String name1 : this.getAlternativeNamesSet()) {
+				// one alternative name matches main name of other person
+				if(person.getName().equalsIgnoreCase(name1)) return true;
+				for(String name2: person.getAlternativeNamesSet()) {
+					if(name1.equalsIgnoreCase(name2) || this.getName().equalsIgnoreCase(name2)) {
+						return true;
+					}
+				}
+			}
 		}
 		
 		return this.getName().equalsIgnoreCase(person.getName());

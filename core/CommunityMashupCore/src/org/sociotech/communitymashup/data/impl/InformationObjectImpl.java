@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -249,14 +248,24 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	protected EList<MetaInformation> metaInformations;
 
 	/**
-	 * The cached value of the '{@link #getAlternativeNames() <em>Alternative Names</em>}' attribute list.
+	 * The default value of the '{@link #getAlternativeNames() <em>Alternative Names</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAlternativeNames()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> alternativeNames;
+	protected static final String ALTERNATIVE_NAMES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAlternativeNames() <em>Alternative Names</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAlternativeNames()
+	 * @generated
+	 * @ordered
+	 */
+	protected String alternativeNames = ALTERNATIVE_NAMES_EDEFAULT;
 
 	/**
 	 * Factory for creating items
@@ -488,11 +497,20 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<String> getAlternativeNames() {
-		if (alternativeNames == null) {
-			alternativeNames = new EDataTypeUniqueEList<String>(String.class, this, DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES);
-		}
+	public String getAlternativeNames() {
 		return alternativeNames;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAlternativeNames(String newAlternativeNames) {
+		String oldAlternativeNames = alternativeNames;
+		alternativeNames = newAlternativeNames;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES, oldAlternativeNames, alternativeNames));
 	}
 
 	/**
@@ -1713,13 +1731,86 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			return null;
 		}
 		
-		if(!getAlternativeNames().contains(trimmedName)) {
-			getAlternativeNames().add(trimmedName);
+		Set<String> allNames = this.getAlternativeNamesSet();
+		if(!allNames.contains(trimmedName)) {
+			allNames.add(trimmedName);
+			this.setAlternativeNamesBySet(allNames);
 		}
+		
+		// TODO check for merge due to new name
 		
 		return trimmedName;
 	}
 
+	/**
+	 * Returns the alternative names as set.
+	 * 
+	 * @return The alternative names as set.
+	 */
+	protected Set<String> getAlternativeNamesSet() {
+		
+		HashSet<String> alternativeNamesSet = new HashSet<String>();
+		
+		if(alternativeNames != null) {
+			String[] allNames = alternativeNames.split(",");
+			for(String name : allNames) {
+				alternativeNamesSet.add(name);
+			}
+		}
+		
+		return alternativeNamesSet;
+	}
+	
+	/**
+	 * Creates a comma separated list from the set of alternative names.
+	 * 
+	 * @param alternativeNamesSet Set of alternative names
+	 */
+	private void setAlternativeNamesBySet(Set<String> alternativeNamesSet) {
+		String alternativeNamesCommaList = "";
+		for(String altName : alternativeNamesSet) {
+			alternativeNamesCommaList += altName + ",";
+		}
+		
+		// remove last comma
+		if(!alternativeNamesCommaList.isEmpty()) {
+			alternativeNamesCommaList = alternativeNamesCommaList.substring(0, alternativeNamesCommaList.length()-1);
+		}
+		
+		// update only if changed
+		if(this.getAlternativeNames() == null || !this.getAlternativeNames().equals(alternativeNamesCommaList)) {
+			this.setAlternativeNames(alternativeNamesCommaList);
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#update(org.sociotech.communitymashup.data.Item)
+	 */
+	@Override
+	public Item update(Item item) {
+		if(item instanceof InformationObjectImpl) {
+			InformationObjectImpl io = (InformationObjectImpl) item;
+
+			// merge alternative names if set
+			if(this.alternativeNames != null || io.alternativeNames != null) {
+				Set<String> allNames = this.getAlternativeNamesSet();
+				// add all other names
+				allNames.addAll(io.getAlternativeNamesSet());
+				// if different then also add main name
+				if(this.getName() != io.getName()) {
+					allNames.add(this.getName());
+				}
+				
+				// set new list at both items to keep at merge
+				this.setAlternativeNamesBySet(allNames);
+				io.setAlternativeNamesBySet(allNames);
+			}
+		}
+		
+		// continue with base update implementation
+		return super.update(item);
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1904,8 +1995,7 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				getMetaInformations().addAll((Collection<? extends MetaInformation>)newValue);
 				return;
 			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
-				getAlternativeNames().clear();
-				getAlternativeNames().addAll((Collection<? extends String>)newValue);
+				setAlternativeNames((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1956,7 +2046,7 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				getMetaInformations().clear();
 				return;
 			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
-				getAlternativeNames().clear();
+				setAlternativeNames(ALTERNATIVE_NAMES_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1995,7 +2085,7 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			case DataPackage.INFORMATION_OBJECT__META_INFORMATIONS:
 				return metaInformations != null && !metaInformations.isEmpty();
 			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
-				return alternativeNames != null && !alternativeNames.isEmpty();
+				return ALTERNATIVE_NAMES_EDEFAULT == null ? alternativeNames != null : !ALTERNATIVE_NAMES_EDEFAULT.equals(alternativeNames);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2221,6 +2311,16 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 					throw new WrongArgException("InformationObject.setFeature", "org.sociotech.communitymashup.data.Category",value.getClass().getName());
 				}
 				this.setMainCategory(fmainCategory);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("alternativeNames") ) {
+				java.lang.String falternativeNames = null;
+				try {
+					falternativeNames = (java.lang.String)value;
+				} catch (ClassCastException e) {
+					throw new WrongArgException("InformationObject.setFeature", "java.lang.String",value.getClass().getName());
+				}
+				this.setAlternativeNames(falternativeNames);
 			return this;
 			}			
 		super.setFeature(featureName, value);

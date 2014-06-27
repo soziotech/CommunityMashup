@@ -949,18 +949,7 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				continue;
 			}
 			else 
-			{
-				if(attributeValue2 instanceof String)
-				{
-					String stringValue = (String) attributeValue2;
-					if(stringValue.isEmpty())
-					{
-						// dont overwrite with empty values
-						continue;
-					}
-				}
-						
-					
+			{	
 				// TODO check if new value is newer
 				log("Setting attribute " + attribute.getName() + " for item " + this.getIdent() + " to " + attributeValue2, LogService.LOG_DEBUG);
 				this.eSet(attribute, attributeValue2);
