@@ -627,19 +627,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		// preprocess every item before adding it
 		preprocessItem(item);
 
-		// check if item is already contained
-		Item existingItem = dataSet.getEqualItem(item);
-		if(existingItem != null)
-		{
-			// merge the items
-			existingItem.update(item);
-			
-			// add tags, categories etc. defined in the configuration
-			addSourceSpecificInformations(existingItem);
-			// just return it
-			return (T)existingItem;
-		}
-		
 		Item addedItem = dataSet.add(item);
 		
 		// add tags, categories etc. defined in the configuration
