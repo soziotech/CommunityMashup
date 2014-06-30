@@ -347,8 +347,6 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 			
 			// create the unique file name
 			cacheFileName = createCacheFileName(origURL);
-			
-			this.setCachedFileName(cacheFileName);
 		}
 		
 		String cacheFolder = dataSet.getCacheFolder();
@@ -472,7 +470,7 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		{
 			// caching disabled
 			// reset cached file name
-			this.cachedFileName = null;
+			//this.cachedFileName = null;
 			return null;
 		}
 		// starting caching
