@@ -6010,12 +6010,13 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		if(equalItems != null && !equalItems.isEmpty())	{
 			Iterator<Item> eqItemIterator = equalItems.iterator();
 			Item firstItem = eqItemIterator.next();
-			// merge the new item into first item
-			firstItem.update(item);
 			// merge all other items into first item
 			while(eqItemIterator.hasNext()) {
 				firstItem.update(eqItemIterator.next());
 			}
+			// merge the new item into first item
+			firstItem.update(item);
+						
 			// return the merged one
 			return firstItem;
 		}

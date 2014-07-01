@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -1135,19 +1136,19 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 			return false;
 		}
 		
-		// look if any alternative name is defined
-		if(this.alternativeNames != null || person.alternativeNames == null) {
-			for(String name1 : this.getAlternativeNamesSet()) {
-				// one alternative name matches main name of other person
-				if(person.getName().equalsIgnoreCase(name1)) return true;
-				for(String name2: person.getAlternativeNamesSet()) {
-					if(name1.equalsIgnoreCase(name2) || this.getName().equalsIgnoreCase(name2)) {
+		// look if any alternative name is defined to not always create new sets and parse name strings
+		if(this.alternativeNames != null || person.alternativeNames != null) {
+			Set<String> set1 = this.getAllNamesSet();
+			Set<String> set2 = person.getAllNamesSet();
+			for(String name1 : set1) {
+				for(String name2: set2) {
+					if(name1.equalsIgnoreCase(name2)) {
 						return true;
 					}
 				}
 			}
 		}
-		
+
 		return this.getName().equalsIgnoreCase(person.getName());
 	}
 

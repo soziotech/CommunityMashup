@@ -1762,6 +1762,19 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	}
 	
 	/**
+	 * Returns a set with all names including alternative names.
+	 * 
+	 * @return The set with all names including alternative names.
+	 */
+	protected Set<String> getAllNamesSet() {
+		
+		Set<String> allNamesSet = getAlternativeNamesSet();
+		allNamesSet.add(this.getName());
+		
+		return allNamesSet;
+	}
+	
+	/**
 	 * Creates a comma separated list from the set of alternative names.
 	 * 
 	 * @param alternativeNamesSet Set of alternative names

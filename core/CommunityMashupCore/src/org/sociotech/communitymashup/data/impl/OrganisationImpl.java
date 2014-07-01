@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -810,14 +811,13 @@ public class OrganisationImpl extends InformationObjectImpl implements Organisat
 			return false;
 		}
 		
-		// look if any alternative name is defined
-		if(this.alternativeNames != null || organisation.alternativeNames == null) {
-			for(String name1 : this.getAlternativeNamesSet()) {
-				// one alternative name matches main name of other organisation
-				if(organisation.getName().equalsIgnoreCase(name1)) 
-					return true;
-				for(String name2: organisation.getAlternativeNamesSet()) {
-					if(name1.equalsIgnoreCase(name2) || this.getName().equalsIgnoreCase(name2)) {
+		// look if any alternative name is defined to not always create new sets and parse name strings
+		if(this.alternativeNames != null || organisation.alternativeNames != null) {
+			Set<String> set1 = this.getAllNamesSet();
+			Set<String> set2 = organisation.getAllNamesSet();
+			for(String name1 : set1) {
+				for(String name2: set2) {
+					if(name1.equalsIgnoreCase(name2)) {
 						return true;
 					}
 				}
