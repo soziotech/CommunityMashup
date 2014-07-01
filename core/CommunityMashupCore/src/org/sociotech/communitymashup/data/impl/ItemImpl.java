@@ -622,6 +622,11 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			return null;
 		}
 		
+		if(key == null || key.isEmpty() || value == null || value.isEmpty()) {
+			// make sure that identifier is defined
+			return null;
+		}
+		
 		// create identifier
 		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
 		Identifier identifier = dataFactory.createIdentifier();
