@@ -1013,7 +1013,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 	 * 
 	 * @return The source instance specific meta tag
 	 */
-	private MetaTag getSourceInstanceMetaTag() {
+	protected MetaTag getSourceInstanceMetaTag() {
 		
 		if(source == null || source.getDataSet() == null) {
 			// happens if source not started before
