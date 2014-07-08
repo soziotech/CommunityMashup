@@ -455,12 +455,12 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 		commentObject.setParentContent(this);
 		commentObject.setStringValue(comment);
 	
-		// add a meta tag for every comment
-		commentObject.metaTag(COMMENT_META_TAG_VALUE);
-		
 		// add content to data set
 		this.getDataSet().add(commentObject);
-		
+	
+		// add a meta tag for every comment
+		commentObject.metaTag(COMMENT_META_TAG_VALUE);
+	
 		return commentObject;
 	}
 

@@ -720,14 +720,15 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getItems()).basicAdd(otherEnd, msgs);
+				// directly working with the list cause getter returns copy 
+				createItemsListIfNeeded();
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)items).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -735,13 +736,14 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
+				// directly working with the list cause getter returns copy 
+				createItemsListIfNeeded();
+				return ((InternalEList<?>)items).basicRemove(otherEnd, msgs);
 			case DataPackage.DATA_SET__ITEMS_DELETED:
 				return ((InternalEList<?>)getItemsDeleted()).basicRemove(otherEnd, msgs);
 		}
