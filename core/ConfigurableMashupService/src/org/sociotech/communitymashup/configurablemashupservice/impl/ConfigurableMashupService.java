@@ -1403,7 +1403,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 				// source handles change
 				return;
 			}
-			
+					
 			// can not be handled, so recreate
 			recreateSource(changedSource);
 		}
@@ -1481,7 +1481,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		// keep old source state
 		SourceState oldSourceState = changedSource.getState();
 
-		if(oldSourceState == SourceState.STOPED) {
+		if(oldSourceState == SourceState.STOPED || oldSourceState == SourceState.ERROR) {
 			// nothing to recreate
 			return;
 		}
@@ -1495,7 +1495,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 
 	/**
 	 * Should be called when an interface changes. If the change can not be handled by
-	 * the implementing interface service, thenn the interface will be destroyed and
+	 * the implementing interface service, then the interface will be destroyed and
 	 * recreated
 	 * 
 	 * @param notification Notification with change details
@@ -1575,13 +1575,13 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		// get the matching source service
 		SourceServiceFacade sourceService = sourceServices.get(sourceConfiguration);
 		
-		if(sourceService != null)
-		
-		log("Enriching data with source service " + sourceService.getConfiguration().getName(), LogService.LOG_INFO);
-		try {
-			sourceService.enrich();
-		} catch (Exception e) {
-			log("Exception while enriching data with source service " + sourceService, LogService.LOG_ERROR);
+		if(sourceService != null) {		
+			log("Enriching data with source service " + sourceService.getConfiguration().getName(), LogService.LOG_INFO);
+			try {
+				sourceService.enrich();
+			} catch (Exception e) {
+				log("Exception while enriching data with source service " + sourceService, LogService.LOG_ERROR);
+			}
 		}
 	}
 
