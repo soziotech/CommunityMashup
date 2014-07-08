@@ -1157,6 +1157,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInformationObject__StarRankWithMetaTagList__Integer_Integer_String() {
+		return informationObjectEClass.getEOperations().get(55);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContent() {
 		return contentEClass;
 	}
@@ -3913,6 +3922,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ADD_ALTERNATIVE_NAME__STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING);
 
 		contentEClass = createEClass(CONTENT);
 		createEReference(contentEClass, CONTENT__CONTENTS);
@@ -4493,6 +4503,11 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		op = initEOperation(getInformationObject__GetAttachedImageWithMetaTagName__String(), this.getImage(), "getAttachedImageWithMetaTagName", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTagName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInformationObject__StarRankWithMetaTagList__Integer_Integer_String(), this.getStarRanking(), "starRankWithMetaTagList", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEIntegerObject(), "stars", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEIntegerObject(), "ofStars", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "metaTagList", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContent_Contents(), this.getContent(), this.getContent_ParentContent(), "contents", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

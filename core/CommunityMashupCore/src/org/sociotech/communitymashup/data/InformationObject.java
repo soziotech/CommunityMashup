@@ -910,6 +910,17 @@ public interface InformationObject extends Item {
 	Image getAttachedImageWithMetaTagName(String metaTagName);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Starranks this information object and attaches the metatags, from the given comma separated list of metatags, to the starranking.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	StarRanking starRankWithMetaTagList(Integer stars, Integer ofStars, String metaTagList);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type InformationObject.
 	 * 
 	 * @generated

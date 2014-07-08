@@ -1853,6 +1853,23 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public StarRanking starRankWithMetaTagList(Integer stars, Integer ofStars, String metaTagList) {
+		StarRanking ranking = this.starRank(stars, ofStars);
+		if(ranking != null && metaTagList != null) {
+			// split comma separated list
+			String[] metaTagArray = metaTagList.split(",");
+			// add all meta tags
+			for(String metaTag : metaTagArray) {
+				ranking.metaTag(metaTag);
+			}
+		}
+		return ranking;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -2221,6 +2238,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return getAttachedImageWithMetaTag((MetaTag)arguments.get(0));
 			case DataPackage.INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING:
 				return getAttachedImageWithMetaTagName((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING:
+				return starRankWithMetaTagList((Integer)arguments.get(0), (Integer)arguments.get(1), (String)arguments.get(2));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -2848,6 +2867,28 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTagName").getClass().getName());
 			}
 			return this.getAttachedImageWithMetaTagName(metaTagName);
+		}
+		if ( command.getCommand().equalsIgnoreCase("starRankWithMetaTagList")) {
+			if (command.getArgCount() != 3) throw new WrongArgCountException("InformationObject.doOperation", 3, command.getArgCount()); 
+			java.lang.Integer stars = null;
+			try {
+				stars = (java.lang.Integer)(RestUtil.fromIntegerString((String)command.getArg("stars")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.Integer", command.getArg("stars").getClass().getName());
+			}
+			java.lang.Integer ofStars = null;
+			try {
+				ofStars = (java.lang.Integer)(RestUtil.fromIntegerString((String)command.getArg("ofStars")));
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.Integer", command.getArg("ofStars").getClass().getName());
+			}
+			java.lang.String metaTagList = null;
+			try {
+				metaTagList = (java.lang.String)command.getArg("metaTagList");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTagList").getClass().getName());
+			}
+			return this.starRankWithMetaTagList(stars, ofStars, metaTagList);
 		}	
 		return super.doOperation(command);
 	}

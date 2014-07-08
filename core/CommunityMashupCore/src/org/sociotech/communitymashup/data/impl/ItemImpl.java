@@ -594,6 +594,9 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			return null;
 		}
 		
+		// trim the name
+		name = name.trim();
+		
 		// find the Tag with the given string value
 		MetaTag tag = dataSet.getMetaTag(name);
 		
