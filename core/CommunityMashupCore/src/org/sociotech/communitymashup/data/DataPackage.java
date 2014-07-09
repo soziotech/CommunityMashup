@@ -3451,13 +3451,22 @@ public interface DataPackage extends EPackage {
 	int CONTENT___ATTACH_DOCUMENT__STRING = INFORMATION_OBJECT_OPERATION_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Comment With Meta Tag List</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___COMMENT_WITH_META_TAG_LIST__STRING_STRING = INFORMATION_OBJECT_OPERATION_COUNT + 5;
+
+	/**
 	 * The number of operations of the '<em>Content</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENT_OPERATION_COUNT = INFORMATION_OBJECT_OPERATION_COUNT + 5;
+	int CONTENT_OPERATION_COUNT = INFORMATION_OBJECT_OPERATION_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.DataSetImpl <em>Set</em>}' class.
@@ -16798,6 +16807,16 @@ public interface DataPackage extends EPackage {
 	EOperation getContent__AttachDocument__String();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Content#commentWithMetaTagList(java.lang.String, java.lang.String) <em>Comment With Meta Tag List</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Comment With Meta Tag List</em>' operation.
+	 * @see org.sociotech.communitymashup.data.Content#commentWithMetaTagList(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getContent__CommentWithMetaTagList__String_String();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.DataSet <em>Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20513,6 +20532,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CONTENT___ATTACH_DOCUMENT__STRING = eINSTANCE.getContent__AttachDocument__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment With Meta Tag List</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONTENT___COMMENT_WITH_META_TAG_LIST__STRING_STRING = eINSTANCE.getContent__CommentWithMetaTagList__String_String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.DataSetImpl <em>Set</em>}' class.

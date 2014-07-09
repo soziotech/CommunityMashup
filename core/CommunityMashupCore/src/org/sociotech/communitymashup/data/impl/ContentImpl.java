@@ -514,6 +514,23 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public Content commentWithMetaTagList(String comment, String metaTagList) {
+		Content commentContent = this.comment(comment);
+		if(commentContent != null && metaTagList != null) {
+			// split comma separated list
+			String[] metaTagArray = metaTagList.split(",");
+			// add all meta tags
+			for(String metaTag : metaTagArray) {
+				commentContent.metaTag(metaTag);
+			}
+		}
+		return commentContent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<Content> getContents() {
@@ -757,6 +774,8 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 				return addContributor((Person)arguments.get(0));
 			case DataPackage.CONTENT___ATTACH_DOCUMENT__STRING:
 				return attachDocument((String)arguments.get(0));
+			case DataPackage.CONTENT___COMMENT_WITH_META_TAG_LIST__STRING_STRING:
+				return commentWithMetaTagList((String)arguments.get(0), (String)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -919,6 +938,22 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 				throw new WrongArgException("Content.doOperation", "java.lang.String", command.getArg("fileUrl").getClass().getName());
 			}
 			return this.attachDocument(fileUrl);
+		}
+		if ( command.getCommand().equalsIgnoreCase("commentWithMetaTagList")) {
+			if (command.getArgCount() != 2) throw new WrongArgCountException("Content.doOperation", 2, command.getArgCount()); 
+			java.lang.String comment = null;
+			try {
+				comment = (java.lang.String)command.getArg("comment");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Content.doOperation", "java.lang.String", command.getArg("comment").getClass().getName());
+			}
+			java.lang.String metaTagList = null;
+			try {
+				metaTagList = (java.lang.String)command.getArg("metaTagList");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("Content.doOperation", "java.lang.String", command.getArg("metaTagList").getClass().getName());
+			}
+			return this.commentWithMetaTagList(comment, metaTagList);
 		}	
 		return super.doOperation(command);
 	}

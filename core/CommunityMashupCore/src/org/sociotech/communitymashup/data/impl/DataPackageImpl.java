@@ -1292,6 +1292,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getContent__CommentWithMetaTagList__String_String() {
+		return contentEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataSet() {
 		return dataSetEClass;
 	}
@@ -3938,6 +3947,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(contentEClass, CONTENT___COMMENT__STRING);
 		createEOperation(contentEClass, CONTENT___ADD_CONTRIBUTOR__PERSON);
 		createEOperation(contentEClass, CONTENT___ATTACH_DOCUMENT__STRING);
+		createEOperation(contentEClass, CONTENT___COMMENT_WITH_META_TAG_LIST__STRING_STRING);
 
 		dataSetEClass = createEClass(DATA_SET);
 		createEReference(dataSetEClass, DATA_SET__ITEMS);
@@ -4531,6 +4541,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		op = initEOperation(getContent__AttachDocument__String(), this.getDocument(), "attachDocument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "fileUrl", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getContent__CommentWithMetaTagList__String_String(), this.getContent(), "commentWithMetaTagList", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "comment", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "metaTagList", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataSetEClass, DataSet.class, "DataSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataSet_Items(), this.getItem(), this.getItem_DataSet(), "items", null, 0, -1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

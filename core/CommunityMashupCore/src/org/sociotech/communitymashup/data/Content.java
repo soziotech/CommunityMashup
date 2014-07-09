@@ -236,6 +236,17 @@ public interface Content extends InformationObject {
 	Document attachDocument(String fileUrl);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Comments this information object and attaches the metatags, from the given comma separated list of metatags, to the new sub content.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Content commentWithMetaTagList(String comment, String metaTagList);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type Content.
 	 * 
 	 * @generated

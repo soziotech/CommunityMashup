@@ -370,6 +370,13 @@
       </eAnnotations>
       <eParameters name="fileUrl" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="commentWithMetaTagList" eType="#//Content">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Comments this information object and attaches the metatags, from the given comma separated list of metatags, to the new sub content."/>
+      </eAnnotations>
+      <eParameters name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="metaTagList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
         eType="#//Content" eOpposite="#//Content/parentContent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contributors" upperBound="-1"
