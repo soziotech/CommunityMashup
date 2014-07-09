@@ -627,7 +627,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		// preprocess every item before adding it
 		preprocessItem(item);
 
-		Item addedItem = dataSet.add(item);
+		Item addedItem = addItemToDataSet(item);
 		
 		// add tags, categories etc. defined in the configuration
 		addSourceSpecificInformations(addedItem);
@@ -636,6 +636,16 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		addReferencedItems(addedItem);
 				
 		return (T)addedItem;
+	}
+
+	/**
+	 * Will be called by the source internally to add an item to the data set.
+	 * 
+	 * @param item Item to add to the data set
+	 * @return The added (maybe merged) item
+	 */
+	protected <T extends Item> Item addItemToDataSet(T item) {
+		return source.getDataSet().add(item);
 	}
 	
 	/**
