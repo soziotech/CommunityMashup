@@ -950,7 +950,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				continue;
 			}	
 			
-			if(attributeValue2 == null || (attributeValue2.equals(attributeValue1)))
+			if(attributeValue2 == null || (attributeValue2.equals(attributeValue1)) ||
+			   (attributeValue2 instanceof String && ((String)attributeValue2).isEmpty()))
 			{
 				// nothing to do
 				log("No new value for attribute " + attribute.getName() + " for item " + this.getIdent(), LogService.LOG_DEBUG);
@@ -1015,9 +1016,6 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				// temporary keep all items from list2
 				EList<Item> tmpList = new BasicEList<Item>(list2);
 				
-				// clear list 2
-				list2.clear();
-				
 				// step over all items and add them to list 1
 				for(Item tmpItem : tmpList)
 				{
@@ -1034,9 +1032,13 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 						list1.add(addedItem);
 					}
 				}
+				
+				// clear list 2, important to do this after adding to not invalidate/delete object in between
+				list2.clear();
+				
 			}
 			
-			if(referencedObject1 == null && referencedObject2 instanceof Item)
+			if(referencedObject2 instanceof Item)
 			{
 				log("Referenced1: " + referencedObject1, LogService.LOG_DEBUG);
 				log("Referenced2: " + referencedObject2, LogService.LOG_DEBUG);
@@ -1049,6 +1051,7 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				}
 				
 				this.eSet(reference, addedItem);
+				item.eSet(reference, null);	
 			}
 		}
 		

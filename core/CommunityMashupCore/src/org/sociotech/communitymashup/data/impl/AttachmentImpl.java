@@ -1221,6 +1221,10 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		{
 			return false;
 		}
+		else if (this.getDataSet() != item.getDataSet()) {
+			// attachments must be in the same data set to be equal
+			return false;
+		}
 		
 		// cast
 		Attachment attachment = (Attachment) item;
@@ -1234,7 +1238,7 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 				EList<InformationObject> myIOs    = this.getDataSet().getInformationObjectsWithAttachment(this);
 				EList<InformationObject> otherIOs = this.getDataSet().getInformationObjectsWithAttachment(attachment);
 				
-				return myIOs.containsAll(otherIOs);
+				return myIOs.size() > 0 && otherIOs.size() > 0 && myIOs.size() == otherIOs.size() && myIOs.containsAll(otherIOs);
 			}
 			catch (Exception e)
 			{

@@ -2280,37 +2280,24 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public EList<InformationObject> getInformationObjectsWithAttachment(Attachment attachment) {
+		EList<InformationObject> informationObjects = getInformationObjects();
 		// Check if input is defined
-		if(getInformationObjects() == null) {
+		if(getInformationObjects() == null || attachment == null) {
 			return null;
 		}
 		
-		EObjectCondition oclCondition = null;
-		String oclStatement = "((self.getAttachments())->notEmpty()) and (self.getAttachments()->exists(a | a.ident = '" + attachment.getIdent()  + "'))";;
-		try {
-			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
-																					oclStatement,
-																					DataPackageImpl.eINSTANCE.getInformationObject());		
-		}
-		catch (ParserException e) {
-			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
-			return null;
-		}
-	
-		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getInformationObjects(), oclCondition.AND(InformationObject.isTypeCondition));
-
-		if(result == null) {
-			return new BasicEList<InformationObject>();
+		BasicEList<InformationObject> result = new BasicEList<InformationObject>();
+		
+		// collect information objects with attachment
+		for(InformationObject io : informationObjects) {
+			if(io.getAttachments().contains(attachment)) {
+				result.add(io);
+			}
 		}
 		
-		// results are only InformationObjects
-		@SuppressWarnings("unchecked")
-		EList<InformationObject> objects = new BasicEList<InformationObject>((Collection<? extends InformationObject>) result.getEObjects());
-		
-		return objects;	
+		return result;	
 	
 	}
 
