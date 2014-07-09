@@ -1133,7 +1133,8 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 		mashup.setActiveState(SourceActiveStates.UPDATING);
 				
 		// update all source services
-		for(Source source : sourceServices.keySet())
+		// copy list of sources cause setting to error may change list of services
+		for(Source source : new LinkedList<Source>(sourceServices.keySet()))
 		{
 			SourceServiceFacade service = sourceServices.get(source);
 			
