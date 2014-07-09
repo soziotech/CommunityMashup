@@ -100,12 +100,9 @@ public class ZemantaSourceService extends SourceServiceFacadeImpl {
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrichDataSet()
 	 */
-	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrichDataSet()
-	 */
 	@Override
-	public void enrichDataSet() {
-
+	protected void enrichDataSet() {
+	
 		super.enrichDataSet();
 		
 		// Use only main contents
