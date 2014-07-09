@@ -925,9 +925,6 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			// no merge needed on same objects
 			return this;
 		}
-		if(item.getIdent().equals("file_a_4785")) {
-			System.out.println("Have it");
-		}
 		
 		log("Updating " + this.getIdent() + " with " + item.getIdent(), LogService.LOG_DEBUG);
 		
