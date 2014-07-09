@@ -925,7 +925,9 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			// no merge needed on same objects
 			return this;
 		}
-		
+		if(item.getIdent().equals("file_a_4785")) {
+			System.out.println("Have it");
+		}
 		
 		log("Updating " + this.getIdent() + " with " + item.getIdent(), LogService.LOG_DEBUG);
 		
@@ -1023,6 +1025,9 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 					log("Adding: " + tmpItem.getIdent());
 					if(this.getDataSet() != null)
 					{
+						// it is very likely that the item to add has a backward reference,
+						// so replace the first
+						tmpItem.replaceReferences(item, this);
 						addedItem = this.getDataSet().add(tmpItem);
 					}
 					
@@ -1061,6 +1066,70 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		return this;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#replaceReferences(org.sociotech.communitymashup.data.Item, org.sociotech.communitymashup.data.Item)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void replaceReferences(Item from, Item to) {
+		if(from == null || to == null || from.eClass() != to.eClass()) {
+			return;
+		}
+		
+		// get possible attributes and references
+		EList<EAttribute> attributes = this.eClass().getEAllAttributes();
+		EList<EReference> references = this.eClass().getEAllReferences();
+
+		// step through all attributes and update them
+		for(EAttribute attribute : attributes)
+		{
+			if(!attribute.isChangeable())
+			{
+				// continue with next attribute if this can not be updated
+				continue;
+			}
+
+			if(this.eGet(attribute) == from) {
+				this.eSet(attribute, to);
+			}
+		}
+
+		// step over all references and update reference lists
+		for(EReference reference : references)
+		{
+			Object referencedObject1 = this.eGet(reference);
+			
+			if(referencedObject1 == from)
+			{
+				// replace with to
+				this.eSet(reference, to);
+			} 
+			else if(referencedObject1 instanceof EList<?>) {
+				EList<Item> list1 = null;
+				try {
+					// try to cast, there should only be list of items
+					list1 = (EList<Item>) referencedObject1;
+				} catch (Exception e) {
+					// use only list of items (non items indicate a model problem)
+					log("References contain a list of non Item!", LogService.LOG_WARNING);
+					continue;
+				}
+
+				if(list1.contains(to)) {
+					// already references to (maybe in merge)
+					// so remove "from" from list
+					list1.remove(from);
+					continue;
+				}
+				int refIndex = list1.indexOf(from);
+				if(refIndex != -1)	{
+					// replace on position
+					list1.set(refIndex, to);
+				}
+			}
+		}
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * The implementation tries to avoid all unnecessary modifications to avoid sending of unneccessary change notifications.

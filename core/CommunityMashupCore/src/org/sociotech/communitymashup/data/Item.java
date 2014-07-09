@@ -565,4 +565,13 @@ public interface Item extends EObject {
 	 * @return If this item can have an equal item.
 	 */
 	public boolean canHaveEqualItem();
+
+	/**
+	 * Replaces all references to "from", by reference to "to". Both objects must be from the same type
+	 * 
+	 * @param from Old referenced item
+	 * @param to New referenced item 
+	 */
+	void replaceReferences(Item from, Item to);
+	
 } // Item
