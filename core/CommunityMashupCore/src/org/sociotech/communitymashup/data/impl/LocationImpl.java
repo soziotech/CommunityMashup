@@ -1005,8 +1005,8 @@ public class LocationImpl extends MetaInformationImpl implements Location {
 		
 		try
 		{
-			EList<InformationObject> myIOs    = this.getDataSet().getInformationObjects();
-			EList<InformationObject> otherIOs = this.getDataSet().getInformationObjects();
+			EList<InformationObject> myIOs    = this.getInformationObjects();
+			EList<InformationObject> otherIOs = this.getInformationObjects();
 			
 			if(!myIOs.containsAll(otherIOs))
 			{
