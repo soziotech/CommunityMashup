@@ -14,7 +14,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -327,8 +329,11 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 	 */
 	@Override
 	public void enrichDataSet() {
-		// TODO Auto-generated method stub
 		super.enrichDataSet();
+		
+		if(shouldEnrichPersons()) {
+			enrichPersonsWithTwitterAccounts();
+		}
 	}
 
 	/*
@@ -352,6 +357,11 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			log("Loading user timeline from Twitter.", LogService.LOG_INFO);
 			// add User Timeline
 			addUserTimeline();
+		}
+		
+		// do enrichment of persons in update due to call limits of api, instead of immediately after person changes
+		if(shouldEnrichPersons()) {
+			enrichPersonsWithTwitterAccounts();
 		}
 		
 		// TODO do other updates, only tested updates are currently supported
@@ -506,6 +516,109 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		} while (followers.hasNext());
 	}
 
+	/**
+	 * Lookup all Twitter users for all persons with twitter web account
+	 */
+	private void enrichPersonsWithTwitterAccounts() {
+		
+		EList<WebAccount> allWebAccounts = source.getDataSet().getWebAccounts();
+		
+		if(allWebAccounts == null || allWebAccounts.isEmpty()) {
+			// nothing to do
+			return;
+		}
+		
+		Map<String, WebAccount> twitterAccounts = new HashMap<String, WebAccount>();
+		
+		// find twitter accounts
+		for(WebAccount account : allWebAccounts) {
+			if(!account.hasMetaTag(TwitterTags.TWITTER)
+			   || account.getUsername() == null || account.getUsername().isEmpty()
+			   || account.getInformationObjects() == null) {
+				// must be an (attached) twitter account
+				continue;
+			}
+			if(!(account.getInformationObjects().size() == 1) || !(account.getInformationObjects().get(0) instanceof Person)) {
+				continue;
+			}
+			
+			// add to map with twitter name as key
+			twitterAccounts.put(account.getUsername(), account);
+		}
+		
+		if(twitterAccounts.isEmpty()) {
+			// nothing to do
+			return;
+		}
+		
+		// transform key set to string array
+		String[] accountNames = twitterAccounts.keySet().toArray(new String[0]);
+		
+		int bufferLength = 99;
+		int from = 0;
+		int to = bufferLength;
+
+		
+
+		// finish if no id in array
+		boolean finished = accountNames.length <= 0;
+
+		while (!finished) {
+			if (to >= accountNames.length) {
+				to = accountNames.length;
+				finished = true;
+			}
+
+			String[] buffer = Arrays.copyOfRange(accountNames, from, to);
+
+			ResponseList<User> users = null;
+			try {
+				users = twitterAPI.lookupUsers(buffer);
+				log("Lookup users at Twitter.", LogService.LOG_DEBUG);
+			} catch (TwitterException e) {
+				log("Could not lookup users at Twitter. (" + e.getMessage() + ")", LogService.LOG_ERROR);
+				return;
+			}
+
+			// add all users
+
+			for (User twitterUser : users) {
+				Person person = createPersonFromTwitterUser(twitterUser);
+				
+				if(person == null) {
+					// something went wrong, so skip
+					continue;
+				}
+				
+				WebAccount origAccount = twitterAccounts.get(twitterUser.getScreenName());
+				
+				if(origAccount == null) {
+					// something went wrong, so skip
+					continue; 
+				}
+				
+				// direct access, check was done above
+				Person origPerson = (Person) origAccount.getInformationObjects().get(0);
+				
+				// identify original account as twitter account for merge
+				origAccount.identifyBy(getLocalIdentifierKey(), "acc_" + twitterUser.getScreenName());
+				
+				if(origPerson != person) {
+					// not merged before (based on name or something), so merge now based on twitter account
+					origPerson.update(person);
+				}
+			}
+
+			// increase indeces
+			from += bufferLength;
+			to += bufferLength;
+
+			if (from > accountNames.length) {
+				finished = true;
+			}
+		}
+	}
+	
 	/**
 	 * Lookup all Twitter users for the given array of ids and can create
 	 * persons of them. Connects the persons in the direction of to the given
@@ -670,7 +783,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			webAccount.setUsername(screenName);
 			webAccount.setCreated(user.getCreatedAt());
 
-			webAccount = (WebAccount) this.add(webAccount, screenName);
+			webAccount = (WebAccount) this.add(webAccount, "acc_" + screenName);
 
 			if (webAccount != null) {
 				webAccount.metaTag(TwitterTags.TWITTER);
@@ -1338,6 +1451,15 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		}
 	}
 
+	/**
+	 * Returns whether to enrich person profiles or not.
+	 * 
+	 * @return True if enrichment is enabled.
+	 */
+	private boolean shouldEnrichPersons() {
+		return source.isPropertyTrueElseDefault(TwitterProperties.ENRICH_PERSONS_PROPERTY, TwitterProperties.ENRICH_PERSONS_DEFAULT);
+	}
+	
 	private boolean shouldSearch() {
 		String searchValue = source
 				.getPropertyValue(TwitterProperties.SEARCH_PROPERTY);

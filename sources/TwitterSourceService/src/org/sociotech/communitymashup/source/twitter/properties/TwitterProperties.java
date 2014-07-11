@@ -121,6 +121,12 @@ public class TwitterProperties {
 	public static final String INTERCONNECT_FOLLOWING_PROPERTY = "interconnectFollowing";
 	
 	/**
+	 * Enrich Persons.
+	 */
+	public static final String ENRICH_PERSONS_PROPERTY = "enrichPersons";
+	public static final String ENRICH_PERSONS_DEFAULT  = "false";
+	
+	/**
 	 * Key for the interconnect followers property.
 	 */
 	public static final String INTERCONNECT_FOLLOWERS_PROPERTY = "interconnectFollowers";
