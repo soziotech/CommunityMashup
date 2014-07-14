@@ -102,6 +102,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl#getMainCategory <em>Main Category</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl#getMetaInformations <em>Meta Informations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl#getAlternativeNames <em>Alternative Names</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.InformationObjectImpl#getVerifiedName <em>Verified Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -268,6 +269,26 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	protected String alternativeNames = ALTERNATIVE_NAMES_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getVerifiedName() <em>Verified Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerifiedName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean VERIFIED_NAME_EDEFAULT = Boolean.FALSE;
+
+	/**
+	 * The cached value of the '{@link #getVerifiedName() <em>Verified Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerifiedName()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean verifiedName = VERIFIED_NAME_EDEFAULT;
+
+	/**
 	 * Factory for creating items
 	 */
 	private static DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
@@ -375,9 +396,13 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setName(String newName) {
+		if(getName() != null && !getName().isEmpty() && getVerifiedName()) {
+			// do not change verified names
+			return;
+		}
+		
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
@@ -511,6 +536,27 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		alternativeNames = newAlternativeNames;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES, oldAlternativeNames, alternativeNames));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getVerifiedName() {
+		return verifiedName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVerifiedName(Boolean newVerifiedName) {
+		Boolean oldVerifiedName = verifiedName;
+		verifiedName = newVerifiedName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.INFORMATION_OBJECT__VERIFIED_NAME, oldVerifiedName, verifiedName));
 	}
 
 	/**
@@ -1965,6 +2011,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return getMetaInformations();
 			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
 				return getAlternativeNames();
+			case DataPackage.INFORMATION_OBJECT__VERIFIED_NAME:
+				return getVerifiedName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2027,6 +2075,9 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
 				setAlternativeNames((String)newValue);
 				return;
+			case DataPackage.INFORMATION_OBJECT__VERIFIED_NAME:
+				setVerifiedName((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -2078,6 +2129,9 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
 				setAlternativeNames(ALTERNATIVE_NAMES_EDEFAULT);
 				return;
+			case DataPackage.INFORMATION_OBJECT__VERIFIED_NAME:
+				setVerifiedName(VERIFIED_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2116,6 +2170,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return metaInformations != null && !metaInformations.isEmpty();
 			case DataPackage.INFORMATION_OBJECT__ALTERNATIVE_NAMES:
 				return ALTERNATIVE_NAMES_EDEFAULT == null ? alternativeNames != null : !ALTERNATIVE_NAMES_EDEFAULT.equals(alternativeNames);
+			case DataPackage.INFORMATION_OBJECT__VERIFIED_NAME:
+				return VERIFIED_NAME_EDEFAULT == null ? verifiedName != null : !VERIFIED_NAME_EDEFAULT.equals(verifiedName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2258,6 +2314,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		result.append(name);
 		result.append(", alternativeNames: ");
 		result.append(alternativeNames);
+		result.append(", verifiedName: ");
+		result.append(verifiedName);
 		result.append(')');
 		return result.toString();
 	}
@@ -2308,7 +2366,9 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		if ( featureName.equalsIgnoreCase("metaInformations") )
 			return this.getMetaInformations();		
 		if ( featureName.equalsIgnoreCase("alternativeNames") )
-			return this.getAlternativeNames();			
+			return this.getAlternativeNames();		
+		if ( featureName.equalsIgnoreCase("verifiedName") )
+			return this.getVerifiedName();			
 		return super.getFeature(featureName); 
 	}
 
@@ -2353,6 +2413,20 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 					throw new WrongArgException("InformationObject.setFeature", "java.lang.String",value.getClass().getName());
 				}
 				this.setAlternativeNames(falternativeNames);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("verifiedName") ) {
+				java.lang.Boolean fverifiedName = null;
+				try {
+					try {
+						fverifiedName = (java.lang.Boolean)(RestUtil.fromInput(value));
+					} catch (ClassNotFoundException e) {
+						fverifiedName = (java.lang.Boolean)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("InformationObject.setFeature", "java.lang.Boolean",value.getClass().getName());
+				}
+				this.setVerifiedName(fverifiedName);
 			return this;
 			}			
 		super.setFeature(featureName, value);

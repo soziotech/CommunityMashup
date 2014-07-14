@@ -47,6 +47,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.InformationObject#getMainCategory <em>Main Category</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.InformationObject#getMetaInformations <em>Meta Informations</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.InformationObject#getAlternativeNames <em>Alternative Names</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.InformationObject#getVerifiedName <em>Verified Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -320,6 +321,32 @@ public interface InformationObject extends Item {
 	 * @generated
 	 */
 	void setAlternativeNames(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Verified Name</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If true, the name ist verified and will not be change through updates and merges.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Verified Name</em>' attribute.
+	 * @see #setVerifiedName(Boolean)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getInformationObject_VerifiedName()
+	 * @model default="false"
+	 * @generated
+	 */
+	Boolean getVerifiedName();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.InformationObject#getVerifiedName <em>Verified Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Verified Name</em>' attribute.
+	 * @see #getVerifiedName()
+	 * @generated
+	 */
+	void setVerifiedName(Boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

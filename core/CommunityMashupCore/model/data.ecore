@@ -348,6 +348,12 @@
         <details key="documentation" value="A maintained comma separated list of alternative names."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="verifiedName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If true, the name ist verified and will not be change through updates and merges."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Content" eSuperTypes="#//InformationObject">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

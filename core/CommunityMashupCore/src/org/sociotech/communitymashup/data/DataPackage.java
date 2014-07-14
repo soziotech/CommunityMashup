@@ -623,13 +623,22 @@ public interface DataPackage extends EPackage {
 	int INFORMATION_OBJECT__ALTERNATIVE_NAMES = ITEM_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Verified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT__VERIFIED_NAME = ITEM_FEATURE_COUNT + 13;
+
+	/**
 	 * The number of structural features of the '<em>Information Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_OBJECT_FEATURE_COUNT = ITEM_FEATURE_COUNT + 13;
+	int INFORMATION_OBJECT_FEATURE_COUNT = ITEM_FEATURE_COUNT + 14;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -1558,6 +1567,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSON__ALTERNATIVE_NAMES = INFORMATION_OBJECT__ALTERNATIVE_NAMES;
+
+	/**
+	 * The feature id for the '<em><b>Verified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__VERIFIED_NAME = INFORMATION_OBJECT__VERIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Lastname</b></em>' attribute.
@@ -2639,6 +2657,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT__ALTERNATIVE_NAMES = INFORMATION_OBJECT__ALTERNATIVE_NAMES;
+
+	/**
+	 * The feature id for the '<em><b>Verified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT__VERIFIED_NAME = INFORMATION_OBJECT__VERIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' reference list.
@@ -6524,6 +6551,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANISATION__ALTERNATIVE_NAMES = INFORMATION_OBJECT__ALTERNATIVE_NAMES;
+
+	/**
+	 * The feature id for the '<em><b>Verified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION__VERIFIED_NAME = INFORMATION_OBJECT__VERIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Parent Organisation</b></em>' reference.
@@ -16099,6 +16135,17 @@ public interface DataPackage extends EPackage {
 	EAttribute getInformationObject_AlternativeNames();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.InformationObject#getVerifiedName <em>Verified Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Verified Name</em>'.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getVerifiedName()
+	 * @see #getInformationObject()
+	 * @generated
+	 */
+	EAttribute getInformationObject_VerifiedName();
+
+	/**
 	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#tag(java.lang.String) <em>Tag</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19970,6 +20017,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INFORMATION_OBJECT__ALTERNATIVE_NAMES = eINSTANCE.getInformationObject_AlternativeNames();
+
+		/**
+		 * The meta object literal for the '<em><b>Verified Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INFORMATION_OBJECT__VERIFIED_NAME = eINSTANCE.getInformationObject_VerifiedName();
 
 		/**
 		 * The meta object literal for the '<em><b>Tag</b></em>' operation.

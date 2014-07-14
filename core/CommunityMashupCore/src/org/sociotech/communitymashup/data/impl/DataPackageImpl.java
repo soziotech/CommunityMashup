@@ -662,6 +662,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInformationObject_VerifiedName() {
+		return (EAttribute)informationObjectEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getInformationObject__Tag__String() {
 		return informationObjectEClass.getEOperations().get(0);
 	}
@@ -3876,6 +3885,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__MAIN_CATEGORY);
 		createEReference(informationObjectEClass, INFORMATION_OBJECT__META_INFORMATIONS);
 		createEAttribute(informationObjectEClass, INFORMATION_OBJECT__ALTERNATIVE_NAMES);
+		createEAttribute(informationObjectEClass, INFORMATION_OBJECT__VERIFIED_NAME);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___TAG__STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___CATEGORIZE__STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ATTACH_IMAGE__STRING);
@@ -4364,6 +4374,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getInformationObject_MainCategory(), this.getCategory(), this.getCategory_MainCategorized(), "mainCategory", null, 0, 1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInformationObject_MetaInformations(), this.getMetaInformation(), this.getMetaInformation_InformationObjects(), "metaInformations", null, 0, -1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInformationObject_AlternativeNames(), ecorePackage.getEString(), "alternativeNames", null, 0, 1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInformationObject_VerifiedName(), ecorePackage.getEBooleanObject(), "verifiedName", "false", 0, 1, InformationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getInformationObject__Tag__String(), this.getTag(), "tag", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
