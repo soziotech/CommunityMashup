@@ -948,6 +948,14 @@ public interface InformationObject extends Item {
 	StarRanking starRankWithMetaTagList(Integer stars, Integer ofStars, String metaTagList);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" usernameRequired="true" serviceRequired="true"
+	 * @generated
+	 */
+	WebAccount addWebAccountForService(String username, String service);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type InformationObject.
 	 * 
 	 * @generated

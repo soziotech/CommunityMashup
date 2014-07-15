@@ -781,6 +781,7 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 			// TODO check for existing web account
 			WebAccount webAccount = factory.createWebAccount();
 			webAccount.setUsername(screenName);
+			webAccount.setService(WebAccount.SERVICE_TWITTER);
 			webAccount.setCreated(user.getCreatedAt());
 
 			webAccount = (WebAccount) this.add(webAccount, "acc_" + screenName);

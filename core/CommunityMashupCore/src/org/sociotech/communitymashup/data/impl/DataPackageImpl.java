@@ -1175,6 +1175,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInformationObject__AddWebAccountForService__String_String() {
+		return informationObjectEClass.getEOperations().get(56);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContent() {
 		return contentEClass;
 	}
@@ -3254,6 +3263,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getWebAccount_Service() {
+		return (EAttribute)webAccountEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getWebSite() {
 		return webSiteEClass;
 	}
@@ -3942,6 +3960,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG__METATAG);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING);
 
 		contentEClass = createEClass(CONTENT);
 		createEReference(contentEClass, CONTENT__CONTENTS);
@@ -4186,6 +4205,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		webAccountEClass = createEClass(WEB_ACCOUNT);
 		createEAttribute(webAccountEClass, WEB_ACCOUNT__USERNAME);
+		createEAttribute(webAccountEClass, WEB_ACCOUNT__SERVICE);
 
 		webSiteEClass = createEClass(WEB_SITE);
 		createEAttribute(webSiteEClass, WEB_SITE__ADRESS);
@@ -4529,6 +4549,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		addEParameter(op, ecorePackage.getEIntegerObject(), "stars", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEIntegerObject(), "ofStars", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "metaTagList", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInformationObject__AddWebAccountForService__String_String(), this.getWebAccount(), "addWebAccountForService", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "username", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "service", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContent_Contents(), this.getContent(), this.getContent_ParentContent(), "contents", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5057,6 +5081,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		initEClass(webAccountEClass, WebAccount.class, "WebAccount", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getWebAccount_Username(), ecorePackage.getEString(), "username", null, 0, 1, WebAccount.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWebAccount_Service(), ecorePackage.getEString(), "service", null, 0, 1, WebAccount.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(webSiteEClass, WebSite.class, "WebSite", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getWebSite_Adress(), ecorePackage.getEString(), "adress", null, 0, 1, WebSite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

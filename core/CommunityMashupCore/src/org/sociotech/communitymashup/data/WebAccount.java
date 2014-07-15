@@ -34,6 +34,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.sociotech.communitymashup.data.WebAccount#getUsername <em>Username</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.WebAccount#getService <em>Service</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,12 +78,38 @@ public interface WebAccount extends MetaInformation {
 	void setUsername(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Service</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Service</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Service</em>' attribute.
+	 * @see #setService(String)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getWebAccount_Service()
+	 * @model
+	 * @generated
+	 */
+	String getService();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.WebAccount#getService <em>Service</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Service</em>' attribute.
+	 * @see #getService()
+	 * @generated
+	 */
+	void setService(String value);
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type WebAccount.
 	 * 
 	 * @generated
 	 */
-public EObjectCondition isTypeCondition = org.sociotech.communitymashup.data.impl.WebAccountImpl.generateIsTypeCondition();
-
+	public EObjectCondition isTypeCondition = org.sociotech.communitymashup.data.impl.WebAccountImpl.generateIsTypeCondition();
+	
 	/**
 	 * This method can be used to recursively and generically call the Getter, Setters and Operations of the generated classes.
 	 * 
@@ -94,4 +121,30 @@ public EObjectCondition isTypeCondition = org.sociotech.communitymashup.data.imp
 	 * @generated
 	 */
 	public Object process(LinkedList<RestCommand> input, RequestType requestType) throws ArgNotFoundException, WrongArgException, WrongArgCountException, UnknownOperationException;
+	
+	/**
+	 * The service name for twitter accounts
+	 */
+	public String SERVICE_TWITTER = "twitter";
+
+	/**
+	 * The service name for mendeley accounts
+	 */
+	public String SERVICE_MENDELEY = "mendeley";
+
+	/**
+	 * The service name for facebook accounts
+	 */
+	public String SERVICE_FACEBOOK = "facebook";
+
+	/**
+	 * The service name for flickr accounts
+	 */
+	public String SERVICE_FLICKR = "flickr";
+
+	/**
+	 * The service name for google accounts
+	 */
+	public String SERVICE_GOOGLE = "google";
+	
 } // WebAccount

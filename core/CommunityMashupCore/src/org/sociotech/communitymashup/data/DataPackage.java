@@ -1325,13 +1325,22 @@ public interface DataPackage extends EPackage {
 	int INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING = ITEM_OPERATION_COUNT + 55;
 
 	/**
+	 * The operation id for the '<em>Add Web Account For Service</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = ITEM_OPERATION_COUNT + 56;
+
+	/**
 	 * The number of operations of the '<em>Information Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 56;
+	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 57;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.PersonImpl <em>Person</em>}' class.
@@ -2359,6 +2368,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSON___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Web Account For Service</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING;
 
 	/**
 	 * The operation id for the '<em>Get Contents</em>' operation.
@@ -3431,6 +3449,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING;
+
+	/**
+	 * The operation id for the '<em>Add Web Account For Service</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING;
 
 	/**
 	 * The operation id for the '<em>Get Organisations</em>' operation.
@@ -7291,6 +7318,15 @@ public interface DataPackage extends EPackage {
 	int ORGANISATION___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING = INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING;
 
 	/**
+	 * The operation id for the '<em>Add Web Account For Service</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING;
+
+	/**
 	 * The operation id for the '<em>Get Persons</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9223,13 +9259,22 @@ public interface DataPackage extends EPackage {
 	int WEB_ACCOUNT__USERNAME = META_INFORMATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Service</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT__SERVICE = META_INFORMATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Web Account</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WEB_ACCOUNT_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 1;
+	int WEB_ACCOUNT_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -16706,6 +16751,16 @@ public interface DataPackage extends EPackage {
 	EOperation getInformationObject__StarRankWithMetaTagList__Integer_Integer_String();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#addWebAccountForService(java.lang.String, java.lang.String) <em>Add Web Account For Service</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Web Account For Service</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#addWebAccountForService(java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__AddWebAccountForService__String_String();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Content <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19065,6 +19120,17 @@ public interface DataPackage extends EPackage {
 	EAttribute getWebAccount_Username();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.WebAccount#getService <em>Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service</em>'.
+	 * @see org.sociotech.communitymashup.data.WebAccount#getService()
+	 * @see #getWebAccount()
+	 * @generated
+	 */
+	EAttribute getWebAccount_Service();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.WebSite <em>Web Site</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20473,6 +20539,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING = eINSTANCE.getInformationObject__StarRankWithMetaTagList__Integer_Integer_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Web Account For Service</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = eINSTANCE.getInformationObject__AddWebAccountForService__String_String();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ContentImpl <em>Content</em>}' class.
@@ -22347,6 +22421,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute WEB_ACCOUNT__USERNAME = eINSTANCE.getWebAccount_Username();
+
+		/**
+		 * The meta object literal for the '<em><b>Service</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_ACCOUNT__SERVICE = eINSTANCE.getWebAccount_Service();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.WebSiteImpl <em>Web Site</em>}' class.

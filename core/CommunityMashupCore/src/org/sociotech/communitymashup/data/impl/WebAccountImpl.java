@@ -68,6 +68,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.sociotech.communitymashup.data.impl.WebAccountImpl#getUsername <em>Username</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.WebAccountImpl#getService <em>Service</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,6 +99,25 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 	 * @ordered
 	 */
 	protected String username = USERNAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getService() <em>Service</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getService()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SERVICE_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getService() <em>Service</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getService()
+	 * @generated
+	 * @ordered
+	 */
+	protected String service = SERVICE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -144,11 +164,34 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getService() {
+		return service;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setService(String newService) {
+		String oldService = service;
+		service = newService;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.WEB_ACCOUNT__SERVICE, oldService, service));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DataPackage.WEB_ACCOUNT__USERNAME:
 				return getUsername();
+			case DataPackage.WEB_ACCOUNT__SERVICE:
+				return getService();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,6 +206,9 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 		switch (featureID) {
 			case DataPackage.WEB_ACCOUNT__USERNAME:
 				setUsername((String)newValue);
+				return;
+			case DataPackage.WEB_ACCOUNT__SERVICE:
+				setService((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -179,6 +225,9 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 			case DataPackage.WEB_ACCOUNT__USERNAME:
 				setUsername(USERNAME_EDEFAULT);
 				return;
+			case DataPackage.WEB_ACCOUNT__SERVICE:
+				setService(SERVICE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -193,6 +242,8 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 		switch (featureID) {
 			case DataPackage.WEB_ACCOUNT__USERNAME:
 				return USERNAME_EDEFAULT == null ? username != null : !USERNAME_EDEFAULT.equals(username);
+			case DataPackage.WEB_ACCOUNT__SERVICE:
+				return SERVICE_EDEFAULT == null ? service != null : !SERVICE_EDEFAULT.equals(service);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -209,6 +260,8 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (username: ");
 		result.append(username);
+		result.append(", service: ");
+		result.append(service);
 		result.append(')');
 		return result.toString();
 	}
@@ -234,7 +287,9 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 	 */
 	protected Object getFeature(String featureName) throws UnknownOperationException {
 		if ( featureName.equalsIgnoreCase("username") )
-			return this.getUsername();			
+			return this.getUsername();		
+		if ( featureName.equalsIgnoreCase("service") )
+			return this.getService();			
 		return super.getFeature(featureName); 
 	}
 
@@ -255,6 +310,16 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 					throw new WrongArgException("WebAccount.setFeature", "java.lang.String",value.getClass().getName());
 				}
 				this.setUsername(fusername);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("service") ) {
+				java.lang.String fservice = null;
+				try {
+					fservice = (java.lang.String)value;
+				} catch (ClassCastException e) {
+					throw new WrongArgException("WebAccount.setFeature", "java.lang.String",value.getClass().getName());
+				}
+				this.setService(fservice);
 			return this;
 			}			
 		super.setFeature(featureName, value);
@@ -429,4 +494,48 @@ public class WebAccountImpl extends MetaInformationImpl implements WebAccount {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#isEqualItem(org.sociotech.communitymashup.data.Item)
+	 */
+	@Override
+	public Boolean isEqualItem(Item item) {
+		if(super.isEqualItem(item)) {
+			return true;
+		}
+		
+		if(this == item) {
+			return true;
+		}
+		else if (item == null) {
+			return false;
+		} 
+		else if (this.eClass() != item.eClass()) {
+			return false;
+		}
+		
+		// given item is a web account
+		WebAccount other = (WebAccount) item;
+		
+		if(this.getService() == null || this.getService().isEmpty()) {
+			// service must be defined
+			return false;
+		}
+		
+		if(this.getUsername() == null || this.getUsername().isEmpty()) {
+			// username must be defined
+			return false;
+		}
+
+		// service and username must match
+		return this.getService().equalsIgnoreCase(other.getService()) && this.getUsername().equalsIgnoreCase(other.getUsername());
+	}
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
+	
 } //WebAccountImpl

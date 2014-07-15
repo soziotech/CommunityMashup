@@ -320,6 +320,10 @@
       <eParameters name="ofStars" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
       <eParameters name="metaTagList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="addWebAccountForService" lowerBound="1" eType="#//WebAccount">
+      <eParameters name="username" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="service" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" eOpposite="#//Category/categorized"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//Tag"
@@ -1496,6 +1500,7 @@
       <details key="documentation" value="A WebAccount is a @link MetaInformation Meta Information@endlink Extension for generically specifying web-based service accounts. This could be a Social Networking Service account, e.g. Facebook, Twitter, etc."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WebSite" eSuperTypes="#//MetaInformation">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

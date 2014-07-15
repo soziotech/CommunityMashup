@@ -1916,6 +1916,28 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public WebAccount addWebAccountForService(String username, String service) {
+		if(username == null || username.equals(""))
+		{
+			return null;
+		}
+	
+		// create web account object
+		WebAccount webAccount = dataFactory.createWebAccount();
+		
+		// set the username
+		webAccount.setUsername(username);
+		// and the service
+		webAccount.setService(service);
+		
+		// attach it to this information object
+		return (WebAccount) this.extend(webAccount);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -2296,6 +2318,8 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return getAttachedImageWithMetaTagName((String)arguments.get(0));
 			case DataPackage.INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING:
 				return starRankWithMetaTagList((Integer)arguments.get(0), (Integer)arguments.get(1), (String)arguments.get(2));
+			case DataPackage.INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING:
+				return addWebAccountForService((String)arguments.get(0), (String)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -2963,6 +2987,22 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTagList").getClass().getName());
 			}
 			return this.starRankWithMetaTagList(stars, ofStars, metaTagList);
+		}
+		if ( command.getCommand().equalsIgnoreCase("addWebAccountForService")) {
+			if (command.getArgCount() != 2) throw new WrongArgCountException("InformationObject.doOperation", 2, command.getArgCount()); 
+			java.lang.String username = null;
+			try {
+				username = (java.lang.String)command.getArg("username");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("username").getClass().getName());
+			}
+			java.lang.String service = null;
+			try {
+				service = (java.lang.String)command.getArg("service");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("service").getClass().getName());
+			}
+			return this.addWebAccountForService(username, service);
 		}	
 		return super.doOperation(command);
 	}
