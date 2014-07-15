@@ -173,7 +173,7 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 		markerImage = this.add(markerImage, ioImageIdent);
 		
 		if(markerImage == null) {
-			log("Could not add marker image with iden " + ioImageIdent, LogService.LOG_WARNING);
+			log("Could not add marker image with ident " + ioImageIdent, LogService.LOG_WARNING);
 			return;
 		}
 		

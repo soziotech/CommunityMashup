@@ -29,4 +29,14 @@ public class QRCodeProperties {
      */
     public static final String USE_LOAD_BALANCING_PROPERTY = "loadBalancing";
     public static final String USE_LOAD_BALANCING_DEFAULT  = "false";
+    
+    /**
+	 * Specific meta tag that is needed for a information object to be processed.
+	 */
+	public static final String PROCESS_IO_ONLY_WITH_METATAG_PROPERTY = "neededIOMetaTag";
+	
+	/**
+	 * Specific meta tag that is needed for a web site object to be processed.
+	 */
+	public static final String PROCESS_WEBSITE_ONLY_WITH_METATAG_PROPERTY = "neededWebSiteMetaTag";
 }
