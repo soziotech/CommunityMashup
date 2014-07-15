@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).
+ * Copyright (c) 2014 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,21 @@
  * Contributors:
  *     Peter Lachenmaier - Design and initial implementation
  ******************************************************************************/
-package org.sociotech.communitymashup.source.mendeley.sdkadaption;
+package org.sociotech.communitymashup.source.mendeley.apiwrapper.elements;
 
-import com.mendeley.oapi.services.impl.PublicGroupServiceImpl;
-import com.mendeley.oapi.services.oauth.MendeleyApiConsumer;
+import java.io.Serializable;
 
-public class AdaptedPublicGroupServiceImpl extends PublicGroupServiceImpl {
+/**
+ * Super class of all mendeley entities
+ * 
+ * @author Peter Lachenmaier
+ */
+public abstract class MendeleyEntity implements Serializable {
 
-	public AdaptedPublicGroupServiceImpl(MendeleyApiConsumer apiConsumer) {
-		super(apiConsumer);
-	}
+	/**
+	 * Serial Version UID
+	 */
+	private static final long serialVersionUID = -1351656876429003486L;
+	
+
 }

@@ -18,29 +18,35 @@ package org.sociotech.communitymashup.source.mendeley.properties;
 public class MendeleyProperties {
 
 	/**
-     * The consumer secret in combination with the consumer key is used by mendeley to identify
+     * The client secret in combination with the client key is used by mendeley to identify
      * the CommunityMashup as consuming application.
      */
-	public static final String CONSUMER_KEY_PROPERTY 			= "consumerKey";
-	public static final String CONSUMER_KEY_DEFAULT 			= "";
-	public static final String CONSUMER_SECRET_PROPERTY 		= "consumerSecret";
-	public static final String CONSUMER_SECRET_DEFAULT	 		= "";
-
+	public static final String CLIENT_ID_PROPERTY 			= "clientID";
+	public static final String CLIENT_ID_DEFAULT 			= "";
+	public static final String CLIENT_SECRET_PROPERTY 		= "clientSecret";
+	public static final String CLIENT_SECRET_DEFAULT	 	= "";
+	public static final String REDIRECT_URI_PROPERTY		= "redirectUrl";
+	public static final String REDIRECT_URI_DEFAULT			= "http://localhost:8080/auth/mendeley";
+	
 	/**
-     * The access secret in combination with the access token is used by mendeley to identify
+     * The access access token is used by mendeley to identify
      * and authorize the mendeley user.
      */
 	public static final String ACCESS_TOKEN_PROPERTY 			= "accessToken";
 	public static final String ACCESS_TOKEN_DEFAULT 			= "";
-	public static final String ACCESS_TOKEN_SECRET_PROPERTY 	= "accessTokenSecret";
-	public static final String ACCESS_TOKEN_SECRET_DEFAULT	 	= "";
 	
 	/**
-	 * If this property is set to true, a command line authentication will be started if no access with the provided
-	 * tokens is possible or they are missing. Should not be used in combination with {@link MendeleyProperties#ALLOW_UI_AUTHENTICATION}.
-	 */
-	public static final String ALLOW_COMMAND_LINE_AUTHENTICATION = "commandLineAuthentication";
-	
+     * The access refresh token is used by mendeley to refresh the access token.
+     */
+	public static final String REFRESH_TOKEN_PROPERTY 			= "refreshToken";
+	public static final String REFRESH_TOKEN_DEFAULT 			= "";
+
+	/**
+     * The expiration date of the access token in millis.
+     */
+	public static final String ACCESS_TOKEN_EXPIRATION_PROPERTY		= "accessTokenExpiration";
+	public static final String ACCESS_TOKEN_EXPIRATION_DEFAULT		= "0";
+		
 	/**
 	 * If this property is set to true, a authentication servlet will be registered if no access with the provided
 	 * tokens is possible or they are missing. Should not be used in combination with {@link MendeleyProperties#ALLOW_COMMAND_LINE_AUTHENTICATION}.
@@ -52,11 +58,6 @@ public class MendeleyProperties {
 	 */
 	public static final String ADD_AUTHORED_PUBLICATIONS_PROPERTY			= "addAuthoredPublications";
 	public static final String ADD_AUTHORED_PUBLICATIONS_DEFAULT			= "false";
-	
-	/**
-	 * If this property is set to true all contacts of the account owner will be added.
-	 */
-	public static final String ADD_CONTACTS_PROPERTY			= "addContacts";
 	
 	/**
 	 * If this property is set to true all private groups of the account owner will be added.
@@ -94,6 +95,12 @@ public class MendeleyProperties {
 	 */
 	public static final String CREATE_GROUP_ORGANISATIONS_PROPERTY 	= "createGroupOrganisations";
 	public static final String CREATE_GROUP_ORGANISATIONS_DEFAULT 	= "true";
+	
+	/**
+	 * If this property is set to true members of the groups will be created as persons. 
+	 */
+	public static final String CREATE_GROUP_MEMBERS_PROPERTY 	= "createGroupPersons";
+	public static final String CREATE_GROUP_MEMBERS_DEFAULT 	= "true";
 	
 	/**
 	 * If this property is set to true a person for the account owner will be created.
