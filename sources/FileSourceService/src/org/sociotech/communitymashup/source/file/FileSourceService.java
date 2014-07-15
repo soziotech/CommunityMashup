@@ -16,6 +16,7 @@ package org.sociotech.communitymashup.source.file;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -41,9 +42,14 @@ public class FileSourceService extends SourceServiceFacadeImpl
 	public static String WORKINGDIRECTORY_FOLDER_PLACEHOLDER = "{workingDirectory}";
 	
 	/**
-	 * Local map to look up added items to speed up loading
+	 * Local map to look up merged items to speed up loading
 	 */
-	private Map<String, Item> addedItems = new HashMap<String, Item>();
+	private Map<Item, Item> mergedItems = new HashMap<Item, Item>();
+	
+	/**
+	 * Local set to look up added items to speed up loading
+	 */
+	private HashSet<Item> addedItems = new HashSet<Item>();
 	
 	/**
 	 * Prefix to add to all idents before adding to avoid wrong merges.
@@ -51,6 +57,7 @@ public class FileSourceService extends SourceServiceFacadeImpl
 	private static final String identPrefix = "file_";
 	
 	private boolean speedUp;
+
 	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
@@ -75,7 +82,7 @@ public class FileSourceService extends SourceServiceFacadeImpl
 		super.fillDataSet(dataSet);
 
 		// clear temporary lookup list
-		addedItems.clear();
+		mergedItems.clear();
 		
 		// load items from file
 		String resourceName = source.getPropertyValue(FileProperties.FILE_NAME_PROPERTY);
@@ -112,14 +119,16 @@ public class FileSourceService extends SourceServiceFacadeImpl
 			}
 		}
 				
+		int i = 0;
 		// add all items
 		for(Item item : tmpList)
 		{
 			add(item);
+			log("Added item " + i++ + " of " + tmpList.size() + " items.", LogService.LOG_DEBUG);
 		}
 		
 		// clear temporary lookup list
-		addedItems.clear();		
+		mergedItems.clear();		
 	}
 
 	/* (non-Javadoc)
@@ -207,36 +216,55 @@ public class FileSourceService extends SourceServiceFacadeImpl
 
 		return items;
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#add(org.sociotech.communitymashup.data.Item)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends Item> T add(T item) {
-		if(item.getDataSet() == source.getDataSet())
-		{
-			// merged item -> dont use in lookup table
-			return super.add(item);
+		if(speedUp && item != null && addedItems.contains(item)) {
+			// already processed
+			return item;
 		}
-		
-		String originalIdent = item.getIdent();
-		if(speedUp && originalIdent != null && addedItems.containsKey(originalIdent))
+			
+		if(speedUp && item != null && mergedItems.containsKey(item))
 		{
-			log("Item " + originalIdent + " already added.", LogService.LOG_DEBUG);
+			log("Item " + item.getIdent() + " already added.", LogService.LOG_DEBUG);
 			// must be of type T
-			return (T)addedItems.get(item.getIdent());
+			return (T)mergedItems.get(item);
 		}
 		
-		log("Adding item " + originalIdent, LogService.LOG_DEBUG);
+		return super.add(item);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#addItemToDataSet(org.sociotech.communitymashup.data.Item)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	protected <T extends Item> Item addItemToDataSet(T item) {
+		if(speedUp && item != null && addedItems.contains(item)) {
+			// already processed
+			return item;
+		}
 		
+		if(speedUp && item != null && mergedItems.containsKey(item)) {
+			log("Item " + item.getIdent() + " already added.", LogService.LOG_DEBUG);
+			// must be of type T
+			return (T)mergedItems.get(item);
+		}
+		
+		log("Adding item " + item.getIdent(), LogService.LOG_DEBUG);
 		
 		// add it to the temporary list
-		T addedItem = super.add(item);
-		if(addedItem != null)
-		{
-			// put it in list with ident of original item
-			addedItems.put(originalIdent, addedItem);
+		T addedItem = (T) super.addItemToDataSet(item);
+		if(addedItem != null && item != addedItem) {
+			// put it in list with original item as key
+			mergedItems.put(item, addedItem);
+		}
+		else {
+			addedItems.add(item);
 		}
 		
 		return addedItem;
