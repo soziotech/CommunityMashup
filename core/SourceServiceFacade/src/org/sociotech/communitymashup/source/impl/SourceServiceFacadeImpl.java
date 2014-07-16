@@ -794,7 +794,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 						continue;
 					}
 					
-					log("Adding referenced: " + tmpItem.getIdent(), LogService.LOG_DEBUG);
+					//log("Adding referenced: " + tmpItem.getIdent(), LogService.LOG_DEBUG);
 					Item addedItem = this.add(tmpItem);
 					// check if the item (object reference) has changed and replace
 					if(addedItem != null && tmpItem != addedItem)
