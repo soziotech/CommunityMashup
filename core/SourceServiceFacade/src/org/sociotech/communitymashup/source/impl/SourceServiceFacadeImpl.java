@@ -771,7 +771,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 				
 				if(!origReferenceL.isEmpty())
 				{
-					log("Adding " + origReferenceL.size() + " referenced items of " + item.getIdent() + " through " + reference.getName(), LogService.LOG_DEBUG);
+					//log("Adding " + origReferenceL.size() + " referenced items of " + item.getIdent() + " through " + reference.getName(), LogService.LOG_DEBUG);
 				}
 				else
 				{
