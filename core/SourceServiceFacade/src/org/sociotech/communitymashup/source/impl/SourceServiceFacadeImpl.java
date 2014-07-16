@@ -365,11 +365,13 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		
 		try
 		{
+			log("Started filling of data with source " + source, LogService.LOG_INFO);
 			this.fillDataSet(dataSet);
+			log("Successfully filled data with source " + source, LogService.LOG_INFO);
 		}
 		catch (Exception e) {
-			log("Error while filling data set in source ." + this + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
-			e.printStackTrace();
+			log("Error while filling data set in source ." + source + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			//e.printStackTrace();
 			source.setState(SourceState.ERROR);
 			return;
 		}
@@ -440,7 +442,9 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		
 		try
 		{
+			log("Started enriched of data with source " + source, LogService.LOG_INFO);
 			this.enrichDataSet();
+			log("Successfully enriched data with source " + source, LogService.LOG_INFO);
 		}
 		catch (Exception e) {
 			log("Error while enriching data set in source " + this + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
@@ -448,8 +452,6 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 			source.setState(SourceState.ERROR);
 			return;
 		}
-		
-		log("Successfully enriched data with source service " + this, LogService.LOG_DEBUG);
 		
 		// After first enrichment the source is ready and waiting for update
 		source.setActiveState(SourceActiveStates.WAITING_FOR_UPDATE);
@@ -492,7 +494,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		
 		if(updateRoundCounter > 1)
 		{
-			log("Skipping update round, waiting " + updateRoundCounter + " rounds.", LogService.LOG_DEBUG);
+			log("Skipping update round, waiting " + updateRoundCounter + " rounds in source " + source, LogService.LOG_DEBUG);
 			// decrement
 			updateRoundCounter--;
 			return;
@@ -522,10 +524,12 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		
 		try
 		{
+			log("Started update of data with source " + source, LogService.LOG_INFO);
 			this.updateDataSet();
+			log("Successfully updated data with source " + source, LogService.LOG_INFO);
 		}
 		catch (Exception e) {
-			log("Error while updating data set in source. " + this + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			log("Error while updating data set in source " + source + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
 			//e.printStackTrace();
 			source.setState(SourceState.ERROR);
 			return;
