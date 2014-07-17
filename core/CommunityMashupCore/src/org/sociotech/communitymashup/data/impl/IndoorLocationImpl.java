@@ -722,4 +722,51 @@ public class IndoorLocationImpl extends MetaInformationImpl implements IndoorLoc
 			this.delete();
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#isEqualItem(org.sociotech.communitymashup.data.Item)
+	 */
+	@Override
+	public Boolean isEqualItem(Item item) {
+		if(super.isEqualItem(item))
+		{
+			return true;
+		}
+		
+		if(this == item)
+		{
+			return true;
+		}
+		else if (item == null)
+		{
+			return false;
+		}
+		else if (this.eClass() != item.eClass())
+		{
+			return false;
+		}
+		
+		// cast
+		IndoorLocation other = (IndoorLocation) item;
+		
+		if(this.getParentIndoorLocation() != other.getParentIndoorLocation()) {
+			// must belong to the same parent location
+			return false;
+		}
+		
+		if(this.getName() != null && other.getName() != null) {
+			// beside the parent location the name must be equal
+			return this.getName().equals(other.getName());
+		}
+		
+		return false;
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.Item#canHaveEqualItem()
+	 */
+	@Override
+	public boolean canHaveEqualItem() {
+		return true;
+	}
 } //IndoorLocationImpl

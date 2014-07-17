@@ -1850,6 +1850,11 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		if(item instanceof InformationObjectImpl) {
 			InformationObjectImpl io = (InformationObjectImpl) item;
 
+			// ensure to keep verified name flag, merge should not overwrite name but maybe flag
+			if(this.getVerifiedName() && !io.getVerifiedName()){
+				io.setVerifiedName(true);
+			}
+			
 			// merge alternative names if set
 			if(this.alternativeNames != null || io.alternativeNames != null) {
 				Set<String> allNames = this.getAlternativeNamesSet();
@@ -1868,6 +1873,7 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		
 		// continue with base update implementation
 		return super.update(item);
+		
 	}
 	
 	/**
