@@ -20,6 +20,7 @@ import java.util.Random;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.osgi.service.log.LogService;
+import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Image;
 import org.sociotech.communitymashup.data.InformationObject;
@@ -40,10 +41,58 @@ import org.sociotech.communitymashup.source.qrcode.properties.QRCodeProperties;
 public class QRCodeSourceService extends SourceServiceFacadeImpl implements DataSetChangedInterface {
 
 	/**
-	 * Observer to react on data set changes
+	 * Observe to react on data set changes
 	 */
 	private DataSetChangeObserver dataSetChangeObserver;
 
+	/**
+	 * MetaTag needed for an information object to be enriched
+	 */
+	private String neededIOMetaTag;
+
+	/**
+	 * MetaTag needed for an website to be processed
+	 */
+	private String neededWebSiteMetaTag;
+
+	/**
+	 * The configured marker size
+	 */
+	private String markerSize;
+
+	/**
+	 * Indicates if load balancing is switched on.
+	 */
+	private boolean loadBalancing;
+
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
+	 */
+	@Override
+	public boolean initialize(Source configuration) {
+
+		boolean initialized = super.initialize(configuration);
+
+		if (initialized) {
+			// read configuration
+			neededIOMetaTag = source.getPropertyValue(
+					QRCodeProperties.PROCESS_IO_ONLY_WITH_METATAG_PROPERTY);
+
+			neededWebSiteMetaTag = source.getPropertyValue(
+					QRCodeProperties.PROCESS_WEBSITE_ONLY_WITH_METATAG_PROPERTY);
+
+			markerSize = getMarkerSize();
+			
+			loadBalancing = source.isPropertyTrueElseDefault(
+					QRCodeProperties.USE_LOAD_BALANCING_PROPERTY,
+					QRCodeProperties.USE_LOAD_BALANCING_DEFAULT);
+					
+		}
+
+		this.setInitialized(initialized);
+		return initialized;
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#enrichDataSet()
 	 */
@@ -69,6 +118,10 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 		{
 			for(WebSite webSite : webSites)
 			{
+				if(neededWebSiteMetaTag != null && !webSite.hasMetaTag(neededWebSiteMetaTag)) {
+					// skip
+					continue;
+				}
 				enrichInformationObjectsOfWebSite(webSite);
 			}
 		}
@@ -146,7 +199,12 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 		}
 		
 		// attach the image to the information objects
-		enrichInfomationObject(informationObject, markerUrl);
+		Image markerImage = enrichInfomationObject(informationObject, markerUrl);
+		
+		if(markerImage != null) {
+			// delete it when website gets deleted
+			markerImage.deleteOnDeleteOf(webSite);
+		}
 	}
 	
 	/**
@@ -155,26 +213,22 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 	 * @param informationObject Information object to attach marker image to
 	 * @param markerUrl Url of the marker image
 	 */
-	private void enrichInfomationObject(InformationObject informationObject, String markerUrl) {
+	private Image enrichInfomationObject(InformationObject informationObject, String markerUrl) {
+		
+		if(neededIOMetaTag != null && !informationObject.hasMetaTag(neededIOMetaTag)) {
+			return null;
+		}
 		
 		String ioImageIdent = informationObject.getIdent() + "_" + markerUrl.hashCode();
 		
-		Image markerImage = this.getImageWithSourceIdent(ioImageIdent);
-		
-		if(markerImage != null) {
-			// image already exists
-			return;
-		}
-		
-		
-		markerImage = informationObject.attachImage(markerUrl);
+		Image markerImage = informationObject.attachImage(markerUrl);
 		
 		// add it explicitly to this source
 		markerImage = this.add(markerImage, ioImageIdent);
 		
 		if(markerImage == null) {
 			log("Could not add marker image with ident " + ioImageIdent, LogService.LOG_WARNING);
-			return;
+			return null;
 		}
 		
 		// delete it when the io gets deleted
@@ -183,9 +237,11 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 		// tag it
 		markerImage.metaTag(QRCodeTags.QRCODE);
 		// tag with size
-		markerImage.metaTag(getMarkerSize());
+		markerImage.metaTag(markerSize);
 		
 		log("Added qr marker " + markerUrl + " to " + informationObject.getName(), LogService.LOG_INFO);
+		
+		return markerImage;
 	}
 
 	/**
@@ -203,13 +259,11 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 		}
 		
 		String balancePrefix = "";
-		if(source.isPropertyTrue(QRCodeProperties.USE_LOAD_BALANCING_PROPERTY))
+		if(loadBalancing)
 		{
 			// create a prefix between 0 and 9
 			balancePrefix += new Random().nextInt(10) + "."; 
 		}
-		
-		String size = getMarkerSize();
 		
 		String encodedUrl = url;
 		
@@ -220,7 +274,7 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 			log("Could not UTF-8 ecode url " + url + " due to " + e.getMessage(), LogService.LOG_WARNING);
 		}
 		
-		return "http://" + balancePrefix + "chart.googleapis.com/chart?chs=" + size + "&cht=qr&chl=" + encodedUrl;
+		return "http://" + balancePrefix + "chart.googleapis.com/chart?chs=" + markerSize + "&cht=qr&chl=" + encodedUrl;
 	}
 
 	/**
