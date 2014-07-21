@@ -118,10 +118,6 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 		{
 			for(WebSite webSite : webSites)
 			{
-				if(neededWebSiteMetaTag != null && !webSite.hasMetaTag(neededWebSiteMetaTag)) {
-					// skip
-					continue;
-				}
 				enrichInformationObjectsOfWebSite(webSite);
 			}
 		}
@@ -141,6 +137,11 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 		// check input parameters
 		if(webSite == null)
 		{
+			return;
+		}
+		
+		if(neededWebSiteMetaTag != null && !webSite.hasMetaTag(neededWebSiteMetaTag)) {
+			// skip
 			return;
 		}
 		
@@ -178,6 +179,11 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 	{
 		if(informationObject == null || webSite == null)
 		{
+			return;
+		}
+		
+		if(neededWebSiteMetaTag != null && !webSite.hasMetaTag(neededWebSiteMetaTag)) {
+			// skip
 			return;
 		}
 		
