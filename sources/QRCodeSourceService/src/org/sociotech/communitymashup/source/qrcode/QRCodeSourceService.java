@@ -64,6 +64,11 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 	 * Indicates if load balancing is switched on.
 	 */
 	private boolean loadBalancing;
+	
+	/**
+	 * Indicates if the short url should be used.
+	 */
+	private boolean useShortUrl;
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
@@ -86,6 +91,10 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 			loadBalancing = source.isPropertyTrueElseDefault(
 					QRCodeProperties.USE_LOAD_BALANCING_PROPERTY,
 					QRCodeProperties.USE_LOAD_BALANCING_DEFAULT);
+			
+			useShortUrl = source.isPropertyTrueElseDefault(
+					QRCodeProperties.USE_SHORTENED_URL_PROPERTY,
+					QRCodeProperties.USE_SHORTENED_URL_DEFAULT);
 					
 		}
 
@@ -153,18 +162,10 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 			return;
 		}
 		
-		String markerUrl = createMarkerUrl(webSite.getAdress()); 
-		
-		if(markerUrl == null)
-		{
-			log("Could not create qr marker url for " + webSite.getAdress(), LogService.LOG_WARNING);
-			return;
-		}
-		
 		// attach the image to all information objects
 		for(InformationObject informationObject : informationObjects)
 		{
-			enrichInfomationObject(informationObject, markerUrl);
+			enrichInformationObject(informationObject, webSite);
 		}
 		
 	}
@@ -194,18 +195,25 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 			return;
 		}
 		
-		// TODO check if this marker already exists as attachment of this information object
+		String markerUrl = null;
 		
-		String markerUrl = createMarkerUrl(webSite.getAdress()); 
-				
+		if(useShortUrl && webSite.getShortenedUrl() != null && !webSite.getShortenedUrl().isEmpty()) {
+			markerUrl = createMarkerUrl(webSite.getShortenedUrl());
+		}
+		else {
+			markerUrl = createMarkerUrl(webSite.getAdress()); 
+		}
+		 		
 		if(markerUrl == null)
 		{
 			log("Could not create qr marker url for " + webSite.getAdress(), LogService.LOG_WARNING);
 			return;
 		}
 		
+		
+		
 		// attach the image to the information objects
-		Image markerImage = enrichInfomationObject(informationObject, markerUrl);
+		Image markerImage = enrichInformationObject(informationObject, markerUrl);
 		
 		if(markerImage != null) {
 			// delete it when website gets deleted
@@ -219,21 +227,19 @@ public class QRCodeSourceService extends SourceServiceFacadeImpl implements Data
 	 * @param informationObject Information object to attach marker image to
 	 * @param markerUrl Url of the marker image
 	 */
-	private Image enrichInfomationObject(InformationObject informationObject, String markerUrl) {
+	private Image enrichInformationObject(InformationObject informationObject, String markerUrl) {
 		
 		if(neededIOMetaTag != null && !informationObject.hasMetaTag(neededIOMetaTag)) {
 			return null;
 		}
 		
-		String ioImageIdent = informationObject.getIdent() + "_" + markerUrl.hashCode();
-		
 		Image markerImage = informationObject.attachImage(markerUrl);
 		
 		// add it explicitly to this source
-		markerImage = this.add(markerImage, ioImageIdent);
+		markerImage = this.add(markerImage);
 		
 		if(markerImage == null) {
-			log("Could not add marker image with ident " + ioImageIdent, LogService.LOG_WARNING);
+			log("Could not add marker image with url " + markerUrl, LogService.LOG_WARNING);
 			return null;
 		}
 		

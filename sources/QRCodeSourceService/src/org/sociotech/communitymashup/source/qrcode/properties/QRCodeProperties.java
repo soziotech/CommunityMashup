@@ -31,6 +31,12 @@ public class QRCodeProperties {
     public static final String USE_LOAD_BALANCING_DEFAULT  = "false";
     
     /**
+     * If set to true, it will be tried to use the shortened url.
+     */
+    public static final String USE_SHORTENED_URL_PROPERTY = "useShortenedUrlIfPossible";
+    public static final String USE_SHORTENED_URL_DEFAULT  = "true";
+    
+    /**
 	 * Specific meta tag that is needed for a information object to be processed.
 	 */
 	public static final String PROCESS_IO_ONLY_WITH_METATAG_PROPERTY = "neededIOMetaTag";
