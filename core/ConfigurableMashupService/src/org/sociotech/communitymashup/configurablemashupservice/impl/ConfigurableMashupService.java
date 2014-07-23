@@ -836,7 +836,7 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			try {
 				initialized = sourceService.initialize(configuration);
 			} catch (Exception e) {
-				log("Exception " + e.getMessage() + "while initializing source " + sourceService, LogService.LOG_ERROR);
+				log("Exception " + e.getMessage() + " while initializing source " + sourceService, LogService.LOG_ERROR);
 			}
 
 			if(initialized)
