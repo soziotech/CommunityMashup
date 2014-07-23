@@ -494,7 +494,7 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		
 		if(updateRoundCounter > 1)
 		{
-			log("Skipping update round, waiting " + updateRoundCounter + " rounds in source " + source, LogService.LOG_DEBUG);
+			log("Skipping update round, waiting " + updateRoundCounter + " rounds in source " + source.getName(), LogService.LOG_DEBUG);
 			// decrement
 			updateRoundCounter--;
 			return;
