@@ -3299,6 +3299,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getWebSite_ShortenedUrl() {
+		return (EAttribute)webSiteEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRanking() {
 		return rankingEClass;
 	}
@@ -4210,6 +4219,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		webSiteEClass = createEClass(WEB_SITE);
 		createEAttribute(webSiteEClass, WEB_SITE__ADRESS);
 		createEAttribute(webSiteEClass, WEB_SITE__TITLE);
+		createEAttribute(webSiteEClass, WEB_SITE__SHORTENED_URL);
 
 		rankingEClass = createEClass(RANKING);
 		createEAttribute(rankingEClass, RANKING__DATE);
@@ -5086,6 +5096,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEClass(webSiteEClass, WebSite.class, "WebSite", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getWebSite_Adress(), ecorePackage.getEString(), "adress", null, 0, 1, WebSite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWebSite_Title(), ecorePackage.getEString(), "title", null, 0, 1, WebSite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWebSite_ShortenedUrl(), ecorePackage.getEString(), "shortenedUrl", null, 0, 1, WebSite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rankingEClass, Ranking.class, "Ranking", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRanking_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Ranking.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

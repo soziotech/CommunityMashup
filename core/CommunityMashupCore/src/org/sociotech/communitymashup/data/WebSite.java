@@ -36,6 +36,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * <ul>
  *   <li>{@link org.sociotech.communitymashup.data.WebSite#getAdress <em>Adress</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.WebSite#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.WebSite#getShortenedUrl <em>Shortened Url</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,6 +103,34 @@ public interface WebSite extends MetaInformation {
 	 * @generated
 	 */
 	void setTitle(String value);
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Shortened Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Shortened Url</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Shortened Url</em>' attribute.
+	 * @see #setShortenedUrl(String)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getWebSite_ShortenedUrl()
+	 * @model
+	 * @generated
+	 */
+	String getShortenedUrl();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.WebSite#getShortenedUrl <em>Shortened Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Shortened Url</em>' attribute.
+	 * @see #getShortenedUrl()
+	 * @generated
+	 */
+	void setShortenedUrl(String value);
 
 
 

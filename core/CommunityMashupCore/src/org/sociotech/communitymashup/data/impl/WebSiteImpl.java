@@ -69,6 +69,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  * <ul>
  *   <li>{@link org.sociotech.communitymashup.data.impl.WebSiteImpl#getAdress <em>Adress</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.WebSiteImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.WebSiteImpl#getShortenedUrl <em>Shortened Url</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,6 +119,25 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 	 * @ordered
 	 */
 	protected String title = TITLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getShortenedUrl() <em>Shortened Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShortenedUrl()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SHORTENED_URL_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getShortenedUrl() <em>Shortened Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShortenedUrl()
+	 * @generated
+	 * @ordered
+	 */
+	protected String shortenedUrl = SHORTENED_URL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -193,6 +213,27 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getShortenedUrl() {
+		return shortenedUrl;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShortenedUrl(String newShortenedUrl) {
+		String oldShortenedUrl = shortenedUrl;
+		shortenedUrl = newShortenedUrl;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.WEB_SITE__SHORTENED_URL, oldShortenedUrl, shortenedUrl));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -200,6 +241,8 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 				return getAdress();
 			case DataPackage.WEB_SITE__TITLE:
 				return getTitle();
+			case DataPackage.WEB_SITE__SHORTENED_URL:
+				return getShortenedUrl();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -217,6 +260,9 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 				return;
 			case DataPackage.WEB_SITE__TITLE:
 				setTitle((String)newValue);
+				return;
+			case DataPackage.WEB_SITE__SHORTENED_URL:
+				setShortenedUrl((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -236,6 +282,9 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 			case DataPackage.WEB_SITE__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
+			case DataPackage.WEB_SITE__SHORTENED_URL:
+				setShortenedUrl(SHORTENED_URL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -252,6 +301,8 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 				return ADRESS_EDEFAULT == null ? adress != null : !ADRESS_EDEFAULT.equals(adress);
 			case DataPackage.WEB_SITE__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+			case DataPackage.WEB_SITE__SHORTENED_URL:
+				return SHORTENED_URL_EDEFAULT == null ? shortenedUrl != null : !SHORTENED_URL_EDEFAULT.equals(shortenedUrl);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -270,6 +321,8 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 		result.append(adress);
 		result.append(", title: ");
 		result.append(title);
+		result.append(", shortenedUrl: ");
+		result.append(shortenedUrl);
 		result.append(')');
 		return result.toString();
 	}
@@ -296,7 +349,9 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 		if ( featureName.equalsIgnoreCase("adress") )
 			return this.getAdress();		
 		if ( featureName.equalsIgnoreCase("title") )
-			return this.getTitle();			
+			return this.getTitle();		
+		if ( featureName.equalsIgnoreCase("shortenedUrl") )
+			return this.getShortenedUrl();			
 		return super.getFeature(featureName); 
 	}
 	
@@ -327,6 +382,16 @@ public class WebSiteImpl extends MetaInformationImpl implements WebSite {
 					throw new WrongArgException("WebSite.setFeature", "java.lang.String",value.getClass().getName());
 				}
 				this.setTitle(ftitle);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("shortenedUrl") ) {
+				java.lang.String fshortenedUrl = null;
+				try {
+					fshortenedUrl = (java.lang.String)value;
+				} catch (ClassCastException e) {
+					throw new WrongArgException("WebSite.setFeature", "java.lang.String",value.getClass().getName());
+				}
+				this.setShortenedUrl(fshortenedUrl);
 			return this;
 			}			
 		super.setFeature(featureName, value);

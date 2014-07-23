@@ -9620,13 +9620,22 @@ public interface DataPackage extends EPackage {
 	int WEB_SITE__TITLE = META_INFORMATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Shortened Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE__SHORTENED_URL = META_INFORMATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Web Site</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WEB_SITE_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 2;
+	int WEB_SITE_FEATURE_COUNT = META_INFORMATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -19163,6 +19172,17 @@ public interface DataPackage extends EPackage {
 	EAttribute getWebSite_Title();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.WebSite#getShortenedUrl <em>Shortened Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Shortened Url</em>'.
+	 * @see org.sociotech.communitymashup.data.WebSite#getShortenedUrl()
+	 * @see #getWebSite()
+	 * @generated
+	 */
+	EAttribute getWebSite_ShortenedUrl();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Ranking <em>Ranking</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22455,6 +22475,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute WEB_SITE__TITLE = eINSTANCE.getWebSite_Title();
+
+		/**
+		 * The meta object literal for the '<em><b>Shortened Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_SITE__SHORTENED_URL = eINSTANCE.getWebSite_ShortenedUrl();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.RankingImpl <em>Ranking</em>}' class.
