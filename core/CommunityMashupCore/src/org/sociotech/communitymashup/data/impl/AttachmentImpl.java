@@ -314,19 +314,21 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		// url string of file
 		DataSet dataSet = this.getDataSet();
 		
-		if(dataSet == null || fileUrl == null || fileUrl.equals(""))
-		{
+		if(dataSet == null)	{
 			return null;
 		}
 		
-		if(dataSet.getCacheFileAttachements() == false)
-		{
+		if(dataSet.getCacheFileAttachements() == false && !getCachedOnly())	{
 			// caching disabled
 			return null;
 		}
 		
 		if(cachedFileUrl != null) {
 			return cachedFileUrl;
+		}
+		
+		if(fileUrl == null || fileUrl.equals("")) {
+			return null;
 		}
 		
 		String cacheFileName = this.cachedFileName;
@@ -466,11 +468,9 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	 * <!-- end-user-doc -->
 	 */
 	public String getCachedFileName() {
-		if(this.getDataSet() != null && this.getDataSet().getCacheFileAttachements() == false)
+		if(this.getDataSet() != null && this.getDataSet().getCacheFileAttachements() == false && !this.getCachedOnly())
 		{
 			// caching disabled
-			// reset cached file name
-			//this.cachedFileName = null;
 			return null;
 		}
 		// starting caching

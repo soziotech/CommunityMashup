@@ -2482,38 +2482,23 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public EList<Attachment> getAttachmentsWithCachedFileName(String cachedFileName) {
-		// Check if input is defined
-		if(getItems() == null) {
+		EList<Item> allItems = getItems();
+		
+		if(allItems == null || cachedFileName == null || cachedFileName.isEmpty()) {
 			return null;
-		}
-		
-		EObjectCondition oclCondition = null;
-		String oclStatement = "self.cachedFileName = '" + cachedFileName + "'";
-		try {
-			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
-																					oclStatement,
-																					DataPackageImpl.eINSTANCE.getAttachment());		
-		}
-		catch (ParserException e) {
-			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
-			return null;
-		}
+		} 
 	
-		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItems(), oclCondition.AND(Attachment.isTypeCondition));
-
-		if(result == null) {
-			return new BasicEList<Attachment>();
+		EList<Attachment> result = new BasicEList<Attachment>();
+		
+		for(Item item : allItems) {
+			if(item instanceof Attachment &&  ((Attachment) item).getCachedFileName() != null && ((Attachment) item).getCachedFileName().equals(cachedFileName)) {
+				result.add((Attachment)item);
+			}
 		}
 		
-		// results are only Attachments
-		@SuppressWarnings("unchecked")
-		EList<Attachment> objects = new BasicEList<Attachment>((Collection<? extends Attachment>) result.getEObjects());
-		
-		return objects;	
-	
+		return result;
 	}
 
 	/**
