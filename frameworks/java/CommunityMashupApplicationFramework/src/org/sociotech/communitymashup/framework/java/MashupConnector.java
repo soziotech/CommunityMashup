@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.framework.java;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
@@ -19,6 +21,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.osgi.service.log.LogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -354,8 +363,15 @@ public class MashupConnector implements DataSetChangedInterface {
 			return;
 		}
 
-		// load complete data set and set it
-		dataSet = api.loadDataSet(remoteURL);
+		if(remoteURL.startsWith("file:")) {
+			// only for local development
+			// load from file
+			dataSet = loadExistingDataSet(remoteURL);
+		}
+		else {
+			// load complete data set and set it
+			dataSet = api.loadDataSet(remoteURL);
+		}
 
 		if (dataSet == null) {
 			return;
@@ -382,6 +398,59 @@ public class MashupConnector implements DataSetChangedInterface {
 		}
 	}
 
+	/**
+	 * Loads an existing local data set.
+	 * 
+	 * @return The loaded data set
+	 */
+	private DataSet loadExistingDataSet(String localURL) {
+		// create resource set and resource 
+		ResourceSet resourceSet = new ResourceSetImpl();
+
+		// Register XML resource factory
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml",  new XMLResourceFactoryImpl());
+		// Register XMI resource factory
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi",  new XMLResourceFactoryImpl());
+
+		File dataSetFile = new File(localURL.replaceFirst("file:", ""));
+		
+		if(!dataSetFile.exists())
+		{
+			// could not load
+			return null;
+		}
+		
+		URI fileUri = URI.createFileURI(dataSetFile.getAbsolutePath());
+		Resource dataSetResource = resourceSet.createResource(fileUri);
+
+		// register package in local resource registry
+		String nsURI = DataPackage.eINSTANCE.getNsURI();
+		resourceSet.getPackageRegistry().put(nsURI, DataPackage.eINSTANCE);
+
+		// load resource 
+		try 
+		{
+			dataSetResource.load(null);
+		} 
+		catch (IOException e) {
+			log("Could not load data set localy from " + localURL, LogService.LOG_ERROR);
+			return null;
+		}
+
+		TreeIterator<EObject> dataIterator = dataSetResource.getAllContents();
+		
+		// Mashup Data XML contains exactly one DataSet
+		if(dataIterator.hasNext()) {
+			EObject workingObject = dataIterator.next();
+
+			if(workingObject instanceof DataSet) {
+				return (DataSet) workingObject;
+			}
+		}
+		
+		return null;
+	}
+	
 	/**
 	 * Loads the attached files if {@link MashupConnector#preLoadAttachedFiles} is true.
 	 */

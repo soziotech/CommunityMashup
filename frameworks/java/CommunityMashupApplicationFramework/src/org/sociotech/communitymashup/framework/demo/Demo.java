@@ -10,8 +10,9 @@ import org.sociotech.communitymashup.framework.java.exceptions.MashupConnectionE
 public class Demo {
 
 	public static void main(String[] args) {
-		String mashupUrl = "http://localhost:8080/mashup";
-			
+		//String mashupUrl = "http://localhost:8080/mashup";
+		String mashupUrl = "file:///Users/lachenma/Desktop/dataSet.xml";
+		
 		// create new mashup connector
 		MashupConnector connector = new MashupConnector(mashupUrl, 600, false);
 		connector.setAsynchronous(true);
