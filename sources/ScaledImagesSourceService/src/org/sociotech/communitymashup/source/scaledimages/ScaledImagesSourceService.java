@@ -239,21 +239,21 @@ public class ScaledImagesSourceService extends SourceServiceFacadeImpl implement
 		// do enrichment
 		// be nice and select types before
 		if(enrichPersons) {
-			List<Person> persons = dataSet.getPersons();
+			List<Person> persons = dataSet.getAllPersons();
 			for(Person person : persons) {
 				enrichIO(person);
 			}
 		}
 		
 		if(enrichContents) {
-			List<Content> contents = dataSet.getContents();
+			List<Content> contents = dataSet.getAllContents();
 			for(Content content : contents) {
 				enrichIO(content);
 			}
 		}
 		
 		if(enrichOrganisations) {
-			List<Organisation> organisations = dataSet.getOrganisations();
+			List<Organisation> organisations = dataSet.getAllOrganisations();
 			for(Organisation organisation : organisations) {
 				enrichIO(organisation);
 			}
