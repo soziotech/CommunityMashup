@@ -842,16 +842,23 @@ public abstract class SourceServiceFacadeImpl implements SourceServiceFacade, Lo
 		
 		Item existingItem = this.getItemWithSourceIdent(sourceIdent);
 		
-		if(existingItem != null && item != null && (existingItem.eClass() == item.eClass()))
-		{
+		if(existingItem == item) {
+			// do not add twice
+			return item;
+		}
+		
+		if(existingItem != null && item != null && (existingItem.eClass() == item.eClass())) {
 			// merge information object with their previous added version -> update
-			return (T) existingItem.update(item);
+			T updatedItem = (T) existingItem.update(item);
+			// delete new one
+			item.delete();
+			// return merged
+			return updatedItem;
 		}
 		
 		Item addedItem = this.add(item);
 		
-		if(addedItem != null && sourceIdent != null)
-		{
+		if(addedItem != null && sourceIdent != null){
 			addedItem.identifyBy(getLocalIdentifierKey(), sourceIdent);
 		}
 		
