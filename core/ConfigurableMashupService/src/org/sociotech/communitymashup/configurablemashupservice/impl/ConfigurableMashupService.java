@@ -863,8 +863,6 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 					// if enrichment already started, let this source enrich
 					enrichSource(configuration);
 				}
-				// start update loop after first source is instantiated and filled
-				this.startUpdateLoop();
 			}
 			else
 			{
@@ -900,8 +898,14 @@ public class ConfigurableMashupService extends MashupServiceFacadeImpl implement
 			return;
 		}
 		
+		// all active sources produced and filled
+		source.setActiveState(SourceActiveStates.FILLED);
+		
 		// enrich data set by all source services
 		this.enrich();
+		
+		// start update loop after every source is enriched
+		this.startUpdateLoop();
 		
 		// TODO What else should happen if the configuration is now fulfilled
 	}
