@@ -1182,11 +1182,21 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 */
 	public Email addEmailAddress(String emailAdress) {
 		
-		if(emailAdress == null || emailAdress.equals(""))
-		{
+		if(emailAdress == null || emailAdress.equals("")) {
 			return null;
 		}
 		
+		// quick check for existing to avoid more expensive later merge
+		EList<Email> existingEmails = this.getEmails();
+		if(existingEmails != null) {
+			for(Email existing : existingEmails) {
+				if(emailAdress.equalsIgnoreCase(existing.getAdress())) {
+					// return already existing
+					return existing;
+				}
+			}
+		
+		}
 		// create email object
 		Email email = dataFactory.createEmail();
 		
@@ -1202,9 +1212,20 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 * <!-- end-user-doc -->
 	 */
 	public WebSite addWebSite(String url) {
-		if(url == null || url.equals(""))
-		{
+		if(url == null || url.equals("")) {
 			return null;
+		}
+		
+		// quick check for existing to avoid more expensive later merge
+		EList<WebSite> existingWebSites = this.getWebSites();
+		if(existingWebSites != null) {
+			for(WebSite existing : existingWebSites) {
+				if(url.equalsIgnoreCase(existing.getAdress())) {
+					// return already existing
+					return existing;
+				}
+			}
+		
 		}
 		
 		// create web site object
@@ -1924,11 +1945,26 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	 * <!-- end-user-doc -->
 	 */
 	public WebAccount addWebAccountForService(String username, String service) {
-		if(username == null || username.equals(""))
-		{
+		if(username == null || username.equals("")) {
 			return null;
 		}
 	
+		// quick check for existing to avoid more expensive later merge
+		EList<WebAccount> existingWebAccounts = this.getWebAccounts();
+		if(existingWebAccounts != null) {
+			for(WebAccount existing : existingWebAccounts) {
+				if(existing.getUsername() == null || existing.getService() == null || service == null) {
+					// must be set for match
+					continue;
+				}
+				if(username.equalsIgnoreCase(existing.getUsername()) && service.equalsIgnoreCase(existing.getService()) ) {
+					// return already existing
+					return existing;
+				}
+			}
+
+		}
+		
 		// create web account object
 		WebAccount webAccount = dataFactory.createWebAccount();
 		
