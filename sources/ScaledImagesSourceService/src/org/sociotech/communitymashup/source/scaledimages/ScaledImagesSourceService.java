@@ -31,6 +31,7 @@ import org.sociotech.communitymashup.data.DataFactory;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.Image;
 import org.sociotech.communitymashup.data.InformationObject;
+import org.sociotech.communitymashup.data.MetaTag;
 import org.sociotech.communitymashup.data.Organisation;
 import org.sociotech.communitymashup.data.Person;
 import org.sociotech.communitymashup.data.observer.dataset.DataSetChangeObserver;
@@ -122,6 +123,10 @@ public class ScaledImagesSourceService extends SourceServiceFacadeImpl implement
 	 */
 	private final DataFactory dataFactory = DataFactory.eINSTANCE;
 	
+	/**
+	 * Indicates a current processing step
+	 */
+	private boolean processing = false;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -502,12 +507,25 @@ public class ScaledImagesSourceService extends SourceServiceFacadeImpl implement
 			return;
 		}
 		
+		if(processing) {
+			// do not react on own changes
+			return;
+		}
+		
 		// new information object added to the data set
 		if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof DataSet && notification.getNewValue() instanceof InformationObject)
 		{
 			InformationObject newIO = (InformationObject) notification.getNewValue();
 			// enrich new information object
-			enrichIO(newIO);
+			try {
+				processing = true;
+				enrichIO(newIO);
+			} catch (Exception e) {
+				log("Exception " + e.getMessage() + " while processing changed io.");
+				// continue
+			} finally {
+				processing = false;
+			}
 		}
 		// information object got new image
 		else if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof InformationObject && notification.getNewValue() instanceof Image)
@@ -519,8 +537,47 @@ public class ScaledImagesSourceService extends SourceServiceFacadeImpl implement
 				// get attached image
 				Image attachedImage = (Image) notification.getNewValue();
 				
-				// process image
-				processImage(attachedImage, changedIO);
+				try {
+					processing = true;
+					// process image
+					processImage(attachedImage, changedIO);
+				} catch (Exception e) {
+					log("Exception " + e.getMessage() + " while processing changed image.");
+					// continue
+				} finally {
+					processing = false;
+				}
+			}
+		}
+		// image got meta tag
+		else if(notification.getEventType() == Notification.ADD && notification.getNotifier() instanceof Image && notification.getNewValue() instanceof MetaTag)
+		{
+			MetaTag newMetaTag = (MetaTag) notification.getNewValue();
+			
+			// must be the needed image meta tag
+			if (neededImageMetaTag != null && !neededImageMetaTag.isEmpty() && neededImageMetaTag.equalsIgnoreCase(newMetaTag.getName())) {
+				// get changed image
+				Image attachedImage = (Image) notification.getNotifier();
+
+				// get the io for with the attachment
+				List<InformationObject> changedIOs = source.getDataSet().getInformationObjectsWithAttachment(attachedImage);
+
+				if(changedIOs != null) {
+					for(InformationObject changedIO : changedIOs) {
+						if(isAllowedToEnrich(changedIO)) {
+							try {
+								processing = true;
+								// process image
+								processImage(attachedImage, changedIO);
+							} catch (Exception e) {
+								log("Exception " + e.getMessage() + " while processing changed image.");
+								// continue
+							} finally {
+								processing = false;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
