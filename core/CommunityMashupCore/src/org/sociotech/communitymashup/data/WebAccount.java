@@ -147,4 +147,9 @@ public interface WebAccount extends MetaInformation {
 	 */
 	public String SERVICE_GOOGLE = "google";
 	
+	/**
+	 * The service name for skype accounts
+	 */
+	public String SERVICE_SKYPE = "skype";
+	
 } // WebAccount
