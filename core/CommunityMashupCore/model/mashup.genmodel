@@ -103,6 +103,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/mainCategory"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//InformationObject/metaInformations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//InformationObject/alternativeNames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//InformationObject/verifiedName"/>
       <genOperations ecoreOperation="data.ecore#//InformationObject/tag">
         <genParameters ecoreParameter="data.ecore#//InformationObject/tag/name"/>
       </genOperations>
@@ -226,6 +227,15 @@
       <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachedImageWithMetaTagName">
         <genParameters ecoreParameter="data.ecore#//InformationObject/getAttachedImageWithMetaTagName/metaTagName"/>
       </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/starRankWithMetaTagList">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTagList/stars"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTagList/ofStars"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/starRankWithMetaTagList/metaTagList"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/addWebAccountForService">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/addWebAccountForService/username"/>
+        <genParameters ecoreParameter="data.ecore#//InformationObject/addWebAccountForService/service"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Content">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/contents"/>
@@ -246,6 +256,10 @@
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//Content/attachDocument">
         <genParameters ecoreParameter="data.ecore#//Content/attachDocument/fileUrl"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//Content/commentWithMetaTagList">
+        <genParameters ecoreParameter="data.ecore#//Content/commentWithMetaTagList/comment"/>
+        <genParameters ecoreParameter="data.ecore#//Content/commentWithMetaTagList/metaTagList"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//DataSet">
@@ -469,8 +483,8 @@
       <genOperations ecoreOperation="data.ecore#//DataSet/getContentsWithAttachment">
         <genParameters ecoreParameter="data.ecore#//DataSet/getContentsWithAttachment/attachment"/>
       </genOperations>
-      <genOperations ecoreOperation="data.ecore#//DataSet/getEqualItem">
-        <genParameters ecoreParameter="data.ecore#//DataSet/getEqualItem/item"/>
+      <genOperations ecoreOperation="data.ecore#//DataSet/getEqualItems">
+        <genParameters ecoreParameter="data.ecore#//DataSet/getEqualItems/item"/>
       </genOperations>
       <genOperations ecoreOperation="data.ecore#//DataSet/hasEqualItem">
         <genParameters ecoreParameter="data.ecore#//DataSet/hasEqualItem/item"/>
@@ -555,6 +569,7 @@
       <genOperations ecoreOperation="data.ecore#//DataSet/getItemsExceptIdentifiersModifiedSince">
         <genParameters ecoreParameter="data.ecore#//DataSet/getItemsExceptIdentifiersModifiedSince/date"/>
       </genOperations>
+      <genOperations ecoreOperation="data.ecore#//DataSet/reloadAllAttachmentFiles"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Item">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference data.ecore#//Item/dataSet"/>
@@ -682,10 +697,12 @@
     </genClasses>
     <genClasses ecoreClass="data.ecore#//WebAccount">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//WebAccount/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//WebAccount/service"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//WebSite">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//WebSite/adress"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//WebSite/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//WebSite/shortenedUrl"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Ranking">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Ranking/date"/>
@@ -699,6 +716,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/fileIdentifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/cachedFileName"/>
       <genOperations ecoreOperation="data.ecore#//Attachment/getOriginalFileUrl"/>
+      <genOperations ecoreOperation="data.ecore#//Attachment/reloadFile"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Location">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Location/street"/>
