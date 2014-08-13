@@ -956,6 +956,52 @@ public interface InformationObject extends Item {
 	WebAccount addWebAccountForService(String username, String service);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link Image images@endlink of this information except the ones with the given MetaTag
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	EList<Image> getAttachedImagesWithoutMetaTagName(String metaTagName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all @link Image images@endlink of this information except the ones with the given MetaTag
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	EList<Image> getAttachedImagesWithoutMetaTag(MetaTag metaTag);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all Indoor Location instances that are @link MetaInformation Meta Informations@endlink for this @link InformationObject Information Object@endlink.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getMetaInformations()'"
+	 * @generated
+	 */
+	EList<IndoorLocation> getIndoorLocations();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Returns all Event instances that are @link MetaInformation Meta Informations@endlink for this @link InformationObject Information Object@endlink.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel OCLCondition='\"true\"' input='getMetaInformations()'"
+	 * @generated
+	 */
+	EList<Event> getEvents();
+
+	/**
 	 * An EObjectCondition to check whether an Object is of the type InformationObject.
 	 * 
 	 * @generated

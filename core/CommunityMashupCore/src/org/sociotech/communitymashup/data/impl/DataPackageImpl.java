@@ -1184,6 +1184,42 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInformationObject__GetAttachedImagesWithoutMetaTagName__String() {
+		return informationObjectEClass.getEOperations().get(57);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetAttachedImagesWithoutMetaTag__MetaTag() {
+		return informationObjectEClass.getEOperations().get(58);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetIndoorLocations() {
+		return informationObjectEClass.getEOperations().get(59);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInformationObject__GetEvents() {
+		return informationObjectEClass.getEOperations().get(60);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContent() {
 		return contentEClass;
 	}
@@ -3970,6 +4006,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGE_WITH_META_TAG_NAME__STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___STAR_RANK_WITH_META_TAG_LIST__INTEGER_INTEGER_STRING);
 		createEOperation(informationObjectEClass, INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_INDOOR_LOCATIONS);
+		createEOperation(informationObjectEClass, INFORMATION_OBJECT___GET_EVENTS);
 
 		contentEClass = createEClass(CONTENT);
 		createEReference(contentEClass, CONTENT__CONTENTS);
@@ -4563,6 +4603,16 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		op = initEOperation(getInformationObject__AddWebAccountForService__String_String(), this.getWebAccount(), "addWebAccountForService", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "username", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "service", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInformationObject__GetAttachedImagesWithoutMetaTagName__String(), this.getImage(), "getAttachedImagesWithoutMetaTagName", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "metaTagName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getInformationObject__GetAttachedImagesWithoutMetaTag__MetaTag(), this.getImage(), "getAttachedImagesWithoutMetaTag", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getMetaTag(), "metaTag", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInformationObject__GetIndoorLocations(), this.getIndoorLocation(), "getIndoorLocations", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInformationObject__GetEvents(), this.getEvent(), "getEvents", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContent_Contents(), this.getContent(), this.getContent_ParentContent(), "contents", null, 0, -1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

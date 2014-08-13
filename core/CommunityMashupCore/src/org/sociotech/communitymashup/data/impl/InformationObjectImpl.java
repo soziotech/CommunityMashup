@@ -1980,6 +1980,110 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 */
+	public EList<Image> getAttachedImagesWithoutMetaTagName(String metaTagName) {
+		if(getDataSet() == null) return null;
+		return getAttachedImagesWithoutMetaTag(getDataSet().getMetaTag(metaTagName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
+	public EList<Image> getAttachedImagesWithoutMetaTag(MetaTag metaTag) {
+		BasicEList<Image> result = new BasicEList<Image>();
+		
+		images = getImages();
+		
+		if(images == null || images.isEmpty()) return result;
+		
+		// find all images without metatag and return it
+		for(Image image : images) {
+			if(!image.getMetaTags().contains(metaTag)) {
+				result.add(image);
+			}
+		}
+				
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<IndoorLocation> getIndoorLocations() {
+		// Check if input is defined
+		if(getMetaInformations() == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getIndoorLocation());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getMetaInformations(), oclCondition.AND(IndoorLocation.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<IndoorLocation>();
+		}
+		
+		// results are only IndoorLocations
+		@SuppressWarnings("unchecked")
+		EList<IndoorLocation> objects = new BasicEList<IndoorLocation>((Collection<? extends IndoorLocation>) result.getEObjects());
+		
+		return objects;	
+	
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Event> getEvents() {
+		// Check if input is defined
+		if(getMetaInformations() == null) {
+			return null;
+		}
+		
+		EObjectCondition oclCondition = null;
+		String oclStatement = "true";
+		try {
+			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+																					oclStatement,
+																					DataPackageImpl.eINSTANCE.getEvent());		
+		}
+		catch (ParserException e) {
+			log("Malformed ocl statement: " + oclStatement + " (" + e.getMessage() + ")", LogService.LOG_ERROR);
+			return null;
+		}
+	
+		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getMetaInformations(), oclCondition.AND(Event.isTypeCondition));
+
+		if(result == null) {
+			return new BasicEList<Event>();
+		}
+		
+		// results are only Events
+		@SuppressWarnings("unchecked")
+		EList<Event> objects = new BasicEList<Event>((Collection<? extends Event>) result.getEObjects());
+		
+		return objects;	
+	
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -2362,6 +2466,14 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				return starRankWithMetaTagList((Integer)arguments.get(0), (Integer)arguments.get(1), (String)arguments.get(2));
 			case DataPackage.INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING:
 				return addWebAccountForService((String)arguments.get(0), (String)arguments.get(1));
+			case DataPackage.INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING:
+				return getAttachedImagesWithoutMetaTagName((String)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG:
+				return getAttachedImagesWithoutMetaTag((MetaTag)arguments.get(0));
+			case DataPackage.INFORMATION_OBJECT___GET_INDOOR_LOCATIONS:
+				return getIndoorLocations();
+			case DataPackage.INFORMATION_OBJECT___GET_EVENTS:
+				return getEvents();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -3045,6 +3157,38 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("service").getClass().getName());
 			}
 			return this.addWebAccountForService(username, service);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getAttachedImagesWithoutMetaTagName")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("InformationObject.doOperation", 1, command.getArgCount()); 
+			java.lang.String metaTagName = null;
+			try {
+				metaTagName = (java.lang.String)command.getArg("metaTagName");
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "java.lang.String", command.getArg("metaTagName").getClass().getName());
+			}
+			return this.getAttachedImagesWithoutMetaTagName(metaTagName);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getAttachedImagesWithoutMetaTag")) {
+			if (command.getArgCount() != 1) throw new WrongArgCountException("InformationObject.doOperation", 1, command.getArgCount()); 
+			MetaTag metaTag = null;
+			try {
+				try {
+					metaTag = (MetaTag)(RestUtil.fromInput(command.getArg("metaTag")));
+				} catch (ClassNotFoundException e) {
+					metaTag = (MetaTag)command.getArg("metaTag");
+				}
+			} catch (ClassCastException e) {
+				throw new WrongArgException("InformationObject.doOperation", "MetaTag", command.getArg("metaTag").getClass().getName());
+			}
+			return this.getAttachedImagesWithoutMetaTag(metaTag);
+		}
+		if ( command.getCommand().equalsIgnoreCase("getIndoorLocations")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("InformationObject.doOperation", 0, command.getArgCount()); 
+			return this.getIndoorLocations();
+		}
+		if ( command.getCommand().equalsIgnoreCase("getEvents")) {
+			if (command.getArgCount() != 0) throw new WrongArgCountException("InformationObject.doOperation", 0, command.getArgCount()); 
+			return this.getEvents();
 		}	
 		return super.doOperation(command);
 	}

@@ -98,6 +98,7 @@ import org.sociotech.communitymashup.rest.UnknownOperationException;
 import org.sociotech.communitymashup.rest.WrongArgCountException;
 import org.sociotech.communitymashup.rest.WrongArgException;
 import org.sociotech.communitymashup.search.CoreSearchFacade;
+import org.sociotech.communitymashup.search.ItemTermMatcher;
 
 
 
@@ -7651,5 +7652,27 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			}
 		}
 		super.eNotify(notification);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.sociotech.communitymashup.data.DataSet#searchItemsWithMatcher(java.lang.String, org.sociotech.communitymashup.search.ItemTermMatcher)
+	 */
+	@Override
+	public EList<Item> searchItemsWithMatcher(String term,
+			ItemTermMatcher matcher) {
+		BasicEList<Item> result = new BasicEList<Item>();
+		
+		if(matcher == null) {
+			return result;
+		}
+		
+		for(Item item : getItems()) {
+			// check every single item with matcher
+			if(matcher.matchesTerm(item, term)) {
+				result.add(item);
+			}
+		}
+		
+		return result;
 	}
 } //DataSetImpl

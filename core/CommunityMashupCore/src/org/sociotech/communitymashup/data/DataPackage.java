@@ -1334,13 +1334,49 @@ public interface DataPackage extends EPackage {
 	int INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = ITEM_OPERATION_COUNT + 56;
 
 	/**
+	 * The operation id for the '<em>Get Attached Images Without Meta Tag Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING = ITEM_OPERATION_COUNT + 57;
+
+	/**
+	 * The operation id for the '<em>Get Attached Images Without Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG = ITEM_OPERATION_COUNT + 58;
+
+	/**
+	 * The operation id for the '<em>Get Indoor Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_INDOOR_LOCATIONS = ITEM_OPERATION_COUNT + 59;
+
+	/**
+	 * The operation id for the '<em>Get Events</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT___GET_EVENTS = ITEM_OPERATION_COUNT + 60;
+
+	/**
 	 * The number of operations of the '<em>Information Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 57;
+	int INFORMATION_OBJECT_OPERATION_COUNT = ITEM_OPERATION_COUNT + 61;
 
 	/**
 	 * The meta object id for the '{@link org.sociotech.communitymashup.data.impl.PersonImpl <em>Person</em>}' class.
@@ -2377,6 +2413,42 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSON___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Images Without Meta Tag Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Images Without Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG = INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG;
+
+	/**
+	 * The operation id for the '<em>Get Indoor Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_INDOOR_LOCATIONS = INFORMATION_OBJECT___GET_INDOOR_LOCATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Events</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON___GET_EVENTS = INFORMATION_OBJECT___GET_EVENTS;
 
 	/**
 	 * The operation id for the '<em>Get Contents</em>' operation.
@@ -3458,6 +3530,42 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Images Without Meta Tag Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Images Without Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG = INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG;
+
+	/**
+	 * The operation id for the '<em>Get Indoor Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_INDOOR_LOCATIONS = INFORMATION_OBJECT___GET_INDOOR_LOCATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Events</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT___GET_EVENTS = INFORMATION_OBJECT___GET_EVENTS;
 
 	/**
 	 * The operation id for the '<em>Get Organisations</em>' operation.
@@ -7325,6 +7433,42 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANISATION___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Images Without Meta Tag Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING = INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Attached Images Without Meta Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG = INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG;
+
+	/**
+	 * The operation id for the '<em>Get Indoor Locations</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_INDOOR_LOCATIONS = INFORMATION_OBJECT___GET_INDOOR_LOCATIONS;
+
+	/**
+	 * The operation id for the '<em>Get Events</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION___GET_EVENTS = INFORMATION_OBJECT___GET_EVENTS;
 
 	/**
 	 * The operation id for the '<em>Get Persons</em>' operation.
@@ -16770,6 +16914,46 @@ public interface DataPackage extends EPackage {
 	EOperation getInformationObject__AddWebAccountForService__String_String();
 
 	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getAttachedImagesWithoutMetaTagName(java.lang.String) <em>Get Attached Images Without Meta Tag Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attached Images Without Meta Tag Name</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getAttachedImagesWithoutMetaTagName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetAttachedImagesWithoutMetaTagName__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getAttachedImagesWithoutMetaTag(org.sociotech.communitymashup.data.MetaTag) <em>Get Attached Images Without Meta Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Attached Images Without Meta Tag</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getAttachedImagesWithoutMetaTag(org.sociotech.communitymashup.data.MetaTag)
+	 * @generated
+	 */
+	EOperation getInformationObject__GetAttachedImagesWithoutMetaTag__MetaTag();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getIndoorLocations() <em>Get Indoor Locations</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Indoor Locations</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getIndoorLocations()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetIndoorLocations();
+
+	/**
+	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.InformationObject#getEvents() <em>Get Events</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Events</em>' operation.
+	 * @see org.sociotech.communitymashup.data.InformationObject#getEvents()
+	 * @generated
+	 */
+	EOperation getInformationObject__GetEvents();
+
+	/**
 	 * Returns the meta object for class '{@link org.sociotech.communitymashup.data.Content <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20567,6 +20751,38 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation INFORMATION_OBJECT___ADD_WEB_ACCOUNT_FOR_SERVICE__STRING_STRING = eINSTANCE.getInformationObject__AddWebAccountForService__String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attached Images Without Meta Tag Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG_NAME__STRING = eINSTANCE.getInformationObject__GetAttachedImagesWithoutMetaTagName__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Attached Images Without Meta Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_ATTACHED_IMAGES_WITHOUT_META_TAG__METATAG = eINSTANCE.getInformationObject__GetAttachedImagesWithoutMetaTag__MetaTag();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Indoor Locations</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_INDOOR_LOCATIONS = eINSTANCE.getInformationObject__GetIndoorLocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Events</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFORMATION_OBJECT___GET_EVENTS = eINSTANCE.getInformationObject__GetEvents();
 
 		/**
 		 * The meta object literal for the '{@link org.sociotech.communitymashup.data.impl.ContentImpl <em>Content</em>}' class.

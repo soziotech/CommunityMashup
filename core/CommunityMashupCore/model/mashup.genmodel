@@ -236,6 +236,14 @@
         <genParameters ecoreParameter="data.ecore#//InformationObject/addWebAccountForService/username"/>
         <genParameters ecoreParameter="data.ecore#//InformationObject/addWebAccountForService/service"/>
       </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachedImagesWithoutMetaTagName">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getAttachedImagesWithoutMetaTagName/metaTagName"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getAttachedImagesWithoutMetaTag">
+        <genParameters ecoreParameter="data.ecore#//InformationObject/getAttachedImagesWithoutMetaTag/metaTag"/>
+      </genOperations>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getIndoorLocations"/>
+      <genOperations ecoreOperation="data.ecore#//InformationObject/getEvents"/>
     </genClasses>
     <genClasses ecoreClass="data.ecore#//Content">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Content/contents"/>

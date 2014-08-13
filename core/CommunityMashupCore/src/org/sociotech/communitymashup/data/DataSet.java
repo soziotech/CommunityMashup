@@ -25,6 +25,7 @@ import org.sociotech.communitymashup.rest.UnknownOperationException;
 import org.sociotech.communitymashup.rest.WrongArgCountException;
 import org.sociotech.communitymashup.rest.WrongArgException;
 import org.sociotech.communitymashup.search.CoreSearchFacade;
+import org.sociotech.communitymashup.search.ItemTermMatcher;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -1747,5 +1748,14 @@ public interface DataSet extends EObject {
 	 * @return True if the automatic update of the modification date is enabled.
 	 */
 	public boolean isUpdateModificationDate();
+	
+	/**
+	 * Searches items that match the given term using the given term matcher.
+	 * 
+	 * @param term Search term to match
+	 * @param matcher Matcher used for term matching
+	 * @return Item matching the given term
+	 */
+	public EList<Item> searchItemsWithMatcher(String term, ItemTermMatcher matcher); 
 
 } // DataSet
