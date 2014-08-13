@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -1040,6 +1041,19 @@ public class RESTServlet extends HttpServlet {
 				} catch (ArgNotFoundException e) {
 					resp.sendError(404, "ArgNotFoundException" + e.getMessage());
 					return;
+				} catch (ConcurrentModificationException e) {
+					// retry on concurrent modification -> may work in next try
+					try {
+						o = dataSet.process(input, RequestType.rtPost);
+					} catch (Exception e2) {
+						resp.sendError(404, "Failed after retry: " + e2.getMessage());
+						return;
+					}
+					
+					//filtering the data if there are forbidden meta tags
+					if (securityServiceNeeded && securityService != null) {
+						o = securityService.filterRequestResults(request,o);
+					}
 				}
 
 				// prepare result to be delivered
