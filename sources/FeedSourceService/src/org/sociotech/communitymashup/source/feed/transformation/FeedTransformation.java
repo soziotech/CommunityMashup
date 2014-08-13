@@ -22,6 +22,7 @@ import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
 import org.sociotech.communitymashup.data.Person;
 import org.sociotech.communitymashup.source.feed.meta.FeedTags;
+import org.sociotech.communitymashup.source.feed.properties.FeedProperties;
 import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
 
 import com.sun.syndication.feed.synd.SyndCategory;
@@ -43,6 +44,11 @@ public class FeedTransformation {
 	private boolean addOnlyFirstImage = false;
 	
 	/**
+	 * If set to a date, all entries older than the date will be skipped
+	 */
+	private Date skipOlderThan = null;
+	
+	/**
 	 * Creates a new feed transformation using the give source service for adding items and logging.
 	 * @param sourceService
 	 */
@@ -61,6 +67,8 @@ public class FeedTransformation {
 			return;
 		}
 
+		updateOlderThanDate();
+		
 		// run through entry list
 		for (Object e : feed.getEntries())
 		{
@@ -78,6 +86,31 @@ public class FeedTransformation {
 		}
 	}
 
+	/**
+	 * Updates the date to skip old entries.
+	 */
+	private void updateOlderThanDate() {
+		String olderThanDaysString = sourceService.getConfiguration().getPropertyValue(FeedProperties.SKIP_OLDER_THAN_DAYS_PROPERTY);
+		
+		if(olderThanDaysString == null) {
+			skipOlderThan = null;
+			return;
+		}
+		
+		// try to parse
+		try {
+			int days = new Integer(olderThanDaysString);
+			// now
+			skipOlderThan = new Date();
+			// - days (in millis)
+			skipOlderThan.setTime(skipOlderThan.getTime() - days * 24 * 60 * 60 * 1000);
+		} catch (Exception e) {
+			skipOlderThan = null;
+			return;
+		}
+		
+		
+	}
 	/**
 	 * @param entry
 	 * @param removeHtml
@@ -103,6 +136,12 @@ public class FeedTransformation {
 		List<?> categories = entry.getCategories();
 
 		String entryId = createLocalEntryIdent(entry);
+
+		// skip if to old
+		if(skipOlderThan != null && skipOlderThan.after(entryPublished)) {
+			// skip
+			return;
+		}
 		
 		// check if previously added
 		Content content = sourceService.getContentWithSourceIdent(entryId);

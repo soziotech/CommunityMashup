@@ -45,6 +45,11 @@ public class FeedProperties {
 	 */
 	public static final String ADD_ONLY_FIRST_IMAGE_PROPERTY = "addOnlyFirstImage";
 	
+	/**
+	 * If specified, all entries older than the given number of days will be skipped
+	 */
+	public static final String SKIP_OLDER_THAN_DAYS_PROPERTY = "skipOlderThanDays";
+	
 	public static final String FEED_ENTRY_METATAG_PROPERTY = "entryMetaTag";
 	public static final String FEED_ENTRY_METATAG_DEFAULT = "";
 }
