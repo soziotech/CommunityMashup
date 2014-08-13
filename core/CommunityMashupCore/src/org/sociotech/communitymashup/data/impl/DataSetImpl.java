@@ -336,17 +336,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * Log service to be used for logging
 	 */
-	private LogService logService;
-
-	/**
-	 * Indicates that the copy of the items list is out of date
-	 */
-	private boolean itemsCopyOutOfDate = true; 
-	
-	/**
-	 * A copy of the items list to work on
-	 */
-	private EList<Item> itemsCopy;
+	private LogService logService; 
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -370,21 +360,13 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	public EList<Item> getItems() {
-		createItemsListIfNeeded();
-		
-		if(itemsCopyOutOfDate) {
-			// we need to create an modifable list to be copied correctly by EcoreUtil
-			// TODO this should be an unmodifable list when figured out how to use copy in EcoreUtil otherwise
-			//itemsCopy = ECollections.unmodifiableEList(items);
-			itemsCopy = new BasicEList<Item>();
-			itemsCopy.addAll(items);
-			
-			itemsCopyOutOfDate = false;
+		if (items == null) {
+			items = new EObjectContainmentWithInverseEList<Item>(Item.class, this, DataPackage.DATA_SET__ITEMS, DataPackage.ITEM__DATA_SET);
 		}
-		
-		return itemsCopy;
+		return items;
 	}
 
 	/**
@@ -721,15 +703,14 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				// directly working with the list cause getter returns copy 
-				createItemsListIfNeeded();
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)items).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getItems()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -737,14 +718,13 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				// directly working with the list cause getter returns copy 
-				createItemsListIfNeeded();
-				return ((InternalEList<?>)items).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
 			case DataPackage.DATA_SET__ITEMS_DELETED:
 				return ((InternalEList<?>)getItemsDeleted()).basicRemove(otherEnd, msgs);
 		}
@@ -754,14 +734,13 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				// directly working with the list cause getter returns copy 
-				createItemsListIfNeeded();
-				return items;
+				return getItems();
 			case DataPackage.DATA_SET__CACHE_FOLDER:
 				return getCacheFolder();
 			case DataPackage.DATA_SET__CACHE_FILE_ATTACHEMENTS:
@@ -790,17 +769,15 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				// directly working with the list cause getter returns copy 
-				createItemsListIfNeeded();
-				items.clear();
-				items.addAll((Collection<? extends Item>)newValue);
-				itemsCopyOutOfDate = true;
+				getItems().clear();
+				getItems().addAll((Collection<? extends Item>)newValue);
 				return;
 			case DataPackage.DATA_SET__CACHE_FOLDER:
 				setCacheFolder((String)newValue);
@@ -840,15 +817,13 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case DataPackage.DATA_SET__ITEMS:
-				// directly working with the list cause getter returns copy 
-				createItemsListIfNeeded();
-				items.clear();
-				itemsCopyOutOfDate = true;
+				getItems().clear();
 				return;
 			case DataPackage.DATA_SET__CACHE_FOLDER:
 				setCacheFolder(CACHE_FOLDER_EDEFAULT);
@@ -7215,22 +7190,11 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 			resource.getContents().add(item);
 		}
 
-		// create items list if not created before
-		createItemsListIfNeeded();
-		
 		// add only valid items to data set
-		items.add(item);
+		// TODO if getItems will be extended to deliver only copies this must be adapted
+		getItems().add(item);
 
 		return item;
-	}
-
-	/**
-	 * Creates the items list if needed
-	 */
-	private void createItemsListIfNeeded() {
-		if (items == null) {
-			items = new EObjectContainmentWithInverseEList<Item>(Item.class, this, DataPackage.DATA_SET__ITEMS, DataPackage.ITEM__DATA_SET);
-		}
 	}
 
 	/**
@@ -7603,7 +7567,6 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 		
 		if(notification.getFeatureID(DataSet.class) == DataPackage.DATA_SET__ITEMS)
 		{
-			this.itemsCopyOutOfDate  = true;
 			
 			if(notification.getEventType() == Notification.REMOVE && notification.getOldValue() != null) 
 			{
