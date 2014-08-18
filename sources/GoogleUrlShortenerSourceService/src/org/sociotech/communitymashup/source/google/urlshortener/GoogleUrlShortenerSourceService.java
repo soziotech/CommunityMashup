@@ -248,8 +248,8 @@ public class GoogleUrlShortenerSourceService extends SourceServiceFacadeImpl
 				expirationTime = System.currentTimeMillis() + 1000 * googleToken.getExpiresInSeconds();
 
 				// store access token
-				
-				source.addProperty(GoogleUrlShortenerProperties.ACCESS_TOKEN_PROPERTY, googleToken.getAccessToken());
+				accessToken = googleToken.getAccessToken();
+				source.addProperty(GoogleUrlShortenerProperties.ACCESS_TOKEN_PROPERTY, accessToken);
 				
 				// store access token expiration date
 				source.addProperty(GoogleUrlShortenerProperties.ACCESS_TOKEN_EXPIRATION_PROPERTY, "" + expirationTime);
