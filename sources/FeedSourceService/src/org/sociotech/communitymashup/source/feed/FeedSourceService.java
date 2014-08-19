@@ -106,7 +106,13 @@ public class FeedSourceService extends SourceServiceFacadeImpl {
 		super.updateDataSet();
 		
 		// get url from property and load the feed
-		getAndAddFeed(source.getPropertyValue(FeedProperties.FEED_URL_PROPERTY), source.getPropertyValue(FeedProperties.FEED_ENTRY_METATAG_PROPERTY));
+		try {
+			getAndAddFeed(source.getPropertyValue(FeedProperties.FEED_URL_PROPERTY), source.getPropertyValue(FeedProperties.FEED_ENTRY_METATAG_PROPERTY));
+		} catch (Exception e) {
+			log("Got exception " + e.getMessage() + " during feed update. Retrying next time.", LogService.LOG_WARNING);
+			return;
+		}
+		
 	}
 
 
