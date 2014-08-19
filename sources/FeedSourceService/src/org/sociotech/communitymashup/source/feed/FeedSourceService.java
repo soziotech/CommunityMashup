@@ -73,7 +73,8 @@ public class FeedSourceService extends SourceServiceFacadeImpl {
 			transformation = new FeedTransformation(this);
 	
 			// set transformation properties
-			transformation.setFirstCategoryIsCategory(source.isPropertyTrue(FeedProperties.SET_FIRST_CATEGORY_PROPERTY));
+			transformation.setFirstCategoryIsCategory(source.isPropertyTrueElseDefault(FeedProperties.SET_FIRST_CATEGORY_PROPERTY, FeedProperties.SET_FIRST_CATEGORY_DEFAULT));
+			transformation.setFirstCategoryIsTag(source.isPropertyTrueElseDefault(FeedProperties.SET_FIRST_CATEGORY_AS_TAG_PROPERTY, FeedProperties.SET_FIRST_CATEGORY_AS_TAG_DEFAULT));
 			transformation.setAddOnlyFirstImage(source.isPropertyTrue(FeedProperties.ADD_ONLY_FIRST_IMAGE_PROPERTY));
 		}
 		

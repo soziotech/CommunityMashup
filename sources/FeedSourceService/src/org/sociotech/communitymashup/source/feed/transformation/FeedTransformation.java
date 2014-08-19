@@ -41,12 +41,14 @@ public class FeedTransformation {
 	private SourceServiceFacadeImpl sourceService;
 
 	private boolean firstCategoryIsCategory = false;
+	private boolean firstCategoryIsTag = false;
 	private boolean addOnlyFirstImage = false;
 	
 	/**
 	 * If set to a date, all entries older than the date will be skipped
 	 */
 	private Date skipOlderThan = null;
+
 	
 	/**
 	 * Creates a new feed transformation using the give source service for adding items and logging.
@@ -281,8 +283,13 @@ public class FeedTransformation {
 			{
 				// first category is a category
 				content.categorize(category.getName());
-				first = false;
+				
 			}
+			if(!firstCategoryIsTag && first) {
+				continue;
+			}
+			
+			first = false;
 			
 			// others are tags
 			content.tag(category.getName());
@@ -338,6 +345,13 @@ public class FeedTransformation {
 		this.firstCategoryIsCategory = firstCategoryIsCategory;
 	}
 
+	/**
+	 * @param firstCategoryIsTag the firstCategoryIsTag to set
+	 */
+	public void setFirstCategoryIsTag(boolean firstCategoryIsTag) {
+		this.firstCategoryIsTag = firstCategoryIsTag;
+	}
+	
 	/**
 	 * @return the addOnlyFirstImage
 	 */

@@ -34,6 +34,13 @@ public class FeedProperties {
 	public static final String SET_FIRST_CATEGORY_DEFAULT = "false";
 	
 	/**
+	 * This Property determines if the first category in every feed entry should be set as
+	 * CommunityMashup tag. All other categories will be set as tags.
+	 */
+	public static final String SET_FIRST_CATEGORY_AS_TAG_PROPERTY = "setFirstCategoryAsTag";
+	public static final String SET_FIRST_CATEGORY_AS_TAG_DEFAULT  = "false";
+	
+	/**
 	 * If set to true a deep cleanup of the xml input before parsing is done. Use this only
 	 * when you experience problems with certain invalid feeds.
 	 */
