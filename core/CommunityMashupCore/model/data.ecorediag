@@ -43,7 +43,7 @@
         <element xmi:type="ecore:EAttribute" href="data.ecore#//InformationObject/name"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_PMrmkfcNEd-xmIrDGXC3zw"/>
       </children>
-      <styles xmi:type="notation:DrawerStyle" xmi:id="_489YZOfzEd-Ooq0ahCHAuQ"/>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_489YZOfzEd-Ooq0ahCHAuQ" collapsed="true"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_489YZefzEd-Ooq0ahCHAuQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_489YZufzEd-Ooq0ahCHAuQ"/>
     </children>
@@ -1167,10 +1167,10 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_2AeaQPuVEd-kgaAPraG6GQ" type="3002" source="_JlQAsPiREd-xmIrDGXC3zw" target="_489YbefzEd-Ooq0ahCHAuQ">
     <children xmi:type="notation:Node" xmi:id="_2Ag2gPuVEd-kgaAPraG6GQ" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_2Ag2gfuVEd-kgaAPraG6GQ" x="25" y="34"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_2Ag2gfuVEd-kgaAPraG6GQ" x="108" y="36"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_2Ag2gvuVEd-kgaAPraG6GQ" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_2Ag2g_uVEd-kgaAPraG6GQ" x="37" y="13"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_2Ag2g_uVEd-kgaAPraG6GQ" x="120" y="15"/>
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_2AeaQfuVEd-kgaAPraG6GQ" routing="Rectilinear" lineColor="26041"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_2AeaQvuVEd-kgaAPraG6GQ" fontName="Lucida Grande" fontHeight="10"/>

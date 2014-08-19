@@ -485,9 +485,15 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 	 * <!-- end-user-doc -->
 	 */
 	public Document attachDocument(String fileUrl) {
-		if(fileUrl == null || fileUrl.equals(""))
-		{
+		if(fileUrl == null || fileUrl.equals("")) {
 			return null;
+		}
+		
+		for(Document document : this.getDocuments()) {
+			if(document.getFileUrl() != null && document.getFileUrl().equals(fileUrl)) {
+				// return existing document
+				return document;
+			}
 		}
 		
 		DataFactory dataFactory = DataPackage.eINSTANCE.getDataFactory();
@@ -497,8 +503,7 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 		
 		// add it to the data set
 		DataSet dataSet = this.getDataSet();
-		if(dataSet != null)
-		{
+		if(dataSet != null) {
 			dataSet.add(document);
 		}
 		
