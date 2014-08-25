@@ -1946,7 +1946,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 */
 	public Identifier getIdentifierWithKeyValue(String key, String value) {
 		
-		EList<Item> allItems = getItems();
+		List<Item> allItems = new LinkedList<Item>(this.getItems());
 		
 		if(allItems == null || key == null || key.isEmpty() || value == null || value.isEmpty()) {
 			return null;
