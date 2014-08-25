@@ -6289,27 +6289,19 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * <!-- end-user-doc -->
 	 */
 	public MetaTag getMetaTag(String name) {
-		if(name == null)
-		{
+		
+		List<Item> allItems = new LinkedList<Item>(this.getItems());
+		
+		if(allItems == null || name == null || name.isEmpty()) {
 			return null;
-		}
+		} 
+
 		
-		// create case sensitive string comparison condition
-		StringValue stringValueCondition = new StringValue(name, true);
-		
-		// create a condition that every item of type MetaTag matches
-		EObjectCondition isMetaTagCondition = MetaTag.isTypeCondition;
-		
-		EObjectAttributeValueCondition valueEqualCondition = new EObjectAttributeValueCondition(DataPackage.eINSTANCE.getMetaTag_Name(), stringValueCondition);
-		
-		// query results matching both condition (and)
-		IQueryResult result = getItemsMatchingCondition(isMetaTagCondition.AND(valueEqualCondition));
-		
-		if(result != null && result.iterator().hasNext())
-		{
-			// There should be exactly one tag, return the first in error case
-			return (MetaTag)result.iterator().next();
-		}
+		for(Item item : allItems) {
+			if(item instanceof MetaTag && name.equals(((MetaTag) item).getName())) {
+				return (MetaTag) item;
+			}
+	    }
 		
 		return null;
 	}
