@@ -91,6 +91,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.impl.AttachmentImpl#getFileExtension <em>File Extension</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.AttachmentImpl#getFileIdentifier <em>File Identifier</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.impl.AttachmentImpl#getCachedFileName <em>Cached File Name</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.impl.AttachmentImpl#getNoCache <em>No Cache</em>}</li>
  * </ul>
  * </p>
  *
@@ -210,6 +211,25 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	protected String cachedFileName = CACHED_FILE_NAME_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getNoCache() <em>No Cache</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNoCache()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean NO_CACHE_EDEFAULT = Boolean.FALSE;
+	/**
+	 * The cached value of the '{@link #getNoCache() <em>No Cache</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNoCache()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean noCache = NO_CACHE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -318,7 +338,7 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 			return null;
 		}
 		
-		if(dataSet.getCacheFileAttachements() == false && !getCachedOnly())	{
+		if((!dataSet.getCacheFileAttachements() || this.getNoCache()) && !getCachedOnly())	{
 			// caching disabled
 			return null;
 		}
@@ -494,6 +514,27 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getNoCache() {
+		return noCache;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNoCache(Boolean newNoCache) {
+		Boolean oldNoCache = noCache;
+		noCache = newNoCache;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.ATTACHMENT__NO_CACHE, oldNoCache, noCache));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public String getOriginalFileUrl() {
 		return fileUrl;
@@ -554,6 +595,8 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 				return getFileIdentifier();
 			case DataPackage.ATTACHMENT__CACHED_FILE_NAME:
 				return getCachedFileName();
+			case DataPackage.ATTACHMENT__NO_CACHE:
+				return getNoCache();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -580,6 +623,9 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 				return;
 			case DataPackage.ATTACHMENT__CACHED_FILE_NAME:
 				setCachedFileName((String)newValue);
+				return;
+			case DataPackage.ATTACHMENT__NO_CACHE:
+				setNoCache((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -608,6 +654,9 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 			case DataPackage.ATTACHMENT__CACHED_FILE_NAME:
 				setCachedFileName(CACHED_FILE_NAME_EDEFAULT);
 				return;
+			case DataPackage.ATTACHMENT__NO_CACHE:
+				setNoCache(NO_CACHE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -632,6 +681,8 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 				return FILE_IDENTIFIER_EDEFAULT == null ? fileIdentifier != null : !FILE_IDENTIFIER_EDEFAULT.equals(fileIdentifier);
 			case DataPackage.ATTACHMENT__CACHED_FILE_NAME:
 				return CACHED_FILE_NAME_EDEFAULT == null ? cachedFileName != null : !CACHED_FILE_NAME_EDEFAULT.equals(cachedFileName);
+			case DataPackage.ATTACHMENT__NO_CACHE:
+				return NO_CACHE_EDEFAULT == null ? noCache != null : !NO_CACHE_EDEFAULT.equals(noCache);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -672,6 +723,8 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		result.append(fileIdentifier);
 		result.append(", cachedFileName: ");
 		result.append(cachedFileName);
+		result.append(", noCache: ");
+		result.append(noCache);
 		result.append(')');
 		return result.toString();
 	}
@@ -708,7 +761,9 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		if ( featureName.equalsIgnoreCase("fileIdentifier") )
 			return this.getFileIdentifier();		
 		if ( featureName.equalsIgnoreCase("cachedFileName") )
-			return this.getCachedFileName();			
+			return this.getCachedFileName();		
+		if ( featureName.equalsIgnoreCase("noCache") )
+			return this.getNoCache();			
 		return super.getFeature(featureName); 
 	}
 
@@ -773,6 +828,20 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 					throw new WrongArgException("Attachment.setFeature", "java.lang.String",value.getClass().getName());
 				}
 				this.setCachedFileName(fcachedFileName);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("noCache") ) {
+				java.lang.Boolean fnoCache = null;
+				try {
+					try {
+						fnoCache = (java.lang.Boolean)(RestUtil.fromInput(value));
+					} catch (ClassNotFoundException e) {
+						fnoCache = (java.lang.Boolean)value;
+					}
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Attachment.setFeature", "java.lang.Boolean",value.getClass().getName());
+				}
+				this.setNoCache(fnoCache);
 			return this;
 			}			
 		super.setFeature(featureName, value);

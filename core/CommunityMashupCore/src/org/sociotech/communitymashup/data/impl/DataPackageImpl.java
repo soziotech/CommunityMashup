@@ -3434,6 +3434,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAttachment_NoCache() {
+		return (EAttribute)attachmentEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getAttachment__GetOriginalFileUrl() {
 		return attachmentEClass.getEOperations().get(0);
 	}
@@ -4272,6 +4281,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(attachmentEClass, ATTACHMENT__FILE_EXTENSION);
 		createEAttribute(attachmentEClass, ATTACHMENT__FILE_IDENTIFIER);
 		createEAttribute(attachmentEClass, ATTACHMENT__CACHED_FILE_NAME);
+		createEAttribute(attachmentEClass, ATTACHMENT__NO_CACHE);
 		createEOperation(attachmentEClass, ATTACHMENT___GET_ORIGINAL_FILE_URL);
 		createEOperation(attachmentEClass, ATTACHMENT___RELOAD_FILE);
 
@@ -5159,6 +5169,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getAttachment_FileExtension(), ecorePackage.getEString(), "fileExtension", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttachment_FileIdentifier(), ecorePackage.getEString(), "fileIdentifier", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttachment_CachedFileName(), ecorePackage.getEString(), "cachedFileName", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttachment_NoCache(), ecorePackage.getEBooleanObject(), "noCache", "false", 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getAttachment__GetOriginalFileUrl(), ecorePackage.getEString(), "getOriginalFileUrl", 0, 1, IS_UNIQUE, IS_ORDERED);
 

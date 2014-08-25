@@ -10495,13 +10495,22 @@ public interface DataPackage extends EPackage {
 	int ATTACHMENT__CACHED_FILE_NAME = EXTENSION_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>No Cache</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT__NO_CACHE = EXTENSION_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Attachment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTACHMENT_FEATURE_COUNT = EXTENSION_FEATURE_COUNT + 6;
+	int ATTACHMENT_FEATURE_COUNT = EXTENSION_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -11307,6 +11316,15 @@ public interface DataPackage extends EPackage {
 	int IMAGE__CACHED_FILE_NAME = ATTACHMENT__CACHED_FILE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>No Cache</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__NO_CACHE = ATTACHMENT__NO_CACHE;
+
+	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11720,6 +11738,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENT__CACHED_FILE_NAME = ATTACHMENT__CACHED_FILE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>No Cache</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__NO_CACHE = ATTACHMENT__NO_CACHE;
 
 	/**
 	 * The number of structural features of the '<em>Document</em>' class.
@@ -13203,6 +13230,15 @@ public interface DataPackage extends EPackage {
 	int TRANSFORMATION__CACHED_FILE_NAME = ATTACHMENT__CACHED_FILE_NAME;
 
 	/**
+	 * The feature id for the '<em><b>No Cache</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__NO_CACHE = ATTACHMENT__NO_CACHE;
+
+	/**
 	 * The feature id for the '<em><b>Transformed</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13608,6 +13644,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int VIDEO__CACHED_FILE_NAME = ATTACHMENT__CACHED_FILE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>No Cache</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO__NO_CACHE = ATTACHMENT__NO_CACHE;
 
 	/**
 	 * The number of structural features of the '<em>Video</em>' class.
@@ -14350,6 +14395,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY__CACHED_FILE_NAME = ATTACHMENT__CACHED_FILE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>No Cache</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY__NO_CACHE = ATTACHMENT__NO_CACHE;
 
 	/**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
@@ -19475,6 +19529,17 @@ public interface DataPackage extends EPackage {
 	EAttribute getAttachment_CachedFileName();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.Attachment#getNoCache <em>No Cache</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>No Cache</em>'.
+	 * @see org.sociotech.communitymashup.data.Attachment#getNoCache()
+	 * @see #getAttachment()
+	 * @generated
+	 */
+	EAttribute getAttachment_NoCache();
+
+	/**
 	 * Returns the meta object for the '{@link org.sociotech.communitymashup.data.Attachment#getOriginalFileUrl() <em>Get Original File Url</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22783,6 +22848,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ATTACHMENT__CACHED_FILE_NAME = eINSTANCE.getAttachment_CachedFileName();
+
+		/**
+		 * The meta object literal for the '<em><b>No Cache</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATTACHMENT__NO_CACHE = eINSTANCE.getAttachment_NoCache();
 
 		/**
 		 * The meta object literal for the '<em><b>Get Original File Url</b></em>' operation.

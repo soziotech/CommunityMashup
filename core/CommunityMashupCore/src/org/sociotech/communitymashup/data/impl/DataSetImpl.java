@@ -1938,54 +1938,79 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	
 	}
 
+	
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 */
 	public Identifier getIdentifierWithKeyValue(String key, String value) {
 		
-		if(key == null || value == null)
-		{
-			return null;
-		}
+		EList<Item> allItems = getItems();
 		
-		// Check if input is defined
-		if(getItems() == null) {
+		if(allItems == null || key == null || key.isEmpty() || value == null || value.isEmpty()) {
 			return null;
-		}
-		
-		EObjectCondition oclCondition = null;
-		String oclStatement = "self.key='" + key + "' and self.value='" + value + "'";
-		try {
-			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
-																					oclStatement,
-																					DataPackageImpl.eINSTANCE.getIdentifier());		
-		}
-		catch (ParserException e) {
-			log("Malformed ocl statement: " + oclStatement, LogService.LOG_ERROR);
-			return null;
-		}
-	
-		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItems(), oclCondition.AND(Identifier.isTypeCondition));
+		} 
 
-		if(result == null) {
-			return null;
-		}
 		
-		// results are only Identifiers
-		@SuppressWarnings("unchecked")
-		EList<Identifier> objects = new BasicEList<Identifier>((Collection<? extends Identifier>) result.getEObjects());
+		for(Item item : allItems) {
+			if(item instanceof Identifier && key.equals(((Identifier) item).getKey()) && value.equals(((Identifier) item).getValue())) {
+				return (Identifier) item;
+			}
+	    }
 		
-		if(objects.isEmpty())
-		{
-			return null;
-		}
-		
-		// return first one
-		// there should be only one
-		return objects.get(0);	
+		return null;
 	
 	}
+	
+//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 */
+//	public Identifier getIdentifierWithKeyValue(String key, String value) {
+//		
+//		if(key == null || value == null)
+//		{
+//			return null;
+//		}
+//		
+//		// Check if input is defined
+//		if(getItems() == null) {
+//			return null;
+//		}
+//		
+//		EObjectCondition oclCondition = null;
+//		String oclStatement = "self.key='" + key + "' and self.value='" + value + "'";
+//		try {
+//			oclCondition = new BooleanOCLCondition<EClassifier, EClass, EObject>( 	getOclEnvironment(),
+//																					oclStatement,
+//																					DataPackageImpl.eINSTANCE.getIdentifier());		
+//		}
+//		catch (ParserException e) {
+//			log("Malformed ocl statement: " + oclStatement, LogService.LOG_ERROR);
+//			return null;
+//		}
+//	
+//		IQueryResult result = DataPackageImpl.filterItemsMatchingCondition(getItems(), oclCondition.AND(Identifier.isTypeCondition));
+//
+//		if(result == null) {
+//			return null;
+//		}
+//		
+//		// results are only Identifiers
+//		@SuppressWarnings("unchecked")
+//		EList<Identifier> objects = new BasicEList<Identifier>((Collection<? extends Identifier>) result.getEObjects());
+//		
+//		if(objects.isEmpty())
+//		{
+//			return null;
+//		}
+//		
+//		// return first one
+//		// there should be only one
+//		return objects.get(0);	
+//	
+//	}
 
 	/**
 	 * <!-- begin-user-doc -->

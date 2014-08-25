@@ -39,6 +39,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.Attachment#getFileExtension <em>File Extension</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Attachment#getFileIdentifier <em>File Identifier</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Attachment#getCachedFileName <em>Cached File Name</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.Attachment#getNoCache <em>No Cache</em>}</li>
  * </ul>
  * </p>
  *
@@ -199,6 +200,33 @@ public interface Attachment extends Extension {
 	 * @generated
 	 */
 	void setCachedFileName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>No Cache</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>No Cache</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>No Cache</em>' attribute.
+	 * @see #setNoCache(Boolean)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getAttachment_NoCache()
+	 * @model default="false"
+	 * @generated
+	 */
+	Boolean getNoCache();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.Attachment#getNoCache <em>No Cache</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>No Cache</em>' attribute.
+	 * @see #getNoCache()
+	 * @generated
+	 */
+	void setNoCache(Boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->
