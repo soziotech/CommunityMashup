@@ -101,11 +101,12 @@ public class FeedTransformation {
 		
 		// try to parse
 		try {
-			int days = new Integer(olderThanDaysString);
+			long days = new Long(olderThanDaysString);
 			// now
 			skipOlderThan = new Date();
 			// - days (in millis)
-			skipOlderThan.setTime(skipOlderThan.getTime() - days * 24 * 60 * 60 * 1000);
+			// 24 * 60 * 60 * 1000 = 86400000
+			skipOlderThan.setTime(skipOlderThan.getTime() - days * 86400000l);
 		} catch (Exception e) {
 			skipOlderThan = null;
 			return;
