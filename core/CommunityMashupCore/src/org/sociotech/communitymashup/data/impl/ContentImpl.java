@@ -490,7 +490,7 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 		}
 		
 		for(Document document : this.getDocuments()) {
-			if(document.getFileUrl() != null && document.getFileUrl().equals(fileUrl)) {
+			if(document.getOriginalFileUrl() != null && document.getOriginalFileUrl().equals(fileUrl)) {
 				// return existing document
 				return document;
 			}
