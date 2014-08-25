@@ -166,6 +166,11 @@ public class TwitterProperties {
 	public static final String LOAD_PHOTO_TWEETS_ONLY_DEFAULT  = "false";
 	
 	/**
+	 * If specified, all tweets older than the given number of days will be skipped at loading. No deletion of old tweets.
+	 */
+	public static final String SKIP_OLDER_THAN_DAYS_PROPERTY = "skipOlderThanDays";
+	
+	/**
 	 * Key for the load direct messages property.
 	 */
 	// currently not supported due to restrictions of public applications

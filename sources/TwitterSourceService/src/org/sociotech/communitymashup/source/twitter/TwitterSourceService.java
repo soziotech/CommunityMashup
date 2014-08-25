@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,11 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 
 	private Twitter twitterAPI = null;
 	private User accountOwnerUser = null;
+	
+	/**
+	 * If set to a date, all tweets older than the date will be skipped
+	 */
+	private Date skipOlderThan = null;
 
 	/* (non-Javadoc)
 	 * @see org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl#initialize(org.sociotech.communitymashup.application.Source)
@@ -91,6 +97,9 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 				startCommandLineAuthentication();
 			}
 
+			// load the skip date if set
+			updateOlderThanDate();
+			
 			// set initialization state
 			setInitialized(initialized);
 		}
@@ -345,6 +354,9 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 	@Override
 	public void updateDataSet() {
 		super.updateDataSet();
+		
+		// update skip date
+		updateOlderThanDate();
 		
 		// updating search results
 		if (shouldSearch()) {
@@ -1238,6 +1250,11 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		}
 		String ident = tweet.getId() + "";
 
+		if(skipOlderThan != null && skipOlderThan.after(tweet.getCreatedAt())) {
+			// skip the tweet
+			return null;
+		}
+		
 		if (this.getContentWithSourceIdent(ident) != null) {
 			// status already created
 			return null;
@@ -1580,5 +1597,29 @@ public class TwitterSourceService extends SourceServiceFacadeImpl {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * Updates the date to skip old entries.
+	 */
+	private void updateOlderThanDate() {
+		String olderThanDaysString = getConfiguration().getPropertyValue(TwitterProperties.SKIP_OLDER_THAN_DAYS_PROPERTY);
+		
+		if(olderThanDaysString == null) {
+			skipOlderThan = null;
+			return;
+		}
+		
+		// try to parse
+		try {
+			long days = new Long(olderThanDaysString);
+			// now
+			skipOlderThan = new Date();
+			// - days (in millis)
+			// 24 * 60 * 60 * 1000 = 86400000
+			skipOlderThan.setTime(skipOlderThan.getTime() - days * 86400000l);
+		} catch (Exception e) {
+			skipOlderThan = null;
+			return;
+		}	
+	}
 }
