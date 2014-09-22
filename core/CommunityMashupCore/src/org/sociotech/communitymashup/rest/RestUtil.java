@@ -254,9 +254,18 @@ public class RestUtil {
 			return o;
 		}
 		
-		if(rc.getCommand().equalsIgnoreCase("clear")) {
-				list.clear();
-				return null;	
+		if(rc.getCommand().equalsIgnoreCase("delete")) {
+			// delete every item in the list
+			List<Item> deletetionList = new LinkedList<Item>();
+			for(Object object : list) {
+				if(object instanceof Item) {
+					deletetionList.add((Item) object);
+				}
+			}
+			for(Item item : deletetionList) {
+				item.delete();
+			}
+			return deletetionList.size();	
 		}
 		else if(rc.getCommand().equalsIgnoreCase("size")) {
 			// return size of list
