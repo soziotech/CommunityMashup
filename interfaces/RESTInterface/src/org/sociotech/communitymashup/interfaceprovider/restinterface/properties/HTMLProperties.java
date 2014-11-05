@@ -39,6 +39,12 @@ public class HTMLProperties {
 	public static final String DEFAULT_WRAP_PROPERTY_DEFAULT = "true";
 	
 	/**
+	 * The result mime type when using html template interface
+	 */
+	public static final String TEMPLATE_MIME_TYPE_PROPERTY = "templateMimeType";
+	public static final String TEMPLATE_MIME_TYPE_DEFAULT  = "text/html";
+	
+	/**
 	 * Default string properties for output messages in html.
 	 */
 	public static final String STRING_NO_OBJECTS = "No Objects.";

@@ -203,6 +203,11 @@ public class RESTServlet extends HttpServlet {
 	 */
 	private boolean writeZipContentLength;
 
+	/**
+	 * The mime type when using the html template rest interface
+	 */
+	private String templateMimeType;
+
 	// Serialize Dates in ISO 8601
 	private static SimpleDateFormat sdf = new SimpleDateFormat(
 			"yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -273,6 +278,7 @@ public class RESTServlet extends HttpServlet {
 			}
 			fmParser.setDefaultWrap(defaultWrap);
 			
+			templateMimeType = configuration.getPropertyValueElseDefault(HTMLProperties.TEMPLATE_MIME_TYPE_PROPERTY, HTMLProperties.TEMPLATE_MIME_TYPE_DEFAULT);
 		}
 	}
 
@@ -913,7 +919,7 @@ public class RESTServlet extends HttpServlet {
 		}
 		else if(type == TYPE_HTML)
 		{
-			contentType = "text/html";
+			contentType = templateMimeType;
 			
 			// extract template and wrap parameters from url
 			String htmlTemplate = extractHtmlTemplate(request);
