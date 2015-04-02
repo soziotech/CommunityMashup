@@ -248,7 +248,7 @@ public class MendeleyAPIWrapper {
 	 * @return The group members in the container object with roles.
 	 */
 	public MendeleyGroupMembersContainer getUsersGroupMembers(String groupId) {
-		return unmarshallAndReturn(MendeleyGroupMembersContainer.class, doGet(String.format(MendeleyAPIUrls.GET_USERS_GROUPS_PEOPLE, groupId)));
+		return unmarshallAndReturn(MendeleyGroupMembersContainer.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_PEOPLE, groupId)));
 	}
 	
 	/**
@@ -259,7 +259,7 @@ public class MendeleyAPIWrapper {
 	 * @return The group members in the container object with roles.
 	 */
 	public MendeleyGroupMembersContainer getPublicGroupMembers(String groupId) {
-		return unmarshallAndReturn(MendeleyGroupMembersContainer.class, doGet(String.format(MendeleyAPIUrls.GET_PUBLIC_GROUP_PEOPLE, groupId)));
+		return unmarshallAndReturn(MendeleyGroupMembersContainer.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_PEOPLE, groupId)));
 	}
 	/**
 	 * Returns the detailed document for the given document id.
@@ -279,7 +279,7 @@ public class MendeleyAPIWrapper {
 	 * @return The detailed document.
 	 */
 	public MendeleyDocumentDetails getGroupDocumentDetails(String documentId, String groupId) {
-		return unmarshallAndReturn(MendeleyDocumentDetails.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_DOCUMENT_DETAILS, groupId, documentId)));
+		return unmarshallAndReturn(MendeleyDocumentDetails.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_DOCUMENTS, groupId, documentId)));
 	}
 
 	/**
@@ -299,7 +299,7 @@ public class MendeleyAPIWrapper {
 	 * @return A page result containing document details.
 	 */
 	public MendeleyPublicGroupWithDocumentDetailsPage getPublicGroupWithDocumentDetails(String groupId) {
-		return unmarshallAndReturn(MendeleyPublicGroupWithDocumentDetailsPage.class, doGet(String.format(MendeleyAPIUrls.GET_PUBLIC_GROUP_DOCUMENTS_WITH_DETAILS, groupId)));
+		return unmarshallAndReturn(MendeleyPublicGroupWithDocumentDetailsPage.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_DOCUMENTS, groupId)));
 	}
 	
 	/**
@@ -309,7 +309,7 @@ public class MendeleyAPIWrapper {
 	 * @return Public group details.
 	 */
 	public MendeleyPublicGroupDetails getPublicGroupDetails(String groupId) {
-		return unmarshallAndReturn(MendeleyPublicGroupDetails.class, doGet(String.format(MendeleyAPIUrls.GET_PUBLIC_GROUP_DETAILS, groupId)));
+		return unmarshallAndReturn(MendeleyPublicGroupDetails.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_DETAILS, groupId)));
 	}
 	
 	/**
