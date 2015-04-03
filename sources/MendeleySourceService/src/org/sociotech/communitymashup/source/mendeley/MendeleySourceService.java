@@ -18,15 +18,16 @@ import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.application.Property;
 import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.Organisation;
 import org.sociotech.communitymashup.data.Person;
 import org.sociotech.communitymashup.source.authorization.OAuthAuthorizationRegistrator;
 import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.MendeleyAPIWrapper;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyDocumentDetails;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyProfile;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyPublicGroupDetails;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyUsersGroup;
 import org.sociotech.communitymashup.source.mendeley.authorization.MendeleyOAuth20AuthorizationServlet;
+import org.sociotech.communitymashup.source.mendeley.meta.MendeleyTags;
 import org.sociotech.communitymashup.source.mendeley.oauth20.MendeleyOAuth20AccessToken;
 import org.sociotech.communitymashup.source.mendeley.properties.MendeleyProperties;
 import org.sociotech.communitymashup.source.mendeley.transformation.MendeleyTransformation;
@@ -408,7 +409,10 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 				log("Skipping private group " + groupName, LogService.LOG_DEBUG);
 				continue;
 			}
-			transformation.createGroup(group);
+			Organisation groupOrg = transformation.createGroup(group);
+			if(groupOrg != null) {
+				groupOrg.metaTag(MendeleyTags.MENDELEY_USERS_GROUP);
+			}
 		}
 	}
 	
@@ -417,7 +421,7 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 	 */
 	private void createPublicGroups() {
 		
-		List<MendeleyPublicGroupDetails> groups = new LinkedList<MendeleyPublicGroupDetails>();
+		List<MendeleyUsersGroup> groups = new LinkedList<MendeleyUsersGroup>();
 		
 		String publicGroupIds = source.getPropertyValue(MendeleyProperties.PUBLIC_GROUP_IDS_PROPERTY);
 		
@@ -434,8 +438,10 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 			groupId = groupId.trim();
 			try{
 				log("Getting details for public group with id: " + groupId, LogService.LOG_DEBUG);
-				MendeleyPublicGroupDetails group = mendeleyApi.getPublicGroupDetails(groupId);
-				groups.add(group);
+				MendeleyUsersGroup group = mendeleyApi.getPublicGroupDetails(groupId);
+				if(group != null) {
+					groups.add(group);
+				}
 			}
 			catch (Exception e)
 			{
@@ -444,8 +450,11 @@ public class MendeleySourceService extends SourceServiceFacadeImpl {
 		}
 		
 		// create CommunityMashup representation for every group
-		for(MendeleyPublicGroupDetails group : groups) {
-			transformation.createPublicGroup(group);
+		for(MendeleyUsersGroup group : groups) {
+			Organisation groupOrg = transformation.createGroup(group);
+			if(groupOrg != null) {
+				groupOrg.metaTag(MendeleyTags.MENDELEY_PUBLIC_GROUP);
+			}
 		}
 	}
 

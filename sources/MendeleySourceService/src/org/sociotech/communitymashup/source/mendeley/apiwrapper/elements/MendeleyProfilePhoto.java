@@ -11,37 +11,39 @@
 package org.sociotech.communitymashup.source.mendeley.apiwrapper.elements;
 
 /**
- * A member in public or private group
+ * A mendeley profile photo.
  * 
  * @author Peter Lachenmaier
  */
-public class MendeleyGroupMember extends MendeleyEntity {
+public class MendeleyProfilePhoto extends MendeleyEntity {
 	
 	/**
-	 * Generate serial version uid
+	 * Generated serial version uid
 	 */
-	private static final long serialVersionUID = -2775040931032885795L;
+	private static final long serialVersionUID = -2990967222602822380L;
 	
-	private String profile_id;
-	private String joined;
-	private String role;
+	private String original;
+	private String standard;
+	private String square;
 	
-	public String getProfile_id() {
-		return profile_id;
+	public String getOriginal() {
+		return original;
 	}
-	public void setProfile_id(String profile_id) {
-		this.profile_id = profile_id;
+	public void setOriginal(String original) {
+		this.original = original;
 	}
-	public String getJoined() {
-		return joined;
+	public String getStandard() {
+		return standard;
 	}
-	public void setJoined(String joined) {
-		this.joined = joined;
+	public void setStandard(String standard) {
+		this.standard = standard;
 	}
-	public String getRole() {
-		return role;
+	public String getSquare() {
+		return square;
 	}
-	public void setRole(String role) {
-		this.role = role;
-	}	
+	public void setSquare(String square) {
+		this.square = square;
+	}
+	
+	
 }

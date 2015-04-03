@@ -21,11 +21,8 @@ import org.scribe.model.Verb;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.constants.MendeleyAPIUrls;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyDocumentDetails;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyFileAttachement;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyGroupDocumentsPage;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyGroupMembersContainer;
+import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyGroupMember;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyProfile;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyPublicGroupDetails;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyPublicGroupWithDocumentDetailsPage;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyUsersGroup;
 import org.sociotech.communitymashup.source.mendeley.oauth20.MendeleyOAuth20AccessToken;
 
@@ -182,7 +179,18 @@ public class MendeleyAPIWrapper {
 	 * @return The profile of the authenticated user
 	 */
 	public MendeleyProfile getUserProfile() {
-		return unmarshallAndReturn(MendeleyProfile.class, doGet(MendeleyAPIUrls.GET_USER_PROFILE));
+		return unmarshallAndReturn(MendeleyProfile.class, doGet(MendeleyAPIUrls.GET_AUTHENTICATED_USER_PROFILE));
+	}
+	
+	/**
+	 * Returns the profile of the user with the given profile id.
+	
+	 * @param profileId Profile id of the requested user.
+	 * 
+	 * @return The profile of the user
+	 */
+	public MendeleyProfile getUserProfile(String profileId) {
+		return unmarshallAndReturn(MendeleyProfile.class, doGet(String.format(MendeleyAPIUrls.GET_USER_PROFILE, profileId)));
 	}
 	
 	/**
@@ -191,44 +199,44 @@ public class MendeleyAPIWrapper {
 	 * @return All publications authored by the authenticated user.
 	 */
 	public List<MendeleyDocumentDetails> getAuthoredPublications() {
-		 // add items parameter to get all publications without paging 
-		 String url = MendeleyAPIUrls.GET_USER_AUTHORED + "?items=100000";
 		
-		 // get all ids		 
-		 JsonObject json = parser.parse(doGet(url)).getAsJsonObject();
-	      
-		 // new list for all documents
-	      List<MendeleyDocumentDetails> documents = new LinkedList<MendeleyDocumentDetails>();
-	        
-	      JsonElement ids = json.get("document_ids");
-	      if(ids == null || !ids.isJsonArray())
-	      {
-	    	  return documents;
-	      }
-
-	      JsonArray idArray = ids.getAsJsonArray();
-	        
-	      // get document details for every document
-	      for(int i = 0; i < idArray.size(); i++)
-	      {
-	    	  String documentId = idArray.get(i).getAsString();
-	    	  MendeleyDocumentDetails doc = null;
-	    	  try {
-	    		  doc = getAuthoredDocumentDetails(documentId);
-	    	  }
-	    	  catch (Exception e) {
-	    		  // do nothing
-	    		  //e.printStackTrace();
-	    		  //System.out.println("Error while geting group document details: " + e.getMessage());
-	    		  continue;
-	    	  }
-	    	  
-	    	  // add document to list
-	    	  documents.add(doc);
-	      }
-
-	      // return all document details
-	      return documents;
+		 return unmarshallAndReturnList(MendeleyDocumentDetails.class, doGet(MendeleyAPIUrls.GET_USER_AUTHORED));
+		 
+//		 // get all ids		 
+//		 JsonObject json = parser.parse(doGet(url)).getAsJsonObject();
+//	      
+//		 // new list for all documents
+//	      List<MendeleyDocumentDetails> documents = new LinkedList<MendeleyDocumentDetails>();
+//	        
+//	      JsonElement ids = json.get("document_ids");
+//	      if(ids == null || !ids.isJsonArray())
+//	      {
+//	    	  return documents;
+//	      }
+//
+//	      JsonArray idArray = ids.getAsJsonArray();
+//	        
+//	      // get document details for every document
+//	      for(int i = 0; i < idArray.size(); i++)
+//	      {
+//	    	  String documentId = idArray.get(i).getAsString();
+//	    	  MendeleyDocumentDetails doc = null;
+//	    	  try {
+//	    		  doc = getAuthoredDocumentDetails(documentId);
+//	    	  }
+//	    	  catch (Exception e) {
+//	    		  // do nothing
+//	    		  //e.printStackTrace();
+//	    		  //System.out.println("Error while geting group document details: " + e.getMessage());
+//	    		  continue;
+//	    	  }
+//	    	  
+//	    	  // add document to list
+//	    	  documents.add(doc);
+//	      }
+//
+//	      // return all document details
+//	      return documents;
 	}
 
 	/**
@@ -241,26 +249,16 @@ public class MendeleyAPIWrapper {
 	}
 	
 	/**
-	 * Retrieves the members of the users library group identified by the given id.
+	 * Retrieves the members of the group identified by the given id.
 	 * 
-	 * @param groupId Id of the group in the users library
+	 * @param groupId Id of the group
 	 * 
-	 * @return The group members in the container object with roles.
+	 * @return The group members.
 	 */
-	public MendeleyGroupMembersContainer getUsersGroupMembers(String groupId) {
-		return unmarshallAndReturn(MendeleyGroupMembersContainer.class, doGet(String.format(MendeleyAPIUrls.GET_USERS_GROUPS_PEOPLE, groupId)));
+	public List<MendeleyGroupMember> getUsersGroupMembers(String groupId) {
+		return unmarshallAndReturnList(MendeleyGroupMember.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_PEOPLE, groupId)));
 	}
 	
-	/**
-	 * Retrieves the members of the public group identified by the given id.
-	 * 
-	 * @param groupId Id of the public group
-	 * 
-	 * @return The group members in the container object with roles.
-	 */
-	public MendeleyGroupMembersContainer getPublicGroupMembers(String groupId) {
-		return unmarshallAndReturn(MendeleyGroupMembersContainer.class, doGet(String.format(MendeleyAPIUrls.GET_PUBLIC_GROUP_PEOPLE, groupId)));
-	}
 	/**
 	 * Returns the detailed document for the given document id.
 	 * 
@@ -272,34 +270,13 @@ public class MendeleyAPIWrapper {
 	}
 
 	/**
-	 * Returns the detailed group document for the given document id.
-	 * 
-	 * @param documentId Id of the document to request details.
-	 * @param groupId Id of the document to request details.
-	 * @return The detailed document.
-	 */
-	public MendeleyDocumentDetails getGroupDocumentDetails(String documentId, String groupId) {
-		return unmarshallAndReturn(MendeleyDocumentDetails.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_DOCUMENT_DETAILS, groupId, documentId)));
-	}
-
-	/**
-	 * Returns the details for a group containing the ids of all group documents. This method tries to get everything in one call/page.
+	 * Returns the documents of the group with the given id. Currently limited to 500 documents.
 	 * 
 	 * @param groupId Id of the group
-	 * @return A page result containing document ids.
+	 * @return The documents of the group
 	 */
-	public MendeleyGroupDocumentsPage getGroupDocuments(String groupId) {
-		return unmarshallAndReturn(MendeleyGroupDocumentsPage.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_DOCUMENTS, groupId)));
-	}
-	
-	/**
-	 * Returns public group containing details of all group documents with document details. This method tries to get everything in one call/page.
-	 * 
-	 * @param groupId Id of the public group
-	 * @return A page result containing document details.
-	 */
-	public MendeleyPublicGroupWithDocumentDetailsPage getPublicGroupWithDocumentDetails(String groupId) {
-		return unmarshallAndReturn(MendeleyPublicGroupWithDocumentDetailsPage.class, doGet(String.format(MendeleyAPIUrls.GET_PUBLIC_GROUP_DOCUMENTS_WITH_DETAILS, groupId)));
+	public List<MendeleyDocumentDetails> getGroupDocuments(String groupId) {
+		return unmarshallAndReturnList(MendeleyDocumentDetails.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_DOCUMENTS, groupId)));
 	}
 	
 	/**
@@ -308,8 +285,8 @@ public class MendeleyAPIWrapper {
 	 * @param groupId Id of the public group
 	 * @return Public group details.
 	 */
-	public MendeleyPublicGroupDetails getPublicGroupDetails(String groupId) {
-		return unmarshallAndReturn(MendeleyPublicGroupDetails.class, doGet(String.format(MendeleyAPIUrls.GET_PUBLIC_GROUP_DETAILS, groupId)));
+	public MendeleyUsersGroup getPublicGroupDetails(String groupId) {
+		return unmarshallAndReturn(MendeleyUsersGroup.class, doGet(String.format(MendeleyAPIUrls.GET_GROUP_DETAILS, groupId)));
 	}
 	
 	/**

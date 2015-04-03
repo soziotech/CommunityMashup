@@ -25,17 +25,11 @@ import org.sociotech.communitymashup.data.WebSite;
 import org.sociotech.communitymashup.source.mendeley.MendeleySourceService;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.MendeleyAPIWrapper;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyAuthor;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyContactSection;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyDocumentDetails;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyEditor;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyFileAttachement;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyGroupDocumentsPage;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyGroupMember;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyGroupMembersContainer;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyProfile;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyPublicGroupDetails;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyPublicGroupWithDocumentDetailsPage;
-import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyUser;
 import org.sociotech.communitymashup.source.mendeley.apiwrapper.elements.MendeleyUsersGroup;
 import org.sociotech.communitymashup.source.mendeley.meta.MendeleyTags;
 import org.sociotech.communitymashup.source.mendeley.properties.MendeleyProperties;
@@ -82,22 +76,13 @@ public class MendeleyTransformation {
 	 */
 	public Person createPerson(MendeleyProfile profile) {
 			
-		if(profile == null || profile.getMain() == null)
+		if(profile == null)
 		{
-			// no main information
+			// no profile
 			return null;
 		}
 
-		MendeleyUser user = profile.getMain();
-
-		String name = user.getName();
-		if(name == null || name.isEmpty())
-		{
-			// at least a name is required
-			return null;
-		}
-
-		String id = user.getProfile_id();
+		String id = profile.getId();
 		
 		if(id != null)
 		{
@@ -115,14 +100,15 @@ public class MendeleyTransformation {
 		Person profilePerson = factory.createPerson();
 
 		// set the name
-		profilePerson.setName(name);
+		profilePerson.setFirstname(profile.getFirst_name());
+		profilePerson.setLastname(profile.getLast_name());
 
 		// and add it
 		profilePerson = source.add(profilePerson, id);
 
 		if(profilePerson == null)
 		{
-			source.log("Could not add person for mendeley user " + name, LogService.LOG_DEBUG);
+			source.log("Could not add person for mendeley user " + profile.getLast_name(), LogService.LOG_DEBUG);
 			return null;
 		}
 
@@ -132,34 +118,37 @@ public class MendeleyTransformation {
 		// add more profile informations
 
 		// tag the person with their academic status
-		String academicStatus = user.getAcademic_status();
+		String academicStatus = profile.getAcademic_status();
 		if(academicStatus != null && !academicStatus.isEmpty())
 		{
 			profilePerson.tag(academicStatus);
 		}
 
 		// tag the person with their discipline
-		String disciplineName = user.getDiscipline_name();
-		if(disciplineName != null && !disciplineName.isEmpty())
-		{
-			profilePerson.tag(disciplineName);
-		}
-
-		// add the profile image
-		String imageUrl = user.getPhoto();
-		// dont use the default awaiting.png image
-		if(imageUrl != null && !imageUrl.isEmpty() && !imageUrl.contains("awaiting.png"))
-		{
-			Image profileImage = profilePerson.attachImage(imageUrl);
-			profileImage = source.add(profileImage, "profimg_" + id);
-			if(profileImage != null)
-			{
-				profileImage.tag(MendeleyTags.MENDELEY);
+		if(profile.getDiscipline() != null) {
+			String disciplineName = profile.getDiscipline().getName();
+			if(disciplineName != null && !disciplineName.isEmpty())	{
+				profilePerson.tag(disciplineName);
 			}
 		}
-
+		
+		// add the profile image
+		if(profile.getPhoto() != null) {
+		String imageUrl = profile.getPhoto().getOriginal();
+			// dont use the default awaiting.png image
+			if(imageUrl != null && !imageUrl.isEmpty() && !imageUrl.contains("awaiting.png"))
+			{
+				Image profileImage = profilePerson.attachImage(imageUrl);
+				profileImage = source.add(profileImage, "profimg_" + id);
+				if(profileImage != null)
+				{
+					profileImage.tag(MendeleyTags.MENDELEY);
+				}
+			}
+		}
+		
 		// add the profile url as web site
-		String profileUrl = user.getUrl();
+		String profileUrl = profile.getLink();
 		if(profileUrl != null && !profileUrl.isEmpty())
 		{
 			WebSite webProfile = profilePerson.addWebSite(profileUrl);
@@ -171,29 +160,8 @@ public class MendeleyTransformation {
 			}
 		}
 
-		addContactDetails(profile, profilePerson);
-
-		return profilePerson;
-	}
-
-	/**
-	 * Adds the contact details of the given mendeley user to the given person.
-	 * 
-	 * @param mendeleyProfile Mendeley user
-	 * @param profilePerson Person to add the contact details to.
-	 */
-	private void addContactDetails(MendeleyProfile mendeleyProfile, Person profilePerson) {
-
-		if(mendeleyProfile == null || mendeleyProfile.getContact() == null)
-		{
-			// could not get contact details without profile id 
-			return;
-		}
-
-		MendeleyContactSection contact = mendeleyProfile.getContact();
-
 		// add email address
-		String emailAddress = contact.getEmail();
+		String emailAddress = profile.getEmail();
 		if(emailAddress != null && !emailAddress.isEmpty())
 		{
 			Email email = profilePerson.addEmailAddress(emailAddress);
@@ -203,20 +171,16 @@ public class MendeleyTransformation {
 				email.metaTag(MendeleyTags.MENDELEY);
 			}
 		}
-
-		// add web page
-		String url = contact.getWebpage();
-		if(url != null && !url.isEmpty())
+		
+		// add title
+		String title = profile.getTitle();
+		if(title != null && !title.isEmpty())
 		{
-			WebSite webProfile = profilePerson.addWebSite(url);
-			webProfile = source.add(webProfile);
-			if(webProfile != null)
-			{
-				webProfile.metaTag(MendeleyTags.MENDELEY);
-			}
+			profilePerson.setTitle(title);
 		}
-
-		// TODO add other contact details
+		
+		// return the completed profile
+		return profilePerson;
 	}
 
 	/**
@@ -311,8 +275,8 @@ public class MendeleyTransformation {
 			}
 		}
 		
-		// set added date as created date
-		Date addedDate = document.getAddedDate();
+		// set created date as created date
+		Date addedDate = document.getCreatedDate();
 		if(addedDate != null)
 		{
 			docContent.setCreated(addedDate);
@@ -429,6 +393,10 @@ public class MendeleyTransformation {
 		{
 			Person editorPerson = createPerson(editors.get(i), creationDate);
 	
+			if(editorPerson == null) {
+				continue;
+			}
+			
 			if(!docContent.getContributors().contains(editorPerson))
 			{
 				// editors are contributers
@@ -452,10 +420,7 @@ public class MendeleyTransformation {
 			return null;
 		}
 		
-		String firstname = author.getForename();
-		String lastname = author.getSurname();
-		
-		return createPerson(firstname, lastname, creationDate);
+		return createPerson(author.getFirst_name(), author.getLast_name(), creationDate);
 	}
 
 	/**
@@ -551,24 +516,22 @@ public class MendeleyTransformation {
 	 * @return Person representing the group member
 	 */
 	private Person createPerson(MendeleyGroupMember groupMember) {
-		Person person = factory.createPerson();
-		
-		// set the name
-		person.setName(groupMember.getName());
-		
-		// and add it
-		person = source.add(person, groupMember.getUser_id());
-		
-		if(person == null)
-		{
-			source.log("Could not add person for mendeley author " + groupMember.getName(), LogService.LOG_DEBUG);
+		if(groupMember == null || groupMember.getProfile_id() == null) {
 			return null;
 		}
 		
-		// tag the person
-		person.metaTag(MendeleyTags.MENDELEY);
+		MendeleyProfile memberProfile = null;
 		
-		return person;
+		// retrieve complete profile
+		try {
+			memberProfile = mendeleyApi.getUserProfile(groupMember.getProfile_id());
+		} catch (Exception e) {
+			source.log("Could not retrieve profile for group member " + groupMember.getProfile_id(), LogService.LOG_WARNING);
+			return null;
+		}
+		
+		// create person from profile
+		return createPerson(memberProfile);
 	}
 		
 	/**
@@ -591,7 +554,7 @@ public class MendeleyTransformation {
 	}
 
 	/**
-	 * Creates an organisation repsenting the given mendeley group. Will be skipped if set in source properties.
+	 * Creates an organisation representing the given mendeley group. Will be skipped if set in source properties.
 	 * 
 	 * @param group Mendeley group
 	 * @return Organisation representing the given mendeley group.
@@ -629,8 +592,15 @@ public class MendeleyTransformation {
 				return null;
 			}
 			
+			// add tags
+			if(group.getTags() != null) {
+				for(String tag : group.getTags()) {
+					organisation.tag(tag);
+				}
+			}
+			
 			//meta tag the organisation
-			String type = group.getType();
+			String type = group.getAccess_level();
 			if(type != null && !type.isEmpty())
 			{
 				organisation.metaTag(type);
@@ -638,189 +608,54 @@ public class MendeleyTransformation {
 			
 			organisation.metaTag(MendeleyTags.MENDELEY);
 			organisation.metaTag(MendeleyTags.MENDELEY_GROUP);
-			organisation.metaTag(MendeleyTags.MENDELEY_USERS_GROUP);
 		}
 		
 		// switch if group members should be created
 		if(source.getConfiguration().isPropertyTrueElseDefault(MendeleyProperties.CREATE_GROUP_MEMBERS_PROPERTY, MendeleyProperties.CREATE_GROUP_MEMBERS_DEFAULT)) {
 			// create persons in group
-			MendeleyGroupMembersContainer people = null; 
+			List<MendeleyGroupMember> members = null; 
 			try {
-				people = mendeleyApi.getUsersGroupMembers(group.getId());
+				members = mendeleyApi.getUsersGroupMembers(group.getId());
 			}
 			catch (Exception e) {
 				source.log("Could not get group members for group " + groupName + " due to " + e.getMessage(), LogService.LOG_WARNING);
 				return organisation;	
 			}
 
-
-			MendeleyGroupMember owner = people.getOwner();
-			if(owner != null){
-
-				// there is one owner so set him as organisation leader
-				Person ownerPerson = createPerson(owner);
-				source.log("Created leader " + ownerPerson.getName() + " of " + group.getName() + " from " + owner, LogService.LOG_DEBUG);
-				if(organisation != null && ownerPerson != null)
-				{
-					organisation.setLeader(ownerPerson);
-					// connect to keep role
-					organisation.connectToWithMetaTag(ownerPerson, MendeleyTags.GROUP_OWNER_CONNECTION);
-				}
-			}
-
-			List<MendeleyGroupMember> members = people.getMembers();
 			for(MendeleyGroupMember member : members)
 			{
 				Person memberPerson = createPerson(member);
 				source.log("Created member " + memberPerson.getName() + " of " + group.getName() + " from " + member, LogService.LOG_DEBUG);
 				if(organisation != null && memberPerson != null && !organisation.getParticipants().contains(member) && organisation.getLeader() != memberPerson)
 				{
-					organisation.getParticipants().add(memberPerson);
-					// connect to keep role
-					organisation.connectToWithMetaTag(memberPerson, MendeleyTags.GROUP_MEMBER_CONNECTION);
-				}
-			}
-
-			List<MendeleyGroupMember> admins = people.getAdmins();
-			for(MendeleyGroupMember admin : admins)
-			{
-				Person adminPerson = createPerson(admin);
-				source.log("Created admin " + adminPerson.getName() + " of " + group.getName() + " from " + admin, LogService.LOG_DEBUG);
-				if(organisation != null && adminPerson != null && !organisation.getParticipants().contains(admin) && organisation.getLeader() != adminPerson)
-				{
-					organisation.getParticipants().add(adminPerson);
-					// connect to keep role
-					organisation.connectToWithMetaTag(adminPerson, MendeleyTags.GROUP_ADMIN_CONNECTION);
+					if("owner".equals(member.getRole())) {
+						organisation.setLeader(memberPerson);
+						// connect to keep role
+						organisation.connectToWithMetaTag(memberPerson, MendeleyTags.GROUP_OWNER_CONNECTION);
+					}
+					else if("normal".equals(member.getRole())) {
+						organisation.addParticipant(memberPerson);
+						// connect to keep role
+						organisation.connectToWithMetaTag(memberPerson, MendeleyTags.GROUP_MEMBER_CONNECTION);
+					}
+					else if("admin".equals(member.getRole())) {
+						organisation.addParticipant(memberPerson);
+						// connect to keep role
+						organisation.connectToWithMetaTag(memberPerson, MendeleyTags.GROUP_ADMIN_CONNECTION);
+					}
+					
 				}
 			}
 		}
 		
 		if(source.getConfiguration().isPropertyTrue(MendeleyProperties.ADD_GROUP_DOCUMENTS_PROPERTY))
 		{
-			MendeleyGroupDocumentsPage documents = mendeleyApi.getGroupDocuments(group.getId());
+			List<MendeleyDocumentDetails> documents = mendeleyApi.getGroupDocuments(group.getId());
 			
 			if(documents != null) {
-				source.log("Got " + documents.getDocument_ids().size() + " documents for group " + groupName, LogService.LOG_DEBUG);
+				source.log("Got " + documents.size() + " documents for group " + groupName, LogService.LOG_DEBUG);
 				
-				for(String docId : documents.getDocument_ids()) {
-					// fetch details for every group document and create it
-					createDocument(mendeleyApi.getGroupDocumentDetails(docId, group.getId()), group.getId());
-				}
-			}
-		}
-		
-		return organisation;
-	}
-
-	public Organisation createPublicGroup(MendeleyPublicGroupDetails group) {
-		if(group == null)
-		{
-			return null;
-		}
-		String groupName = group.getName();
-		
-		if(groupName == null || groupName.isEmpty())
-		{
-			// at least a name is required
-			return null;
-		}
-		
-		DataFactory factory = DataFactory.eINSTANCE;
-		
-		Organisation organisation = null;
-		
-		if(source.getConfiguration().isPropertyTrueElseDefault(MendeleyProperties.CREATE_GROUP_ORGANISATIONS_PROPERTY, MendeleyProperties.CREATE_GROUP_ORGANISATIONS_DEFAULT))
-		{
-			// create new organisation as mapping for a group
-			organisation = factory.createOrganisation();
-			
-			organisation.setName(groupName);
-			
-			organisation = source.add(organisation, group.getId());
-			
-			if(organisation == null)
-			{
-				source.log("Could not add organisation for group " + groupName, LogService.LOG_WARNING);
-				return null;
-			}
-			
-			//meta tag the organisation
-			organisation.metaTag(MendeleyTags.MENDELEY);
-			organisation.metaTag(MendeleyTags.MENDELEY_GROUP);
-			organisation.metaTag(MendeleyTags.MENDELEY_PUBLIC_GROUP);
-			
-			// add group tags to organisation
-			if(group.getTags() != null) {
-				for(String tag : group.getTags()) {
-					organisation.tag(tag);
-				}
-			}
-		}
-		
-		// switch if group members should be created
-		if(source.getConfiguration().isPropertyTrueElseDefault(MendeleyProperties.CREATE_GROUP_MEMBERS_PROPERTY, MendeleyProperties.CREATE_GROUP_MEMBERS_DEFAULT))
-		{
-		
-			// create persons in group
-			MendeleyGroupMembersContainer people = null; 
-			try {
-				people = mendeleyApi.getPublicGroupMembers(group.getId());
-			}
-			catch (Exception e) {
-				source.log("Could not get group members for public group " + groupName + " due to " + e.getMessage(), LogService.LOG_WARNING);
-				return organisation;	
-			}
-			
-			
-			MendeleyGroupMember owner = people.getOwner();
-			if(owner != null){
-				
-				// there is one owner so set him as organisation leader
-				Person ownerPerson = createPerson(owner);
-				source.log("Created leader " + ownerPerson.getName() + " of " + group.getName() + " from " + owner, LogService.LOG_DEBUG);
-				if(organisation != null && ownerPerson != null)
-				{
-					organisation.setLeader(ownerPerson);
-					// connect to keep role
-					organisation.connectToWithMetaTag(ownerPerson, MendeleyTags.GROUP_OWNER_CONNECTION);
-				}
-			}
-			
-			List<MendeleyGroupMember> members = people.getMembers();
-			for(MendeleyGroupMember member : members)
-			{
-				Person memberPerson = createPerson(member);
-				source.log("Created member " + memberPerson.getName() + " of " + group.getName() + " from " + member, LogService.LOG_DEBUG);
-				if(organisation != null && memberPerson != null && !organisation.getParticipants().contains(member) && organisation.getLeader() != memberPerson)
-				{
-					organisation.getParticipants().add(memberPerson);
-					// connect to keep role
-					organisation.connectToWithMetaTag(memberPerson, MendeleyTags.GROUP_MEMBER_CONNECTION);
-				}
-			}
-			
-			List<MendeleyGroupMember> admins = people.getAdmins();
-			for(MendeleyGroupMember admin : admins)
-			{
-				Person adminPerson = createPerson(admin);
-				source.log("Created admin " + adminPerson.getName() + " of " + group.getName() + " from " + admin, LogService.LOG_DEBUG);
-				if(organisation != null && adminPerson != null && !organisation.getParticipants().contains(admin) && organisation.getLeader() != adminPerson)
-				{
-					organisation.getParticipants().add(adminPerson);
-					// connect to keep role
-					organisation.connectToWithMetaTag(adminPerson, MendeleyTags.GROUP_ADMIN_CONNECTION);
-				}
-			}
-		}
-		
-		if(source.getConfiguration().isPropertyTrue(MendeleyProperties.ADD_GROUP_DOCUMENTS_PROPERTY))
-		{
-			MendeleyPublicGroupWithDocumentDetailsPage groupDocuments = mendeleyApi.getPublicGroupWithDocumentDetails(group.getId());
-			
-			if(groupDocuments != null && groupDocuments.getDocuments() != null) {
-				source.log("Got " + groupDocuments.getDocuments().size() + " documents for group " + groupName, LogService.LOG_DEBUG);
-				
-				for(MendeleyDocumentDetails document : groupDocuments.getDocuments()) {
+				for(MendeleyDocumentDetails document : documents) {
 					createDocument(document);
 				}
 			}

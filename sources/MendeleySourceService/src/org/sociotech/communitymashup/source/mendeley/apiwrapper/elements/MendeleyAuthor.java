@@ -22,19 +22,19 @@ public class MendeleyAuthor extends MendeleyEntity {
 	 */
 	private static final long serialVersionUID = 2026989340247496726L;
 	
-	private String forename;
-	private String surname;
+	private String first_name;
+	private String last_name;
 	
-	public String getForename() {
-		return forename;
+	public String getFirst_name() {
+		return first_name;
 	}
-	public void setForename(String forename) {
-		this.forename = forename;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
-	public String getSurname() {
-		return surname;
+	public String getLast_name() {
+		return last_name;
 	}
-	public void setSurname(String surename) {
-		this.surname = surename;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 }

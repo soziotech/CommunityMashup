@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.sociotech.communitymashup.source.mendeley.apiwrapper.elements;
 
+import java.util.List;
+
 /**
  * A mendeley group in users library.
  * 
@@ -24,8 +26,15 @@ public class MendeleyUsersGroup extends MendeleyEntity {
 	
 	private String id;
 	private String name;
-	private int size;
-	private String type;
+	private String description;
+	private List<String> disciplines;
+	private List<String> tags;
+	private MendeleyProfilePhoto photo;
+	private String created;
+	private String owning_profile_id;
+	private String link;
+	private String access_level;
+	private String role;
 	
 	public String getId() {
 		return id;
@@ -39,16 +48,58 @@ public class MendeleyUsersGroup extends MendeleyEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getSize() {
-		return size;
+	public String getDescription() {
+		return description;
 	}
-	public void setSize(int size) {
-		this.size = size;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public String getType() {
-		return type;
+	public List<String> getDisciplines() {
+		return disciplines;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setDisciplines(List<String> disciplines) {
+		this.disciplines = disciplines;
+	}
+	public List<String> getTags() {
+		return tags;
+	}
+	public void setTags(List<String> tags) {
+		this.tags = tags;
+	}
+	public MendeleyProfilePhoto getPhoto() {
+		return photo;
+	}
+	public void setPhoto(MendeleyProfilePhoto photo) {
+		this.photo = photo;
+	}
+	public String getCreated() {
+		return created;
+	}
+	public void setCreated(String created) {
+		this.created = created;
+	}
+	public String getOwning_profile_id() {
+		return owning_profile_id;
+	}
+	public void setOwning_profile_id(String owning_profile_id) {
+		this.owning_profile_id = owning_profile_id;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public String getAccess_level() {
+		return access_level;
+	}
+	public void setAccess_level(String access_level) {
+		this.access_level = access_level;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 }
