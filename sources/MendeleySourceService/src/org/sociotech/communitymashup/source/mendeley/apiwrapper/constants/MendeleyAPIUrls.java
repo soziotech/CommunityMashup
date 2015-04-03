@@ -17,15 +17,15 @@ package org.sociotech.communitymashup.source.mendeley.apiwrapper.constants;
  */
 public class MendeleyAPIUrls {
 	
-	public static final String MENDELEY_BASE_URL = "https://api-oauth2.mendeley.com/oapi/";
-	public static final String TOKEN_URL 		= "https://api-oauth2.mendeley.com/oauth/token";
+	public static final String MENDELEY_BASE_URL = "https://api.mendeley.com/";
+	public static final String TOKEN_URL 		= "https://api.mendeley.com/oauth/token";
 
 	// user specific methods: http://apidocs.mendeley.com/home/user-specific-methods
 	
 	/**
 	 * Profile of the authenticated user
 	 */
-	public static final String GET_USER_PROFILE 		= MENDELEY_BASE_URL + "profiles/info/me";
+	public static final String GET_USER_PROFILE 		= MENDELEY_BASE_URL + "profiles/me";
 
 	/**
 	 * Documents authored by the authenticated user
@@ -57,14 +57,14 @@ public class MendeleyAPIUrls {
 	 * 
 	 * http://apidocs.mendeley.com/home/user-specific-methods/user-library-groups
 	 */
-	public static String GET_USERS_GROUPS 				= MENDELEY_BASE_URL + "library/groups";
+	public static String GET_USERS_GROUPS 				= MENDELEY_BASE_URL + "groups";
 	
 	/**
 	 * The members of the one users library group.
 	 * 
 	 * 1: group_id
 	 */
-	public static String GET_USERS_GROUPS_PEOPLE		= MENDELEY_BASE_URL + "library/groups/%s/people";
+	public static String GET_USERS_GROUPS_PEOPLE		= MENDELEY_BASE_URL + "groups/%s/members";
 	
 	/**
 	 * The documents of one group. Maximum of 10000 documents.
