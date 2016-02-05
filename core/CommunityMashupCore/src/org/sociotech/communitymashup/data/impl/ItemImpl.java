@@ -591,6 +591,7 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		DataSet dataSet = this.getDataSet();
 		if(dataSet == null || name == null || name.isEmpty())
 		{
+			log("MetaTag not set because object has no data set attached: " + name, LogService.LOG_WARNING);			
 			return null;
 		}
 		
