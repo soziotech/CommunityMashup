@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Peter Lachenmaier - Cooperation Systems Center Munich (CSCM).
+ * Copyright (c) 2013-2016 - Cooperation Systems Center Munich (CSCM).
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Peter Lachenmaier - Design and initial implementation
+ *     Michael Koch
  ******************************************************************************/
 package org.sociotech.communitymashup.source.feed;
 
@@ -31,7 +32,7 @@ import com.sun.syndication.io.XmlReader;
 
 
 /**
- * @author Peter Lachenmaier, Martin Burkhard
+ * @author Peter Lachenmaier, Martin Burkhard, Michael Koch
  * 
  * Main class of the Feed source service.
  */
@@ -70,12 +71,7 @@ public class FeedSourceService extends SourceServiceFacadeImpl {
 		else
 		{
 			// create new feed transformation instance
-			transformation = new FeedTransformation(this);
-	
-			// set transformation properties
-			transformation.setFirstCategoryIsCategory(source.isPropertyTrueElseDefault(FeedProperties.SET_FIRST_CATEGORY_PROPERTY, FeedProperties.SET_FIRST_CATEGORY_DEFAULT));
-			transformation.setFirstCategoryIsTag(source.isPropertyTrueElseDefault(FeedProperties.SET_FIRST_CATEGORY_AS_TAG_PROPERTY, FeedProperties.SET_FIRST_CATEGORY_AS_TAG_DEFAULT));
-			transformation.setAddOnlyFirstImage(source.isPropertyTrue(FeedProperties.ADD_ONLY_FIRST_IMAGE_PROPERTY));
+			transformation = new FeedTransformation(this, configuration);
 		}
 		
 		this.setInitialized(initialized);

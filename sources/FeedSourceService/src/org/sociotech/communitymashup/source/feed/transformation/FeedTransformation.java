@@ -18,6 +18,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.osgi.service.log.LogService;
+import org.sociotech.communitymashup.application.Source;
 import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataFactory;
 import org.sociotech.communitymashup.data.Person;
@@ -39,10 +40,14 @@ import com.sun.syndication.feed.synd.SyndPerson;
 public class FeedTransformation {
 
 	private SourceServiceFacadeImpl sourceService;
+	
+	private Source source;
 
 	private boolean firstCategoryIsCategory = false;
 	private boolean firstCategoryIsTag = false;
 	private boolean addOnlyFirstImage = false;
+	private boolean doRemoveHtml = false;
+	private boolean doFollowLinkToImages = false;
 	
 	/**
 	 * If set to a date, all entries older than the date will be skipped
@@ -54,8 +59,17 @@ public class FeedTransformation {
 	 * Creates a new feed transformation using the give source service for adding items and logging.
 	 * @param sourceService
 	 */
-	public FeedTransformation(SourceServiceFacadeImpl sourceService) {
+	public FeedTransformation(SourceServiceFacadeImpl sourceService, Source source) {
 		this.sourceService = sourceService;
+		this.source = source;
+		
+		// set transformation properties
+		firstCategoryIsCategory = source.isPropertyTrueElseDefault(FeedProperties.SET_FIRST_CATEGORY_PROPERTY, FeedProperties.SET_FIRST_CATEGORY_DEFAULT);
+		firstCategoryIsTag = source.isPropertyTrueElseDefault(FeedProperties.SET_FIRST_CATEGORY_AS_TAG_PROPERTY, FeedProperties.SET_FIRST_CATEGORY_AS_TAG_DEFAULT);
+		addOnlyFirstImage = source.isPropertyTrueElseDefault(FeedProperties.ADD_ONLY_FIRST_IMAGE_PROPERTY, FeedProperties.ADD_ONLY_FIRST_IMAGE_DEFAULT);
+		doRemoveHtml = source.isPropertyTrueElseDefault(FeedProperties.REMOVE_HTML_PROPERTY, FeedProperties.REMOVE_HTML_DEFAULT);
+		doFollowLinkToImages = source.isPropertyTrueElseDefault(FeedProperties.FOLLOW_LINK_TO_IMAGES_PROPERTY, FeedProperties.FOLLOW_LINK_TO_IMAGES_DEFAULT);
+			
 	}
 
 	/**
@@ -83,7 +97,6 @@ public class FeedTransformation {
 			SyndEntry entry = (SyndEntry) e;
 
 			// and transform every feed entry
-
 			transformAndAddFeedEntry(entry, contentMetaTag);
 		}
 	}
@@ -111,9 +124,9 @@ public class FeedTransformation {
 			skipOlderThan = null;
 			return;
 		}
-		
-		
+			
 	}
+	
 	/**
 	 * @param entry
 	 * @param removeHtml
@@ -134,9 +147,9 @@ public class FeedTransformation {
 		Date entryUpdated = entry.getUpdatedDate(); 
 		
 		List<?> entryAuthors = entry.getAuthors();
-		List<?> contents = entry.getContents();
-		SyndContent description = entry.getDescription();
-		List<?> categories = entry.getCategories();
+		List<?> entryContents = entry.getContents();
+		SyndContent entryDescription = entry.getDescription();
+		List<?> entryCategories = entry.getCategories();
 
 		String entryId = createLocalEntryIdent(entry);
 
@@ -170,26 +183,29 @@ public class FeedTransformation {
 		content.setCreated(entryPublished);
 		content.setLastModified(entryUpdated);
 
-		String htmlValue = null;
+		String description = null;
 		
-		// try content first
-		if(contents != null && !contents.isEmpty())
+		// try contents first
+		if(entryContents != null && !entryContents.isEmpty())
 		{
 			// get first content element and transform
-			SyndContent cont = (SyndContent) contents.get(0);
-			htmlValue = cont.getValue();
+			SyndContent cont = (SyndContent)entryContents.get(0);
+			description = cont.getValue();
 		}
-		else if(description != null)
+		else if(entryDescription != null)
 		{
 			// use description value as content
-			htmlValue = description.getValue();
+			description = entryDescription.getValue();
 		}
 			
-		if(htmlValue != null)
+		if(description != null)
 		{
-			String contentText = htmlValue;
-
-			content.setStringValue(contentText);
+			if (doRemoveHtml) {
+				String tmps = Jsoup.parse(description).text();
+				content.setStringValue(tmps);
+			} else {
+				content.setStringValue(description);
+			}
 		}
 		
 		// content is complete now, so add it
@@ -201,12 +217,12 @@ public class FeedTransformation {
 			return;
 		}
 		
-		if(htmlValue != null)
+		// now add images - first check description then check linked to html page (if needed)
+		boolean imagesAdded = false;
+		if(description != null)
 		{
-			// Extract images from html content
-
-			//String imgUrl = (htmlExtractImage(htmlValue));
-			Document doc = Jsoup.parse(htmlValue);
+			// Extract images from content (if there are HTML tags in there ...)
+			Document doc = Jsoup.parse(description);
 			Elements imgElements = doc.select("img");
 			
 			// add all images
@@ -219,10 +235,40 @@ public class FeedTransformation {
 
 				log("Feed Image: " + imgSrc, LogService.LOG_INFO);
 				
+				imagesAdded = true;
 				if(addOnlyFirstImage)
 				{
 					// stop loop if only first image should be added 
 					break;
+				}
+			}
+		}
+		if (!imagesAdded && doFollowLinkToImages) {
+			if (entryLink != null) {
+				try {
+					Document doc = Jsoup.connect(entryLink).get();
+					Elements imgElements = doc.select("img");
+				
+					// add all images
+					for(Element imgElement : imgElements) {
+						String imgSrc = imgElement.attr("src");
+						if (!imgSrc.startsWith(entryLink)) { // only add images in same part of the page tree ...
+							continue;
+						}
+						// attach image
+						content.attachImage(imgSrc);
+
+						log("Feed Image: " + imgSrc, LogService.LOG_INFO);
+					
+						imagesAdded = true;
+						if(addOnlyFirstImage)
+						{
+							// stop loop if only first image should be added 
+							break;
+						}
+					}
+				} catch(Exception e) {
+					
 				}
 			}
 		}
@@ -276,7 +322,7 @@ public class FeedTransformation {
 		// add categories
 		boolean first = true;
 		
-		for (Object c : categories) {
+		for (Object c : entryCategories) {
 			
 			SyndCategory category = (SyndCategory) c;
 			

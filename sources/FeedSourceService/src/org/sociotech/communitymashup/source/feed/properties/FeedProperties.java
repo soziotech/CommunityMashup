@@ -48,9 +48,22 @@ public class FeedProperties {
 	public static final String DEEP_CLEANUP_DEFAULT = "false";
 	
 	/**
+	 * If set to true HTML tags are removed before setting the description.
+	 */
+	public static final String REMOVE_HTML_PROPERTY = "removeHTML";
+	public static final String REMOVE_HTML_DEFAULT = "true";
+	
+	/**
 	 * This Property determines if only the first or all images of an entry will be attached.
 	 */
 	public static final String ADD_ONLY_FIRST_IMAGE_PROPERTY = "addOnlyFirstImage";
+	public static final String ADD_ONLY_FIRST_IMAGE_DEFAULT = "true";
+	
+	/**
+	 * This Property determines if to follow the link in the post to obtain images.
+	 */
+	public static final String FOLLOW_LINK_TO_IMAGES_PROPERTY = "followLinkToImages";
+	public static final String FOLLOW_LINK_TO_IMAGES_DEFAULT = "true";	
 	
 	/**
 	 * If specified, all entries older than the given number of days will be skipped
