@@ -12,6 +12,10 @@ package org.sociotech.communitymashup.source.feed.transformation;
 
 import java.util.Date;
 import java.util.List;
+import java.net.URLConnection;
+import java.net.URL;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -152,7 +156,7 @@ public class FeedTransformation {
 		List<?> entryCategories = entry.getCategories();
 
 		String entryId = createLocalEntryIdent(entry);
-
+		
 		// skip if to old
 		if(skipOlderThan != null && skipOlderThan.after(entryPublished)) {
 			// skip
