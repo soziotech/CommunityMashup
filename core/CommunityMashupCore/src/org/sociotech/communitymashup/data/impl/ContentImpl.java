@@ -14,7 +14,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -1117,55 +1116,6 @@ public class ContentImpl extends InformationObjectImpl implements Content {
 		}
 		return null;
 	}
-	
-	/* (non-Javadoc)
-	 * @see org.sociotech.communitymashup.data.impl.ItemImpl#isEqualItem(org.sociotech.communitymashup.data.Item)
-	 */
-	@Override
-	public Boolean isEqualItem(Item item) {
-		if(super.isEqualItem(item))
-		{
-			return true;
-		}
-		
-		if(this == item)
-		{
-			return true;
-		}
-		else if (item == null)
-		{
-			return false;
-		}
-		else if (this.eClass() != item.eClass())
-		{
-			return false;
-		}
-		
-		// given item is a content
-		ContentImpl content = (ContentImpl) item;
-		
-		if(this.getName() == null || this.getName().isEmpty())
-		{
-			// name must be defined
-			return false;
-		}
-		
-		// look if any alternative name is defined to not always create new sets and parse name strings
-		if(this.alternativeNames != null || content.alternativeNames != null) {
-			Set<String> set1 = this.getAllNamesSet();
-			Set<String> set2 = content.getAllNamesSet();
-			for(String name1 : set1) {
-				for(String name2: set2) {
-					if(name1.equalsIgnoreCase(name2)) {
-						return true;
-					}
-				}
-			}
-		}
-
-		return this.getName().equalsIgnoreCase(content.getName());
-	}
-
 	
 	/**
 	 * Returns the condition to evaluate if a content is a main content.
