@@ -1136,6 +1136,10 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 			return false;
 		}
 		
+		if (this.getName().equalsIgnoreCase(person.getName())) {
+			return true;
+		}
+		
 		// look if any alternative name is defined to not always create new sets and parse name strings
 		if(this.alternativeNames != null || person.alternativeNames != null) {
 			Set<String> set1 = this.getAllNamesSet();
@@ -1149,7 +1153,7 @@ public class PersonImpl extends InformationObjectImpl implements Person {
 			}
 		}
 
-		return this.getName().equalsIgnoreCase(person.getName());
+		return false;
 	}
 
 	/* (non-Javadoc)
