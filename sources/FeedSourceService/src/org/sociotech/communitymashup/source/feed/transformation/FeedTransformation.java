@@ -221,9 +221,14 @@ public class FeedTransformation {
 			return;
 		}
 		
+<<<<<<< HEAD
 		// now add images - first check description then check linked to html page (if needed)
 		boolean imagesAdded = false;
 		if(description != null)
+=======
+		boolean imagesAdded = false;
+		if(htmlValue != null)
+>>>>>>> branch 'master' of https://github.com/soziotech/CommunityMashup.git
 		{
 			// Extract images from content (if there are HTML tags in there ...)
 			Document doc = Jsoup.parse(description);
@@ -273,6 +278,48 @@ public class FeedTransformation {
 					}
 				} catch(Exception e) {
 					
+				}
+			}
+		}
+		// if there is no htmlValue or no images in the HTML value, then follow link and check if there
+		// are images there ...
+		if (!imagesAdded) {
+			if (entryLink!=null) {
+				try {
+					URL url = new URL(entryLink);
+					URLConnection uc = url.openConnection();
+					BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+					String strLine = "";
+					String finalHTML = "";
+					//Loop through every line in the source
+					while ((strLine = in.readLine()) != null){
+						finalHTML += strLine;
+					}
+					
+					Document doc = Jsoup.parse(finalHTML);
+					Elements imgElements = doc.select("img");
+					
+					// add all images
+					for(Element imgElement : imgElements)
+					{
+						String imgSrc = imgElement.attr("src");
+						if (!imgSrc.startsWith(entryLink)) // do not add any image ... there may be some in the header ...
+							continue;
+						
+						// attach image
+						content.attachImage(imgSrc);
+
+						log("Feed Image: " + imgSrc, LogService.LOG_INFO);
+						
+						imagesAdded = true;
+						if(addOnlyFirstImage)
+						{
+							// stop loop if only first image should be added 
+							break;
+						}
+					}
+					
+				} catch(Exception e) {
 				}
 			}
 		}
