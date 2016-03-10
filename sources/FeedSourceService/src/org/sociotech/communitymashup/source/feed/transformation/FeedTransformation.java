@@ -221,14 +221,9 @@ public class FeedTransformation {
 			return;
 		}
 		
-<<<<<<< HEAD
 		// now add images - first check description then check linked to html page (if needed)
 		boolean imagesAdded = false;
 		if(description != null)
-=======
-		boolean imagesAdded = false;
-		if(htmlValue != null)
->>>>>>> branch 'master' of https://github.com/soziotech/CommunityMashup.git
 		{
 			// Extract images from content (if there are HTML tags in there ...)
 			Document doc = Jsoup.parse(description);
