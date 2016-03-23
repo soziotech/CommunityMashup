@@ -412,6 +412,9 @@ public class MashupConnector implements DataSetChangedInterface {
 		// Register XMI resource factory
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi",  new XMLResourceFactoryImpl());
 
+		if (localURL.endsWith("/")) {
+			localURL = localURL.substring(0, localURL.length()-1);
+		}
 		File dataSetFile = new File(localURL.replaceFirst("file:", ""));
 		
 		if(!dataSetFile.exists())
