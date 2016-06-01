@@ -420,6 +420,7 @@ public class MashupConnector implements DataSetChangedInterface {
 		if(!dataSetFile.exists())
 		{
 			// could not load
+			System.err.println("Could not find local file '"+localURL+"'");
 			return null;
 		}
 		
@@ -436,7 +437,8 @@ public class MashupConnector implements DataSetChangedInterface {
 			dataSetResource.load(null);
 		} 
 		catch (IOException e) {
-			log("Could not load data set localy from " + localURL, LogService.LOG_ERROR);
+			System.err.println("Could not load data from local file '"+localURL+"'");
+			e.printStackTrace(System.err);
 			return null;
 		}
 
