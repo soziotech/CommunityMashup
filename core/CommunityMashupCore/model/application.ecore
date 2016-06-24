@@ -7,6 +7,7 @@
       <details key="ConfiguratorLayout" value="LayoutDefault"/>
       <details key="ConfiguratorIsPattern" value="true"/>
       <details key="ConfiguratorPaletteName" value="Source"/>
+      <details key="ConfiguratorIcon" value="BundleId"/>
     </eAnnotations>
     <eOperations name="getLogLevelIntValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eOperations name="start"/>
@@ -168,6 +169,7 @@
       <details key="ConfiguratorIsPattern" value="true"/>
       <details key="ConfiguratorPaletteName" value="RESTInterface"/>
       <details key="ConfiguratorPaletteCategory" value="Interface"/>
+      <details key="ConfiguratorIcon" value=""/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -177,6 +179,7 @@
       <details key="ConfiguratorIsPattern" value="true"/>
       <details key="ConfiguratorPaletteName" value="FEEDInterface"/>
       <details key="ConfiguratorPaletteCategory" value="Interface"/>
+      <details key="ConfiguratorIcon" value=""/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowPersonFiltering" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
         defaultValueLiteral="true"/>
