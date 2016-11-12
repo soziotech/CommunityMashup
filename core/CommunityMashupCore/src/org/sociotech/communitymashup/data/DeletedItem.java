@@ -1,9 +1,19 @@
 package org.sociotech.communitymashup.data;
 
 import java.util.Date;
+import org.sociotech.communitymashup.rest.*;
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.LinkedList;
 
+import java.util.Map;
+import java.util.List;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
+import org.eclipse.emf.query.ocl.conditions.BooleanOCLCondition;
+import org.eclipse.emf.query.statements.IQueryResult;
+import org.eclipse.emf.query.conditions.eobjects.EObjectTypeRelationCondition;
+import org.eclipse.ocl.ParserException;
+import org.eclipse.emf.ecore.EClassifier;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
 import org.sociotech.communitymashup.rest.RequestType;
 import org.sociotech.communitymashup.rest.RestCommand;

@@ -13,9 +13,19 @@ package org.sociotech.communitymashup.data;
 import java.util.Date;
 import java.util.LinkedList;
 
+import java.util.Map;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.sociotech.communitymashup.rest.*;
+import java.io.Serializable;
+import java.util.HashMap;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
+import org.eclipse.emf.query.ocl.conditions.BooleanOCLCondition;
+import org.eclipse.emf.query.statements.IQueryResult;
+import org.eclipse.emf.query.conditions.eobjects.EObjectTypeRelationCondition;
+import org.eclipse.ocl.ParserException;
+import org.eclipse.emf.ecore.EClassifier;
 import org.sociotech.communitymashup.rest.ArgNotFoundException;
 import org.sociotech.communitymashup.rest.RequestType;
 import org.sociotech.communitymashup.rest.RestCommand;
@@ -39,6 +49,7 @@ import org.sociotech.communitymashup.rest.WrongArgException;
  *   <li>{@link org.sociotech.communitymashup.data.Item#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getUri <em>Uri</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getStringValue <em>String Value</em>}</li>
+ *   <li>{@link org.sociotech.communitymashup.data.Item#getStringXML <em>String XML</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getLastModified <em>Last Modified</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getCreated <em>Created</em>}</li>
  *   <li>{@link org.sociotech.communitymashup.data.Item#getMetaTags <em>Meta Tags</em>}</li>
@@ -168,6 +179,32 @@ public interface Item extends EObject {
 	 * @generated
 	 */
 	void setStringValue(String value);
+
+	/**
+	 * Returns the value of the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>String XML</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>String XML</em>' attribute.
+	 * @see #setStringXML(String)
+	 * @see org.sociotech.communitymashup.data.DataPackage#getItem_StringXML()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getStringXML();
+
+	/**
+	 * Sets the value of the '{@link org.sociotech.communitymashup.data.Item#getStringXML <em>String XML</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>String XML</em>' attribute.
+	 * @see #getStringXML()
+	 * @generated
+	 */
+	void setStringXML(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Last Modified</b></em>' attribute.

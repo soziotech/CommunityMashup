@@ -59,8 +59,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute collection.ecore#//RemoteCollection/remoteURL"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Data" basePackage="org.sociotech.communitymashup" disposableProviderFactory="true"
-      dataTypeConverters="true" contentTypeIdentifier="" ecorePackage="data.ecore#/">
+  <genPackages prefix="Data" basePackage="org.sociotech.communitymashup" resource="XML"
+      disposableProviderFactory="true" dataTypeConverters="true" contentTypeIdentifier=""
+      ecorePackage="data.ecore#/">
     <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
       <genAnnotations source="data.xsd"/>
       <genAnnotations source="data2.xsd"/>
@@ -584,6 +585,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/ident"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/uri"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/stringValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/stringXML"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/lastModified"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Item/created"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference data.ecore#//Item/metaTags"/>
@@ -723,6 +725,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/fileExtension"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/fileIdentifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/cachedFileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute data.ecore#//Attachment/noCache"/>
       <genOperations ecoreOperation="data.ecore#//Attachment/getOriginalFileUrl"/>
       <genOperations ecoreOperation="data.ecore#//Attachment/reloadFile"/>
     </genClasses>

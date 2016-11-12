@@ -12,12 +12,18 @@ package org.sociotech.communitymashup.data.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
+import org.eclipse.emf.query.ocl.conditions.BooleanOCLCondition;
+import org.eclipse.emf.query.statements.IQueryResult;
 import org.eclipse.emf.query.conditions.eobjects.EObjectTypeRelationCondition;
+import org.eclipse.ocl.ParserException;
+import org.eclipse.emf.ecore.EClassifier;
+import org.sociotech.communitymashup.data.*;
 import org.sociotech.communitymashup.data.Attachment;
 import org.sociotech.communitymashup.data.Binary;
 import org.sociotech.communitymashup.data.Category;
@@ -40,6 +46,9 @@ import org.sociotech.communitymashup.data.Item;
 import org.sociotech.communitymashup.data.Location;
 import org.sociotech.communitymashup.data.MetaInformation;
 import org.sociotech.communitymashup.data.MetaTag;
+import org.sociotech.communitymashup.rest.*;
+import java.io.Serializable;
+import java.util.HashMap;
 import org.sociotech.communitymashup.data.Organisation;
 import org.sociotech.communitymashup.data.Person;
 import org.sociotech.communitymashup.data.Phone;

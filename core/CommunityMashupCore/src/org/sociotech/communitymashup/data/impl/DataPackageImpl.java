@@ -2642,7 +2642,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getItem_LastModified() {
+	public EAttribute getItem_StringXML() {
 		return (EAttribute)itemEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -2651,7 +2651,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getItem_Created() {
+	public EAttribute getItem_LastModified() {
 		return (EAttribute)itemEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -2660,8 +2660,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getItem_MetaTags() {
-		return (EReference)itemEClass.getEStructuralFeatures().get(6);
+	public EAttribute getItem_Created() {
+		return (EAttribute)itemEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2669,7 +2669,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getItem_IdentifiedBy() {
+	public EReference getItem_MetaTags() {
 		return (EReference)itemEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -2678,7 +2678,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getItem_DeleteOnDelete() {
+	public EReference getItem_IdentifiedBy() {
 		return (EReference)itemEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -2687,7 +2687,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getItem_DeletedIfDeleted() {
+	public EReference getItem_DeleteOnDelete() {
 		return (EReference)itemEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -2696,7 +2696,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getItem_ForcedDeleteOnDelete() {
+	public EReference getItem_DeletedIfDeleted() {
 		return (EReference)itemEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -2705,8 +2705,17 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getItem_ForcedDeletedIfDeleted() {
+	public EReference getItem_ForcedDeleteOnDelete() {
 		return (EReference)itemEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getItem_ForcedDeletedIfDeleted() {
+		return (EReference)itemEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -4180,6 +4189,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		createEAttribute(itemEClass, ITEM__IDENT);
 		createEAttribute(itemEClass, ITEM__URI);
 		createEAttribute(itemEClass, ITEM__STRING_VALUE);
+		createEAttribute(itemEClass, ITEM__STRING_XML);
 		createEAttribute(itemEClass, ITEM__LAST_MODIFIED);
 		createEAttribute(itemEClass, ITEM__CREATED);
 		createEReference(itemEClass, ITEM__META_TAGS);
@@ -5011,6 +5021,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEAttribute(getItem_Ident(), ecorePackage.getEString(), "ident", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_StringValue(), ecorePackage.getEString(), "stringValue", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getItem_StringXML(), ecorePackage.getEString(), "stringXML", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_LastModified(), ecorePackage.getEDate(), "lastModified", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItem_Created(), ecorePackage.getEDate(), "created", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_MetaTags(), this.getMetaTag(), this.getMetaTag_MetaTagged(), "metaTags", null, 0, -1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

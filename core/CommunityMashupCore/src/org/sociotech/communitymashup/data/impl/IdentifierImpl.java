@@ -11,6 +11,7 @@
 package org.sociotech.communitymashup.data.impl;
 
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,7 +20,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
+import org.eclipse.emf.query.ocl.conditions.BooleanOCLCondition;
+import org.eclipse.emf.query.statements.IQueryResult;
 import org.eclipse.emf.query.conditions.eobjects.EObjectTypeRelationCondition;
+import org.eclipse.ocl.ParserException;
+import org.eclipse.emf.ecore.EClassifier;
+import org.sociotech.communitymashup.data.*;
 import org.sociotech.communitymashup.data.Attachment;
 import org.sociotech.communitymashup.data.Binary;
 import org.sociotech.communitymashup.data.Category;
@@ -39,6 +45,9 @@ import org.sociotech.communitymashup.data.IndoorLocation;
 import org.sociotech.communitymashup.data.InformationObject;
 import org.sociotech.communitymashup.data.InstantMessenger;
 import org.sociotech.communitymashup.data.Item;
+import org.sociotech.communitymashup.rest.*;
+import java.io.Serializable;
+import java.util.HashMap;
 import org.sociotech.communitymashup.data.Location;
 import org.sociotech.communitymashup.data.MetaInformation;
 import org.sociotech.communitymashup.data.MetaTag;

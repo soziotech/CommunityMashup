@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,6 +26,7 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.sociotech.communitymashup.data.*;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
@@ -39,7 +41,10 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
+import org.eclipse.emf.query.ocl.conditions.BooleanOCLCondition;
+import org.eclipse.emf.query.statements.IQueryResult;
 import org.eclipse.emf.query.conditions.eobjects.EObjectTypeRelationCondition;
+import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.Environment;
 import org.eclipse.ocl.ecore.CallOperationAction;
 import org.eclipse.ocl.ecore.Constraint;
@@ -71,6 +76,9 @@ import org.sociotech.communitymashup.data.Item;
 import org.sociotech.communitymashup.data.Location;
 import org.sociotech.communitymashup.data.MetaInformation;
 import org.sociotech.communitymashup.data.MetaTag;
+import org.sociotech.communitymashup.rest.*;
+import java.io.Serializable;
+import java.util.HashMap;
 import org.sociotech.communitymashup.data.Organisation;
 import org.sociotech.communitymashup.data.Person;
 import org.sociotech.communitymashup.data.Phone;
@@ -192,6 +200,26 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 	 * @ordered
 	 */
 	protected String stringValue = STRING_VALUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStringXML() <em>String XML</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringXML()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STRING_XML_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStringXML() <em>String XML</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringXML()
+	 * @generated
+	 * @ordered
+	 */
+	protected String stringXML = STRING_XML_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLastModified() <em>Last Modified</em>}' attribute.
@@ -420,6 +448,27 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		stringValue = newStringValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.ITEM__STRING_VALUE, oldStringValue, stringValue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getStringXML() {
+		return stringXML;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringXML(String newStringXML) {
+		String oldStringXML = stringXML;
+		stringXML = newStringXML;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.ITEM__STRING_XML, oldStringXML, stringXML));
 	}
 
 	/**
@@ -1465,6 +1514,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return getUri();
 			case DataPackage.ITEM__STRING_VALUE:
 				return getStringValue();
+			case DataPackage.ITEM__STRING_XML:
+				return getStringXML();
 			case DataPackage.ITEM__LAST_MODIFIED:
 				return getLastModified();
 			case DataPackage.ITEM__CREATED:
@@ -1505,6 +1556,9 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return;
 			case DataPackage.ITEM__STRING_VALUE:
 				setStringValue((String)newValue);
+				return;
+			case DataPackage.ITEM__STRING_XML:
+				setStringXML((String)newValue);
 				return;
 			case DataPackage.ITEM__LAST_MODIFIED:
 				setLastModified((Date)newValue);
@@ -1560,6 +1614,9 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			case DataPackage.ITEM__STRING_VALUE:
 				setStringValue(STRING_VALUE_EDEFAULT);
 				return;
+			case DataPackage.ITEM__STRING_XML:
+				setStringXML(STRING_XML_EDEFAULT);
+				return;
 			case DataPackage.ITEM__LAST_MODIFIED:
 				setLastModified(LAST_MODIFIED_EDEFAULT);
 				return;
@@ -1604,6 +1661,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 			case DataPackage.ITEM__STRING_VALUE:
 				return STRING_VALUE_EDEFAULT == null ? stringValue != null : !STRING_VALUE_EDEFAULT.equals(stringValue);
+			case DataPackage.ITEM__STRING_XML:
+				return STRING_XML_EDEFAULT == null ? stringXML != null : !STRING_XML_EDEFAULT.equals(stringXML);
 			case DataPackage.ITEM__LAST_MODIFIED:
 				return LAST_MODIFIED_EDEFAULT == null ? lastModified != null : !LAST_MODIFIED_EDEFAULT.equals(lastModified);
 			case DataPackage.ITEM__CREATED:
@@ -1696,6 +1755,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 		result.append(uri);
 		result.append(", stringValue: ");
 		result.append(stringValue);
+		result.append(", stringXML: ");
+		result.append(stringXML);
 		result.append(", lastModified: ");
 		result.append(lastModified);
 		result.append(", created: ");
@@ -1733,6 +1794,8 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 			return this.getUri();		
 		if ( featureName.equalsIgnoreCase("stringValue") )
 			return this.getStringValue();		
+		if ( featureName.equalsIgnoreCase("stringXML") )
+			return this.getStringXML();		
 		if ( featureName.equalsIgnoreCase("lastModified") )
 			return this.getLastModified();		
 		if ( featureName.equalsIgnoreCase("created") )
@@ -1803,6 +1866,16 @@ public abstract class ItemImpl extends EObjectImpl implements Item, Comparable<I
 					throw new WrongArgException("Item.setFeature", "java.lang.String",value.getClass().getName());
 				}
 				this.setStringValue(fstringValue);
+			return this;
+			}		
+		if ( featureName.equalsIgnoreCase("stringXML") ) {
+				java.lang.String fstringXML = null;
+				try {
+					fstringXML = (java.lang.String)value;
+				} catch (ClassCastException e) {
+					throw new WrongArgException("Item.setFeature", "java.lang.String",value.getClass().getName());
+				}
+				this.setStringXML(fstringXML);
 			return this;
 			}		
 		if ( featureName.equalsIgnoreCase("lastModified") ) {

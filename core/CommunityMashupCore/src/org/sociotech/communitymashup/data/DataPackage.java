@@ -118,13 +118,22 @@ public interface DataPackage extends EPackage {
 	int ITEM__STRING_VALUE = 3;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__STRING_XML = 4;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__LAST_MODIFIED = 4;
+	int ITEM__LAST_MODIFIED = 5;
 
 	/**
 	 * The feature id for the '<em><b>Created</b></em>' attribute.
@@ -133,7 +142,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__CREATED = 5;
+	int ITEM__CREATED = 6;
 
 	/**
 	 * The feature id for the '<em><b>Meta Tags</b></em>' reference list.
@@ -142,7 +151,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__META_TAGS = 6;
+	int ITEM__META_TAGS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Identified By</b></em>' reference list.
@@ -151,7 +160,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__IDENTIFIED_BY = 7;
+	int ITEM__IDENTIFIED_BY = 8;
 
 	/**
 	 * The feature id for the '<em><b>Delete On Delete</b></em>' reference list.
@@ -160,7 +169,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__DELETE_ON_DELETE = 8;
+	int ITEM__DELETE_ON_DELETE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Deleted If Deleted</b></em>' reference list.
@@ -169,7 +178,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__DELETED_IF_DELETED = 9;
+	int ITEM__DELETED_IF_DELETED = 10;
 
 	/**
 	 * The feature id for the '<em><b>Forced Delete On Delete</b></em>' reference list.
@@ -178,7 +187,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__FORCED_DELETE_ON_DELETE = 10;
+	int ITEM__FORCED_DELETE_ON_DELETE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Forced Deleted If Deleted</b></em>' reference list.
@@ -187,7 +196,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__FORCED_DELETED_IF_DELETED = 11;
+	int ITEM__FORCED_DELETED_IF_DELETED = 12;
 
 	/**
 	 * The number of structural features of the '<em>Item</em>' class.
@@ -196,7 +205,7 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_FEATURE_COUNT = 12;
+	int ITEM_FEATURE_COUNT = 13;
 
 	/**
 	 * The operation id for the '<em>Log</em>' operation.
@@ -432,6 +441,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int INFORMATION_OBJECT__STRING_VALUE = ITEM__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_OBJECT__STRING_XML = ITEM__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -1423,6 +1441,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSON__STRING_VALUE = INFORMATION_OBJECT__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__STRING_XML = INFORMATION_OBJECT__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -2558,6 +2585,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT__STRING_VALUE = INFORMATION_OBJECT__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT__STRING_XML = INFORMATION_OBJECT__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -4938,6 +4974,15 @@ public interface DataPackage extends EPackage {
 	int EXTENSION__STRING_VALUE = ITEM__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__STRING_XML = ITEM__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5261,6 +5306,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASSIFICATION__STRING_VALUE = ITEM__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION__STRING_XML = ITEM__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -5658,6 +5712,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int CATEGORY__STRING_VALUE = CLASSIFICATION__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__STRING_XML = CLASSIFICATION__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -6093,6 +6156,15 @@ public interface DataPackage extends EPackage {
 	int TAG__STRING_VALUE = CLASSIFICATION__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAG__STRING_XML = CLASSIFICATION__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6497,6 +6569,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORGANISATION__STRING_VALUE = INFORMATION_OBJECT__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORGANISATION__STRING_XML = INFORMATION_OBJECT__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -7553,6 +7634,15 @@ public interface DataPackage extends EPackage {
 	int META_TAG__STRING_VALUE = ITEM__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_TAG__STRING_XML = ITEM__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7932,6 +8022,15 @@ public interface DataPackage extends EPackage {
 	int META_INFORMATION__STRING_VALUE = EXTENSION__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_INFORMATION__STRING_XML = EXTENSION__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8264,6 +8363,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PHONE__STRING_VALUE = META_INFORMATION__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHONE__STRING_XML = META_INFORMATION__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -8627,6 +8735,15 @@ public interface DataPackage extends EPackage {
 	int INSTANT_MESSENGER__STRING_VALUE = META_INFORMATION__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANT_MESSENGER__STRING_XML = META_INFORMATION__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8970,6 +9087,15 @@ public interface DataPackage extends EPackage {
 	int EMAIL__STRING_VALUE = META_INFORMATION__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL__STRING_XML = META_INFORMATION__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9311,6 +9437,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int WEB_ACCOUNT__STRING_VALUE = META_INFORMATION__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_ACCOUNT__STRING_XML = META_INFORMATION__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -9663,6 +9798,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int WEB_SITE__STRING_VALUE = META_INFORMATION__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_SITE__STRING_XML = META_INFORMATION__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -10026,6 +10170,15 @@ public interface DataPackage extends EPackage {
 	int RANKING__STRING_VALUE = EXTENSION__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RANKING__STRING_XML = EXTENSION__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10367,6 +10520,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTACHMENT__STRING_VALUE = EXTENSION__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACHMENT__STRING_XML = EXTENSION__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -10773,6 +10935,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOCATION__STRING_VALUE = META_INFORMATION__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATION__STRING_XML = META_INFORMATION__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -11188,6 +11359,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int IMAGE__STRING_VALUE = ATTACHMENT__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__STRING_XML = ATTACHMENT__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -11614,6 +11794,15 @@ public interface DataPackage extends EPackage {
 	int DOCUMENT__STRING_VALUE = ATTACHMENT__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__STRING_XML = ATTACHMENT__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12020,6 +12209,15 @@ public interface DataPackage extends EPackage {
 	int STAR_RANKING__STRING_VALUE = RANKING__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAR_RANKING__STRING_XML = RANKING__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12381,6 +12579,15 @@ public interface DataPackage extends EPackage {
 	int VIEW_RANKING__STRING_VALUE = RANKING__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_RANKING__STRING_XML = RANKING__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12731,6 +12938,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int THUMB_RANKING__STRING_VALUE = RANKING__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THUMB_RANKING__STRING_XML = RANKING__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -13102,6 +13318,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSFORMATION__STRING_VALUE = ATTACHMENT__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__STRING_XML = ATTACHMENT__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -13520,6 +13745,15 @@ public interface DataPackage extends EPackage {
 	int VIDEO__STRING_VALUE = ATTACHMENT__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO__STRING_XML = ATTACHMENT__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13927,6 +14161,15 @@ public interface DataPackage extends EPackage {
 	int CONNECTION__STRING_VALUE = EXTENSION__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__STRING_XML = EXTENSION__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14269,6 +14512,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY__STRING_VALUE = ATTACHMENT__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY__STRING_XML = ATTACHMENT__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -14687,6 +14939,15 @@ public interface DataPackage extends EPackage {
 	int INDOOR_LOCATION__STRING_VALUE = META_INFORMATION__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDOOR_LOCATION__STRING_XML = META_INFORMATION__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15058,6 +15319,15 @@ public interface DataPackage extends EPackage {
 	int IDENTIFIER__STRING_VALUE = ITEM__STRING_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIER__STRING_XML = ITEM__STRING_XML;
+
+	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15400,6 +15670,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__STRING_VALUE = META_INFORMATION__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__STRING_XML = META_INFORMATION__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -15763,6 +16042,15 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int DELETED_ITEM__STRING_VALUE = ITEM__STRING_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>String XML</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETED_ITEM__STRING_XML = ITEM__STRING_XML;
 
 	/**
 	 * The feature id for the '<em><b>Last Modified</b></em>' attribute.
@@ -18609,6 +18897,17 @@ public interface DataPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getItem_StringValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.Item#getStringXML <em>String XML</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String XML</em>'.
+	 * @see org.sociotech.communitymashup.data.Item#getStringXML()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EAttribute getItem_StringXML();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.sociotech.communitymashup.data.Item#getLastModified <em>Last Modified</em>}'.
@@ -22118,6 +22417,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ITEM__STRING_VALUE = eINSTANCE.getItem_StringValue();
+
+		/**
+		 * The meta object literal for the '<em><b>String XML</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__STRING_XML = eINSTANCE.getItem_StringXML();
 
 		/**
 		 * The meta object literal for the '<em><b>Last Modified</b></em>' attribute feature.
