@@ -11,17 +11,11 @@
 package org.sociotech.communitymashup.data.impl;
 
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
-import org.eclipse.emf.query.ocl.conditions.BooleanOCLCondition;
-import org.eclipse.emf.query.statements.IQueryResult;
 import org.eclipse.emf.query.conditions.eobjects.EObjectTypeRelationCondition;
-import org.eclipse.ocl.ParserException;
-import org.eclipse.emf.ecore.EClassifier;
-import org.sociotech.communitymashup.data.*;
 import org.sociotech.communitymashup.data.Attachment;
 import org.sociotech.communitymashup.data.Binary;
 import org.sociotech.communitymashup.data.Category;
@@ -32,9 +26,6 @@ import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
 import org.sociotech.communitymashup.data.DeletedItem;
 import org.sociotech.communitymashup.data.Document;
-import org.sociotech.communitymashup.rest.*;
-import java.io.Serializable;
-import java.util.HashMap;
 import org.sociotech.communitymashup.data.Email;
 import org.sociotech.communitymashup.data.Event;
 import org.sociotech.communitymashup.data.Extension;

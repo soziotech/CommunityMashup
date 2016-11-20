@@ -11,19 +11,13 @@
 package org.sociotech.communitymashup.data.impl;
 
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
-import org.eclipse.emf.query.ocl.conditions.BooleanOCLCondition;
-import org.eclipse.emf.query.statements.IQueryResult;
 import org.eclipse.emf.query.conditions.eobjects.EObjectTypeRelationCondition;
-import org.eclipse.ocl.ParserException;
-import org.eclipse.emf.ecore.EClassifier;
-import org.sociotech.communitymashup.data.*;
 import org.sociotech.communitymashup.data.Attachment;
 import org.sociotech.communitymashup.data.Binary;
 import org.sociotech.communitymashup.data.Category;
@@ -49,9 +43,6 @@ import org.sociotech.communitymashup.data.MetaTag;
 import org.sociotech.communitymashup.data.Organisation;
 import org.sociotech.communitymashup.data.Person;
 import org.sociotech.communitymashup.data.Phone;
-import org.sociotech.communitymashup.rest.*;
-import java.io.Serializable;
-import java.util.HashMap;
 import org.sociotech.communitymashup.data.Ranking;
 import org.sociotech.communitymashup.data.StarRanking;
 import org.sociotech.communitymashup.data.Tag;
