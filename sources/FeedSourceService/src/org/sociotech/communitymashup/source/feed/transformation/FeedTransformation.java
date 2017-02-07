@@ -281,44 +281,45 @@ public class FeedTransformation {
 		if(contentMetaTag != null && !contentMetaTag.isEmpty()) content.metaTag(contentMetaTag);
 		content.metaTag(FeedTags.FEED_ENTRY_METATAG);
 		
-		String authorId = createLocalPersonIdent(entryAuthor);
-
 		// attach author person
-
-		Person author = sourceService.getPersonWithSourceIdent(authorId);
-		if (author == null) {
-			author = DataFactory.eINSTANCE.createPerson();
-			// fill author person
-			author.setName(entryAuthor);
-			author = (Person) sourceService.add(author, authorId);
-		}
-
-		if(author != null)
-		{
-			// adding was successfull
-			content.setAuthor(author);
+		if (entryAuthor!=null && entryAuthor.trim().length()>0) {
+			String authorId = createLocalPersonIdent(entryAuthor);
+			Person author = sourceService.getPersonWithSourceIdent(authorId);
+			if (author == null) {
+				author = DataFactory.eINSTANCE.createPerson();
+				// fill author person
+				author.setName(entryAuthor);
+				author = (Person) sourceService.add(author, authorId);
+			}
+			if(author != null)
+			{
+				// adding was successfull
+				content.setAuthor(author);
+			}
 		}
 		
 		// add additional authors
 		for (Object a : entryAuthors) {
 			SyndPerson person = (SyndPerson) a;
-			String ident = createLocalPersonIdent(person.getName());
+			String aname = person.getName();
+			if (aname!= null && aname.trim().length()>0) {
+				String ident = createLocalPersonIdent(person.getName());
+				Person contributor = sourceService.getPersonWithSourceIdent(ident);
 
-			Person contributor = sourceService.getPersonWithSourceIdent(ident);
+				// same person should not be added twice
+				if (contributor == null) {
+					// attach author person
+					contributor = DataFactory.eINSTANCE.createPerson();
+					// fill author person
+					contributor.setName(person.getName());
 
-			// same person should not be added twice
-			if (contributor == null) {
-				// attach author person
-				contributor = DataFactory.eINSTANCE.createPerson();
-				// fill author person
-				contributor.setName(person.getName());
+					contributor = (Person) sourceService.add(contributor, ident);
+				}
 
-				contributor = (Person) sourceService.add(contributor, ident);
-			}
-
-			if(contributor != null)
-			{
-				content.addContributor(contributor);
+				if(contributor != null)
+				{
+					content.addContributor(contributor);
+				}
 			}
 
 		}
