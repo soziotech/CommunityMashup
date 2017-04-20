@@ -1456,7 +1456,6 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		
 		// get possible existing connection
 		Connection connection = this.getConnectionTo(informationObject, value);
-		
 		if(connection == null)
 		{
 			// create new connection object
@@ -1492,9 +1491,10 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 		
 		for(Connection connectionTo : connections)
 		{
-			// connection math if both are null or have the same value
-			if((value == null && connectionTo.getStringValue() == null) || 
-			   (value != null && value.equals(connectionTo.getStringValue())))
+			// connections match if both are null or have the same value
+			if(((value == null) && (connectionTo.getStringValue() == null)) ||
+			   ((value == null) && (connectionTo.getStringValue().length()<1)) ||
+			   ((value != null) && (value.equals(connectionTo.getStringValue()))))
 			   {
 					return connectionTo;
 			   }
