@@ -1876,6 +1876,26 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				io.setVerifiedName(true);
 			}
 			
+			// if only one item to merge has alternative names, then keen its main name
+			if(this.alternativeNames==null && io.alternativeNames!=null) {
+				if (!io.getName().contentEquals(this.getName())) {
+					String name = io.getName();
+					Set<String> allNames = io.getAlternativeNamesSet();
+					allNames.add(this.getName());
+					io.setAlternativeNamesBySet(allNames);
+					this.setName(name);
+				}
+			}
+			if(this.alternativeNames!=null && io.alternativeNames==null) {
+				if (!io.getName().contentEquals(this.getName())) {
+					String name = this.getName();
+					Set<String> allNames = this.getAlternativeNamesSet();
+					allNames.add(io.getName());
+					this.setAlternativeNamesBySet(allNames);
+					io.setName(name);
+				}
+			}
+			
 			// merge alternative names if set
 			if(this.alternativeNames != null || io.alternativeNames != null) {
 				Set<String> allNames = this.getAlternativeNamesSet();
@@ -1890,6 +1910,7 @@ public abstract class InformationObjectImpl extends ItemImpl implements Informat
 				this.setAlternativeNamesBySet(allNames);
 				io.setAlternativeNamesBySet(allNames);
 			}
+			
 		}
 		
 		// continue with base update implementation
