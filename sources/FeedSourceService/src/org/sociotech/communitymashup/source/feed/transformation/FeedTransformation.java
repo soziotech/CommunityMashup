@@ -11,7 +11,9 @@
 package org.sociotech.communitymashup.source.feed.transformation;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.net.URLConnection;
 import java.net.URL;
 import java.io.InputStreamReader;
@@ -53,6 +55,8 @@ public class FeedTransformation {
 	private boolean doRemoveHtml = false;
 	private boolean doFollowLinkToImages = false;
 	
+	private Map<String,String> keywordTagMapping = new HashMap<String, String>();
+	
 	/**
 	 * If set to a date, all entries older than the date will be skipped
 	 */
@@ -74,6 +78,21 @@ public class FeedTransformation {
 		doRemoveHtml = source.isPropertyTrueElseDefault(FeedProperties.REMOVE_HTML_PROPERTY, FeedProperties.REMOVE_HTML_DEFAULT);
 		doFollowLinkToImages = source.isPropertyTrueElseDefault(FeedProperties.FOLLOW_LINK_TO_IMAGES_PROPERTY, FeedProperties.FOLLOW_LINK_TO_IMAGES_DEFAULT);
 			
+		// parse tag keywords if given
+		String tmps = sourceService.getConfiguration().getPropertyValueElseDefault(FeedProperties.TAG_KEYWORDS_PROPERTY, FeedProperties.TAG_KEYWORDS_DEFAULT);
+		if (tmps != null && tmps.length()>0) {
+			String[] sarr = tmps.split(";");
+			for (int i=0; i<sarr.length; i++) {
+				String tmps2 = sarr[i];
+				int pos = tmps2.indexOf(":");
+				if (pos<1) { continue; }
+				String tagName = tmps2.substring(0, pos);
+				String[] karr = (tmps2.substring(pos+1)).split(",");
+				for (int j=0; j<karr.length; j++) {
+					keywordTagMapping.put(karr[j],tagName);
+				}
+			}
+		}
 	}
 
 	/**
@@ -89,7 +108,14 @@ public class FeedTransformation {
 
 		updateOlderThanDate();
 		
+		String maxEntriesString = sourceService.getConfiguration().getPropertyValue(FeedProperties.MAX_ENTRIES_PROPERTY);
+		int maxEntries = 0;
+		if (maxEntriesString != null) {
+			try { maxEntries = Integer.parseInt(maxEntriesString); } catch (Exception e) { }
+		}
+		
 		// run through entry list
+		int count = 0;
 		for (Object e : feed.getEntries())
 		{
 			if(!(e instanceof SyndEntry))
@@ -102,6 +128,10 @@ public class FeedTransformation {
 
 			// and transform every feed entry
 			transformAndAddFeedEntry(entry, contentMetaTag);
+			count++;
+			if (maxEntries>0 && maxEntries<=count) {
+				break;
+			}
 		}
 	}
 
@@ -345,6 +375,16 @@ public class FeedTransformation {
 			
 			// others are tags
 			content.tag(category.getName());
+		}
+		
+		// add tags via keyword to tag mapping
+		for (String keyword : keywordTagMapping.keySet()) {
+			if (title!=null && title.indexOf(keyword)>0) {
+				content.tag(keywordTagMapping.get(keyword));
+			}
+			if (description!=null && description.indexOf(keyword)>0) {
+				content.tag(keywordTagMapping.get(keyword));
+			}
 		}
 
 	}

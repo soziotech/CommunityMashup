@@ -70,6 +70,22 @@ public class FeedProperties {
 	 */
 	public static final String SKIP_OLDER_THAN_DAYS_PROPERTY = "skipOlderThanDays";
 	
+	/**
+	 * If specified, add a maximum of X entries
+	 */
+	public static final String MAX_ENTRIES_PROPERTY = "maxEntries";
+	
+	/**
+	 * Parse posts for given keywords and add given tag if found
+	 * Format: Tag1:Keyword1,Keyword2;Tag2:Keyword3,Keyword4,Keyword5
+	 */
+	public static final String TAG_KEYWORDS_PROPERTY = "tagKeywords";
+	public static final String TAG_KEYWORDS_DEFAULT = "";
+	
+	
+	/**
+	 * If specified, add this tag to all feed entries - otherwise add FeedTags.FEED_ENTRY_METATAG
+	 */
 	public static final String FEED_ENTRY_METATAG_PROPERTY = "entryMetaTag";
 	public static final String FEED_ENTRY_METATAG_DEFAULT = "";
 }
