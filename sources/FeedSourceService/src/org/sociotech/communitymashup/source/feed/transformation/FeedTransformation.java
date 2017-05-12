@@ -308,7 +308,12 @@ public class FeedTransformation {
 		}
 				
 		// add meta tags for every feed entry
-		if(contentMetaTag != null && !contentMetaTag.isEmpty()) content.metaTag(contentMetaTag);
+		if (contentMetaTag != null && !contentMetaTag.isEmpty()) {
+			String metaTags[] = contentMetaTag.split(",");
+			for (String metaTag : metaTags) {
+				content.metaTag(metaTag.trim());
+			}
+		}
 		content.metaTag(FeedTags.FEED_ENTRY_METATAG);
 		
 		// attach author person
