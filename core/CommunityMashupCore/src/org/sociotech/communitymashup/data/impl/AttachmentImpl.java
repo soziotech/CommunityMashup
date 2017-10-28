@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -1230,6 +1231,37 @@ public abstract class AttachmentImpl extends ExtensionImpl implements Attachment
 		URLConnection conn;
 		try {
 			conn = url.openConnection();
+		
+			int status = ((HttpURLConnection)conn).getResponseCode();
+			boolean redirect = false;
+			if (status != HttpURLConnection.HTTP_OK) {
+				if (status == HttpURLConnection.HTTP_MOVED_TEMP
+					|| status == HttpURLConnection.HTTP_MOVED_PERM
+						|| status == HttpURLConnection.HTTP_SEE_OTHER)
+				redirect = true;
+			}
+			if (redirect) {
+				// get redirect url from "location" header field
+				String newUrl = conn.getHeaderField("Location");
+
+				// get the cookie if need, for login
+				String cookies = conn.getHeaderField("Set-Cookie");
+
+				// open the new connection again
+				conn = (HttpURLConnection) new URL(newUrl).openConnection();
+				conn.setRequestProperty("Cookie", cookies);
+				conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+				conn.addRequestProperty("User-Agent", "Mozilla");
+				conn.addRequestProperty("Referer", "google.com");
+
+				log("Redirect to URL : " + newUrl, LogService.LOG_INFO);
+			}
+			if (status > 304) {
+				log("Could not create connection to url " + url.toString()  + " (return code: " + status + ")", LogService.LOG_WARNING);
+				// need to delete file before returning
+				targetFile.delete();
+				return;
+			}
 			conn.connect();
 		} catch (IOException e) {
 			log("Could not create connection to url " + url.toString()  + " (" + e.getMessage() + ")", LogService.LOG_WARNING);
