@@ -532,7 +532,8 @@ public class MashupConnector implements DataSetChangedInterface {
 		lastChangeLookup = new Date();
 
 		// check if not yet initialized (threading) or local data set is up to date
-		if (dateOfLastItemChange == null || !remoteLastModified.after(dateOfLastItemChange)) {
+		if (dateOfLastItemChange == null || remoteLastModified == null ||
+				!remoteLastModified.after(dateOfLastItemChange)) {
 			return;
 		}
 

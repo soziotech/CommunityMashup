@@ -75,7 +75,7 @@ public class UpdateThread extends Thread {
 				secondsToUpdate = updateInterval;
 			} catch (Exception e) {
 				mashupConnector.log("Exception occurred while updating: " + e.getMessage(), LogService.LOG_WARNING);
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 	}
