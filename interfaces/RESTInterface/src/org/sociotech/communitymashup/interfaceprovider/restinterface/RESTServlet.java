@@ -37,6 +37,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.emf.common.util.AbstractEList;
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -53,9 +54,14 @@ import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
 import org.eclipselabs.emfjson.resource.JsResourceImpl;
 import org.osgi.service.log.LogService;
 import org.sociotech.communitymashup.application.RESTInterface;
+import org.sociotech.communitymashup.data.Content;
 import org.sociotech.communitymashup.data.DataPackage;
 import org.sociotech.communitymashup.data.DataSet;
+import org.sociotech.communitymashup.data.Event;
+import org.sociotech.communitymashup.data.InformationObject;
 import org.sociotech.communitymashup.data.Item;
+import org.sociotech.communitymashup.data.MetaTag;
+import org.sociotech.communitymashup.data.Tag;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.html.HTMLTemplateParser;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.properties.HTMLProperties;
 import org.sociotech.communitymashup.interfaceprovider.restinterface.properties.RESTInterfaceProperties;
@@ -98,6 +104,7 @@ public class RESTServlet extends HttpServlet {
 	public static final int TYPE_JSON   = 1;
 	public static final int TYPE_JSON_P = 2;
 	public static final int TYPE_HTML 	= 3;
+	public static final int TYPE_JSONCAL = 10;
 	
 	private int type = TYPE_XML;
 	
@@ -917,6 +924,10 @@ public class RESTServlet extends HttpServlet {
 		{
 			contentType = "application/javascript";
 		}
+		else if(type == TYPE_JSONCAL)
+		{
+			contentType = "application/json";
+		}
 		else if(type == TYPE_HTML)
 		{
 			contentType = templateMimeType;
@@ -981,7 +992,13 @@ public class RESTServlet extends HttpServlet {
 				dataSet.eSetDeliver(false);
 				dataSet.setCacheFileAttachements(false);
 
-				result = serializeDataSet(dataSet, respEncoding);
+				if (type==TYPE_JSONCAL) {
+					// serialize calender entries only
+					result = serializeCalendarEntries(dataSet, respEncoding);
+				} else {
+					// serialize full data set
+					result = serializeDataSet(dataSet, respEncoding);
+				}
 
 				// reset caching and delivering state
 				dataSet.setCacheFileAttachements(caching);
@@ -1269,6 +1286,83 @@ public class RESTServlet extends HttpServlet {
 		return null;
 	}
 
+	/**
+	 * Serializes the calendar entries in the given data set to JSON, depending on the needed type
+	 * 
+	 * @param dataSet Dataset to serialize
+	 * @param respEncoding needed encoding
+	 * @return The serialized result
+	 */
+	private String serializeCalendarEntries(DataSet dataSet, String respEncoding) {
+		if (dataSet == null) {
+			return null;
+		}
+
+		// Important for correctly encoding in UTF-8 or ASCII as Java String is
+		// UTF-16
+		// see: http://wiki.eclipse.org/EMF/FAQ
+		StringWriter sw = new StringWriter();	
+		
+		Map<Content,Date> eventContentStart = new HashMap<Content,Date>();
+		Map<Content,Date> eventContentEnd = new HashMap<Content,Date>();
+		EList<Event> events = dataSet.getEvents();
+		for (Event event : events) {
+			Content content = null;
+			if (event.hasMetaTag("startdate")) {
+				EList<InformationObject> contentList = event.getInformationObjects();
+				if (contentList != null) { content = (Content)contentList.get(0); }
+				Date eventDate = ((Event)event).getDate();
+				eventContentStart.put(content, eventDate);
+			}
+			if (event.hasMetaTag("enddate")) {
+				EList<InformationObject> contentList = event.getInformationObjects();
+				if (contentList != null) { content = (Content)contentList.get(0); }
+				Date eventDate = ((Event)event).getDate();
+				eventContentEnd.put(content, eventDate);
+			}
+		}
+		
+		EList<MetaTag> contentMetaTagList = new BasicEList<>();
+        MetaTag metaTag = dataSet.getMetaTag("calendar");
+        if (metaTag != null) {
+        	contentMetaTagList.add(metaTag);
+        }
+        final EList<Content> contents = dataSet.getContentsWithOneOfMetaTags(contentMetaTagList);
+		sw.write("[\n");
+		boolean isFirst = true;
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		for (Content content : contents) {
+			if (!isFirst) { sw.write(","); } else { isFirst = false; }
+			sw.write("  {\n");
+			sw.write("    \"title\": \"");
+			sw.write(content.getName());
+			sw.write("\",\n");
+			sw.write("    \"start\": \"");
+			Date d = eventContentStart.get(content); // JJJJ-MM-DD HH:mm
+			if (d != null) { sw.write(DATE_FORMAT.format(d)); }
+			sw.write("\",\n");
+			sw.write("    \"end\": \"");
+			d = eventContentEnd.get(content); // JJJJ-MM-DD HH:mm
+			if (d != null) { sw.write(DATE_FORMAT.format(d)); }
+			sw.write("\",\n");
+			sw.write("    \"color\": \"");
+			EList<Tag> tags = content.getTags();
+			for (Tag tag : tags) {
+				sw.write(tag.getName());
+				break;
+			}
+			sw.write("\"\n");
+			sw.write("  }\n");
+		}
+		sw.write("]\n");
+				
+		sw.flush();
+		
+		return replaceFileReferences(sw.toString());
+		
+	}
+
+	
 	/**
 	 * Serializes the given data set, depending on the needed type
 	 * 

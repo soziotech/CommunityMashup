@@ -206,6 +206,10 @@ public class ResourceRegistrator extends ServiceTracker<HttpService, HttpService
 		{
 			type = RESTServlet.TYPE_JSON_P;
 		}
+		else if(typeString.equalsIgnoreCase("jsoncal"))
+		{
+			type = RESTServlet.TYPE_JSONCAL;
+		}
 		else if(typeString.equalsIgnoreCase("html"))
 		{
 			type = RESTServlet.TYPE_HTML;
