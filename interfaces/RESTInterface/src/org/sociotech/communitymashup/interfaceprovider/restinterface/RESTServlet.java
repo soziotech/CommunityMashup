@@ -1339,11 +1339,19 @@ public class RESTServlet extends HttpServlet {
 			sw.write("\",\n");
 			sw.write("    \"start\": \"");
 			Date d = eventContentStart.get(content); // JJJJ-MM-DD HH:mm
-			if (d != null) { sw.write(DATE_FORMAT.format(d)); }
+			if (d != null) { 
+				String tmps = DATE_FORMAT.format(d);
+				if (tmps.endsWith("00:00")) { tmps = tmps.substring(0,10); }
+				sw.write(tmps); 
+			}
 			sw.write("\",\n");
 			sw.write("    \"end\": \"");
 			d = eventContentEnd.get(content); // JJJJ-MM-DD HH:mm
-			if (d != null) { sw.write(DATE_FORMAT.format(d)); }
+			if (d != null) { 
+				String tmps = DATE_FORMAT.format(d);
+				if (tmps.endsWith("00:00")) { tmps = tmps.substring(0,10); }
+				sw.write(tmps); 
+			}
 			sw.write("\",\n");
 			sw.write("    \"color\": \"");
 			EList<Tag> tags = content.getTags();
