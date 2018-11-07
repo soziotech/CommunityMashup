@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MediaTUMSourceService
+Bundle-SymbolicName: org.sociotech.communitymashup.source.MediaTUMSourceService
+Bundle-Version: 0.0.1
+Bundle-Activator: org.sociotech.communitymashup.source.mediatum.MediaTUMSourceBundleActivator
+Bundle-Vendor: org.sociotech.communitymashup
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.apache.commons.codec;version="1.3.0",
+ org.apache.commons.codec.binary;version="1.3.0",
+ org.apache.commons.logging,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.service.log;version="1.3.0"
+Require-Bundle: org.sociotech.communitymashup.core;bundle-version="0.0.1",
+ org.sociotech.communitymashup.source.SourceServiceFacade;bundle-version="0.0.1"
