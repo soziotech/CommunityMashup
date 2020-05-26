@@ -34,6 +34,7 @@ import org.sociotech.communitymashup.data.Location;
 import org.sociotech.communitymashup.data.Organisation;
 import org.sociotech.communitymashup.data.Person;
 import org.sociotech.communitymashup.data.WebAccount;
+import org.sociotech.communitymashup.data.WebSite;
 import org.sociotech.communitymashup.source.impl.SourceServiceFacadeImpl;
 import org.sociotech.communitymashup.source.wordpress.meta.WordpressTags;
 
@@ -207,7 +208,7 @@ public class WordPressSourceServiceImpl extends SourceServiceFacadeImpl {
 	 * @return The new content object, null in error case.
 	 */
 	private Content createContentFromPost(DataSet dataSet, Post post) {
-		
+		log("createContentFromPost");
 		if (dataSet == null || post == null) {
 			return null;
 		}
@@ -230,15 +231,13 @@ public class WordPressSourceServiceImpl extends SourceServiceFacadeImpl {
 		// the real page content is in the description
 		item.setStringValue(cleanWordpressHtml(post.getPost_content()));
 		
-		// the permalink will be the uri 
-		// item.setUri(post.getLink());
-		
 		// set the creation date
 		if(post.getPost_date() != null) {
 			// be nice and do a null check
 			item.setCreated(post.getPost_date());
 		}	
 		
+		boolean teaserImage = false; // if there is a teaser image
 		// set the custom fields
 		List<CustomField> cfields = post.getCustom_fields();
 		for (CustomField cfield : cfields) {
@@ -289,12 +288,25 @@ public class WordPressSourceServiceImpl extends SourceServiceFacadeImpl {
 				String url = mediaItemURL.get(mediaItemId);
 				Image image = item.attachImage(url);
 				if (image != null) {
+					image.metaTag("teaser_image");
 					image.metaTag("cms_image");
 					image.metaTag("cms_information");
 				}
+				teaserImage = true;
+				// for CMF2 we have to add this image as website
+				WebSite website = item.addWebSite(url);
+				if (website != null) {
+					website.metaTag("teaser_image");
+					website.metaTag("cms_website");
+					website.metaTag("cms_information");
+				}
 			}
 			if (name.contentEquals("url")) {
-				item.setUri(value);
+				WebSite website = item.addWebSite(value);
+				if (website != null) {
+					website.metaTag("cms_website");
+					website.metaTag("cms_information");
+				}
 			}
 			if (name.contentEquals("org")) {
 				StringTokenizer tokenizer = new StringTokenizer(value, ",;");
@@ -376,7 +388,19 @@ public class WordPressSourceServiceImpl extends SourceServiceFacadeImpl {
 				image.metaTag("cms_information");
 			}
 		}
-				
+		
+		// if there is no teaser image, than add the permalink als WebSite 
+		// (for CMF2 teaser display)
+		if (!teaserImage) {
+			WebSite website = item.addWebSite(post.getLink());
+			if (website != null) {
+				website.metaTag("cms_website");
+				website.metaTag("cms_information");
+				website.metaTag("teaser_website");
+			}
+		}
+		
+		
 		// add special identifier -> may lead to merge
 		item.identifyBy("cms_content", id);
 		
@@ -559,14 +583,14 @@ public class WordPressSourceServiceImpl extends SourceServiceFacadeImpl {
 	private void addOrganizationObjects(DataSet dataSet) {
 		try {
 			FilterPost filter = new FilterPost();
-			filter.setPost_type("content");
+			filter.setPost_type("organization");
 			List<Post> posts = wordpress.getPosts(filter);
 			log("loaded "+posts.size()+" organization objects");
 			for(Post post : posts) {
 				// create a content object for every post
 				Organisation pageContent = createOrganizationFromPost(dataSet, post);
 				// meta tag it
-				pageContent.metaTag("cms_content");
+				pageContent.metaTag("cms_organization");
 			}
 			
 			// TODO create page hierarchy from page.getWp_page_parent_id()

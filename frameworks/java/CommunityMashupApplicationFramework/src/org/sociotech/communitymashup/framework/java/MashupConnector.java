@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.osgi.service.log.LogService;
 import org.slf4j.Logger;
@@ -410,7 +411,7 @@ public class MashupConnector implements DataSetChangedInterface {
 		// Register XML resource factory
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml",  new XMLResourceFactoryImpl());
 		// Register XMI resource factory
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi",  new XMLResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi",  new XMIResourceFactoryImpl());
 
 		if (localURL.endsWith("/")) {
 			localURL = localURL.substring(0, localURL.length()-1);

@@ -16,6 +16,7 @@ public abstract class ExcelInformationObject extends ExcelEntry {
 	private String website;
 	private String secondaryWebsite;
 	private String mainimage;
+	private String teaserimage;
 	private String secondaryimage;
 	private String tags;
 	private String metatags;
@@ -103,6 +104,12 @@ public abstract class ExcelInformationObject extends ExcelEntry {
 	}
 	public void setSecondaryimage(String secondaryimage) {
 		this.secondaryimage = secondaryimage;
+	}
+	public String getTeaserimage() {
+		return teaserimage;
+	}
+	public void setTeaserimage(String teaserimage) {
+		this.teaserimage = teaserimage;
 	}
 	public String getTags() {
 		return tags;

@@ -69,6 +69,11 @@ public class ExcelInformationTags {
 	public static String EXCEL_SECONDARY_IMAGE_METATAG = "excel_secondary_image";
 	
 	/**
+	 * Meta tag that will be added to all created image.
+	 */
+	public static String EXCEL_TEASER_IMAGE_METATAG = "teaser_image";
+	
+	/**
 	 * Meta tag that will be added to all created documents.
 	 */
 	public static final String EXCEL_DOCUMENT_METATAG = "excel_document";

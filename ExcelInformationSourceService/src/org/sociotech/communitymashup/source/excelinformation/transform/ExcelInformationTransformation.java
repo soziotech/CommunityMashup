@@ -705,7 +705,15 @@ public class ExcelInformationTransformation {
 				image.metaTag(ExcelInformationTags.EXCEL_ELEMENT_METATAG);
 			}
 		}
-		
+		// teaser
+		if(excelContent.getTeaserimage() != null && !excelContent.getTeaserimage().isEmpty()) {
+			Image image = content.attachImage(excelContent.getTeaserimage());
+			if(image != null) {
+				image.metaTag(ExcelInformationTags.EXCEL_IMAGE_METATAG);
+				image.metaTag(ExcelInformationTags.EXCEL_TEASER_IMAGE_METATAG);
+				image.metaTag(ExcelInformationTags.EXCEL_ELEMENT_METATAG);
+			}
+		}
 		// add main website
 		if(excelContent.getWebsite() != null && !excelContent.getWebsite().isEmpty()) {
 			WebSite site = content.addWebSite(excelContent.getWebsite());
